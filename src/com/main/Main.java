@@ -34,9 +34,9 @@ public class Main {
 // 读序列号的方法先丢到一边儿去		
 //		 try {  
 //	            ObjectInputStream is = new ObjectInputStream(new FileInputStream(  
-//	                    "bin/save/player.ser"));    
-//	            ArrayList<ArrayList<Player>> tempList = (ArrayList<ArrayList<Player>>) is.readObject();// 从流中读取List的数据  
-//	           System.out.println(tempList.get(0).get(5).playerName);
+//	                    "data/save/team.ser"));    
+//	            ArrayList<Team> tempList = (ArrayList<Team>) is.readObject();// 从流中读取List的数据  
+//	           System.out.println(tempList.get(0).gymName);
 //	            is.close();  
 //	        } catch (FileNotFoundException e) {  
 //	            e.printStackTrace();  

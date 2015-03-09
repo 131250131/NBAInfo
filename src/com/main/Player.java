@@ -2,6 +2,8 @@ package com.main;
 
 public class Player implements java.io.Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	public Player(String _playerName, String _playerNumber,String _playerPosition,
 			String _playerHeight, String _playerWeight, String _playerBirth, 
 			String _playerAge, String _playerExp, String _playerSchool, int _playerID){
