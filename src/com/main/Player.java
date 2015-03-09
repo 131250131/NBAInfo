@@ -79,8 +79,10 @@ public class Player implements java.io.Serializable{
 	//15.队员投篮命中数 (*****要传*****)
 		int playerFG; 
 		
-	//16.队员投篮出手数 (*****要传*****)
+	//16.a队员投篮出手数 (*****要传*****)
 		int playerFGTry; 
+	//16.b队员2分球出手数 (*****要传*****)
+		int player2FGTry;
 		
 	//17.队员三分命中数 (*****要传*****)
 		int player3FG;
@@ -221,37 +223,37 @@ public class Player implements java.io.Serializable{
 	//62.球员对手总篮板 (*****要传*****)
 		int allEnemyRebounds;
 		
-//	//63.球员球队进攻篮板 (*****要传*****)
-//		int o_allTeamRebounds;
-//		
-//	//64.球员对手进攻篮板 (*****要传*****)
-//		int o_allEnemyRebounds;
-//		
-//	//65.球员球队防守篮板 (*****要传*****)
-//		int d_allTeamRebounds;
-//		
-//	//66.球员对手防守篮板 (*****要传*****)
-//		int d_allEnemyRebounds;
-//		
-//	//67.球员球队总进球数 (*****要传*****)
-//		int allTeamFT;
-//		
-//	//68.球员球队出手数 (*****要传*****)
-//		int allTeamShoots;
-//		
-//	//69.球队对手出手数 (*****要传*****)
-//		int allEnemyShoots;
-//		
-//	//70.球队球员罚球次数 (*****要传*****)
-//		int allTeamFTShoots;
-//		
-//	//71.球队所有球员失误次数 (*****要传*****)
-//		int allTeamTurnover;
-//		
-//	//72.球队对手进攻次数 (*****要传*****)
-//		int allEnemyOffenceTime;
-//		
-//	
+	//63.球员球队进攻篮板 (*****要传*****)
+		int o_allTeamRebounds;
+		
+	//64.球员对手进攻篮板 (*****要传*****)
+		int o_allEnemyRebounds;
+		
+	//65.球员球队防守篮板 (*****要传*****)
+		int d_allTeamRebounds;
+		
+	//66.球员对手防守篮板 (*****要传*****)
+		int d_allEnemyRebounds;
+		
+	//67.球员球队总进球数 (*****要传*****)
+		int allTeamFT;
+		
+	//68.球员球队出手数 (*****要传*****)
+		int allTeamShoots;
+		
+	//69.球队对手出手数 (*****要传*****)(改成两分球出手次数？)
+		int allEnemyShoots;
+		
+	//70.球队球员罚球次数 (*****要传*****)
+		int allTeamFTShoots;
+		
+	//71.球队所有球员失误次数 (*****要传*****)
+		int allTeamTurnover;
+		
+	//72.球队对手进攻次数 (*****要传*****)
+		int allEnemyOffenceTimes;
+		
+	
 
 		public double getAver_playerAssists() {
 			return playerAssists / playerAttends;
@@ -353,31 +355,33 @@ public class Player implements java.io.Serializable{
 		}
 
 		public double getO_RR() {
-			return o_RR;
+			return playerOffenceRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(o_allTeamRebounds+o_allEnemyRebounds);
 		}
 
 		public double getD_RR() {
-			return d_RR;
+			return playerDeffenceRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(d_allTeamRebounds+d_allEnemyRebounds);
 		}
 
 		public double getAR() {
-			return AR;
+			return playerAssists/(playerPlayTime/((teammatePlayTime+playerPlayTime)/5)*allTeamFT-playerFG);
 		}
 
 		public double getSR() {
-			return SR;
+			return playerSteals*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyOffenceTimes;
 		}
 
 		public double getBR() {
-			return BR;
+			return playerBlocks*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyShoots;
 		}
 
 		public double getTR() {
-			return TR;
+			return playerTurnovers/(player2FGTry+0.44*playerFTGTry+playerTurnovers);
 		}
 
 		public double getUR() {
-			return UR;
+			return (playerFGTry+0.44*playerFTGTry+playerTurnovers)*
+					(teammatePlayTime+playerPlayTime)/5/playerPlayTime/
+					(allTeamShoots+0.44*allTeamFTShoots+allTeamTurnover);
 		}
 
 }
