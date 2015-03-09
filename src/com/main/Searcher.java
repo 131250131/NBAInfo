@@ -14,34 +14,36 @@ public class Searcher {
 	public ArrayList<Player> finalAlaphPlayerList;
 	public int currentIndex;
 	
-	//用来通过球员名称来获取球员的类
-	public Player playerSearcher(String _playerName){
-		
-		byte[] nameBytes = _playerName.getBytes();
-		currentIndex = nameBytes[0] - 65;
-			
-		try{  		  
-			ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("data/save/player.ser"));    
+	public Searcher(){
+		try{  
+			ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("data/save/player.ser"));  
 			@SuppressWarnings("unchecked") 
 			ArrayList<ArrayList<Player>> playerList = (ArrayList<ArrayList<Player>>) inputStream.readObject();// 从流中读取List的数据 
 			finalPlayerList = playerList;
-			finalAlaphPlayerList = finalPlayerList.get(currentIndex);
-			
-			for(int i = 0; i < finalAlaphPlayerList.size(); i++){
-				if(finalAlaphPlayerList.get(i).playerName.equals(_playerName)){
-					inputStream.close(); 
-					return finalAlaphPlayerList.get(i);
-				}
-			}		
-		    inputStream.close();  
-	    }catch(FileNotFoundException e){  
+			inputStream.close(); 	
+		}catch(FileNotFoundException e){  
 	        e.printStackTrace();  
 	    }catch(IOException e){  
 	        e.printStackTrace();  
 	    }catch(ClassNotFoundException e){  
 	        e.printStackTrace();  
 	    }  
+	}
+	
+	//用来通过球员名称来获取球员的类
+	public Player playerSearcher(String _playerName){
 		
+		byte[] nameBytes = _playerName.getBytes();
+		currentIndex = nameBytes[0] - 65;
+			
+		finalAlaphPlayerList = finalPlayerList.get(currentIndex);
+		
+		for(int i = 0; i < finalAlaphPlayerList.size(); i++){
+			if(finalAlaphPlayerList.get(i).playerName.equals(_playerName)){			
+				return finalAlaphPlayerList.get(i);
+			}
+		}		
+	
 		return null;
 	}
 	

@@ -12,6 +12,11 @@ public class MatchFileReader {
 	
 	//在此处设定文件夹路径
 	String path = "data/data/matches";
+	Searcher searcher;
+	
+	public MatchFileReader(Searcher _searcher){
+		searcher = _searcher;
+	}
 	
 	public void readAll() throws Exception{
 		
@@ -19,8 +24,7 @@ public class MatchFileReader {
 		File file = new File(path);                
 		File[] matchFile = file.listFiles();       
 		for(int i = 0; i < matchFile.length; i++)
-			readOne(matchFile[i]);	
-		
+			readOne(matchFile[i]);		
 	}
 	
 	private void readOne(File file) throws IOException, FileNotFoundException{
@@ -157,7 +161,9 @@ public class MatchFileReader {
 			playerBlocks[counter] = Integer.parseInt(playerInfo[14]);
 			playerTurnovers[counter] = Integer.parseInt(playerInfo[15]);
 			playerFouls[counter] = Integer.parseInt(playerInfo[16]);
-			playerScores[counter] = Integer.parseInt(playerInfo[17]);
+			if(!playerInfo[17].equals("null")){
+				playerScores[counter] = Integer.parseInt(playerInfo[17]);
+			}
 			
 			if(isLeft){
 				leftTeamTime = leftTeamTime + playerTime[counter];
@@ -212,7 +218,7 @@ public class MatchFileReader {
 		rightOffenceTimes = rightTeamFGTry + 0.4 * rightTeamFTGTry - 1.07 * (rightTeamOffenceRebounds /
 				(rightTeamOffenceRebounds + leftTeamDeffenceRebounds) * (rightTeamFGTry - rightTeamFG)) + 1.07 * rightTeamTurnovers;
 
-		Searcher searcher = new Searcher();
+		
 		
 		for(int i = 0; i < counter; i++){
 			
@@ -243,10 +249,7 @@ public class MatchFileReader {
 			}
 			
 			searcher.finalAlaphPlayerList.add(tempPlayer);
-			searcher.finalPlayerList.set(searcher.currentIndex, searcher.finalAlaphPlayerList);
-			
-			searcher.rewritePlayerFile();	
-			
+			searcher.finalPlayerList.set(searcher.currentIndex, searcher.finalAlaphPlayerList);				
 		}
 	}
 	
