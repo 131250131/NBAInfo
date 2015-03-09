@@ -7,18 +7,26 @@ public class Main {
 		//初始时间
 		double t1 = System.currentTimeMillis();
 		
-		//读取所有player文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
-		PlayerFileBuilder playerFileBuilder = new PlayerFileBuilder();
-		try {
-			playerFileBuilder.ReadAll();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		//读取所有player文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
+//		PlayerFileBuilder playerFileBuilder = new PlayerFileBuilder();
+//		try {
+//			playerFileBuilder.readAll();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		
+//		//读取所有team文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
+//		TeamFileBuilder teamFileBuilder = new TeamFileBuilder();
+//		try {
+//			teamFileBuilder.readFile();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
-		//读取所有team文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
-		TeamFileBuilder teamFileBuilder = new TeamFileBuilder();
+		//读取所有match文件 并且进行相应处理
+		MatchFileReader matchFileReader = new MatchFileReader();
 		try {
-			teamFileBuilder.readFile();
+			matchFileReader.readAll();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

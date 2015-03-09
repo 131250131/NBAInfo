@@ -54,18 +54,18 @@ public class PlayerFileBuilder {
 	//在此处设定文件夹路径
 	String path = "data/data/players/info";
 	
-	public void ReadAll() throws Exception{
+	public void readAll() throws Exception{
 		
 		//该方法将会读取球员信息文件夹中所有球员的信息
 		File file = new File(path);                
 		File[] playerFile = file.listFiles();       
 		for(int i = 0; i < playerFile.length; i++)
-			ReadOne(playerFile[i]);
+			readOne(playerFile[i]);
 		
 		wirteToFile(playerList);
 	}
 
-	private void ReadOne(File file) throws IOException, FileNotFoundException{
+	private void readOne(File file) throws IOException, FileNotFoundException{
 		
 		//该方法将会对每一球员信息进行读取工作
 		
