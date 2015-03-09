@@ -8,11 +8,18 @@ public class Main {
 		double t1 = System.currentTimeMillis();
 		
 		//读取所有player文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
-		PlayerFileBuilder b = new PlayerFileBuilder();
+		PlayerFileBuilder playerFileBuilder = new PlayerFileBuilder();
 		try {
-			b.ReadAll();
+			playerFileBuilder.ReadAll();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//读取所有team文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
+		TeamFileBuilder teamFileBuilder = new TeamFileBuilder();
+		try {
+			teamFileBuilder.readFile();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		

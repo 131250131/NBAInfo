@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 
 /*
- * 该类用于读取初始球员信息，并且用序列化进行球员数据保存。test
+ * 该类用于读取初始球员信息，并且用序列化进行球员数据保存。
  */
 
 public class PlayerFileBuilder {
@@ -68,7 +68,6 @@ public class PlayerFileBuilder {
 	private void ReadOne(File file) throws IOException, FileNotFoundException{
 		
 		//该方法将会对每一球员信息进行读取工作
-		
 		
 		InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
         BufferedReader bufferedReader = new BufferedReader(read);
