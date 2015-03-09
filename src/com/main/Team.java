@@ -50,14 +50,14 @@ public class Team implements java.io.Serializable{
 	//球队的编号；
 		int teamID;
 	//球队比赛场数，胜率；（*****需要更新*****）
-		int compGames;
-		int winGames;
-		int losGames;
-		double winRate;
+		int compGames;//总场
+		int winGames;//胜场
+		int losGames;//败场
+		private double winRate;//胜率
 		
 //接下来是球队赛季总数据；	
 	//总进攻回合数（*****需要更新*****）
-		int attackRounds;
+		private double attackRounds;
 	//球队助攻数（*****需要更新*****）
 		int teamAssists;
 	//球队投篮命中数（*****需要更新*****）
@@ -127,14 +127,48 @@ public class Team implements java.io.Serializable{
 	//球队场均总得分数
 		int aver_teamScores;
 	//球队进攻效率：
-		double teamOffE;
+		private double teamOffE;
 	//球队防守效率
-		double teamDefE;
-	//球队篮板效率
-		double teamRebE;
+		private double teamDefE;
+	//球队进攻篮板效率
+		private double teamOffERebE;
+	//球队防守篮板效率
+		private double teamDefERebE;
 	//球队抢断效率
-		double teamSteE;
+		private double teamSteE;
 	//球队助攻效率
-		double teamAssE;
+		private double teamAssE;
+
+		/*计算需要的对手数据*/
+		//对手防守篮板数
+		int enemyDeffenceRebounds;
+		//对手前场篮板数
+		int enemyOffenceRebounds;
+	
+		
+		public double getWinRate() {
+			return winGames/(winGames+losGames);
+		}
+		public double getAttackRounds() {
+			return teamFGTry+0.4*teamFTGTry-1.07*(teamOffenceRebounds/(teamOffenceRebounds+enemyDeffenceRebounds)*(teamFGTry-teamFG))+1.07*teamTurnovers;
+		}
+		public double getTeamOffE() {
+			return teamOffE;
+		}
+		public double getTeamDefE() {
+			return teamDefE;
+		}
+		public double getTeamOffERebE() {
+			return teamOffenceRebounds/(teamOffenceRebounds+enemyDeffenceRebounds);
+		}
+		public double getTeamDefERebE() {
+			return teamDeffenceRebounds/(teamDeffenceRebounds+enemyOffenceRebounds);
+		}
+		public double getTeamSteE() {
+			return teamSteE;
+		}
+		public double getTeamAssE() {
+			return teamAssE;
+		}
 	
 }
