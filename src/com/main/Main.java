@@ -24,16 +24,13 @@ public class Main {
 //		}
 		
 		//读取所有match文件 并且进行相应处理
-//		MatchFileReader matchFileReader = new MatchFileReader();
-//		try {
-//			matchFileReader.readAll();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
+		MatchFileReader matchFileReader = new MatchFileReader();
+		try {
+			matchFileReader.readAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		Searcher searcher = new Searcher();
-		Player player = searcher.playerSearcher("Anthony Tolliver");
-		System.out.println(player.playerID);
 		
 		//结束时间
 		double t2 = System.currentTimeMillis();

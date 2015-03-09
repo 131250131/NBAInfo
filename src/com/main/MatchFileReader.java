@@ -39,8 +39,31 @@ public class MatchFileReader {
         read.close();
 	}
 	
+	String leftTeamName, rightTeamName;
+	int leftTeamScore, rightTeamScore;
+	boolean isLeft = true;
+	
 	private void operateMatchTxt(String lineTxt, int lineNumber){
-		System.out.println(lineTxt);
+		if(lineNumber == 1){
+			String[] teamInfoStage1 = lineTxt.split(";");
+			
+			String[] teamInfoStage2 = teamInfoStage1[1].split("-");
+			leftTeamName = teamInfoStage2[0];
+			rightTeamName = teamInfoStage2[1];
+			
+			String[] teamInfoStage3 = teamInfoStage1[2].split("-");			
+			leftTeamScore = Integer.parseInt(teamInfoStage3[0]);
+			rightTeamScore = Integer.parseInt(teamInfoStage3[1]);
+		}
+		
+		if(lineNumber > 3 && lineTxt.length() == 3){
+			isLeft = false;
+		}
+		
+		if(lineNumber > 3 && lineTxt.length() != 3){
+			String[] playerInfo = lineTxt.split(";");
+			
+		}
 	}
 	
 }
