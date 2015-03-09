@@ -118,112 +118,109 @@ public class Player implements java.io.Serializable{
 	//28.队员总得分数 (*****要传*****)
 		int playerScores; 
 		
-//	//29.队员平均助攻数
-//		double aver_playerAssists = playerAssists / playerAttends;
-//		
-//	//30.队员平均在场时间
-//		double aver_playerPlayTime = playerPlayTime / playerAttends;
-//		
-//	//31.队员平均投篮命中数
-//		double aver_playerFG = playerFG / playerAttends;
-//		
-//	//32.队员平均投篮出手数
-//		double aver_playerFGTry = playerFGTry / playerAttends;
-//		
-//	//33.队员平均三分命中数
-//		double aver_player3FG = player3FG / playerAttends;
-//				
-//	//34.队员平均三分出手数
-//		double aver_player3FGTry = player3FGTry / playerAttends;
-//		
-//	//35.队员平均罚球命中数
-//		double aver_playerFTG = playerFTG / playerAttends;
-//		
-//	//36.队员平均罚球出手数
-//		double aver_playerFTGTry = playerFTGTry / playerAttends;
-//		
-//	//37.队员平均进攻篮板数
-//		double aver_playerOffenceRebounds = playerOffenceRebounds / playerAttends;
-//		
-//	//38.队员平均防守篮板数
-//		double aver_playerDeffenceRebounds = playerDeffenceRebounds / playerAttends;
-//		
-//	//39.队员平均总篮板数
-//		double aver_playerTotalRebounds = playerTotalRebounds / playerAttends;
-//		
-//	//40.队员平均抢断数
-//		double aver_playerSteals = playerSteals / playerAttends;
-//		
-//	//41.队员平均盖帽数
-//		double aver_playerBlocks = playerBlocks / playerAttends;
-//		
-//	//42.队员平均失误数
-//		double aver_playerTurnovers = playerTurnovers / playerAttends;
-//		
-//	//43.队员平均犯规数
-//		double aver_playerFouls = playerFouls / playerAttends;
-//		
-//	//44.队员平均得分
-//		double aver_playerScores = playerScores / playerAttends;
-//		
-//	//45.队员投篮命中率
-//		double playerFGP = playerFG / playerFGTry;
-//		
-//	//46.队员三分命中率
-//		double player3FGP = player3FG / player3FGTry;
-//		
-//	//47.队员罚球命中率	
-//		double playerFTGP = playerFTG / playerFTGTry;
-//		
-//	//48.队员效率(PER)
-//		double playerPER = ((playerScores + playerTotalRebounds + playerAssists + playerSteals + playerBlocks) 
-//				- (playerFGTry - playerFG) - (playerFTGTry - playerFTG) - playerTurnovers) / playerAttends;
-//		
-//	//49.队员GmSc效率值
-//		double playerGmScER = (playerScores + 0.4 * playerFG - 0.7 * playerFGTry - 0.4 * (playerFTGTry - playerFTG)
-//				+ 0.7 * playerOffenceRebounds + 0.3 * playerDeffenceRebounds + playerSteals + 0.7 * playerAssists 
-//				+ 0.7 * playerBlocks - 0.4 * playerFouls - playerTurnovers) / playerAttends;
-//		
-//	//50.队员真实命中率
-//		double playerTSP = playerScores / (2 * (playerFGTry + 0.44 * playerFTGTry));
-//		
-//	//51.队员投篮效率
-//		double playerSER = (playerFG + 0.5 * player3FG) / playerFGTry;
-//		
-//	//52.队员篮板率
-//		double RR;
-//		
-//	//53.进攻篮板率
-//		double o_RR;
-//		
-//	//54.防守篮板率
-//		double d_RR;
-//		
-//	//55.助攻率
-//		double AR;
-//		
-//	//56.抢断率
-//		double SR;
-//		
-//	//57.盖帽率
-//		double BR;
-//		
-//	//58.失误率
-//		double TR;
-//		
-//	//59.使用率
-//		double UR;
-//		
-//		
-//	//60.球员队友出场时间 (*****要传*****)
-//		int teammatePlayTime;
-//		
-//	//61.球员球队总篮板 (*****要传*****) 
-//		int allTeamRebounds;
-//		
-//	//62.球员对手总篮板 (*****要传*****)
-//		int allEnemyRebounds;
-//		
+	//29.队员平均助攻数
+		private double aver_playerAssists ;
+		
+	//30.队员平均在场时间
+		private double aver_playerPlayTime  ;
+		
+	//31.队员平均投篮命中数
+		private double aver_playerFG  ;
+		
+	//32.队员平均投篮出手数
+		private double aver_playerFGTry ;
+		
+	//33.队员平均三分命中数
+		private double aver_player3FG ;
+				
+	//34.队员平均三分出手数
+		private double aver_player3FGTry ;
+		
+	//35.队员平均罚球命中数
+		private double aver_playerFTG ;
+		
+	//36.队员平均罚球出手数
+		private double aver_playerFTGTry ;
+		
+	//37.队员平均进攻篮板数
+		private double aver_playerOffenceRebounds ;
+		
+	//38.队员平均防守篮板数
+		private double aver_playerDeffenceRebounds ;
+		
+	//39.队员平均总篮板数
+		private double aver_playerTotalRebounds ;
+		
+	//40.队员平均抢断数
+		private double aver_playerSteals ;
+		
+	//41.队员平均盖帽数
+		private double aver_playerBlocks ;
+		
+	//42.队员平均失误数
+		private double aver_playerTurnovers ;
+		
+	//43.队员平均犯规数
+		private double aver_playerFouls ;
+		
+	//44.队员平均得分
+		private double aver_playerScores ;
+		
+	//45.队员投篮命中率
+		private double playerFGP ;
+		
+	//46.队员三分命中率
+		private double player3FGP ;
+		
+	//47.队员罚球命中率	
+		private double playerFTGP ;
+		
+	//48.队员效率(PER)
+		private double playerPER ;
+		
+	//49.队员GmSc效率值
+		private double playerGmScER ;
+		
+	//50.队员真实命中率
+		private double playerTSP ;
+		
+	//51.队员投篮效率
+		private double playerSER ;
+		
+	//52.队员篮板率
+		private double RR;
+		
+	//53.进攻篮板率
+		private double o_RR;
+		
+	//54.防守篮板率
+		private double d_RR;
+		
+	//55.助攻率
+		private double AR;
+		
+	//56.抢断率
+		private double SR;
+		
+	//57.盖帽率
+		private double BR;
+		
+	//58.失误率
+		private double TR;
+		
+	//59.使用率
+		private double UR;
+		
+		
+	//60.球员队友出场时间 (*****要传*****)
+		int teammatePlayTime;
+		
+	//61.球员球队总篮板 (*****要传*****) 
+		int allTeamRebounds;
+		
+	//62.球员对手总篮板 (*****要传*****)
+		int allEnemyRebounds;
+		
 //	//63.球员球队进攻篮板 (*****要传*****)
 //		int o_allTeamRebounds;
 //		
@@ -255,4 +252,132 @@ public class Player implements java.io.Serializable{
 //		int allEnemyOffenceTime;
 //		
 //	
+
+		public double getAver_playerAssists() {
+			return playerAssists / playerAttends;
+		}
+
+		public double getAver_playerPlayTime() {
+			return playerPlayTime / playerAttends;
+		}
+
+		public double getAver_playerFG() {
+			return playerFG / playerAttends;
+		}
+
+		public double getAver_playerFGTry() {
+			return playerFGTry / playerAttends;
+		}
+
+		public double getAver_player3FG() {
+			return  player3FG / playerAttends;
+		}
+
+		public double getAver_player3FGTry() {
+			return player3FGTry / playerAttends;
+		}
+
+		public double getAver_playerFTG() {
+			return  playerFTG / playerAttends;
+		}
+
+		public double getAver_playerFTGTry() {
+			return playerFTGTry / playerAttends;
+		}
+
+		public double getAver_playerOffenceRebounds() {
+			return playerOffenceRebounds / playerAttends;
+		}
+
+		public double getAver_playerDeffenceRebounds() {
+			return  playerDeffenceRebounds / playerAttends;
+		}
+
+		public double getAver_playerTotalRebounds() {
+			return  playerTotalRebounds / playerAttends;
+		}
+
+		public double getAver_playerSteals() {
+			return playerSteals / playerAttends;
+		}
+
+		public double getAver_playerBlocks() {
+			return playerBlocks / playerAttends;
+		}
+
+		public double getAver_playerTurnovers() {
+			return playerTurnovers / playerAttends;
+		}
+
+		public double getAver_playerFouls() {
+			return playerFouls / playerAttends;
+		}
+
+		public double getAver_playerScores() {
+			return  playerScores / playerAttends;
+		}
+
+		public double getPlayerFGP() {
+			return playerFG / playerFGTry;
+		}
+
+		public double getPlayer3FGP() {
+			return player3FG / player3FGTry;
+		}
+
+		public double getPlayerFTGP() {
+			return playerFTG / playerFTGTry;
+		}
+
+		public double getPlayerPER() {
+			return ((playerScores + playerTotalRebounds + playerAssists + playerSteals + playerBlocks) 
+					- (playerFGTry - playerFG) - (playerFTGTry - playerFTG) - playerTurnovers) / playerAttends;
+		}
+
+		public double getPlayerGmScER() {
+			return  (playerScores + 0.4 * playerFG - 0.7 * playerFGTry - 0.4 * (playerFTGTry - playerFTG)
+					+ 0.7 * playerOffenceRebounds + 0.3 * playerDeffenceRebounds + playerSteals + 0.7 * playerAssists 
+					+ 0.7 * playerBlocks - 0.4 * playerFouls - playerTurnovers) / playerAttends;
+		}
+
+		public double getPlayerTSP() {
+			return playerScores / (2 * (playerFGTry + 0.44 * playerFTGTry));
+		}
+
+		public double getPlayerSER() {
+			return (playerFG + 0.5 * player3FG) / playerFGTry;
+		}
+
+		public double getRR() {
+			return playerTotalRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(allTeamRebounds+allEnemyRebounds);
+		}
+
+		public double getO_RR() {
+			return o_RR;
+		}
+
+		public double getD_RR() {
+			return d_RR;
+		}
+
+		public double getAR() {
+			return AR;
+		}
+
+		public double getSR() {
+			return SR;
+		}
+
+		public double getBR() {
+			return BR;
+		}
+
+		public double getTR() {
+			return TR;
+		}
+
+		public double getUR() {
+			return UR;
+		}
+
 }
