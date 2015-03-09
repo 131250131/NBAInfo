@@ -48,9 +48,7 @@ public class PlayerFileBuilder {
 	ArrayList<Player> playerListX = new ArrayList<Player>(); 
 	ArrayList<Player> playerListY = new ArrayList<Player>(); 
 	ArrayList<Player> playerListZ = new ArrayList<Player>(); 
-	
-	int playerID = 1;
-	
+
 	//在此处设定文件夹路径
 	String path = "data/data/players/info";
 	
@@ -78,7 +76,6 @@ public class PlayerFileBuilder {
         }
         sentPlayerInfo(playerName, playerNumber, playerPosition, playerHeight, playerWeight, 
         		playerBirth, playerAge, playerExp, playerSchool);
-        playerID++;
         read.close();
 	}
 
@@ -147,7 +144,7 @@ public class PlayerFileBuilder {
 		//该方法用于将找出的有用信息保存至球员的序列化中
 		
 		Player player = new Player(playerName, playerNumber, playerPosition, playerHeight, playerWeight, 
-				playerBirth, playerAge, playerExp, playerSchool, playerID);
+				playerBirth, playerAge, playerExp, playerSchool);
 		
 		byte[] bytes = playerName.getBytes();
 		

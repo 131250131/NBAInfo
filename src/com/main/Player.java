@@ -6,25 +6,30 @@ public class Player implements java.io.Serializable{
 
 	public Player(String _playerName, String _playerNumber,String _playerPosition,
 			String _playerHeight, String _playerWeight, String _playerBirth, 
-			String _playerAge, String _playerExp, String _playerSchool, int _playerID){
+			String _playerAge, String _playerExp, String _playerSchool){
 		
 		playerName = _playerName;
 		playerNumber = _playerNumber;
 		position = _playerPosition;
 		height = _playerHeight;
-		weight = Double.parseDouble(_playerWeight);
-		playerBirth = _playerBirth;
-		playerAge = Integer.parseInt(_playerAge);
 		
-		if(_playerExp.equals("R")){
-			exp = 0;
-		}else{
-			exp = Integer.parseInt(_playerExp);
-		}
+		if(_playerWeight != null)
+			weight = Double.parseDouble(_playerWeight);
+		
+		playerBirth = _playerBirth;
+		
+		if(_playerAge != null)
+			playerAge = Integer.parseInt(_playerAge);
+		
+		if(_playerExp != null)
+			if(_playerExp.equals("R")){
+				exp = 0;
+			}else{
+				exp = Integer.parseInt(_playerExp);
+			}
 		
 		school = _playerSchool;
-		playerID = _playerID;
-		
+			
 		playerAttends = 0;
 		startTimes = 0;
 		playerAssists = 0;
@@ -52,15 +57,55 @@ public class Player implements java.io.Serializable{
 		d_allEnemyRebounds = 0;
 		allTeamFT = 0;
 		allTeamShoots = 0;
-		allEnemyShoots = 0;
+		allEnemy2Shoots = 0;
 		allTeamFTShoots = 0;
 		allTeamTurnover = 0;
 		allEnemyOffenceTimes = 0;
 	}
 	
-	public void updatePlayer(){
-		playerAttends++;
+	public void updatePlayer(int time, boolean isStart, int FG, int FGTry, int threeFG, int threeFGTry,
+			int FTG, int FTGTry, int offenceRebounds, int deffenceRebounds, int totalRebounds,
+			int assists, int steals, int blocks, int turnovers, int fouls, int scores, int _teammatePlayTime,
+			int _allTeamRebounds, int _allEnemyRebounds, int _allTeamORebounds, int _allEnemyORebounds,
+			int _allTeamDRebounds, int _allEnemyDRebounds, int _allTeamFT, int _allTeamShoots,
+			int _allEnemy2Shoots, int _allTeamFTShoots, int _allTeamTurnover, double _allEnemyOffenceTimes){
 		
+		playerAttends++;
+		playerPlayTime = playerPlayTime + time;
+		
+		if(isStart){
+			startTimes++;
+		}
+		
+		playerFG = playerFG + FG;
+		playerFGTry = playerFGTry + FGTry;
+		player3FG = player3FG + threeFG;
+		player3FGTry = player3FGTry + threeFGTry;
+		playerFTG = playerFTG + FTG;
+		playerFTGTry = playerFTGTry + FTGTry;
+		playerOffenceRebounds = playerOffenceRebounds + offenceRebounds;
+		playerDeffenceRebounds = playerDeffenceRebounds + deffenceRebounds;
+		playerTotalRebounds = playerTotalRebounds + totalRebounds;
+		playerAssists = playerAssists + assists;
+		playerSteals = playerSteals + steals;
+		playerBlocks = playerBlocks + blocks;
+		playerTurnovers = playerTurnovers + turnovers;
+		playerFouls = playerFouls + fouls;
+		playerScores = playerScores + scores;
+		teammatePlayTime = teammatePlayTime + _teammatePlayTime;
+		allTeamRebounds = allTeamRebounds + _allTeamRebounds;
+		allEnemyRebounds = allEnemyRebounds + _allEnemyRebounds;
+		o_allTeamRebounds = o_allTeamRebounds + _allTeamORebounds;
+		o_allEnemyRebounds = o_allEnemyRebounds + _allEnemyORebounds;
+		d_allTeamRebounds = d_allTeamRebounds + _allTeamDRebounds;
+		d_allEnemyRebounds = d_allEnemyRebounds + _allEnemyDRebounds;
+		allTeamFT = allTeamFT + _allTeamFT;
+		allTeamShoots = allTeamShoots + _allTeamShoots;
+		allEnemy2Shoots = allEnemy2Shoots + _allEnemy2Shoots;
+		allTeamFTShoots = allTeamFTShoots + _allTeamFTShoots;
+		allTeamTurnover = allTeamTurnover + _allTeamTurnover;
+		allEnemyOffenceTimes = allEnemyOffenceTimes + _allEnemyOffenceTimes;
+			
 	}
 	
 	//球员类， 用序列号进行保存
@@ -97,8 +142,8 @@ public class Player implements java.io.Serializable{
 	//9.球员学校或国家
 		String school;
 	
-	//10.球员ID (*****要传*****)
-		int playerID;
+//	//10.球员ID (*****要传*****) //没用的
+//		int playerID;
 		
 	//11.球员参赛场数 
 		int playerAttends;
@@ -275,8 +320,8 @@ public class Player implements java.io.Serializable{
 	//68.球员球队出手数 (*****要传*****)
 		int allTeamShoots;
 		
-	//69.球队对手出手数 (*****要传*****)(改成两分球出手次数？)
-		int allEnemyShoots;
+	//69.球队对手两分球出手数 (*****要传*****)
+		int allEnemy2Shoots;
 		
 	//70.球队球员罚球次数 (*****要传*****)
 		int allTeamFTShoots;
@@ -285,10 +330,8 @@ public class Player implements java.io.Serializable{
 		int allTeamTurnover;
 		
 	//72.球队对手进攻次数 (*****要传*****)
-		int allEnemyOffenceTimes;
+		double allEnemyOffenceTimes;
 		
-	
-
 		public double getAver_playerAssists() {
 			return playerAssists / playerAttends;
 		}
@@ -405,7 +448,7 @@ public class Player implements java.io.Serializable{
 		}
 
 		public double getBR() {
-			return playerBlocks*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyShoots;
+			return playerBlocks*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemy2Shoots;
 		}
 
 		public double getTR() {

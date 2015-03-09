@@ -1,20 +1,23 @@
 package com.main;
 
 public class Main {
-
+	
+	public static double T = 0;
+	
 	public static void main(String[] args) {
 		
 		//初始时间
 		double t1 = System.currentTimeMillis();
+		T = t1;
 		
-//		//读取所有player文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
-//		PlayerFileBuilder playerFileBuilder = new PlayerFileBuilder();
-//		try {
-//			playerFileBuilder.readAll();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
+		//读取所有player文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
+		PlayerFileBuilder playerFileBuilder = new PlayerFileBuilder();
+		try {
+			playerFileBuilder.readAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 //		//读取所有team文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
 //		TeamFileBuilder teamFileBuilder = new TeamFileBuilder();
 //		try {
@@ -30,8 +33,7 @@ public class Main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
+				
 		//结束时间
 		double t2 = System.currentTimeMillis();
 		
