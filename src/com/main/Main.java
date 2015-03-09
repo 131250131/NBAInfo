@@ -11,13 +11,13 @@ public class Main {
 		T = t1;
 		
 		//读取所有player文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
-//		PlayerFileBuilder playerFileBuilder = new PlayerFileBuilder();
-//		try {
-//			playerFileBuilder.readAll();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
+		PlayerFileBuilder playerFileBuilder = new PlayerFileBuilder();
+		try {
+			playerFileBuilder.readAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 //		//读取所有team文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
 //		TeamFileBuilder teamFileBuilder = new TeamFileBuilder();
 //		try {
@@ -40,8 +40,7 @@ public class Main {
 		searcher.rewritePlayerFile();	
 		
 //		Searcher searcher = new Searcher();
-//		searcher.playerSearcher("Qaaa");
-//		searcher.playerSearcher("Aaaa");
+//		System.out.println(searcher.playerSearcher("Al Horford").playerScores);
 				
 		//结束时间
 		double t2 = System.currentTimeMillis();
