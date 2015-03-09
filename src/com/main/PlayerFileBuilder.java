@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 
 /*
- * 该类用于读取初始球员信息，并且用序列化进行球员数据保存。
+ * 该类用于读取初始球员信息，并且用序列化进行球员数据保存。test
  */
 
 public class PlayerFileBuilder {
