@@ -1,6 +1,6 @@
 package com.old;
 
-public class Naming {
+public class Naming {//test
 	
 //	//Team Information
 //		//球队名称： 
