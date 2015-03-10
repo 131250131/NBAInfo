@@ -13,6 +13,7 @@ public class Searcher {
 	public ArrayList<ArrayList<Player>> finalPlayerList;
 	public ArrayList<Player> finalAlaphPlayerList;
 	public int currentIndex;
+	int size;
 	
 	public Searcher(){
 		try{  
@@ -42,10 +43,34 @@ public class Searcher {
 			if(finalAlaphPlayerList.get(i).playerName.equals(_playerName)){			
 				return finalAlaphPlayerList.get(i);
 			}
-		}		
-	
+		}	
+		
 		return null;
+		
+//		//试试看用二分法查找
+//		
+//		return binarySearch(_playerName);
 	}
+	
+//	private Player binarySearch(String _playerName){
+//		int low = 0;
+//		int high = finalAlaphPlayerList.size() - 1;
+//				
+//		while(low <= high){
+//			int mid = (low + high) / 2;
+//			Player player = finalAlaphPlayerList.get(mid);
+//			String name = player.playerName;
+//			
+//			if(name.compareTo(_playerName) < 0){
+//				low = mid + 1;
+//			}else if(name.compareTo(_playerName) > 0){
+//				high = mid - 1;
+//			}else{
+//				return player;
+//			}
+//		}	
+//		return null;
+//	}
 	
 	public void rewritePlayerFile(){
 		String saveFile = "data/save/player.ser";
