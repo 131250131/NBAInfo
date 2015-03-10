@@ -74,10 +74,16 @@ public class Team implements java.io.Serializable{
 		int teamFTGTry;
 	//球队进攻篮板数（*****需要更新*****）
 		int teamOffenceRebounds;
+	//对手进攻篮板数（*****需要更新*****）
+		int oppoOffenceRebounds;
 	//球队防守篮板数（*****需要更新*****）
 		int teamDeffenceRebounds;
+	//对手防守篮板（*****需要更新*****）
+		int oppoDeffenceRebounds;
 	//球队总篮板数（*****需要更新*****）
 		int teamTotalRebounds;
+	//对手总篮板数（*****需要更新*****）
+		int oppoTotalRebounds;
 	//球队抢断数（*****需要更新*****）
 		int teamSteals;
 	//球队盖帽数（*****需要更新*****）
@@ -88,44 +94,48 @@ public class Team implements java.io.Serializable{
 		int teamFouls;
 	//球队总得分数（*****需要更新*****）
 		int teamScores;
+	//对手得分（*****需要更新*****）
+		int oppoScores;
 		
 //这是球队的平均信息；
 	//球队场均助攻数
-		int aver_teamAssists ;
+		double aver_teamAssists ;
 	//球队场均投篮命中数
-		int aver_teamFG ;
+		double aver_teamFG ;
 	//球队场均投篮出手次数
-		int aver_teamFGTry ;
+		double aver_teamFGTry ;
 	//球队投篮命中率
 		double teamFGP;
 	//球队场均三分命中数
-		int aver_team3FG;
+		double aver_team3FG;
 	//球队场均三分出手次数
-		int aver_team3FGTry;
+		double aver_team3FGTry;
 	//球队三分命中率
 		double team3FGP; 
 	//球队场均罚球命中数
-		int aver_teamFTG;
+		double aver_teamFTG;
 	//球队场均罚球出手数
-		int aver_teamFTGTry;
+		double aver_teamFTGTry;
 	//罚球命中率	
 		double teamFTP; 
 	//球队场均进攻篮板数
-		int aver_teamOffenceRebounds;
+		double aver_teamOffenceRebounds;
 	//球队场均防守篮板数
-		int aver_teamDeffenceRebounds;
+		double aver_teamDeffenceRebounds;
 	//球队场均总篮板数
-		int aver_teamTotalRebounds;
+		double aver_teamTotalRebounds;
 	//球队场均抢断数
-		int aver_teamSteals;
+		double aver_teamSteals;
 	//球队场均盖帽数
-		int aver_teamBlocks;
+		double aver_teamBlocks;
 	//球队场均失误数
-		int aver_teamTurnovers;
+		double aver_teamTurnovers;
 	//球队场均犯规数
-		int aver_teamFouls;
+		double aver_teamFouls;
 	//球队场均总得分数
-		int aver_teamScores;
+		double aver_teamScores;
+	//球队对手场均得分数
+		double aver_oppoScores;
 	//球队进攻效率：
 		private double teamOffE;
 	//球队防守效率
@@ -171,4 +181,37 @@ public class Team implements java.io.Serializable{
 			return teamAssE;
 		}
 	
+		//
+		public void updateTeam(double tempattackRounds,int tempteamAssists,int tempteamFG,int tempteamFGTry,
+				int tempteam3FG,int tempteam3FGTry,int tempteamFTG,int tempteamFTGTry,int tempteamOffenceRebounds,
+				double tempteamDeffenceRebounds,int tempteamTotalRebounds,int tempteamSteals,int tempteamBlocks,
+				int tempteamTurnovers,int tempteamFouls,int tempteamScores,int tempoppoScores,int tempoppoOffenceRebounds,
+				int tempoppoDeffenceRebounds,int tempoppoTotalRebounds){
+			this.compGames++;
+			if(tempteamScores>tempoppoScores){
+				this.winGames++;
+			}else{
+				this.losGames++;
+			}
+			this.attackRounds+=tempattackRounds;
+			this.teamAssists+=tempteamAssists;
+			this.teamFG+=tempteamFG;
+			this.teamFGTry+=tempteamFGTry;
+			this.team3FG+=tempteam3FG;
+			this.team3FGTry+=tempteam3FGTry;
+			this.teamFTG+=tempteamFTG;
+			this.teamFTGTry+=tempteamFTGTry;
+			this.teamOffenceRebounds+=tempteamOffenceRebounds;
+			this.teamDeffenceRebounds+=tempteamDeffenceRebounds;
+			this.teamTotalRebounds+=tempteamTotalRebounds;
+			this.teamSteals+=tempteamSteals;
+			this.teamBlocks+=tempteamBlocks;
+			this.teamTurnovers+=tempteamTurnovers;
+			this.teamFouls+=tempteamFouls;
+			this.teamScores+=tempteamScores;
+			this.oppoScores+=tempoppoScores;
+			this.oppoOffenceRebounds+=tempoppoOffenceRebounds;
+			this.oppoDeffenceRebounds+=tempoppoDeffenceRebounds;
+			this.oppoTotalRebounds+=tempoppoTotalRebounds;
+		}
 }
