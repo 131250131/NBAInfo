@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 public class SetOfSort {
 
+	/*快速排序*/
 	public void quickSort(ArrayList<Double> arr,int left,int right){
 		
 		if(left>=right){
@@ -38,32 +39,43 @@ public class SetOfSort {
 		
 		
 	}
+//	/*针对对象的快速排序*/
+//	public void objectQuickSort(ArrayList<Player> arr,){
+//		
+//	}
 	public static void main(String[] args) {
 		ArrayList<Double> test=new ArrayList<Double>();
-		test.add(0.0);
-		test.add(5.1);
-		test.add(3.1);
-		test.add(4.3);
-		test.add(0.1);
-		test.add(0.7);
-		test.add(7.8);
-		test.add(7.1);
+		Searcher searcher = new Searcher();
+		
+		for(ArrayList<Player> temp:searcher.getFinalPlayerList()){
+//			System.out.println(temp.size());
+			for(Player temp0:temp){
+				test.add((double)temp0.playerScores);
+			}
+		}
+//		test.add(0.0);
+//		test.add(5.1);
+//		test.add(3.1);
+//		test.add(4.3);
+//		test.add(0.1);
+//		test.add(0.7);
+//		test.add(7.8);
+//		test.add(7.1);
 		
 		
 		SetOfSort ss=new SetOfSort();
 		
-		double[] test0=new double[8];
-		for(int i=0;i<8;i++){
+		double[] test0=new double[test.size()];
+		for(int i=0;i<test.size();i++){
 			test0[i]=test.get(i);
 		}
 		double t1 = System.currentTimeMillis();
-//		Arrays.sort(test0);
-		ss.quickSort(test, 0, 7);
+		Arrays.sort(test0);
+		ss.quickSort(test,0,test.size()-1);
 		double t2 = System.currentTimeMillis();
 		
 		double useTime=t2-t1;
-		System.out.println("Using " + useTime + "ms");
-
+		
 		
 	
 		
@@ -71,6 +83,9 @@ public class SetOfSort {
 //			System.out.println(temp);
 //		}
 		
+//		System.out.println(searcher.getFinalPlayerList().size());
+		System.out.println("Using " + useTime + "ms");
+
 		
 	}
 }

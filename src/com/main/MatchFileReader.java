@@ -225,8 +225,8 @@ public class MatchFileReader {
 			Player tempPlayer = searcher.playerSearcher(playerName[i]);
 			if(tempPlayer == null){
 				Player newPlayer = new Player(playerName[i], null, null, null, null, null, null, null, null);
-				searcher.finalAlaphPlayerList.add(newPlayer);
-				searcher.finalPlayerList.set(searcher.currentIndex, searcher.finalAlaphPlayerList);
+				searcher.getFinalAlaphPlayerList().add(newPlayer);
+				searcher.getFinalPlayerList().set(searcher.getCurrentIndex(), searcher.getFinalAlaphPlayerList());
 				tempPlayer = newPlayer;
 			}
 			
@@ -248,8 +248,8 @@ public class MatchFileReader {
 						rightTeamFTGTry, rightTeamTurnovers, leftOffenceTimes);	
 			}
 			
-			searcher.finalAlaphPlayerList.add(tempPlayer);
-			searcher.finalPlayerList.set(searcher.currentIndex, searcher.finalAlaphPlayerList);				
+			searcher.getFinalAlaphPlayerList().add(tempPlayer);
+			searcher.getFinalPlayerList().set(searcher.getCurrentIndex(), searcher.getFinalAlaphPlayerList());				
 		}
 	}
 	

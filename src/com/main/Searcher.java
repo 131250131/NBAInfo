@@ -10,11 +10,12 @@ import java.util.ArrayList;
 
 public class Searcher {
 	
-	public ArrayList<ArrayList<Player>> finalPlayerList;
-	public ArrayList<Player> finalAlaphPlayerList;
-	public int currentIndex;
-	int size;
-	
+	private ArrayList<ArrayList<Player>> finalPlayerList;
+	private ArrayList<Player> finalAlaphPlayerList;
+	private int currentIndex;
+	private int size;
+
+
 	public Searcher(){
 		try{  
 			ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("data/save/player.ser"));  
@@ -109,5 +110,35 @@ public class Searcher {
 	    }  
 		
 		return null;
+	}
+	public ArrayList<ArrayList<Player>> getFinalPlayerList() {
+		return finalPlayerList;
+	}
+
+	public void setFinalPlayerList(ArrayList<ArrayList<Player>> finalPlayerList) {
+		this.finalPlayerList = finalPlayerList;
+	}
+	
+	public ArrayList<Player> getFinalAlaphPlayerList() {
+		return finalAlaphPlayerList;
+	}
+
+	public void setFinalAlaphPlayerList(ArrayList<Player> finalAlaphPlayerList) {
+		this.finalAlaphPlayerList = finalAlaphPlayerList;
+	}
+
+	public int getCurrentIndex() {
+		return currentIndex;
+	}
+
+	public void setCurrentIndex(int currentIndex) {
+		this.currentIndex = currentIndex;
+	}
+
+	public int getSize() {
+		return size;
+	}
+	public void setSize(int size) {
+		this.size = size;
 	}
 }

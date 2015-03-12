@@ -1,5 +1,7 @@
 package com.main;
 
+import java.util.SortedSet;
+
 public class Main {
 	
 	public static double T = 0;
@@ -38,9 +40,7 @@ public class Main {
 		}
 		
 		searcher.rewritePlayerFile();	
-		
-//		Searcher searcher = new Searcher();
-//		System.out.println(searcher.playerSearcher("Al Horford").playerScores);
+		System.out.println(searcher.playerSearcher("Al Horford").playerScores);
 				
 		//结束时间
 		double t2 = System.currentTimeMillis();
