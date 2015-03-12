@@ -38,11 +38,11 @@ public class SetOfSort {
 		quickSort(arr,low+1,right);
 	}
 	/*针对球员对象的快速排序*/
-	public void playerQuickSort(ArrayList<Player> arr,DataType type){
+	public void playerQuickSort(ArrayList<Player> arr){
 		
 	}
 	/*针对球队对象的快速排序*/
-	public void teamQuickSort(ArrayList<Team> arr,DataType type){
+	public void teamQuickSort(ArrayList<Team> arr){
 		
 	}
 	/*堆排序*/
