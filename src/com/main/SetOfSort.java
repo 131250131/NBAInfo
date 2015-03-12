@@ -36,8 +36,6 @@ public class SetOfSort {
 		//递归两边
 		quickSort(arr,left,low-1);
 		quickSort(arr,low+1,right);
-		
-		
 	}
 	/*针对球员对象的快速排序*/
 	public void playerQuickSort(ArrayList<Player> arr,DataType type){
@@ -47,7 +45,57 @@ public class SetOfSort {
 	public void teamQuickSort(ArrayList<Team> arr,DataType type){
 		
 	}
-	
+	/*堆排序*/
+	public double[] headSort(double[] sortArray)  
+    {  
+        for(int i=0;i<sortArray.length-1;i++)  
+        {  
+           buildMaxHeap(sortArray,sortArray.length-1-i);  
+           swap(sortArray,0,sortArray.length-1-i);  
+        }  
+        return sortArray;  
+    }  
+    //交换两个数据的方法  
+    public void swap(double[] data,int i,int j)  
+    {  
+        double temp = data[i];  
+        data[i] = data[j];  
+        data[j] = temp;  
+    }  
+    //建立大顶堆  
+    public void buildMaxHeap(double[] data,int lastIndex)  
+    {  
+        //从lastIndex节点的父节点开始舰堆  
+        for(int i=(lastIndex-1)/2;i>=0;i--)  
+        {  
+            //保存正在判断的节点  
+            int k = i;  
+            //这里为每个节点建立大顶堆,只要这个根节点还有子节点  
+            while((2*k+1) <= lastIndex)  
+            {  
+                //假设左节点的值时最大的  
+                int biggerIndex = 2*k+1;  
+                //说明还有右节点是存在的  
+                if(biggerIndex < lastIndex)  
+                {  
+                    //选出子节点中最大的值  
+                    if(data[biggerIndex] < data[biggerIndex+1])  
+                    {  
+                        biggerIndex++;  
+                    }  
+                }  
+                //将跟节点与子节点进行比较  
+                if(data[k] < data[biggerIndex])  
+                {  
+                    swap(data,k,biggerIndex);  
+                    k = biggerIndex;  
+                }else  
+                {  
+                    break;  
+                }  
+            }  
+        }  
+    }   
 	public static void main(String[] args) {
 		ArrayList<Double> test=new ArrayList<Double>();
 		Searcher searcher = new Searcher();
