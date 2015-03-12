@@ -9,12 +9,11 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Searcher {
-	
-
 	private ArrayList<ArrayList<Player>> finalPlayerList;
 	private ArrayList<Player> finalAlaphPlayerList;
 	private int currentIndex;
 	private int size;
+
 	public Searcher(){
 		
 	}
