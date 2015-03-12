@@ -241,7 +241,10 @@ public class Team implements java.io.Serializable{
 			return teamAssE;
 		}
 	
-		//
+		/*这个方法是来更新球队的总数据的，例如总助攻数，已经计算的常数，胜场数等等；
+		 *参数列表里面，前半部分是本队的数据，后半部分是兑换艘的数据
+		 *需要注意的是：那些需要计算的数据，例如 效率值什么都没写；
+		 * */
 		public void updateTeam(double tempattackRounds,int tempteamAssists,int tempteamFG,int tempteamFGTry,
 				int tempteam3FG,int tempteam3FGTry,int tempteamFTG,int tempteamFTGTry,int tempteamOffenceRebounds,
 				double tempteamDeffenceRebounds,int tempteamTotalRebounds,int tempteamSteals,int tempteamBlocks,
