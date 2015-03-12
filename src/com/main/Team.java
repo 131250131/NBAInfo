@@ -1,8 +1,9 @@
 package com.main;
+//这个类的作用，是获取一
 public class Team implements java.io.Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+
 	public Team(String _teamFullName, String _teamShortName, String _teamLocation
 			, String _teamEastOrWest, String _teamDivision, String _teamGym, String _teamBirth){
 		
@@ -291,66 +292,66 @@ public class Team implements java.io.Serializable{
 		}
 		
 		//根据datatype，返回属性
-		public double getdatae(DataType type){
+		public double getdata(DataType type){
 			switch(type){
-			case attackRounds:;
-			case teamAssists:;
-			case teamFG:;
-			case teamFGTry:;
-			case team3FG:;
-			case team3FGTry:;
-			case teamFTG:;
-			case teamFTGTry:;
-			case teamOffenceRebounds:;
-			case teamDeffenceRebounds:;
-			case teamTotalRebounds:;
-			case teamSteals:;
-			case teamBlocks:;
-			case teamTurnovers:;
-			case teamFouls:;
-			case teamScores:;
-			case aver_teamAssists:;
-			case aver_teamFG:;
-			case aver_teamFGTry:;
-			case teamFGP:;
-			case aver_team3FG:;
-			case aver_team3FGTry:;
-			case team3FGP:;
-			case aver_teamFTG:;
-			case aver_teamFTGTry:;
-			case teamFTP:;
-			case aver_teamOffenceRebounds:;
-			case aver_teamDeffenceRebounds:;
-			case aver_teamTotalRebounds:;
-			case aver_teamSteals:;
-			case aver_teamBlocks:;
-			case aver_teamTurnovers:;
-			case aver_teamFouls:;
-			case aver_teamScores:;
-			case aver_oppoScores:;
-			case teamOffE:;
-			case teamDefE:;
-			case teamOffERebE:;
-			case teamDefERebE:;
-			case teamSteE:;
-			case teamAssE:;
+			case attackRounds:return this.attackRounds;
+			case teamAssists:return this.teamAssists;
+			case teamFG:return teamFG;
+			case teamFGTry:return teamFGTry;
+			case team3FG:return team3FG;
+			case team3FGTry:return team3FGTry;
+			case teamFTG:return teamFTG;
+			case teamFTGTry:return teamFTGTry;
+			case teamOffenceRebounds:return teamOffenceRebounds;
+			case teamDeffenceRebounds:return teamDeffenceRebounds;
+			case teamTotalRebounds:return teamTotalRebounds;
+			case teamSteals:return teamSteals;
+			case teamBlocks:return teamBlocks;
+			case teamTurnovers:return teamTurnovers;
+			case teamFouls:return teamFouls;
+			case teamScores:return teamScores;
+			case aver_teamAssists:return aver_teamAssists;
+			case aver_teamFG:return aver_teamFG;
+			case aver_teamFGTry:return aver_teamFGTry;
+			case teamFGP:return teamFGP;
+			case aver_team3FG:return aver_team3FG;
+			case aver_team3FGTry:return aver_team3FGTry;
+			case team3FGP:return team3FGP;
+			case aver_teamFTG:return aver_teamFTG;
+			case aver_teamFTGTry:return aver_teamFTGTry;
+			case teamFTP:return teamFTP;
+			case aver_teamOffenceRebounds:return aver_teamOffenceRebounds;
+			case aver_teamDeffenceRebounds:return aver_teamDeffenceRebounds;
+			case aver_teamTotalRebounds:return aver_teamTotalRebounds;
+			case aver_teamSteals:return aver_teamSteals;
+			case aver_teamBlocks:return aver_teamBlocks;
+			case aver_teamTurnovers:return aver_teamTurnovers;
+			case aver_teamFouls:return aver_teamFouls;
+			case aver_teamScores:return aver_teamScores;
+			case aver_oppoScores:return aver_oppoScores;
+			case teamOffE:return teamOffE;
+			case teamDefE:return teamDefE;
+			case teamOffERebE:return teamOffERebE;
+			case teamDefERebE:return teamDefERebE;
+			case teamSteE:return teamSteE;
+			case teamAssE:return teamAssE;
 			
-			case oppoattackRounds:;
-			case oppoAssists:;
-			case oppoFG:;
-			case oppoFGTry:;
-			case oppo3FG:;
-			case oppo3FGTry:;
-			case oppoFTG:;
-			case oppoFTGTry:;
-			case oppoOffenceRebounds:;
-			case oppoDeffenceRebounds:;
-			case oppoTotalRebounds:;
-			case oppoSteals:;
-			case oppoBlocks:;
-			case oppoTurnovers:;
-			case oppoFouls:;
-			case oppoScores:;
+			case oppoattackRounds:return oppoattackRounds;
+			case oppoAssists:return oppoAssists;
+			case oppoFG:return oppoFG;
+			case oppoFGTry:return oppoFGTry;
+			case oppo3FG:return oppo3FG;
+			case oppo3FGTry:return oppo3FGTry;
+			case oppoFTG:return oppoFTG;
+			case oppoFTGTry:return oppoFTGTry;
+			case oppoOffenceRebounds:return oppoOffenceRebounds;
+			case oppoDeffenceRebounds:return oppoDeffenceRebounds;
+			case oppoTotalRebounds:return oppoTotalRebounds;
+			case oppoSteals:return oppoSteals;
+			case oppoBlocks:return oppoBlocks;
+			case oppoTurnovers:return oppoTurnovers;
+			case oppoFouls:return oppoFouls;
+			case oppoScores:return oppoScores;
 			
 			}
 			return 0.0;

@@ -41,11 +41,11 @@ public class SetOfSort {
 	/*针对球队对象的快速排序*/
 	
 	public void teamquicksort(ArrayList<Team> arr,int left,int right,DataType type){
-		/*
+		
 		if(left>=right){
 			return;
 		}
-		Player midplayer=arr.get(left);
+		Team midteam=arr.get(left);
 		double mid=arr.get(left).getdata(type);//以第一个元素作为对比
 		int low=left;//低位指针
 		int hight=right;//高位指针
@@ -66,12 +66,12 @@ public class SetOfSort {
 		}
 		
 		//跳出以上循环时low=hight，因将中间值放到找到的位置
-		arr.set(low, midplayer);
+		arr.set(low, midteam);
 		
 		//递归两边
-		playerquickSort(arr,left,low-1,type);
-		playerquickSort(arr,low+1,right,type);
-		*/
+		teamquicksort(arr,left,low-1,type);
+		teamquicksort(arr,low+1,right,type);
+		
 	}
 	
 	/*堆排序*/
