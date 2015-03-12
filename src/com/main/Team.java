@@ -245,7 +245,9 @@ public class Team implements java.io.Serializable{
 				int tempteam3FG,int tempteam3FGTry,int tempteamFTG,int tempteamFTGTry,int tempteamOffenceRebounds,
 				double tempteamDeffenceRebounds,int tempteamTotalRebounds,int tempteamSteals,int tempteamBlocks,
 				int tempteamTurnovers,int tempteamFouls,int tempteamScores,int tempoppoScores,int tempoppoOffenceRebounds,
-				int tempoppoDeffenceRebounds,int tempoppoTotalRebounds){
+				int tempoppoDeffenceRebounds,int tempoppoTotalRebounds, double tempoppoattackRounds, int tempoppoAssists, int tempoppoFG, 
+				int tempoppoFGTry, int tempoppo3FG, int tempoppo3FGTry, int tempoppoFTG, int tempoppoFTGTry, int tempoppoSteals,
+				int tempoppoBlocks, int tempoppoTurnovers, int tempoppoFouls){
 			this.compGames++;
 			if(tempteamScores>tempoppoScores){
 				this.winGames++;
@@ -268,9 +270,29 @@ public class Team implements java.io.Serializable{
 			this.teamTurnovers+=tempteamTurnovers;
 			this.teamFouls+=tempteamFouls;
 			this.teamScores+=tempteamScores;
-			this.oppoScores+=tempoppoScores;
+
+			
+			this.oppoattackRounds+=tempoppoattackRounds;
+			this.oppoAssists+=tempoppoAssists;
+			this.oppoFG+=tempoppoFG;
+			this.oppoFGTry+=tempoppoFGTry;
+			this.oppo3FG+=tempoppo3FG;
+			this.oppo3FGTry+=tempoppo3FGTry;
+			this.oppoFTG+=tempoppoFTG;
+			this.oppoFTGTry+=tempoppoFTGTry;
 			this.oppoOffenceRebounds+=tempoppoOffenceRebounds;
 			this.oppoDeffenceRebounds+=tempoppoDeffenceRebounds;
 			this.oppoTotalRebounds+=tempoppoTotalRebounds;
+			this.oppoSteals+=tempoppoSteals;
+			this.oppoBlocks+=tempoppoBlocks;
+			this.oppoTurnovers+=tempoppoTurnovers;
+			this.oppoFouls+=tempoppoFouls;
+			this.oppoScores+=tempoppoScores;
+
+		}
+		
+		//根据datatype，返回属性
+		public double getdatae(DataType type){
+			return 0.0;
 		}
 }
