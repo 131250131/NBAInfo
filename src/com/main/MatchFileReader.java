@@ -4,8 +4,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetDecoder;
 
 
 public class MatchFileReader {
@@ -24,7 +31,7 @@ public class MatchFileReader {
 		File file = new File(path);                
 		File[] matchFile = file.listFiles();       
 		for(int i = 0; i < matchFile.length; i++)
-			readOne(matchFile[i]);		
+			readOne(matchFile[i]);	
 	}
 	
 	private void readOne(File file) throws IOException, FileNotFoundException{
@@ -43,6 +50,7 @@ public class MatchFileReader {
         
         read.close();
 	}
+	
 
 	String leftTeamShortName, rightTeamShortName;
 	int leftTeamScore = 0, rightTeamScore = 0;
