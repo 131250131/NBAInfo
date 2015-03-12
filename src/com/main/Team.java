@@ -56,22 +56,39 @@ public class Team implements java.io.Serializable{
 		private double winRate;//胜率
 		
 //接下来是球队赛季总数据；	
+//oppo都是对手的总数居；解释一下，对手的数据指的是，和我比赛的所有对手的数据；
 	//总进攻回合数（*****需要更新*****）
 		private double attackRounds;
+	//对手进攻回合数（*****需要更新*****）
+		private double oppoattackRounds;
 	//球队助攻数（*****需要更新*****）
 		int teamAssists;
+	//对手助攻数（*****需要更新*****）
+		int oppoAssists;
 	//球队投篮命中数（*****需要更新*****）
 		int teamFG ;
+	//投篮命中数（*****需要更新*****）
+		int oppoFG ;
 	//球队投篮出手次数（*****需要更新*****）
 		int teamFGTry ;
+	//对手投篮出手次数（*****需要更新*****）
+		int oppoFGTry ;	
 	//球队三分命中数（*****需要更新*****）
 		int team3FG ;
+	//对手三分命中数（*****需要更新*****）
+		int oppo3FG ;
 	//球队三分出手次数（*****需要更新*****）
 		int team3FGTry ;
+	//对手三分出手次数（*****需要更新*****）
+		int oppo3FGTry ;
 	//球队球队罚球命中数（*****需要更新*****）
 		int teamFTG;
+	//对手球队罚球命中数（*****需要更新*****）
+		int oppoFTG;
 	//球队罚球出手数（*****需要更新*****）
 		int teamFTGTry;
+	//对手罚球出手数（*****需要更新*****）
+		int oppoFTGTry;
 	//球队进攻篮板数（*****需要更新*****）
 		int teamOffenceRebounds;
 	//对手进攻篮板数（*****需要更新*****）
@@ -86,12 +103,20 @@ public class Team implements java.io.Serializable{
 		int oppoTotalRebounds;
 	//球队抢断数（*****需要更新*****）
 		int teamSteals;
+	//对手抢断数（*****需要更新*****）
+		int oppoSteals;	
 	//球队盖帽数（*****需要更新*****）
 		int teamBlocks;
+	//对手盖帽数（*****需要更新*****）
+		int oppoBlocks;
 	//球队失误数（*****需要更新*****）
 		int teamTurnovers;
+	//对手失误数（*****需要更新*****）
+		int oppoTurnovers;
 	//球队犯规数（*****需要更新*****）
 		int teamFouls;
+	//球队犯规数（*****需要更新*****）
+		int oppoFouls;	
 	//球队总得分数（*****需要更新*****）
 		int teamScores;
 	//对手得分（*****需要更新*****）
@@ -99,42 +124,76 @@ public class Team implements java.io.Serializable{
 		
 //这是球队的平均信息；
 	//球队场均助攻数
-		double aver_teamAssists ;
+		double aver_teamAssists;
+	//对手场均助攻数
+		double aver_oppoAssists;
 	//球队场均投篮命中数
 		double aver_teamFG ;
+	//对手场均投篮命中数
+		double aver_oppoFG ;
 	//球队场均投篮出手次数
 		double aver_teamFGTry ;
+	//对手场均投篮出手次数
+		double aver_oppoFGTry ;
 	//球队投篮命中率
 		double teamFGP;
+	//对手投篮命中率
+		double oppoFGP;
 	//球队场均三分命中数
 		double aver_team3FG;
+	//对手场均三分命中数
+		double aver_oppo3FG;
 	//球队场均三分出手次数
 		double aver_team3FGTry;
+	//对手场均三分出手次数
+		double aver_oppo3FGTry;
 	//球队三分命中率
 		double team3FGP; 
+	//对手三分命中率
+		double oppo3FGP; 
 	//球队场均罚球命中数
 		double aver_teamFTG;
+	//对手场均罚球命中数
+		double aver_oppoFTG;
 	//球队场均罚球出手数
 		double aver_teamFTGTry;
+	//对手场均罚球出手数
+		double aver_oppoFTGTry;
 	//罚球命中率	
 		double teamFTP; 
+	//对手罚球命中率	
+		double oppoFTP; 
 	//球队场均进攻篮板数
 		double aver_teamOffenceRebounds;
+	//对手场均进攻篮板数
+		double aver_oppoOffenceRebounds;
 	//球队场均防守篮板数
 		double aver_teamDeffenceRebounds;
-	//球队场均总篮板数
+	//对手场均防守篮板数
+		double aver_oppoDeffenceRebounds;	
+	//球队场均总篮板
 		double aver_teamTotalRebounds;
+	//对手场均总篮板
+		double aver_oppoTotalRebounds;
 	//球队场均抢断数
 		double aver_teamSteals;
+	//对手场均抢断数
+		double aver_oppoSteals;
 	//球队场均盖帽数
 		double aver_teamBlocks;
+	//对手场均盖帽数
+		double aver_oppoBlocks;
 	//球队场均失误数
 		double aver_teamTurnovers;
+	//对手场均失误数
+		double aver_oppoTurnovers;
 	//球队场均犯规数
 		double aver_teamFouls;
+	//对手场均犯规数
+		double aver_oppoFouls;
 	//球队场均总得分数
 		double aver_teamScores;
-	//球队对手场均得分数
+	//对手对手场均得分数
 		double aver_oppoScores;
 	//球队进攻效率：
 		private double teamOffE;
@@ -186,7 +245,9 @@ public class Team implements java.io.Serializable{
 				int tempteam3FG,int tempteam3FGTry,int tempteamFTG,int tempteamFTGTry,int tempteamOffenceRebounds,
 				double tempteamDeffenceRebounds,int tempteamTotalRebounds,int tempteamSteals,int tempteamBlocks,
 				int tempteamTurnovers,int tempteamFouls,int tempteamScores,int tempoppoScores,int tempoppoOffenceRebounds,
-				int tempoppoDeffenceRebounds,int tempoppoTotalRebounds){
+				int tempoppoDeffenceRebounds,int tempoppoTotalRebounds, double tempoppoattackRounds, int tempoppoAssists, int tempoppoFG, 
+				int tempoppoFGTry, int tempoppo3FG, int tempoppo3FGTry, int tempoppoFTG, int tempoppoFTGTry, int tempoppoSteals,
+				int tempoppoBlocks, int tempoppoTurnovers, int tempoppoFouls){
 			this.compGames++;
 			if(tempteamScores>tempoppoScores){
 				this.winGames++;
@@ -209,9 +270,29 @@ public class Team implements java.io.Serializable{
 			this.teamTurnovers+=tempteamTurnovers;
 			this.teamFouls+=tempteamFouls;
 			this.teamScores+=tempteamScores;
-			this.oppoScores+=tempoppoScores;
+
+			
+			this.oppoattackRounds+=tempoppoattackRounds;
+			this.oppoAssists+=tempoppoAssists;
+			this.oppoFG+=tempoppoFG;
+			this.oppoFGTry+=tempoppoFGTry;
+			this.oppo3FG+=tempoppo3FG;
+			this.oppo3FGTry+=tempoppo3FGTry;
+			this.oppoFTG+=tempoppoFTG;
+			this.oppoFTGTry+=tempoppoFTGTry;
 			this.oppoOffenceRebounds+=tempoppoOffenceRebounds;
 			this.oppoDeffenceRebounds+=tempoppoDeffenceRebounds;
 			this.oppoTotalRebounds+=tempoppoTotalRebounds;
+			this.oppoSteals+=tempoppoSteals;
+			this.oppoBlocks+=tempoppoBlocks;
+			this.oppoTurnovers+=tempoppoTurnovers;
+			this.oppoFouls+=tempoppoFouls;
+			this.oppoScores+=tempoppoScores;
+
+		}
+		
+		//根据datatype，返回属性
+		public double getdatae(DataType type){
+			return 0.0;
 		}
 }
