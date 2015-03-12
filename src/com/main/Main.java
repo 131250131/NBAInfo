@@ -14,10 +14,11 @@ public class Main {
 		PlayerFileBuilder playerFileBuilder = new PlayerFileBuilder();
 		try {
 			playerFileBuilder.readAll();
-<<<<<<< HEAD
-		} catch (Exception e2) {
-			e2.printStackTrace();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
 		
 //		//读取所有team文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
 //		TeamFileBuilder teamFileBuilder = new TeamFileBuilder();
@@ -26,11 +27,9 @@ public class Main {
 //		} catch (Exception e) {
 //			e.printStackTrace();
 //		}
-=======
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
->>>>>>> origin/master
+
+		
+
 		
 //		//读取所有team文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
 //		TeamFileBuilder teamFileBuilder = new TeamFileBuilder();
