@@ -216,13 +216,10 @@ public enum DataType {
 				 teamFTGTry,
 			//球队进攻篮板数（*****需要更新*****）
 				 teamOffenceRebounds,
-
 			//球队防守篮板数（*****需要更新*****）
 				 teamDeffenceRebounds,
-
 			//球队总篮板数（*****需要更新*****）
 				 teamTotalRebounds,
-
 			//球队抢断数（*****需要更新*****）
 				 teamSteals,
 			//球队盖帽数（*****需要更新*****）
