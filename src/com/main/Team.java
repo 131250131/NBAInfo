@@ -288,11 +288,46 @@ public class Team implements java.io.Serializable{
 			this.oppoTurnovers+=tempoppoTurnovers;
 			this.oppoFouls+=tempoppoFouls;
 			this.oppoScores+=tempoppoScores;
-
 		}
 		
 		//根据datatype，返回属性
 		public double getdatae(DataType type){
+			switch(type){
+			case attackRounds:;
+			case teamAssists:;
+			case teamFG:;
+			case teamFGTry:;
+			case team3FG:;
+			case team3FGTry:;
+			case teamFTG:;
+			case teamFTGTry:;
+			case teamOffenceRebounds:;
+			case teamDeffenceRebounds:;
+			case teamTotalRebounds:;
+			case teamSteals:;
+			case teamBlocks:;
+			case teamTurnovers:;
+			case teamFouls:;
+			case teamScores:;
+			
+			case oppoattackRounds:;
+			case oppoAssists:;
+			case oppoFG:;
+			case oppoFGTry:;
+			case oppo3FG:;
+			case oppo3FGTry:;
+			case oppoFTG:;
+			case oppoFTGTry:;
+			case oppoOffenceRebounds:;
+			case oppoDeffenceRebounds:;
+			case oppoTotalRebounds:;
+			case oppoSteals:;
+			case oppoBlocks:;
+			case oppoTurnovers:;
+			case oppoFouls:;
+			case oppoScores:;
+			
+			}
 			return 0.0;
 		}
 }
