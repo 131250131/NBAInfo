@@ -39,10 +39,15 @@ public class SetOfSort {
 		
 		
 	}
-//	/*针对对象的快速排序*/
-//	public void objectQuickSort(ArrayList<Player> arr,){
-//		
-//	}
+	/*针对球员对象的快速排序*/
+	public void playerQuickSort(ArrayList<Player> arr,DataType type){
+		
+	}
+	/*针对球队对象的快速排序*/
+	public void teamQuickSort(ArrayList<Team> arr,DataType type){
+		
+	}
+	
 	public static void main(String[] args) {
 		ArrayList<Double> test=new ArrayList<Double>();
 		Searcher searcher = new Searcher();
