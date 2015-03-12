@@ -1,7 +1,5 @@
 package com.main;
 
-import java.util.SortedSet;
-
 public class Main {
 	
 	public static double T = 0;
@@ -21,12 +19,12 @@ public class Main {
 		}
 		
 //		//读取所有team文件 并且进行相应处理 （之后需要做一个判断 如果无需读取的情况下不需要进行此项操作）
-		TeamFileBuilder teamFileBuilder = new TeamFileBuilder();
-		try {
-			teamFileBuilder.readFile();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+//		TeamFileBuilder teamFileBuilder = new TeamFileBuilder();
+//		try {
+//			teamFileBuilder.readFile();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
 		//读取所有match文件 并且进行相应处理
 		
@@ -40,7 +38,8 @@ public class Main {
 		}
 		
 		searcher.rewritePlayerFile();	
-		System.out.println(searcher.playerSearcher("Al Horford").playerScores);
+//		System.out.println(searcher.playerSearcher("Al Horford").playerScores);
+		System.out.println(searcher.getFinalPlayerList().get(0).size());
 				
 		
 		double t2 = System.currentTimeMillis();

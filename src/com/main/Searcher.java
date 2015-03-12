@@ -10,20 +10,12 @@ import java.util.ArrayList;
 
 public class Searcher {
 	
-<<<<<<< HEAD
+
 	public static ArrayList<ArrayList<Player>> finalPlayerList;
 	public ArrayList<Player> finalAlaphPlayerList;
 	public int currentIndex;
 	int size;
-	
-=======
-	private ArrayList<ArrayList<Player>> finalPlayerList;
-	private ArrayList<Player> finalAlaphPlayerList;
-	private int currentIndex;
-	private int size;
 
-
->>>>>>> origin/master
 	public Searcher(){
 		
 	}
@@ -38,6 +30,7 @@ public class Searcher {
 			@SuppressWarnings("unchecked") 
 			ArrayList<ArrayList<Player>> playerList = (ArrayList<ArrayList<Player>>) inputStream.readObject();// 从流中读取List的数据 
 			finalPlayerList = playerList;
+			System.out.println(finalPlayerList.size()+"*************************");
 			inputStream.close(); 	
 		}catch(FileNotFoundException e){  
 	        e.printStackTrace();  
