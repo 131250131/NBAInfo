@@ -14,7 +14,8 @@ public void setTarget(ArrayList<Player> p){
 public ArrayList<Player> setTarget(){
          return target;
 }
-public ArrayList<Player> sort(DataType type){
-	   return target;
+public void sort(DataType type){
+	   int length=target.size()-1;
+	   sos.playerquickSort(target, 0, length, type);
 }
 }

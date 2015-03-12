@@ -460,5 +460,7 @@ public class Player implements java.io.Serializable{
 					(teammatePlayTime+playerPlayTime)/5/playerPlayTime/
 					(allTeamShoots+0.44*allTeamFTShoots+allTeamTurnover);
 		}
-
+        public double getdata(DataType d){
+        	   return 0;
+        }
 }

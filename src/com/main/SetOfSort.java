@@ -4,24 +4,24 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SetOfSort {
-
 	/*快速排序*/
-	public void quickSort(ArrayList<Double> arr,int left,int right){
+	public void playerquickSort(ArrayList<Player> arr,int left,int right,DataType type){
 		
 		if(left>=right){
 			return;
 		}
-		double mid=arr.get(left);//以第一个元素作为对比
+		Player midplayer=arr.get(left);
+		double mid=arr.get(left).getdata(type);//以第一个元素作为对比
 		int low=left;//低位指针
 		int hight=right;//高位指针
 		while(low<hight){
-			while(low<hight&&arr.get(hight)>=mid){//循环直到找到小于对比值的元素的坐标
+			while(low<hight&&arr.get(hight).getdata(type)>=mid){//循环直到找到小于对比值的元素的坐标
 				hight--;
 			}
 			if(low<hight){
 				arr.set(low, arr.get(hight));
 			}
-			while(low<hight&&arr.get(low)<=mid){//循环直到找到大于对比值的元素的坐标
+			while(low<hight&&arr.get(low).getdata(type)<=mid){//循环直到找到大于对比值的元素的坐标
 				low++;
 			}
 			if(low<hight){
@@ -31,20 +31,49 @@ public class SetOfSort {
 		}
 		
 		//跳出以上循环时low=hight，因将中间值放到找到的位置
-		arr.set(low, mid);
+		arr.set(low, midplayer);
 		
 		//递归两边
-		quickSort(arr,left,low-1);
-		quickSort(arr,low+1,right);
+		playerquickSort(arr,left,low-1,type);
+		playerquickSort(arr,low+1,right,type);
 	}
-	/*针对球员对象的快速排序*/
-	public void playerQuickSort(ArrayList<Player> arr){
-		
-	}
+	
 	/*针对球队对象的快速排序*/
-	public void teamQuickSort(ArrayList<Team> arr){
+	
+	public void teamquicksort(ArrayList<Team> arr,int left,int right,DataType type){
+		/*
+		if(left>=right){
+			return;
+		}
+		Player midplayer=arr.get(left);
+		double mid=arr.get(left).getdata(type);//以第一个元素作为对比
+		int low=left;//低位指针
+		int hight=right;//高位指针
+		while(low<hight){
+			while(low<hight&&arr.get(hight).getdata(type)>=mid){//循环直到找到小于对比值的元素的坐标
+				hight--;
+			}
+			if(low<hight){
+				arr.set(low, arr.get(hight));
+			}
+			while(low<hight&&arr.get(low).getdata(type)<=mid){//循环直到找到大于对比值的元素的坐标
+				low++;
+			}
+			if(low<hight){
+				arr.set(hight, arr.get(low));
+			}
 		
+		}
+		
+		//跳出以上循环时low=hight，因将中间值放到找到的位置
+		arr.set(low, midplayer);
+		
+		//递归两边
+		playerquickSort(arr,left,low-1,type);
+		playerquickSort(arr,low+1,right,type);
+		*/
 	}
+	
 	/*堆排序*/
 	public double[] headSort(double[] sortArray)  
     {  
@@ -116,7 +145,7 @@ public class SetOfSort {
 //		test.add(7.1);
 		
 		
-		SetOfSort ss=new SetOfSort();
+		//SetOfSort ss=new SetOfSort();
 		
 		double[] test0=new double[test.size()];
 		for(int i=0;i<test.size();i++){
@@ -124,7 +153,7 @@ public class SetOfSort {
 		}
 		double t1 = System.currentTimeMillis();
 		Arrays.sort(test0);
-		ss.quickSort(test,0,test.size()-1);
+	  //ss.playerquickSort(test,0,test.size()-1);
 		double t2 = System.currentTimeMillis();
 		
 		double useTime=t2-t1;
