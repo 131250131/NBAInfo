@@ -5,10 +5,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 
@@ -16,7 +14,14 @@ import java.util.ArrayList;
  * 该类用于读取初始球员信息，并且用序列化进行球员数据保存。
  */
 
-public class PlayerFileBuilder {
+public class PlayerFileBuilder{
+	
+	boolean flag = true;
+	
+	public PlayerFileBuilder(){
+		
+		
+	}
 	
 	String playerName, playerNumber, playerPosition, playerHeight, playerWeight, 
 		playerBirth, playerAge, playerExp, playerSchool;
@@ -56,8 +61,10 @@ public class PlayerFileBuilder {
 		
 		//该方法将会读取球员信息文件夹中所有球员的信息
 		File file = new File(path);                
-		File[] playerFile = file.listFiles();       
-		for(int i = 0; i < playerFile.length; i++)
+		File[] playerFile = file.listFiles();     
+		int fileLength = playerFile.length;
+		
+		for(int i = 0; i < fileLength; i++)
 			readOne(playerFile[i]);
 		
 		wirteToFile(playerList);
@@ -259,15 +266,19 @@ public class PlayerFileBuilder {
 		playerList.add(playerListY);
 		playerList.add(playerListZ);
 		
-		String saveFile = "data/save/player.ser";
-		try {  
-	           ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(saveFile));  
-	           os.writeObject(playerList);// 将List列表写进文件  
-	           os.close();  
-	       } catch (FileNotFoundException e) {  
-	           e.printStackTrace();  
-	       } catch (IOException e) {  
-	           e.printStackTrace();  
-	       }  	
+//		String saveFile = "data/save/player.ser";
+//		try {  
+//	           ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(saveFile));  
+//	           os.writeObject(playerList);// 将List列表写进文件  
+//	           os.close();  
+//	       } catch (FileNotFoundException e) {  
+//	           e.printStackTrace();  
+//	       } catch (IOException e) {  
+//	           e.printStackTrace();  
+//	       }  	
+		
+		Searcher searcher = new Searcher();
+		searcher.setList(playerList);
 	}
+
 }

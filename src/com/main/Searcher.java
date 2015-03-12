@@ -10,12 +10,20 @@ import java.util.ArrayList;
 
 public class Searcher {
 	
-	public ArrayList<ArrayList<Player>> finalPlayerList;
+	public static ArrayList<ArrayList<Player>> finalPlayerList;
 	public ArrayList<Player> finalAlaphPlayerList;
 	public int currentIndex;
 	int size;
 	
 	public Searcher(){
+		
+	}
+	
+	public void setList(ArrayList<ArrayList<Player>> list){
+		finalPlayerList = list;
+	}
+	
+	public Searcher(int a){
 		try{  
 			ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("data/save/player.ser"));  
 			@SuppressWarnings("unchecked") 
