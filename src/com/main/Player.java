@@ -460,5 +460,160 @@ public class Player implements java.io.Serializable{
 					(teammatePlayTime+playerPlayTime)/5/playerPlayTime/
 					(allTeamShoots+0.44*allTeamFTShoots+allTeamTurnover);
 		}
-
+        public double getdata(DataType d){
+        	   if(d==DataType.playerAttends){
+        		   return playerAttends;
+        	   }
+        	   if(d==DataType.startTimes){
+        		   return startTimes;
+        	   }
+        	   if(d==DataType.playerAssists){
+        		   return playerAssists;
+        	   }
+        	   if(d==DataType.playerFG){
+        		   return playerFG;
+        	   }
+        	   if(d==DataType.playerFGTry){
+        		   return playerFGTry;
+        	   }
+        	   if(d==DataType.player3FG){
+        		   return player3FG;
+        	   }
+        	   if(d==DataType.player3FGTry){
+        		   return player3FGTry;
+        	   }
+        	   if(d==DataType.playerFTG){
+        		   return playerFTG;
+        	   }
+        	   if(d==DataType.playerFTGTry){
+        		   return playerFTGTry;
+        	   }
+        	   if(d==DataType.player3FG){
+        		   return player3FG;
+        	   }
+        	   if(d==DataType.playerOffenceRebounds){
+        		   return playerOffenceRebounds;
+        	   }
+        	   if(d==DataType.playerDeffenceRebounds){
+        		   return playerDeffenceRebounds;
+        	   }
+        	   if(d==DataType.playerTotalRebounds){
+        		   return playerTotalRebounds;
+        	   }
+        	   if(d==DataType.playerSteals){
+        		   return playerSteals;
+        	   }
+        	   if(d==DataType.playerBlocks){
+        		   return playerBlocks;
+        	   }
+        	   if(d==DataType.playerTurnovers){
+        		   return playerTurnovers;
+        	   }
+        	   if(d==DataType.playerFouls){
+        		   return playerFouls;
+        	   }
+        	   if(d==DataType.playerScores){
+        		   return playerScores;
+        	   }
+        	   if(d==DataType.player3FG){
+        		   return player3FG;
+        	   }
+        	   if(d==DataType.aver_playerAssists){
+        		   return getAver_playerAssists();
+        	   }
+        	   if(d==DataType.aver_playerPlayTime){
+        		   return getAver_playerPlayTime();
+        	   }
+        	   if(d==DataType.aver_playerFG){
+        		   return getAver_playerFG();
+        	   }
+        	   if(d==DataType.aver_playerFGTry){
+        		   return getAver_playerFGTry();
+        	   }
+        	   if(d==DataType.aver_player3FG){
+        		   return getAver_player3FG();
+        	   }
+        	   if(d==DataType.aver_player3FGTry){
+        		   return getAver_player3FGTry();
+        	   }
+        	   if(d==DataType.aver_playerFTG){
+        		   return getAver_playerFTG();
+        	   }
+        	   if(d==DataType.aver_playerFTGTry){
+        		   return getAver_playerFTGTry();
+        	   }
+        	   if(d==DataType.aver_playerFGTry){
+        		   return getAver_playerFGTry();
+        	   }
+        	   if(d==DataType.aver_playerOffenceRebounds){
+        		   return getAver_playerOffenceRebounds();
+        	   }
+        	   if(d==DataType.aver_playerDeffenceRebounds){
+        		   return getAver_playerDeffenceRebounds();
+        	   }
+        	   if(d==DataType.aver_playerTotalRebounds){
+        		   return getAver_playerTotalRebounds();
+        	   }
+        	   if(d==DataType.aver_playerSteals){
+        		   return getAver_playerSteals();
+        	   }
+        	   if(d==DataType.aver_playerBlocks){
+        		   return getAver_playerBlocks();
+        	   }
+        	   if(d==DataType.aver_playerTurnovers){
+        		   return getAver_playerTurnovers();
+        	   }
+        	   if(d==DataType.aver_playerFouls){
+        		   return getAver_playerFouls();
+        	   }
+        	   if(d==DataType.aver_playerScores){
+        		   return getAver_playerScores();
+        	   }
+        	   if(d==DataType.playerFGP){
+        		   return getPlayerFGP();
+        	   }
+        	   if(d==DataType.player3FGP){
+        		   return getPlayer3FGP();
+        	   }
+        	   if(d==DataType.playerFTGP){
+        		   return getPlayerFTGP();
+        	   }
+        	   if(d==DataType.playerPER){
+        		   return getPlayerPER();
+        	   }
+        	   if(d==DataType.playerGmScER){
+        		   return getPlayerGmScER();
+        	   }
+        	   if(d==DataType.playerTSP){
+        		   return getPlayerTSP();
+        	   }
+        	   if(d==DataType.playerSER){
+        		   return getPlayerSER();
+        	   }
+        	   if(d==DataType.RR){
+        		   return getRR();
+        	   }
+        	   if(d==DataType.o_RR){
+        		   return getO_RR();
+        	   }
+        	   if(d==DataType.d_RR){
+        		   return getD_RR();
+        	   }
+        	   if(d==DataType.AR){
+        		   return getAR();
+        	   }
+        	   if(d==DataType.SR){
+        		   return getSR();
+        	   }
+        	   if(d==DataType.BR){
+        		   return getBR();
+        	   }
+        	   if(d==DataType.TR){
+        		   return getTR();
+        	   }
+        	   if(d==DataType.UR){
+        		   return getUR();
+        	   }
+        	   return 0;
+        }
 }

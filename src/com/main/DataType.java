@@ -216,16 +216,10 @@ public enum DataType {
 				 teamFTGTry,
 			//球队进攻篮板数（*****需要更新*****）
 				 teamOffenceRebounds,
-			//对手进攻篮板数（*****需要更新*****）
-				 oppoOffenceRebounds,
 			//球队防守篮板数（*****需要更新*****）
 				 teamDeffenceRebounds,
-			//对手防守篮板（*****需要更新*****）
-				 oppoDeffenceRebounds,
 			//球队总篮板数（*****需要更新*****）
 				 teamTotalRebounds,
-			//对手总篮板数（*****需要更新*****）
-				 oppoTotalRebounds,
 			//球队抢断数（*****需要更新*****）
 				 teamSteals,
 			//球队盖帽数（*****需要更新*****）
@@ -236,8 +230,7 @@ public enum DataType {
 				 teamFouls,
 			//球队总得分数（*****需要更新*****）
 				 teamScores,
-			//对手得分（*****需要更新*****）
-				 oppoScores,
+
 				
 		//这是球队的平均信息；
 			//球队场均助攻数
@@ -289,5 +282,39 @@ public enum DataType {
 			//球队抢断效率
 				teamSteE,
 			//球队助攻效率
-				teamAssE;
+				teamAssE, 
+				
+			//对手进攻篮板数（*****需要更新*****）
+				oppoOffenceRebounds,
+			//对手防守篮板（*****需要更新*****）
+				oppoDeffenceRebounds,
+			//对手得分（*****需要更新*****）
+				oppoScores,
+			//对手总篮板数（*****需要更新*****）
+				oppoTotalRebounds,
+			//对手总进攻回合
+				oppoattackRounds, 
+			//对手总助攻
+				oppoAssists, 
+			//对手总命中
+				oppoFG, 
+			//对手总出手
+				oppoFGTry, 
+			//对手总
+				oppoFouls, 
+			//对手总助攻
+				oppoTurnovers, 
+			//对手总盖帽
+				oppoBlocks, 
+			//对艘总抢断
+				oppoSteals, 
+			//对手总罚篮
+				oppoFTGTry, 
+			//对手总命中罚篮
+				oppoFTG, 
+			//对手三分总出手
+				oppo3FGTry, 
+			//对手三分总命中
+				oppo3FG;
 }
+
