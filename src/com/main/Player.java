@@ -108,6 +108,14 @@ public class Player implements java.io.Serializable{
 			
 	}
 	
+	public String getPlayerName(){
+		return playerName;
+	}
+	
+	public String getPlayerNumber(){
+		return playerNumber;
+	}
+	
 	//球员类， 用序列号进行保存
 	
 	//1.球员名称 （球员名称作为查找唯一标识）

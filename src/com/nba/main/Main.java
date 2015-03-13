@@ -43,6 +43,12 @@ public class Main {
 		}
 		
 		
+		//TEST
+		//System.out.println(RegisterList.getPlayerWithName("Andrew Nicholson").getPlayerNumber());
+		
+		
+		//保存寄存器列表中的列表至序列化中
+		RegisterList.saveDataList();
 		
 		//**************************PROCESS FINISH**************************
 		

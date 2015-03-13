@@ -9,7 +9,7 @@ public class FilePathSaver {
 	//***********************************属性***********************************
 	
 	//序列化保存文件加载地址
-	private String dataLoadingPath = "";
+	private String dataLoadingPath = "data/save/save.ser";
 	
 	//序列化保存文件存储地址
 	private String dataSavingPath = dataLoadingPath;
@@ -18,7 +18,7 @@ public class FilePathSaver {
 	private String playerFilePath = "data/data/players/info";
 	
 	//比赛信息文件夹地址
-	private String matchFilePath = "";
+	private String matchFilePath = "data/data/matches";
 	
 	//队伍信息文件夹地址
 	private String teamFilePath = "data/data/teams/teams";
