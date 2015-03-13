@@ -4,6 +4,8 @@ public class Team implements java.io.Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
+	public Team(){}
+	
 	public Team(String _teamFullName, String _teamShortName, String _teamLocation
 			, String _teamEastOrWest, String _teamDivision, String _teamGym, String _teamBirth){
 		

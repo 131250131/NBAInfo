@@ -124,6 +124,7 @@ public class MatchFileReader {
 			
 			initInfo();
 			
+		
 			System.out.println(lineTxt + (-(Main.T - (double)System.currentTimeMillis())/1000) + "s");
 			
 			String[] teamInfoStage1 = lineTxt.split(";");
@@ -208,6 +209,38 @@ public class MatchFileReader {
 			}
 			counter++;
 		}	
+		
+		/*
+		 * by 阿超
+		 * 2015年3月13日 20:13:07
+		 * 从match里面读数据
+		 * */
+		
+		//如何直接获取球队的信息
+		
+		Team Lteam = new Team();
+		Team Rteam = new Team();
+		
+		leftOffenceTimes = leftTeamFGTry + 0.4 * leftTeamFTGTry - 1.07 * (leftTeamOffenceRebounds /
+				(leftTeamOffenceRebounds + rightTeamDeffenceRebounds) * (leftTeamFGTry - leftTeamFG)) + 1.07 * leftTeamTurnovers;
+		rightOffenceTimes = rightTeamFGTry + 0.4 * rightTeamFTGTry - 1.07 * (rightTeamOffenceRebounds /
+				(rightTeamOffenceRebounds + leftTeamDeffenceRebounds) * (rightTeamFGTry - rightTeamFG)) + 1.07 * rightTeamTurnovers;
+
+		
+		Lteam.updateTeam(leftOffenceTimes, leftTeamAssists, leftTeamFG, leftTeamFGTry, leftTeam3FG, 
+				leftTeam3FGTry, leftTeamFTG, leftTeamFTGTry, leftTeamOffenceRebounds, leftTeamDeffenceRebounds, 
+				leftTeamTotalRebounds, leftTeamSteals, leftTeamBlocks, leftTeamTurnovers, leftTeamFouls,
+				leftTeamScore, rightTeamScore, rightTeamOffenceRebounds, rightTeamDeffenceRebounds,
+				rightTeamTotalRebounds, rightOffenceTimes, rightTeamAssists, rightTeamFG,
+				rightTeamFGTry, rightTeam3FG, rightTeam3FGTry, rightTeamFTG, rightTeamFTGTry,
+				rightTeamSteals, rightTeamBlocks, rightTeamTurnovers, rightTeamFouls);
+		Rteam.updateTeam(rightOffenceTimes,rightTeamAssists, rightTeamFG, rightTeamFGTry, 
+				rightTeam3FG, rightTeam3FGTry, rightTeamFTG, rightTeamFTGTry, rightTeamOffenceRebounds, 
+				rightTeamDeffenceRebounds, rightTeamTotalRebounds, rightTeamSteals, rightTeamBlocks,
+				rightTeamTurnovers,rightTeamFouls, rightTeamScore, leftTeamScore, leftTeamOffenceRebounds, leftTeamDeffenceRebounds, 
+				leftTeamTotalRebounds, leftOffenceTimes, leftTeamAssists, leftTeamFG, leftTeamFGTry,
+				leftTeam3FG, leftTeam3FGTry, leftTeamFTG, leftTeamFTGTry, leftTeamSteals, leftTeamBlocks,
+				leftTeamTurnovers, leftTeamFouls);
 	}
 	
 	private int playTimeTransform(String time){
