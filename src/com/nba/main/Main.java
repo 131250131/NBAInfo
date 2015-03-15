@@ -1,7 +1,6 @@
 package com.nba.main;
 
 import com.nba.initProcess.InitProcess;
-import com.nba.initProcess.PlayerListBuilder;
 import com.nba.registerList.RegisterList;
 
 public class Main {
@@ -15,48 +14,17 @@ public class Main {
 		T = t1;
 		
 		//**************************PROCESS START**************************
-		
-		//通过这个值来判断时候需要重新读取球员以及球队的列表来更新数据
-		boolean needsInfoLoading = true;
-		
-		//通过这个值来判断时候需要重新读取比赛文件来更新数据
-		boolean needsMatchLoading = true;
-		
+			
 		//开启软件时通过InitProcess来初始化进程
 		InitProcess initProcess = new InitProcess();
-		
-		/*
-		 *判断一： 是否需要 重新读取球员以及球队的列表来更新数据
-		 *判断二： 是否需要重新读取比赛文件来更新数据
-		 */
-		
-		if(needsInfoLoading){	
-			//初始化数据
-			initProcess.init();
-			initProcess.initWithMatchFile();
-		}else{
-			if(needsMatchLoading){
-				//加载已初始化的数据
-				initProcess.getData();
-				initProcess.initWithMatchFile();
-			}else{
-				
-			}
-		}
-		
-		
-		//TEST
-		//System.out.println(RegisterList.getPlayerWithName("Andrew Nicholson").getPlayerNumber());
+		initProcess.init();
 		
 		
 		//保存寄存器列表中的列表至序列化中
 		RegisterList.saveDataList();
 		
 		//**************************PROCESS FINISH**************************
-		
-		
-		
-		
+	
 		//结束时间
 		double t2 = System.currentTimeMillis();
 		
