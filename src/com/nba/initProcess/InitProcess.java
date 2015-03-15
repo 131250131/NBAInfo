@@ -28,4 +28,13 @@ public class InitProcess {
 	public void getData(){
 		registerList.getDataList();
 	}
+	
+	public void initWithMatchFile(){
+		MatchFileReader matchFileReader = new MatchFileReader();
+		try {
+			matchFileReader.readAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

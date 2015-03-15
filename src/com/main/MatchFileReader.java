@@ -221,10 +221,10 @@ public class MatchFileReader {
 		Team Lteam = new Team();
 		Team Rteam = new Team();
 		
-		leftOffenceTimes = leftTeamFGTry + 0.4 * leftTeamFTGTry - 1.07 * (leftTeamOffenceRebounds /
-				(leftTeamOffenceRebounds + rightTeamDeffenceRebounds) * (leftTeamFGTry - leftTeamFG)) + 1.07 * leftTeamTurnovers;
-		rightOffenceTimes = rightTeamFGTry + 0.4 * rightTeamFTGTry - 1.07 * (rightTeamOffenceRebounds /
-				(rightTeamOffenceRebounds + leftTeamDeffenceRebounds) * (rightTeamFGTry - rightTeamFG)) + 1.07 * rightTeamTurnovers;
+		//leftOffenceTimes = leftTeamFGTry + 0.4 * leftTeamFTGTry - 1.07 * (leftTeamOffenceRebounds /
+		//		(leftTeamOffenceRebounds + rightTeamDeffenceRebounds) * (leftTeamFGTry - leftTeamFG)) + 1.07 * leftTeamTurnovers;
+		//rightOffenceTimes = rightTeamFGTry + 0.4 * rightTeamFTGTry - 1.07 * (rightTeamOffenceRebounds /
+		//		(rightTeamOffenceRebounds + leftTeamDeffenceRebounds) * (rightTeamFGTry - rightTeamFG)) + 1.07 * rightTeamTurnovers;
 
 		
 		Lteam.updateTeam(leftOffenceTimes, leftTeamAssists, leftTeamFG, leftTeamFGTry, leftTeam3FG, 
@@ -267,7 +267,6 @@ public class MatchFileReader {
 			if(tempPlayer == null){
 				Player newPlayer = new Player(playerName[i], null, null, null, null, null, null, null, null);
 				searcher.getFinalAlaphPlayerList().add(newPlayer);
-				searcher.getFinalPlayerList().set(searcher.getCurrentIndex(), searcher.getFinalAlaphPlayerList());
 				tempPlayer = newPlayer;
 			}
 			
@@ -289,7 +288,7 @@ public class MatchFileReader {
 						rightTeamFTGTry, rightTeamTurnovers, leftOffenceTimes);	
 			}
 			
-			searcher.getFinalAlaphPlayerList().add(tempPlayer);
+			
 			searcher.getFinalPlayerList().set(searcher.getCurrentIndex(), searcher.getFinalAlaphPlayerList());				
 		}
 	}

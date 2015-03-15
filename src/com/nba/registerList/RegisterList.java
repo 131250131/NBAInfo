@@ -3,6 +3,7 @@ package com.nba.registerList;
 import java.util.ArrayList;
 
 import com.main.Player;
+import com.main.Team;
 import com.nba.data.DataLoader;
 import com.nba.data.DataSaver;
 
@@ -13,6 +14,9 @@ import com.nba.data.DataSaver;
 public class RegisterList {
 	
 	public static ArrayList<Object> saveList ;
+	public static int currentIndexInPlayerList;
+	public static int currentIndexInSaveList;
+	public static int currentIndexInTeamList;
 	
 	//用于生成一个空的列表，以便后期加载至此
 	public void initList(){
@@ -37,6 +41,7 @@ public class RegisterList {
 		//判断球员保存在哪一个列表中，即A的在第0位,B在第1位 以此类推
 		byte[] nameBytes = _playerName.getBytes();
 		int currentIndex = nameBytes[0] - 65;
+		currentIndexInSaveList = currentIndex;
 		@SuppressWarnings("unchecked")
 		ArrayList<Player> playerList = (ArrayList<Player>) saveList.get(currentIndex);
 		
@@ -46,12 +51,57 @@ public class RegisterList {
 			Player temp_player = playerList.get(i);
 			
 			//如果找到球员则返回球员类
-			if(temp_player.getPlayerName().equals(_playerName)){			
-				return playerList.get(i);
+			if(temp_player.getPlayerName().equals(_playerName)){	
+				currentIndexInPlayerList = i;
+				return temp_player;
 			}
 		}	
 		
 		//若都找不到则返回“空”
+		currentIndexInPlayerList = getCurrentAlphaList().size();
 		return null;
 	}
+	
+	//用于返回当前球员属于的列表
+	@SuppressWarnings("unchecked")
+	public static ArrayList<Player> getCurrentAlphaList(){
+		return (ArrayList<Player>) saveList.get(currentIndexInSaveList);
+	}
+	
+	//用于返回队伍的列表
+	
+	@SuppressWarnings("unchecked")
+	public static ArrayList<Team> getTeamList(){
+		return (ArrayList<Team>) saveList.get(26);
+	}
+	
+	
+	//用队伍的简写来搜索并返回队伍
+	public static Team getTeamWithShortName(String _shortName){
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Team> teamList = (ArrayList<Team>) saveList.get(26);
+		
+		int listSize = teamList.size();
+		for(int i = 0; i < listSize; i++){
+			Team tempTeam = teamList.get(i);
+			
+			if(tempTeam.getTeamShortName().equals(_shortName)){
+				currentIndexInTeamList = i;
+				return tempTeam;
+			}
+		}
+		return null;
+	}
+	
+	//用来更新球员数据（将自动获取其位置）
+	public static void updatePlayer(Player tempPlayer){
+		getCurrentAlphaList().set(currentIndexInPlayerList, tempPlayer);	
+	}
+	
+	//用来更新球队数据（将自动获取其位置）
+	public static void updateTeam(Team _team){
+		getTeamList().set(currentIndexInTeamList, _team);
+	}
+	
 }

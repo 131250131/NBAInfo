@@ -3,7 +3,11 @@ package com.main;
 public class Team implements java.io.Serializable{
 	
 	private static final long serialVersionUID = 1L;
-
+	
+	public String getTeamShortName(){
+		return shortName;
+	}
+	
 	public Team(){}
 	
 	public Team(String _teamFullName, String _teamShortName, String _teamLocation

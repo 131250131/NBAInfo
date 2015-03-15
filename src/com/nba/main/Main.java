@@ -6,13 +6,13 @@ import com.nba.registerList.RegisterList;
 
 public class Main {
 	
+	public static double T;
+	
 	public static void main(String[] args){
 		
 		//起始时间
 		double t1 = System.currentTimeMillis();
-	
-		
-		
+		T = t1;
 		
 		//**************************PROCESS START**************************
 		
@@ -33,10 +33,12 @@ public class Main {
 		if(needsInfoLoading){	
 			//初始化数据
 			initProcess.init();
+			initProcess.initWithMatchFile();
 		}else{
 			if(needsMatchLoading){
 				//加载已初始化的数据
 				initProcess.getData();
+				initProcess.initWithMatchFile();
 			}else{
 				
 			}
