@@ -11,7 +11,7 @@ public class PlayerPanel extends JPanel{
 		
 		PlayerTable playerTable = new PlayerTable();
 		playerTable.setVisible(true);
-		playerTable.setBounds(240, 160, 800, 400);
+		playerTable.setBounds(120, 80, 720, 400);
 		this.add(playerTable);
 	}
 

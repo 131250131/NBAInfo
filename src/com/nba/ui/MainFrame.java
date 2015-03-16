@@ -16,8 +16,9 @@ public class MainFrame extends JFrame{
 		Toolkit toolkit = this.getToolkit();
 		int screenX = toolkit.getScreenSize().width;
 		int screenY = toolkit.getScreenSize().height;
-		int frameSizeX = 1280;
-		int frameSizeY = 720;
+		int frameSizeX = screenX/3*2;
+		int frameSizeY = screenY/3*2;
+		System.out.println(frameSizeX+""+frameSizeY);
 		
 		setSize(frameSizeX, frameSizeY);
 		setLocation((screenX - frameSizeX) / 2 , (screenY - frameSizeY) / 2);
