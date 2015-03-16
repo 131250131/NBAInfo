@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import com.main.Team;
+import com.nba.data.Team;
 import com.nba.data.FilePathSaver;
 import com.nba.registerList.RegisterList;
 

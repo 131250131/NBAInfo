@@ -9,8 +9,8 @@ import java.io.InputStreamReader;
 
 
 
-import com.main.Player;
-import com.main.Team;
+import com.nba.data.Player;
+import com.nba.data.Team;
 import com.nba.data.FilePathSaver;
 import com.nba.main.Main;
 import com.nba.registerList.RegisterList;

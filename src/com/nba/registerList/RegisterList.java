@@ -2,8 +2,8 @@ package com.nba.registerList;
 
 import java.util.ArrayList;
 
-import com.main.Player;
-import com.main.Team;
+import com.nba.data.Player;
+import com.nba.data.Team;
 import com.nba.data.DataLoader;
 import com.nba.data.DataSaver;
 
