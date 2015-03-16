@@ -6,6 +6,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class MyTable extends JScrollPane{
 	
@@ -15,15 +16,26 @@ public class MyTable extends JScrollPane{
 	DefaultTableModel model;
 	/*以数据为参数构造表格*/
 	public MyTable(String[] columnNames,Object[][] content){
-		//TableSorter sorter = new TableSorter(new MyTableModel()); //ADDED THIS
-		//JTable table = new JTable(sorter); //NEW
-		//sorter.setTableHeader(table.getTableHeader()); //ADDED THIS
+		TableSorter sorter = new TableSorter(new MyTableModel()); //ADDED THIS
+		JTable table = new JTable(sorter); //NEW
+		sorter.setTableHeader(table.getTableHeader()); //ADDED THIS
 		initial(columnNames,content);//初始化
 	}
 	/*空表格构造*/
 	public MyTable(){
 		String[] temp={"未命名1","未命名2","未命名3"};
-		initial(temp,new Object[][]{});//初始化
+		TableSorter sorter = new TableSorter(new MyTableModel()); //ADDED THIS
+		JTable table = new JTable(sorter); //NEW
+		sorter.setTableHeader(table.getTableHeader()); //ADDED THIS
+		Object[][] data =
+			{
+			{"Apples", new Integer(5),"5.00"},
+			         {"Oranges", new Integer(3),"6.00"},
+			         {"Pears", new Integer(2),"4.00"},
+			         {"Grapes", new Integer(3),"2.00"},
+			};
+
+		initial(temp,data);//初始化
 	}
 	
 	void initial(String[] columnNames,Object[][] content){//表格header和二维数组内容，object数组可以装载所有对象，包括基本类型
@@ -49,9 +61,9 @@ public class MyTable extends JScrollPane{
         
 	}
 	/*设置表格及滚动面板位置*/
-	public void setBounds(int x,int y,int width,int height){
+	public void mySetBounds(int x,int y,int width,int height){
 		this.setBounds(x, y, width, height);
-		table.setBounds(x, y, width, height);
+		this.table.setBounds(x, y, width, height);
 	}
 	/*更新表格数据*/
 	public void update(String[] columnNames,Object[][] content){

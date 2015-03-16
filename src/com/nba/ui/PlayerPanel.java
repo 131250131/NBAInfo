@@ -9,10 +9,10 @@ public class PlayerPanel extends JPanel{
 	public PlayerPanel(){
 		this.setLayout(null);
 		
-//		PlayerTable playerTable = new PlayerTable();
-//		playerTable.setVisible(true);
-//		playerTable.setBounds(120, 80, 720, 400);
-//		this.add(playerTable);
+		MyTable playerTable = new MyTable();
+		playerTable.setVisible(true);
+		playerTable.mySetBounds(120, 80, 720, 400);
+		this.add(playerTable);
 	}
 
 }
