@@ -1,8 +1,6 @@
 package com.nba.main;
 
-import com.nba.initProcess.InitProcess;
-import com.nba.registerList.RegisterList;
-import com.nba.ui.MainFrame;
+import com.nba.davisUI.ui.MainFrame;
 
 public class Main {
 	
