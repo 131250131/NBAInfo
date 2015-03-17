@@ -1,6 +1,7 @@
 package com.nba.main;
 
 import com.nba.davisUI.ui.MainFrame;
+import com.nba.initProcess.InitProcess;
 
 public class Main {
 	
@@ -13,15 +14,14 @@ public class Main {
 		T = t1;
 		
 		//**************************PROCESS START**************************
-			
-		//开启软件时通过InitProcess来初始化进程
-		//InitProcess initProcess = new InitProcess();
-		//initProcess.init();
-		
-		
+				
 		//UI TEST
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
+		
+		//开启软件时通过InitProcess来初始化进程
+		InitProcess initProcess = new InitProcess();
+		initProcess.init();
 		
 		//保存寄存器列表中的列表至序列化中
 		//RegisterList.saveDataList();

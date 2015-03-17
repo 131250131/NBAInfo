@@ -12,7 +12,8 @@ public class ImageBin {
 		switch(key){
 		
 		case "LoadingBackground" : return new ImageIcon(ImageFilePath + "loading/loadingBackground.png");
-		
+		case "LoadingButtonOne" : return new ImageIcon(ImageFilePath + "loading/loadingButtonOne.png");
+		case "LoadingButtonTwo" : return new ImageIcon(ImageFilePath + "loading/loadingButtonTwo.png");
 		}
 		return null;
 	}
