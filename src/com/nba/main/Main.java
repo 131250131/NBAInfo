@@ -1,6 +1,6 @@
 package com.nba.main;
 
-import com.nba.davisUI.ui.MainFrame;
+import com.nba.ui.Mainframe;
 
 public class Main {
 	
@@ -20,7 +20,7 @@ public class Main {
 		
 		
 		//UI TEST
-		MainFrame mainFrame = new MainFrame();
+		Mainframe mainFrame = new Mainframe();
 		mainFrame.setVisible(true);
 		
 		//保存寄存器列表中的列表至序列化中

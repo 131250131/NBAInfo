@@ -12,21 +12,15 @@ public class MyTable extends JScrollPane{
 	
 	private static final long serialVersionUID = 1L;
 
-	JTable table;
+	JSortTable table;
 	DefaultTableModel model;
 	/*以数据为参数构造表格*/
 	public MyTable(String[] columnNames,Object[][] content){
-		TableSorter sorter = new TableSorter(new MyTableModel()); //ADDED THIS
-		JTable table = new JTable(sorter); //NEW
-		sorter.setTableHeader(table.getTableHeader()); //ADDED THIS
 		initial(columnNames,content);//初始化
 	}
 	/*空表格构造*/
 	public MyTable(){
 		String[] temp={"未命名1","未命名2","未命名3"};
-		TableSorter sorter = new TableSorter(new MyTableModel()); //ADDED THIS
-		JTable table = new JTable(sorter); //NEW
-		sorter.setTableHeader(table.getTableHeader()); //ADDED THIS
 		Object[][] data =
 			{
 			{"Apples", new Integer(5),"5.00"},
@@ -46,10 +40,10 @@ public class MyTable extends JScrollPane{
 		
 		//用参数初始化model
 		model = new DefaultTableModel(content, columnNames);
-		table=new JTable(model);
+		table=new JSortTable(model);
 		//表格的初始化 一些美化
-		table.setOpaque(false);
-		table.setSelectionForeground(Color.white);
+		table.setOpaque(true);
+		table.setSelectionForeground(Color.black);
         DefaultTableCellRenderer render1 = new DefaultTableCellRenderer();   
         render1.setOpaque(false); //将渲染器设置为透明  
         table.setDefaultRenderer(Object.class,render1);  
