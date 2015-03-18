@@ -2,10 +2,14 @@ package com.nba.davisUI.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
@@ -20,6 +24,8 @@ public class Index extends MyPanel implements ActionListener{
 	JLabel player;
 	Timer timer;
 	JProgressBar progressbar;
+	JButton enterButton, enterButton2;
+	JLabel backgroundImage;
 	
 	public Index(){
 		this.setBounds(0, 0, 1280, 720);
@@ -46,12 +52,50 @@ public class Index extends MyPanel implements ActionListener{
 		player.setVisible(true);
 		this.add(player);
 		
-		JLabel backgroundImage = new JLabel(ImageBin.getImage("indexBackground"));
+		
+		
+		timer.start();	
+		
+		enterButton = new JButton();
+		enterButton.setBounds(105, 128, 380, 210);
+		enterButton.setOpaque(false);
+		enterButton.setBackground(null);
+		enterButton.setBorder(BorderFactory.createEmptyBorder());
+		enterButton.setContentAreaFilled(false);
+
+		this.add(enterButton);
+		enterButton.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent arg0) {
+				backgroundImage.setIcon(ImageBin.getImage("indexBackground2"));
+				 index++;
+			}
+			public void mouseExited(MouseEvent arg0) {
+				backgroundImage.setIcon(ImageBin.getImage("indexBackground"));
+			}
+			}); 
+		
+		enterButton2 = new JButton();
+		enterButton2.setBounds(105, 338, 380, 210);
+		enterButton2.setOpaque(false);
+		enterButton2.setBackground(null);
+		enterButton2.setBorder(BorderFactory.createEmptyBorder());
+		enterButton2.setContentAreaFilled(false);
+
+		this.add(enterButton2);
+		enterButton2.addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent arg0) {
+				backgroundImage.setIcon(ImageBin.getImage("indexBackground3"));
+				 index++;
+			}
+			public void mouseExited(MouseEvent arg0) {
+				backgroundImage.setIcon(ImageBin.getImage("indexBackground"));
+			}
+			}); 
+		
+		backgroundImage = new JLabel(ImageBin.getImage("indexBackground"));
 		backgroundImage.setVisible(true);
 		backgroundImage.setBounds(0, 0, 1280, 720);
 		this.add(backgroundImage);
-		
-		timer.start();	
 	}
 	
 	private void getPic(){
@@ -74,13 +118,8 @@ public class Index extends MyPanel implements ActionListener{
 	    	  int value = progressbar.getValue();
 	    	  
 	    	  if(value == index){
-	    		  try {
-					Thread.sleep(3000);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
 	    		  progressbar.setValue(++value);
-	    		  index++;
+	    		 
 	    		  player.setIcon(new ImageIcon(stringArray.get(value)));
 	    		  
 	    		 
