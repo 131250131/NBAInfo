@@ -1,5 +1,7 @@
 package com.nba.davisUI.myUI;
 
+import java.io.File;
+
 import javax.swing.ImageIcon;
 
 public class ImageBin {
@@ -15,7 +17,9 @@ public class ImageBin {
 		case "LoadingButtonOne" : return new ImageIcon(ImageFilePath + "loading/loadingButtonOne.png");
 		case "LoadingButtonTwo" : return new ImageIcon(ImageFilePath + "loading/loadingButtonTwo.png");
 		case "indexBackground" : return new ImageIcon(ImageFilePath + "index/indexBackground.png");
+		case "test" : return new ImageIcon(ImageFilePath + "index/test.png");
 		}
 		return null;
 	}
+	
 }
