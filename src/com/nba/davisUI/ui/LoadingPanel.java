@@ -2,12 +2,12 @@ package com.nba.davisUI.ui;
 
 
 import java.awt.Color;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
@@ -27,7 +27,7 @@ public class LoadingPanel extends MyPanel implements ActionListener{
 	public LoadingPanel(){
 		this.setBounds(0, 0, 1280, 720);
 		
-		timer = new Timer(70, this);;
+		timer = new Timer(7, this);;
 		
 		progressbar = new JProgressBar();
 		progressbar.setOrientation(JProgressBar.HORIZONTAL);
@@ -54,16 +54,13 @@ public class LoadingPanel extends MyPanel implements ActionListener{
 		enterOne.setBounds(0, 520, 1280, 200);
 		this.add(enterOne);
 		
-		JLabel backgroundImage = new JLabel(ImageBin.getImage("LoadingBackground"));
-		backgroundImage.setVisible(true);
-		backgroundImage.setBounds(0, 0, 1280, 720);
-		this.add(backgroundImage);
-		timer.start();	
-		
 		enterButton = new JButton();
 		enterButton.setBounds(590, 600, 116, 33);
 		enterButton.setOpaque(false);
 		enterButton.setBackground(null);
+		enterButton.setBorder(BorderFactory.createEmptyBorder());
+		enterButton.setContentAreaFilled(false);
+
 		this.add(enterButton);
 		enterButton.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0) {
@@ -74,9 +71,21 @@ public class LoadingPanel extends MyPanel implements ActionListener{
 			}
 			}); 
 		
+		JLabel backgroundImage = new JLabel(ImageBin.getImage("LoadingBackground"));
+		backgroundImage.setVisible(true);
+		backgroundImage.setBounds(0, 0, 1280, 720);
+		this.add(backgroundImage);
+		timer.start();	
+		
+		
+		
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == enterButton){
+				MainFrame.openPlayerTablePanel.doClick();
+		}
 				
 		int waitTime = 50;// 350
 	       if (e.getSource() == timer) {

@@ -4,16 +4,18 @@ import javax.swing.*;
 import javax.swing.event.TableModelListener;
 import javax.swing.event.TableModelEvent;
 import javax.swing.table.*;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.*;
 import java.util.Arrays;
 import java.util.Vector;
 
+@SuppressWarnings("serial")
 public class JSortTable extends JTable {
 
     public JSortTable() {
-        super();
+        super();       
         new SortTableModelListener(this);
     }
 
@@ -43,8 +45,8 @@ class SortTableModelListener extends MouseAdapter implements TableModelListener 
     private JTable table = null;
     private boolean isASC = true;
     private int sortColumn = -1; // Which column is sorted...
-    private final Icon upIcon = new ImageIcon("data/ui/image/loading/up.png");
-    private final Icon downIcon = new ImageIcon("data/ui/image/loading/down.png");
+   // private final Icon upIcon = new ImageIcon("data/ui/image/loading/up.png");
+   // private final Icon downIcon = new ImageIcon("data/ui/image/loading/down.png");
 
     public SortTableModelListener(JTable table) {
         this.table = table;
@@ -116,7 +118,7 @@ class SortTableModelListener extends MouseAdapter implements TableModelListener 
             }
             setText(value != null ? value.toString() : "");
             if (column == sortColumn) {
-                setIcon(isASC ? upIcon : downIcon);
+                //setIcon(isASC ? upIcon : downIcon);
             } else {
                 setIcon(null);
             }

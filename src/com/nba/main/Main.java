@@ -1,11 +1,9 @@
 package com.nba.main;
 
-<<<<<<< HEAD
+
 import com.nba.davisUI.ui.MainFrame;
 import com.nba.initProcess.InitProcess;
-=======
-import com.nba.ui.Mainframe;
->>>>>>> origin/master
+
 
 public class Main {
 	
@@ -20,7 +18,7 @@ public class Main {
 		//**************************PROCESS START**************************
 				
 		//UI TEST
-		Mainframe mainFrame = new Mainframe();
+		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
 		
 		//开启软件时通过InitProcess来初始化进程

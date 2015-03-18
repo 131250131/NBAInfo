@@ -104,4 +104,15 @@ public class RegisterList {
 		getTeamList().set(currentIndexInTeamList, _team);
 	}
 	
+	//返回球员个数
+	@SuppressWarnings("unchecked")
+	public static int getPlayerNumber(){
+		int size = 0;
+		for(int i = 0; i < 26; i++){
+			ArrayList<Player> playerList = (ArrayList<Player>) saveList.get(i);
+			size += playerList.size();		
+		}
+		return size;
+	}
+	
 }

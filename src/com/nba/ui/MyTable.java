@@ -1,11 +1,14 @@
 package com.nba.ui;
 
 import java.awt.Color;
+import java.awt.Font;
 
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableModel;
 
 public class MyTable extends JScrollPane{
@@ -20,6 +23,7 @@ public class MyTable extends JScrollPane{
 	}
 	/*空表格构造*/
 	public MyTable(){
+		
 		String[] temp={"未命名1","未命名2","未命名3"};
 		Object[][] data =
 			{
@@ -40,16 +44,24 @@ public class MyTable extends JScrollPane{
 		
 		//用参数初始化model
 		model = new DefaultTableModel(content, columnNames);
-		table=new JSortTable(model);
+		table = new JSortTable(model);
+		
+		
 		//表格的初始化 一些美化
-		table.setOpaque(true);
-		table.setSelectionForeground(Color.black);
-        DefaultTableCellRenderer render1 = new DefaultTableCellRenderer();   
-        render1.setOpaque(false); //将渲染器设置为透明  
-        table.setDefaultRenderer(Object.class,render1);  
-        table.setForeground(Color.white);
-        table.setBorder(null);
-        table.setShowVerticalLines(false);
+		table.setFont(new Font("Arail", Font.PLAIN, 14));
+		table.setBackground(new Color(40, 42, 66));
+		table.setForeground(Color.WHITE);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		
+		DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();// 设置table内容居中
+		tcr.setHorizontalAlignment(JLabel.CENTER);
+		table.setDefaultRenderer(Object.class, tcr);
+		
+		JTableHeader head = table.getTableHeader();
+		head.setBackground(new Color(0.1f, 0.19f, 0.54f));
+		head.setForeground(Color.WHITE);
+		head.setResizingAllowed(false);
+		
         //将表格装载到滚动板上
         this.setViewportView(table);
         

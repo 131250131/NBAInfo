@@ -118,6 +118,20 @@ public class Player implements java.io.Serializable{
 		return playerNumber;
 	}
 	
+	public int getPlayerScores(){
+		return playerScores;
+	}
+	
+	public int getPlayerFG(){
+		return playerFG;
+	}
+	
+	public int getPlayerTotalRebounds(){
+		return playerTotalRebounds;
+	}
+	
+//	public String get
+	
 	//球员类， 用序列号进行保存
 	
 	//1.球员名称 （球员名称作为查找唯一标识）
