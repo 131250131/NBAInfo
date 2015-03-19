@@ -36,10 +36,14 @@ public class MainFrame extends MyFrame implements ActionListener{
 	
 	public void actionPerformed(ActionEvent events) {
 		
+		
 		if(events.getSource() == openPlayerTablePanel){
-			index = new Index();
-			this.add(index);
+			playerTablePanel=new PlayerTablePanel();
+			this.add(playerTablePanel);
+//			index = new Index();
+//			this.add(index);
 			loadingPanel.setVisible(false);
+			
 		}
 	}
 	
