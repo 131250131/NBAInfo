@@ -356,131 +356,175 @@ public class Player implements java.io.Serializable{
 	//72.球队对手进攻次数 (*****要传*****)
 		double allEnemyOffenceTimes;
 		
+		public int getPlayerAttends(){
+			return playerAttends;
+		}
+		
+		public int getPlayerStartTimes(){
+			return startTimes;
+		}
+		
+		public int getPlayerOffenceRebounds(){
+			return playerOffenceRebounds;
+		}
+		
+		public int getPlayerDeffenceRebounds(){
+			return playerDeffenceRebounds;
+		}
+		
+		public int getPlayerAssists() {
+			return playerAssists;
+		}
+		
+		public double getPlayerPlayTime(){
+			return playerPlayTime;
+		}
+		
+		public int getPlayerSteals() {
+			return playerSteals;
+		}
+
+		public int getPlayerBlocks() {
+			return playerBlocks;
+		}
+		
+		public int getPlayerTurnovers() {
+			return playerTurnovers;
+		}
+
+		public int getPlayerFouls() {
+			return playerFouls;
+		}
+		
+		
 		public double getAver_playerAssists() {
-			return playerAssists / playerAttends;
+			return (playerAttends==0)?0:playerAssists / playerAttends;
 		}
 
 		public double getAver_playerPlayTime() {
-			return playerPlayTime / playerAttends;
+			return (playerAttends==0)?0:playerPlayTime / playerAttends;
 		}
 
 		public double getAver_playerFG() {
-			return playerFG / playerAttends;
+			return (playerAttends==0)?0:playerFG / playerAttends;
 		}
 
 		public double getAver_playerFGTry() {
-			return playerFGTry / playerAttends;
+			return (playerAttends==0)?0:playerFGTry / playerAttends;
 		}
 
 		public double getAver_player3FG() {
-			return  player3FG / playerAttends;
+			return  (playerAttends==0)?0:player3FG / playerAttends;
 		}
 
 		public double getAver_player3FGTry() {
-			return player3FGTry / playerAttends;
+			return (playerAttends==0)?0:player3FGTry / playerAttends;
 		}
 
 		public double getAver_playerFTG() {
-			return  playerFTG / playerAttends;
+			return  (playerAttends==0)?0:playerFTG / playerAttends;
 		}
 
 		public double getAver_playerFTGTry() {
-			return playerFTGTry / playerAttends;
+			return (playerAttends==0)?0:playerFTGTry / playerAttends;
 		}
 
 		public double getAver_playerOffenceRebounds() {
-			return playerOffenceRebounds / playerAttends;
+			return (playerAttends==0)?0:playerOffenceRebounds / playerAttends;
 		}
 
 		public double getAver_playerDeffenceRebounds() {
-			return  playerDeffenceRebounds / playerAttends;
+			return  (playerAttends==0)?0:playerDeffenceRebounds / playerAttends;
 		}
 
 		public double getAver_playerTotalRebounds() {
-			return  playerTotalRebounds / playerAttends;
+			return  (playerAttends==0)?0:playerTotalRebounds / playerAttends;
 		}
 
 		public double getAver_playerSteals() {
-			return playerSteals / playerAttends;
+			return (playerAttends==0)?0:playerSteals / playerAttends;
 		}
 
 		public double getAver_playerBlocks() {
-			return playerBlocks / playerAttends;
+			return (playerAttends==0)?0:playerBlocks / playerAttends;
 		}
 
 		public double getAver_playerTurnovers() {
-			return playerTurnovers / playerAttends;
+			return (playerAttends==0)?0:playerTurnovers / playerAttends;
 		}
 
 		public double getAver_playerFouls() {
-			return playerFouls / playerAttends;
+			return (playerAttends==0)?0:playerFouls / playerAttends;
 		}
 
 		public double getAver_playerScores() {
-			return  playerScores / playerAttends;
+			return (playerAttends==0)?0:playerScores / playerAttends;
 		}
 
 		public double getPlayerFGP() {
-			return playerFG / playerFGTry;
+			return (playerFGTry==0)?0:playerFG / playerFGTry;
 		}
 
 		public double getPlayer3FGP() {
-			return player3FG / player3FGTry;
+			if (player3FGTry!= 0)
+				return player3FG / player3FGTry;
+			else
+				return 0;
 		}
 
 		public double getPlayerFTGP() {
-			return playerFTG / playerFTGTry;
+			return (playerFTGTry==0)?0:playerFTG / playerFTGTry;
 		}
 
 		public double getPlayerPER() {
-			return ((playerScores + playerTotalRebounds + playerAssists + playerSteals + playerBlocks) 
+			return (playerAttends==0)?0:((playerScores + playerTotalRebounds + playerAssists + playerSteals + playerBlocks) 
 					- (playerFGTry - playerFG) - (playerFTGTry - playerFTG) - playerTurnovers) / playerAttends;
 		}
 
 		public double getPlayerGmScER() {
-			return  (playerScores + 0.4 * playerFG - 0.7 * playerFGTry - 0.4 * (playerFTGTry - playerFTG)
+			return  (playerAttends==0)?0:(playerScores + 0.4 * playerFG - 0.7 * playerFGTry - 0.4 * (playerFTGTry - playerFTG)
 					+ 0.7 * playerOffenceRebounds + 0.3 * playerDeffenceRebounds + playerSteals + 0.7 * playerAssists 
 					+ 0.7 * playerBlocks - 0.4 * playerFouls - playerTurnovers) / playerAttends;
 		}
 
 		public double getPlayerTSP() {
-			return playerScores / (2 * (playerFGTry + 0.44 * playerFTGTry));
+			return (playerFGTry==0)?0:playerScores / (2 * (playerFGTry + 0.44 * playerFTGTry));
 		}
 
 		public double getPlayerSER() {
-			return (playerFG + 0.5 * player3FG) / playerFGTry;
+			return (playerFGTry==0)?0:(playerFG + 0.5 * player3FG) / playerFGTry;
 		}
 
 		public double getRR() {
-			return playerTotalRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(allTeamRebounds+allEnemyRebounds);
+			return (playerPlayTime==0)?0:playerTotalRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(allTeamRebounds+allEnemyRebounds);
 		}
 
 		public double getO_RR() {
-			return playerOffenceRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(o_allTeamRebounds+o_allEnemyRebounds);
+			return (playerPlayTime==0)?0:playerOffenceRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(o_allTeamRebounds+o_allEnemyRebounds);
 		}
 
 		public double getD_RR() {
-			return playerDeffenceRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(d_allTeamRebounds+d_allEnemyRebounds);
+			return (playerPlayTime==0)?0:playerDeffenceRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(d_allTeamRebounds+d_allEnemyRebounds);
 		}
 
 		public double getAR() {
-			return playerAssists/(playerPlayTime/((teammatePlayTime+playerPlayTime)/5)*allTeamFT-playerFG);
+			return (playerPlayTime==0)?0:playerAssists/(playerPlayTime/((teammatePlayTime+playerPlayTime)/5)*allTeamFT-playerFG);
 		}
 
 		public double getSR() {
-			return playerSteals*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyOffenceTimes;
+			return (playerPlayTime==0)?0:playerSteals*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyOffenceTimes;
 		}
 
 		public double getBR() {
-			return playerBlocks*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemy2Shoots;
+			return (playerPlayTime==0)?0:playerBlocks*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemy2Shoots;
 		}
 
 		public double getTR() {
-			return playerTurnovers/(playerFGTry - player3FGTry + 0.44 * playerFTGTry+playerTurnovers);
+			return (playerPlayTime==0)?0:playerTurnovers/(playerFGTry - player3FGTry + 0.44 * playerFTGTry+playerTurnovers);
 		}
 
 		public double getUR() {
-			return (playerFGTry+0.44*playerFTGTry+playerTurnovers)*
+			return (playerPlayTime==0)?0:(playerFGTry+0.44*playerFTGTry+playerTurnovers)*
 					(teammatePlayTime+playerPlayTime)/5/playerPlayTime/
 					(allTeamShoots+0.44*allTeamFTShoots+allTeamTurnover);
 		}

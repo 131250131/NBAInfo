@@ -43,12 +43,12 @@ public class PlayerTablePanel extends MyPanel{
 		 * 
 		 * 
 		 * */
-		String[] temp = {"球员姓名","所属球队","参赛场数","先发场数","篮板数","助攻数","在场时间"
-						,"投篮命中率","三分命中率","罚球命中率","进攻篮板","防守篮板","抢断数","盖帽数",
-						"失误数","犯规数","球员得分","GmSc效率值","真实命中率","投篮效率","篮板率","进攻篮板率",
+		String[] temp = {"球员姓名","所属球队","参赛场数","先发场数","篮板数","进攻篮板","防守篮板","助攻数","在场时间"
+						,"投篮命中率","三分命中率","罚球命中率","抢断数","盖帽数",
+						"失误数","犯规数","球员得分","效率","GmSc效率值","真实命中率","投篮效率","篮板率","进攻篮板率",
 						"防守篮板绿","助攻率","抢断绿","盖帽率","失误率","使用率"};
 		temp2 = temp;
-		data2 = new String[28][];
+		data2 = new String[29][];
 		table = new MyTable(temp, data2);
 		
 		JScrollPane jsp=new JScrollPane(table);
@@ -65,7 +65,7 @@ public class PlayerTablePanel extends MyPanel{
 	@SuppressWarnings("unchecked")
 	public void getData(){
 		
-		Object[][] data = new Object[RegisterList.getPlayerNumber()][28];
+		Object[][] data = new Object[RegisterList.getPlayerNumber()][29];
 		
 		System.out.println(RegisterList.getPlayerNumber());
 		
@@ -77,9 +77,35 @@ public class PlayerTablePanel extends MyPanel{
 			for(int j = 0; j < size; j++){
 				Player tempPlayer = playerList.get(j);
 				data[index][0] = tempPlayer.getPlayerName();
-				data[index][1] = tempPlayer.getPlayerScores();
-				data[index][2] = tempPlayer.getPlayerFG();
-				data[index++][3] = tempPlayer.getPlayerTotalRebounds();
+				data[index][1] = null;//所属球队
+				data[index][2] = tempPlayer.getPlayerAttends();
+				data[index][3] = tempPlayer.getPlayerStartTimes();
+				data[index][4] = tempPlayer.getPlayerTotalRebounds();
+				data[index][5] = tempPlayer.getPlayerOffenceRebounds();
+				data[index][6] = tempPlayer.getPlayerDeffenceRebounds();
+				data[index][7] = tempPlayer.getPlayerAssists();
+				data[index][8] = tempPlayer.getPlayerFGP();
+				data[index][9] = tempPlayer.getPlayer3FGP();
+				data[index][10] = tempPlayer.getPlayerFTGP();
+				data[index][11] = tempPlayer.getPlayerSteals();
+				data[index][12] = tempPlayer.getPlayerBlocks();
+				data[index][13] = tempPlayer.getPlayerTurnovers();
+				data[index][14] = tempPlayer.getPlayerFouls();
+				data[index][15] = tempPlayer.getPlayerScores();
+				data[index][16] = tempPlayer.getPlayerTotalRebounds();
+				data[index][17] = tempPlayer.getPlayerPER();
+				data[index][18] = tempPlayer.getPlayerGmScER();
+				data[index][19] = tempPlayer.getPlayerTSP();
+				data[index][20] = tempPlayer.getPlayerSER();
+				data[index][21] = tempPlayer.getRR();
+				data[index][22] = tempPlayer.getO_RR();
+				data[index][23] = tempPlayer.getD_RR();
+				data[index][24] = tempPlayer.getAR();
+				data[index][25] = tempPlayer.getSR();
+				data[index][26] = tempPlayer.getBR();
+				data[index][27] = tempPlayer.getTR();
+				data[index][28] = tempPlayer.getUR();
+				index++;
 			}
 		}
 		
