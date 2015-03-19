@@ -110,6 +110,14 @@ public class Player implements java.io.Serializable{
 			
 	}
 	
+	public String getSchool(){
+		return school;
+	}
+	
+	public String getPosition(){
+		return position;
+	}
+	
 	public String getPlayerName(){
 		return playerName;
 	}

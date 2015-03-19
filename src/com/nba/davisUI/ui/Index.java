@@ -1,5 +1,7 @@
 package com.nba.davisUI.ui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -14,30 +16,29 @@ import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
+import com.nba.data.Player;
 import com.nba.davisUI.myUI.ImageBin;
 import com.nba.davisUI.myUI.MyPanel;
+import com.nba.registerList.RegisterList;
 
 public class Index extends MyPanel implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
-	ArrayList<String> stringArray;
-	JLabel player;
+	ArrayList<String> stringArray, nameArray;
+	JLabel playerIcon1;
 	Timer timer;
 	JProgressBar progressbar;
 	JButton enterButton, enterButton2;
-	JLabel backgroundImage;
+	JLabel backgroundImage, playerInfo1, playerInfo2, playerInfo3;
+	Player tempPlayer;
 	
 	public Index(){
 		this.setBounds(0, 0, 1280, 720);
 			
 		stringArray = new ArrayList<String>();
+		nameArray = new ArrayList<String>();
 		
-//		JLabel backgroundImage2 = new JLabel(ImageBin.getImage("test"));
-//		backgroundImage2.setVisible(true);
-//		backgroundImage2.setBounds(0, 0, 1280, 720);
-//		this.add(backgroundImage2);
-		
-		timer = new Timer(7, this);
+		timer = new Timer(1, this);
 		
 		progressbar = new JProgressBar();
 		progressbar.setMinimum(0);
@@ -47,12 +48,43 @@ public class Index extends MyPanel implements ActionListener{
 		
 		getPic();
 		
-		player = new JLabel(new ImageIcon(stringArray.get(0)));
-		player.setBounds(720 - 10, -20, 300, 700);
-		player.setVisible(true);
-		this.add(player);
+		tempPlayer = RegisterList.getPlayerWithName("Aaron Brooks");
 		
+		Color color = new Color(248, 248, 248);
 		
+		playerInfo1 = new JLabel();
+		playerInfo1.setText("POSITION : " + tempPlayer.getPosition().toUpperCase());
+		playerInfo1.setForeground(color);
+		playerInfo1.setVisible(true);
+		playerInfo1.setBounds(1000 - 20, 400, 200, 25);
+		playerInfo1.setFont(new Font("OCR A Std", Font.BOLD, 15));
+		this.add(playerInfo1);
+		
+		playerInfo2 = new JLabel();
+		playerInfo2.setText("NAME : " + tempPlayer.getPlayerName().toUpperCase());
+		playerInfo2.setForeground(color);
+		playerInfo2.setVisible(true);
+		playerInfo2.setBounds(800 - 50 + 248 - 30, 500 - 10 - 60 + 16 + 4, 400, 40);
+		playerInfo2.setFont(new Font("OCR A Std", Font.BOLD, 15));
+		this.add(playerInfo2);
+		
+		playerInfo3 = new JLabel();
+		playerInfo3.setText("FROM : " + tempPlayer.getSchool().toUpperCase());
+		playerInfo3.setForeground(color);
+		playerInfo3.setVisible(true);
+		playerInfo3.setBounds(1020 - 205 + 145, 320 - 115 - 120 + 515 - 105 + 20, 650, 30);
+		playerInfo3.setFont(new Font("OCR A Std", Font.BOLD, 15));
+		this.add(playerInfo3);
+		
+		playerIcon1 = new JLabel(new ImageIcon(stringArray.get(0)));
+		playerIcon1.setBounds(720, -20, 300, 700);
+		playerIcon1.setVisible(true);
+		this.add(playerIcon1);
+		
+		JLabel backgroundImage2 = new JLabel(ImageBin.getImage("test"));
+		backgroundImage2.setVisible(true);
+		backgroundImage2.setBounds(0, 0, 1280, 720);
+		this.add(backgroundImage2);
 		
 		timer.start();	
 		
@@ -66,8 +98,9 @@ public class Index extends MyPanel implements ActionListener{
 		this.add(enterButton);
 		enterButton.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0) {
-				backgroundImage.setIcon(ImageBin.getImage("indexBackground2"));
-				 index++;
+				backgroundImage.setIcon(ImageBin.getImage("indexBackground2"));	
+				index++;
+				
 			}
 			public void mouseExited(MouseEvent arg0) {
 				backgroundImage.setIcon(ImageBin.getImage("indexBackground"));
@@ -85,7 +118,7 @@ public class Index extends MyPanel implements ActionListener{
 		enterButton2.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0) {
 				backgroundImage.setIcon(ImageBin.getImage("indexBackground3"));
-				 index++;
+				index++;
 			}
 			public void mouseExited(MouseEvent arg0) {
 				backgroundImage.setIcon(ImageBin.getImage("indexBackground"));
@@ -103,6 +136,10 @@ public class Index extends MyPanel implements ActionListener{
 		    File[] files = dir.listFiles();
 		    for(int i = 0;i < files.length;i++){
 		        //过滤非图片
+		    	
+		    	String[] name  = files[i].getName().split("[.]");
+		    	nameArray.add(name[0]);
+		    	
 		         String fileType = files[i].getName().substring(files[i].getName().lastIndexOf('.')+1,files[i].getName().length());
 		             if(fileType.toLowerCase().equals("png")){
 		            	 stringArray.add(files[i].getPath());                    
@@ -116,33 +153,17 @@ public class Index extends MyPanel implements ActionListener{
 		
 	      if (e.getSource() == timer) {
 	    	  int value = progressbar.getValue();
-	    	  
+	    	  if(value > 400)
+	    		  value -= 400;
 	    	  if(value == index){
 	    		  progressbar.setValue(++value);
-	    		 
-	    		  player.setIcon(new ImageIcon(stringArray.get(value)));
-	    		  
-	    		 
+	    		  tempPlayer = RegisterList.getPlayerWithName(nameArray.get(value));
+	    		  playerIcon1.setIcon(new ImageIcon(stringArray.get(value)));
+	    		  playerInfo1.setText("POSITION : " + tempPlayer.getPosition().toUpperCase()); 
+	    		  playerInfo2.setText("NAME : " + tempPlayer.getPlayerName().toUpperCase());
+	    		  playerInfo3.setText("FROM : " + tempPlayer.getSchool().toUpperCase());
 	    	  }
-//	    	  else if(value == 1){
-//	    		  try {
-//						Thread.sleep(1000);
-//					} catch (InterruptedException e1) {
-//						e1.printStackTrace();
-//					}
-//		    		  progressbar.setValue(++value);
-//		    		  player.setIcon(new ImageIcon(stringArray.get(value)));
-//	    		  
-//	    	  }else if(value == 2){
-//	    		  try {
-//						Thread.sleep(1000);
-//					} catch (InterruptedException e1) {
-//						e1.printStackTrace();
-//					}
-//		    		  progressbar.setValue(++value);
-//		    		  player.setIcon(new ImageIcon(stringArray.get(value)));
-//	    	  }
-	    		
+	    	  MainFrame.refresh.doClick();
 	    	}
 
 	 }

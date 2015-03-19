@@ -20,6 +20,10 @@ public class ImageBin {
 		case "test" : return new ImageIcon(ImageFilePath + "index/test.png");
 		case "indexBackground2" : return new ImageIcon(ImageFilePath + "index/indexBackground2.png");
 		case "indexBackground3" : return new ImageIcon(ImageFilePath + "index/indexBackground3.png");
+		case "exit1" : return new ImageIcon(ImageFilePath + "all/exitButton1.png");
+		case "exit2" : return new ImageIcon(ImageFilePath + "all/exitButton2.png");
+		case "mini1" : return new ImageIcon(ImageFilePath + "all/miniButton1.png");
+		case "mini2" : return new ImageIcon(ImageFilePath + "all/miniButton2.png");
 		}
 		return null;
 	}

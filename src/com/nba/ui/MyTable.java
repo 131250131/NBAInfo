@@ -6,11 +6,13 @@ import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -35,6 +37,15 @@ public class MyTable extends JScrollPane{
 			         {"Oranges", new Integer(3),"6.00"},
 			         {"Pears", new Integer(2),"4.00"},
 			         {"Grapes", new Integer(3),"2.00"},
+			         {"Grapes", new Integer(3),"2.00"},
+			         {"Grapes", new Integer(3),"2.00"},
+			         {"Grapes", new Integer(3),"2.00"},
+			         {"Grapes", new Integer(3),"2.00"},
+			         {"Grapes", new Integer(3),"2.00"},
+			         {"Grapes", new Integer(3),"2.00"},
+			         {"Grapes", new Integer(3),"2.00"},
+			         {"Grapes", new Integer(3),"2.00"},
+			         {"Grapes", new Integer(3),"2.00"}
 			};
 
 		initial(temp,data);//初始化
@@ -45,7 +56,15 @@ public class MyTable extends JScrollPane{
 		this.setOpaque(false);//设置透明
 		this.getViewport().setOpaque(false);//设置透明
 		this.setBorder(null);//无边框
-		
+		//设置右上角颜色
+	    JLabel jb = new JLabel();
+        jb.setBackground(new Color(0.1f, 0.19f, 0.54f));
+        jb.setOpaque(true);
+        this.setCorner(JScrollPane.UPPER_RIGHT_CORNER, jb);
+	    //设置滚动条外观
+//        this.getVerticalScrollBar().setUI(new CustomScrollBarUI());
+        
+        
 		//用参数初始化model
 		model = new DefaultTableModel(content, columnNames);
 		table = new JSortTable(model);
@@ -53,16 +72,19 @@ public class MyTable extends JScrollPane{
 		
 		//表格的初始化 一些美化
 		table.setOpaque(false);
-		table.setSelectionForeground(Color.gray);
+		table.setSelectionForeground(Color.white);//选中字体颜色
+		table.getTableHeader().setReorderingAllowed(false);//列不可移动
+		
         DefaultTableCellRenderer render1 = new DefaultTableCellRenderer();   
         render1.setOpaque(false); //将渲染器设置为透明  
-        render1.setHorizontalAlignment(JLabel.CENTER);
+        render1.setHorizontalAlignment(JLabel.CENTER);//居中
         table.setDefaultRenderer(Object.class,render1);  
+        
         table.setForeground(Color.white);
         table.setBorder(null);
-		table.setFont(new Font("Arail", Font.PLAIN, 14));
-//		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-//		table.setSelectionBackground(Color.white);
+		table.setFont(new Font("Arail", Font.PLAIN, 14));//字体
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//固定大小
+		
 		
 		
 		JTableHeader head = table.getTableHeader();
@@ -104,6 +126,21 @@ public class MyTable extends JScrollPane{
 		int selectRow=table.getSelectedColumn();
 		table.setColumnSelectionInterval(selectRow+1, selectRow+1);
 	}
+	/*滚动条外观重写*/
+	class CustomScrollBarUI extends BasicScrollBarUI{
+		
+		protected void configureScrollBarColors(){
+			
+		}
+		protected JButton createDecreaseButton(int orientation){
+			return decrButton;
+			
+		}
+		protected JButton createIncreaseButton(int orientation){
+			return decrButton;
+			
+		}
+	}
 	/*test*/
 	public static void main(String[] args){
 		JFrame testF=new JFrame();
@@ -129,7 +166,7 @@ public class MyTable extends JScrollPane{
 		testJP.setBackground(Color.black);
 		
 		final MyTable testT=new MyTable();
-		testT.setBounds(0, 0, 960, 600);
+		testT.setBounds(0, 0, 60, 200);
 		
 		
 		testJP.add(testT);
