@@ -508,7 +508,18 @@ public class Player implements java.io.Serializable{
 		}
 
 		public double getAR() {
-			return (playerPlayTime==0)?0:playerAssists/(playerPlayTime/((teammatePlayTime+playerPlayTime)/5)*allTeamFT-playerFG);
+			if((teammatePlayTime+playerPlayTime)/5 == 0  || playerPlayTime == 0){
+				return 0;
+			}else{
+				double a = playerAssists;
+				double b = (teammatePlayTime + playerPlayTime);
+				double c = playerPlayTime;
+				double d = ( allTeamFT - playerFG );
+				
+				return a / (c / b / 5) *(d);
+				//return playerAssists / (playerPlayTime / (teammatePlayTime + playerPlayTime) / 5) * ( allTeamFT - playerFG );
+			}
+				
 		}
 
 		public double getSR() {

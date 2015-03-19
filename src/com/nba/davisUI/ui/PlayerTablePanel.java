@@ -51,13 +51,9 @@ public class PlayerTablePanel extends MyPanel{
 		data2 = new String[29][];
 		table = new MyTable(temp, data2);
 		
-		JScrollPane jsp=new JScrollPane(table);
-		jsp.setBounds(200, 130, 1000, 550);
-		jsp.getViewport().setBackground(new Color(0,0,0,0.3f));
-		jsp.setOpaque(false);
-		jsp.setBorder(BorderFactory.createEmptyBorder());
-		jsp.setVisible(true);
-		this.add(jsp);
+		table.setBounds(200, 130, 1000, 550);
+		table.setVisible(true);
+		this.add(table);
 		
 		getData();
 	}
