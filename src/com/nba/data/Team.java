@@ -167,9 +167,9 @@ public class Team implements java.io.Serializable{
 	//对手场均罚球出手数
 		double aver_oppoFTGTry;
 	//罚球命中率	
-		double teamFTP; 
+		double teamFTGP; 
 	//对手罚球命中率	
-		double oppoFTP; 
+		double oppoFTGP; 
 	//球队场均进攻篮板数
 		double aver_teamOffenceRebounds;
 	//对手场均进攻篮板数
@@ -221,6 +221,29 @@ public class Team implements java.io.Serializable{
 		//对手前场篮板数
 		int enemyOffenceRebounds;
 	
+		public int getTeamGames(){
+			return compGames;
+		}
+		
+		public int getteamFG(){
+			return teamFG;
+		}
+		
+		public int getTeamFGTry(){
+			return teamFGTry;
+		}
+		
+		public int getTeam3FG(){
+			return team3FG;
+		}
+		
+		public int getTeam3FGTry(){
+			return teamFGTry;
+		}
+		
+		public String getTeamName(){
+			return teamName;
+		}
 		
 		public double getWinRate() {
 			return winGames/(winGames+losGames);
@@ -234,6 +257,11 @@ public class Team implements java.io.Serializable{
 		public double getTeamDefE() {
 			return teamDefE;
 		}
+		
+		public double getTeamRebE(){
+			return teamTotalRebounds/(teamTotalRebounds+(enemyDeffenceRebounds+enemyOffenceRebounds));
+		}
+		
 		public double getTeamOffERebE() {
 			return teamOffenceRebounds/(teamOffenceRebounds+enemyDeffenceRebounds);
 		}
@@ -247,6 +275,55 @@ public class Team implements java.io.Serializable{
 			return teamAssE;
 		}
 	
+		public double getTeamFTG(){
+			return teamFTG;
+		}
+		
+		public double getTeamFTGTry(){
+			return teamFTGTry;
+		}
+		
+		public double getTeamAssists(){
+			return teamAssists;
+		}
+		
+		public double getTeamBlocks(){
+			return teamBlocks;
+		}
+		
+		public double getTeamSteals(){
+			return teamSteals;
+		}
+		
+		public double getTeamTurnovers(){
+			return teamTurnovers;
+		}
+		
+		public double getTeamFouls(){
+			return teamFouls;
+		}
+		
+		public double getTeamScores(){
+			return teamScores;
+		}
+		
+		public double getTeamFGP(){
+			return teamFGP;
+		}
+		
+		public double getTeam3FGP(){
+			return team3FGP;
+		}
+		
+		public double getTeamFTGP(){
+			return teamFTGP;
+		}
+		
+		public double getTeamAttackRounds(){
+			return attackRounds;
+		}
+		
+		
 		/*这个方法是来更新球队的总数据的，例如总助攻数，已经计算的常数，胜场数等等；
 		 *参数列表里面，前半部分是本队的数据，后半部分是兑换艘的数据
 		 *需要注意的是：那些需要计算的数据，例如 效率值什么都没写；
