@@ -75,6 +75,8 @@ public class Player implements java.io.Serializable{
 		playerAttends++;
 		playerPlayTime = playerPlayTime + time;
 		
+		//System.out.println(playerPlayTime);
+		
 		if(isStart){
 			startTimes++;
 		}
@@ -393,7 +395,7 @@ public class Player implements java.io.Serializable{
 		}
 		
 		public double getPlayerPlayTime(){
-			return playerPlayTime;
+			return (playerAttends==0)?0:(playerPlayTime / playerAttends) / 60;
 		}
 		
 		public int getPlayerSteals() {
@@ -478,18 +480,23 @@ public class Player implements java.io.Serializable{
 		}
 
 		public double getPlayerFGP() {
-			return (playerFGTry==0)?0:playerFG / playerFGTry;
+			System.out.println(playerFG + ";" + playerFGTry);
+			if(playerFGTry == 0){
+				return 0;
+			}else{
+				return Double.parseDouble(String.format("%.3f",(playerFG+0.0)/(playerFGTry+0.0)));
+			}
 		}
 
 		public double getPlayer3FGP() {
 			if (player3FGTry!= 0)
-				return player3FG / player3FGTry;
+				return Double.parseDouble(String.format("%.3f",(player3FG+0.0)/(player3FGTry+0.0)));
 			else
 				return 0;
 		}
 
 		public double getPlayerFTGP() {
-			return (playerFTGTry==0)?0:playerFTG / playerFTGTry;
+			return (playerFTGTry==0)?0:Double.parseDouble(String.format("%.3f",(playerFTG+0.0)/(playerFTGTry+0.0)));
 		}
 
 		public double getPlayerPER() {
@@ -498,29 +505,36 @@ public class Player implements java.io.Serializable{
 		}
 
 		public double getPlayerGmScER() {
-			return  (playerAttends==0)?0:(playerScores + 0.4 * playerFG - 0.7 * playerFGTry - 0.4 * (playerFTGTry - playerFTG)
+			return  (playerAttends==0)?0:
+				Double.parseDouble(String.format("%.3f",(playerScores + 0.4 * playerFG - 0.7 * playerFGTry - 0.4 * (playerFTGTry - playerFTG)
 					+ 0.7 * playerOffenceRebounds + 0.3 * playerDeffenceRebounds + playerSteals + 0.7 * playerAssists 
-					+ 0.7 * playerBlocks - 0.4 * playerFouls - playerTurnovers) / playerAttends;
+					+ 0.7 * playerBlocks - 0.4 * playerFouls - playerTurnovers) / playerAttends));
 		}
 
 		public double getPlayerTSP() {
-			return (playerFGTry==0)?0:playerScores / (2 * (playerFGTry + 0.44 * playerFTGTry));
+			return (playerFGTry==0)?0:Double.parseDouble(String.format("%.3f", (playerScores + 0.0)/ (2 * ((playerFGTry+0.0) + 0.44 * (playerFTGTry+0.0)))));
 		}
 
 		public double getPlayerSER() {
-			return (playerFGTry==0)?0:(playerFG + 0.5 * player3FG) / playerFGTry;
+			return (playerFGTry==0)?0: Double.parseDouble(String.format("%.3f",(((playerFG + 0.0) + 0.5 * (player3FG + 0.0)) / (playerFGTry + 0.0))));
 		}
 
 		public double getRR() {
-			return (playerPlayTime==0)?0:playerTotalRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(allTeamRebounds+allEnemyRebounds);
+			return (playerPlayTime==0)?0:
+				Double.parseDouble(String.format("%.3f",(playerTotalRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
+				/(playerPlayTime + 0.0)/((allTeamRebounds + 0.0)+(allEnemyRebounds + 0.0))));
 		}
 
 		public double getO_RR() {
-			return (playerPlayTime==0)?0:playerOffenceRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(o_allTeamRebounds+o_allEnemyRebounds);
+			return (playerPlayTime==0)?0:
+				Double.parseDouble(String.format("%.3f",(playerOffenceRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
+				/(playerPlayTime + 0.0)/((o_allTeamRebounds + 0.0)+(o_allEnemyRebounds + 0.0))));
 		}
 
 		public double getD_RR() {
-			return (playerPlayTime==0)?0:playerDeffenceRebounds*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/(d_allTeamRebounds+d_allEnemyRebounds);
+			return (playerPlayTime==0)?0:
+				Double.parseDouble(String.format("%.3f",(playerDeffenceRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
+				/(playerPlayTime + 0.0)/((d_allTeamRebounds + 0.0)+(d_allEnemyRebounds + 0.0))));
 		}
 
 		public double getAR() {
@@ -530,30 +544,35 @@ public class Player implements java.io.Serializable{
 				double a = playerAssists;
 				double b = (teammatePlayTime + playerPlayTime);
 				double c = playerPlayTime;
-				double d = ( allTeamFT - playerFG );
 				
-				return a / (c / b / 5) *(d);
+				return Double.parseDouble(String.format("%.3f",
+						playerAssists / (c / (b / 5) * allTeamFT - playerFG)                ));
 				//return playerAssists / (playerPlayTime / (teammatePlayTime + playerPlayTime) / 5) * ( allTeamFT - playerFG );
 			}
 				
 		}
 
 		public double getSR() {
-			return (playerPlayTime==0)?0:playerSteals*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyOffenceTimes;
+			return (playerPlayTime==0)?0:
+				Double.parseDouble(String.format("%.3f",playerSteals*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyOffenceTimes));
 		}
 
 		public double getBR() {
-			return (playerPlayTime==0)?0:playerBlocks*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemy2Shoots;
+			return (playerPlayTime==0)?0:
+				Double.parseDouble(String.format("%.3f",(playerBlocks + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))
+						/5)/(playerPlayTime + 0.0)/(allEnemy2Shoots + 0.0)));
 		}
 
 		public double getTR() {
-			return (playerPlayTime==0)?0:playerTurnovers/(playerFGTry - player3FGTry + 0.44 * playerFTGTry+playerTurnovers);
+			return (playerPlayTime==0)?0:
+				Double.parseDouble(String.format("%.3f",playerTurnovers/(playerFGTry - player3FGTry + 0.44 * playerFTGTry+playerTurnovers)));
 		}
 
 		public double getUR() {
-			return (playerPlayTime==0)?0:(playerFGTry+0.44*playerFTGTry+playerTurnovers)*
+			return (playerPlayTime==0)?0:
+				Double.parseDouble(String.format("%.3f",(playerFGTry+0.44*playerFTGTry+playerTurnovers)*
 					(teammatePlayTime+playerPlayTime)/5/playerPlayTime/
-					(allTeamShoots+0.44*allTeamFTShoots+allTeamTurnover);
+					(allTeamShoots+0.44*allTeamFTShoots+allTeamTurnover)));
 		}
 //		
 //        public double getdata(DataType d){
