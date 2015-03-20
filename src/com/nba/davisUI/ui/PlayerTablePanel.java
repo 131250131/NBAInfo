@@ -63,7 +63,7 @@ public class PlayerTablePanel extends MyPanel{
 		
 		Object[][] data = new Object[RegisterList.getPlayerNumber()][29];
 		
-		System.out.println(RegisterList.getPlayerNumber());
+		//System.out.println(RegisterList.getPlayerNumber());
 		
 		int index = 0;
 		
