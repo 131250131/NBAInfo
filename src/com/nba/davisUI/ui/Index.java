@@ -153,15 +153,20 @@ public class Index extends MyPanel implements ActionListener{
 		
 	      if (events.getSource() == timer) {
 	    	  int value = progressbar.getValue();
-	    	  if(value > 400)
-	    		  value -= 400;
+	    	  if(value > 490){
+	    		  	value -= 490;
+	    		  	index -= 490;
+	    	  		progressbar.setValue(value);
+	    	  }
 	    	  if(value == index){
 	    		  progressbar.setValue(++value);
 	    		  tempPlayer = RegisterList.getPlayerWithName(nameArray.get(value));
 	    		  playerIcon1.setIcon(new ImageIcon(stringArray.get(value)));
-	    		  playerInfo1.setText("POSITION : " + tempPlayer.getPosition().toUpperCase()); 
-	    		  playerInfo2.setText("NAME : " + tempPlayer.getPlayerName().toUpperCase());
-	    		  playerInfo3.setText("FROM : " + tempPlayer.getSchool().toUpperCase());
+	    		  if(tempPlayer!= null){
+	    			  playerInfo1.setText("POSITION : " + tempPlayer.getPosition().toUpperCase()); 
+	    		  	  playerInfo2.setText("NAME : " + tempPlayer.getPlayerName().toUpperCase());
+	    		  	  playerInfo3.setText("FROM : " + tempPlayer.getSchool().toUpperCase());
+	    		  }
 	    	  }
 	    	  MainFrame.refresh.doClick();
 	    	}
