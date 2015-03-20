@@ -53,10 +53,10 @@ public class MainFrame extends MyFrame{
 		
 		miniBt.addMouseListener(new MouseListenerOfThisFrame("miniBt"));
 		
-		openIndex = new MyButton();
+		openIndex = new MyButtonOfOpenIndex();
 		
 		
-		openPlayerTablePanel= new JButton();
+		openPlayerTablePanel= new MyButtonOfopenPlayerTablePanel();
 		openPlayerTablePanel.addMouseListener(new MouseListenerOfThisFrame("openPlayerTablePanel"));
 		
 		
@@ -89,10 +89,16 @@ public class MainFrame extends MyFrame{
 		//openPlayerTablePanel.doClick();
 	}
 	
-	class MyButton extends JButton{
+	class MyButtonOfOpenIndex extends JButton{
 		public void doClick(){
 			loadingPanel.setVisible(false);
 			index.setVisible(true);
+		}
+	}
+	class MyButtonOfopenPlayerTablePanel extends JButton{
+		public void doClick(){
+			index.setVisible(false);
+			playerTablePanel.setVisible(true);
 		}
 	}
 	class MouseListenerOfThisFrame implements MouseListener{
@@ -110,11 +116,7 @@ public class MainFrame extends MyFrame{
 		@Override
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
-			if(s.equals("openPlayerTablePanel")){
-				index.setVisible(false);
-				playerTablePanel.setVisible(true);
-			}
-			else if(s.equals("exitBt")){
+			if(s.equals("exitBt")){
 				System.exit(0);
 			}
 			else if(s.equals("miniBt")){
