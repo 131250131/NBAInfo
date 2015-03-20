@@ -1,12 +1,10 @@
 package com.nba.ui;
 
-import java.awt.AWTEvent;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.Toolkit;
-import java.awt.event.AWTEventListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.util.Enumeration;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -18,7 +16,9 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 public class MyTable extends JScrollPane{
 	
@@ -89,31 +89,28 @@ public class MyTable extends JScrollPane{
 		//表格的初始化 一些美化
 		table.setOpaque(false);
 		table.setSelectionForeground(Color.black);//选中字体颜色
-		table.setSelectionBackground(Color.yellow);
+		table.setSelectionBackground(Color.gray);
 		table.setBackground(Color.BLACK);
 		table.getTableHeader().setReorderingAllowed(false);//列不可移动
 		
 		render1= new DefaultTableCellRenderer();   
-//        render1.setOpaque(false); //将渲染器设置为透明  
         render1.setHorizontalAlignment(JLabel.CENTER);//居中
         table.setDefaultRenderer(Object.class,render1);  
         
         table.setForeground(Color.white);
         table.setBorder(null);
 		table.setFont(new Font("Arail", Font.PLAIN, 14));//字体
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//固定大小
+		
 		
 		//表头
 		JTableHeader head = table.getTableHeader();
 		head.setBackground(new Color(0.1f, 0.19f, 0.54f));
 		head.setForeground(Color.WHITE);
 		head.setResizingAllowed(false);
-		
+		//列宽
+		setWidth();
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//固定大小
  
-//        //DefaultTableCellRenderer类可以绘制单元格的背景、字体颜色等功能   
-//        backGroundColor= new DefaultTableCellRenderer();   
-//        //绘制部门列的背景为黄色   
-//        backGroundColor.setBackground(Color.yellow);   
 
         //将表格装载到滚动板上
         this.setViewportView(table);
@@ -127,8 +124,32 @@ public class MyTable extends JScrollPane{
 	/*更新表格数据*/
 	public void update(String[] columnNames,Object[][] content){
 		model.setDataVector(content, columnNames);
+		setWidth();
 		table.updateUI();
 	}
+	// 取得列幅的最大值
+	public int getPreferredWidthForCloumn(JTable table,int icol){
+	
+	    TableColumnModel tcl = table.getColumnModel();
+	    TableColumn col = tcl.getColumn(icol);
+	    int c = col.getModelIndex(),width = 0,maxw = 0;
+	
+	    for(int r=0;r<table.getRowCount();++r){
+	
+	      TableCellRenderer renderer = table.getCellRenderer(r,c);
+	      Component comp = renderer.getTableCellRendererComponent(table,table.getValueAt(r,c),false,false,r,c);
+	      width = comp.getPreferredSize().width;
+	      maxw = width > maxw?width:maxw;
+	    }
+	    return maxw;
+	}
+    public void setWidth(){
+        for(int i= 0; i<table.getColumnCount(); i++){
+            int with = this.getPreferredWidthForCloumn(table,i) + 10;
+            with = 100 > with ? 100 : with;
+            table.getColumnModel().getColumn(i).setPreferredWidth(with);
+          }
+    }
 	/*检查越界并规范*/
 	int avoidOverBoundary(int selectRow){
 		int result=selectRow;
