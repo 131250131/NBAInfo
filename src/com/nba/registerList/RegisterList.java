@@ -42,6 +42,10 @@ public class RegisterList {
 		byte[] nameBytes = _playerName.getBytes();
 		int currentIndex = nameBytes[0] - 65;
 		currentIndexInSaveList = currentIndex;
+		
+		if(currentIndex < 0 || currentIndex >= 27){
+			return null;
+		}
 		@SuppressWarnings("unchecked")
 		ArrayList<Player> playerList = (ArrayList<Player>) saveList.get(currentIndex);
 		

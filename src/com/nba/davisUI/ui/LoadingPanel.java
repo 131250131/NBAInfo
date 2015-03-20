@@ -27,7 +27,7 @@ public class LoadingPanel extends MyPanel implements ActionListener{
 	public LoadingPanel(){
 		this.setBounds(0, 0, 1280, 720);
 		
-		timer = new Timer(7, this);;
+		timer = new Timer(3, this);;
 		
 		progressbar = new JProgressBar();
 		progressbar.setOrientation(JProgressBar.HORIZONTAL);
@@ -84,7 +84,7 @@ public class LoadingPanel extends MyPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource() == enterButton){
-				MainFrame.openPlayerTablePanel.doClick();
+				MainFrame.openIndex.doClick();
 		}
 				
 		int waitTime = 50;// 350
@@ -93,7 +93,7 @@ public class LoadingPanel extends MyPanel implements ActionListener{
 	           
 	           if (value == 0){
 	        	   try {
-						Thread.sleep(1100);
+						Thread.sleep(200);
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}

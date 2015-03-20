@@ -27,7 +27,7 @@ public class MainFrame extends MyFrame implements ActionListener{
 	JLabel exitButton, mimiButton;
 	JButton exitBt, miniBt;
 	
-	public static JButton openPlayerTablePanel, refresh;
+	public static JButton openPlayerTablePanel, refresh, openIndex;
 	public MainFrame(){
 		
 		this.setLayout(null);
@@ -78,9 +78,9 @@ public class MainFrame extends MyFrame implements ActionListener{
 			}
 			}); 
 		
-		
-		loadingPanel = new LoadingPanel();	
-		this.add(loadingPanel);
+		openIndex = new JButton();
+		openIndex.addActionListener(this);
+		this.add(openIndex);
 		
 		openPlayerTablePanel= new JButton();
 		openPlayerTablePanel.addActionListener(this);
@@ -90,20 +90,33 @@ public class MainFrame extends MyFrame implements ActionListener{
 		refresh.addActionListener(this);
 		this.add(refresh);
 		
+		
+		index = new Index();
+		index.setVisible(false);
+		this.add(index);
+		
+		loadingPanel = new LoadingPanel();	
+		this.add(loadingPanel);
+		
+		playerTablePanel=new PlayerTablePanel();
+		playerTablePanel.setVisible(false);
+		this.add(playerTablePanel);
+		
+		
 		//
 		//openPlayerTablePanel.doClick();
 	}
 	
 	public void actionPerformed(ActionEvent events) {
 		
+		if(events.getSource() == openIndex){
+			loadingPanel.setVisible(false);
+			index.setVisible(true);
+		}
 		
 		if(events.getSource() == openPlayerTablePanel){
-			playerTablePanel=new PlayerTablePanel();
-			this.add(playerTablePanel);
-//			index = new Index();
-//			this.add(index);
-			loadingPanel.setVisible(false);
-			
+			index.setVisible(false);
+			playerTablePanel.setVisible(true);
 		}
 		
 		if(events.getSource() == exitBt){
