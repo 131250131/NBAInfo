@@ -5,18 +5,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import com.nba.davisUI.myUI.ImageBin;
 import com.nba.davisUI.myUI.MyFrame;
 
 
-public class MainFrame extends MyFrame implements ActionListener{
+public class MainFrame extends MyFrame{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -24,114 +24,138 @@ public class MainFrame extends MyFrame implements ActionListener{
 	LoadingPanel loadingPanel;
 	PlayerTablePanel playerTablePanel;
 	Index index;
-	JLabel exitButton, mimiButton;
-	JButton exitBt, miniBt;
+	JLabel exitBt, miniBt;
 	
 	public static JButton openPlayerTablePanel, refresh, openIndex;
 	public MainFrame(){
 		
 		this.setLayout(null);
 		
-		exitButton = new JLabel(ImageBin.getImage("exit1"));
-		exitButton.setBounds(0, 0, 1280, 720);
-		exitButton.setVisible(true);
-		this.add(exitButton);
 		
-		mimiButton = new JLabel(ImageBin.getImage("mini1"));
-		mimiButton.setBounds(0, 0, 1280, 720);
-		mimiButton.setVisible(true);
-		this.add(mimiButton);
 		
-		exitBt = new JButton();
-		exitBt.setBounds(1280 - 28, 0, 28, 33);
-		exitBt.setOpaque(false);
-		exitBt.setBackground(null);
-		exitBt.setBorder(BorderFactory.createEmptyBorder());
-		exitBt.setContentAreaFilled(false);
+		exitBt = new JLabel(ImageBin.getImage("exit1"));
+		exitBt.setBounds(1280 - 24, 0, 24, 24);
+//		exitBt.setOpaque(false);
+//		exitBt.setBackground(null);
+//		exitBt.setBorder(BorderFactory.createEmptyBorder());
+//		exitBt.setContentAreaFilled(false);
 		
-		this.add(exitBt);
-		exitBt.addActionListener(this);
-		exitBt.addMouseListener(new MouseAdapter(){
-			public void mouseEntered(MouseEvent arg0) {
-				exitButton.setIcon(ImageBin.getImage("exit2"));
-			}
-			public void mouseExited(MouseEvent arg0) {
-				exitButton.setIcon(ImageBin.getImage("exit1"));
-			}
-			}); 
 		
-		miniBt = new JButton();
-		miniBt.setBounds(1280 - 25 - 28, 0, 25, 33);
-		miniBt.setOpaque(false);
-		miniBt.setBackground(null);
-		miniBt.setBorder(BorderFactory.createEmptyBorder());
-		miniBt.setContentAreaFilled(false);
+		exitBt.addMouseListener(new MouseListenerOfThisFrame("exitBt"));
 		
-		this.add(miniBt);
-		miniBt.addActionListener(this);
-		miniBt.addMouseListener(new MouseAdapter(){
-			public void mouseEntered(MouseEvent arg0) {
-				mimiButton.setIcon(ImageBin.getImage("mini2"));
-			}
-			public void mouseExited(MouseEvent arg0) {
-				mimiButton.setIcon(ImageBin.getImage("mini1"));
-			}
-			}); 
+		miniBt = new JLabel(ImageBin.getImage("mini1"));
+		miniBt.setBounds(1280 -24*2, 0, 24, 24);
+//		miniBt.setOpaque(false);
+//		miniBt.setBackground(null);
+//		miniBt.setBorder(BorderFactory.createEmptyBorder());
+//		miniBt.setContentAreaFilled(false);
 		
-		openIndex = new JButton();
-		openIndex.addActionListener(this);
-		this.add(openIndex);
+		
+		miniBt.addMouseListener(new MouseListenerOfThisFrame("miniBt"));
+		
+		openIndex = new MyButton();
+		
 		
 		openPlayerTablePanel= new JButton();
-		openPlayerTablePanel.addActionListener(this);
-		this.add(openPlayerTablePanel);
+		openPlayerTablePanel.addMouseListener(new MouseListenerOfThisFrame("openPlayerTablePanel"));
+		
 		
 		refresh = new JButton();
-		refresh.addActionListener(this);
-		this.add(refresh);
+		refresh.addMouseListener(new MouseListenerOfThisFrame("refresh"));
+		
 		
 		
 		index = new Index();
 		index.setVisible(false);
-		this.add(index);
+		
 		
 		loadingPanel = new LoadingPanel();	
-		this.add(loadingPanel);
+		
 		
 		playerTablePanel=new PlayerTablePanel();
 		playerTablePanel.setVisible(false);
-		this.add(playerTablePanel);
 		
+		
+		this.add(exitBt,0);
+		this.add(miniBt,1);
+		this.add(index,2);
+		this.add(openPlayerTablePanel,3);
+		this.add(loadingPanel,4);
+		this.add(playerTablePanel,5);
+		this.add(openIndex,6);
+		this.add(refresh,7);
 		
 		//
 		//openPlayerTablePanel.doClick();
 	}
 	
-	public void actionPerformed(ActionEvent events) {
-		
-		if(events.getSource() == openIndex){
+	class MyButton extends JButton{
+		public void doClick(){
 			loadingPanel.setVisible(false);
 			index.setVisible(true);
 		}
-		
-		if(events.getSource() == openPlayerTablePanel){
-			index.setVisible(false);
-			playerTablePanel.setVisible(true);
+	}
+	class MouseListenerOfThisFrame implements MouseListener{
+
+		String s;
+		public MouseListenerOfThisFrame(String s){
+			this.s=s;
 		}
-		
-		if(events.getSource() == exitBt){
-			System.exit(0);
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
-		
-		if(events.getSource() == miniBt){
-			this.setExtendedState(JFrame.ICONIFIED);
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if(s.equals("openPlayerTablePanel")){
+				index.setVisible(false);
+				playerTablePanel.setVisible(true);
+			}
+			else if(s.equals("exitBt")){
+				System.exit(0);
+			}
+			else if(s.equals("miniBt")){
+			
+				MainFrame.this.setExtendedState(JFrame.ICONIFIED);
+			}
+			else if(s.equals("refresh")){
+				miniBt.setIcon(ImageBin.getImage("mini1"));
+				exitBt.setIcon(ImageBin.getImage("exit1"));
+			}
 		}
-		
-		if(events.getSource() == refresh){
-			mimiButton.setIcon(ImageBin.getImage("mini1"));
-			exitButton.setIcon(ImageBin.getImage("exit1"));
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
 		}
-		
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if(s.equals("exitBt")){
+				exitBt.setIcon(ImageBin.getImage("exit2"));
+			}
+			else if(s.equals("miniBt")){
+			
+				miniBt.setIcon(ImageBin.getImage("mini2"));
+			}
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			if(s.equals("exitBt")){
+				exitBt.setIcon(ImageBin.getImage("exit1"));
+			}
+			else if(s.equals("miniBt")){
+			
+				miniBt.setIcon(ImageBin.getImage("mini1"));
+			}
+		}
 		
 	}
 	

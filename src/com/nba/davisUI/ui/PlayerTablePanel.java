@@ -1,19 +1,12 @@
 package com.nba.davisUI.ui;
 
 import java.awt.Color;
-
-
-
-
-
-
-
 import java.util.ArrayList;
 
-import javax.swing.BorderFactory;
-import javax.swing.JScrollPane;
+import javax.swing.JLabel;
 
 import com.nba.data.Player;
+import com.nba.davisUI.myUI.ImageBin;
 import com.nba.davisUI.myUI.MyPanel;
 import com.nba.registerList.RegisterList;
 import com.nba.ui.MyTable;
@@ -51,9 +44,17 @@ public class PlayerTablePanel extends MyPanel{
 		data2 = new String[29][];
 		table = new MyTable(temp, data2);
 		
-		table.setBounds(200, 130, 1000, 550);
+		//背景
+		JLabel bg=new JLabel();
+		bg.setIcon(ImageBin.getImage("bgOfPlayer"));
+		bg.setBounds(0, 0, 1280, 720);
+		
+		table.setBounds(320, 380, 900, 300);
 		table.setVisible(true);
-		this.add(table);
+		
+		
+		this.add(table,0);
+		this.add(bg,1);
 		
 		getData();
 	}
