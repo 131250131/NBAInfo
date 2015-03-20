@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 
 
 
+
 import com.nba.data.Player;
 import com.nba.data.Team;
 import com.nba.data.FilePathSaver;
@@ -25,10 +26,23 @@ public class MatchFileReader {
 	//该方法将会读取比赛信息文件夹中所有球员的信息
 	public void readAll() throws Exception{	
 		File file = new File(filePath);                
-		File[] matchFile = file.listFiles();  
+		File[] matchFile = file.listFiles();
+		
+		int index = 0;
+		
+		for(int i = 0; i < matchFile.length; i++){
+			String[] a = matchFile[i].toString().split("_");
+			String[] b = a[1].split("-");
+			int c = Integer.parseInt(b[0]);
+			if(c > 7)
+				index = i;
+		}
 
-		for(int i = 0; i < matchFile.length; i++)
-			readOne(matchFile[i]);	
+		for(int i = index; i < matchFile.length; i++)
+			readOne(matchFile[i]);
+		
+		for(int i = 0; i < index; i++)
+			readOne(matchFile[i]);
 	}
 	
 	//该方法将会对每一当场比赛信息进行读取工作
@@ -119,7 +133,7 @@ public class MatchFileReader {
 			
 			initInfo();
 			
-			System.out.println(lineTxt + (-(Main.T - (double)System.currentTimeMillis())/1000) + "s");
+			//System.out.println(lineTxt + (-(Main.T - (double)System.currentTimeMillis())/1000) + "s");
 			
 			String[] teamInfoStage1 = lineTxt.split(";");
 			
@@ -265,6 +279,7 @@ public class MatchFileReader {
 		for(int i = 0; i < counter; i++){
 				
 			Player tempPlayer = RegisterList.getPlayerWithName(playerName[i]);
+
 			
 			if(tempPlayer == null){			
 				Player newPlayer = new Player(playerName[i], null, null, null, null, null, null, null, null);
@@ -280,6 +295,7 @@ public class MatchFileReader {
 						leftTeamTotalRebounds, rightTeamTotalRebounds, leftTeamOffenceRebounds, rightTeamOffenceRebounds,
 						leftTeamDeffenceRebounds, rightTeamDeffenceRebounds, leftTeamFG, leftTeamFGTry, (rightTeamFGTry - rightTeam3FGTry),
 						leftTeamFTGTry, leftTeamTurnovers, rightOffenceTimes);
+				tempPlayer.updateTeamShortName(leftTeamShortName);
 			}else{
 				tempPlayer.updatePlayer(playerTime[i], playerIsStart[i], playerFG[i], playerFGTry[i],
 						player3FG[i], player3FGTry[i], playerFTG[i], playerFTGTry[i], playerOffenceRebounds[i],
@@ -288,6 +304,7 @@ public class MatchFileReader {
 						rightTeamTotalRebounds, leftTeamTotalRebounds, rightTeamOffenceRebounds, leftTeamOffenceRebounds,
 						rightTeamDeffenceRebounds, leftTeamDeffenceRebounds, rightTeamFG, rightTeamFGTry, (leftTeamFGTry - leftTeam3FGTry),
 						rightTeamFTGTry, rightTeamTurnovers, leftOffenceTimes);	
+				tempPlayer.updateTeamShortName(rightTeamShortName);
 			}
 			
 			RegisterList.updatePlayer(tempPlayer);

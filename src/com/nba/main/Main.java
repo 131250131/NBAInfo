@@ -3,6 +3,7 @@ package com.nba.main;
 
 import com.nba.davisUI.ui.MainFrame;
 import com.nba.initProcess.InitProcess;
+import com.nba.registerList.RegisterList;
 
 
 public class Main {
@@ -18,7 +19,7 @@ public class Main {
 		//**************************PROCESS START**************************
 		//开启软件时通过InitProcess来初始化进程
 				InitProcess initProcess = new InitProcess();
-				initProcess.init();		
+				initProcess.init();	
 		//UI TEST
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);

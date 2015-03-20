@@ -62,8 +62,13 @@ public class PlayerListBuilder {
 			String[] splitNameStage1 = lineTxt.split("│");
 			String[] splitNameStage2 = splitNameStage1[1].split("	");
 			String[] splitNameStage3 = splitNameStage2[0].split("║");
+		
 			String[] splitNameStage4 = splitNameStage3[0].split("[.]");
-			temp_playerName = splitNameStage4[0];
+			if(splitNameStage4[0].length() < 2){
+				temp_playerName = splitNameStage3[0];
+			}else{
+				temp_playerName = splitNameStage4[0];
+			}
 			break;
 		case 3:
 			String[] splitNumberStage1 = lineTxt.split("│");

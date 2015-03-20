@@ -138,6 +138,14 @@ public class Player implements java.io.Serializable{
 		return playerTotalRebounds;
 	}
 	
+	///////////////////////////////////////////////////////
+	String teamShortName;
+	
+	public void updateTeamShortName(String _teamShortName){	
+		teamShortName = _teamShortName;
+	}
+	
+	
 //	public String get
 	
 	//球员类， 用序列号进行保存
