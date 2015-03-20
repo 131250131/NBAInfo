@@ -94,7 +94,7 @@ public class Index extends MyPanel implements ActionListener{
 		enterButton.setBackground(null);
 		enterButton.setBorder(BorderFactory.createEmptyBorder());
 		enterButton.setContentAreaFilled(false);
-
+		enterButton.addActionListener(this);
 		this.add(enterButton);
 		enterButton.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0) {
@@ -113,7 +113,7 @@ public class Index extends MyPanel implements ActionListener{
 		enterButton2.setBackground(null);
 		enterButton2.setBorder(BorderFactory.createEmptyBorder());
 		enterButton2.setContentAreaFilled(false);
-
+		enterButton2.addActionListener(this);
 		this.add(enterButton2);
 		enterButton2.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0) {
@@ -149,9 +149,9 @@ public class Index extends MyPanel implements ActionListener{
 	
 	int index = 0;
 	
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent events) {
 		
-	      if (e.getSource() == timer) {
+	      if (events.getSource() == timer) {
 	    	  int value = progressbar.getValue();
 	    	  if(value > 400)
 	    		  value -= 400;
@@ -165,6 +165,10 @@ public class Index extends MyPanel implements ActionListener{
 	    	  }
 	    	  MainFrame.refresh.doClick();
 	    	}
+	      
+	      if(events.getSource() == enterButton){
+	    	  MainFrame.openPlayerTablePanel.doClick();
+	      }
 
 	 }
 }
