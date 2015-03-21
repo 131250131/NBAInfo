@@ -216,10 +216,6 @@ public class Team implements java.io.Serializable{
 		private double teamAssE;
 
 		/*计算需要的对手数据*/
-		//对手防守篮板数
-		int enemyDeffenceRebounds;
-		//对手前场篮板数
-		int enemyOffenceRebounds;
 	
 		public int getTeamGames(){
 			return compGames;
@@ -246,34 +242,54 @@ public class Team implements java.io.Serializable{
 		}
 		
 		public double getWinRate() {
-			return winGames/(winGames+losGames);
+			return Double.parseDouble(String.format("%.3f", (winGames + 0.0)/(winGames+losGames)));
 		}
 		public double getAttackRounds() {
-			return teamFGTry+0.4*teamFTGTry-1.07*(teamOffenceRebounds/(teamOffenceRebounds+enemyDeffenceRebounds)*(teamFGTry-teamFG))+1.07*teamTurnovers;
+			return teamFGTry+0.4*teamFTGTry-1.07*(teamOffenceRebounds/(teamOffenceRebounds+oppoDeffenceRebounds)*(teamFGTry-teamFG))+1.07*teamTurnovers;
 		}
+		
+		/////////////////////////////////////////////
 		public double getTeamOffE() {
 			return teamOffE;
 		}
 		public double getTeamDefE() {
 			return teamDefE;
 		}
-		
+		//////////////////////////////////////////////////////
 		public double getTeamRebE(){
-			return teamTotalRebounds/(teamTotalRebounds+(enemyDeffenceRebounds+enemyOffenceRebounds));
+
+			
+			return  Double.parseDouble(String.format("%.3f",
+					(teamTotalRebounds + 0.0)/((teamTotalRebounds + 0.0)+((oppoDeffenceRebounds + 0.0)+(oppoOffenceRebounds + 0.0)))));
+		}
+		
+		public int getTeamOffenceRebounds(){
+			return teamOffenceRebounds;
+		}
+		
+		public int getTeamDeffenceRebounds(){
+			return teamDeffenceRebounds;
+		}
+		
+		public int getTeamAllRebounds(){
+			return teamOffenceRebounds + teamDeffenceRebounds;
 		}
 		
 		public double getTeamOffERebE() {
-			return teamOffenceRebounds/(teamOffenceRebounds+enemyDeffenceRebounds);
+			return teamOffenceRebounds/(teamOffenceRebounds+oppoDeffenceRebounds);
 		}
 		public double getTeamDefERebE() {
-			return teamDeffenceRebounds/(teamDeffenceRebounds+enemyOffenceRebounds);
+			return teamDeffenceRebounds/(teamDeffenceRebounds+oppoOffenceRebounds);
 		}
+		
+		//////////////////////////////////////////////////
 		public double getTeamSteE() {
 			return teamSteE;
 		}
 		public double getTeamAssE() {
 			return teamAssE;
 		}
+		////////////////////////////////////////////////
 	
 		public double getTeamFTG(){
 			return teamFTG;
@@ -308,19 +324,19 @@ public class Team implements java.io.Serializable{
 		}
 		
 		public double getTeamFGP(){
-			return teamFGP;
+			return Double.parseDouble(String.format("%.3f",(teamFG + 0.0) / (teamFGTry + 0.0)));
 		}
 		
 		public double getTeam3FGP(){
-			return team3FGP;
+			return Double.parseDouble(String.format("%.3f",(team3FG + 0.0) / (team3FGTry + 0.0)));
 		}
 		
 		public double getTeamFTGP(){
-			return teamFTGP;
+			return Double.parseDouble(String.format("%.3f",(teamFTG + 0.0) / (teamFTGTry + 0.0)));
 		}
 		
 		public double getTeamAttackRounds(){
-			return attackRounds;
+			return  Double.parseDouble(String.format("%.3f",attackRounds));
 		}
 		
 		

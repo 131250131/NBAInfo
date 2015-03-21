@@ -174,6 +174,10 @@ public class Index extends MyPanel implements ActionListener{
 	      if(events.getSource() == enterButton){
 	    	  MainFrame.openPlayerTablePanel.doClick();
 	      }
+	      
+	      if(events.getSource() == enterButton2){
+	    	  MainFrame.openTeamTabelPanel.doClick();
+	      }
 
 	 }
 }

@@ -3,11 +3,9 @@ package com.nba.davisUI.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,23 +14,23 @@ import com.nba.davisUI.myUI.ImageBin;
 import com.nba.davisUI.myUI.MyFrame;
 
 
-public class MainFrame extends MyFrame{
+public class MainFrame extends MyFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
 	
 	
 	LoadingPanel loadingPanel;
 	PlayerTablePanel playerTablePanel;
+	TeamTablePanel teamTablePanel;
 	Index index;
 	JLabel exitBt, miniBt;
 	
-	public static JButton openPlayerTablePanel, refresh, openIndex;
+	public static JButton openPlayerTablePanel, refresh, openIndex, openTeamTabelPanel;
 	public MainFrame(){
 		
 		this.setLayout(null);
 		
-		
-		
+	
 		exitBt = new JLabel(ImageBin.getImage("exit1"));
 		exitBt.setBounds(1280 - 24, 0, 24, 24);
 //		exitBt.setOpaque(false);
@@ -56,9 +54,13 @@ public class MainFrame extends MyFrame{
 		openIndex = new MyButtonOfOpenIndex();
 		
 		
-		openPlayerTablePanel= new MyButtonOfopenPlayerTablePanel();
+		openPlayerTablePanel = new MyButtonOfopenPlayerTablePanel();
 		openPlayerTablePanel.addMouseListener(new MouseListenerOfThisFrame("openPlayerTablePanel"));
 		
+		
+		openTeamTabelPanel = new JButton();
+		openTeamTabelPanel.addActionListener(this);
+		this.add(openTeamTabelPanel);
 		
 		refresh = new JButton();
 		refresh.addMouseListener(new MouseListenerOfThisFrame("refresh"));
@@ -75,6 +77,9 @@ public class MainFrame extends MyFrame{
 		playerTablePanel=new PlayerTablePanel();
 		playerTablePanel.setVisible(false);
 		
+		teamTablePanel = new TeamTablePanel();
+		teamTablePanel.setVisible(false);
+		this.add(teamTablePanel);
 		
 		this.add(exitBt,0);
 		this.add(miniBt,1);
@@ -89,12 +94,14 @@ public class MainFrame extends MyFrame{
 		//openPlayerTablePanel.doClick();
 	}
 	
+	@SuppressWarnings("serial")
 	class MyButtonOfOpenIndex extends JButton{
 		public void doClick(){
 			loadingPanel.setVisible(false);
 			index.setVisible(true);
 		}
 	}
+	@SuppressWarnings("serial")
 	class MyButtonOfopenPlayerTablePanel extends JButton{
 		public void doClick(){
 			index.setVisible(false);
@@ -157,6 +164,16 @@ public class MainFrame extends MyFrame{
 			
 				miniBt.setIcon(ImageBin.getImage("mini1"));
 			}
+		}
+		
+	}
+	@Override
+	public void actionPerformed(ActionEvent events) {
+		// TODO Auto-generated method stub
+		
+		if(events.getSource() == openTeamTabelPanel){
+			index.setVisible(false);
+			teamTablePanel.setVisible(true);
 		}
 		
 	}

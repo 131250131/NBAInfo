@@ -8,6 +8,7 @@ import com.nba.davisUI.myUI.MyPanel;
 import com.nba.registerList.RegisterList;
 import com.nba.ui.MyTable;
 
+@SuppressWarnings("serial")
 public class TeamTablePanel extends MyPanel{
 	
 		MyTable table;
@@ -30,12 +31,13 @@ public class TeamTablePanel extends MyPanel{
 			 * */
 			
 			String[] temp ={ "球队名称","比赛场数","投篮命中数","投篮出手次数","三分命中数，",
-					"三分出手数","罚球命中数，","罚球出手数，","进攻篮板数，","防守篮板数，","篮板数，","助攻数，",
-					"抢断数","盖帽数，","失误数，","犯规数，","比赛得分，", "投篮命中率，","三分命中率，",
-					"罚球命中率","胜率","进攻回合，","进攻效率，","防守效率，","篮板效率，","抢断效率，","助功率"};
+					"三分出手数","罚球命中数","罚球出手数","进攻篮板数","防守篮板数","篮板数","助攻数",
+					"抢断数","盖帽数","失误数","犯规数","比赛得分", "投篮命中率","三分命中率",
+					"罚球命中率","胜率","进攻回合","进攻效率","防守效率","篮板效率","抢断效率","助功率"};
 			temp2 = temp;
 			data2 = new String[29][];
 			table = new MyTable(temp, data2);
+			
 			
 			table.setBounds(200, 130, 1000, 550);
 			table.setVisible(true);
@@ -59,10 +61,10 @@ public class TeamTablePanel extends MyPanel{
 			for(int i=0;i < size;i++){
 				Team tempTeam = teamList.get(i);
 				/*
-				 * "球队名称","比赛场数","投篮命中数","投篮出手次数","三分命中数，",
-					"三分出手数","罚球命中数，","罚球出手数，","进攻篮板数，","防守篮板数，","篮板数，","助攻数，",
-					"抢断数","盖帽数，","失误数，","犯规数，","比赛得分，", "投篮命中率，","三分命中率，",
-					"罚球命中率","胜率","进攻回合，","进攻效率，","防守效率，","篮板效率，","抢断效率，","助功率"
+				 * "球队名称","比赛场数","投篮命中数","投篮出手次数","三分命中数",
+					"三分出手数","罚球命中数","罚球出手数","进攻篮板数","防守篮板数","篮板数","助攻数",
+					"抢断数","盖帽数","失误数","犯规数","比赛得分", "投篮命中率","三分命中率",
+					"罚球命中率","胜率","进攻回合","进攻效率","防守效率","篮板效率","抢断效率","助功率"
 				 * */
 				data[index][0] = tempTeam.getTeamShortName();
 				data[index][1] = tempTeam.getTeamGames();
@@ -72,9 +74,9 @@ public class TeamTablePanel extends MyPanel{
 				data[index][5] = tempTeam.getTeam3FGTry();
 				data[index][6] = tempTeam.getTeamFTG();
 				data[index][7] = tempTeam.getTeamFTGTry();
-				data[index][8] = tempTeam.getTeamOffERebE();
-				data[index][9] = tempTeam.getTeamDefERebE();
-				data[index][10] = tempTeam.getTeamDefERebE()+tempTeam.getTeamOffERebE();
+				data[index][8] = tempTeam.getTeamOffenceRebounds();
+				data[index][9] = tempTeam.getTeamDeffenceRebounds();
+				data[index][10] = tempTeam.getTeamAllRebounds();
 				data[index][11] = tempTeam.getTeamAssists();
 				data[index][12] = tempTeam.getTeamSteals();
 				data[index][13] = tempTeam.getTeamBlocks();
@@ -92,7 +94,7 @@ public class TeamTablePanel extends MyPanel{
 				data[index][25] = tempTeam.getTeamSteE();
 				data[index][26] = tempTeam.getTeamAssE();
 
-				
+				index++;
 			}
 			table.update(temp2, data);
 		}
