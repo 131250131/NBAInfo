@@ -5,14 +5,18 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Enumeration;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.Timer;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +27,8 @@ import javax.swing.table.TableColumnModel;
 
 public class MyTable extends JScrollPane{
 	
+	Timer timer;
+	
 	private static final long serialVersionUID = 1L;
 
 	JSortTable table;
@@ -32,6 +38,22 @@ public class MyTable extends JScrollPane{
 	int downLimit;
 	int leftLimit=0;
 	int rightLimit;
+	
+//	public void actionPerformed(ActionEvent e) {
+//		if (e.getSource() == timer){
+//				
+//		 	if(table.getSelectedRowCount() == 1){
+//		 		
+//		 		int x = table.getSelectedRow();
+//		 		int y = table.getSelectedColumn();
+//		 		
+//		 		System.out.println( x + ";" + y);
+//		 		
+//		 		table.addRowSelectionInterval(x, x);
+//		 		table.addColumnSelectionInterval(y, y);  
+//		 	}
+//	 	}
+//	 }
 	
 	public JTable getTable(){
 		return table;
@@ -44,10 +66,13 @@ public class MyTable extends JScrollPane{
 	/*以数据为参数构造表格*/
 	public MyTable(String[] columnNames,Object[][] content){
 		initial(columnNames,content);//初始化
+		
+//		timer = new Timer(10, this);
+//		timer.start();
+			
 	}
 	/*空表格构造*/
 	public MyTable(){
-		
 		String[] temp={"未命名1","未命名2","未命名3"};
 		Object[][] data =
 			{
@@ -106,7 +131,7 @@ public class MyTable extends JScrollPane{
 		//表格的初始化 一些美化
 		table.setOpaque(false);
 		table.setSelectionForeground(new Color(0, 0, 0, 0.999f));//选中字体颜色
-		table.setSelectionBackground(new Color(1, 1, 1, 0.999f));
+		table.setSelectionBackground(new Color(1, 1, 1, 0.9f));
 		//table.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.5f));
 		table.getTableHeader().setReorderingAllowed(false);//列不可移动 
         
@@ -114,7 +139,11 @@ public class MyTable extends JScrollPane{
         table.setBorder(null);
 		table.setFont(new Font("Segoe UI", Font.PLAIN, 17));//字体
 		
-		//makeFace(this);
+		
+		//table.setColumnSelectionAllowed(true); 
+		table.setRowSelectionAllowed(true);
+		
+		//table.setc
 		
 		//表头
 		JTableHeader head = table.getTableHeader();

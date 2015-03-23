@@ -480,7 +480,6 @@ public class Player implements java.io.Serializable{
 		}
 
 		public double getPlayerFGP() {
-			System.out.println(playerFG + ";" + playerFGTry);
 			if(playerFGTry == 0){
 				return 0;
 			}else{

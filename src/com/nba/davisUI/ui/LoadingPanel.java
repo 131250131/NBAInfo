@@ -28,7 +28,7 @@ public class LoadingPanel extends MyPanel implements ActionListener{
 	public LoadingPanel(){
 		this.setBounds(0, 0, 1280, 720);
 		
-		timer = new Timer(14, this);;
+		timer = new Timer(14, this);
 		
 	
 		
