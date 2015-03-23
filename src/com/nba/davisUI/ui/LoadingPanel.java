@@ -24,10 +24,13 @@ public class LoadingPanel extends MyPanel implements ActionListener{
 	JLabel words, enterOne, enterTwo;
 	JButton enterButton;
 	
+	
 	public LoadingPanel(){
 		this.setBounds(0, 0, 1280, 720);
 		
-		timer = new Timer(3, this);;
+		timer = new Timer(14, this);;
+		
+	
 		
 		progressbar = new JProgressBar();
 		progressbar.setOrientation(JProgressBar.HORIZONTAL);

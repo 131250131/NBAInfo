@@ -29,11 +29,22 @@ public class Index extends MyPanel implements ActionListener{
 	Timer timer;
 	JProgressBar progressbar;
 	JButton enterButton, enterButton2;
-	JLabel backgroundImage, playerInfo1, playerInfo2, playerInfo3;
+	JLabel backgroundImage, playerInfo1, playerInfo2, playerInfo3, backgroundImageA, backgroundImageB;
 	Player tempPlayer;
+	JLabel exitIcon, miniIcon;
 	
 	public Index(){
 		this.setBounds(0, 0, 1280, 720);
+		
+		exitIcon = new JLabel(ImageBin.getImage("exit1"));
+		exitIcon.setBounds(1280 - 24, 0, 24, 24);
+		exitIcon.setVisible(true);
+		this.add(exitIcon);
+		
+		miniIcon = new JLabel(ImageBin.getImage("mini1"));
+		miniIcon.setBounds(1280 - 24 * 2, 0, 24, 24);
+		miniIcon.setVisible(true);
+		this.add(miniIcon);
 			
 		stringArray = new ArrayList<String>();
 		nameArray = new ArrayList<String>();
@@ -98,12 +109,12 @@ public class Index extends MyPanel implements ActionListener{
 		this.add(enterButton);
 		enterButton.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0) {
-				backgroundImage.setIcon(ImageBin.getImage("indexBackground2"));	
+				backgroundImageA.setVisible(true);
 				index++;
 				
 			}
 			public void mouseExited(MouseEvent arg0) {
-				backgroundImage.setIcon(ImageBin.getImage("indexBackground"));
+				backgroundImageA.setVisible(false);
 			}
 			}); 
 		
@@ -117,18 +128,28 @@ public class Index extends MyPanel implements ActionListener{
 		this.add(enterButton2);
 		enterButton2.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0) {
-				backgroundImage.setIcon(ImageBin.getImage("indexBackground3"));
+				backgroundImageB.setVisible(true);
 				index++;
 			}
 			public void mouseExited(MouseEvent arg0) {
-				backgroundImage.setIcon(ImageBin.getImage("indexBackground"));
+				backgroundImageB.setVisible(false);
 			}
 			}); 
+		
+		backgroundImageA = new JLabel(ImageBin.getImage("indexBackground2"));
+		backgroundImageA.setVisible(false);
+		backgroundImageA.setBounds(0, 0, 700, 720);
+		this.add(backgroundImageA);
+		
+		backgroundImageB = new JLabel(ImageBin.getImage("indexBackground3"));
+		backgroundImageB.setVisible(false);
+		backgroundImageB.setBounds(0, 0, 700, 720);
+		this.add(backgroundImageB);
 		
 		backgroundImage = new JLabel(ImageBin.getImage("indexBackground"));
 		backgroundImage.setVisible(true);
 		backgroundImage.setBounds(0, 0, 1280, 720);
-		this.add(backgroundImage);
+		this.add(backgroundImage);		
 	}
 	
 	private void getPic(){
