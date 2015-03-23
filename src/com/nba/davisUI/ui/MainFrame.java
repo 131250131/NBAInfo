@@ -24,8 +24,9 @@ public class MainFrame extends MyFrame implements ActionListener{
 	TeamTablePanel teamTablePanel;
 	Index index;
 	JLabel exitBt, miniBt;
-	
+	WarningPanel warn;
 	public static JButton openPlayerTablePanel, refresh, openIndex, openTeamTabelPanel;
+	public static MyButtonOfWarn warnbt;
 	public MainFrame(){
 		
 		this.setLayout(null);
@@ -33,22 +34,10 @@ public class MainFrame extends MyFrame implements ActionListener{
 	
 		exitBt = new JLabel(ImageBin.getImage("exit1"));
 		exitBt.setBounds(1280 - 24, 0, 24, 24);
-//		exitBt.setOpaque(false);
-//		exitBt.setBackground(null);
-//		exitBt.setBorder(BorderFactory.createEmptyBorder());
-//		exitBt.setContentAreaFilled(false);
-		
-		
 		exitBt.addMouseListener(new MouseListenerOfThisFrame("exitBt"));
 		
 		miniBt = new JLabel(ImageBin.getImage("mini1"));
 		miniBt.setBounds(1280 -24*2, 0, 24, 24);
-//		miniBt.setOpaque(false);
-//		miniBt.setBackground(null);
-//		miniBt.setBorder(BorderFactory.createEmptyBorder());
-//		miniBt.setContentAreaFilled(false);
-		
-		
 		miniBt.addMouseListener(new MouseListenerOfThisFrame("miniBt"));
 		
 		openIndex = new MyButtonOfOpenIndex();
@@ -81,14 +70,19 @@ public class MainFrame extends MyFrame implements ActionListener{
 		teamTablePanel.setVisible(false);
 		this.add(teamTablePanel);
 		
-		this.add(exitBt,0);
-		this.add(miniBt,1);
-		this.add(index,2);
-		this.add(openPlayerTablePanel,3);
-		this.add(loadingPanel,4);
-		this.add(playerTablePanel,5);
-		this.add(openIndex,6);
-		this.add(refresh,7);
+		warn=new WarningPanel();
+		warnbt=new MyButtonOfWarn();
+		
+		this.add(warn,0);
+		this.add(exitBt,1);
+		this.add(miniBt,2);
+		this.add(index,3);
+		this.add(openPlayerTablePanel,4);
+		this.add(loadingPanel,5);
+		this.add(playerTablePanel,6);
+		this.add(openIndex,7);
+		this.add(refresh,8);
+		
 		
 		//
 		//openPlayerTablePanel.doClick();
@@ -99,6 +93,12 @@ public class MainFrame extends MyFrame implements ActionListener{
 		public void doClick(){
 			loadingPanel.setVisible(false);
 			index.setVisible(true);
+		}
+	}
+	@SuppressWarnings("serial")
+	class MyButtonOfWarn extends JButton{
+		public void showWarning(String text){
+			warn.showWarning(text);
 		}
 	}
 	@SuppressWarnings("serial")

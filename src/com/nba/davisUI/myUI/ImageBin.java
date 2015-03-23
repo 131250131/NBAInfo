@@ -25,6 +25,8 @@ public class ImageBin {
 		case "mini1" : return new ImageIcon(ImageFilePath + "all/miniButton1.png");
 		case "mini2" : return new ImageIcon(ImageFilePath + "all/miniButton2.png");
 		case "bgOfPlayer" : return new ImageIcon(ImageFilePath + "bg/playerbg.jpg");
+		case "scan" : return new ImageIcon(ImageFilePath + "all/littleScan.png");
+		case "warn" : return new ImageIcon(ImageFilePath + "all/warn.png");
 		}
 		return null;
 	}

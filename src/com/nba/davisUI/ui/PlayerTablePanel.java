@@ -61,7 +61,7 @@ public class PlayerTablePanel extends MyPanel{
 		JPanel filtrate=new JPfiltrate();
 		filtrate.setBounds(350,40, 870, 100);
 		
-		table.setBounds(350, 380, 870, 300);
+		table.setBounds(350,350, 870, 300);
 		table.setVisible(true);
 		
 		
@@ -108,21 +108,21 @@ public class PlayerTablePanel extends MyPanel{
 			scan.setBounds(840, 28, 24, 24);
 			scan.addMouseListener(new MouseListenerForScan());
 			
-			String[] positions={"前锋","中锋","后卫"};
+			String[] positions={"","前锋","中锋","后卫"};
 			positionCb = new JComboBox(positions);
 			positionCb.setFont(new Font("宋体",Font.BOLD,14));
 			positionCb.setBounds(40,30,150,20);
 			positionCb.setBackground(Color.gray);
 			positionCb.setForeground(Color.white);
 			
-			String[] distributions={"东部","西部","其他"};
+			String[] distributions={"","东部","西部","其他"};
 			distributionCb = new JComboBox(distributions);
 			distributionCb.setFont(new Font("宋体",Font.BOLD,14));
 			distributionCb.setBounds(280,30, 150, 20);
 			distributionCb.setBackground(Color.gray);
 			distributionCb.setForeground(Color.white);
 			
-			String[] infoTypes={"得分","篮板","助攻","得分/篮板/助攻","盖帽","抢断","犯规","失误","分钟","效率","投篮","三分","罚球","两双"};
+			String[] infoTypes={"","得分","篮板","助攻","得分/篮板/助攻","盖帽","抢断","犯规","失误","分钟","效率","投篮","三分","罚球","两双"};
 			infoTypeCb = new JComboBox(infoTypes);
 			infoTypeCb.setFont(new Font("宋体",Font.BOLD,14));
 			infoTypeCb.setBounds(520,30, 150, 20);
@@ -165,7 +165,7 @@ public class PlayerTablePanel extends MyPanel{
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			//根据已经输入的条件判断并进行筛选球员
-			System.out.println("你还没写");
+			MainFrame.warnbt.showWarning("提示信息示例");
 		}
 
 		@Override
