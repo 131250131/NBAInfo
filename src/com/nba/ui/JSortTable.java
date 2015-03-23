@@ -13,6 +13,38 @@ import java.util.Vector;
 
 @SuppressWarnings("serial")
 public class JSortTable extends JTable {
+	
+	
+	public static void makeFace(JTable myTable) {
+
+        try
+        {
+            DefaultTableCellRenderer tcr = new DefaultTableCellRenderer()
+            {
+              public Component getTableCellRendererComponent(JTable table,
+                  Object value, boolean isSelected, boolean hasFocus,
+                  int row, int column)
+              {
+                if(row % 2 == 0)
+                  setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f)); //设置奇数行底色
+                else if(row % 2 == 1)
+                  setBackground(new Color(0.5f, 0.5f, 0.5f, 0.6f));  //设置偶数行底色
+                return super.getTableCellRendererComponent(table, value,
+                isSelected, hasFocus, row, column); }
+            };
+              
+            tcr.setHorizontalAlignment(JLabel.CENTER);//居中
+            myTable.setDefaultRenderer(Object.class,tcr); 
+            
+                for(int i = 0; i < myTable.getColumnCount(); i++) {
+                	myTable.getColumn(myTable.getColumnName(i)).setCellRenderer(tcr);
+          }
+        }
+        catch (Exception ex)
+        {
+          ex.printStackTrace();
+        }
+	}
 
     public JSortTable() {
         super();       

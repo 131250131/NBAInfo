@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.nba.data.Team;
 import com.nba.davisUI.myUI.MyPanel;
 import com.nba.registerList.RegisterList;
+import com.nba.ui.JSortTable;
 import com.nba.ui.MyTable;
 
 @SuppressWarnings("serial")
@@ -42,8 +43,8 @@ public class TeamTablePanel extends MyPanel{
 			table.setBounds(200, 130, 1000, 550);
 			table.setVisible(true);
 			this.add(table);
-			
 			getData();
+			JSortTable.makeFace(table.getTable());
 			
 		}
 		

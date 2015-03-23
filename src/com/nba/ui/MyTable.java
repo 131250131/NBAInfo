@@ -2,6 +2,7 @@ package com.nba.ui;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Toolkit;
 import java.util.Enumeration;
@@ -31,6 +32,10 @@ public class MyTable extends JScrollPane{
 	int downLimit;
 	int leftLimit=0;
 	int rightLimit;
+	
+	public JTable getTable(){
+		return table;
+	}
 	
 	
 //	TableColumn tableColumn;//用于编辑每一列的颜色
@@ -62,8 +67,10 @@ public class MyTable extends JScrollPane{
 			};
 
 		initial(temp,data);//初始化
+		this.setOpaque(false);
 	}
 	
+	@SuppressWarnings("serial")
 	void initial(String[] columnNames,Object[][] content){//表格header和二维数组内容，object数组可以装载所有对象，包括基本类型
 		this.columnNames=columnNames;
 		this.downLimit=content.length-1;
@@ -78,39 +85,48 @@ public class MyTable extends JScrollPane{
         jb.setOpaque(true);
         this.setCorner(JScrollPane.UPPER_RIGHT_CORNER, jb);
 	    //设置滚动条外观
-//        this.getVerticalScrollBar().setUI(new CustomScrollBarUI());
+     //   this.getVerticalScrollBar().setUI(new CustomScrollBarUI());
         
+        this.getVerticalScrollBar().setOpaque(false);
+        //this.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
+        this.getHorizontalScrollBar().setOpaque(false);
+        this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         
 		//用参数初始化model
 		model = new DefaultTableModel(content, columnNames);
-		table = new JSortTable(model);
+		
+		table = new JSortTable(model){
+			public boolean isCellEditable(int row, int column){
+                       return false;
+                       }//表格不允许被编辑
+            };
+			
 		
 		
 		//表格的初始化 一些美化
 		table.setOpaque(false);
-		table.setSelectionForeground(Color.black);//选中字体颜色
-		table.setSelectionBackground(Color.gray);
-		table.setBackground(Color.BLACK);
-		table.getTableHeader().setReorderingAllowed(false);//列不可移动
-		
-		render1= new DefaultTableCellRenderer();   
-        render1.setHorizontalAlignment(JLabel.CENTER);//居中
-        table.setDefaultRenderer(Object.class,render1);  
+		table.setSelectionForeground(new Color(0, 0, 0, 0.999f));//选中字体颜色
+		table.setSelectionBackground(new Color(1, 1, 1, 0.999f));
+		//table.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.5f));
+		table.getTableHeader().setReorderingAllowed(false);//列不可移动 
         
         table.setForeground(Color.white);
         table.setBorder(null);
-		table.setFont(new Font("Arail", Font.PLAIN, 14));//字体
+		table.setFont(new Font("Segoe UI", Font.PLAIN, 17));//字体
 		
+		//makeFace(this);
 		
 		//表头
 		JTableHeader head = table.getTableHeader();
-		head.setBackground(new Color(0.1f, 0.19f, 0.54f));
+		head.setBackground(new Color(0.25f, 0.35f, 0.45f, 0.4f));
 		head.setForeground(Color.WHITE);
+		//head.setPreferredSize(new Dimension(20, 30));
 		head.setResizingAllowed(false);
 		//列宽
 		setWidth();
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//固定大小
- 
+		
+		table.setShowGrid(false);
 
         //将表格装载到滚动板上
         this.setViewportView(table);
@@ -147,8 +163,9 @@ public class MyTable extends JScrollPane{
         for(int i= 0; i<table.getColumnCount(); i++){
             int with = this.getPreferredWidthForCloumn(table,i) + 10;
             with = 100 > with ? 100 : with;
-            table.getColumnModel().getColumn(i).setPreferredWidth(with);
+            table.getColumnModel().getColumn(i).setPreferredWidth(with + 10);
           }
+        table.setRowHeight(28);
     }
 	/*检查越界并规范*/
 	int avoidOverBoundary(int selectRow){
@@ -198,6 +215,11 @@ public class MyTable extends JScrollPane{
 //		TableColumn tableColumn = table.getColumn(columnNames[nextColumn]);
 //        tableColumn.setCellRenderer(backGroundColor);  
 	}
+	
+	
+	
+	
+	
 	/*滚动条外观重写*/
 	class CustomScrollBarUI extends BasicScrollBarUI{
 		
@@ -213,64 +235,69 @@ public class MyTable extends JScrollPane{
 			
 		}
 	}
-	/*test*/
-	public static void main(String[] args){
-		JFrame testF=new JFrame();
-		
-		// 取得屏幕的宽度
-		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
-		// 取得屏幕的高度
-		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-		//设置窗口大小
-		testF.setSize(960, 600);
-		//设置无边框
-		testF.setUndecorated(true);
-		// 设置窗体出现位置
-		testF.setLocation((width - 960) / 2, (height - 600) / 2);
-		// 将窗体的关闭方式设置为默认关闭后程序结束
-		testF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//设置布局
-		testF.setLayout(null);
-		
-		JPanel testJP=new JPanel();
-		testJP.setLayout(null);
-		testJP.setSize(960, 600);
-		testJP.setBackground(Color.black);
-		
-		final MyTable testT=new MyTable();
-		testT.setBounds(0, 0, 960, 200);
-		
-		
-		testJP.add(testT);
-		testF.add(testJP);
-		
-		//全局键盘监控
-//		Toolkit.getDefaultToolkit().addAWTEventListener(new AWTEventListener() {
-//		    public void eventDispatched(AWTEvent event) {
-//		        if (((KeyEvent) event).getID() == KeyEvent.KEY_PRESSED) {
-//		            //放入自己的键盘监听事件
-//		        	if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_UP){
-//		    			testT.upMove();
-//		    		}
-//		    		else if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_DOWN){
-//		    			testT.downMove();
-//		    		}
-//		    		else if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_LEFT){
-//		    			testT.leftMove();
-//		    		}
-//		    		else if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_RIGHT){
-//		    			testT.rightMove();
-//		    		}
-//		        }
-//		    }
-//		}, AWTEvent.KEY_EVENT_MASK);
+	
 
-//		//给窗口加键盘监听
-//		testT.addKeyListener(new KeyAdapter(){
-//	    	public void keyPressed(KeyEvent e){    		
-//	    		
-//	      }
-//	    });
-		testF.setVisible(true);
-	}
+	/*test*/
+//	public static void main(String[] args){
+//		JFrame testF=new JFrame();
+//		
+//		// 取得屏幕的宽度
+//		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
+//		// 取得屏幕的高度
+//		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
+//		//设置窗口大小
+//		testF.setSize(960, 600);
+//		//设置无边框
+//		testF.setUndecorated(true);
+//		// 设置窗体出现位置
+//		testF.setLocation((width - 960) / 2, (height - 600) / 2);
+//		// 将窗体的关闭方式设置为默认关闭后程序结束
+//		testF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		//设置布局
+//		testF.setLayout(null);
+//		
+//		JPanel testJP=new JPanel();
+//		testJP.setLayout(null);
+//		testJP.setSize(960, 600);
+//		testJP.setBackground(Color.black);
+//		
+//		final MyTable testT=new MyTable();
+//		testT.setBounds(0, 0, 960, 200);
+//		
+//		
+//		testJP.add(testT);
+//		testF.add(testJP);
+//		
+//		//全局键盘监控
+////		Toolkit.getDefaultToolkit().addAWTEventListener(new AWTEventListener() {
+////		    public void eventDispatched(AWTEvent event) {
+////		        if (((KeyEvent) event).getID() == KeyEvent.KEY_PRESSED) {
+////		            //放入自己的键盘监听事件
+////		        	if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_UP){
+////		    			testT.upMove();
+////		    		}
+////		    		else if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_DOWN){
+////		    			testT.downMove();
+////		    		}
+////		    		else if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_LEFT){
+////		    			testT.leftMove();
+////		    		}
+////		    		else if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_RIGHT){
+////		    			testT.rightMove();
+////		    		}
+////		        }
+////		    }
+////		}, AWTEvent.KEY_EVENT_MASK);
+//
+////		//给窗口加键盘监听
+////		testT.addKeyListener(new KeyAdapter(){
+////	    	public void keyPressed(KeyEvent e){    		
+////	    		
+////	      }
+////	    });
+//		testF.setVisible(true);
+//	}
+	
+	
+	
 }

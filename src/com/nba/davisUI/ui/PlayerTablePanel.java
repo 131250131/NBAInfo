@@ -9,6 +9,7 @@ import com.nba.data.Player;
 import com.nba.davisUI.myUI.ImageBin;
 import com.nba.davisUI.myUI.MyPanel;
 import com.nba.registerList.RegisterList;
+import com.nba.ui.JSortTable;
 import com.nba.ui.MyTable;
 
 @SuppressWarnings("serial")
@@ -57,6 +58,7 @@ public class PlayerTablePanel extends MyPanel{
 		this.add(bg,1);
 		
 		getData();
+		JSortTable.makeFace(table.getTable());
 	}
 	
 	@SuppressWarnings("unchecked")
