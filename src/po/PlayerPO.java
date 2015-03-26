@@ -9,12 +9,10 @@ private static final long serialVersionUID = 1L;
 	public PlayerPO(String _playerName, String _playerNumber,String _playerPosition,
 			String _playerHeight, String _playerWeight, String _playerBirth, 
 			String _playerAge, String _playerExp, String _playerSchool){
-		
 		playerName = _playerName;
 		playerNumber = _playerNumber;
 		position = _playerPosition;
 		height = _playerHeight;
-		
 		if(_playerWeight != null)
 			weight = Double.parseDouble(_playerWeight);
 		
@@ -31,7 +29,6 @@ private static final long serialVersionUID = 1L;
 			}
 		
 		school = _playerSchool;
-			
 		playerAttends = 0;
 		startTimes = 0;
 		playerAssists = 0;
@@ -112,35 +109,6 @@ private static final long serialVersionUID = 1L;
 		allEnemyOffenceTimes = allEnemyOffenceTimes + _allEnemyOffenceTimes;
 			
 	}
-	
-	public String getSchool(){
-		return school;
-	}
-	
-	public String getPosition(){
-		return position;
-	}
-	
-	public String getPlayerName(){
-		return playerName;
-	}
-	
-	public String getPlayerNumber(){
-		return playerNumber;
-	}
-	
-	public int getPlayerScores(){
-		return playerScores;
-	}
-	
-	public int getPlayerFG(){
-		return playerFG;
-	}
-	
-	public int getPlayerTotalRebounds(){
-		return playerTotalRebounds;
-	}
-	
 	///////////////////////////////////////////////////////
 	String teamShortName;
 	
@@ -374,48 +342,6 @@ private static final long serialVersionUID = 1L;
 		
 	//72.球队对手进攻次数 (*****要传*****)
 		private double allEnemyOffenceTimes;
-		
-		public int getPlayerAttends(){
-			return playerAttends;
-		}
-		
-		public int getPlayerStartTimes(){
-			return startTimes;
-		}
-		
-		public int getPlayerOffenceRebounds(){
-			return playerOffenceRebounds;
-		}
-		
-		public int getPlayerDeffenceRebounds(){
-			return playerDeffenceRebounds;
-		}
-		
-		public int getPlayerAssists() {
-			return playerAssists;
-		}
-		
-		public double getPlayerPlayTime(){
-			return (playerAttends==0)?0:(playerPlayTime / playerAttends) / 60;
-		}
-		
-		public int getPlayerSteals() {
-			return playerSteals;
-		}
-
-		public int getPlayerBlocks() {
-			return playerBlocks;
-		}
-		
-		public int getPlayerTurnovers() {
-			return playerTurnovers;
-		}
-
-		public int getPlayerFouls() {
-			return playerFouls;
-		}
-		
-		
 		public double getAver_playerAssists() {
 			return (playerAttends==0)?0:playerAssists / playerAttends;
 		}
@@ -576,5 +502,333 @@ private static final long serialVersionUID = 1L;
 		}
 //		
 //       
+
+		public String getTeamShortName() {
+			return teamShortName;
+		}
+
+		public void setTeamShortName(String teamShortName) {
+			this.teamShortName = teamShortName;
+		}
+
+		public String getPlayerName() {
+			return playerName;
+		}
+
+		public void setPlayerName(String playerName) {
+			this.playerName = playerName;
+		}
+
+		public String getPlayerNumber() {
+			return playerNumber;
+		}
+
+		public void setPlayerNumber(String playerNumber) {
+			this.playerNumber = playerNumber;
+		}
+
+		public String getPosition() {
+			return position;
+		}
+
+		public void setPosition(String position) {
+			this.position = position;
+		}
+
+		public String getHeight() {
+			return height;
+		}
+
+		public void setHeight(String height) {
+			this.height = height;
+		}
+
+		public double getWeight() {
+			return weight;
+		}
+
+		public void setWeight(double weight) {
+			this.weight = weight;
+		}
+
+		public String getPlayerBirth() {
+			return playerBirth;
+		}
+
+		public void setPlayerBirth(String playerBirth) {
+			this.playerBirth = playerBirth;
+		}
+
+		public int getPlayerAge() {
+			return playerAge;
+		}
+
+		public void setPlayerAge(int playerAge) {
+			this.playerAge = playerAge;
+		}
+
+		public int getExp() {
+			return exp;
+		}
+
+		public void setExp(int exp) {
+			this.exp = exp;
+		}
+
+		public String getSchool() {
+			return school;
+		}
+
+		public void setSchool(String school) {
+			this.school = school;
+		}
+
+		public int getPlayerAttends() {
+			return playerAttends;
+		}
+
+		public void setPlayerAttends(int playerAttends) {
+			this.playerAttends = playerAttends;
+		}
+
+		public int getStartTimes() {
+			return startTimes;
+		}
+
+		public void setStartTimes(int startTimes) {
+			this.startTimes = startTimes;
+		}
+
+		public int getPlayerAssists() {
+			return playerAssists;
+		}
+
+		public void setPlayerAssists(int playerAssists) {
+			this.playerAssists = playerAssists;
+		}
+
+		public int getPlayerPlayTime() {
+			return playerPlayTime;
+		}
+
+		public void setPlayerPlayTime(int playerPlayTime) {
+			this.playerPlayTime = playerPlayTime;
+		}
+
+		public int getPlayerFG() {
+			return playerFG;
+		}
+
+		public void setPlayerFG(int playerFG) {
+			this.playerFG = playerFG;
+		}
+
+		public int getPlayerFGTry() {
+			return playerFGTry;
+		}
+
+		public void setPlayerFGTry(int playerFGTry) {
+			this.playerFGTry = playerFGTry;
+		}
+
+		public int getPlayer3FG() {
+			return player3FG;
+		}
+
+		public void setPlayer3FG(int player3fg) {
+			player3FG = player3fg;
+		}
+
+		public int getPlayer3FGTry() {
+			return player3FGTry;
+		}
+
+		public void setPlayer3FGTry(int player3fgTry) {
+			player3FGTry = player3fgTry;
+		}
+
+		public int getPlayerFTG() {
+			return playerFTG;
+		}
+
+		public void setPlayerFTG(int playerFTG) {
+			this.playerFTG = playerFTG;
+		}
+
+		public int getPlayerFTGTry() {
+			return playerFTGTry;
+		}
+
+		public void setPlayerFTGTry(int playerFTGTry) {
+			this.playerFTGTry = playerFTGTry;
+		}
+
+		public int getPlayerOffenceRebounds() {
+			return playerOffenceRebounds;
+		}
+
+		public void setPlayerOffenceRebounds(int playerOffenceRebounds) {
+			this.playerOffenceRebounds = playerOffenceRebounds;
+		}
+
+		public int getPlayerDeffenceRebounds() {
+			return playerDeffenceRebounds;
+		}
+
+		public void setPlayerDeffenceRebounds(int playerDeffenceRebounds) {
+			this.playerDeffenceRebounds = playerDeffenceRebounds;
+		}
+
+		public int getPlayerTotalRebounds() {
+			return playerTotalRebounds;
+		}
+
+		public void setPlayerTotalRebounds(int playerTotalRebounds) {
+			this.playerTotalRebounds = playerTotalRebounds;
+		}
+
+		public int getPlayerSteals() {
+			return playerSteals;
+		}
+
+		public void setPlayerSteals(int playerSteals) {
+			this.playerSteals = playerSteals;
+		}
+
+		public int getPlayerBlocks() {
+			return playerBlocks;
+		}
+
+		public void setPlayerBlocks(int playerBlocks) {
+			this.playerBlocks = playerBlocks;
+		}
+
+		public int getPlayerTurnovers() {
+			return playerTurnovers;
+		}
+
+		public void setPlayerTurnovers(int playerTurnovers) {
+			this.playerTurnovers = playerTurnovers;
+		}
+
+		public int getPlayerFouls() {
+			return playerFouls;
+		}
+
+		public void setPlayerFouls(int playerFouls) {
+			this.playerFouls = playerFouls;
+		}
+
+		public int getPlayerScores() {
+			return playerScores;
+		}
+
+		public void setPlayerScores(int playerScores) {
+			this.playerScores = playerScores;
+		}
+
+		public int getTeammatePlayTime() {
+			return teammatePlayTime;
+		}
+
+		public void setTeammatePlayTime(int teammatePlayTime) {
+			this.teammatePlayTime = teammatePlayTime;
+		}
+
+		public int getAllTeamRebounds() {
+			return allTeamRebounds;
+		}
+
+		public void setAllTeamRebounds(int allTeamRebounds) {
+			this.allTeamRebounds = allTeamRebounds;
+		}
+
+		public int getAllEnemyRebounds() {
+			return allEnemyRebounds;
+		}
+
+		public void setAllEnemyRebounds(int allEnemyRebounds) {
+			this.allEnemyRebounds = allEnemyRebounds;
+		}
+
+		public int getO_allTeamRebounds() {
+			return o_allTeamRebounds;
+		}
+
+		public void setO_allTeamRebounds(int o_allTeamRebounds) {
+			this.o_allTeamRebounds = o_allTeamRebounds;
+		}
+
+		public int getO_allEnemyRebounds() {
+			return o_allEnemyRebounds;
+		}
+
+		public void setO_allEnemyRebounds(int o_allEnemyRebounds) {
+			this.o_allEnemyRebounds = o_allEnemyRebounds;
+		}
+
+		public int getD_allTeamRebounds() {
+			return d_allTeamRebounds;
+		}
+
+		public void setD_allTeamRebounds(int d_allTeamRebounds) {
+			this.d_allTeamRebounds = d_allTeamRebounds;
+		}
+
+		public int getD_allEnemyRebounds() {
+			return d_allEnemyRebounds;
+		}
+
+		public void setD_allEnemyRebounds(int d_allEnemyRebounds) {
+			this.d_allEnemyRebounds = d_allEnemyRebounds;
+		}
+
+		public int getAllTeamFT() {
+			return allTeamFT;
+		}
+
+		public void setAllTeamFT(int allTeamFT) {
+			this.allTeamFT = allTeamFT;
+		}
+
+		public int getAllTeamShoots() {
+			return allTeamShoots;
+		}
+
+		public void setAllTeamShoots(int allTeamShoots) {
+			this.allTeamShoots = allTeamShoots;
+		}
+
+		public int getAllEnemy2Shoots() {
+			return allEnemy2Shoots;
+		}
+
+		public void setAllEnemy2Shoots(int allEnemy2Shoots) {
+			this.allEnemy2Shoots = allEnemy2Shoots;
+		}
+
+		public int getAllTeamFTShoots() {
+			return allTeamFTShoots;
+		}
+
+		public void setAllTeamFTShoots(int allTeamFTShoots) {
+			this.allTeamFTShoots = allTeamFTShoots;
+		}
+
+		public int getAllTeamTurnover() {
+			return allTeamTurnover;
+		}
+
+		public void setAllTeamTurnover(int allTeamTurnover) {
+			this.allTeamTurnover = allTeamTurnover;
+		}
+
+		public double getAllEnemyOffenceTimes() {
+			return allEnemyOffenceTimes;
+		}
+
+		public void setAllEnemyOffenceTimes(double allEnemyOffenceTimes) {
+			this.allEnemyOffenceTimes = allEnemyOffenceTimes;
+		}
 }
 
