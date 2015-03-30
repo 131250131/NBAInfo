@@ -716,31 +716,5 @@ public class TeamVO {
 			this.birthYear = birthYear;
 		}
 		
-//更想的方法，
-		public void updateTeamInfo(TeamPO myTeam,TeamPO oppoTeam){
-			this.compGames++;
-			if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){
-				this.winGames++;
-			}else{
-				this.losGames++;
-			}
-			
-//			this.attackRounds+=myTeam.getTeamFGTry() + 0.4 * leftTeamFTGTry - 1.07 * (leftTeamOffenceRebounds /
-//					(leftTeamOffenceRebounds + rightTeamDeffenceRebounds) * (leftTeamFGTry - leftTeamFG)) + 1.07 * leftTeamTurnovers;
-			this.teamAssists+=myTeam.getTeamAssists();
-			this.teamFG+=myTeam.getTeamFG();
-			this.teamFGTry+=myTeam.getTeamFGTry();
-			this.team3FG+=myTeam.getTeam3FG();
-			this.team3FGTry+=myTeam.getTeam3FGTry();
-			this.teamFTG+=myTeam.getTeamFTG();
-			this.teamFTGTry+=myTeam.getTeamFTGTry();
-			this.teamOffenceRebounds+=myTeam.getTeamOffenceRebounds();
-			this.teamDeffenceRebounds+=myTeam.getTeamDeffenceRebounds();
-			this.teamTotalRebounds+=myTeam.getTeamTotalRebounds();
-			this.teamSteals+=myTeam.getTeamSteals();
-			this.teamBlocks+=myTeam.getTeamBlocks();
-			this.teamTurnovers+=myTeam.getTeamTurnovers();
-			this.teamFouls+=myTeam.getTeamFouls();
-			this.teamScores+=myTeam.getTeamScores();
-		}
+
 }
