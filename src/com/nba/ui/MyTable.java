@@ -106,7 +106,7 @@ public class MyTable extends JScrollPane{
 		this.setBorder(null);//无边框
 		//设置右上角颜色
 	    JLabel jb = new JLabel();
-        jb.setBackground(new Color(0.1f, 0.19f, 0.54f));
+        jb.setBackground(new Color(31,41,65));
         jb.setOpaque(true);
         this.setCorner(JScrollPane.UPPER_RIGHT_CORNER, jb);
 	    //设置滚动条外观

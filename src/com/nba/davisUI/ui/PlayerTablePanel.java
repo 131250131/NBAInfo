@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,7 +27,7 @@ public class PlayerTablePanel extends MyPanel{
 	
 	private String[][] data2;
 	private String[] temp2;
-	
+	private JLabel re;
 	
 	public PlayerTablePanel(){
 		
@@ -57,6 +58,11 @@ public class PlayerTablePanel extends MyPanel{
 		bg.setIcon(ImageBin.getImage("bgOfPlayer"));
 		bg.setBounds(0, 0, 1280, 720);
 		
+		//返回
+		re=new JLabel();
+		re.setBounds(20, 335, 50, 50);
+		re.addMouseListener(new MouseListenerOfRe());
+		
 		//筛选板
 		JPanel filtrate=new JPfiltrate();
 		filtrate.setBounds(350,40, 870, 100);
@@ -64,13 +70,46 @@ public class PlayerTablePanel extends MyPanel{
 		table.setBounds(350,350, 870, 300);
 		table.setVisible(true);
 		
-		
 		this.add(table,0);
 		this.add(filtrate,1);
-		this.add(bg,2);
+		this.add(re,2);
+		this.add(bg,3);
 		
 		getData();
 		JSortTable.makeFace(table.getTable());
+	}
+	class MouseListenerOfRe implements MouseListener{
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			MainFrame.returnFromPlayerTablePanel.doClick();
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			re.setIcon(ImageBin.getImage("return"));
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			re.setIcon(new ImageIcon());
+		}
+		
 	}
 	/*筛选板块*/
 	class JPfiltrate extends JPanel{

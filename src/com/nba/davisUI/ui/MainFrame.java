@@ -25,7 +25,8 @@ public class MainFrame extends MyFrame implements ActionListener{
 	Index index;
 	JLabel exitBt, miniBt;
 	WarningPanel warn;
-	public static JButton openPlayerTablePanel, refresh, openIndex, openTeamTabelPanel;
+	public static JButton openPlayerTablePanel, refresh, openIndex, openTeamTabelPanel,returnFromPlayerTablePanel,returnFromTeamTabelPanel;
+	
 	public static MyButtonOfWarn warnbt;
 	public MainFrame(){
 		
@@ -50,6 +51,14 @@ public class MainFrame extends MyFrame implements ActionListener{
 		openTeamTabelPanel = new JButton();
 		openTeamTabelPanel.addActionListener(this);
 		this.add(openTeamTabelPanel);
+		
+		returnFromPlayerTablePanel = new JButton();
+		returnFromPlayerTablePanel.addActionListener(new ActionListenerOfRe("player"));
+		this.add(returnFromPlayerTablePanel);
+		
+		returnFromTeamTabelPanel = new JButton();
+		returnFromTeamTabelPanel.addActionListener(new ActionListenerOfRe("team"));
+		this.add(returnFromTeamTabelPanel);
 		
 		refresh = new JButton();
 		refresh.addMouseListener(new MouseListenerOfThisFrame("refresh"));
@@ -178,5 +187,25 @@ public class MainFrame extends MyFrame implements ActionListener{
 		
 	}
 	
+	class ActionListenerOfRe implements ActionListener{
+
+		String T="";
+		public ActionListenerOfRe(String t){
+			T=t;
+		}
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(T.equals("player")){
+				index.setVisible(true);
+				playerTablePanel.setVisible(false);
+			}
+			else if(T.equals("team")){
+				index.setVisible(true);
+				teamTablePanel.setVisible(false);
+			}
+		}
+		
+	}
 
 }
