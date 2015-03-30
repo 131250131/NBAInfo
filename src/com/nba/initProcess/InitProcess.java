@@ -35,6 +35,7 @@ public class InitProcess {
 				initWithMatchFile();
 			}else{
 				//
+				getData();
 			}
 		}
 	}

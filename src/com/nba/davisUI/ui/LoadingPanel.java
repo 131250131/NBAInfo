@@ -30,8 +30,6 @@ public class LoadingPanel extends MyPanel implements ActionListener{
 		
 		timer = new Timer(14, this);
 		
-	
-		
 		progressbar = new JProgressBar();
 		progressbar.setOrientation(JProgressBar.HORIZONTAL);
 		progressbar.setBounds(190 + 248, 480 - 115, 487, 4);

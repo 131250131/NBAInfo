@@ -147,6 +147,10 @@ public class Player implements java.io.Serializable{
 		teamShortName = _teamShortName;
 	}
 	
+	public String getTeamShortName(){
+		return teamShortName;
+	}
+	
 	
 //	public String get
 	
