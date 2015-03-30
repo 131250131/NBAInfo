@@ -250,10 +250,10 @@ public class Team implements java.io.Serializable{
 		
 		/////////////////////////////////////////////
 		public double getTeamOffE() {
-			return teamOffE;
+			return Double.parseDouble(String.format("%.3f",teamScores/attackRounds*100));
 		}
 		public double getTeamDefE() {
-			return teamDefE;
+			return Double.parseDouble(String.format("%.3f",oppoScores/oppoattackRounds*100));
 		}
 		//////////////////////////////////////////////////////
 		public double getTeamRebE(){
@@ -284,10 +284,10 @@ public class Team implements java.io.Serializable{
 		
 		//////////////////////////////////////////////////
 		public double getTeamSteE() {
-			return teamSteE;
+			return Double.parseDouble(String.format("%.3f",teamSteals/oppoattackRounds*100));
 		}
 		public double getTeamAssE() {
-			return teamAssE;
+			return Double.parseDouble(String.format("%.3f",teamAssists/attackRounds*100));
 		}
 		////////////////////////////////////////////////
 	
