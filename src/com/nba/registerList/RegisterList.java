@@ -119,4 +119,26 @@ public class RegisterList {
 		return size;
 	}
 	
+	public Object[][] getSomeData(String position,String distribution,String infoType,double value1,double value2){
+		Object[][] tempData= new Object[50][30];
+		int size=0;
+		ArrayList<Player> allPlayers= new ArrayList<Player>(); 
+		for(int i = 0; i < 26; i++){
+			ArrayList<Player> playerList = (ArrayList<Player>) RegisterList.saveList.get(i);
+			size = playerList.size();
+			for(int j = 0; j < size; j++){
+				Player tempPlayer = playerList.get(j);
+				allPlayers.add(tempPlayer);
+			}
+		}
+		
+		size = allPlayers.size();
+		if((value1!=0)&&(value2!=0)){
+			
+		}else{
+			
+		}
+		
+		return tempData;
+	}
 }

@@ -62,6 +62,7 @@ public class Player implements java.io.Serializable{
 		allTeamFTShoots = 0;
 		allTeamTurnover = 0;
 		allEnemyOffenceTimes = 0;
+		double_double=0;
 	}
 	
 	//在读取比赛时 更新球员数据的方法
@@ -89,13 +90,13 @@ public class Player implements java.io.Serializable{
 		playerFTGTry = playerFTGTry + FTGTry;
 		playerOffenceRebounds = playerOffenceRebounds + offenceRebounds;
 		playerDeffenceRebounds = playerDeffenceRebounds + deffenceRebounds;
-		playerTotalRebounds = playerTotalRebounds + totalRebounds;
-		playerAssists = playerAssists + assists;
-		playerSteals = playerSteals + steals;
-		playerBlocks = playerBlocks + blocks;
+		playerTotalRebounds = playerTotalRebounds + totalRebounds;//
+		playerAssists = playerAssists + assists;//
+		playerSteals = playerSteals + steals;//
+		playerBlocks = playerBlocks + blocks;//
 		playerTurnovers = playerTurnovers + turnovers;
 		playerFouls = playerFouls + fouls;
-		playerScores = playerScores + scores;
+		playerScores = playerScores + scores;//
 		teammatePlayTime = teammatePlayTime + _teammatePlayTime;
 		allTeamRebounds = allTeamRebounds + _allTeamRebounds;
 		allEnemyRebounds = allEnemyRebounds + _allEnemyRebounds;
@@ -109,7 +110,9 @@ public class Player implements java.io.Serializable{
 		allTeamFTShoots = allTeamFTShoots + _allTeamFTShoots;
 		allTeamTurnover = allTeamTurnover + _allTeamTurnover;
 		allEnemyOffenceTimes = allEnemyOffenceTimes + _allEnemyOffenceTimes;
-			
+		if(ifhasdouble(totalRebounds, assists, steals, scores, blocks))
+			double_double++;
+		
 	}
 	
 	public String getSchool(){
@@ -150,7 +153,28 @@ public class Player implements java.io.Serializable{
 	public String getTeamShortName(){
 		return teamShortName;
 	}
-	
+	public boolean ifhasdouble(int tr,int assists,int steals,int scores,int blocks ){
+		int count=0;
+		if(tr>=10){
+			count++;
+		}
+		if(assists>=10){
+			count++;
+		}
+		if(steals>=10){
+			count++;
+		}
+		if(scores>=10){
+			count++;
+		}
+		if(blocks>=10){
+			count++;
+		}
+		if(count>=2){
+			return true;
+		}
+		return false;
+	}
 	
 //	public String get
 	
@@ -377,7 +401,8 @@ public class Player implements java.io.Serializable{
 		
 	//72.球队对手进攻次数 (*****要传*****)
 		double allEnemyOffenceTimes;
-		
+	//73.球员两双场次 (*****要传*****)	
+		int    double_double;
 		public int getPlayerAttends(){
 			return playerAttends;
 		}
@@ -577,161 +602,174 @@ public class Player implements java.io.Serializable{
 					(teammatePlayTime+playerPlayTime)/5/playerPlayTime/
 					(allTeamShoots+0.44*allTeamFTShoots+allTeamTurnover)));
 		}
+		public int getdouble_double(){
+			return double_double;
+		}
 //		
-//        public double getdata(DataType d){
-//        	   if(d==DataType.playerAttends){
-//        		   return playerAttends;
-//        	   }
-//        	   if(d==DataType.startTimes){
-//        		   return startTimes;
-//        	   }
-//        	   if(d==DataType.playerAssists){
-//        		   return playerAssists;
-//        	   }
-//        	   if(d==DataType.playerFG){
-//        		   return playerFG;
-//        	   }
-//        	   if(d==DataType.playerFGTry){
-//        		   return playerFGTry;
-//        	   }
-//        	   if(d==DataType.player3FG){
-//        		   return player3FG;
-//        	   }
-//        	   if(d==DataType.player3FGTry){
-//        		   return player3FGTry;
-//        	   }
-//        	   if(d==DataType.playerFTG){
-//        		   return playerFTG;
-//        	   }
-//        	   if(d==DataType.playerFTGTry){
-//        		   return playerFTGTry;
-//        	   }
-//        	   if(d==DataType.player3FG){
-//        		   return player3FG;
-//        	   }
-//        	   if(d==DataType.playerOffenceRebounds){
-//        		   return playerOffenceRebounds;
-//        	   }
-//        	   if(d==DataType.playerDeffenceRebounds){
-//        		   return playerDeffenceRebounds;
-//        	   }
-//        	   if(d==DataType.playerTotalRebounds){
-//        		   return playerTotalRebounds;
-//        	   }
-//        	   if(d==DataType.playerSteals){
-//        		   return playerSteals;
-//        	   }
-//        	   if(d==DataType.playerBlocks){
-//        		   return playerBlocks;
-//        	   }
-//        	   if(d==DataType.playerTurnovers){
-//        		   return playerTurnovers;
-//        	   }
-//        	   if(d==DataType.playerFouls){
-//        		   return playerFouls;
-//        	   }
-//        	   if(d==DataType.playerScores){
-//        		   return playerScores;
-//        	   }
-//        	   if(d==DataType.player3FG){
-//        		   return player3FG;
-//        	   }
-//        	   if(d==DataType.aver_playerAssists){
-//        		   return getAver_playerAssists();
-//        	   }
-//        	   if(d==DataType.aver_playerPlayTime){
-//        		   return getAver_playerPlayTime();
-//        	   }
-//        	   if(d==DataType.aver_playerFG){
-//        		   return getAver_playerFG();
-//        	   }
-//        	   if(d==DataType.aver_playerFGTry){
-//        		   return getAver_playerFGTry();
-//        	   }
-//        	   if(d==DataType.aver_player3FG){
-//        		   return getAver_player3FG();
-//        	   }
-//        	   if(d==DataType.aver_player3FGTry){
-//        		   return getAver_player3FGTry();
-//        	   }
-//        	   if(d==DataType.aver_playerFTG){
-//        		   return getAver_playerFTG();
-//        	   }
-//        	   if(d==DataType.aver_playerFTGTry){
-//        		   return getAver_playerFTGTry();
-//        	   }
-//        	   if(d==DataType.aver_playerFGTry){
-//        		   return getAver_playerFGTry();
-//        	   }
-//        	   if(d==DataType.aver_playerOffenceRebounds){
-//        		   return getAver_playerOffenceRebounds();
-//        	   }
-//        	   if(d==DataType.aver_playerDeffenceRebounds){
-//        		   return getAver_playerDeffenceRebounds();
-//        	   }
-//        	   if(d==DataType.aver_playerTotalRebounds){
-//        		   return getAver_playerTotalRebounds();
-//        	   }
-//        	   if(d==DataType.aver_playerSteals){
-//        		   return getAver_playerSteals();
-//        	   }
-//        	   if(d==DataType.aver_playerBlocks){
-//        		   return getAver_playerBlocks();
-//        	   }
-//        	   if(d==DataType.aver_playerTurnovers){
-//        		   return getAver_playerTurnovers();
-//        	   }
-//        	   if(d==DataType.aver_playerFouls){
-//        		   return getAver_playerFouls();
-//        	   }
-//        	   if(d==DataType.aver_playerScores){
-//        		   return getAver_playerScores();
-//        	   }
-//        	   if(d==DataType.playerFGP){
-//        		   return getPlayerFGP();
-//        	   }
-//        	   if(d==DataType.player3FGP){
-//        		   return getPlayer3FGP();
-//        	   }
-//        	   if(d==DataType.playerFTGP){
-//        		   return getPlayerFTGP();
-//        	   }
-//        	   if(d==DataType.playerPER){
-//        		   return getPlayerPER();
-//        	   }
-//        	   if(d==DataType.playerGmScER){
-//        		   return getPlayerGmScER();
-//        	   }
-//        	   if(d==DataType.playerTSP){
-//        		   return getPlayerTSP();
-//        	   }
-//        	   if(d==DataType.playerSER){
-//        		   return getPlayerSER();
-//        	   }
-//        	   if(d==DataType.RR){
-//        		   return getRR();
-//        	   }
-//        	   if(d==DataType.o_RR){
-//        		   return getO_RR();
-//        	   }
-//        	   if(d==DataType.d_RR){
-//        		   return getD_RR();
-//        	   }
-//        	   if(d==DataType.AR){
-//        		   return getAR();
-//        	   }
-//        	   if(d==DataType.SR){
-//        		   return getSR();
-//        	   }
-//        	   if(d==DataType.BR){
-//        		   return getBR();
-//        	   }
-//        	   if(d==DataType.TR){
-//        		   return getTR();
-//        	   }
-//        	   if(d==DataType.UR){
-//        		   return getUR();
-//        	   }
-//        	   return 0;
-//        }
+        public double getdata(String d){
+        	   if(d.equals("两双")){
+        		   return double_double;
+        	   }
+        	/*   if(d.equals("playerAttends")){
+        		   return playerAttends;
+        	   }
+        	   if(d.equals("startTimes")){
+        		   return startTimes;
+        	   }
+        	   if(d==DataType.playerAssists"))){
+        		   return playerAssists;
+        	   }
+        	   if(d==DataType.playerFG")){
+        		   return playerFG;
+        	   }
+        	   if(d==DataType.playerFGTry){
+        		   return playerFGTry;
+        	   }
+        	   if(d==DataType.player3FG){
+        		   return player3FG;
+        	   }
+        	   if(d==DataType.player3FGTry){
+        		   return player3FGTry;
+        	   }
+        	   if(d==DataType.playerFTG){
+        		   return playerFTG;
+        	   }
+        	   if(d==DataType.playerFTGTry){
+        		   return playerFTGTry;
+        	   }
+        	   if(d==DataType.player3FG){
+        		   return player3FG;
+        	   }
+        	   if(d==DataType.playerOffenceRebounds){
+        		   return playerOffenceRebounds;
+        	   }
+        	   if(d==DataType.playerDeffenceRebounds){
+        		   return playerDeffenceRebounds;
+        	   }
+        	   if(d==DataType.playerTotalRebounds){
+        		   return playerTotalRebounds;
+        	   }
+        	   */
+        	   if(d.equals("得分/篮板/助攻")){
+        		   return getAver_playerScores()+getAver_playerTotalRebounds()+getAver_playerAssists();
+        	   }
+        	   /*
+        	   if(d==DataType.playerBlocks){
+        		   return playerBlocks;
+        	   }
+        	   if(d==DataType.playerTurnovers){
+        		   return playerTurnovers;
+        	   }
+        	   if(d==DataType.playerFouls){
+        		   return playerFouls;
+        	   }
+        	   if(d==DataType.playerScores){
+        		   return playerScores;
+        	   }
+        	   if(d==DataType.player3FG){
+        		   return player3FG;
+        	   }
+        	   */
+        	   if(d.equals("助攻")){
+        		   return getAver_playerAssists();
+        	   }
+        	   if(d.equals("分钟")){
+        		   return getAver_playerPlayTime();
+        	   }
+        	   /*
+        	   if(d==DataType.aver_playerFG){
+        		   return getAver_playerFG();
+        	   }
+        	   if(d==DataType.aver_playerFGTry){
+        		   return getAver_playerFGTry();
+        	   }
+        	   if(d==DataType.aver_player3FG){
+        		   return getAver_player3FG();
+        	   }
+        	   if(d==DataType.aver_player3FGTry){
+        		   return getAver_player3FGTry();
+        	   }
+        	   if(d==DataType.aver_playerFTG){
+        		   return getAver_playerFTG();
+        	   }
+        	   if(d==DataType.aver_playerFTGTry){
+        		   return getAver_playerFTGTry();
+        	   }
+        	   if(d==DataType.aver_playerFGTry){
+        		   return getAver_playerFGTry();
+        	   }
+        	   if(d==DataType.aver_playerOffenceRebounds){
+        		   return getAver_playerOffenceRebounds();
+        	   }
+        	   if(d==DataType.aver_playerDeffenceRebounds){
+        		   return getAver_playerDeffenceRebounds();
+        	   }
+        	   */
+        	   if(d.equals("篮板")){
+        		   return getAver_playerTotalRebounds();
+        	   }
+        	   if(d.equals("抢断")){
+        		   return getAver_playerSteals();
+        	   }
+        	   if(d.equals("盖帽")){
+        		   return getAver_playerBlocks();
+        	   }
+        	   if(d.equals("失误")){
+        		   return getAver_playerTurnovers();
+        	   }
+        	   if(d.equals("犯规")){
+        		   return getAver_playerFouls();
+        	   }
+        	   if(d.equals("得分")){
+        		   return getAver_playerScores();
+        	   }
+        	   if(d.equals("投篮")){
+        		   return getPlayerFGP();
+        	   }
+        	   if(d.equals("三分")){
+        		   return getPlayer3FGP();
+        	   }
+        	   if(d.equals("罚球")){
+        		   return getPlayerFTGP();
+        	   }
+        	   if(d.equals("效率")){
+        		   return getPlayerPER();
+        	   }
+        	   /*
+        	   if(d==DataType.playerGmScER){
+        		   return getPlayerGmScER();
+        	   }
+        	   if(d==DataType.playerTSP){
+        		   return getPlayerTSP();
+        	   }
+        	   if(d==DataType.playerSER){
+        		   return getPlayerSER();
+        	   }
+        	   if(d==DataType.RR){
+        		   return getRR();
+        	   }
+        	   if(d==DataType.o_RR){
+        		   return getO_RR();
+        	   }
+        	   if(d==DataType.d_RR){
+        		   return getD_RR();
+        	   }
+        	   if(d==DataType.AR){
+        		   return getAR();
+        	   }
+        	   if(d==DataType.SR){
+        		   return getSR();
+        	   }
+        	   if(d==DataType.BR){
+        		   return getBR();
+        	   }
+        	   if(d==DataType.TR){
+        		   return getTR();
+        	   }
+        	   if(d==DataType.UR){
+        		   return getUR();
+        	   }
+        	   */
+        	   return 0;
+        }
 }

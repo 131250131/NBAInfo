@@ -48,9 +48,9 @@ public class PlayerTablePanel extends MyPanel{
 		String[] temp = {"球员姓名","所属球队","参赛场数","先发场数","篮板数","进攻篮板","防守篮板","助攻数","场均出场时间"
 						,"投篮命中率","三分命中率","罚球命中率","抢断数","盖帽数",
 						"失误数","犯规数","球员得分","效率","GmSc效率值","真实命中率","投篮效率","篮板率","进攻篮板率",
-						"防守篮板率","助攻率","抢断绿","盖帽率","失误率","使用率"};
+						"防守篮板率","助攻率","抢断绿","盖帽率","失误率","使用率","两双次数"};
 		temp2 = temp;
-		data2 = new String[29][];
+		data2 = new String[30][];
 		table = new MyTable(temp, data2);
 		
 		//背景
@@ -229,7 +229,7 @@ public class PlayerTablePanel extends MyPanel{
 	@SuppressWarnings("unchecked")
 	public void getData(){
 		
-		Object[][] data = new Object[RegisterList.getPlayerNumber()][29];
+		Object[][] data = new Object[RegisterList.getPlayerNumber()][30];
 		
 		//System.out.println(RegisterList.getPlayerNumber());
 		
@@ -269,11 +269,11 @@ public class PlayerTablePanel extends MyPanel{
 				data[index][26] = tempPlayer.getBR();
 				data[index][27] = tempPlayer.getTR();
 				data[index][28] = tempPlayer.getUR();
+				//data[index][29] = tempplayer.getDoubleTen();
 				index++;
 			}
 		}
 		
 		table.update(temp2, data);
 	}
-
 }
