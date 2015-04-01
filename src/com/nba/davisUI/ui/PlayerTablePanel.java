@@ -121,7 +121,7 @@ public class PlayerTablePanel extends MyPanel{
 		private JLabel position=new JLabel("位置");
 		private JLabel distribution=new JLabel("分区");
 		private JLabel infoType=new JLabel("数据");
-		private JLabel to=new JLabel("—",JLabel.CENTER);
+//		private JLabel to=new JLabel("—",JLabel.CENTER);
 		private JLabel scan=new JLabel(ImageBin.getImage("scan"));
 		
 		public String[] getCondition(){
@@ -139,17 +139,17 @@ public class PlayerTablePanel extends MyPanel{
 			position.setFont(new Font("宋体",Font.BOLD,14));
 			distribution.setFont(new Font("宋体",Font.BOLD,14));
 			infoType.setFont(new Font("宋体",Font.BOLD,14));
-			to.setFont(new Font("宋体",Font.BOLD,14));
+//			to.setFont(new Font("宋体",Font.BOLD,14));
 			//设置字体颜色
 			position.setForeground(Color.white);
 			distribution.setForeground(Color.white);
 			infoType.setForeground(Color.white);
-			to.setForeground(Color.white);
+//			to.setForeground(Color.white);
 			//设置标签大小位置
 			position.setBounds(0, 30, 40, 20);
 			distribution.setBounds(240, 30, 40, 20);
 			infoType.setBounds(480, 30, 40, 20);
-			to.setBounds(730, 30, 20, 20);
+//			to.setBounds(730, 30, 20, 20);
 			
 			//搜索按钮
 			scan.setBounds(840, 28, 24, 24);
@@ -162,7 +162,7 @@ public class PlayerTablePanel extends MyPanel{
 			positionCb.setBackground(Color.gray);
 			positionCb.setForeground(Color.white);
 			
-			String[] distributions={"","东部","西部","其他"};
+			String[] distributions={"","东部","西部","太平洋区","西南区","东南区","大西洋区","中央区","西北区"};
 			distributionCb = new JComboBox(distributions);
 			distributionCb.setFont(new Font("宋体",Font.BOLD,14));
 			distributionCb.setBounds(280,30, 150, 20);
@@ -195,8 +195,8 @@ public class PlayerTablePanel extends MyPanel{
 			this.add(infoTypeCb,5);
 //			this.add(value1,6);
 //			this.add(value2,7);
-			this.add(to,6);
-			this.add(scan,7);
+//			this.add(to,6);
+			this.add(scan,6);
 		}
 		/*搜索按钮的监控*/
 		class MouseListenerForScan implements MouseListener{
@@ -217,7 +217,8 @@ public class PlayerTablePanel extends MyPanel{
 				}
 				else{
 					Object[][] data=RegisterList.getSomeData(condition[0], condition[1], condition[2]);
-					Object[][] data2=new Object[][]{};
+					Object[][] data2=new Object[50][];
+					System.out.println(data.length);
 					if(data.length>50){
 				    	for(int i=0;i<50;i++){
 				    		data2[i]=data[i];
@@ -226,6 +227,7 @@ public class PlayerTablePanel extends MyPanel{
 				    }
 					else if(data.length==0){
 						MainFrame.warnbt.showWarning("未搜索到符合条件的结果");
+						table.update(temp2, new Object[][]{});
 					}
 					else{
 						table.update(temp2, data);

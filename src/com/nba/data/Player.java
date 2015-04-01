@@ -1,9 +1,9 @@
 package com.nba.data;
 
-public class Player implements java.io.Serializable{
+public class Player implements java.io.Serializable,Comparable<Player>{
 	
 	private static final long serialVersionUID = 1L;
-	
+	private static String comparetype="";
 	//初始化球员的方法
 	public Player(String _playerName, String _playerNumber,String _playerPosition,
 			String _playerHeight, String _playerWeight, String _playerBirth, 
@@ -774,7 +774,8 @@ public class Player implements java.io.Serializable{
         }
         
         public String getDivision(String teamName){
-        		String result = new String();
+        		String result = "  ";
+        		if(teamName!=null){
         		switch(teamName){
         			case "SAS":result="西南区";break;
         			case "MEM":result="西南区";break;
@@ -786,11 +787,11 @@ public class Player implements java.io.Serializable{
         			case "LAL":result="太平洋区";break;
         			case "GSW":result="太平洋区";break;
         			case "LAC":result="太平洋区";break;
-        			case "MIN":result="西北区 ";break;
-        			case "DEN":result="西北区 ";break;
-        			case "UTH":result="西北区 ";break;
-        			case "POR":result="西北区 ";break;
-        			case "OTC":result="西北区 ";break;
+        			case "MIN":result="西北区";break;
+        			case "DEN":result="西北区";break;
+        			case "UTH":result="西北区";break;
+        			case "POR":result="西北区";break;
+        			case "OTC":result="西北区";break;
         			case "MIA":result="东南区 ";break;
         			case "ORL":result="东南区 ";break;
         			case "ATL":result="东南区 ";break;
@@ -806,7 +807,7 @@ public class Player implements java.io.Serializable{
         			case "CEL":result="大西洋区";break;
         			case "NJN":result="大西洋区";break;
         			case "TOR":result="大西洋区";break;	
-        		}
+        		}}
         		return result;
         }
 
@@ -847,4 +848,85 @@ public class Player implements java.io.Serializable{
     		}
     		return result;
 		}
+		@Override
+		public int compareTo(Player o) {
+			// TODO Auto-generated method stub
+			if(comparetype.equals("两双")){
+			   if(double_double-o.getdouble_double()<0)
+     		       return 1;
+			   return -1;
+     	   }
+     	
+     	   if(comparetype.equals("得分/篮板/助攻")){
+     		   if( (this.getPlayerScores()+this.getPlayerTotalRebounds()+this.getPlayerAssists() )-( o.getPlayerScores()+o.getPlayerTotalRebounds()+o.getPlayerAssists())<0)
+     		       return 1;
+     		   return -1;
+     	   }
+     	  
+     	   if(comparetype.equals("助攻")){
+     		   if( (this.getPlayerAssists()-o.getPlayerAssists() )<0)
+     		       return 1;
+     		   return -1;
+     	   }
+     	   if(comparetype.equals("分钟")){
+     		   if((this.getPlayerPlayTime()-o.getPlayerPlayTime())<0)
+     		       return 1;
+               return -1;
+     	   }
+     	  
+     	   if(comparetype.equals("篮板")){
+     		  if((this.getPlayerTotalRebounds()-o.getPlayerTotalRebounds())<0)
+    		       return 1;
+              return -1;
+     	   }
+     	   if(comparetype.equals("抢断")){
+     		  if((this.getPlayerSteals()-o.getPlayerSteals())<0)
+   		           return 1;
+    		  return -1;
+     	   }
+     	   if(comparetype.equals("盖帽")){
+     		  if((this.getPlayerBlocks()-o.getPlayerBlocks())<0)
+  		           return 1;
+   		      return -1;
+     	   }
+     	   if(comparetype.equals("失误")){
+     		  if((this.getPlayerTurnovers()-o.getPlayerTurnovers()<0))
+ 		           return 1;
+  		      return -1;
+     	   }
+     	   if(comparetype.equals("犯规")){
+     		  if((this.getPlayerFouls()-o.getPlayerFouls()<0))
+    		           return 1;
+     		      return -1;
+     	   }
+     	   if(comparetype.equals("得分")){
+     		  if((this.getPlayerScores()-o.getPlayerScores()<0))
+   		           return 1;
+    		      return -1;
+     	   }
+     	   if(comparetype.equals("投篮")){
+     		  if((this.getPlayerFGP()-o.getPlayerFGP()<0))
+  		           return 1;
+   		      return -1;
+     	   }
+     	   if(comparetype.equals("三分")){
+     		  if((this.getPlayer3FGP()-o.getPlayer3FGP()<0))
+ 		           return 1;
+  		      return -1;
+     	   }
+     	   if(comparetype.equals("罚球")){
+     		  if((this.getPlayerFTGP()-o.getPlayerFTGP()<0))
+		           return 1;
+ 		      return -1;
+     	   }
+     	   if(comparetype.equals("效率")){
+     		  if((this.getPlayerPER()-o.getPlayerPER()<0))
+		           return 1;
+ 		      return -1;
+     	   }
+			return 0;
+		}
+      public void setComparetype(String comp){
+    	  comparetype=comp;
+      }
 }

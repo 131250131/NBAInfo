@@ -1,6 +1,7 @@
 package com.nba.registerList;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.nba.data.Player;
 import com.nba.data.SetOfSort;
@@ -163,16 +164,22 @@ public class RegisterList {
 					default:
 						for(int i=0;i<size;i++){
 							Player tempPlayer = allPlayers.get(i);
+							if(distribution!=""){	
+								System.out.println(tempPlayer.getDivision(tempPlayer.getTeamShortName()));
 							if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
 								if(tempPlayer.getPosition()!=null){
-									if(distribution!=""){	
 										if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F-C"))){
 											tempPlayers.add(tempPlayer);
-										}}else{
-											tempPlayers.add(tempPlayer);
+										}
 								}
 								}
+							}else{
+								if(tempPlayer.getPosition()!=null){
+									if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F-C"))){
+										tempPlayers.add(tempPlayer);
+									}
 							}
+								}
 						   }
 			}break;
 			case "中锋":{
@@ -200,18 +207,22 @@ public class RegisterList {
 					default:
 						for(int i=0;i<size;i++){
 							Player tempPlayer = allPlayers.get(i);
-							if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+							if(distribution!=""){
+							if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)&&(tempPlayer.getPosition()!=null)){
 								if(tempPlayer.getPosition().equals("C")||(tempPlayer.getPosition().equals("F-C"))){
 									if(tempPlayer.getPosition()!=null){
-									if(distribution!=""){
 										if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
 											tempPlayers.add(tempPlayer);
 										}
-										}else{
-											tempPlayers.add(tempPlayer);
-									}
+										}
 								}}
-							}
+								}else{
+									if(tempPlayer.getPosition()!=null){
+										if(tempPlayer.getPosition().equals("C")||(tempPlayer.getPosition().equals("F-C"))){
+											tempPlayers.add(tempPlayer);
+										}
+										}
+									}
 						   }
 					}				
 			}break;
@@ -239,18 +250,25 @@ public class RegisterList {
 				break;
 				default:
 					for(int i=0;i<size;i++){
+						System.out.println("dddd");
 						Player tempPlayer = allPlayers.get(i);
+						if(distribution!=""){
+							System.out.println("dddd");
 						if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
 							if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("F-G"))){
 								if(tempPlayer.getPosition()!=null){
-								if(distribution!=""){
 									if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
 										tempPlayers.add(tempPlayer);
 									}
-									}else{
-										tempPlayers.add(tempPlayer);
-								}
+									}
 							}}
+						}else{
+							System.out.println("dddd");
+							if(tempPlayer.getPosition()!=null){
+								if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("F-G"))){
+									tempPlayers.add(tempPlayer);
+								}
+							}
 						}
 					   }
 				}
@@ -286,8 +304,11 @@ public class RegisterList {
 			}
 		}
 		
-			SetOfSort sos=new SetOfSort();
-			sos.playerquickSort(tempPlayers, 0, tempPlayers.size()-1,infoType);
+			for(Player p:tempPlayers){
+				p.setComparetype(infoType);
+			}
+			System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
+			Collections.sort(tempPlayers);
 			Object[][] data= new Object[tempPlayers.size()][30];
 			for(int index=0;index<tempPlayers.size();index++){
 				Player tempPlayer = tempPlayers.get(index);
