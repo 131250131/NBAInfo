@@ -121,7 +121,7 @@ public class RegisterList {
 	}
 	
 	public static Object[][] getSomeData(String position,String distribution,String infoType){
-		Object[][] data= new Object[50][30];
+
 		int size=0;
 		ArrayList<Player> allPlayers= new ArrayList<Player>(); 
 		ArrayList<Player> tempPlayers = new ArrayList<Player>(); 
@@ -288,7 +288,7 @@ public class RegisterList {
 		
 			SetOfSort sos=new SetOfSort();
 			sos.playerquickSort(tempPlayers, 0, tempPlayers.size()-1,infoType);
-		
+			Object[][] data= new Object[tempPlayers.size()][30];
 			for(int index=0;index<tempPlayers.size();index++){
 				Player tempPlayer = tempPlayers.get(index);
 				data[index][0] = tempPlayer.getPlayerName();
