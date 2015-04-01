@@ -120,7 +120,7 @@ public class RegisterList {
 		return size;
 	}
 	
-	public Object[][] getSomeData(String position,String distribution,String infoType,double value1,double value2){
+	public Object[][] getSomeData(String position,String distribution,String infoType){
 		Object[][] tempData= new Object[50][30];
 		int size=0;
 		ArrayList<Player> allPlayers= new ArrayList<Player>(); 
@@ -192,7 +192,13 @@ public class RegisterList {
 							Player tempPlayer = allPlayers.get(i);
 							if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
 								if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F/C"))){
-									tempPlayers.add(tempPlayer);
+									if(distribution!=""){
+										if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+											tempPlayers.add(tempPlayer);
+										}
+										}else{
+											tempPlayers.add(tempPlayer);
+									}
 								}
 							}
 						   }
@@ -223,7 +229,13 @@ public class RegisterList {
 						Player tempPlayer = allPlayers.get(i);
 						if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
 							if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("G/F"))){
-								tempPlayers.add(tempPlayer);
+								if(distribution!=""){
+									if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+										tempPlayers.add(tempPlayer);
+									}
+									}else{
+										tempPlayers.add(tempPlayer);
+								}
 							}
 						}
 					   }
@@ -248,20 +260,20 @@ public class RegisterList {
 				default:
 					for(int i=0;i<size;i++){
 						Player tempPlayer = allPlayers.get(i);
-						if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+						if(distribution!=""){
+							if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+								tempPlayers.add(tempPlayer);
+							}
+							}else{
 								tempPlayers.add(tempPlayer);
 						}
-					   }
+					  }
 				}
 			}
 		}
 		
-		if((value1!=0)&&(value2!=0)){
-			
-		}else{
 			SetOfSort sos=new SetOfSort();
-			sos.playerquickSort(tempPlayers, 0, allPlayers.size()-1,infoType);
-		}
+			sos.playerquickSort(tempPlayers, 0, tempPlayers.size()-1,infoType);
 		
 		return tempData;
 	}
