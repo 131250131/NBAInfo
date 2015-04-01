@@ -269,7 +269,7 @@ public class PlayerTablePanel extends MyPanel{
 				data[index][26] = tempPlayer.getBR();
 				data[index][27] = tempPlayer.getTR();
 				data[index][28] = tempPlayer.getUR();
-				//data[index][29] = tempplayer.getDoubleTen();
+				data[index][29] = tempPlayer.getdouble_double();
 				index++;
 			}
 		}

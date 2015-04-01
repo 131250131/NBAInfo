@@ -121,7 +121,7 @@ public class RegisterList {
 	}
 	
 	public Object[][] getSomeData(String position,String distribution,String infoType){
-		Object[][] tempData= new Object[50][30];
+		Object[][] data= new Object[50][30];
 		int size=0;
 		ArrayList<Player> allPlayers= new ArrayList<Player>(); 
 		ArrayList<Player> tempPlayers = new ArrayList<Player>(); 
@@ -275,7 +275,40 @@ public class RegisterList {
 			SetOfSort sos=new SetOfSort();
 			sos.playerquickSort(tempPlayers, 0, tempPlayers.size()-1,infoType);
 		
-		return tempData;
+			for(int index=0;index<tempPlayers.size();index++){
+				Player tempPlayer = tempPlayers.get(index);
+				data[index][0] = tempPlayer.getPlayerName();
+				data[index][1] = tempPlayer.getTeamShortName();//所属球队
+				data[index][2] = tempPlayer.getPlayerAttends();
+				data[index][3] = tempPlayer.getPlayerStartTimes();
+				data[index][4] = tempPlayer.getPlayerTotalRebounds();
+				data[index][5] = tempPlayer.getPlayerOffenceRebounds();
+				data[index][6] = tempPlayer.getPlayerDeffenceRebounds();
+				data[index][7] = tempPlayer.getPlayerAssists();
+				data[index][8] = tempPlayer.getPlayerPlayTime();
+				data[index][9] = tempPlayer.getPlayerFGP();
+				data[index][10] = tempPlayer.getPlayer3FGP();
+				data[index][11] = tempPlayer.getPlayerFTGP();
+				data[index][12] = tempPlayer.getPlayerSteals();
+				data[index][13] = tempPlayer.getPlayerBlocks();
+				data[index][14] = tempPlayer.getPlayerTurnovers();
+				data[index][15] = tempPlayer.getPlayerFouls();
+				data[index][16] = tempPlayer.getPlayerScores();
+				data[index][17] = tempPlayer.getPlayerPER();
+				data[index][18] = tempPlayer.getPlayerGmScER();
+				data[index][19] = tempPlayer.getPlayerTSP();
+				data[index][20] = tempPlayer.getPlayerSER();
+				data[index][21] = tempPlayer.getRR();
+				data[index][22] = tempPlayer.getO_RR();
+				data[index][23] = tempPlayer.getD_RR();
+				data[index][24] = tempPlayer.getAR();
+				data[index][25] = tempPlayer.getSR();
+				data[index][26] = tempPlayer.getBR();
+				data[index][27] = tempPlayer.getTR();
+				data[index][28] = tempPlayer.getUR();
+				data[index][29] = tempPlayer.getdouble_double();
+			}	
+		return data;
 	}
 	
 	
