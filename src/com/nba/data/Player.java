@@ -812,6 +812,7 @@ public class Player implements java.io.Serializable{
 
 		public boolean getEast(String teamName) {
 			boolean result = false;
+			if(teamName!=null)
     		switch(teamName){
     			case "SAS":result=false;break;
     			case "MEM":result=false;break;
