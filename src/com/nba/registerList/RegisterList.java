@@ -145,7 +145,6 @@ public class RegisterList {
 										if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F/C"))){
 											tempPlayers.add(tempPlayer);
 										}
-										
 									}
 							   }
 							break;
@@ -158,34 +157,101 @@ public class RegisterList {
 								}
 							   }
 							break;
-					case "西南区":break;
-					case "太平洋区":break;
-					case "西北区":break;
-					case "东南区":break;
-					case "中央区":break;
-					case "大西洋区":break;
 					default:
+						for(int i=0;i<size;i++){
+							Player tempPlayer = allPlayers.get(i);
+							if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+								if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F/C"))){
+									tempPlayers.add(tempPlayer);
+								}
+							}
+						   }
 			}break;
 			case "中锋":{
 				switch(distribution){
-					case "东部":break;
-					case "西部":break;
+				case "东部":for(int i=0;i<size;i++){
+					Player tempPlayer = allPlayers.get(i);
+						if(tempPlayer.getEast(tempPlayer.getTeamShortName())){
+							if(tempPlayer.getPosition().equals("C")){
+								tempPlayers.add(tempPlayer);
+							}
+						}
+				   }
+				break;
+				case "西部":for(int i=0;i<size;i++){
+					Player tempPlayer = allPlayers.get(i);
+					if(!tempPlayer.getEast(tempPlayer.getTeamShortName())){
+						if(tempPlayer.getPosition().equals("C")){
+							tempPlayers.add(tempPlayer);
+						}
+					}
+				   }
+				break;
 					default:
-				}
-				
+						for(int i=0;i<size;i++){
+							Player tempPlayer = allPlayers.get(i);
+							if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+								if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F/C"))){
+									tempPlayers.add(tempPlayer);
+								}
+							}
+						   }
+					}				
 			}break;
 			case "后卫":{
 				switch(distribution){
-				case "东部":break;
-				case "西部":break;
+				case "东部":for(int i=0;i<size;i++){
+					Player tempPlayer = allPlayers.get(i);
+						if(tempPlayer.getEast(tempPlayer.getTeamShortName())){
+							if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("G/F"))){
+								tempPlayers.add(tempPlayer);
+							}
+						}
+				   }
+				break;
+				case "西部":for(int i=0;i<size;i++){
+					Player tempPlayer = allPlayers.get(i);
+					if(!tempPlayer.getEast(tempPlayer.getTeamShortName())){
+						if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("G/F"))){
+							tempPlayers.add(tempPlayer);
+						}
+					}
+				   }
+				break;
 				default:
+					for(int i=0;i<size;i++){
+						Player tempPlayer = allPlayers.get(i);
+						if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+							if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("G/F"))){
+								tempPlayers.add(tempPlayer);
+							}
+						}
+					   }
 				}
 			}break;
 			default:{
 				switch(distribution){
-				case "东部":break;
-				case "西部":break;
+				case "东部":for(int i=0;i<size;i++){
+					Player tempPlayer = allPlayers.get(i);
+						if(tempPlayer.getEast(tempPlayer.getTeamShortName())){
+								tempPlayers.add(tempPlayer);
+						}
+				   }
+				break;
+				case "西部":for(int i=0;i<size;i++){
+					Player tempPlayer = allPlayers.get(i);
+					if(!tempPlayer.getEast(tempPlayer.getTeamShortName())){
+							tempPlayers.add(tempPlayer);
+					}
+				   }
+				break;
 				default:
+					for(int i=0;i<size;i++){
+						Player tempPlayer = allPlayers.get(i);
+						if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+								tempPlayers.add(tempPlayer);
+						}
+					   }
 				}
 			}
 		}
@@ -194,7 +260,7 @@ public class RegisterList {
 			
 		}else{
 			SetOfSort sos=new SetOfSort();
-			sos.playerquickSort(allPlayers, 0, allPlayers.size()-1,infoType);
+			sos.playerquickSort(tempPlayers, 0, allPlayers.size()-1,infoType);
 		}
 		
 		return tempData;
