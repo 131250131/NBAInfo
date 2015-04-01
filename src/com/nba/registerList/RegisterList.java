@@ -3,6 +3,7 @@ package com.nba.registerList;
 import java.util.ArrayList;
 
 import com.nba.data.Player;
+import com.nba.data.SetOfSort;
 import com.nba.data.Team;
 import com.nba.data.DataLoader;
 import com.nba.data.DataSaver;
@@ -123,6 +124,8 @@ public class RegisterList {
 		Object[][] tempData= new Object[50][30];
 		int size=0;
 		ArrayList<Player> allPlayers= new ArrayList<Player>(); 
+		ArrayList<Player> tempPlayers = new ArrayList<Player>(); 
+		
 		for(int i = 0; i < 26; i++){
 			ArrayList<Player> playerList = (ArrayList<Player>) RegisterList.saveList.get(i);
 			size = playerList.size();
@@ -133,10 +136,35 @@ public class RegisterList {
 		}
 		
 		size = allPlayers.size();
+		switch(position){
+			case "前锋":
+				switch(distribution){
+					case "东部":break;
+					case "西部":break;
+				
+			}break;
+			case "中锋":{
+				switch(distribution){
+					case "东部":break;
+					case "西部":break;
+		
+				}
+				
+			}break;
+			case "后卫":{
+				switch(distribution){
+				case "东部":break;
+				case "西部":break;
+			
+				}
+			}break;
+		}
+		
 		if((value1!=0)&&(value2!=0)){
 			
 		}else{
-			
+			SetOfSort sos=new SetOfSort();
+			sos.playerquickSort(allPlayers, 0, allPlayers.size()-1,infoType);
 		}
 		
 		return tempData;
