@@ -139,15 +139,38 @@ public class RegisterList {
 		switch(position){
 			case "前锋":
 				switch(distribution){
-					case "东部":break;
-					case "西部":break;
-				
+					case "东部":for(int i=0;i<size;i++){
+								Player tempPlayer = allPlayers.get(i);
+									if(tempPlayer.getEast(tempPlayer.getTeamShortName())){
+										if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F/C"))){
+											tempPlayers.add(tempPlayer);
+										}
+										
+									}
+							   }
+							break;
+					case "西部":for(int i=0;i<size;i++){
+								Player tempPlayer = allPlayers.get(i);
+								if(!tempPlayer.getEast(tempPlayer.getTeamShortName())){
+									if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F/C"))){
+										tempPlayers.add(tempPlayer);
+									}
+								}
+							   }
+							break;
+					case "西南区":break;
+					case "太平洋区":break;
+					case "西北区":break;
+					case "东南区":break;
+					case "中央区":break;
+					case "大西洋区":break;
+					default:
 			}break;
 			case "中锋":{
 				switch(distribution){
 					case "东部":break;
 					case "西部":break;
-		
+					default:
 				}
 				
 			}break;
@@ -155,9 +178,16 @@ public class RegisterList {
 				switch(distribution){
 				case "东部":break;
 				case "西部":break;
-			
+				default:
 				}
 			}break;
+			default:{
+				switch(distribution){
+				case "东部":break;
+				case "西部":break;
+				default:
+				}
+			}
 		}
 		
 		if((value1!=0)&&(value2!=0)){
@@ -169,4 +199,6 @@ public class RegisterList {
 		
 		return tempData;
 	}
+	
+	
 }

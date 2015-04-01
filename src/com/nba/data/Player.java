@@ -772,4 +772,78 @@ public class Player implements java.io.Serializable{
         	   */
         	   return 0;
         }
+        
+        public String getDivision(String teamName){
+        		String result = new String();
+        		switch(teamName){
+        			case "SAS":result="西南区";break;
+        			case "MEM":result="西南区";break;
+        			case "HOU":result="西南区";break;
+        			case "DAL":result="西南区";break;
+        			case "NOL":result="西南区";break;
+        			case "SAC":result="太平洋区";break;
+        			case "PHX":result="太平洋区";break;
+        			case "LAL":result="太平洋区";break;
+        			case "GSW":result="太平洋区";break;
+        			case "LAC":result="太平洋区";break;
+        			case "MIN":result="西北区 ";break;
+        			case "DEN":result="西北区 ";break;
+        			case "UTH":result="西北区 ";break;
+        			case "POR":result="西北区 ";break;
+        			case "OTC":result="西北区 ";break;
+        			case "MIA":result="东南区 ";break;
+        			case "ORL":result="东南区 ";break;
+        			case "ATL":result="东南区 ";break;
+        			case "WAS":result="东南区 ";break;
+        			case "CHA":result="东南区 ";break;
+        			case "DET":result="中央区";break;
+        			case "IND":result="中央区";break;
+        			case "CLE":result="中央区";break;
+        			case "CHI":result="中央区";break;
+        			case "MIL":result="中央区";break;
+        			case "NYN":result="大西洋区";break;
+        			case "PHI":result="大西洋区";break;
+        			case "CEL":result="大西洋区";break;
+        			case "NJN":result="大西洋区";break;
+        			case "TOR":result="大西洋区";break;	
+        		}
+        		return result;
+        }
+
+		public boolean getEast(String teamName) {
+			boolean result = false;
+    		switch(teamName){
+    			case "SAS":result=false;break;
+    			case "MEM":result=false;break;
+    			case "HOU":result=false;break;
+    			case "DAL":result=false;break;
+    			case "NOL":result=false;break;
+    			case "SAC":result=false;break;
+    			case "PHX":result=false;break;
+    			case "LAL":result=false;break;
+    			case "GSW":result=false;break;
+    			case "LAC":result=false;break;
+    			case "MIN":result=false;break;
+    			case "DEN":result=false;break;
+    			case "UTH":result=false;break;
+    			case "POR":result=false;break;
+    			case "OTC":result=false;break;
+    			case "MIA":result=true;break;
+    			case "ORL":result=true;break;
+    			case "ATL":result=true;break;
+    			case "WAS":result=true;break;
+    			case "CHA":result=true;break;
+    			case "DET":result=true;break;
+    			case "IND":result=true;break;
+    			case "CLE":result=true;break;
+    			case "CHI":result=true;break;
+    			case "MIL":result=true;break;
+    			case "NYN":result=true;break;
+    			case "PHI":result=true;break;
+    			case "CEL":result=true;break;
+    			case "NJN":result=true;break;
+    			case "TOR":result=true;break;	
+    		}
+    		return result;
+		}
 }

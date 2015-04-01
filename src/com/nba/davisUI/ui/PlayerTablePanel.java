@@ -241,7 +241,7 @@ public class PlayerTablePanel extends MyPanel{
 			for(int j = 0; j < size; j++){
 				Player tempPlayer = playerList.get(j);
 				data[index][0] = tempPlayer.getPlayerName();
-				data[index][1] = null;//所属球队
+				data[index][1] = tempPlayer.getTeamShortName();//所属球队
 				data[index][2] = tempPlayer.getPlayerAttends();
 				data[index][3] = tempPlayer.getPlayerStartTimes();
 				data[index][4] = tempPlayer.getPlayerTotalRebounds();
