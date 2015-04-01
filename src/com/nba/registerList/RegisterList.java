@@ -120,7 +120,7 @@ public class RegisterList {
 		return size;
 	}
 	
-	public Object[][] getSomeData(String position,String distribution,String infoType){
+	public static Object[][] getSomeData(String position,String distribution,String infoType){
 		Object[][] data= new Object[50][30];
 		int size=0;
 		ArrayList<Player> allPlayers= new ArrayList<Player>(); 

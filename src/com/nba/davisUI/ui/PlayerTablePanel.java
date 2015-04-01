@@ -123,6 +123,14 @@ public class PlayerTablePanel extends MyPanel{
 		private JLabel infoType=new JLabel("数据");
 		private JLabel to=new JLabel("—",JLabel.CENTER);
 		private JLabel scan=new JLabel(ImageBin.getImage("scan"));
+		
+		public String[] getCondition(){
+			String[] condition={positionCb.getSelectedItem().toString(),
+					distributionCb.getSelectedItem().toString(),
+					infoTypeCb.getSelectedItem().toString()};
+			return condition;
+			
+		}
 		public JPfiltrate(){
 			this.setLayout(null);
 			//设置面板透明
@@ -169,15 +177,15 @@ public class PlayerTablePanel extends MyPanel{
 			infoTypeCb.setForeground(Color.white);
 //			position.addKeyListener(KeyFindStrategy);
 			
-			value1.setBounds(680,30, 50, 20);
-			value1.setOpaque(false);//文本框透明
-			value1.setForeground(Color.white);//前景色
-			value1.setCaretColor(Color.white);
-			
-			value2.setBounds(750,30, 50, 20);
-			value2.setOpaque(false);//文本框透明
-			value2.setForeground(Color.white);//前景色
-			value2.setCaretColor(Color.white);
+//			value1.setBounds(680,30, 50, 20);
+//			value1.setOpaque(false);//文本框透明
+//			value1.setForeground(Color.white);//前景色
+//			value1.setCaretColor(Color.white);
+//			
+//			value2.setBounds(750,30, 50, 20);
+//			value2.setOpaque(false);//文本框透明
+//			value2.setForeground(Color.white);//前景色
+//			value2.setCaretColor(Color.white);
 			
 			this.add(position,0);
 			this.add(distribution,1);
@@ -185,47 +193,69 @@ public class PlayerTablePanel extends MyPanel{
 			this.add(positionCb,3);
 			this.add(distributionCb,4);
 			this.add(infoTypeCb,5);
-			this.add(value1,6);
-			this.add(value2,7);
-			this.add(to,8);
-			this.add(scan,9);
+//			this.add(value1,6);
+//			this.add(value2,7);
+			this.add(to,6);
+			this.add(scan,7);
+		}
+		/*搜索按钮的监控*/
+		class MouseListenerForScan implements MouseListener{
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				//根据已经输入的条件判断并进行筛选球员
+				String[] condition=JPfiltrate.this.getCondition();
+				if(condition[0].equals("")&&condition[1].equals("")&&condition[2].equals("")){
+					MainFrame.warnbt.showWarning("筛选条件不能为空");
+				}
+				else{
+					Object[][] data=RegisterList.getSomeData(condition[0], condition[1], condition[2]);
+					Object[][] data2=new Object[][]{};
+					if(data.length>50){
+				    	for(int i=0;i<50;i++){
+				    		data2[i]=data[i];
+				    	}
+				    	table.update(temp2, data2);
+				    }
+					else if(data.length==0){
+						MainFrame.warnbt.showWarning("未搜索到符合条件的结果");
+					}
+					else{
+						table.update(temp2, data);
+					}
+				}
+				
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
 		}
 	}
-	/*搜索按钮的监控*/
-	class MouseListenerForScan implements MouseListener{
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			//根据已经输入的条件判断并进行筛选球员
-			MainFrame.warnbt.showWarning("提示信息示例");
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-	}
+	
 	@SuppressWarnings("unchecked")
 	public void getData(){
 		
