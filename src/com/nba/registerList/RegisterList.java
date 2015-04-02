@@ -144,7 +144,11 @@ public class RegisterList {
 								Player tempPlayer = allPlayers.get(i);
 									if(tempPlayer.getEast(tempPlayer.getTeamShortName())){
 										if(tempPlayer.getPosition()!=null){
-										if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F-C"))){
+										if(tempPlayer.getPosition().equals("F")
+												||(tempPlayer.getPosition().equals("F-C"))
+												||(tempPlayer.getPosition().equals("C-F"))
+												||(tempPlayer.getPosition().equals("F-G"))
+												||(tempPlayer.getPosition().equals("G-F"))){
 											tempPlayers.add(tempPlayer);
 										}
 										}
@@ -155,7 +159,11 @@ public class RegisterList {
 								Player tempPlayer = allPlayers.get(i);
 								if(!tempPlayer.getEast(tempPlayer.getTeamShortName())){
 									if(tempPlayer.getPosition()!=null){
-									if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F-C"))){
+									if(tempPlayer.getPosition().equals("F")
+											||(tempPlayer.getPosition().equals("F-C"))
+											||(tempPlayer.getPosition().equals("C-F"))
+											||(tempPlayer.getPosition().equals("F-G"))
+											||(tempPlayer.getPosition().equals("G-F"))){
 										tempPlayers.add(tempPlayer);
 									}}
 								}
@@ -168,14 +176,22 @@ public class RegisterList {
 								System.out.println(tempPlayer.getDivision(tempPlayer.getTeamShortName()));
 							if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
 								if(tempPlayer.getPosition()!=null){
-										if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F-C"))){
+										if(tempPlayer.getPosition().equals("F")
+												||(tempPlayer.getPosition().equals("F-C"))
+												||(tempPlayer.getPosition().equals("C-F"))
+												||(tempPlayer.getPosition().equals("F-G"))
+												||(tempPlayer.getPosition().equals("G-F"))){
 											tempPlayers.add(tempPlayer);
 										}
 								}
 								}
 							}else{
 								if(tempPlayer.getPosition()!=null){
-									if(tempPlayer.getPosition().equals("F")||(tempPlayer.getPosition().equals("F-C"))){
+									if(tempPlayer.getPosition().equals("F")
+											||(tempPlayer.getPosition().equals("F-C"))
+											||(tempPlayer.getPosition().equals("C-F"))
+											||(tempPlayer.getPosition().equals("F-G"))
+											||(tempPlayer.getPosition().equals("G-F"))){
 										tempPlayers.add(tempPlayer);
 									}
 							}
@@ -188,7 +204,9 @@ public class RegisterList {
 					Player tempPlayer = allPlayers.get(i);
 						if(tempPlayer.getEast(tempPlayer.getTeamShortName())){
 							if(tempPlayer.getPosition()!=null){
-							if(tempPlayer.getPosition().equals("C")){
+							if(tempPlayer.getPosition().equals("C")
+							||tempPlayer.getPosition().equals("C-F")
+							||tempPlayer.getPosition().equals("F-C")){
 								tempPlayers.add(tempPlayer);
 							}}
 						}
@@ -198,7 +216,9 @@ public class RegisterList {
 					Player tempPlayer = allPlayers.get(i);
 					if(!tempPlayer.getEast(tempPlayer.getTeamShortName())){
 						if(tempPlayer.getPosition()!=null){
-						if(tempPlayer.getPosition().equals("C")){
+						if(tempPlayer.getPosition().equals("C")
+								||tempPlayer.getPosition().equals("C-F")
+								||tempPlayer.getPosition().equals("F-C")){
 							tempPlayers.add(tempPlayer);
 						}}
 					}
@@ -209,7 +229,9 @@ public class RegisterList {
 							Player tempPlayer = allPlayers.get(i);
 							if(distribution!=""){
 							if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)&&(tempPlayer.getPosition()!=null)){
-								if(tempPlayer.getPosition().equals("C")||(tempPlayer.getPosition().equals("F-C"))){
+								if(tempPlayer.getPosition().equals("C")
+										||tempPlayer.getPosition().equals("C-F")
+										||tempPlayer.getPosition().equals("F-C")){
 									if(tempPlayer.getPosition()!=null){
 										if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
 											tempPlayers.add(tempPlayer);
@@ -218,7 +240,9 @@ public class RegisterList {
 								}}
 								}else{
 									if(tempPlayer.getPosition()!=null){
-										if(tempPlayer.getPosition().equals("C")||(tempPlayer.getPosition().equals("F-C"))){
+										if(tempPlayer.getPosition().equals("C")
+												||tempPlayer.getPosition().equals("C-F")
+												||tempPlayer.getPosition().equals("F-C")){
 											tempPlayers.add(tempPlayer);
 										}
 										}
@@ -232,7 +256,9 @@ public class RegisterList {
 					Player tempPlayer = allPlayers.get(i);
 						if(tempPlayer.getEast(tempPlayer.getTeamShortName())){
 							if(tempPlayer.getPosition()!=null){
-							if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("F-G"))){
+							if(tempPlayer.getPosition().equals("G")
+							||(tempPlayer.getPosition().equals("F-G"))
+							||(tempPlayer.getPosition().equals("G-F"))){
 								tempPlayers.add(tempPlayer);
 							}}
 						}
@@ -242,7 +268,9 @@ public class RegisterList {
 					Player tempPlayer = allPlayers.get(i);
 					if(!tempPlayer.getEast(tempPlayer.getTeamShortName())){
 						if(tempPlayer.getPosition()!=null){
-						if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("F-G"))){
+						if(tempPlayer.getPosition().equals("G")
+								||(tempPlayer.getPosition().equals("F-G"))
+								||(tempPlayer.getPosition().equals("G-F"))){
 							tempPlayers.add(tempPlayer);
 						}}
 					}
@@ -255,7 +283,9 @@ public class RegisterList {
 						if(distribution!=""){
 							System.out.println("dddd");
 						if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
-							if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("F-G"))){
+							if(tempPlayer.getPosition().equals("G")
+									||(tempPlayer.getPosition().equals("F-G"))
+									||(tempPlayer.getPosition().equals("G-F"))){
 								if(tempPlayer.getPosition()!=null){
 									if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
 										tempPlayers.add(tempPlayer);
@@ -265,7 +295,9 @@ public class RegisterList {
 						}else{
 							System.out.println("dddd");
 							if(tempPlayer.getPosition()!=null){
-								if(tempPlayer.getPosition().equals("G")||(tempPlayer.getPosition().equals("F-G"))){
+								if(tempPlayer.getPosition().equals("G")
+										||(tempPlayer.getPosition().equals("F-G"))
+										||(tempPlayer.getPosition().equals("G-F"))){
 									tempPlayers.add(tempPlayer);
 								}
 							}
