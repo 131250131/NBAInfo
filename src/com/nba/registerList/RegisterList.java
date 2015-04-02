@@ -282,7 +282,7 @@ public class RegisterList {
 						Player tempPlayer = allPlayers.get(i);
 						if(distribution!=""){
 							System.out.println("dddd");
-						if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)){
+						if(tempPlayer.getDivision(tempPlayer.getTeamShortName()).equals(distribution)&&(tempPlayer.getPosition()!=null)){
 							if(tempPlayer.getPosition().equals("G")
 									||(tempPlayer.getPosition().equals("F-G"))
 									||(tempPlayer.getPosition().equals("G-F"))){
