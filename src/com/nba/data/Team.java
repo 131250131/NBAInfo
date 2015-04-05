@@ -373,7 +373,6 @@ public class Team implements java.io.Serializable{
 			this.teamTurnovers+=tempteamTurnovers;
 			this.teamFouls+=tempteamFouls;
 			this.teamScores+=tempteamScores;
-
 			
 			this.oppoattackRounds+=tempoppoattackRounds;
 			this.oppoAssists+=tempoppoAssists;

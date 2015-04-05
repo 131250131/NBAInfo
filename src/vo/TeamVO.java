@@ -25,7 +25,7 @@ public class TeamVO {
 		
 		//球队的编号；
 		private int teamID;
-	 //球队比赛场数，胜率；（*****需要更新*****）
+		//球队比赛场数，胜率；（*****需要更新*****）
 		private int compGames;//总场
 		private int winGames;//胜场
 		private int losGames;//败场
