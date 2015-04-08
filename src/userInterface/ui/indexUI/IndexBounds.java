@@ -4,7 +4,7 @@ package userInterface.ui.indexUI;
 public class IndexBounds {
 	
 	//indexButton的bounds
-	public static int indexButtonFirstX = 65;
+	public static int indexButtonFirstX = 65 + 20;
 	public static int indexButtonY = 50;
 	public static int indexButtonSizeX = 170;
 	public static int indexButtonSizeY = 30;
@@ -49,6 +49,6 @@ public class IndexBounds {
 	public static int advX = TodayMatchButtonX - 17;
 	public static int advY = keyGameY + keyGameSizeY + 30;
 	public static int advSizeX = 1050; 
-	public static int advSizeY = 100;
+	public static int advSizeY = 25;
 	
 }

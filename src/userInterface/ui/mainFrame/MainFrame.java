@@ -21,6 +21,7 @@ import userInterface.ui.indexUI.TodayMatchButton;
 import userInterface.ui.indexUI.TodayMatchPanel;
 import userInterface.ui.indexUI.TodayMatchScrollPane;
 import userInterface.ui.indexUI.TodayPlayerPanel;
+import userInterface.ui.matchUI.MatchPanel;
 
 @SuppressWarnings("serial")
 public class MainFrame extends MyFrame implements ActionListener{
@@ -39,6 +40,7 @@ public class MainFrame extends MyFrame implements ActionListener{
 		//初始化位于最底层的Panel
 		containerPanel = new ContainerPanel();
 		initWithIndex();
+		initWithMatch();
 		containerScrollPane.setViewportView(containerPanel);	
 		this.add(containerScrollPane);
 		
@@ -70,6 +72,13 @@ public class MainFrame extends MyFrame implements ActionListener{
 		initTodaysMatches();
 		initTodaysPlayer();
 		
+	}
+	
+	MatchPanel matchPanel;
+	
+	private void initWithMatch(){
+		matchPanel = new MatchPanel();
+		containerPanel.add(matchPanel);
 	}
 	
 	public void actionPerformed(ActionEvent events) {
@@ -129,7 +138,7 @@ public class MainFrame extends MyFrame implements ActionListener{
 		
 		JLabel back2 = new JLabel(ImageSaver.getIcon("backLogo"));
 		back2.setVisible(true);
-		back2.setBounds(-62 + 13, 25 + 38, 1280, 720);
+		back2.setBounds(-62 + 13 + 20, 25 + 38, 1280, 720);
 		containerPanel.add(back2);
 	}
 	

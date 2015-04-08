@@ -25,11 +25,9 @@ public class Main {
 		//UI TEST
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
-		
-		
-		
+			
 		//保存寄存器列表中的列表至序列化中
-		//RegisterList.saveDataList();
+		RegisterList.saveDataList();
 		
 		//**************************PROCESS FINISH**************************
 	

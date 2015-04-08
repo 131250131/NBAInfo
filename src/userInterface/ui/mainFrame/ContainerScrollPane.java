@@ -1,5 +1,6 @@
 package userInterface.ui.mainFrame;
 
+import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;
 
 @SuppressWarnings("serial")
@@ -11,13 +12,13 @@ public class ContainerScrollPane extends JScrollPane{
 	
 	public ContainerScrollPane(){
 		
-		this.setBounds(50, 25, 1180 + 50 - 2, 720 - 50 + 8);
+		this.setBounds(50, 25, 1180 + 50 - 2, 720 - 50 + 8 + 6);
 		this.setBackground(null);
 		this.setOpaque(false);
 		this.getViewport().setOpaque(false);
 		this.setBorder(null);
 		this.getVerticalScrollBar().setOpaque(false);
-		
+		this.getVerticalScrollBar().setBorder(BorderFactory.createEmptyBorder());
 	}
 
 }

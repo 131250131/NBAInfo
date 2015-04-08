@@ -9,8 +9,8 @@ public class ImageSaver {
 		String iconPath = "data/newImage/";
 		
 		switch(iconName){
-		case "background1": return new ImageIcon(iconPath + "background1.png");
-		case "background2": return new ImageIcon(iconPath + "background2.png");
+		case "background1": return new ImageIcon(iconPath + "background0.png");
+		//case "background2": return new ImageIcon(iconPath + "background2.png");
 		case "background3": return new ImageIcon(iconPath + "background3.png");
 		case "background4": return new ImageIcon(iconPath + "background4.png");
 		case "todayBack0" : return new ImageIcon(iconPath + "todayBack0.png");
@@ -26,6 +26,10 @@ public class ImageSaver {
 		case "keyGameBack" : return new ImageIcon(iconPath + "keyGameBack.png");
 		case "keyGameBack2" : return new ImageIcon(iconPath + "keyGameBack2.png");
 		case "adv1" : return new ImageIcon(iconPath + "adv1.png");
+		
+		case "singleMatchBack" : return new ImageIcon(iconPath + "singleMatchBack.png");
+		case "singleMatchBack2" : return new ImageIcon(iconPath + "singleMatchBack2.png");
+		case "singleMatchBack3" : return new ImageIcon(iconPath + "singleMatchBack3.png");
 		
 		case "ATL0" : return new ImageIcon(iconPath + "TodayTeam/ATL0.png");
 		case "ATL1" : return new ImageIcon(iconPath + "TodayTeam/ATL1.png");
@@ -92,6 +96,8 @@ public class ImageSaver {
 		case "UTA1" : return new ImageIcon(iconPath + "TodayTeam/UTA1.png");
 		case "WAS0" : return new ImageIcon(iconPath + "TodayTeam/WAS0.png");
 		case "WAS1" : return new ImageIcon(iconPath + "TodayTeam/WAS1.png");
+		
+		case "mouseEffect" : return new ImageIcon(iconPath + "TodayTeam/mouseEffect.png");
 		}
 		
 		return null;
