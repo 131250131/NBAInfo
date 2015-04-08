@@ -25,7 +25,16 @@ public class Main {
 		//UI TEST
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
+<<<<<<< HEAD
 			
+=======
+		
+		/*
+		 * 我发现学长的一个bug。。
+		 * 在选择栏点到旁边的时候会把后面的表显示出来。
+		 * */
+		
+>>>>>>> origin/master
 		//保存寄存器列表中的列表至序列化中
 		RegisterList.saveDataList();
 		
