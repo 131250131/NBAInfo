@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import userInterface.myUI.ImageSaver;
 import userInterface.myUI.MyBackground;
 import userInterface.myUI.MyFrame;
+import userInterface.ui.hotspotUI.HotSpotPanel;
 import userInterface.ui.indexUI.AllTimeBestPlayerPanel;
 import userInterface.ui.indexUI.IndexBounds;
 import userInterface.ui.indexUI.IndexButtons;
@@ -41,6 +42,7 @@ public class MainFrame extends MyFrame implements ActionListener{
 		containerPanel = new ContainerPanel();
 		initWithIndex();
 		initWithMatch();
+		initWithHotspot();
 		containerScrollPane.setViewportView(containerPanel);	
 		this.add(containerScrollPane);
 		
@@ -79,6 +81,13 @@ public class MainFrame extends MyFrame implements ActionListener{
 	private void initWithMatch(){
 		matchPanel = new MatchPanel();
 		containerPanel.add(matchPanel);
+	}
+	
+	HotSpotPanel hotSpotPanel;
+	
+	private void initWithHotspot(){
+		hotSpotPanel = new HotSpotPanel();
+		containerPanel.add(hotSpotPanel);
 	}
 	
 	public void actionPerformed(ActionEvent events) {

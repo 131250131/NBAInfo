@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import userInterface.myUI.ImageSaver;
+import userInterface.ui.indexUI.IndexBounds;
 
 @SuppressWarnings("serial")
 public class MatchPanel extends JPanel{
@@ -41,9 +42,6 @@ public class MatchPanel extends JPanel{
 		matchComboBox = new MatchComboBox();
 		this.add(matchComboBox);
 		
-		teamComboBox = new TeamComboBox();
-		this.add(teamComboBox);
-		
 		matchScrollPane = new MatchScrollPane();
 		this.add(matchScrollPane);
 		matchesListPanel = new MatchesListPanel();
@@ -54,6 +52,11 @@ public class MatchPanel extends JPanel{
 		scrollBack.setBounds(MatchBounds.scrollPaneX, MatchBounds.scrollPaneY,
 				MatchBounds.scrollPaneSizeX, MatchBounds.scrollPaneSizeY);
 		this.add(scrollBack);
+		
+		JLabel adv1 = new JLabel(ImageSaver.getIcon("adv1"));
+		adv1.setBounds(MatchBounds.advX, MatchBounds.advY, MatchBounds.advSizeX, MatchBounds.advSizeY);
+		adv1.setVisible(true);
+		this.add(adv1);
 	}
 
 }

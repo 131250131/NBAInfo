@@ -15,7 +15,7 @@ public class ContainerPanel extends JPanel{
 	public ContainerPanel(){
 		
 		this.setLayout(null);
-		this.setPreferredSize(new Dimension(1150 + 50 - 2, 720 * 3));
+		this.setPreferredSize(new Dimension(1150 + 50 - 2, 720 * 4));
 		this.setOpaque(false);
 	}
 

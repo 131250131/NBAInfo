@@ -31,6 +31,8 @@ public class ImageSaver {
 		case "singleMatchBack2" : return new ImageIcon(iconPath + "singleMatchBack2.png");
 		case "singleMatchBack3" : return new ImageIcon(iconPath + "singleMatchBack3.png");
 		
+		case "standingBack" : return new ImageIcon(iconPath + "standingBack.png");
+		
 		case "ATL0" : return new ImageIcon(iconPath + "TodayTeam/ATL0.png");
 		case "ATL1" : return new ImageIcon(iconPath + "TodayTeam/ATL1.png");
 		case "BKN0" : return new ImageIcon(iconPath + "TodayTeam/BKN0.png");
