@@ -1,6 +1,9 @@
 package po;
 
-public class TeamPO {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class TeamPO implements Serializable {
 //super key 
 	//球队全名 │ 缩写│ 所在地 │ 赛区│ 分区 │ 主场 │ 建立时间║
 	
@@ -49,6 +52,8 @@ public class TeamPO {
 		private int teamFouls;
 	//球队总得分数（*****需要更新*****）
 		private int teamScores;
+	//这场比赛，球队里的所有球员
+		private ArrayList<PlayerPO> players = new ArrayList<PlayerPO>();
 		
 		public String getTeamName() {
 			return teamName;
@@ -182,7 +187,12 @@ public class TeamPO {
 		public void setTeamScores(int teamScores) {
 			this.teamScores = teamScores;
 		}
-		
+		public ArrayList<PlayerPO> getPlayers() {
+			return players;
+		}
+		public void setPlayers(ArrayList<PlayerPO> players) {
+			this.players = players;
+		}
 		//读取球队信息txt时，调用的构造函数;
 		public TeamPO(String _teamFullName, String _teamShortName, String _teamLocation
 				, String _teamEastOrWest, String _teamDivision, 
