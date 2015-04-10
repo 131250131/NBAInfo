@@ -1,8 +1,9 @@
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class TeamPO {
+public class TeamPO implements Serializable {
 //super key 
 	//球队全名 │ 缩写│ 所在地 │ 赛区│ 分区 │ 主场 │ 建立时间║
 	

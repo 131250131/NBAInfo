@@ -1,13 +1,17 @@
 package po;
 
+import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 
-public class MatchPO {
+public class MatchPO implements Serializable {
 		int Num;//比赛场次的编号，从零开始，
 		String season;
-		Date date;
+		String date;
 		TeamPO leftTeam;
 		TeamPO rightTeam;
+		String score;
+		ArrayList<PlayerPO> playerlist=new ArrayList<PlayerPO>();
 	//每一节的具体得分；
 		String scores1;
 		String scores2;
@@ -26,10 +30,10 @@ public class MatchPO {
 		public void setSeason(String season) {
 			this.season = season;
 		}
-		public Date getDate() {
+		public String getDate() {
 			return date;
 		}
-		public void setDate(Date date) {
+		public void setDate(String date) {
 			this.date = date;
 		}
 		public TeamPO getLeftTeam() {
@@ -68,7 +72,12 @@ public class MatchPO {
 		public void setScores4(String scores4) {
 			this.scores4 = scores4;
 		}
-		
+		public void addplayer(PlayerPO player){
+			playerlist.add(player);
+		}
+		public void setScore(String score){
+			this.score=score;
+		}
 /*
  * 我还有一个问题，加时的比分算不算在里面;
  * */

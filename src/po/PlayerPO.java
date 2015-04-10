@@ -1,6 +1,8 @@
 package po;
 
-public class PlayerPO{
+import java.io.Serializable;
+
+public class PlayerPO implements Serializable{
 //基本信息
 		
 	//1.球员名称 （球员名称作为查找唯一标识）
@@ -34,8 +36,11 @@ public class PlayerPO{
 	
 	//9.球员学校或国家
 	private String school;
-
 	
+	private int scores;
+    public PlayerPO(){
+	
+    }
 //读取球员基本信息txt时，调用的构造函数;
 	public PlayerPO(String _playerName, String _playerNumber,String _playerPosition,
 			String _playerHeight, String _playerWeight, String _playerBirth, 
@@ -118,10 +123,12 @@ public class PlayerPO{
 	int[] attendedMatches = new int[85];
 	
 	//在读取比赛时 更新球员数据的方法
-	public void updatePlayer(int time, int FG, int FGTry, int threeFG, int threeFGTry,
+	public void updatePlayer(String name,String team,int time, int FG, int FGTry, int threeFG, int threeFGTry,
 			int FTG, int FTGTry, int offenceRebounds, int deffenceRebounds, int totalRebounds,
-			int assists, int steals, int blocks, int turnovers, int fouls, int scores, int _teammatePlayTime){
-		
+			int assists, int steals, int blocks, int turnovers, int fouls, int scores){
+		this.playerName =name;
+		this.teamShortName=team;
+		this.scores=scores;
 		this.setPlayerPlayTime(time);
 		this.setPlayerFG(FG); 
 		this.setPlayerFGTry(FGTry);
@@ -342,6 +349,9 @@ public class PlayerPO{
 
 		public void setPlayerFouls(int playerFouls) {
 			this.playerFouls = playerFouls;
+		}
+		public int getScores(){
+			return scores;
 		}
 
 
