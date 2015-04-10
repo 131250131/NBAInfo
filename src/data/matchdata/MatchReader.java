@@ -19,7 +19,7 @@ import Utibility.FilePathSaver;
 
 import DataService.MatchDataService;
 
-public class MatchSaver implements MatchDataService{
+public class MatchReader implements MatchDataService{
 	private ArrayList<MatchPO> matches=new ArrayList<MatchPO>();
 	private ArrayList<PlayerPO> leftplayerlist=new ArrayList<PlayerPO>();
 	private ArrayList<PlayerPO> rightplayerlist=new ArrayList<PlayerPO>();
