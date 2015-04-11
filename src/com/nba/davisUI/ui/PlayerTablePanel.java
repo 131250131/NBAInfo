@@ -45,12 +45,12 @@ public class PlayerTablePanel extends MyPanel{
 		 * 
 		 * 
 		 * */
-		String[] temp = {"球员姓名","所属球队","参赛场数","先发场数","篮板数","进攻篮板","防守篮板","助攻数","场均出场时间"
+		String[] temp = {"序号","球员姓名","所属球队","参赛场数","先发场数","篮板数","进攻篮板","防守篮板","助攻数","场均出场时间"
 						,"投篮命中率","三分命中率","罚球命中率","抢断数","盖帽数",
 						"失误数","犯规数","球员得分","效率","GmSc效率值","真实命中率","投篮效率","篮板率","进攻篮板率",
 						"防守篮板率","助攻率","抢断绿","盖帽率","失误率","使用率","两双次数"};
 		temp2 = temp;
-		data2 = new String[30][];
+		data2 = new String[31][];
 		table = new MyTable(temp, data2);
 		
 		//背景
@@ -261,47 +261,50 @@ public class PlayerTablePanel extends MyPanel{
 	@SuppressWarnings("unchecked")
 	public void getData(){
 		
-		Object[][] data = new Object[RegisterList.getPlayerNumber()][30];
+		Object[][] data = new Object[RegisterList.getPlayerNumber()][31];
 		
 		//System.out.println(RegisterList.getPlayerNumber());
 		
 		int index = 0;
+		int sequence=0;
 		
 		for(int i = 0; i < 26; i++){
 			ArrayList<Player> playerList = (ArrayList<Player>) RegisterList.saveList.get(i);
 			int size = playerList.size();	
 			for(int j = 0; j < size; j++){
 				Player tempPlayer = playerList.get(j);
-				data[index][0] = tempPlayer.getPlayerName();
-				data[index][1] = tempPlayer.getTeamShortName();//所属球队
-				data[index][2] = tempPlayer.getPlayerAttends();
-				data[index][3] = tempPlayer.getPlayerStartTimes();
-				data[index][4] = tempPlayer.getPlayerTotalRebounds();
-				data[index][5] = tempPlayer.getPlayerOffenceRebounds();
-				data[index][6] = tempPlayer.getPlayerDeffenceRebounds();
-				data[index][7] = tempPlayer.getPlayerAssists();
-				data[index][8] = tempPlayer.getPlayerPlayTime();
-				data[index][9] = tempPlayer.getPlayerFGP();
-				data[index][10] = tempPlayer.getPlayer3FGP();
-				data[index][11] = tempPlayer.getPlayerFTGP();
-				data[index][12] = tempPlayer.getPlayerSteals();
-				data[index][13] = tempPlayer.getPlayerBlocks();
-				data[index][14] = tempPlayer.getPlayerTurnovers();
-				data[index][15] = tempPlayer.getPlayerFouls();
-				data[index][16] = tempPlayer.getPlayerScores();
-				data[index][17] = tempPlayer.getPlayerPER();
-				data[index][18] = tempPlayer.getPlayerGmScER();
-				data[index][19] = tempPlayer.getPlayerTSP();
-				data[index][20] = tempPlayer.getPlayerSER();
-				data[index][21] = tempPlayer.getRR();
-				data[index][22] = tempPlayer.getO_RR();
-				data[index][23] = tempPlayer.getD_RR();
-				data[index][24] = tempPlayer.getAR();
-				data[index][25] = tempPlayer.getSR();
-				data[index][26] = tempPlayer.getBR();
-				data[index][27] = tempPlayer.getTR();
-				data[index][28] = tempPlayer.getUR();
-				data[index][29] = tempPlayer.getdouble_double();
+				sequence++;
+				data[index][0] =sequence;
+				data[index][1] = tempPlayer.getPlayerName();
+				data[index][2] = tempPlayer.getTeamShortName();//所属球队
+				data[index][3] = tempPlayer.getPlayerAttends();
+				data[index][4] = tempPlayer.getPlayerStartTimes();
+				data[index][5] = tempPlayer.getPlayerTotalRebounds();
+				data[index][6] = tempPlayer.getPlayerOffenceRebounds();
+				data[index][7] = tempPlayer.getPlayerDeffenceRebounds();
+				data[index][8] = tempPlayer.getPlayerAssists();
+				data[index][9] = tempPlayer.getPlayerPlayTime();
+				data[index][10] = tempPlayer.getPlayerFGP();
+				data[index][11] = tempPlayer.getPlayer3FGP();
+				data[index][12] = tempPlayer.getPlayerFTGP();
+				data[index][13] = tempPlayer.getPlayerSteals();
+				data[index][14] = tempPlayer.getPlayerBlocks();
+				data[index][15] = tempPlayer.getPlayerTurnovers();
+				data[index][16] = tempPlayer.getPlayerFouls();
+				data[index][17] = tempPlayer.getPlayerScores();
+				data[index][18] = tempPlayer.getPlayerPER();
+				data[index][19] = tempPlayer.getPlayerGmScER();
+				data[index][20] = tempPlayer.getPlayerTSP();
+				data[index][21] = tempPlayer.getPlayerSER();
+				data[index][22] = tempPlayer.getRR();
+				data[index][23] = tempPlayer.getO_RR();
+				data[index][24] = tempPlayer.getD_RR();
+				data[index][25] = tempPlayer.getAR();
+				data[index][26] = tempPlayer.getSR();
+				data[index][27] = tempPlayer.getBR();
+				data[index][28] = tempPlayer.getTR();
+				data[index][29] = tempPlayer.getUR();
+				data[index][30] = tempPlayer.getdouble_double();
 				index++;
 			}
 		}

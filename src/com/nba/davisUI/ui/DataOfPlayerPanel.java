@@ -6,6 +6,10 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.nba.davisUI.myUI.ImageBin;
+
+import po.PlayerPO;
+
 public class DataOfPlayerPanel extends JPanel {
 
 	private JLabel portrait;
@@ -89,8 +93,30 @@ public class DataOfPlayerPanel extends JPanel {
 		exp.setBounds(455, 50, 200, 20);
 		school.setBounds(455, 90, 200, 20);
 		weight.setBounds(455, 130, 200, 20);
+		
+		this.add(playerName,0);
+		this.add(playerNumber,1);
+		this.add(position,2);
+		this.add(height,3);
+		this.add(playerBirth,4);
+		this.add(playerAge,5);
+		this.add(exp,6);
+		this.add(school,7);
+		this.add(weight,8);
 	}
-	public void show(){
-		//未完
+	public void update(){
+		PlayerPO temp = null;
+		//头像
+		portrait.setIcon(ImageBin.getImage(temp.getPlayerName()));
+		//信息
+		playerName.setText("球员："+temp.getPlayerName());
+		playerNumber.setText("号码："+temp.getPlayerNumber());
+		position.setText("位置："+temp.getPosition());
+		height.setText("身高："+temp.getHeight());
+		playerBirth.setText("生日："+temp.getPlayerBirth());
+		playerAge.setText("年龄："+String.valueOf(temp.getPlayerAge()));
+		exp.setText("球龄："+String.valueOf(temp.getExp()));
+		school.setText("毕业院校："+temp.getSchool());
+		weight.setText("体重："+String.valueOf(temp.getWeight()));
 	}
 }

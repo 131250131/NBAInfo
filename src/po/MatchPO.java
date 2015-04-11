@@ -78,6 +78,9 @@ public class MatchPO implements Serializable {
 		public void setScore(String score){
 			this.score=score;
 		}
+		public String getScore(){
+			return score;
+		}
 /*
  * 我还有一个问题，加时的比分算不算在里面;
  * */
