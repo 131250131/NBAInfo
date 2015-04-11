@@ -222,6 +222,7 @@ public class PlayerTablePanel extends MyPanel{
 					if(data.length>50){
 				    	for(int i=0;i<50;i++){
 				    		data2[i]=data[i];
+//				    		data2[i][0]=i;
 				    	}
 				    	table.update(temp2, data2);
 				    }
