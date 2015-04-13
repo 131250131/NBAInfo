@@ -26,7 +26,6 @@ public class HotSpotComboBox2 extends JComboBox<String>{
 		this.addItem("Rebounds");
 		this.addItem("Blocks");
 		this.addItem("Steals");
-		this.addItem("Efficiency");
 	}
 
 }
