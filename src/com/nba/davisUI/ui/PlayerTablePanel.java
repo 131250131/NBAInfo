@@ -67,16 +67,23 @@ public class PlayerTablePanel extends MyPanel{
 		JPanel filtrate=new JPfiltrate();
 		filtrate.setBounds(350,40, 870, 100);
 		
+		//零时放置
+		//比赛信息版
+		DataOfMatchPanel match=new DataOfMatchPanel();
+		match.setBounds(0, 50, 350, 620);
+		
 		table.setBounds(350,350, 870, 300);
 		table.setVisible(true);
 		
 		this.add(table,0);
 		this.add(filtrate,1);
 		this.add(re,2);
-		this.add(bg,3);
+		this.add(match,3);
+		this.add(bg,4);
 		
 		getData();
 		JSortTable.makeFace(table.getTable());
+		this.addMouseListener(new MouseListenerForLocating());
 	}
 	class MouseListenerOfRe implements MouseListener{
 

@@ -2,18 +2,12 @@ package com.nba.ui;
 
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Enumeration;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.Timer;
@@ -25,7 +19,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-public class MyTable extends JScrollPane{
+public class MyTable extends JScrollPane implements MouseListener{
 	
 	Timer timer;
 	
@@ -94,6 +88,13 @@ public class MyTable extends JScrollPane{
 		initial(temp,data);//初始化
 		this.setOpaque(false);
 	}
+   /*获取当前选中行的标识*/
+	public String getSign(){
+		int selectRow=table.getSelectedRow();
+		String result=(String)this.model.getValueAt(selectRow, 1);
+		return result;
+		
+	}
 	
 	@SuppressWarnings("serial")
 	void initial(String[] columnNames,Object[][] content){//表格header和二维数组内容，object数组可以装载所有对象，包括基本类型
@@ -157,6 +158,8 @@ public class MyTable extends JScrollPane{
 		
 		table.setShowGrid(false);
 
+		
+		table.addMouseListener(this);
         //将表格装载到滚动板上
         this.setViewportView(table);
         
@@ -264,8 +267,38 @@ public class MyTable extends JScrollPane{
 			
 		}
 	}
-	
 
+
+
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		System.out.println(getSign());
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+ 
 	/*test*/
 //	public static void main(String[] args){
 //		JFrame testF=new JFrame();

@@ -28,8 +28,8 @@ public class ImageBin {
 		case "scan" : return new ImageIcon(ImageFilePath + "all/littleScan.png");
 		case "warn" : return new ImageIcon(ImageFilePath + "all/warn.png");
 		case "return" : return new ImageIcon(ImageFilePath + "all/return.png");
-		default://专用于球员头像
-			return new ImageIcon(ImageFilePath + "portrait/"+key+".png");
+		default://通用路径
+			return new ImageIcon(ImageFilePath +key+".png");
 		}
 	}
 	
