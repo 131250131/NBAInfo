@@ -11,7 +11,8 @@ public class MatchPO implements Serializable {
 		TeamPO leftTeam;
 		TeamPO rightTeam;
 		String score;
-		ArrayList<PlayerPO> playerlist=new ArrayList<PlayerPO>();
+		ArrayList<PlayerPO> leftplayerlist=new ArrayList<PlayerPO>();
+		ArrayList<PlayerPO> rightplayerlist=new ArrayList<PlayerPO>();
 	//每一节的具体得分；
 		String scores1;
 		String scores2;
@@ -72,14 +73,23 @@ public class MatchPO implements Serializable {
 		public void setScores4(String scores4) {
 			this.scores4 = scores4;
 		}
-		public void addplayer(PlayerPO player){
-			playerlist.add(player);
+		public void addleftplayer(PlayerPO player){
+			leftplayerlist.add(player);
+		}
+		public ArrayList<PlayerPO> getleftplayers(){
+			return leftplayerlist;
+		}
+		public void addrightplayer(PlayerPO player){
+			rightplayerlist.add(player);
+		}
+		public ArrayList<PlayerPO> getrightplayers(){
+			return rightplayerlist;
 		}
 		public void setScore(String score){
 			this.score=score;
 		}
 		public String getScore(){
-			return score;
+			return this.score;
 		}
 /*
  * 我还有一个问题，加时的比分算不算在里面;

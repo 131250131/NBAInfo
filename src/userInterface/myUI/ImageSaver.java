@@ -100,8 +100,10 @@ public class ImageSaver {
 		case "WAS1" : return new ImageIcon(iconPath + "TodayTeam/WAS1.png");
 		
 		case "mouseEffect" : return new ImageIcon(iconPath + "TodayTeam/mouseEffect.png");
+		//用于其他通用路径，文件夹/图片名
+		default: return new ImageIcon(iconPath + iconName+".png");
+		
 		}
 		
-		return null;
 	}
 }

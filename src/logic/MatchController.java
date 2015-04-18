@@ -26,6 +26,19 @@ public class MatchController implements matchControllerService{
 		public ArrayList<MatchVO> getSomeMatchVO(TeamShortName teamShortName){
 			return null;
 		}
+
+		@Override
+		public Object[][] getTeamData(String team, int matchnum) {
+			// TODO Auto-generated method stub
+			return new Match().getData(team, matchnum);
+		}
+
+		/*通过场次num找到match返回vo*/
+		@Override
+		public MatchVO getMatch(int num) {
+			// TODO Auto-generated method stub
+			return null;
+		}
 		
 		
 		

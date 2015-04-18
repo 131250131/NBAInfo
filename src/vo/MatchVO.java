@@ -77,4 +77,7 @@ public class MatchVO {
 	public void setScore(String score){
 		this.score=score;
 	}
+	public String getScore(){
+		return this.score;
+	}
 }

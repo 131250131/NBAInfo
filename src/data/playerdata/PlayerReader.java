@@ -6,11 +6,13 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+import DataService.PlayerDataService;
 import po.PlayerPO;
 
-public class PlayerReader {
+public class PlayerReader implements PlayerDataService {
 //这些用用来暂存球员的基本信息的;
 	public String temp_playerName, 
 	temp_playerNumber, 
@@ -39,8 +41,8 @@ public class PlayerReader {
 	}
 	
 	//该方法将会对每一球员信息进行读取工作，返回一个PlayerPO;
-	private PlayerPO readOne(File file) throws IOException, FileNotFoundException{
-	
+	public PlayerPO readOne(File file) throws IOException, FileNotFoundException{
+
 		InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
         BufferedReader bufferedReader = new BufferedReader(read);
         
@@ -56,7 +58,7 @@ public class PlayerReader {
 	}
 	
 	//该方法将从球员文件中搜索出有用信息，读出一行;
-	private void operatePlayerTxt(String lineTxt, int lineNumber){
+	public void operatePlayerTxt(String lineTxt, int lineNumber){
 		
 		switch(lineNumber){
 		case 1:
@@ -115,6 +117,26 @@ public class PlayerReader {
 			break;
 		}
 		
+	}
+
+	@Override
+	public PlayerPO find(String name) {
+		// TODO Auto-generated method stub
+		try{
+		FileInputStream fis = new FileInputStream("data/save/player.ser");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        ArrayList<PlayerPO> temp=new ArrayList<PlayerPO>();
+        temp = (ArrayList<PlayerPO>)ois.readObject();
+        for(PlayerPO p:temp){
+        	if(p.getPlayerName().equals(name)){
+        		return p;
+        	}
+        }
+        return null;
+		}catch(Exception e){
+			return null;
+		}
+	
 	}
 	
 }

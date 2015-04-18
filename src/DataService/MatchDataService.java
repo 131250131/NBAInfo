@@ -16,4 +16,5 @@ public interface MatchDataService {
 			int FTG, int FTGTry, int offenceRebounds, int deffenceRebounds, int totalRebounds,
 			int assists, int steals, int blocks, int turnovers, int fouls, int scores);
 	public TeamPO teamdataoperator(String type);
+	public MatchPO getMatchbynum(int number);
 }
