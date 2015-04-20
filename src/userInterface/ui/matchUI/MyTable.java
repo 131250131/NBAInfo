@@ -34,23 +34,26 @@ public class MyTable extends JScrollPane implements MouseListener{
 	int downLimit;
 	int leftLimit=0;
 	int rightLimit;
-	
-//	public void actionPerformed(ActionEvent e) {
-//		if (e.getSource() == timer){
-//				
-//		 	if(table.getSelectedRowCount() == 1){
-//		 		
-//		 		int x = table.getSelectedRow();
-//		 		int y = table.getSelectedColumn();
-//		 		
-//		 		System.out.println( x + ";" + y);
-//		 		
-//		 		table.addRowSelectionInterval(x, x);
-//		 		table.addColumnSelectionInterval(y, y);  
-//		 	}
-//	 	}
-//	 }
-	
+	String[] addSerialNum(String[] columnNames){
+		String[] newColumnNames=new String[columnNames.length+1];
+		newColumnNames[0]="序号";
+		for(int i=0;i<columnNames.length;i++){
+			newColumnNames[i+1]=columnNames[i];
+		}
+		return newColumnNames;
+	}
+	Object[][] addSerialNum(Object[][] content){
+		int len=content.length;
+		Object[][] newContent =new Object[len][content[0].length+1];
+		for(int i=0;i<len;i++){
+			newContent[i][0]=i+1;
+			for(int j=0;j<content[0].length;j++){
+				newContent[i][j+1]=content[i][j];
+			}
+		}
+		return newContent;
+		
+	}
 	public JTable getTable(){
 		return table;
 	}
@@ -71,18 +74,18 @@ public class MyTable extends JScrollPane implements MouseListener{
 		Object[][] data =
 			{
 			{"Apples", new Integer(5),"5.00"},
-			         {"Oranges", new Integer(3),"6.00"},
-			         {"Pears", new Integer(2),"4.00"},
-			         {"Grapes", new Integer(3),"2.00"},
-			         {"Grapes", new Integer(3),"2.00"},
-			         {"Grapes", new Integer(3),"2.00"},
-			         {"Grapes", new Integer(3),"2.00"},
-			         {"Grapes", new Integer(3),"2.00"},
-			         {"Grapes", new Integer(3),"2.00"},
-			         {"Grapes", new Integer(3),"2.00"},
-			         {"Grapes", new Integer(3),"2.00"},
-			         {"Grapes", new Integer(3),"2.00"},
-			         {"Grapes", new Integer(3),"2.00"}
+	         {"Oranges", new Integer(3),"6.00"},
+	         {"Pears", new Integer(2),"4.00"},
+	         {"Grapes", new Integer(3),"2.00"},
+	         {"Grapes", new Integer(3),"2.00"},
+	         {"Grapes", new Integer(3),"2.00"},
+	         {"Grapes", new Integer(3),"2.00"},
+	         {"Grapes", new Integer(3),"2.00"},
+	         {"Grapes", new Integer(3),"2.00"},
+	         {"Grapes", new Integer(3),"2.00"},
+	         {"Grapes", new Integer(3),"2.00"},
+	         {"Grapes", new Integer(3),"2.00"},
+	         {"Grapes", new Integer(3),"2.00"}
 			};
 
 		initial(temp,data);//初始化
@@ -119,6 +122,10 @@ public class MyTable extends JScrollPane implements MouseListener{
         this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         
 		//用参数初始化model
+        if(!columnNames[0].equals("序号")){//如果没有序号列，自动添加序号列
+        	content=addSerialNum(content);
+        	columnNames=addSerialNum(columnNames);
+        }
 		model = new DefaultTableModel(content, columnNames);
 		this.columnNames=columnNames;
 		this.content=content;
@@ -174,6 +181,10 @@ public class MyTable extends JScrollPane implements MouseListener{
 	}
 	/*更新表格数据*/
 	public void update(String[] columnNames,Object[][] content){
+	   if(!columnNames[0].equals("序号")){//如果没有序号列，自动添加序号列
+        	content=addSerialNum(content);
+        	columnNames=addSerialNum(columnNames);
+        }
 		model.setDataVector(content, columnNames);
 		setWidth();
 		this.columnNames=columnNames;
