@@ -1,7 +1,13 @@
 package logic;
 
+import po.PlayerPO;
+
 public class Player {
-	
+	private int scores=0;
+public Player(){
+		
+	}
+
 	//初始化球员的方法
 	public Player(String _playerName, String _playerNumber,String _playerPosition,
 			String _playerHeight, String _playerWeight, String _playerBirth, 
@@ -61,6 +67,36 @@ public class Player {
 		allTeamTurnover = 0;
 		allEnemyOffenceTimes = 0;
 	}
+	
+	public void creatplayer(PlayerPO playerpo){
+		playerName=playerpo.getPlayerName();
+		playerNumber=playerpo.getPlayerNumber();
+		position=playerpo.getPosition();
+		height=playerpo.getHeight();
+		weight=playerpo.getWeight();
+		playerBirth=playerpo.getPlayerBirth();
+		playerAge=playerpo.getPlayerAge();
+		exp=playerpo.getExp();
+		school=playerpo.getSchool();
+		setScores(playerpo.getScores());
+		playerAssists=playerpo.getPlayerAssists();
+		playerPlayTime=playerpo.getPlayerPlayTime();
+		playerFG=playerpo.getPlayerFG();
+		playerFGTry=playerpo.getPlayerFGTry();
+		player3FG=playerpo.getPlayer3FG();
+		player3FGTry=playerpo.getPlayer3FGTry();
+		playerFTG=playerpo.getPlayerFTG();
+		playerFTGTry=playerpo.getPlayerFTGTry();
+		playerOffenceRebounds=playerpo.getPlayerOffenceRebounds();
+		playerDeffenceRebounds=playerpo.getPlayerDeffenceRebounds();
+		playerTotalRebounds=playerpo.getPlayerTotalRebounds();
+		playerSteals=playerpo.getPlayerSteals();
+		playerBlocks=playerpo.getPlayerBlocks();
+		playerTurnovers=playerpo.getPlayerTurnovers();
+		playerFouls=playerpo.getPlayerFouls();
+		teamShortName=playerpo.getTeamShortName();
+	}
+
 	
 	//在读取比赛时 更新球员数据的方法
 	public void updatePlayer(int time, boolean isStart, int FG, int FGTry, int threeFG, int threeFGTry,
@@ -392,7 +428,7 @@ public class Player {
 			return playerAssists;
 		}
 		
-		public double getPlayerPlayTime(){
+		public int getPlayerPlayTime(){
 			return (playerAttends==0)?0:(playerPlayTime / playerAttends) / 60;
 		}
 		
@@ -728,5 +764,58 @@ public class Player {
 //        	   }
 //        	   return 0;
 //        }
+
+		public int getScores() {
+			return scores;
+		}
+
+		public void setScores(int scores) {
+			this.scores = scores;
+		}
+		public String getHeight() {
+			// TODO Auto-generated method stub
+			return height;
+		}
+		public double getWeight() {
+			// TODO Auto-generated method stub
+			return weight;
+		}
+		public String getPlayerBirth() {
+			// TODO Auto-generated method stub
+			return playerBirth;
+		}
+		public int getPlayerAge() {
+			// TODO Auto-generated method stub
+			return playerAge;
+		}
+		public int getExp() {
+			// TODO Auto-generated method stub
+			return exp;
+		}
+		public int getPlayerFGTry() {
+			// TODO Auto-generated method stub
+			return playerFGTry;
+		}
+		public int getPlayer3FG() {
+			// TODO Auto-generated method stub
+			return player3FG;
+		}
+		public int getPlayer3FGTry() {
+			// TODO Auto-generated method stub
+			return player3FGTry;
+		}
+		public int getPlayerFTG() {
+			// TODO Auto-generated method stub
+			return playerFTG;
+		}
+		public int getPlayerFTGTry() {
+			// TODO Auto-generated method stub
+			return playerFTGTry;
+		}
+		public String getTeamShortName() {
+			// TODO Auto-generated method stub
+			return teamShortName;
+		} 
+
 }
 

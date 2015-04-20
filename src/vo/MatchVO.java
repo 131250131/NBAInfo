@@ -2,6 +2,10 @@
 
 import java.util.ArrayList;
 
+import po.PlayerPO;
+import logic.Match;
+import logic.Player;
+import logic.Team;
 
 
 public class MatchVO {
@@ -11,12 +15,14 @@ public class MatchVO {
 	TeamVO leftTeam;
 	TeamVO rightTeam;
 	String score;
-	ArrayList<PlayerVO> playerlist=new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> leftplayerlist=new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> rightplayerlist=new ArrayList<PlayerVO>();
 //每一节的具体得分；
 	String scores1;
 	String scores2;
 	String scores3;
 	String scores4;
+	String extrascores;
 	public int getNum() {
 		return Num;
 	}
@@ -71,13 +77,40 @@ public class MatchVO {
 	public void setScores4(String scores4) {
 		this.scores4 = scores4;
 	}
-	public void addplayer(PlayerVO player){
-		playerlist.add(player);
-	}
 	public void setScore(String score){
 		this.score=score;
 	}
-	public String getScore(){
+	public void creatMatchvo(Match match){
+		Num=match.getNum();
+ 	   season=match.getSeason();
+ 	   date=match.getDate();
+ 	   TeamVO rteam=new TeamVO();
+ 	   TeamVO lteam=new TeamVO();
+ 	   rteam.creatteamvo(match.getRightTeam());
+ 	   lteam.creatteamvo(match.getLeftTeam());
+ 	   leftTeam=lteam;
+ 	   rightTeam=rteam;
+ 	   score=match.getScore();
+ 	   scores1=match.getScores1();
+ 	   scores2=match.getScores2();
+ 	   scores3=match.getScores3();
+ 	   scores4=match.getScores4();
+ 	   extrascores=match.getExtrascores();
+ 	   ArrayList<Player> lpl=match.getleftplayers();
+ 	   for(Player p:lpl){
+ 		   PlayerVO player=new PlayerVO();
+ 		   player.creatplayervo(p);
+ 		   leftplayerlist.add(player);
+ 	   }
+ 	   ArrayList<Player> rpl=match.getrightplayers();
+ 	   for(Player p:rpl){
+ 		   PlayerVO player=new PlayerVO();
+ 		   player.creatplayervo(p);
+ 		   rightplayerlist.add(player);
+ 	   }
+	}
+	public String getScore() {
+		// TODO Auto-generated method stub
 		return this.score;
 	}
 }

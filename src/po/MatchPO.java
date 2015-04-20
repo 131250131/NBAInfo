@@ -18,7 +18,7 @@ public class MatchPO implements Serializable {
 		String scores2;
 		String scores3;
 		String scores4;
-		
+		String extrascores;//用于记载加时数据
 		public int getNum() {
 			return Num;
 		}
@@ -39,6 +39,9 @@ public class MatchPO implements Serializable {
 		}
 		public TeamPO getLeftTeam() {
 			return leftTeam;
+		}
+		public String getScore(){
+			return score;
 		}
 		public void setLeftTeam(TeamPO leftTeam) {
 			this.leftTeam = leftTeam;
@@ -88,8 +91,11 @@ public class MatchPO implements Serializable {
 		public void setScore(String score){
 			this.score=score;
 		}
-		public String getScore(){
-			return this.score;
+		public void setExtrascores(String extras){
+			this.extrascores=extras;
+		}
+		public String getExtrascores(){
+			return extrascores;
 		}
 /*
  * 我还有一个问题，加时的比分算不算在里面;

@@ -1,5 +1,6 @@
 package vo;
 
+import logic.Team;
 import po.TeamPO;
 
 public class TeamVO {
@@ -715,6 +716,30 @@ public class TeamVO {
 		public void setBirthYear(int birthYear) {
 			this.birthYear = birthYear;
 		}
-		
+		public void creatteamvo(Team team){
+			teamName=team.getTeamName();
+			shortName=team.getShortName();
+			location=team.getLocation();
+			isEast=team.getisEast();
+			division=team.getDivision();
+			gymName=team.getGymName();
+			birthYear=team.getBirthYear();
+			teamAssists=team.getTeamAssists();
+			teamFG=team.getTeamFG();
+			teamFGTry=team.getTeamFGTry();
+			team3FG=team.getTeam3FG();
+			team3FGTry=team.getTeam3FGTry();
+			teamFTG=team.getTeamFTG();
+			teamFTGTry=team.getTeamFGTry();
+			teamOffenceRebounds=team.getTeamOffenceRebounds();
+			teamDeffenceRebounds=team.getTeamDeffenceRebounds();
+			teamTotalRebounds=team.getTeamTotalRebounds();
+			teamSteals=team.getTeamSteals();
+			teamBlocks=team.getTeamBlocks();
+			teamTurnovers=team.getTeamTurnovers();
+			teamFouls=team.getTeamFouls();
+			teamScores=team.getTeamScores();
+		}
+
 
 }

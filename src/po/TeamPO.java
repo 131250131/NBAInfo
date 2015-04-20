@@ -214,6 +214,10 @@ public class TeamPO implements Serializable {
 		public TeamPO(){
 			
 		}
+		public boolean getisEast() {
+			// TODO Auto-generated method stub
+			return isEast;
+		}
 		
 /*
  * 		 脑洞打开系列：

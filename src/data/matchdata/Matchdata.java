@@ -1,7 +1,5 @@
 package data.matchdata;
 
-
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -40,6 +38,7 @@ public class Matchdata implements MatchDataService{
 		for(int i = 0; i < matchFile.length; i++){
 			MatchPO match=new MatchPO();
 			int count = 0;   //用于判断是客队还是主队球员,为1时左队，为2时右队
+			int line=1;
 			//每次处理比赛的初始化
 			String[] a = matchFile[i].toString().split("_");
 			String season =a[0];
@@ -64,8 +63,9 @@ public class Matchdata implements MatchDataService{
 	        		String[] teamname=context[1].split("/-");
 	        		leftTeamShortName=teamname[0];
 	        		rightTeamShortName=teamname[1];
+	        		line++;
 	        	}
-	        	if(context.length==4){
+	        	if(line==2){
 	        		String scores1=context[0];
 	        		String scores2=context[1];
 	        		String scores3=context[2];
@@ -74,6 +74,22 @@ public class Matchdata implements MatchDataService{
 	        		match.setScores2(scores2);
 	        		match.setScores3(scores3);
 	        		match.setScores4(scores4);
+	        		//处理加时
+	        		if(context.length>4){
+	        			ArrayList<String> exs=new ArrayList<String>();
+	        			for(int k=4;k<context.length;k++){
+	        				exs.add(context[k]);
+	        			}
+	        			int left=0;
+	        			int right=0;
+	        			for(String p:exs){
+	        				String[] s=p.split("/-");
+	        				 left=left+Integer.parseInt(s[0]);
+	        				 right=right+Integer.parseInt(s[1]);
+	        			}
+	        			match.setExtrascores(String.valueOf(left)+"-"+String.valueOf(right));
+	        		}
+	        		line++;
 	        	}
 	        	if(context.length==18){
 	        		if(count==1){

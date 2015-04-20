@@ -1,7 +1,13 @@
 package vo;
 
+import logic.Player;
+
 public class PlayerVO {
-	
+	private int scores=0;
+public PlayerVO(){
+		
+	}
+
 	//初始化球员的方法
 		public PlayerVO(String _playerName, String _playerNumber,String _playerPosition,
 				String _playerHeight, String _playerWeight, String _playerBirth, 
@@ -827,5 +833,34 @@ public class PlayerVO {
 			public void setAllEnemyOffenceTimes(double allEnemyOffenceTimes) {
 				this.allEnemyOffenceTimes = allEnemyOffenceTimes;
 			}
+			public void creatplayervo(Player player){
+				playerName=player.getPlayerName();
+				playerNumber=player.getPlayerNumber();
+				position=player.getPosition();
+				height=player.getHeight();
+				weight=player.getWeight();
+				playerBirth=player.getPlayerBirth();
+				playerAge=player.getPlayerAge();
+				exp=player.getExp();
+				school=player.getSchool();
+				scores=player.getScores();
+				playerAssists=player.getPlayerAssists();
+				playerPlayTime=player.getPlayerPlayTime();
+				playerFG=player.getPlayerFG();
+				playerFGTry=player.getPlayerFGTry();
+				player3FG=player.getPlayer3FG();
+				player3FGTry=player.getPlayer3FGTry();
+				playerFTG=player.getPlayerFTG();
+				playerFTGTry=player.getPlayerFTGTry();
+				playerOffenceRebounds=player.getPlayerOffenceRebounds();
+				playerDeffenceRebounds=player.getPlayerDeffenceRebounds();
+				playerTotalRebounds=player.getPlayerTotalRebounds();
+				playerSteals=player.getPlayerSteals();
+				playerBlocks=player.getPlayerBlocks();
+				playerTurnovers=player.getPlayerTurnovers();
+				playerFouls=player.getPlayerFouls();
+				teamShortName=player.getTeamShortName();
+			}
+
 	}
 

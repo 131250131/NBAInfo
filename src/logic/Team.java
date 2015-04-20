@@ -1257,5 +1257,37 @@ public class Team {
 			this.oppoScores+=oppoTeam.getTeamScores();
 				
 			}
+		public void creatteam(TeamPO teampo){
+			teamName=teampo.getTeamName();
+			shortName=teampo.getShortName();
+			location=teampo.getLocation();
+			isEast=teampo.getisEast();
+			division=teampo.getDivision();
+			gymName=teampo.getGymName();
+			birthYear=teampo.getBirthYear();
+			teamAssists=teampo.getTeamAssists();
+			teamFG=teampo.getTeamFG();
+			teamFGTry=teampo.getTeamFGTry();
+			team3FG=teampo.getTeam3FG();
+			team3FGTry=teampo.getTeam3FGTry();
+			teamFTG=teampo.getTeamFTG();
+			teamFTGTry=teampo.getTeamFGTry();
+			teamOffenceRebounds=teampo.getTeamOffenceRebounds();
+			teamDeffenceRebounds=teampo.getTeamDeffenceRebounds();
+			teamTotalRebounds=teampo.getTeamTotalRebounds();
+			teamSteals=teampo.getTeamSteals();
+			teamBlocks=teampo.getTeamBlocks();
+			teamTurnovers=teampo.getTeamTurnovers();
+			teamFouls=teampo.getTeamFouls();
+			teamScores=teampo.getTeamScores();
+		}
+
+
+
+		public boolean getisEast() {
+			// TODO Auto-generated method stub
+			return isEast;
+		}
+
 			
 }
