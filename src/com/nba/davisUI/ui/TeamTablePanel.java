@@ -8,13 +8,13 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import userInterface.ui.matchUI.JSortTable;
+import userInterface.ui.matchUI.MyTable;
+
 import com.nba.data.Team;
 import com.nba.davisUI.myUI.ImageBin;
 import com.nba.davisUI.myUI.MyPanel;
-import com.nba.davisUI.ui.PlayerTablePanel.MouseListenerOfRe;
 import com.nba.registerList.RegisterList;
-import com.nba.ui.JSortTable;
-import com.nba.ui.MyTable;
 
 @SuppressWarnings("serial")
 public class TeamTablePanel extends MyPanel{

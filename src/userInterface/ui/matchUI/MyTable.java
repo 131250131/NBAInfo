@@ -3,6 +3,7 @@ package userInterface.ui.matchUI;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -25,9 +26,10 @@ public class MyTable extends JScrollPane implements MouseListener{
 	
 	private static final long serialVersionUID = 1L;
 
-	JSortTable table;
-	DefaultTableModel model;
-	String[] columnNames;//表头
+	private JSortTable table;
+	private DefaultTableModel model;
+	private String[] columnNames;//表头
+	private Object[][] content;//表格内容
 	int upLimit=0;
 	int downLimit;
 	int leftLimit=0;
@@ -61,8 +63,6 @@ public class MyTable extends JScrollPane implements MouseListener{
 	public MyTable(String[] columnNames,Object[][] content){
 		initial(columnNames,content);//初始化
 		
-//		timer = new Timer(10, this);
-//		timer.start();
 			
 	}
 	/*空表格构造*/
@@ -97,7 +97,7 @@ public class MyTable extends JScrollPane implements MouseListener{
 	}
 	
 	@SuppressWarnings("serial")
-	void initial(String[] columnNames,Object[][] content){//表格header和二维数组内容，object数组可以装载所有对象，包括基本类型
+	void initial( String[] columnNames, Object[][] content){//表格header和二维数组内容，object数组可以装载所有对象，包括基本类型
 		this.columnNames=columnNames;
 		this.downLimit=content.length-1;
 		this.rightLimit=columnNames.length-1;
@@ -120,6 +120,8 @@ public class MyTable extends JScrollPane implements MouseListener{
         
 		//用参数初始化model
 		model = new DefaultTableModel(content, columnNames);
+		this.columnNames=columnNames;
+		this.content=content;
 		
 		table = new JSortTable(model){
 			public boolean isCellEditable(int row, int column){
@@ -152,6 +154,7 @@ public class MyTable extends JScrollPane implements MouseListener{
 		head.setForeground(Color.WHITE);
 		//head.setPreferredSize(new Dimension(20, 30));
 		head.setResizingAllowed(false);
+//		head.addMouseListener (new MouseListenerOfHeader());
 		//列宽
 		setWidth();
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//固定大小
@@ -173,6 +176,8 @@ public class MyTable extends JScrollPane implements MouseListener{
 	public void update(String[] columnNames,Object[][] content){
 		model.setDataVector(content, columnNames);
 		setWidth();
+		this.columnNames=columnNames;
+		this.content=content;
 		table.updateUI();
 	}
 	// 取得列幅的最大值
@@ -298,68 +303,18 @@ public class MyTable extends JScrollPane implements MouseListener{
 		
 	}
 	
- 
-	/*test*/
-//	public static void main(String[] args){
-//		JFrame testF=new JFrame();
-//		
-//		// 取得屏幕的宽度
-//		int width = Toolkit.getDefaultToolkit().getScreenSize().width;
-//		// 取得屏幕的高度
-//		int height = Toolkit.getDefaultToolkit().getScreenSize().height;
-//		//设置窗口大小
-//		testF.setSize(960, 600);
-//		//设置无边框
-//		testF.setUndecorated(true);
-//		// 设置窗体出现位置
-//		testF.setLocation((width - 960) / 2, (height - 600) / 2);
-//		// 将窗体的关闭方式设置为默认关闭后程序结束
-//		testF.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		//设置布局
-//		testF.setLayout(null);
-//		
-//		JPanel testJP=new JPanel();
-//		testJP.setLayout(null);
-//		testJP.setSize(960, 600);
-//		testJP.setBackground(Color.black);
-//		
-//		final MyTable testT=new MyTable();
-//		testT.setBounds(0, 0, 960, 200);
-//		
-//		
-//		testJP.add(testT);
-//		testF.add(testJP);
-//		
-//		//全局键盘监控
-////		Toolkit.getDefaultToolkit().addAWTEventListener(new AWTEventListener() {
-////		    public void eventDispatched(AWTEvent event) {
-////		        if (((KeyEvent) event).getID() == KeyEvent.KEY_PRESSED) {
-////		            //放入自己的键盘监听事件
-////		        	if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_UP){
-////		    			testT.upMove();
-////		    		}
-////		    		else if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_DOWN){
-////		    			testT.downMove();
-////		    		}
-////		    		else if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_LEFT){
-////		    			testT.leftMove();
-////		    		}
-////		    		else if(((KeyEvent) event).getKeyCode()==KeyEvent.VK_RIGHT){
-////		    			testT.rightMove();
-////		    		}
-////		        }
-////		    }
-////		}, AWTEvent.KEY_EVENT_MASK);
-//
-////		//给窗口加键盘监听
-////		testT.addKeyListener(new KeyAdapter(){
-////	    	public void keyPressed(KeyEvent e){    		
-////	    		
-////	      }
-////	    });
-//		testF.setVisible(true);
-//	}
-	
+	public String[] getColumnNames() {
+		return columnNames;
+	}
+	public void setColumnNames(String[] columnNames) {
+		this.columnNames = columnNames;
+	}
+	public Object[][] getContent() {
+		return content;
+	}
+	public void setContent(Object[][] content) {
+		this.content = content;
+	}
 	
 	
 }

@@ -5,9 +5,6 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import com.nba.ui.JSortTable;
-import com.nba.ui.MyTable;
-
 public class MatchDataPanel extends JPanel {
 
 	private MyTable table;

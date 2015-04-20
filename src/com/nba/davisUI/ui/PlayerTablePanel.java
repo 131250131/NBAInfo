@@ -12,12 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import userInterface.ui.matchUI.JSortTable;
+import userInterface.ui.matchUI.MyTable;
+
 import com.nba.data.Player;
 import com.nba.davisUI.myUI.ImageBin;
 import com.nba.davisUI.myUI.MyPanel;
 import com.nba.registerList.RegisterList;
-import com.nba.ui.JSortTable;
-import com.nba.ui.MyTable;
 
 @SuppressWarnings("serial")
 public class PlayerTablePanel extends MyPanel{

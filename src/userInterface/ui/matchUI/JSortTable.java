@@ -88,7 +88,7 @@ class SortTableModelListener extends MouseAdapter implements TableModelListener 
     }
 
     public void tableChanged(TableModelEvent e) {
-        sort();
+//        sort();
     }
 
     public void mouseClicked(MouseEvent e) {
@@ -128,6 +128,13 @@ class SortTableModelListener extends MouseAdapter implements TableModelListener 
         v.addAll(data);
         model.fireTableDataChanged();
         model.addTableModelListener(this);
+        
+        int rowcount=table.getModel().getRowCount();
+    	if(table.getColumnName(0).equals("序号")){
+    		for(int i=0;i<rowcount;i++){
+    			table.getModel().setValueAt(i+1, i, 0);
+    		}
+    	}
     }
 
 
