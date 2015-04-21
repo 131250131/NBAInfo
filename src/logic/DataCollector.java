@@ -2,6 +2,7 @@ package logic;
 
 import java.util.ArrayList;
 
+import logicservice.DataCollectorService;
 import vo.PlayerVO;
 import vo.TeamVO;
 
@@ -10,7 +11,7 @@ import vo.TeamVO;
  * 	这些属性都是该类所持有的数据
  * */
 
-public class DataCollector {
+public class DataCollector implements DataCollectorService{
 	/*赛季热点球员：依据筛选条件（筛选条件包括但不仅限于以 下几个方面：场均得分，场均篮板，场均助攻，场均盖帽， 场均抢断，三分命中率，投篮命中率，罚球命中率等）*/
 	ArrayList<PlayerVO> seasonHotPlayers_Score= new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> seasonHotPlayers_Rebound= new ArrayList<PlayerVO>();
@@ -99,6 +100,7 @@ public class DataCollector {
 	
 	//更新今天参与比赛的所有球员
 	public void updateTodayAllPlayers(){
+		//调用
 		this.todayAllPlayers = null;
 	}
 	
@@ -117,6 +119,6 @@ public class DataCollector {
 		return todayHotPlayers;
 	}
 
-	
+	//还需要把TeamController和PlayerController完善一下;
 		
 }
