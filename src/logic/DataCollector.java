@@ -22,75 +22,101 @@ public class DataCollector {
 	ArrayList<PlayerVO> seasonHotPlayers_FTGP= new ArrayList<PlayerVO>();
 	
 	/*赛季热点球队： 依据筛选条件（筛选条件包括但不仅限于以 下几个方面：场均得分，场均篮板，场均助攻，场均盖帽， 场均抢断，三分命中率，投篮命中率，罚球命中率等）*/
-	ArrayList<PlayerVO> seasonHotTeams_Score= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> seasonHotTeams_Rebound= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> seasonHotTeams_Assist= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> seasonHotTeams_Block= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> seasonHotTeams_Steal= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> seasonHotTeams_3FGP= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> seasonHotTeams_FGP= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> seasonHotTeams_FTGP= new ArrayList<PlayerVO>();
+	ArrayList<TeamVO> seasonHotTeams_Score= new ArrayList<TeamVO>();
+	ArrayList<TeamVO> seasonHotTeams_Rebound= new ArrayList<TeamVO>();
+	ArrayList<TeamVO> seasonHotTeams_Assist= new ArrayList<TeamVO>();
+	ArrayList<TeamVO> seasonHotTeams_Block= new ArrayList<TeamVO>();
+	ArrayList<TeamVO> seasonHotTeams_Steal= new ArrayList<TeamVO>();
+	ArrayList<TeamVO> seasonHotTeams_3FGP= new ArrayList<TeamVO>();
+	ArrayList<TeamVO> seasonHotTeams_FGP= new ArrayList<TeamVO>();
+	ArrayList<TeamVO> seasonHotTeams_FTGP= new ArrayList<TeamVO>();
 	
-	//用来获取最新的赛季热点球员信息
-	public ArrayList<ArrayList<PlayerVO>> updateSeasonHotPlayers(){
+	ArrayList<PlayerVO> todayAllPlayers = new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> todayHotPlayers = new ArrayList<PlayerVO>();
+	
+	//用来更新最新的赛季热点球员信息
+	public void updateSeasonHotPlayers(){
+		
+		 //调用PlayerController里面的update方法;
+		 this.seasonHotPlayers_Score=null;
+		 this.seasonHotPlayers_Rebound=null;
+		 this.seasonHotPlayers_Assist =null;
+		 this.seasonHotPlayers_Block =null;
+		 this.seasonHotPlayers_Steal =null;
+		 this.seasonHotPlayers_3FGP =null;
+		 this.seasonHotPlayers_FGP =null;
+		 this.seasonHotPlayers_FTGP =null;
+
+	}
+	
+	//用来获得最新的赛季热点球队信息
+	public ArrayList<ArrayList<PlayerVO>> getSeasonHotPlayers(){
+		
 		 ArrayList<ArrayList<PlayerVO>> seasonHotPlayersList  = new ArrayList<ArrayList<PlayerVO>>();
-		 //调用PlayerController里面的方法;
-		 ArrayList<PlayerVO> newHotPlayers_Score =null;
-		 ArrayList<PlayerVO> newHotPlayers_Rebound =null;
-		 ArrayList<PlayerVO> newHotPlayers_Assist =null;
-		 ArrayList<PlayerVO> newHotPlayers_Block =null;
-		 ArrayList<PlayerVO> newHotPlayers_Steal =null;
-		 ArrayList<PlayerVO> newHotPlayers_3FGP =null;
-		 ArrayList<PlayerVO> newHotPlayers_FGP =null;
-		 ArrayList<PlayerVO> newHotPlayers_FTGP =null;
-		 seasonHotPlayersList.add(newHotPlayers_Score);
-		 seasonHotPlayersList.add(newHotPlayers_Rebound);
-		 seasonHotPlayersList.add(newHotPlayers_Assist);
-		 seasonHotPlayersList.add(newHotPlayers_Block);
-		 seasonHotPlayersList.add(newHotPlayers_Steal);
-		 seasonHotPlayersList.add(newHotPlayers_3FGP);
-		 seasonHotPlayersList.add(newHotPlayers_FGP);
-		 seasonHotPlayersList.add(newHotPlayers_FTGP);
+		 seasonHotPlayersList.add(this.seasonHotPlayers_Score);
+		 seasonHotPlayersList.add(this.seasonHotPlayers_Rebound);
+		 seasonHotPlayersList.add(this.seasonHotPlayers_Assist);
+		 seasonHotPlayersList.add(this.seasonHotPlayers_Block);
+		 seasonHotPlayersList.add(this.seasonHotPlayers_Steal);
+		 seasonHotPlayersList.add(this.seasonHotPlayers_3FGP);
+		 seasonHotPlayersList.add(this.seasonHotPlayers_FGP);
+		 seasonHotPlayersList.add(this.seasonHotPlayers_FTGP);
 		 
 		 return seasonHotPlayersList;
 	}
 	
+	//用来更新最新的赛季热点球队信息
+	public void updateSeasonHotTeams(){
+
+		 this.seasonHotTeams_Score =null;
+		 this.seasonHotTeams_Rebound =null;
+		 this.seasonHotTeams_Assist =null;
+		 this.seasonHotTeams_Block =null;
+		 this.seasonHotTeams_Steal =null;
+		 this.seasonHotTeams_3FGP =null;
+		 this.seasonHotTeams_FGP =null;
+		 this.seasonHotTeams_FTGP =null;
+
+		
+	}
+	
 	//用来获得最新的赛季热点球队信息
-	public ArrayList<ArrayList<TeamVO>> updateSeasonHotTeams(){
+	public ArrayList<ArrayList<TeamVO>> getSeasonHotTeams(){
 		ArrayList<ArrayList<TeamVO>> seasonHotTeamsList = new ArrayList<ArrayList<TeamVO>>();
-		 //调用MatchController里面的方法;
-		 ArrayList<TeamVO> newHotPlayers_Score =null;
-		 ArrayList<TeamVO> newHotPlayers_Rebound =null;
-		 ArrayList<TeamVO> newHotPlayers_Assist =null;
-		 ArrayList<TeamVO> newHotPlayers_Block =null;
-		 ArrayList<TeamVO> newHotPlayers_Steal =null;
-		 ArrayList<TeamVO> newHotPlayers_3FGP =null;
-		 ArrayList<TeamVO> newHotPlayers_FGP =null;
-		 ArrayList<TeamVO> newHotPlayers_FTGP =null;
-		 seasonHotTeamsList.add(newHotPlayers_Score);
-		 seasonHotTeamsList.add(newHotPlayers_Rebound);
-		 seasonHotTeamsList.add(newHotPlayers_Assist);
-		 seasonHotTeamsList.add(newHotPlayers_Block);
-		 seasonHotTeamsList.add(newHotPlayers_Steal);
-		 seasonHotTeamsList.add(newHotPlayers_3FGP);
-		 seasonHotTeamsList.add(newHotPlayers_FGP);
-		 seasonHotTeamsList.add(newHotPlayers_FTGP);
+
+		 seasonHotTeamsList.add(this.seasonHotTeams_Score);
+		 seasonHotTeamsList.add(this.seasonHotTeams_Rebound);
+		 seasonHotTeamsList.add(this.seasonHotTeams_Assist);
+		 seasonHotTeamsList.add(this.seasonHotTeams_Block);
+		 seasonHotTeamsList.add(this.seasonHotTeams_Steal);
+		 seasonHotTeamsList.add(this.seasonHotTeams_3FGP);
+		 seasonHotTeamsList.add(this.seasonHotTeams_FGP);
+		 seasonHotTeamsList.add(this.seasonHotTeams_FTGP);
 		
 		 return seasonHotTeamsList;
 	}
 	
-	//获取今天参与比赛的所有球员
-	public ArrayList<PlayerVO> updateTodayAllPlayers(){
-		ArrayList<PlayerVO> todayAllPlays = new ArrayList<PlayerVO>();
-		
-		return todayAllPlays;
+	
+	//更新今天参与比赛的所有球员
+	public void updateTodayAllPlayers(){
+		this.todayAllPlayers = null;
 	}
 	
-	//获取热点球员
-	public ArrayList<PlayerVO> updateTodayHotPlayers(){
-		
-		return null;
-	} 
+	//更新今天的热点球员
+	public void updateTodayHotPlayers(){
+		this.todayHotPlayers = null;
+	}
+
+	//获得今天参与比赛的所有球员
+	public ArrayList<PlayerVO> getTodayAllPlayers() {
+		return todayAllPlayers;
+	}
+
+	//获得今天的热点球员
+	public ArrayList<PlayerVO> getTodayHotPlayers() {
+		return todayHotPlayers;
+	}
+
 	
 		
 }
