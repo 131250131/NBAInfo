@@ -44,7 +44,6 @@ public class Match {
 		
 	}
 	public Match() {
-		// TODO Auto-generated constructor stub
 	}
 	public void setExtrascores(String extras){
 		this.extrascores=extras;
@@ -209,7 +208,7 @@ public Object[][] getData(String team,int matchnum){
         }
 }
 public String getScore() {
-	// TODO Auto-generated method stub
+	
 	return score;
 }
 }
