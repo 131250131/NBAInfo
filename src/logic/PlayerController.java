@@ -12,7 +12,10 @@ public class PlayerController implements playerControllerService{
 
 	//调用数据层接口
 	PlayerDataService pds=new PlayerReader();
-	@Override
+	
+	public PlayerPO findPlayerPO(String name){
+		return null;
+	}
 	
 	/*调用playerreader，转换成vo返回给我*/
 	public PlayerVO find(String name) {

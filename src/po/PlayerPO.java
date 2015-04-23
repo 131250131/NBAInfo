@@ -120,7 +120,7 @@ public class PlayerPO implements Serializable{
 		private String teamShortName;
 	
 	//此int列表用于保存该球员参加过哪些场次的比赛
-	int[] attendedMatches = new int[85];
+	private int[] attendedMatches = new int[85];
 	
 	//在读取比赛时 更新球员数据的方法
 	public void updatePlayer(String name,String team,int time, int FG, int FGTry, int threeFG, int threeFGTry,
@@ -353,6 +353,10 @@ public class PlayerPO implements Serializable{
 		public int getScores(){
 			return scores;
 		}
+		public int[] getAttendedMatches() {
+			return attendedMatches;
+		}
+
 
 
 }

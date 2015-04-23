@@ -28,7 +28,7 @@ public class Match {
 	String extrascores;
 	public Match(int number ,String season,String date,Team leftTeam,Team rightTeam,String score,
 			ArrayList<Player> leftplayerlist,ArrayList<Player> rightplayerlist,String scores1,String scores2,
-			String scores3,String scores4){
+			String scores3,String scores4,String extrascores){
 		this.Num=number;
 		this.season=season;
 		this.date=date;
@@ -41,10 +41,12 @@ public class Match {
 		this.scores2=scores2;
 		this.scores3=scores3;
 		this.scores4=scores4;
-		
+		this.extrascores=extrascores;
 	}
+	
 	public Match() {
 	}
+	
 	public void setExtrascores(String extras){
 		this.extrascores=extras;
 	}

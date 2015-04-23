@@ -31,7 +31,6 @@ public class Matchdata implements MatchDataService{
 	
 	@Override
 	public void readMatch() {
-		// TODO Auto-generated method stub
 		File file = new File(filePath);                
 		File[] matchFile = file.listFiles();
 		int index = 0;
@@ -204,9 +203,7 @@ public class Matchdata implements MatchDataService{
 		 }
 		return result;
 	}
-	
-	
-	
+
 	@Override
 	public boolean Matchupdate() {
 		// TODO Auto-generated method stub

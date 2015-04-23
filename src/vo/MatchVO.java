@@ -23,6 +23,7 @@ public class MatchVO {
 	String scores3;
 	String scores4;
 	String extrascores;
+
 	public int getNum() {
 		return Num;
 	}
