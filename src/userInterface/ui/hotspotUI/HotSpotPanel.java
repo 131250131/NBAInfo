@@ -3,7 +3,11 @@ package userInterface.ui.hotspotUI;
 import java.awt.Color;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import userInterface.myUI.ImageSaver;
+import userInterface.ui.indexUI.IndexBounds;
 
 @SuppressWarnings("serial")
 public class HotSpotPanel extends JPanel{
@@ -40,6 +44,11 @@ public class HotSpotPanel extends JPanel{
 		
 		standingPanel = new StandingPanel();
 		this.add(standingPanel);
+		
+		JLabel adv1 = new JLabel(ImageSaver.getIcon("adv1"));
+		adv1.setBounds(HotSpotBounds.advX, HotSpotBounds.advY, HotSpotBounds.advSizeX, HotSpotBounds.advSizeY);
+		adv1.setVisible(true);
+		this.add(adv1);
 	}
 
 }

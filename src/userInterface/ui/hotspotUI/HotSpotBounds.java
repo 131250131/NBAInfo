@@ -34,5 +34,11 @@ public class HotSpotBounds {
 	public static int standingPanelY = comboBox1Y + comboBoxSize1Y + 20;
 	public static int standingPanelSizeX = 1010;
 	public static int standingPanelSizeY = 580;
+	
+	//分界线的bounds
+	public static int advX = 0; 
+	public static int advY = standingPanelY + standingPanelSizeY + 40;
+	public static int advSizeX = 1050; 
+	public static int advSizeY = 25;
 
 }
