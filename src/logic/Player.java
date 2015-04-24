@@ -1,9 +1,12 @@
 package logic;
 
+import java.util.ArrayList;
+
 import po.PlayerPO;
 
-public class Player {
+public class Player implements Comparable<Player>{
 	private int scores=0;
+	private static String comparetype="";
 public Player(){
 		
 	}
@@ -95,6 +98,7 @@ public Player(){
 		playerTurnovers=playerpo.getPlayerTurnovers();
 		playerFouls=playerpo.getPlayerFouls();
 		teamShortName=playerpo.getTeamShortName();
+		attendedMatches=playerpo.getAttendedMatches();
 	}
 
 	
@@ -143,9 +147,32 @@ public Player(){
 		allTeamFTShoots = allTeamFTShoots + _allTeamFTShoots;
 		allTeamTurnover = allTeamTurnover + _allTeamTurnover;
 		allEnemyOffenceTimes = allEnemyOffenceTimes + _allEnemyOffenceTimes;
+		if(ifhasdouble(totalRebounds, assists, steals, scores, blocks))
+			double_double++;
 			
 	}
-	
+	public boolean ifhasdouble(int tr,int assists,int steals,int scores,int blocks ){
+		int count=0;
+		if(tr>=10){
+			count++;
+		}
+		if(assists>=10){
+			count++;
+		}
+		if(steals>=10){
+			count++;
+		}
+		if(scores>=10){
+			count++;
+		}
+		if(blocks>=10){
+			count++;
+		}
+		if(count>=2){
+			return true;
+		}
+		return false;
+	}
 	public String getSchool(){
 		return school;
 	}
@@ -408,6 +435,16 @@ public Player(){
 	//72.球队对手进攻次数 (*****要传*****)
 		double allEnemyOffenceTimes;
 		
+		int    double_double;
+		
+
+		ArrayList<Integer> attendedMatches =new ArrayList<Integer>();
+		public ArrayList<Integer> getAttendedMatches() {
+			return attendedMatches;
+		}
+		public void addAttendedMatches(int num) {
+			attendedMatches.add(num);
+		}
 		public int getPlayerAttends(){
 			return playerAttends;
 		}
@@ -815,6 +852,87 @@ public Player(){
 		public String getTeamShortName() {
 			// TODO Auto-generated method stub
 			return teamShortName;
+		}
+        public int getdouble_double(){
+        	return double_double;
+        }
+		@Override
+		public int compareTo(Player o) {
+			// TODO Auto-generated method stub
+			if(comparetype.equals("两双")){
+				   if(double_double-o.getdouble_double()<0)
+	     		       return 1;
+				   return -1;
+	     	   }
+	     	
+	     	   if(comparetype.equals("得分/篮板/助攻")){
+	     		   if( (this.getPlayerScores()+this.getPlayerTotalRebounds()+this.getPlayerAssists() )-( o.getPlayerScores()+o.getPlayerTotalRebounds()+o.getPlayerAssists())<0)
+	     		       return 1;
+	     		   return -1;
+	     	   }
+	     	  
+	     	   if(comparetype.equals("助攻")){
+	     		   if( (this.getPlayerAssists()-o.getPlayerAssists() )<0)
+	     		       return 1;
+	     		   return -1;
+	     	   }
+	     	   if(comparetype.equals("分钟")){
+	     		   if((this.getPlayerPlayTime()-o.getPlayerPlayTime())<0)
+	     		       return 1;
+	               return -1;
+	     	   }
+	     	  
+	     	   if(comparetype.equals("篮板")){
+	     		  if((this.getPlayerTotalRebounds()-o.getPlayerTotalRebounds())<0)
+	    		       return 1;
+	              return -1;
+	     	   }
+	     	   if(comparetype.equals("抢断")){
+	     		  if((this.getPlayerSteals()-o.getPlayerSteals())<0)
+	   		           return 1;
+	    		  return -1;
+	     	   }
+	     	   if(comparetype.equals("盖帽")){
+	     		  if((this.getPlayerBlocks()-o.getPlayerBlocks())<0)
+	  		           return 1;
+	   		      return -1;
+	     	   }
+	     	   if(comparetype.equals("失误")){
+	     		  if((this.getPlayerTurnovers()-o.getPlayerTurnovers()<0))
+	 		           return 1;
+	  		      return -1;
+	     	   }
+	     	   if(comparetype.equals("犯规")){
+	     		  if((this.getPlayerFouls()-o.getPlayerFouls()<0))
+	    		           return 1;
+	     		      return -1;
+	     	   }
+	     	   if(comparetype.equals("得分")){
+	     		  if((this.getPlayerScores()-o.getPlayerScores()<0))
+	   		           return 1;
+	    		      return -1;
+	     	   }
+	     	   if(comparetype.equals("投篮")){
+	     		  if((this.getPlayerFGP()-o.getPlayerFGP()<0))
+	  		           return 1;
+	   		      return -1;
+	     	   }
+	     	   if(comparetype.equals("三分")){
+	     		  if((this.getPlayer3FGP()-o.getPlayer3FGP()<0))
+	 		           return 1;
+	  		      return -1;
+	     	   }
+	     	   if(comparetype.equals("罚球")){
+	     		  if((this.getPlayerFTGP()-o.getPlayerFTGP()<0))
+			           return 1;
+	 		      return -1;
+	     	   }
+	     	   if(comparetype.equals("效率")){
+	     		  if((this.getPlayerPER()-o.getPlayerPER()<0))
+			           return 1;
+	 		      return -1;
+	     	   }
+				return 0;
 		} 
 
 }

@@ -138,5 +138,20 @@ public class PlayerReader implements PlayerDataService {
 		}
 	
 	}
+
+	@Override
+	public ArrayList<PlayerPO> getallplayers() {
+		// TODO Auto-generated method stub
+		 ArrayList<PlayerPO> temp=new ArrayList<PlayerPO>();
+		try{
+		
+		FileInputStream fis = new FileInputStream("data/save/player.ser");
+        ObjectInputStream ois = new ObjectInputStream(fis);
+        temp = (ArrayList<PlayerPO>)ois.readObject();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+	     return temp;
+	}
 	
 }

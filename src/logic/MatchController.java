@@ -58,11 +58,11 @@ public class MatchController implements matchControllerService{
 		public ArrayList<MatchVO> getSomeMatchVO(String playerName){
 			ArrayList<MatchVO> someMatchVO = new ArrayList<MatchVO>();			
 			PlayerController playerController = new PlayerController();
-			PlayerPO po = playerController.findPlayerPO(playerName);
-			ArrayList<MatchPO> allMatchPO = matchdata.getAllMatch();
-			for(int i:po.getAttendedMatches()){
-				//someMat
-			}
+//			PlayerPO po = playerController.findPlayerPO(playerName);
+//			ArrayList<MatchPO> allMatchPO = matchdata.getAllMatch();
+//			for(int i:po.getAttendedMatches()){
+//				//someMat
+//			}
 			return someMatchVO;
 		}
 		

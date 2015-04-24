@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.ArrayList;
+
 import logic.Player;
 
 public class PlayerVO {
@@ -7,7 +9,13 @@ public class PlayerVO {
 public PlayerVO(){
 		
 	}
-
+ArrayList<Integer> attendedMatches =new ArrayList<Integer>();
+public ArrayList<Integer> getAttendedMatches() {
+	return attendedMatches;
+}
+public void addAttendedMatches(int num) {
+	attendedMatches.add(num);
+}
 	//初始化球员的方法
 		public PlayerVO(String _playerName, String _playerNumber,String _playerPosition,
 				String _playerHeight, String _playerWeight, String _playerBirth, 
@@ -860,6 +868,7 @@ public PlayerVO(){
 				playerTurnovers=player.getPlayerTurnovers();
 				playerFouls=player.getPlayerFouls();
 				teamShortName=player.getTeamShortName();
+				attendedMatches=player.getAttendedMatches();
 			}
 
 	}

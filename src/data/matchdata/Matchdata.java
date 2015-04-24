@@ -17,6 +17,7 @@ import po.TeamPO;
 import Utibility.FilePathSaver;
 
 
+import Utibility.JudgeUpdate;
 import DataService.MatchDataService;
 
 public class Matchdata implements MatchDataService{
@@ -31,6 +32,7 @@ public class Matchdata implements MatchDataService{
 	
 	@Override
 	public void readMatch() {
+		// TODO Auto-generated method stub
 		File file = new File(filePath);                
 		File[] matchFile = file.listFiles();
 		int index = 0;
@@ -119,6 +121,7 @@ public class Matchdata implements MatchDataService{
 	        					playerFTG, playerFTGTry, playerOffenceRebounds, playerDeffenceRebounds, playerTotalRebounds,
 	        					playerAssists, playerSteals, playerBlocks, playerTurnovers, playerFouls, playerScores);
 	        			match.addleftplayer(player);
+	        			player.addAttendedMatches(matchnum);
 	        			leftplayerlist.add(player);
 	        			}
 	        			catch(Exception e){
@@ -153,6 +156,7 @@ public class Matchdata implements MatchDataService{
 		        					playerFTG, playerFTGTry, playerOffenceRebounds, playerDeffenceRebounds, playerTotalRebounds,
 		        					playerAssists, playerSteals, playerBlocks, playerTurnovers, playerFouls, playerScores);
 		        			match.addrightplayer(player);
+		        			player.addAttendedMatches(matchnum);
 		        			rightplayerlist.add(player);
 		        			}
 		        			catch(Exception e){
@@ -203,12 +207,15 @@ public class Matchdata implements MatchDataService{
 		 }
 		return result;
 	}
-
+	
+	
+	
 	@Override
 	public boolean Matchupdate() {
 		// TODO Auto-generated method stub
-		
-		return true;
+		JudgeUpdate hasupdate=new JudgeUpdate(filePath);
+		hasupdate.run();
+		return hasupdate.getHasupdate();
 	}
 	@Override
 	public PlayerPO playerdataoperator(String name,String team,int time, int FG, int FGTry,
