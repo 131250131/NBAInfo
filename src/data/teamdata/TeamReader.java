@@ -8,9 +8,10 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
+import DataService.TeamDataService;
 import po.TeamPO;
 
-public class TeamReader {
+public class TeamReader implements TeamDataService{
 //球队的7个基本信息;
 	public String temp_teamFullName;
 	public String temp_teamShortName; 

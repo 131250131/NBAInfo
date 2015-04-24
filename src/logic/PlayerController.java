@@ -12,7 +12,27 @@ public class PlayerController implements playerControllerService{
 
 	//调用数据层接口
 	PlayerDataService pds=new PlayerReader();
-	@Override
+	ArrayList<Player> allPlayers = new ArrayList<Player>();
+	
+	
+	//构造函数，完成对球员数据的更新
+	public PlayerController(){
+		this.updatePlayersInfo_Basic();
+
+	}
+	
+	//这个功能是用来获取球员的基本信息
+	public void updatePlayersInfo_Basic(){
+		ArrayList<PlayerPO> allPlayersPO = pds.getallplayers();
+		for(PlayerPO po : allPlayersPO){
+			this.allPlayers.add(new Player(po));
+		}
+	}
+	
+	//如何对球员的进一步信息进行更新?这是个问题;
+	public void updataPlayersInfo_Advanced(){
+		
+	}
 	
 	/*调用playerreader，转换成vo返回给我*/
 	public PlayerVO find(String name) {
@@ -29,7 +49,8 @@ public class PlayerController implements playerControllerService{
 		}
 		
 	}
-	@Override
+	
+	
 	public ArrayList<PlayerVO> getAllPlayers() {
 		ArrayList<PlayerVO> result =new ArrayList<PlayerVO>();
 		ArrayList<PlayerPO> temp = pds.getallplayers();
@@ -42,5 +63,11 @@ public class PlayerController implements playerControllerService{
 		}
 		return result;
 	}
+	
+	public ArrayList<PlayerVO> getSelectedPlayers() {
+		return null;
+	}
+	
+	
 
 }

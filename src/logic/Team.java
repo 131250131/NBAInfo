@@ -179,11 +179,39 @@ public class Team {
 			
 			
 			
+		public Team(TeamPO teampo) {
+			//Basic info
+			teamName=teampo.getTeamName();
+			shortName=teampo.getShortName();
+			location=teampo.getLocation();
+			isEast=teampo.getisEast();
+			division=teampo.getDivision();
+			gymName=teampo.getGymName();
+			birthYear=teampo.getBirthYear();
+			
+			teamAssists=0;
+			teamFG=0;
+			teamFGTry=0;
+			team3FG=0;
+			team3FGTry=0;
+			teamFTG=0;
+			teamFTGTry=0;
+			teamOffenceRebounds=0;
+			teamDeffenceRebounds=0;
+			teamTotalRebounds=0;
+			teamSteals=0;
+			teamBlocks=0;
+			teamTurnovers=0;
+			teamFouls=0;
+			teamScores=0;
+			}
+
+		public Team() {
+		}
+
 		public String getTeamName() {
 				return teamName;
 			}
-
-
 
 		public void setTeamName(String teamName) {
 			this.teamName = teamName;
@@ -1211,7 +1239,7 @@ public class Team {
 
 
 
-			//更想的方法，
+		//更新的方法，
 		public void updateTeamInfo(TeamPO myTeam,TeamPO oppoTeam){
 			this.compGames++;
 			if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){
@@ -1256,7 +1284,8 @@ public class Team {
 			this.oppoFouls+=oppoTeam.getTeamFouls();
 			this.oppoScores+=oppoTeam.getTeamScores();
 				
-			}
+		}
+		
 		public void creatteam(TeamPO teampo){
 			teamName=teampo.getTeamName();
 			shortName=teampo.getShortName();
@@ -1285,7 +1314,6 @@ public class Team {
 
 
 		public boolean getisEast() {
-			// TODO Auto-generated method stub
 			return isEast;
 		}
 

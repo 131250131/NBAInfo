@@ -71,6 +71,52 @@ public Player(){
 		allEnemyOffenceTimes = 0;
 	}
 	
+	//这个方法用来根据基本信息初始化球员;
+	public Player(PlayerPO po){
+		//basic info
+		playerName = po.getPlayerName();
+		playerNumber = po.getPlayerNumber();
+		position = po.getPosition();
+		height = po.getHeight();
+		weight = po.getWeight();
+		playerBirth = po.getPlayerBirth();
+		playerAge = po.getPlayerAge();
+		exp = po.getExp();
+		school = po.getSchool();
+	
+		playerAttends = 0;
+		startTimes = 0;
+		playerAssists = 0;
+		playerPlayTime = 0;
+		playerFG = 0;
+		playerFGTry = 0; 
+		player3FG = 0;
+		player3FGTry = 0;
+		playerFTG = 0;
+		playerFTGTry = 0;
+		playerOffenceRebounds = 0;
+		playerDeffenceRebounds = 0;
+		playerTotalRebounds = 0;
+		playerSteals = 0;
+		playerBlocks = 0;		
+		playerTurnovers = 0;
+		playerFouls = 0;
+		playerScores = 0;
+		teammatePlayTime = 0;
+	    allTeamRebounds = 0;
+		allEnemyRebounds = 0;
+		o_allTeamRebounds = 0;
+		o_allEnemyRebounds = 0;
+		d_allTeamRebounds = 0;
+		d_allEnemyRebounds = 0;
+		allTeamFT = 0;
+		allTeamShoots = 0;
+		allEnemy2Shoots = 0;
+		allTeamFTShoots = 0;
+		allTeamTurnover = 0;
+		allEnemyOffenceTimes = 0;
+	}
+	
 	public void creatplayer(PlayerPO playerpo){
 		playerName=playerpo.getPlayerName();
 		playerNumber=playerpo.getPlayerNumber();
