@@ -7,7 +7,7 @@ import po.PlayerPO;
 public class Player implements Comparable<Player>{
 	private int scores=0;
 	private static String comparetype="";
-public Player(){
+	public Player(){
 		
 	}
 
@@ -128,6 +128,7 @@ public Player(){
 		exp=playerpo.getExp();
 		school=playerpo.getSchool();
 		setScores(playerpo.getScores());
+		this.isStart=playerpo.isStart();
 		playerAssists=playerpo.getPlayerAssists();
 		playerPlayTime=playerpo.getPlayerPlayTime();
 		playerFG=playerpo.getPlayerFG();
@@ -197,16 +198,17 @@ public Player(){
 			double_double++;	
 	}
 	
-	public void updatePlayer(Player player){
+	//这个方法用于更新
+	public void updatePlayer(Player player, Team myTeam ){
 		playerAttends++;
 		playerPlayTime = playerPlayTime + player.getPlayerPlayTime();
 		
 		//System.out.println(playerPlayTime);
 		
 		//是否首发
-//		if(){
-//			startTimes++;
-//		}
+		if(player.isStart==true){
+			startTimes++;
+		}
 		
 		playerFG = playerFG + player.getPlayerFG();
 		playerFGTry = playerFGTry + player.getPlayerFGTry();
@@ -224,20 +226,20 @@ public Player(){
 		playerFouls = playerFouls + player.getPlayerFouls();
 		playerScores = playerScores + player.getPlayerScores();
 		
-//		这些数据和全队相关
-//		teammatePlayTime = teammatePlayTime + _teammatePlayTime;
-//		allTeamRebounds = allTeamRebounds + _allTeamRebounds;
-//		allEnemyRebounds = allEnemyRebounds + _allEnemyRebounds;
-//		o_allTeamRebounds = o_allTeamRebounds + _allTeamORebounds;
-//		o_allEnemyRebounds = o_allEnemyRebounds + _allEnemyORebounds;
-//		d_allTeamRebounds = d_allTeamRebounds + _allTeamDRebounds;
-//		d_allEnemyRebounds = d_allEnemyRebounds + _allEnemyDRebounds;
-//		allTeamFT = allTeamFT + _allTeamFT;
-//		allTeamShoots = allTeamShoots + _allTeamShoots;
-//		allEnemy2Shoots = allEnemy2Shoots + _allEnemy2Shoots;
-//		allTeamFTShoots = allTeamFTShoots + _allTeamFTShoots;
-//		allTeamTurnover = allTeamTurnover + _allTeamTurnover;
-//		allEnemyOffenceTimes = allEnemyOffenceTimes + _allEnemyOffenceTimes;
+//		teammatePlayTime = teammatePlayTime + 48;//是以秒为单位吗?   有待商榷;
+//这下面的几个看得我好迷醉。。。。
+		allTeamRebounds = allTeamRebounds + myTeam.getTeamTotalRebounds();
+		allEnemyRebounds = allEnemyRebounds + myTeam.getOppoTotalRebounds();
+		o_allTeamRebounds = o_allTeamRebounds + myTeam.getTeamOffenceRebounds();
+		o_allEnemyRebounds = o_allEnemyRebounds + myTeam.getOppoOffenceRebounds();
+		d_allTeamRebounds = d_allTeamRebounds + myTeam.getTeamDeffenceRebounds();
+		d_allEnemyRebounds = d_allEnemyRebounds + myTeam.getOppoDeffenceRebounds();
+		allTeamFT = allTeamFT + myTeam.getTeamFG();
+		allTeamShoots = allTeamShoots + myTeam.getTeamFGTry();
+		allEnemy2Shoots = allEnemy2Shoots + myTeam.getOppoFG();
+		allTeamFTShoots = allTeamFTShoots + myTeam.getTeamFTG();
+		allTeamTurnover = allTeamTurnover + myTeam.getTeamTurnovers();
+		allEnemyOffenceTimes = allEnemyOffenceTimes + myTeam.getOppoattackRounds();
 		
 		if(ifhasdouble(player.getPlayerTotalRebounds(), player.getPlayerAssists(), player.getPlayerSteals(), player.getPlayerScores(), player.getPlayerBlocks()))
 			double_double++;	
@@ -339,6 +341,8 @@ public Player(){
 	
 //	//10.球员ID (*****要传*****) //没用的
 //		int playerID;
+		
+		boolean isStart;
 		
 	//11.球员参赛场数 
 		int playerAttends;

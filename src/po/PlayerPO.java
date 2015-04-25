@@ -72,7 +72,8 @@ public class PlayerPO implements Serializable{
 	
 //在读具体的比赛txt时，一个球员所表现出来的数据，不处理，只保存;
 	
-		
+		private boolean isStart;
+	
 	//13.队员助攻数 (*****要传*****)
 		private int playerAssists;
 
@@ -359,6 +360,12 @@ public class PlayerPO implements Serializable{
 		}
 		public void addAttendedMatches(int matchnum) {
 			this.attendedMatches.add(matchnum);
+		}
+		public boolean isStart() {
+			return isStart;
+		}
+		public void setStart(boolean isStart) {
+			this.isStart = isStart;
 		}
 
 

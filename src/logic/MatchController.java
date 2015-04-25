@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 
 import po.MatchPO;
-import po.PlayerPO;
 import data.matchdata.*;
 import DataService.MatchDataService;
 import logicservice.matchControllerService;
@@ -28,7 +27,7 @@ public class MatchController implements matchControllerService{
 		
 		private MatchController(){
 			allMatchPO = this.matchdata.getAllMatch();
-			
+			this.processAllMatches();//处理完毕当前的数据;
 		}
 		
 		//返回所有未经处理过的比赛信息;
@@ -41,7 +40,7 @@ public class MatchController implements matchControllerService{
 			return allMatchVO;
 		}
 		
-		//对所有match进行处理;
+		//对所有match进行处理;现在已处理完毕
 		public void processAllMatches(){
 			for(MatchPO matchpo:this.allMatchPO){
 				Match tempMatch = new Match();
@@ -52,8 +51,13 @@ public class MatchController implements matchControllerService{
 				this.teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
 				//team 更新完毕;
 				
-				
-				
+				for(Player tempPlayer: tempMatch.getleftplayers()){
+					this.playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
+				}
+				for(Player tempPlayer: tempMatch.getrightplayers()){
+					this.playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
+				}
+				//这两个循环用来更新球员数据
 			}
 		}
 		
@@ -98,7 +102,6 @@ public class MatchController implements matchControllerService{
 		}
 
 		/*通过场次num找到match返回vo*/
-		@Override
 		public MatchVO getMatch(int num) {
 			return null;
 		}

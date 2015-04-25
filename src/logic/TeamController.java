@@ -36,7 +36,7 @@ public class TeamController implements teamControllerService{
 	}
 	
 	public void updateTeamInfo_Advanced(Team myTeam,Team oppoTeam){
-		for(Team team:allTeams){
+		for(Team team:this.allTeams){
 			if(team.getShortName().equals(myTeam.getShortName())){
 				team.updateTeamInfo(myTeam, oppoTeam);
 			}
