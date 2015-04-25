@@ -194,9 +194,55 @@ public Player(){
 		allTeamTurnover = allTeamTurnover + _allTeamTurnover;
 		allEnemyOffenceTimes = allEnemyOffenceTimes + _allEnemyOffenceTimes;
 		if(ifhasdouble(totalRebounds, assists, steals, scores, blocks))
-			double_double++;
-			
+			double_double++;	
 	}
+	
+	public void updatePlayer(Player player){
+		playerAttends++;
+		playerPlayTime = playerPlayTime + player.getPlayerPlayTime();
+		
+		//System.out.println(playerPlayTime);
+		
+		//是否首发
+//		if(){
+//			startTimes++;
+//		}
+		
+		playerFG = playerFG + player.getPlayerFG();
+		playerFGTry = playerFGTry + player.getPlayerFGTry();
+		player3FG = player3FG + player.getPlayer3FG();
+		player3FGTry = player3FGTry + player.getPlayer3FGTry();
+		playerFTG = playerFTG + player.getPlayerFTG();
+		playerFTGTry = playerFTGTry + player.getPlayerFTGTry();
+		playerOffenceRebounds = playerOffenceRebounds + player.getPlayerOffenceRebounds();
+		playerDeffenceRebounds = playerDeffenceRebounds + player.getPlayerDeffenceRebounds();
+		playerTotalRebounds = playerTotalRebounds + player.getPlayerTotalRebounds();
+		playerAssists = playerAssists + player.getPlayerAssists();
+		playerSteals = playerSteals + player.getPlayerSteals();
+		playerBlocks = playerBlocks + player.getPlayerBlocks();
+		playerTurnovers = playerTurnovers + player.getPlayerTurnovers();
+		playerFouls = playerFouls + player.getPlayerFouls();
+		playerScores = playerScores + player.getPlayerScores();
+		
+//		这些数据和全队相关
+//		teammatePlayTime = teammatePlayTime + _teammatePlayTime;
+//		allTeamRebounds = allTeamRebounds + _allTeamRebounds;
+//		allEnemyRebounds = allEnemyRebounds + _allEnemyRebounds;
+//		o_allTeamRebounds = o_allTeamRebounds + _allTeamORebounds;
+//		o_allEnemyRebounds = o_allEnemyRebounds + _allEnemyORebounds;
+//		d_allTeamRebounds = d_allTeamRebounds + _allTeamDRebounds;
+//		d_allEnemyRebounds = d_allEnemyRebounds + _allEnemyDRebounds;
+//		allTeamFT = allTeamFT + _allTeamFT;
+//		allTeamShoots = allTeamShoots + _allTeamShoots;
+//		allEnemy2Shoots = allEnemy2Shoots + _allEnemy2Shoots;
+//		allTeamFTShoots = allTeamFTShoots + _allTeamFTShoots;
+//		allTeamTurnover = allTeamTurnover + _allTeamTurnover;
+//		allEnemyOffenceTimes = allEnemyOffenceTimes + _allEnemyOffenceTimes;
+		
+		if(ifhasdouble(player.getPlayerTotalRebounds(), player.getPlayerAssists(), player.getPlayerSteals(), player.getPlayerScores(), player.getPlayerBlocks()))
+			double_double++;	
+	}
+	
 	public boolean ifhasdouble(int tr,int assists,int steals,int scores,int blocks ){
 		int count=0;
 		if(tr>=10){

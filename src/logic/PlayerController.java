@@ -14,11 +14,18 @@ public class PlayerController implements playerControllerService{
 	PlayerDataService pds=new PlayerReader();
 	ArrayList<Player> allPlayers = new ArrayList<Player>();
 	
+	private static PlayerController instance =null;
 	
 	//构造函数，完成对球员数据的更新
-	public PlayerController(){
+	private PlayerController(){
 		this.updatePlayersInfo_Basic();
-
+	}
+	
+	public static PlayerController getInstance() {
+	      if( instance == null ){
+	          instance  = new PlayerController();
+	       }
+	      return instance ;
 	}
 	
 	//这个功能是用来获取球员的基本信息

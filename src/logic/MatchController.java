@@ -11,20 +11,24 @@ import logicservice.matchControllerService;
 import vo.MatchVO;
 import vo.TeamShortName;
 
+//controller都运用了单体模式，每类Controller整个程序中只有一个 ;
 public class MatchController implements matchControllerService{
 		ArrayList<Match> allMatches = new ArrayList<Match>();
 		ArrayList<Match> matchesOfTaday = new ArrayList<Match>();
 		MatchDataService matchdata = new Matchdata();
 		ArrayList<MatchPO> allMatchPO = new ArrayList<MatchPO>();
 		ArrayList<MatchVO> allMatchVO = new ArrayList<MatchVO>();
+		TeamController teamController = TeamController.getInstance();
+		PlayerController playerController = PlayerController.getInstance();
 		
 		/*
 		 * Controller在构造的时候就完成对data层数据的调用；
 		 * 这样可以避免多次调用多次读取data层
 		 * */
 		
-		public MatchController(){
+		private MatchController(){
 			allMatchPO = this.matchdata.getAllMatch();
+			
 		}
 		
 		//返回所有未经处理过的比赛信息;
@@ -41,7 +45,14 @@ public class MatchController implements matchControllerService{
 		public void processAllMatches(){
 			for(MatchPO matchpo:this.allMatchPO){
 				Match tempMatch = new Match();
-				tempMatch.creatmatch(matchpo);
+				tempMatch.creatmatch(matchpo);//match数据更新;
+				this.allMatches.add(tempMatch);
+				
+				this.teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
+				this.teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
+				//team 更新完毕;
+				
+				
 				
 			}
 		}
@@ -68,7 +79,7 @@ public class MatchController implements matchControllerService{
 		
 		public ArrayList<MatchVO> getSomeMatchVO(String playerName){
 			ArrayList<MatchVO> someMatchVO = new ArrayList<MatchVO>();			
-			PlayerController playerController = new PlayerController();
+//			PlayerController playerController = new PlayerController();
 //			PlayerPO po = playerController.findPlayerPO(playerName);
 //			ArrayList<MatchPO> allMatchPO = matchdata.getAllMatch();
 //			for(int i:po.getAttendedMatches()){

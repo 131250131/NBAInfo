@@ -1240,7 +1240,7 @@ public class Team {
 
 
 		//更新的方法，
-		public void updateTeamInfo(TeamPO myTeam,TeamPO oppoTeam){
+		public void updateTeamInfo(Team myTeam,Team oppoTeam){
 			this.compGames++;
 			if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){
 				this.winGames++;

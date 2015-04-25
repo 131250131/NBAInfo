@@ -46,7 +46,7 @@ public class DataOfPlayerPanel extends JPanel {
 	private JLabel school;
 		
 	//调用逻辑层接口
-	playerControllerService pcs=new PlayerController();
+	playerControllerService pcs=PlayerController.getInstance();
 	public DataOfPlayerPanel(){
 		this.setLayout(null);
 		//设置面板透明

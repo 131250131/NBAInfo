@@ -122,6 +122,8 @@ public class Match {
 	public void setScore(String score){
 		this.score=score;
 	}
+	
+	//只对match进行了修改，还没有对列表里的Player进行数据的更新;
     public void creatmatch(MatchPO matchpo){
     	   Num=matchpo.getNum();
     	   season=matchpo.getSeason();
