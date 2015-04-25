@@ -19,6 +19,12 @@ public class HotspotPanel extends JPanel{
 		this.setOpaque(false);
 		this.setVisible(true);
 		
+		HotspotRankPanel hotspotRankPanel = new HotspotRankPanel();
+		this.add(hotspotRankPanel);
+
+		InfoPanel_All infoAll = new InfoPanel_All();
+		this.add(infoAll);
+		
 		InfoPanel_Today infoToday = new InfoPanel_Today();
 		this.add(infoToday);
 		
@@ -35,6 +41,10 @@ public class HotspotPanel extends JPanel{
 		BackColorPanel backPanel2 = new BackColorPanel(HotspotBounds.BackPanel2X,
 				HotspotBounds.BackPanel2Y, HotspotBounds.BackPanel2Width, HotspotBounds.BackPanel2Height, 0);
 		this.add(backPanel2);
+
+		BackColorPanel backPanel3 = new BackColorPanel(HotspotBounds.BackPanel3X,
+				HotspotBounds.BackPanel3Y, HotspotBounds.BackPanel3Width, HotspotBounds.BackPanel3Height, 0);
+		this.add(backPanel3);
 		
 		BackColorPanel backPanel = new BackColorPanel(0, 0, width, height, 2);
 		this.add(backPanel);

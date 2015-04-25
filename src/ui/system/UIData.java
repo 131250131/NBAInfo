@@ -92,7 +92,7 @@ public class UIData {
 		hotspotBoundsX = 0;
 		hotspotBoundsY = (int) (frameHeight);
 		hotspotBoundsWidth = indexPanelWidth;
-		hotspotBoundsHeight = (int)(2000 * changeY);
+		hotspotBoundsHeight = (int)(3000 * changeY);
 	}
 	
 	//frame

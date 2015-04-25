@@ -33,4 +33,19 @@ public class HotspotBounds {
 	public static int InfoPanel_ALLY = AllTimePlayerPanelY;
 	public static int InfoPanel_ALLWidth = (int) (580 * UIData.changeX);
 	public static int InfoPanel_ALLHeight = (int) (700 * UIData.changeY);
+	
+	public static int HotspotRankX = 0;
+	public static int HotspotRankY = (int) (AllTimePlayerPanelY + AllTimePlayerPanelHeight + 70 * UIData.changeY);
+	public static int HotspotRankWidth = BackPanel1Width;
+	public static int HotspotRankHeight = (int)(900 * UIData.changeY);
+	
+	public static int BackPanel3X = 0;
+	public static int BackPanel3Y = HotspotRankY - (int)(20 * UIData.changeY);
+	public static int BackPanel3Width =  UIData.hotspotBoundsWidth;
+	public static int BackPanel3Height = HotspotRankHeight + 2 * (int)(20 * UIData.changeY);
+	
+	public static int rankingPanelX = (int)(85 * UIData.changeX);
+	public static int rankingPanelY = (int)(80 * UIData.changeY);
+	public static int rankingPanelWidth = HotspotRankWidth - rankingPanelX * 2;
+	public static int rankingPanelHeight = (int) (HotspotRankHeight - rankingPanelY * 1.5);
 }
