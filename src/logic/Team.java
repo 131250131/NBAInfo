@@ -1310,7 +1310,8 @@ public class Team {
 			teamFouls=teampo.getTeamFouls();
 			teamScores=teampo.getTeamScores();
 		}
-
+		
+		
 
 
 		public boolean getisEast() {

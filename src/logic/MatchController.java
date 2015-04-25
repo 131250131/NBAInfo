@@ -16,11 +16,13 @@ public class MatchController implements matchControllerService{
 		ArrayList<Match> matchesOfTaday = new ArrayList<Match>();
 		MatchDataService matchdata = new Matchdata();
 		ArrayList<MatchPO> allMatchPO = new ArrayList<MatchPO>();
+		ArrayList<MatchVO> allMatchVO = new ArrayList<MatchVO>();
 		
 		/*
 		 * Controller在构造的时候就完成对data层数据的调用；
 		 * 这样可以避免多次调用多次读取data层
 		 * */
+		
 		public MatchController(){
 			allMatchPO = this.matchdata.getAllMatch();
 		}
@@ -29,10 +31,19 @@ public class MatchController implements matchControllerService{
 		public ArrayList<MatchVO> getAllMatchVO(){
 			MatchDataService matchdata = new Matchdata();
 			ArrayList<MatchVO> allMatchVO = new ArrayList<MatchVO>();
-			for(MatchPO tempMatchPO: allMatchPO){
-				allMatchVO.add(this.match_VO2PO(tempMatchPO));
-			}
+//			for(MatchPO tempMatchPO: allMatchPO){
+//				allMatchVO.add(this.match_VO2PO(tempMatchPO));
+//			}
 			return allMatchVO;
+		}
+		
+		//对所有match进行处理;
+		public void processAllMatches(){
+			for(MatchPO matchpo:this.allMatchPO){
+				Match tempMatch = new Match();
+				tempMatch.creatmatch(matchpo);
+				
+			}
 		}
 		
 		

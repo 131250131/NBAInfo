@@ -30,7 +30,7 @@ public class PlayerController implements playerControllerService{
 	}
 	
 	//如何对球员的进一步信息进行更新?这是个问题;
-	public void updataPlayersInfo_Advanced(){
+	public void updataPlayersInfo_Advanced(PlayerPO po){
 		
 	}
 	

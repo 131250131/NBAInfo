@@ -26,7 +26,7 @@ public class TeamController implements teamControllerService{
 		}
 	}
 	
-	public void updateTeamInfo_Advanced(){
+	public void updateTeamInfo_Advanced(TeamPO po){
 		
 	}
 	
@@ -39,4 +39,5 @@ public class TeamController implements teamControllerService{
 		return null;
 	}
 
+	
 }
