@@ -74,52 +74,52 @@ public void addAttendedMatches(int num) {
 		}
 		
 		//在读取比赛时 更新球员数据的方法
-		public void updatePlayer(int time, boolean isStart, int FG, int FGTry, int threeFG, int threeFGTry,
-				int FTG, int FTGTry, int offenceRebounds, int deffenceRebounds, int totalRebounds,
-				int assists, int steals, int blocks, int turnovers, int fouls, int scores, int _teammatePlayTime,
-				int _allTeamRebounds, int _allEnemyRebounds, int _allTeamORebounds, int _allEnemyORebounds,
-				int _allTeamDRebounds, int _allEnemyDRebounds, int _allTeamFT, int _allTeamShoots,
-				int _allEnemy2Shoots, int _allTeamFTShoots, int _allTeamTurnover, double _allEnemyOffenceTimes){
-			
-			playerAttends++;
-			playerPlayTime = playerPlayTime + time;
-			
-			//System.out.println(playerPlayTime);
-			
-			if(isStart){
-				startTimes++;
-			}
-			
-			playerFG = playerFG + FG;
-			playerFGTry = playerFGTry + FGTry;
-			player3FG = player3FG + threeFG;
-			player3FGTry = player3FGTry + threeFGTry;
-			playerFTG = playerFTG + FTG;
-			playerFTGTry = playerFTGTry + FTGTry;
-			playerOffenceRebounds = playerOffenceRebounds + offenceRebounds;
-			playerDeffenceRebounds = playerDeffenceRebounds + deffenceRebounds;
-			playerTotalRebounds = playerTotalRebounds + totalRebounds;
-			playerAssists = playerAssists + assists;
-			playerSteals = playerSteals + steals;
-			playerBlocks = playerBlocks + blocks;
-			playerTurnovers = playerTurnovers + turnovers;
-			playerFouls = playerFouls + fouls;
-			playerScores = playerScores + scores;
-			teammatePlayTime = teammatePlayTime + _teammatePlayTime;
-			allTeamRebounds = allTeamRebounds + _allTeamRebounds;
-			allEnemyRebounds = allEnemyRebounds + _allEnemyRebounds;
-			o_allTeamRebounds = o_allTeamRebounds + _allTeamORebounds;
-			o_allEnemyRebounds = o_allEnemyRebounds + _allEnemyORebounds;
-			d_allTeamRebounds = d_allTeamRebounds + _allTeamDRebounds;
-			d_allEnemyRebounds = d_allEnemyRebounds + _allEnemyDRebounds;
-			allTeamFT = allTeamFT + _allTeamFT;
-			allTeamShoots = allTeamShoots + _allTeamShoots;
-			allEnemy2Shoots = allEnemy2Shoots + _allEnemy2Shoots;
-			allTeamFTShoots = allTeamFTShoots + _allTeamFTShoots;
-			allTeamTurnover = allTeamTurnover + _allTeamTurnover;
-			allEnemyOffenceTimes = allEnemyOffenceTimes + _allEnemyOffenceTimes;
-				
-		}
+//		public void updatePlayer(int time, boolean isStart, int FG, int FGTry, int threeFG, int threeFGTry,
+//				int FTG, int FTGTry, int offenceRebounds, int deffenceRebounds, int totalRebounds,
+//				int assists, int steals, int blocks, int turnovers, int fouls, int scores, int _teammatePlayTime,
+//				int _allTeamRebounds, int _allEnemyRebounds, int _allTeamORebounds, int _allEnemyORebounds,
+//				int _allTeamDRebounds, int _allEnemyDRebounds, int _allTeamFT, int _allTeamShoots,
+//				int _allEnemy2Shoots, int _allTeamFTShoots, int _allTeamTurnover, double _allEnemyOffenceTimes){
+//			
+//			playerAttends++;
+//			playerPlayTime = playerPlayTime + time;
+//			
+//			//System.out.println(playerPlayTime);
+//			
+//			if(isStart){
+//				startTimes++;
+//			}
+//			
+//			playerFG = playerFG + FG;
+//			playerFGTry = playerFGTry + FGTry;
+//			player3FG = player3FG + threeFG;
+//			player3FGTry = player3FGTry + threeFGTry;
+//			playerFTG = playerFTG + FTG;
+//			playerFTGTry = playerFTGTry + FTGTry;
+//			playerOffenceRebounds = playerOffenceRebounds + offenceRebounds;
+//			playerDeffenceRebounds = playerDeffenceRebounds + deffenceRebounds;
+//			playerTotalRebounds = playerTotalRebounds + totalRebounds;
+//			playerAssists = playerAssists + assists;
+//			playerSteals = playerSteals + steals;
+//			playerBlocks = playerBlocks + blocks;
+//			playerTurnovers = playerTurnovers + turnovers;
+//			playerFouls = playerFouls + fouls;
+//			playerScores = playerScores + scores;
+//			teammatePlayTime = teammatePlayTime + _teammatePlayTime;
+//			allTeamRebounds = allTeamRebounds + _allTeamRebounds;
+//			allEnemyRebounds = allEnemyRebounds + _allEnemyRebounds;
+//			o_allTeamRebounds = o_allTeamRebounds + _allTeamORebounds;
+//			o_allEnemyRebounds = o_allEnemyRebounds + _allEnemyORebounds;
+//			d_allTeamRebounds = d_allTeamRebounds + _allTeamDRebounds;
+//			d_allEnemyRebounds = d_allEnemyRebounds + _allEnemyDRebounds;
+//			allTeamFT = allTeamFT + _allTeamFT;
+//			allTeamShoots = allTeamShoots + _allTeamShoots;
+//			allEnemy2Shoots = allEnemy2Shoots + _allEnemy2Shoots;
+//			allTeamFTShoots = allTeamFTShoots + _allTeamFTShoots;
+//			allTeamTurnover = allTeamTurnover + _allTeamTurnover;
+//			allEnemyOffenceTimes = allEnemyOffenceTimes + _allEnemyOffenceTimes;
+//				
+//		}
 		///////////////////////////////////////////////////////
 		String teamShortName;
 		
@@ -841,6 +841,8 @@ public void addAttendedMatches(int num) {
 			public void setAllEnemyOffenceTimes(double allEnemyOffenceTimes) {
 				this.allEnemyOffenceTimes = allEnemyOffenceTimes;
 			}
+			
+			//根据Player对象new完善PlayerVO对象;
 			public void creatplayervo(Player player){
 				playerName=player.getPlayerName();
 				playerNumber=player.getPlayerNumber();

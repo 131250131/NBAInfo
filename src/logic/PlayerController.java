@@ -13,6 +13,7 @@ public class PlayerController implements playerControllerService{
 	//调用数据层接口
 	PlayerDataService pds=new PlayerReader();
 	ArrayList<Player> allPlayers = new ArrayList<Player>();
+	ArrayList<PlayerVO> allPlayerVO = new ArrayList<PlayerVO>();
 	
 	private static PlayerController instance =null;
 	
@@ -36,13 +37,25 @@ public class PlayerController implements playerControllerService{
 		}
 	}
 	
-	//如何对球员的进一步信息进行更新?这是个问题;
+	//对球员信息进一步更新;
 	public void updataPlayersInfo_Advanced(Player player,Team myteam){
 		for(Player tempplayer : this.allPlayers){
 			if(tempplayer.getPlayerName().equals(player.getPlayerName())){
 				player.updatePlayer(tempplayer,myteam);
 			}
 		}
+	}
+	
+	public void createAllPlayerVO(){
+		for(Player player : this.allPlayers){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(player);
+			this.allPlayerVO.add(vo);
+		}
+	}
+	
+	public ArrayList<PlayerVO> getAllPlayerVO(){
+		return this.allPlayerVO;
 	}
 	
 	public Player findPlayer(String playerName){
@@ -56,7 +69,7 @@ public class PlayerController implements playerControllerService{
 
 	
 	/*调用playerreader，转换成vo返回给我*/
-	public PlayerVO find(String name) {
+	public PlayerVO findPlayerVO(String name) {
 		PlayerPO playerpo=pds.find(name);
 		try{
 		Player player=new Player();
@@ -68,23 +81,9 @@ public class PlayerController implements playerControllerService{
 		catch(NullPointerException e){
 			return new PlayerVO();
 		}
-		
 	}
 	
-	
-	public ArrayList<PlayerVO> getAllPlayers() {
-		ArrayList<PlayerVO> result =new ArrayList<PlayerVO>();
-		ArrayList<PlayerPO> temp = pds.getallplayers();
-		for(PlayerPO playerpo:temp){
-			Player player =new Player();
-			player.creatplayer(playerpo);
-			PlayerVO playervo =new PlayerVO();
-			playervo.creatplayervo(player);
-			result.add(playervo);
-		}
-		return result;
-	}
-	
+	//筛选功能;我还没写好;
 	public ArrayList<PlayerVO> getSelectedPlayers() {
 		return null;
 	}

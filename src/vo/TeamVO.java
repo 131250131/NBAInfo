@@ -716,6 +716,8 @@ public class TeamVO {
 		public void setBirthYear(int birthYear) {
 			this.birthYear = birthYear;
 		}
+		
+		//创建teamVO需要对平均值进行处理..
 		public void creatteamvo(Team team){
 			teamName=team.getTeamName();
 			shortName=team.getShortName();
