@@ -1,6 +1,7 @@
 package logic;
 
 import po.TeamPO;
+import vo.TeamVO;
 
 public class Team {
 	//球队名称： 
@@ -1311,7 +1312,11 @@ public class Team {
 			teamScores=teampo.getTeamScores();
 		}
 		
-		
+		public TeamVO createTeamVO(){
+			TeamVO vo = new TeamVO();
+			vo.creatteamvo(this);
+			return vo;
+		}
 
 
 		public boolean getisEast() {

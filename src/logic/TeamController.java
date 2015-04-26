@@ -16,6 +16,7 @@ public class TeamController implements teamControllerService{
 	
 	TeamDataService tds = new TeamReader();
 	ArrayList<Team> allTeams = new ArrayList<Team>();
+	ArrayList<TeamVO> allTeamVO = new ArrayList<TeamVO>();
 	
 	private TeamController(){
 		this.updateTeamInfo_Basic();
@@ -43,12 +44,22 @@ public class TeamController implements teamControllerService{
 		}
 	}
 	
+	public void createSeasonAllTeamInfo(){
+		for(Team team : this.allTeams){
+			this.allTeamVO.add(team.createTeamVO());
+		}
+	}
+	
 	public ArrayList<TeamVO> getSeasonAllTeamInfo() {
-		return null;
+		return this.allTeamVO;
 	}
 
-	public ArrayList<TeamVO> getOneTeamInfo(String shortName) {
-		// TODO Auto-generated method stub
+	public TeamVO getOneTeamInfo(String shortName) {
+		for(TeamVO vo : this.allTeamVO){
+			if(vo.getShortName().equals(shortName)){
+				return vo;
+			}
+		}
 		return null;
 	}
 
