@@ -39,9 +39,21 @@ public class PlayerController implements playerControllerService{
 	//如何对球员的进一步信息进行更新?这是个问题;
 	public void updataPlayersInfo_Advanced(Player player,Team myteam){
 		for(Player tempplayer : this.allPlayers){
-			player.updatePlayer(tempplayer,myteam);
+			if(tempplayer.getPlayerName().equals(player.getPlayerName())){
+				player.updatePlayer(tempplayer,myteam);
+			}
 		}
 	}
+	
+	public Player findPlayer(String playerName){
+		for(Player temp : this.allPlayers){
+			if(temp.getPlayerName().equals(playerName)){
+				return temp;
+			}
+		}
+		return null;
+	}
+
 	
 	/*调用playerreader，转换成vo返回给我*/
 	public PlayerVO find(String name) {

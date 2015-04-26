@@ -24,23 +24,36 @@ public class MatchController implements matchControllerService{
 		 * Controller在构造的时候就完成对data层数据的调用；
 		 * 这样可以避免多次调用多次读取data层
 		 * */
+		private static MatchController instance =null;
 		
 		private MatchController(){
 			allMatchPO = this.matchdata.getAllMatch();
 			this.processAllMatches();//处理完毕当前的数据;
+			this.createAllMatchVO();//获得所有比赛的vo;
+		}
+		
+		public MatchController getInstance(){
+			if(instance == null){
+				instance = new MatchController();
+			}
+			return instance;
 		}
 		
 		//返回所有未经处理过的比赛信息;
 		public ArrayList<MatchVO> getAllMatchVO(){
-			MatchDataService matchdata = new Matchdata();
-			ArrayList<MatchVO> allMatchVO = new ArrayList<MatchVO>();
-//			for(MatchPO tempMatchPO: allMatchPO){
-//				allMatchVO.add(this.match_VO2PO(tempMatchPO));
-//			}
-			return allMatchVO;
+			return this.allMatchVO;
+		}
+		
+		public void createAllMatchVO(){
+			for(Match match : this.allMatches){
+				MatchVO vo = new MatchVO();
+				vo.creatMatchvo(match);
+				this.allMatchVO.add(vo);
+			}
 		}
 		
 		//对所有match进行处理;现在已处理完毕
+		//这个方法调用结束之后，所有的球员球队match都已经搞定;
 		public void processAllMatches(){
 			for(MatchPO matchpo:this.allMatchPO){
 				Match tempMatch = new Match();
@@ -61,16 +74,7 @@ public class MatchController implements matchControllerService{
 			}
 		}
 		
-		
-		
-		public MatchVO match_VO2PO(MatchPO po){
-			Match match = new Match();
-			match.creatmatch(po);
-			MatchVO vo = new MatchVO();
-			vo.creatMatchvo(match);
-			return vo;
-		}
-		
+		//根据具体日期来选择比赛;
 		public ArrayList<MatchVO> getSomeMacthVO(Date date){
 			ArrayList<MatchVO> someMatchVO = new ArrayList<MatchVO>();
 			for(MatchVO matchvo : this.getAllMatchVO()){
@@ -81,28 +85,40 @@ public class MatchController implements matchControllerService{
 			return someMatchVO;
 		}
 		
+		//此方法用来获得某个球员参与的所有比赛;
+		//我有预感 在attendedMatches这边会出错......
 		public ArrayList<MatchVO> getSomeMatchVO(String playerName){
 			ArrayList<MatchVO> someMatchVO = new ArrayList<MatchVO>();			
-//			PlayerController playerController = new PlayerController();
-//			PlayerPO po = playerController.findPlayerPO(playerName);
-//			ArrayList<MatchPO> allMatchPO = matchdata.getAllMatch();
-//			for(int i:po.getAttendedMatches()){
-//				//someMat
-//			}
+			Player player = this.playerController.findPlayer(playerName);
+			for(int i : player.getAttendedMatches()){
+				someMatchVO.add(this.allMatchVO.get(i));
+			}
 			return someMatchVO;
 		}
 		
+		//此方法用于获得某球队参与的所有比赛;
 		public ArrayList<MatchVO> getSomeMatchVO(TeamShortName teamShortName){
-			return null;
+			ArrayList<MatchVO> someMatchVO = new ArrayList<MatchVO>();	
+			for(MatchVO vo : this.getAllMatchVO()){
+				if(vo.getLeftTeam().getShortName().equals(teamShortName)||
+				   vo.getRightTeam().getShortName().equals(teamShortName)){
+					someMatchVO.add(vo);
+				}
+			}	
+			return someMatchVO;
 		}
 
-		@Override
 		public Object[][] getTeamData(String team, int matchnum) {
 			return new Match().getData(team, matchnum);
 		}
 
 		/*通过场次num找到match返回vo*/
 		public MatchVO getMatch(int num) {
+			for(MatchVO vo : this.allMatchVO){
+				if(vo.getNum()==num){
+					return vo;
+				}
+			}
 			return null;
 		}
 		

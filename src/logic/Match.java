@@ -211,8 +211,8 @@ public Object[][] getData(String team,int matchnum){
         	return null;
         }
 }
-public String getScore() {
-	
-	return score;
-}
+			public String getScore() {
+					
+				return score;
+			}
 }
