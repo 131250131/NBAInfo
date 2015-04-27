@@ -341,7 +341,8 @@ public class Team {
 
 
 		public double getWinRate() {
-			return winRate;
+			return Double.parseDouble(String.format("%.3f", (winGames + 0.0)/(winGames+losGames)));
+
 		}
 
 
@@ -353,7 +354,7 @@ public class Team {
 
 
 		public double getAttackRounds() {
-			return attackRounds;
+			return Double.parseDouble(String.format("%.3f", (this.attackRounds + 0.0)/(winGames+losGames)));
 		}
 
 
@@ -473,7 +474,7 @@ public class Team {
 
 
 		public int getTeamTotalRebounds() {
-			return teamTotalRebounds;
+			return teamOffenceRebounds + teamDeffenceRebounds;
 		}
 
 
@@ -737,7 +738,8 @@ public class Team {
 
 
 		public double getAver_teamAssists() {
-			return aver_teamAssists;
+			//Double.parseDouble(String.format("%.3f", (aver_teamAssists + 0.0)/(winGames+losGames)))
+			return Double.parseDouble(String.format("%.3f", (this.teamAssists + 0.0)/(this.compGames)));
 		}
 
 
@@ -749,7 +751,8 @@ public class Team {
 
 
 		public double getAver_oppoAssists() {
-			return aver_oppoAssists;
+			
+			return Double.parseDouble(String.format("%.3f", (this.oppoAssists + 0.0)/(this.compGames)));
 		}
 
 
@@ -761,7 +764,8 @@ public class Team {
 
 
 		public double getAver_teamFG() {
-			return aver_teamFG;
+			
+			return Double.parseDouble(String.format("%.3f", (this.teamFG + 0.0)/(this.compGames)));
 		}
 
 
@@ -773,7 +777,7 @@ public class Team {
 
 
 		public double getAver_oppoFG() {
-			return aver_oppoFG;
+			return Double.parseDouble(String.format("%.3f", (this.oppoFG + 0.0)/(this.compGames)));
 		}
 
 
@@ -785,7 +789,7 @@ public class Team {
 
 
 		public double getAver_teamFGTry() {
-			return aver_teamFGTry;
+			return Double.parseDouble(String.format("%.3f", (this.teamFGTry + 0.0)/(this.compGames)));
 		}
 
 
@@ -797,7 +801,7 @@ public class Team {
 
 
 		public double getAver_oppoFGTry() {
-			return aver_oppoFGTry;
+			return Double.parseDouble(String.format("%.3f", (this.oppoFGTry + 0.0)/(this.compGames)));
 		}
 
 
@@ -809,7 +813,8 @@ public class Team {
 
 
 		public double getTeamFGP() {
-			return teamFGP;
+			return Double.parseDouble(String.format("%.3f",(teamFG + 0.0) / (teamFGTry + 0.0)));
+
 		}
 
 
@@ -833,7 +838,7 @@ public class Team {
 
 
 		public double getAver_team3FG() {
-			return aver_team3FG;
+			return Double.parseDouble(String.format("%.3f",(this.team3FG + 0.0) / (this.compGames + 0.0)));
 		}
 
 
@@ -845,7 +850,7 @@ public class Team {
 
 
 		public double getAver_oppo3FG() {
-			return aver_oppo3FG;
+			return Double.parseDouble(String.format("%.3f",(this.oppo3FG + 0.0) / (this.compGames + 0.0)));
 		}
 
 
@@ -857,7 +862,7 @@ public class Team {
 
 
 		public double getAver_team3FGTry() {
-			return aver_team3FGTry;
+			return Double.parseDouble(String.format("%.3f",(team3FGTry + 0.0) / (this.compGames +0.0)));
 		}
 
 
@@ -869,7 +874,7 @@ public class Team {
 
 
 		public double getAver_oppo3FGTry() {
-			return aver_oppo3FGTry;
+			return Double.parseDouble(String.format("%.3f",(oppo3FGTry + 0.0) / (this.compGames + 0.0)));
 		}
 
 
@@ -881,7 +886,7 @@ public class Team {
 
 
 		public double getTeam3FGP() {
-			return team3FGP;
+			return Double.parseDouble(String.format("%.3f",(team3FG + 0.0) / (team3FGTry + 0.0)));
 		}
 
 
@@ -893,7 +898,7 @@ public class Team {
 
 
 		public double getOppo3FGP() {
-			return oppo3FGP;
+			return Double.parseDouble(String.format("%.3f",(oppo3FG + 0.0) / (oppo3FGTry + 0.0)));
 		}
 
 
@@ -905,7 +910,7 @@ public class Team {
 
 
 		public double getAver_teamFTG() {
-			return aver_teamFTG;
+			return Double.parseDouble(String.format("%.3f",(teamFTG + 0.0) / (this.compGames + 0.0)));
 		}
 
 
@@ -917,7 +922,7 @@ public class Team {
 
 
 		public double getAver_oppoFTG() {
-			return aver_oppoFTG;
+			return Double.parseDouble(String.format("%.3f",(this.oppoFTG + 0.0) / (this.compGames + 0.0)));
 		}
 
 
@@ -953,7 +958,8 @@ public class Team {
 
 
 		public double getTeamFTGP() {
-			return teamFTGP;
+			return Double.parseDouble(String.format("%.3f",(teamFTG + 0.0) / (teamFTGTry + 0.0)));
+
 		}
 
 
@@ -1169,7 +1175,7 @@ public class Team {
 
 
 		public double getTeamOffE() {
-			return teamOffE;
+			return Double.parseDouble(String.format("%.3f",teamScores/attackRounds*100));
 		}
 
 
@@ -1181,7 +1187,8 @@ public class Team {
 
 
 		public double getTeamDefE() {
-			return teamDefE;
+			return Double.parseDouble(String.format("%.3f",oppoScores/oppoattackRounds*100));
+
 		}
 
 
@@ -1193,7 +1200,7 @@ public class Team {
 
 
 		public double getTeamOffERebE() {
-			return teamOffERebE;
+			return teamOffenceRebounds/(teamOffenceRebounds+oppoDeffenceRebounds);
 		}
 
 
@@ -1205,7 +1212,8 @@ public class Team {
 
 
 		public double getTeamDefERebE() {
-			return teamDefERebE;
+			return teamDeffenceRebounds/(teamDeffenceRebounds+oppoOffenceRebounds);
+
 		}
 
 
@@ -1217,7 +1225,8 @@ public class Team {
 
 
 		public double getTeamSteE() {
-			return teamSteE;
+			return Double.parseDouble(String.format("%.3f",teamSteals/oppoattackRounds*100));
+
 		}
 
 
@@ -1229,7 +1238,8 @@ public class Team {
 
 
 		public double getTeamAssE() {
-			return teamAssE;
+			return Double.parseDouble(String.format("%.3f",teamAssists/attackRounds*100));
+
 		}
 
 

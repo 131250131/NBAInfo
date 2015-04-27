@@ -4,11 +4,12 @@ import logic.Team;
 import po.TeamPO;
 
 public class TeamVO {
-//TeamVO用于bl层和ui层的交互，
+	//TeamVO用于bl层和ui层的交互，
 		
-/*
- * 球队基本信息
- * */
+		/*
+	 	* 球队基本信息
+	 	* */
+	
 		//球队名称： 
 		private String teamName;
 		//球队缩写：
