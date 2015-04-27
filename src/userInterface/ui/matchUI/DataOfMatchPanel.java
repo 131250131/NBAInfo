@@ -2,6 +2,8 @@ package userInterface.ui.matchUI;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -209,6 +211,40 @@ public class DataOfMatchPanel extends JPanel {
 		this.add(date2,24);
 		
 	}
+	
+	public JLabel getTeam1() {
+		return team1;
+	}
+
+	public void setTeam1(JLabel team1) {
+		this.team1 = team1;
+	}
+
+	public JLabel getName1() {
+		return name1;
+	}
+
+	public void setName1(JLabel name1) {
+		this.name1 = name1;
+	}
+
+	public JLabel getTeam2() {
+		return team2;
+	}
+
+	public void setTeam2(JLabel team2) {
+		this.team2 = team2;
+	}
+
+	public JLabel getName2() {
+		return name2;
+	}
+
+	public void setName2(JLabel name2) {
+		this.name2 = name2;
+	}
+
+	/*测试*/
 	void test(){
 		//信息
 		first1.setText("20");
@@ -235,14 +271,14 @@ public class DataOfMatchPanel extends JPanel {
 		team1.setIcon(ImageBin.getImage("teams/ATL"));
 		team2.setIcon(ImageBin.getImage("teams/BKN"));
 	}
-	public void update(){
-		MatchVO temp = null;
+	public void update(MatchVO match){
 		
-		String[] score1=temp.getScores1().split(":");
-		String[] score2=temp.getScores2().split(":");
-		String[] score3=temp.getScores3().split(":");
-		String[] score4=temp.getScores4().split(":");
-		String[] total=temp.getScore().split(":");
+		String[] score1=match.getScores1().split(":");
+		String[] score2=match.getScores2().split(":");
+		String[] score3=match.getScores3().split(":");
+		String[] score4=match.getScores4().split(":");
+		String[] total=match.getScore().split(":");
+		String[] extra=match.getExtrascores().split(":");
 		//信息
 		first1.setText(score1[0]);
 		first2.setText(score1[1]);
@@ -252,17 +288,17 @@ public class DataOfMatchPanel extends JPanel {
 		third2.setText(score3[1]);
 		fourth1.setText(score4[0]);
 		fourth2.setText(score4[1]);
-		extra1.setText("加时：");//未完
-		extra2.setText("加时：");//未完
+		extra1.setText(extra[0]);//未完
+		extra2.setText(extra[1]);//未完
 		total1.setText(total[0]);
 		total2.setText(total[1]);
-		date1.setText(temp.getDate());
-		date2.setText(temp.getDate());
+		date1.setText(match.getDate());
+		date2.setText(match.getDate());
 		
-		team1.setText(temp.getLeftTeam().getTeamName());
-		team2.setText(temp.getRightTeam().getTeamName());
-		name1.setText(temp.getLeftTeam().getTeamName());
-		name2.setText(temp.getRightTeam().getTeamName());
+		team1.setText(match.getLeftTeam().getTeamName());
+		team2.setText(match.getRightTeam().getTeamName());
+		name1.setText(match.getLeftTeam().getTeamName());
+		name2.setText(match.getRightTeam().getTeamName());
 	}
 	
 }

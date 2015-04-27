@@ -124,7 +124,7 @@ public class DataOfPlayerPanel extends JPanel {
 		weight.setText("体重："+"70");
 	}
 	public void update(String player){
-		PlayerVO temp = null;
+		PlayerVO temp = pcs.findPlayerVO(player);
 		//头像
 		portrait.setIcon(ImageSaver.getIcon("portrait/"+temp.getPlayerName()));
 		//信息

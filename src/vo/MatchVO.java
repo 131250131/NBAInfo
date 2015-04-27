@@ -24,6 +24,24 @@ public class MatchVO {
 	String scores4;
 	String extrascores;
 
+	public ArrayList<PlayerVO> getLeftplayerlist() {
+		return leftplayerlist;
+	}
+	public void setLeftplayerlist(ArrayList<PlayerVO> leftplayerlist) {
+		this.leftplayerlist = leftplayerlist;
+	}
+	public ArrayList<PlayerVO> getRightplayerlist() {
+		return rightplayerlist;
+	}
+	public void setRightplayerlist(ArrayList<PlayerVO> rightplayerlist) {
+		this.rightplayerlist = rightplayerlist;
+	}
+	public String getExtrascores() {
+		return extrascores;
+	}
+	public void setExtrascores(String extrascores) {
+		this.extrascores = extrascores;
+	}
 	public int getNum() {
 		return Num;
 	}
