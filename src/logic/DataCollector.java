@@ -9,6 +9,7 @@ import vo.TeamVO;
 /*
  * 	这个数据用来保存各种初始化的内容
  * 	这些属性都是该类所持有的数据
+ * 	这个类里面都是对已经处理过的VO进行筛;
  * */
 
 public class DataCollector implements DataCollectorService{

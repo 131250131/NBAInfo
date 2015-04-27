@@ -719,28 +719,112 @@ public class TeamVO {
 		
 		//创建teamVO需要对平均值进行处理..
 		public void creatteamvo(Team team){
-			teamName=team.getTeamName();
-			shortName=team.getShortName();
-			location=team.getLocation();
-			isEast=team.getisEast();
-			division=team.getDivision();
-			gymName=team.getGymName();
-			birthYear=team.getBirthYear();
-			teamAssists=team.getTeamAssists();
-			teamFG=team.getTeamFG();
-			teamFGTry=team.getTeamFGTry();
-			team3FG=team.getTeam3FG();
-			team3FGTry=team.getTeam3FGTry();
-			teamFTG=team.getTeamFTG();
-			teamFTGTry=team.getTeamFGTry();
-			teamOffenceRebounds=team.getTeamOffenceRebounds();
-			teamDeffenceRebounds=team.getTeamDeffenceRebounds();
-			teamTotalRebounds=team.getTeamTotalRebounds();
-			teamSteals=team.getTeamSteals();
-			teamBlocks=team.getTeamBlocks();
-			teamTurnovers=team.getTeamTurnovers();
-			teamFouls=team.getTeamFouls();
-			teamScores=team.getTeamScores();
+			/*
+			 * 		//球队的编号；
+		private int teamID;
+		//球队比赛场数，胜率；（*****需要更新*****）
+		private int compGames;//总场
+		private int winGames;//胜场
+		private int losGames;//败场
+		private double winRate;//胜率
+			 * */
+			
+			//球队基本信息
+			this.teamName=team.getTeamName();
+			this.shortName=team.getShortName();
+			this.location=team.getLocation();
+			this.isEast=team.getisEast();
+			this.division=team.getDivision();
+			this.gymName=team.getGymName();
+			this.birthYear=team.getBirthYear();
+			
+			//整体数据
+			this.teamID=team.getTeamID();
+			this.compGames=team.getCompGames();
+			this.winGames=team.getWinGames();
+			this.losGames=team.getLosGames();
+			this.winRate=team.getWinRate();
+			
+			//球队单项数据总计;
+			this.teamAssists=team.getTeamAssists();
+			this.teamFG=team.getTeamFG();
+			this.teamFGTry=team.getTeamFGTry();
+			this.team3FG=team.getTeam3FG();
+			this.team3FGTry=team.getTeam3FGTry();
+			this.teamFTG=team.getTeamFTG();
+			this.teamFTGTry=team.getTeamFGTry();
+			this.teamOffenceRebounds=team.getTeamOffenceRebounds();
+			this.teamDeffenceRebounds=team.getTeamDeffenceRebounds();
+			this.teamTotalRebounds=team.getTeamTotalRebounds();
+			this.teamSteals=team.getTeamSteals();
+			this.teamBlocks=team.getTeamBlocks();
+			this.teamTurnovers=team.getTeamTurnovers();
+			this.teamFouls=team.getTeamFouls();
+			this.teamScores=team.getTeamScores();
+			
+			//球队单项平均数据统计;
+			this.aver_teamAssists=team.getAver_teamAssists();
+			this.aver_teamFG=team.getAver_teamFG();
+			this.aver_teamFGTry=team.getAver_teamFGTry();
+			this.aver_team3FG=team.getAver_team3FG();
+			this.aver_team3FGTry=team.getAver_team3FGTry();
+			this.aver_teamFTG=team.getAver_teamFTG();
+			this.aver_teamFTGTry=team.getAver_teamFGTry();
+			this.aver_teamOffenceRebounds=team.getAver_teamOffenceRebounds();
+			this.aver_teamDeffenceRebounds=team.getAver_teamDeffenceRebounds();
+			this.aver_teamTotalRebounds=team.getAver_teamTotalRebounds();
+			this.aver_teamSteals=team.getAver_teamSteals();
+			this.aver_teamBlocks=team.getAver_teamBlocks();
+			this.aver_teamTurnovers=team.getAver_teamTurnovers();
+			this.aver_teamFouls=team.getAver_teamFouls();
+			this.aver_teamScores=team.getAver_teamScores();
+			
+			//球队各种效率;
+			this.teamFGP = team.getTeamFGP();
+			this.team3FGP = team.getTeam3FGP();
+			this.teamFTGP = team.getTeamFTGP();
+			this.teamOffE = team.getTeamOffE();
+			this.teamDefE = team.getTeamDefE();
+			this.teamOffERebE = team.getTeamOffE();
+			this.teamDefERebE = team.getTeamDefERebE();
+			this.teamSteals = team.getTeamSteals();
+			this.teamAssE = team.getTeamAssE();
+			
+			//对手单项总数据统计;
+			this.oppoAssists=team.getOppoAssists();
+			this.oppoFG=team.getOppoFG();
+			this.oppoFGTry=team.getOppoFGTry();
+			this.oppo3FG=team.getOppo3FG();
+			this.oppo3FGTry=team.getOppo3FGTry();
+			this.oppoFTG=team.getOppoFTG();
+			this.oppoFTGTry=team.getOppoFGTry();
+			this.oppoOffenceRebounds=team.getOppoOffenceRebounds();
+			this.oppoDeffenceRebounds=team.getOppoDeffenceRebounds();
+			this.oppoTotalRebounds=team.getOppoTotalRebounds();
+			this.oppoSteals=team.getOppoSteals();
+			this.oppoBlocks=team.getOppoBlocks();
+			this.oppoTurnovers=team.getOppoTurnovers();
+			this.oppoFouls=team.getOppoFouls();
+			this.oppoScores=team.getOppoScores();
+			
+			//对手单项平均数据统计;
+			this.aver_oppoAssists=team.getAver_oppoAssists();
+			this.aver_oppoFG=team.getAver_oppoFG();
+			this.aver_oppoFGTry=team.getAver_oppoFGTry();
+			this.aver_oppo3FG=team.getAver_oppo3FG();
+			this.aver_oppo3FGTry=team.getAver_oppo3FGTry();
+			this.aver_oppoFTG=team.getAver_oppoFTG();
+			this.aver_oppoFTGTry=team.getAver_oppoFGTry();
+			this.aver_oppoOffenceRebounds=team.getAver_oppoOffenceRebounds();
+			this.aver_oppoDeffenceRebounds=team.getAver_oppoDeffenceRebounds();
+			this.aver_oppoTotalRebounds=team.getAver_oppoTotalRebounds();
+			this.aver_oppoSteals=team.getAver_oppoSteals();
+			this.aver_oppoBlocks=team.getAver_oppoBlocks();
+			this.aver_oppoTurnovers=team.getAver_oppoTurnovers();
+			this.aver_oppoFouls=team.getAver_oppoFouls();
+			this.aver_oppoScores=team.getAver_oppoScores();
+			
+			
 		}
 
 

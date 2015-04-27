@@ -59,28 +59,24 @@ public class PlayerController implements playerControllerService{
 	}
 	
 	public Player findPlayer(String playerName){
+		Player player = null;
 		for(Player temp : this.allPlayers){
 			if(temp.getPlayerName().equals(playerName)){
-				return temp;
+				player = temp;
 			}
 		}
-		return null;
+		return player;
 	}
-
 	
 	/*调用playerreader，转换成vo返回给我*/
 	public PlayerVO findPlayerVO(String name) {
-		PlayerPO playerpo=pds.find(name);
-		try{
-		Player player=new Player();
-		player.creatplayer(playerpo);
-		PlayerVO playervo=new PlayerVO();
-		playervo.creatplayervo(player);
-		return playervo;
+		PlayerVO vo = null;
+		for(PlayerVO tempvo : this.allPlayerVO){
+			if(tempvo.getPlayerName().equals(name)){
+				vo = tempvo;
+			}
 		}
-		catch(NullPointerException e){
-			return new PlayerVO();
-		}
+		return vo;
 	}
 	
 	//筛选功能;我还没写好;
