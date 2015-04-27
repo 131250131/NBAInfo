@@ -25,6 +25,13 @@ public class HotspotPanel extends JPanel{
 		this.setOpaque(false);
 		this.setVisible(true);
 		
+		JLabel title = new JLabel("热点信息");
+		title.setBounds((int) (20 * UIData.changeX), (int) (170 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
+		title.setForeground(Color.ORANGE);
+		title.setFont(new Font("新細明體", Font.BOLD, (int)(30 * UIData.changeY)));
+		title.setVisible(true);
+		this.add(title);
+		
 		HotspotRankPanel hotspotRankPanel = new HotspotRankPanel();
 		this.add(hotspotRankPanel);
 

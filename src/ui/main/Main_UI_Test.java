@@ -16,13 +16,13 @@ public class Main_UI_Test {
 	}
 	
 	public static int getFrameSizeX(){
-		double k = 0.67;
+		double k = 1;
 		double returnValue = 1920 * k;
 		return (int) returnValue;
 	}
 	
 	public static int getFrameSizeY(){
-		double k = 0.67;
+		double k = 1;
 		double returnValue = 1080 * k;
 		return (int) returnValue;
 	}

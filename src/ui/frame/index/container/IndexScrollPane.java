@@ -82,7 +82,7 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 		}
 		
 		if(events.getSource() == turnto2){
-			setScrollLoction(UIData.hotspotBoundsY + UIData.hotspotBoundsHeight);
+			setScrollLoction(UIData.matchBoundsY);
 		}
 		
 	}

@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import ui.frame.index.homepage.HomepagePanel;
 import ui.frame.index.hotspot.HotspotBounds;
 import ui.frame.index.hotspot.HotspotPanel;
+import ui.frame.index.match.MatchPanel;
 import ui.myUI.BackColorPanel;
 import ui.system.UIData;
 
@@ -15,6 +16,7 @@ public class IndexPanel extends JPanel{
 	
 	HomepagePanel homepagePanel;
 	HotspotPanel hotspotPanel;
+	MatchPanel matchPanel;
 	
 	public IndexPanel(){		
 		this.setLayout(null);
@@ -26,6 +28,8 @@ public class IndexPanel extends JPanel{
 		this.add(homepagePanel);
 		hotspotPanel = new HotspotPanel();
 		this.add(hotspotPanel);
+		matchPanel = new MatchPanel();
+		this.add(matchPanel);
 	}
 
 }

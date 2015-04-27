@@ -31,6 +31,9 @@ public class ImageSaver {
 			case "标签橘" : return new ImageIcon(iconPath + "标签橘.png");
 			case "标签黄" : return new ImageIcon(iconPath + "标签黄.png");
 			case "标签粉" : return new ImageIcon(iconPath + "标签粉.png");
+			case "单个比赛背景A" : return new ImageIcon(iconPath + "单个比赛背景A.png");
+			case "单个比赛背景B" : return new ImageIcon(iconPath + "单个比赛背景B.png");
+			case "比赛背景图片" : return new ImageIcon(iconPath + "比赛背景图片.png");
 		}
 		
 		return null;

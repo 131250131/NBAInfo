@@ -19,6 +19,9 @@ public class BackColorPanel extends JPanel{
 		case 2:
 			this.setBackground(new Color(241f / 255, 92f / 255, 54f / 255, 0.1f));
 			break;
+		case 3:
+			this.setBackground(new Color(126f / 255, 193f / 255, 63f / 255, 0.05f));
+			break;
 		}
 		this.setVisible(true);
 	}

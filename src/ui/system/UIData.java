@@ -36,6 +36,7 @@ public class UIData {
 		setIndexPanelBounds();
 		setHomepagePanelBounds();
 		setHotspotPanelBounds();
+		setMatchPanelBounds();
 		
 		@SuppressWarnings("unused")
 		HomepageBounds homepageBounds = new HomepageBounds();
@@ -92,7 +93,14 @@ public class UIData {
 		hotspotBoundsX = 0;
 		hotspotBoundsY = (int) (frameHeight);
 		hotspotBoundsWidth = indexPanelWidth;
-		hotspotBoundsHeight = (int)(3000 * changeY);
+		hotspotBoundsHeight = (int)((3000 - 170) * changeY);
+	}
+	
+	public void setMatchPanelBounds(){
+		matchBoundsX = 0;
+		matchBoundsY = hotspotBoundsY + hotspotBoundsHeight;
+		matchBoundsWidth = indexPanelWidth;
+		matchBoundsHeight = (int)(1080 * changeY);
 	}
 	
 	//frame
@@ -128,5 +136,9 @@ public class UIData {
 	public static int hotspotBoundsY;
 	public static int hotspotBoundsWidth;
 	public static int hotspotBoundsHeight;
+	public static int matchBoundsX;
+	public static int matchBoundsY;
+	public static int matchBoundsWidth;
+	public static int matchBoundsHeight;
 
 }
