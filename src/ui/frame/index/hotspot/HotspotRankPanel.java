@@ -1,8 +1,10 @@
 package ui.frame.index.hotspot;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.system.UIData;
@@ -39,9 +41,9 @@ public class HotspotRankPanel extends JPanel{
 	class HotSpotComboBox1 extends JComboBox<String>{
 		
 		int x = (int)(85 * UIData.changeX);
-		int y = (int)(20 * UIData.changeY);
+		int y = (int)(30 * UIData.changeY);
 		int width = (int)(300 * UIData.changeX);
-		int height = (int)(40 * UIData.changeY);
+		int height = (int)(30 * UIData.changeY);
 		
 		public HotSpotComboBox1(){
 			this.setBounds(x, y, width, height);
@@ -62,9 +64,9 @@ public class HotspotRankPanel extends JPanel{
 class HotSpotComboBox2 extends JComboBox<String>{
 		
 		int x = (int)(415 * UIData.changeX);
-		int y = (int)(20 * UIData.changeY);
+		int y = (int)(30 * UIData.changeY);
 		int width = (int)(300 * UIData.changeX);
-		int height = (int)(40 * UIData.changeY);
+		int height = (int)(30 * UIData.changeY);
 		
 		public HotSpotComboBox2(){
 			this.setBounds(x, y, width, height);

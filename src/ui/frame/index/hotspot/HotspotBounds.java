@@ -46,6 +46,6 @@ public class HotspotBounds {
 	
 	public static int rankingPanelX = (int)(85 * UIData.changeX);
 	public static int rankingPanelY = (int)(80 * UIData.changeY);
-	public static int rankingPanelWidth = HotspotRankWidth - rankingPanelX * 2;
+	public static int rankingPanelWidth = HotspotRankWidth - rankingPanelX * 2 + (int)(45* UIData.changeY);
 	public static int rankingPanelHeight = (int) (HotspotRankHeight - rankingPanelY * 1.5);
 }

@@ -50,7 +50,7 @@ public class InfoPanel_All extends JPanel{
 			if(i == num - 1){
 				a = 1;
 			}
-			textLabel[1][i].setBounds((int) (25 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
+			textLabel[1][i].setBounds((int) (10 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
 					(int) (245 * UIData.changeX), (int) (30 * UIData.changeY));
 			textLabel[1][i].setHorizontalAlignment(JLabel.RIGHT);
 			this.add(textLabel[1][i]);
@@ -75,7 +75,7 @@ public class InfoPanel_All extends JPanel{
 			if(i == num - 1){
 				a = 1;
 			}
-			textLabel[3][i].setBounds((int) (340 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
+			textLabel[3][i].setBounds((int) (330 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
 					(int) (260 * UIData.changeX), (int) (30 * UIData.changeY));
 			textLabel[3][i].setHorizontalAlignment(JLabel.LEFT);			
 			this.add(textLabel[3][i]);
@@ -103,17 +103,17 @@ public class InfoPanel_All extends JPanel{
 	private String getInfoText1(int i){
 		
 		switch(i){
-		case 0:return "最近一场得分数:    " ;
-		case 1:return "最近一场助攻数:    " ;
-		case 2:return "最近一场篮板数:    " ;
-		case 3:return "最近一场抢断数:    " ;
-		case 4:return "最近一场盖帽数:    " ;
+		case 0:return "最近一场得分:    " ;
+		case 1:return "最近一场助攻:    " ;
+		case 2:return "最近一场篮板:    " ;
+		case 3:return "最近一场抢断:    " ;
+		case 4:return "最近一场盖帽:    " ;
 		
-		case 5:return "最近一场失误数:    " ;
-		case 6:return "最近一场命中率:";
-		case 7:return "最近一场罚球命中率:";
-		case 8:return "最近一场三分命中率:" ;
-		case 9:return "最近一场上场时间数:";
+		case 5:return "最近一场失误:    " ;
+		case 6:return "最近一场命中:";
+		case 7:return "最近一场罚球命中:";
+		case 8:return "最近一场三分命中:" ;
+		case 9:return "最近一场上场时间:";
 		
 		case 10:return "最近一场效率:  ";
 		}
@@ -144,7 +144,7 @@ public class InfoPanel_All extends JPanel{
 	private String getInfoText2(int i){
 		
 		switch(i){
-		case 0:return  "    :平均得分";
+		case 0:return  "    :平均得分数";
 		case 1:return  "    :平均助攻数";
 		case 2:return  "    :平均篮板数";
 		case 3:return  "    :平均抢断数";
@@ -188,7 +188,7 @@ public class InfoPanel_All extends JPanel{
 		public TextLabel(String text){
 			this.setText(text);
 			this.setVisible(true);
-			this.setFont(new Font("Arail", Font.PLAIN, (int)(20 * UIData.changeY)));
+			this.setFont(new Font("新細明體", Font.PLAIN, (int)(20 * UIData.changeY)));
 			this.setForeground(Color.LIGHT_GRAY);
 		}
 	}

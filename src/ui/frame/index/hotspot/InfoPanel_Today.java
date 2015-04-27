@@ -38,7 +38,7 @@ public class InfoPanel_Today extends JPanel{
 				a = 1;
 				textLabel[0][i].setForeground(Color.WHITE);
 			}
-			textLabel[0][i].setBounds((int) (30 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
+			textLabel[0][i].setBounds((int) (10 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
 					(int) (230 * UIData.changeX), (int) (30 * UIData.changeY));
 			textLabel[0][i].setHorizontalAlignment(JLabel.LEFT);
 			this.add(textLabel[0][i]);
@@ -50,7 +50,7 @@ public class InfoPanel_Today extends JPanel{
 			if(i == num - 1){
 				a = 1;
 			}
-			textLabel[1][i].setBounds((int) (10 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
+			textLabel[1][i].setBounds((int) (25 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
 					(int) (230 * UIData.changeX), (int) (30 * UIData.changeY));
 			textLabel[1][i].setHorizontalAlignment(JLabel.RIGHT);
 			this.add(textLabel[1][i]);
@@ -63,7 +63,7 @@ public class InfoPanel_Today extends JPanel{
 				a = 1;
 				textLabel[2][i].setForeground(Color.WHITE);
 			}
-			textLabel[2][i].setBounds((int) (310 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
+			textLabel[2][i].setBounds((int) (338 * UIData.changeX), (int) ((100 + (i + a) * 40) * UIData.changeY),
 					(int) (230 * UIData.changeX), (int) (30 * UIData.changeY));
 			textLabel[2][i].setHorizontalAlignment(JLabel.RIGHT);
 			this.add(textLabel[2][i]);
@@ -144,7 +144,7 @@ public class InfoPanel_Today extends JPanel{
 	private String getInfoText2(int i){
 		
 		switch(i){
-		case 0:return  "    :平均得分";
+		case 0:return  "    :平均得分数";
 		case 1:return  "    :平均助攻数";
 		case 2:return  "    :平均篮板数";
 		case 3:return  "    :平均抢断数";
@@ -188,7 +188,7 @@ public class InfoPanel_Today extends JPanel{
 		public TextLabel(String text){
 			this.setText(text);
 			this.setVisible(true);
-			this.setFont(new Font("Arail", Font.PLAIN, (int)(20 * UIData.changeY)));
+			this.setFont(new Font("新細明體", Font.PLAIN, (int)(20 * UIData.changeY)));
 			this.setForeground(Color.LIGHT_GRAY);
 		}
 	}

@@ -20,6 +20,17 @@ public class ImageSaver {
 			case "今日最佳球员背景3" : return new ImageIcon(iconPath + "今日最佳球员背景3.png");
 			case "赛季最佳球员背景" : return new ImageIcon(iconPath + "赛季最佳球员背景.png");
 			case "赛季最佳球员背景2" : return new ImageIcon(iconPath + "赛季最佳球员背景2.png");
+			case "热点球员背景" : return new ImageIcon(iconPath + "热点球员背景.png");
+			case "进度条绿" : return new ImageIcon(iconPath + "进度条绿.png");
+			case "进度条蓝" : return new ImageIcon(iconPath + "进度条蓝.png");
+			case "进度条橘" : return new ImageIcon(iconPath + "进度条橘.png");
+			case "进度条黄" : return new ImageIcon(iconPath + "进度条黄.png");
+			case "进度条粉" : return new ImageIcon(iconPath + "进度条粉.png");
+			case "标签绿" : return new ImageIcon(iconPath + "标签绿.png");
+			case "标签蓝" : return new ImageIcon(iconPath + "标签蓝.png");
+			case "标签橘" : return new ImageIcon(iconPath + "标签橘.png");
+			case "标签黄" : return new ImageIcon(iconPath + "标签黄.png");
+			case "标签粉" : return new ImageIcon(iconPath + "标签粉.png");
 		}
 		
 		return null;

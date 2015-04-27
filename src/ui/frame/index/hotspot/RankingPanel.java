@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.system.UIData;
-import userInterface.ui.hotspotUI.SinglePanel;
 
 @SuppressWarnings("serial")
 public class RankingPanel extends JPanel{
@@ -26,7 +25,7 @@ public class RankingPanel extends JPanel{
 		this.setVisible(true);
 		//this.setOpaque(false);
 		this.setLayout(null);	
-		this.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.8f));
+		this.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.9f));
 		
 		int step = width / 6;
 		
@@ -37,15 +36,10 @@ public class RankingPanel extends JPanel{
 		}
 		
 		for(int i = 0; i < 5; i++){
-			singlePanel[i] = new SinglePanel();
+			singlePanel[i] = new SinglePanel(i);
 			this.add(singlePanel[i]);
 		}
-		
-//		panelBack = new JLabel(ImageSaver.getIcon("standingBack"));
-//		panelBack.setVisible(true);
-//		panelBack.setBounds(0, 0, width, height);
-//		this.add(panelBack);
-		
+	
 		updateStanding(0, 0);
 	}
 	
@@ -55,11 +49,11 @@ public class RankingPanel extends JPanel{
 		for(int i = 0; i < 5; i++){
 			stepLabel[i].setText(transToTwoNum(step * (5 - i)));
 		}
-		singlePanel[0].updatePanel(53, step, 0, "Allen Crabbe");
-		singlePanel[1].updatePanel(42, step, 1, "James Johnson");
-		singlePanel[2].updatePanel(38, step, 2, "Jan Vesely");
-		singlePanel[3].updatePanel(14, step, 3, "Chris Bosh");
-		singlePanel[4].updatePanel(8, step, 4, "Melvin Ely");
+		singlePanel[0].updatePanel(51, step, "Allen Crabbe");
+		singlePanel[1].updatePanel(47, step, "James Johnson");
+		singlePanel[2].updatePanel(32, step, "Jan Vesely");
+		singlePanel[3].updatePanel(21, step, "Chris Bosh");
+		singlePanel[4].updatePanel(14, step, "Melvin Ely");
 		
 	}
 	
