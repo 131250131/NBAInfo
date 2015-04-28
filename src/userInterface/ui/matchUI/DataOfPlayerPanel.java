@@ -126,6 +126,7 @@ public class DataOfPlayerPanel extends JPanel {
 	public void update(String player){
 		PlayerVO temp = pcs.findPlayerVO(player);
 		//头像
+		System.out.println(temp);
 		portrait.setIcon(ImageSaver.getIcon("portrait/"+temp.getPlayerName()));
 		//信息
 		playerName.setText("球员："+temp.getPlayerName());

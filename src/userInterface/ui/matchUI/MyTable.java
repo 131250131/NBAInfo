@@ -98,7 +98,10 @@ public class MyTable extends JScrollPane implements MouseListener{
 		return result;
 		
 	}
-	
+	/*获取表格类*/
+	public JTable getJTable(){
+		return table;
+	}
 	@SuppressWarnings("serial")
 	void initial( String[] columnNames, Object[][] content){//表格header和二维数组内容，object数组可以装载所有对象，包括基本类型
 		this.columnNames=columnNames;

@@ -1,8 +1,7 @@
 package userInterface.ui.matchUI;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -10,6 +9,9 @@ import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import vo.MatchVO;
 import vo.PlayerVO;
@@ -40,7 +42,14 @@ public class MatchDataPanel extends JPanel {
 		thismatch.getTeam2().addMouseListener(new MouseListenerOfteam("right"));
 		thismatch.getName1().addMouseListener(new MouseListenerOfteam("left"));
 		thismatch.getName2().addMouseListener(new MouseListenerOfteam("right"));
-		table.addKeyListener((KeyListener) new MyActionListener());
+		//单元格值变化事件监控输出球员姓名
+        ListSelectionModel cellSelectionModel = table.getJTable().getSelectionModel();  
+        cellSelectionModel.addListSelectionListener(new ListSelectionListener(){  
+            public void valueChanged(ListSelectionEvent e) {//单元格值变动事件  
+            	String s=table.getSign(1);
+            	players.update(s);
+            }  
+        });  
 		this.add(thismatch,0);
 		this.add(players,1);
 		this.add(table,2);
@@ -124,15 +133,7 @@ public class MatchDataPanel extends JPanel {
 		}
 		
 	}
-	class MyActionListener implements ActionListener{
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			System.out.println(table.getSign(1));
-		}
-		
-	}
 	public static void main(String[] args) {
 		JFrame test=new JFrame();
 		test.setUndecorated(true);
