@@ -34,9 +34,17 @@ public class ImageSaver {
 			case "单个比赛背景A" : return new ImageIcon(iconPath + "单个比赛背景A.png");
 			case "单个比赛背景B" : return new ImageIcon(iconPath + "单个比赛背景B.png");
 			case "比赛背景图片" : return new ImageIcon(iconPath + "比赛背景图片.png");
+			case "rankW" : return new ImageIcon(iconPath + "rankW.png"); 
+			case "rankW2" : return new ImageIcon(iconPath + "rankW2.png");
+			case "rankE" : return new ImageIcon(iconPath + "rankE.png");
+			case "rankE2" : return new ImageIcon(iconPath + "rankE2.png");
 		}
 		
 		return null;
+	}
+	
+	public static ImageIcon getTeamIcon(String teamName){
+		return new ImageIcon("image/team/" + teamName + ".png");
 	}
 
 }

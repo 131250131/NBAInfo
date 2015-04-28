@@ -10,8 +10,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.nba.davisUI.myUI.ImageBin;
-
 import ui.myUI.ImageLabel;
 import ui.myUI.OpaqueButton;
 import ui.system.ImageSaver;
@@ -53,7 +51,7 @@ public class IndexBoard extends JPanel implements ActionListener{
 	}
 	
 
-	int textNum = 5;
+	int textNum = 7;
 	JLabel[] textLabel = new JLabel[textNum];
 	OpaqueButton[] textButton = new OpaqueButton[textNum];
 	int labelHeight = (int) (30 * UIData.changeY);
@@ -123,6 +121,24 @@ public class IndexBoard extends JPanel implements ActionListener{
 				textLabel[4].setForeground(Color.GRAY);
 			}
 			}); 
+		
+		textButton[5].addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent arg0) {
+				textLabel[5].setForeground(Color.WHITE);
+			}
+			public void mouseExited(MouseEvent arg0) {
+				textLabel[5].setForeground(Color.GRAY);
+			}
+			}); 
+		
+		textButton[6].addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent arg0) {
+				textLabel[6].setForeground(Color.WHITE);
+			}
+			public void mouseExited(MouseEvent arg0) {
+				textLabel[6].setForeground(Color.GRAY);
+			}
+			}); 
 	}
 	
 	private int getTextY(int i){
@@ -141,8 +157,12 @@ public class IndexBoard extends JPanel implements ActionListener{
 		case 2:
 			return "比赛信息";
 		case 3:
-			return "球队列表";
+			return "战绩排名";
 		case 4:
+			return "球队列表";
+		case 5:
+			return "我的球队";
+		case 6:
 			return "系统";
 		}
 		return null;
@@ -188,6 +208,10 @@ public class IndexBoard extends JPanel implements ActionListener{
 		
 		if(events.getSource() == textButton[2]){
 			IndexScrollPane.turnto2.doClick();
+		}
+		
+		if(events.getSource() == textButton[3]){
+			IndexScrollPane.turnto3.doClick();
 		}
 	}
 }

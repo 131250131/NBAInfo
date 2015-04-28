@@ -9,7 +9,7 @@ import ui.system.UIData;
 public class MatchScrollPane extends JScrollPane{
 	
 	int x = (int) ((85 + 135) * UIData.changeX); 
-	int y = (int) (150 * UIData.changeY);
+	int y = (int) (250 * UIData.changeY);
 	int width = (int) (1515 * UIData.changeX);
 	int height = (int) (800 * UIData.changeY);
 
@@ -23,6 +23,7 @@ public class MatchScrollPane extends JScrollPane{
 		this.setVisible(true);
 		this.getVerticalScrollBar().setOpaque(false);
 		this.getVerticalScrollBar().setBorder(BorderFactory.createEmptyBorder());
+		this.getVerticalScrollBar().setUnitIncrement(20);
 		this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
 	}
 	

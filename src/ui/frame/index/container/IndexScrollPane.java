@@ -15,12 +15,12 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 	
 	int x = UIData.indexScrollPaneX;
 	int y = UIData.indexScrollPaneY;
-	int width = UIData.indexScrollPaneWidth;
+	int width = UIData.indexScrollPaneWidth + 2;
 	int height = UIData.indexScrollPaneHeight;
 	
 	IndexPanel indexPanel;
 	Timer timer = new Timer(1, this);
-	public static JButton turnto0, turnto1, turnto2;
+	public static JButton turnto0, turnto1, turnto2, turnto3;
 	
 	public IndexScrollPane(){	
 		this.setBounds(x, y, width, height);
@@ -30,6 +30,7 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 		this.setBorder(null);
 		this.getVerticalScrollBar().setOpaque(false);
 		this.getVerticalScrollBar().setBorder(BorderFactory.createEmptyBorder());
+		this.getVerticalScrollBar().setUnitIncrement(35);
 		
 		indexPanel = new IndexPanel();
 		setViewportView(indexPanel);
@@ -45,6 +46,10 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 		turnto2 = new JButton();
 		turnto2.addActionListener(this);
 		this.add(turnto2);	
+		
+		turnto3 = new JButton();
+		turnto3.addActionListener(this);
+		this.add(turnto3);
 	}
 	
 	int currentLoction;
@@ -52,11 +57,16 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 	int step;
 	int move = 0;
 	
+	int time = 3;
+	
 	private void setScrollLoction(int _destination){
 		currentLoction = this.getVerticalScrollBar().getValue();
 		destination = _destination;
 		move = 0;
-		step = (destination - currentLoction) / 3;
+		int height = UIData.frameHeight * 3;
+		time = Math.abs((destination - currentLoction)) / height + 3;
+		
+		step = (destination - currentLoction) / time;
 		timer.start();	
 	}
 	
@@ -64,7 +74,7 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == timer){
-			if(move == 3){
+			if(move == time){
 				timer.stop();				
 			}else{
 				move++;
@@ -82,7 +92,11 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 		}
 		
 		if(events.getSource() == turnto2){
-			setScrollLoction(UIData.matchBoundsY);
+			setScrollLoction((int) (UIData.matchBoundsY + (80 * UIData.changeY)));
+		}
+		
+		if(events.getSource() == turnto3){
+			setScrollLoction((int) (UIData.rankingBoundsY + (100 * UIData.changeY)));
 		}
 		
 	}

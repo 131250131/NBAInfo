@@ -18,7 +18,7 @@ import ui.system.UIData;
 @SuppressWarnings("serial")
 public class SingleMatchPanel extends JPanel{
 	
-	int width = (int) (1500 * UIData.changeY);
+	int width = (int) (1500 * UIData.changeX);
 	int height = (int) (160 * 1.5 * UIData.changeY);
 	
 	JLabel backgroundLabel;
@@ -54,29 +54,30 @@ public class SingleMatchPanel extends JPanel{
 	public void initSingleMatchPanelWithMatch(){
 		leftTeamName = "BOS";
 		rightTeamName = "POR";
-		int picSize = (int) (140 * 1.5 * UIData.changeX);
+		int picSizeX = (int) (140 * 1.5 * UIData.changeX);
+		int picSizeY = (int) (140 * 1.5 * UIData.changeY);
 		ImageIcon image1 = new ImageIcon("data/newImage/Team/" + leftTeamName + ".png");
 		ImageIcon image2 = new ImageIcon("data/newImage/Team/" + rightTeamName + ".png");
-		image1.setImage(image1.getImage().getScaledInstance(picSize, picSize,Image.SCALE_DEFAULT));
-		image2.setImage(image2.getImage().getScaledInstance(picSize, picSize,Image.SCALE_DEFAULT));
+		image1.setImage(image1.getImage().getScaledInstance(picSizeX, picSizeY,Image.SCALE_DEFAULT));
+		image2.setImage(image2.getImage().getScaledInstance(picSizeX, picSizeY,Image.SCALE_DEFAULT));
 		
 		teamLogo1 = new JLabel(image1);
-		teamLogo1.setBounds((int) (30 * 1.5 * UIData.changeX), (int) (10 * 1.5 * UIData.changeY), picSize, picSize);
+		teamLogo1.setBounds((int) (30 * 1.5 * UIData.changeX), (int) (10 * 1.5 * UIData.changeY), picSizeX, picSizeY);
 		teamLogo1.setVisible(true);
 		this.add(teamLogo1);
 		
 		teamLogo2 = new JLabel(image2);
-		teamLogo2.setBounds((int) (330 * 1.5 * UIData.changeX), (int) (10 * 1.5 * UIData.changeY), picSize, picSize);
+		teamLogo2.setBounds((int) (330 * 1.5 * UIData.changeX), (int) (10 * 1.5 * UIData.changeY), picSizeX, picSizeY);
 		teamLogo2.setVisible(true);
 		this.add(teamLogo2);
 		
-		scoreTitle = new JLabel("队伍名称      第一节       第二节       第三节      第四节       加  时            总  分");
-		scoreTitle.setBounds((int) (485 * 1.5 * UIData.changeX), (int) (10 * 1.5 * UIData.changeY)
-				, (int) (500 * 1.5 * UIData.changeX), (int) (30 * 1.5 * UIData.changeY));
-		scoreTitle.setVisible(true);
-		scoreTitle.setForeground(Color.BLACK);
-		scoreTitle.setFont(new Font("新細明體", Font.BOLD, (int) (14 * 1.5 * UIData.changeY)));
-		this.add(scoreTitle);
+//		scoreTitle = new JLabel("队伍名称     第一节      第二节     第三节    第四节     加  时         总  分");
+//		scoreTitle.setBounds((int) (485 * 1.5 * UIData.changeX), (int) (10 * 1.5 * UIData.changeY)
+//				, (int) (500 * 1.5 * UIData.changeX), (int) (30 * 1.5 * UIData.changeY));
+//		scoreTitle.setVisible(true);
+//		scoreTitle.setForeground(Color.BLACK);
+//		scoreTitle.setFont(new Font("新細明體", Font.BOLD, (int) (14 * 1.5 * UIData.changeY)));
+//		this.add(scoreTitle);
 		
 		leftScoreLabel = new JLabel(leftTeamName + "     " + leftTeamScore_1Q + "     " + leftTeamScore_2Q
 				+ "     " + leftTeamScore_3Q + "     " + leftTeamScore_4Q + "     " + leftTeamScore_OT + "      " + leftTeamScore_total);
@@ -105,11 +106,14 @@ public class SingleMatchPanel extends JPanel{
 		this.add(dateLabel);
 		
 		scoreLabel = new JLabel(leftTeamScore_total + " - " + rightTeamScore_total);
-		scoreLabel.setBounds((int) (175 * 1.5 * UIData.changeX), (int) (10 * 1.5 * UIData.changeY), (int) (picSize + 30 * 1.5 * UIData.changeX), picSize);
+		scoreLabel.setBounds((int) (185 * 1.5 * UIData.changeX), (int) (10 * 1.5 * UIData.changeY), (int) ((picSizeX + 30) * 1.5 * UIData.changeX), picSizeY );
 		scoreLabel.setVisible(true);
 		scoreLabel.setForeground(Color.DARK_GRAY);
-		scoreLabel.setFont(new Font("OCR A Std", Font.BOLD, (int) (26 * 1.5 * UIData.changeY)));
+		scoreLabel.setFont(new Font("OCR A Std", Font.BOLD, (int) (23 * 1.5 * UIData.changeY)));
 		this.add(scoreLabel);
+			
+		image3.setImage(image3.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
+		image4.setImage(image4.getImage().getScaledInstance(width, height,Image.SCALE_DEFAULT));
 		
 		backgroundEnterEffect = new JButton();
 		backgroundEnterEffect.setBounds(0, 0, width, height);
@@ -120,18 +124,21 @@ public class SingleMatchPanel extends JPanel{
 		backgroundEnterEffect.setContentAreaFilled(false);
 		backgroundEnterEffect.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0) {
-				backgroundLabel.setIcon(ImageSaver.getIcon("单个比赛背景B"));
+				backgroundLabel.setIcon(image4);
 			}
 			public void mouseExited(MouseEvent arg0) {
-				backgroundLabel.setIcon(ImageSaver.getIcon("单个比赛背景A"));
+				backgroundLabel.setIcon(image3);
 			}
 			}); 
 		this.add(backgroundEnterEffect);
 		
-		backgroundLabel = new JLabel(ImageSaver.getIcon("单个比赛背景A"));
+		backgroundLabel = new JLabel(image3);
 		backgroundLabel.setBounds(0, 0, width, height);
 		backgroundLabel.setVisible(true);
 		this.add(backgroundLabel);	
 	}
+	
+	ImageIcon image3 = ImageSaver.getIcon("单个比赛背景A");
+	ImageIcon image4 = ImageSaver.getIcon("单个比赛背景B");
 
 }

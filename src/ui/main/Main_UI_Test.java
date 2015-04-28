@@ -11,6 +11,7 @@ public class Main_UI_Test {
 		int frameSizeY = getFrameSizeY();
 		@SuppressWarnings("unused")
 		UIData uiData = new UIData(frameSizeX , frameSizeY);
+		UIData.setFavoriteTeam("CLE");
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
 	}

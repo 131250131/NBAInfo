@@ -37,6 +37,7 @@ public class UIData {
 		setHomepagePanelBounds();
 		setHotspotPanelBounds();
 		setMatchPanelBounds();
+		setRankingBounds();
 		
 		@SuppressWarnings("unused")
 		HomepageBounds homepageBounds = new HomepageBounds();
@@ -72,7 +73,7 @@ public class UIData {
 	
 	private void setIndexPanelBounds(){
 		indexPanelWidth = indexScrollPaneWidth - 20;
-		indexPanelHeight = frameHeight * 6;
+		indexPanelHeight = frameHeight * 10;
 	}
 	
 	private void setHomepagePanelBounds(){
@@ -100,7 +101,20 @@ public class UIData {
 		matchBoundsX = 0;
 		matchBoundsY = hotspotBoundsY + hotspotBoundsHeight;
 		matchBoundsWidth = indexPanelWidth;
-		matchBoundsHeight = (int)(1080 * changeY);
+		matchBoundsHeight = (int)(1280 * changeY);
+	}
+	
+	private void setRankingBounds(){
+		rankingBoundsX = 0;
+		rankingBoundsY = matchBoundsY + matchBoundsHeight;
+		rankingBoundsWidth = matchBoundsWidth;
+		rankingBoundsHeight = (int)(1280 * changeY);
+	}
+	
+	public static String favoriteTeam;
+	
+	public static void setFavoriteTeam(String teamName){
+		favoriteTeam = teamName;
 	}
 	
 	//frame
@@ -140,5 +154,9 @@ public class UIData {
 	public static int matchBoundsY;
 	public static int matchBoundsWidth;
 	public static int matchBoundsHeight;
+	public static int rankingBoundsX;
+	public static int rankingBoundsY;
+	public static int rankingBoundsWidth;
+	public static int rankingBoundsHeight;
 
 }

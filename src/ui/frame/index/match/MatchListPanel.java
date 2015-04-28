@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.system.UIData;
-import userInterface.ui.matchUI.MatchBounds;
 
 @SuppressWarnings("serial")
 public class MatchListPanel extends JPanel{

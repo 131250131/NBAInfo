@@ -10,7 +10,7 @@ import ui.system.UIData;
 public class MatchComboBox extends JComboBox<String>{
 		
 	public MatchComboBox(){
-		this.setBounds((int) ((85  + 135) * UIData.changeX), (int) (90 * UIData.changeY),
+		this.setBounds((int) ((85  + 135) * UIData.changeX), (int) (190 * UIData.changeY),
 				(int) (200 * UIData.changeX), (int) (35 * UIData.changeY));
 		addItem();
 		this.setVisible(true);

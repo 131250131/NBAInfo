@@ -9,21 +9,28 @@ public class BackColorPanel extends JPanel{
 	
 	public BackColorPanel(int x, int y, int width, int height, int style){
 		this.setBounds(x, y, width, height);
-		switch(style){
-		case 0: 
-			this.setBackground(new Color(0.6f, 0.6f, 0.6f, 0.3f));
-			break;
-		case 1:
-			this.setBackground(new Color(97f / 255, 45f / 255, 141f / 255, 0.1f));
-			break; 
-		case 2:
-			this.setBackground(new Color(241f / 255, 92f / 255, 54f / 255, 0.1f));
-			break;
-		case 3:
-			this.setBackground(new Color(126f / 255, 193f / 255, 63f / 255, 0.05f));
-			break;
-		}
+
+		Color color1 = null, color2 = null, color3 = null;
+		
+
+		color1 = getBackColor(30, 28, 72, 0.3f);
+		color2 = getBackColor(11, 10, 28, 0.4f);
+		color3 = getBackColor(10, 10, 10, 0.8f);
+	
+		if(style == 0){
+			this.setBackground(color3);
+		}else{
+			if(style % 2 == 0){
+				this.setBackground(color2);
+			}else{
+				this.setBackground(color1);
+			}
+		}		
 		this.setVisible(true);
+	}
+	
+	private Color getBackColor(int r, int g, int b, float o){
+		return new Color((float)r / 255, (float)g / 255, (float)b / 255, o);
 	}
 
 }
