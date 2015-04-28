@@ -124,10 +124,12 @@ public class DataOfPlayerPanel extends JPanel {
 		weight.setText("体重："+"70");
 	}
 	public void update(String player){
+		System.out.println(player);
 		PlayerVO temp = pcs.findPlayerVO(player);
 		//头像
 		System.out.println(temp);
 		portrait.setIcon(ImageSaver.getIcon("portrait/"+temp.getPlayerName()));
+		System.out.println(temp.getPlayerName());
 		//信息
 		playerName.setText("球员："+temp.getPlayerName());
 		playerNumber.setText("号码："+temp.getPlayerNumber());

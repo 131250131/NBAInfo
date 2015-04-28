@@ -17,13 +17,14 @@ public class MatchController implements matchControllerService{
 		MatchDataService matchdata = new Matchdata();
 		ArrayList<MatchPO> allMatchPO = new ArrayList<MatchPO>();
 		ArrayList<MatchVO> allMatchVO = new ArrayList<MatchVO>();
-		TeamController teamController = TeamController.getInstance();
-		PlayerController playerController = PlayerController.getInstance();
+//		TeamController teamController = TeamController.getInstance();
+//		PlayerController playerController = PlayerController.getInstance();
 		
 		/*
 		 * Controller在构造的时候就完成对data层数据的调用；
 		 * 这样可以避免多次调用多次读取data层
 		 * */
+		
 		private static MatchController instance =null;
 		
 		private MatchController(){
@@ -32,7 +33,7 @@ public class MatchController implements matchControllerService{
 			this.createAllMatchVO();//获得所有比赛的vo;
 		}
 		
-		public MatchController getInstance(){
+		public static MatchController getInstance(){
 			if(instance == null){
 				instance = new MatchController();
 			}
@@ -59,16 +60,16 @@ public class MatchController implements matchControllerService{
 				Match tempMatch = new Match();
 				tempMatch.creatmatch(matchpo);//match数据更新;
 				this.allMatches.add(tempMatch);
-				
-				this.teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
-				this.teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
+				TeamController teamController = TeamController.getInstance();
+				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
+				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
 				//team 更新完毕;
-				
+				PlayerController playerController = PlayerController.getInstance();
 				for(Player tempPlayer: tempMatch.getleftplayers()){
-					this.playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
+					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
 				}
 				for(Player tempPlayer: tempMatch.getrightplayers()){
-					this.playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
+					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
 				}
 				//这两个循环用来更新球员数据
 			}
@@ -88,8 +89,9 @@ public class MatchController implements matchControllerService{
 		//此方法用来获得某个球员参与的所有比赛;
 		//我有预感 在attendedMatches这边会出错......
 		public ArrayList<MatchVO> getSomeMatchVO(String playerName){
+			PlayerController playerController = PlayerController.getInstance();
 			ArrayList<MatchVO> someMatchVO = new ArrayList<MatchVO>();			
-			Player player = this.playerController.findPlayer(playerName);
+			Player player = playerController.findPlayer(playerName);
 			for(int i : player.getAttendedMatches()){
 				someMatchVO.add(this.allMatchVO.get(i));
 			}
