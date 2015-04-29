@@ -6,7 +6,8 @@ import po.PlayerPO;
 
 public class Player implements Comparable<Player>{
 	private int scores=0;
-	private static String comparetype="";
+	static String comparetype="";
+	private double advancedP=0;
 	public Player(){
 		
 	}
@@ -146,6 +147,7 @@ public class Player implements Comparable<Player>{
 		playerFouls=playerpo.getPlayerFouls();
 		teamShortName=playerpo.getTeamShortName();
 		attendedMatches=playerpo.getAttendedMatches();
+		advancedP=playerpo.getAdvancedP();
 	}
 
 	
@@ -1028,8 +1030,44 @@ public class Player implements Comparable<Player>{
 			           return 1;
 	 		      return -1;
 	     	   }
+	     	  if(comparetype.equals("进步率")){
+	     		   if(this.getAdvancedP()-o.getAdvancedP()<0){
+	     			   return 1;
+	     		   }
+	     		   return -1;	   
+	     	   }
+
 				return 0;
+				
 		} 
+
+        public int getaddate(String type) {
+			// TODO Auto-generated method stub
+			if(type.equals("得分")){
+				return scores;
+			}
+			if(type.equals("篮板")){
+    			return playerTotalRebounds;
+    		}
+    		if(type.equals("助攻")){
+    			return playerAssists;
+    		}
+    		return 0;
+		}
+
+		public double getAdvancedP() {
+			return advancedP;
+		}
+
+		public void setAdvancedP(double advancedP) {
+			this.advancedP = advancedP;
+		}
+
+		public void setcompare(String string) {
+			// TODO Auto-generated method stub
+			comparetype=string;
+		}
+
 
 }
 

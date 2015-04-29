@@ -6,7 +6,7 @@ import logic.Player;
 
 public class PlayerVO {
 		private int scores=0;
-		
+		private double advancedP=0;
 		public PlayerVO(){
 		
 		}
@@ -811,7 +811,15 @@ public class PlayerVO {
 				this.BR = player.getBR();
 				this.TR = player.getTR();
 				this.UR = player.getUR();
-			
+			    this.advancedP=player.getAdvancedP();
+			}
+
+			public double getAdvancedP() {
+				return advancedP;
+			}
+
+			public void setAdvancedP(double advancedP) {
+				this.advancedP = advancedP;
 			}
 
 	}

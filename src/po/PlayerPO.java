@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class PlayerPO implements Serializable{
 //基本信息
-		
+	private double advancedP=0;
 	//1.球员名称 （球员名称作为查找唯一标识）
 	//格式类似：Anthony Tolliver
 	private String playerName;
@@ -367,6 +367,13 @@ public class PlayerPO implements Serializable{
 		public void setStart(boolean isStart) {
 			this.isStart = isStart;
 		}
+		public double getAdvancedP() {
+			return advancedP;
+		}
+		public void setAdvancedP(double advancedP) {
+			this.advancedP = advancedP;
+		}
+		
 
 
 

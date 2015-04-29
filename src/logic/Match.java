@@ -11,7 +11,7 @@ import DataService.MatchDataService;
 import data.matchdata.*;
 
 
-public class Match {
+public class Match implements Comparable<Match> {
 	int Num;//比赛场次的编号，从零开始，
 	String season;
 	String date;
@@ -215,4 +215,14 @@ public Object[][] getData(String team,int matchnum){
 					
 				return score;
 			}
+			@Override
+			public int compareTo(Match o) {
+				// TODO Auto-generated method stub
+				if(this.getDate().compareTo(o.getDate())<0){
+					return 1;
+				}
+				return -1;
+			
+			}
+
 }

@@ -3,13 +3,13 @@ package vo;
 import logic.Team;
 import po.TeamPO;
 
-public class TeamVO {
+public class TeamVO implements Comparable<TeamVO> {
 	//TeamVO用于bl层和ui层的交互，
 		
 		/*
 	 	* 球队基本信息
 	 	* */
-	
+	    private String comparetype="";
 		//球队名称： 
 		private String teamName;
 		//球队缩写：
@@ -826,6 +826,66 @@ public class TeamVO {
 			this.aver_oppoScores=team.getAver_oppoScores();
 			
 			
+		}
+		@Override
+		public int compareTo(TeamVO o) {
+			// TODO Auto-generated method stub
+			if(comparetype.equals("得分")){
+				if(this.getAver_teamScores()-o.getOppoScores()<0){
+					return 1;
+				}
+				    return -1;
+			}
+            if(comparetype.equals("篮板")){
+				if(this.getAver_teamTotalRebounds()-o.getAver_teamTotalRebounds()<0){
+					return 1;
+				}
+				    return -1;
+			}
+            if(comparetype.equals("助攻")){
+				if(this.getAver_teamAssists()-o.getAver_teamAssists()<0){
+					return 1;
+				}
+				    return -1;
+			}
+            if(comparetype.equals("盖帽")){
+				if(this.getAver_teamBlocks()-o.getAver_teamBlocks()<0){
+					return 1;
+				}
+				    return -1;
+			}
+            if(comparetype.equals("抢断")){
+				if(this.getAver_teamSteals()-o.getAver_teamSteals()<0){
+					return 1;
+				}
+				    return -1;
+			}
+            if(comparetype.equals("3FGP")){
+				if(this.getTeam3FGP()-o.getTeam3FGP()<0){
+					return 1;
+				}
+				    return -1;
+ 			}
+            if(comparetype.equals("FGP")){
+				if(this.getTeamFGP()-o.getTeamFGP()<0){
+					return 1;
+				}
+				    return -1;
+			}
+            if(comparetype.equals("FTGP")){
+				if(this.getTeamFTGP()-o.getTeamFTGP()<0){
+					return 1;
+				}
+				    return -1;
+			}
+           
+			return 0;
+		}
+		public String getComparetype() {
+			return comparetype;
+		}
+		public void setComparetype(String comparetype) {
+			this.comparetype = comparetype;
 		}
 
 

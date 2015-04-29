@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import logicservice.playerControllerService;
 import po.PlayerPO;
@@ -80,10 +81,153 @@ public class PlayerController implements playerControllerService{
 	}
 	
 	//筛选功能;我还没写好;
-	public ArrayList<PlayerVO> getSelectedPlayers() {
+	public ArrayList<PlayerVO> getSelectedPlayers(){
 		return null;
 	}
 	
+ 	public ArrayList<PlayerVO> getSeasonHotPlayers_Score(){
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="得分";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		
+		return tempList;
+	}
 	
+ 	public ArrayList<PlayerVO> getSeasonHotPlayers_Rebound(){
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="篮板";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		
+		return tempList;
+	}
+ 	
+	public ArrayList<PlayerVO> getSeasonHotPlayers_Assist(){
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="助攻";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	} 
+	
+	public ArrayList<PlayerVO> getSeasonHotPlayers_Block(){
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="盖帽";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	}
+	
+	public ArrayList<PlayerVO> getSeasonHotPlayers_Steal(){
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="抢断";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	} 
+	
+	public ArrayList<PlayerVO> getSeasonHotPlayers_3FGP(){
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="三分命中率";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	} 
+	
+	public ArrayList<PlayerVO> getSeasonHotPlayers_FGP(){
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="投篮命中率";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	} 
+	
+	public ArrayList<PlayerVO> getSeasonHotPlayers_FTGP() {
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="罚球命中率";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	} 
+	@Override
+	public ArrayList<PlayerVO> getAdvancedPlayers(String type) {
+		// TODO Auto-generated method stub
+		MatchController matchcontroller =MatchController.getInstance();
+		ArrayList<PlayerPO> playerpos =pds.getallplayers();
+		ArrayList<Player> players=new ArrayList<Player>();
+		ArrayList<PlayerVO> playervos=new ArrayList<PlayerVO>();
+		ArrayList<PlayerVO> result =new ArrayList<PlayerVO>();
+		for(PlayerPO playerpo:playerpos){
+			Player player =new Player();
+			player.creatplayer(playerpo);
+			players.add(player);
+		}
+		for(Player player:players){
+			player.setAdvancedP(matchcontroller.playeradvcal(player.getPlayerName(), player.getAttendedMatches(), type));
+			player.setcompare("进步率");
+		}
+		Collections.sort(players);
+		for(Player player:players){
+			PlayerVO playervo =new PlayerVO();
+			playervo.creatplayervo(player);
+			playervos.add(playervo);
+		}
+		result.add(playervos.get(0));
+		result.add(playervos.get(1));
+		result.add(playervos.get(2));
+		result.add(playervos.get(3));
+		result.add(playervos.get(4));
+		return result;
+	}
+
 
 }

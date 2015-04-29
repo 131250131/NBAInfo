@@ -2,6 +2,7 @@ package logic;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import po.MatchPO;
 import data.matchdata.*;
@@ -125,6 +126,93 @@ public class MatchController implements matchControllerService{
 		}
 		
 		
+		public double playeradvcal(String name,ArrayList<Integer> attendedMatches,String type){
+			Matchdata matchdata=new Matchdata();
+        	ArrayList<MatchPO> matchpos=new ArrayList<MatchPO>();
+        	ArrayList<Match> resultmatch=new ArrayList<Match>();
+        	double form_total=0;
+            double now_total=0;
+        	double now_aveg=0;
+        	double form_aveg=0;
+        	int have=0;
+        	matchpos=matchdata.getAllMatch();
+        	if(matchpos!=null){
+        	for(Integer i:attendedMatches){
+        		for(MatchPO matchpo:matchpos){
+        			if(i.equals(matchpo.getNum())){
+        				Match match=new Match();
+        				match.creatmatch(matchpo);
+        				resultmatch.add(match);
+        				break;
+        			}
+        		}
+        		}
+        	Collections.sort(resultmatch);
+        	if(resultmatch.size()<=5){
+        		return 0;
+        	}
+        	else{
+        			for(int i=0;i<5;i++){   
+        				    have=0;
+                			ArrayList<Player> l=resultmatch.get(i).getleftplayers();
+                			ArrayList<Player> r=resultmatch.get(i).getrightplayers();
+                			for(Player lp:l){
+                				if(lp.getPlayerName().equals(name)){
+                					now_total=now_total+lp.getaddate(type);
+                				    have=1;
+                				    break;
+                			}
+                			}
+                		    if(have==0){
+                		    	for(Player rp:r){
+                    				if(rp.getPlayerName().equals(name)){
+                    					now_total=now_total+rp.getaddate(type);
+                    				    break;
+                    			}
+                		    }
+                		}
+        			}
+        			now_aveg=now_total/5;
+        			for(int j=5;j<resultmatch.size();j++){   
+    				    have=0;
+            			ArrayList<Player> lplayer=resultmatch.get(j).getleftplayers();
+            			ArrayList<Player> rplayer=resultmatch.get(j).getrightplayers();
+            			for(Player lp:lplayer){
+            				if(lp.getPlayerName().equals(name)){
+            				    form_total=form_total+lp.getaddate(type);
+            				    have=1;
+            				    break;
+            			}
+            			}
+            		    if(have==0){
+            		    	for(Player rp:rplayer){
+                				if(rp.getPlayerName().equals(name)){
+                					form_total=form_total+rp.getaddate(type);
+                				    break;
+                			}
+            		    }
+            		}
+        		}
+        		
+        			form_aveg=form_total/(double)(resultmatch.size()-5);
+        			return (now_aveg-form_aveg)/(form_aveg);
+        		}
+        		
+        		
+        	
+        	
+        	
+        	
+        	}
+        	else{
+        		return 0;
+     	}
+		}
 		
 		
-}
+		
+		
+		}
+
+		
+

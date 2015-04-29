@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import logicservice.DataCollectorService;
 import vo.PlayerVO;
@@ -10,6 +11,12 @@ import vo.TeamVO;
  * 	这个数据用来保存各种初始化的内容
  * 	这些属性都是该类所持有的数据
  * 	这个类里面都是对已经处理过的VO进行筛;
+ * */
+
+/*
+ * 进度说明:
+ * 球员的赛季热点信息已经写完;
+ * 还缺 球队的赛季热点信息，还缺今日球队，今日球员;
  * */
 
 public class DataCollector implements DataCollectorService{
@@ -115,6 +122,7 @@ public class DataCollector implements DataCollectorService{
 
 	//获得今天参与比赛的所有球员
 	public ArrayList<PlayerVO> getTodayAllPlayers() {
+		
 		return todayAllPlayers;
 	}
 
@@ -129,14 +137,21 @@ public class DataCollector implements DataCollectorService{
 	//返回一个ArrayList;
 	//套路很一致;思路很清晰;
 	public ArrayList<PlayerVO> getSeasonHotPlayers_Score() {
+		PlayerController playerController = PlayerController.getInstance();
+		seasonHotPlayers_Score = playerController.getSeasonHotPlayers_Score();
 		return seasonHotPlayers_Score;
 	}
 
 	public void setSeasonHotPlayers_Score(ArrayList<PlayerVO> seasonHotPlayers_Score) {
+		PlayerController playerController = PlayerController.getInstance();
+//		ArrayList<PlayerVO> allPlayerVO = playerController.getAllPlayerVO();
+	
 		this.seasonHotPlayers_Score = seasonHotPlayers_Score;
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_Rebound() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_Rebound = playerController.getSeasonHotPlayers_Rebound();
 		return seasonHotPlayers_Rebound;
 	}
 
@@ -146,6 +161,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_Assist() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_Assist = playerController.getSeasonHotPlayers_Assist();
 		return seasonHotPlayers_Assist;
 	}
 
@@ -155,6 +172,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_Block() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_Block = playerController.getSeasonHotPlayers_Block();
 		return seasonHotPlayers_Block;
 	}
 
@@ -163,6 +182,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_Steal() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_Steal = playerController.getSeasonHotPlayers_Steal();
 		return seasonHotPlayers_Steal;
 	}
 
@@ -171,6 +192,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_3FGP() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_3FGP = playerController.getSeasonHotPlayers_3FGP();
 		return seasonHotPlayers_3FGP;
 	}
 
@@ -179,6 +202,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_FGP() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_FGP = playerController.getSeasonHotPlayers_FGP();
 		return seasonHotPlayers_FGP;
 	}
 
@@ -187,6 +212,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_FTGP() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_FTGP = playerController.getSeasonHotPlayers_FTGP();
 		return seasonHotPlayers_FTGP;
 	}
 
