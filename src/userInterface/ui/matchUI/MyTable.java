@@ -73,7 +73,7 @@ public class MyTable extends JScrollPane implements MouseListener{
 		String[] temp={"未命名1","未命名2","未命名3"};
 		Object[][] data =
 			{
-			{"Apples", new Integer(5),"5.00"},
+			{"Aaron Brooks", new Integer(5),"5.00"},
 	         {"Oranges", new Integer(3),"6.00"},
 	         {"Pears", new Integer(2),"4.00"},
 	         {"Grapes", new Integer(3),"2.00"},
