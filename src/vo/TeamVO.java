@@ -9,7 +9,7 @@ public class TeamVO implements Comparable<TeamVO> {
 		/*
 	 	* 球队基本信息
 	 	* */
-	    private String comparetype="";
+	    public static String comparetype="";
 		//球队名称： 
 		private String teamName;
 		//球队缩写：

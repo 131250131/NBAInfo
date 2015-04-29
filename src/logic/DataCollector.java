@@ -222,6 +222,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<TeamVO> getSeasonHotTeams_Score() {
+		TeamController teamController = TeamController.getInstance();
+		this.seasonHotTeams_Score = teamController.getSeasonHotTeams_Score();
 		return seasonHotTeams_Score;
 	}
 
@@ -230,6 +232,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<TeamVO> getSeasonHotTeams_Rebound() {
+		TeamController teamController = TeamController.getInstance();
+		this.seasonHotTeams_Rebound = teamController.getSeasonHotTeams_Rebound();
 		return seasonHotTeams_Rebound;
 	}
 
@@ -238,6 +242,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<TeamVO> getSeasonHotTeams_Assist() {
+		TeamController teamController = TeamController.getInstance();
+		this.seasonHotTeams_Assist = teamController.getSeasonHotTeams_Assist();
 		return seasonHotTeams_Assist;
 	}
 
@@ -246,6 +252,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<TeamVO> getSeasonHotTeams_Block() {
+		TeamController teamController = TeamController.getInstance();
+		this.seasonHotTeams_Block = teamController.getSeasonHotTeams_Block();
 		return seasonHotTeams_Block;
 	}
 
@@ -254,6 +262,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<TeamVO> getSeasonHotTeams_Steal() {
+		TeamController teamController = TeamController.getInstance();
+		this.seasonHotTeams_Steal = teamController.getSeasonHotTeams_Steal();
 		return seasonHotTeams_Steal;
 	}
 
@@ -262,6 +272,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<TeamVO> getSeasonHotTeams_3FGP() {
+		TeamController teamController = TeamController.getInstance();
+		this.seasonHotTeams_3FGP = teamController.getSeasonHotTeams_3FGP();
 		return seasonHotTeams_3FGP;
 	}
 
@@ -270,6 +282,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<TeamVO> getSeasonHotTeams_FGP() {
+		TeamController teamController = TeamController.getInstance();
+		this.seasonHotTeams_FGP = teamController.getSeasonHotTeams_FGP();
 		return seasonHotTeams_FGP;
 	}
 
@@ -278,6 +292,8 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public ArrayList<TeamVO> getSeasonHotTeams_FTGP() {
+		TeamController teamController = TeamController.getInstance();
+		this.seasonHotTeams_FTGP = teamController.getSeasonHotTeams_FTGP();
 		return seasonHotTeams_FTGP;
 	}
 

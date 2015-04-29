@@ -6,8 +6,12 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import logic.MatchController;
 import logic.PlayerController;
+import logic.TeamController;
+import logicservice.matchControllerService;
 import logicservice.playerControllerService;
+import logicservice.teamControllerService;
 import userInterface.myUI.ImageSaver;
 import vo.PlayerVO;
 
@@ -124,6 +128,9 @@ public class DataOfPlayerPanel extends JPanel {
 		weight.setText("体重："+"70");
 	}
 	public void update(String player){
+		playerControllerService playerController = PlayerController.getInstance();
+		teamControllerService teamController = TeamController.getInstance();
+		matchControllerService matchController = MatchController.getInstance();
 		System.out.println(player);
 		PlayerVO temp = pcs.findPlayerVO(player);
 		//头像

@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import po.TeamPO;
 import DataService.PlayerDataService;
@@ -63,5 +64,102 @@ public class TeamController implements teamControllerService{
 		return null;
 	}
 
+	//或缺热点球员的方法;
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_Score(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "得分";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<50;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_Rebound(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "篮板";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<50;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_Assist(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "助攻";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<50;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_Block(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "盖帽";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<50;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_Steal() {
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "抢断";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<50;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_3FGP() {
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "3FGP";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<50;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_FGP(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "FGP";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<50;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_FTGP() {
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "FTGP";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<50;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
 	
 }

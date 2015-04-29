@@ -160,7 +160,7 @@ public class PlayerController implements playerControllerService{
 	public ArrayList<PlayerVO> getSeasonHotPlayers_3FGP(){
 		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
 		for(Player tempPlayer : this.allPlayers){
-			tempPlayer.comparetype="三分命中率";
+			tempPlayer.comparetype="三分";
 		}
 		Collections.sort(this.allPlayers);
 		for(int i=0;i<50;i++){
@@ -174,7 +174,7 @@ public class PlayerController implements playerControllerService{
 	public ArrayList<PlayerVO> getSeasonHotPlayers_FGP(){
 		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
 		for(Player tempPlayer : this.allPlayers){
-			tempPlayer.comparetype="投篮命中率";
+			tempPlayer.comparetype="投篮";
 		}
 		Collections.sort(this.allPlayers);
 		for(int i=0;i<50;i++){
@@ -188,7 +188,7 @@ public class PlayerController implements playerControllerService{
 	public ArrayList<PlayerVO> getSeasonHotPlayers_FTGP() {
 		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
 		for(Player tempPlayer : this.allPlayers){
-			tempPlayer.comparetype="罚球命中率";
+			tempPlayer.comparetype="罚球";
 		}
 		Collections.sort(this.allPlayers);
 		for(int i=0;i<50;i++){
