@@ -182,6 +182,7 @@ public class Team {
 			
 			
 			private ArrayList<Integer> attendmatches =new ArrayList<Integer>();
+			
 		public Team(TeamPO teampo) {
 			//Basic info
 			teamName=teampo.getTeamName();
@@ -1347,6 +1348,14 @@ public class Team {
 
 		public boolean getisEast() {
 			return isEast;
+		}
+
+		public ArrayList<Integer> getAttendmatches() {
+			return attendmatches;
+		}
+
+		public void setAttendmatches(int matchnum) {
+			attendmatches.add(matchnum);
 		}
 
 			
