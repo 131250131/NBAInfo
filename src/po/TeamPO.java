@@ -83,7 +83,7 @@ public class TeamPO implements Serializable {
 		
 		private win_lose MoreFGP;//命中率领先
 		private win_lose MoreRebounds;//篮板领先
-		private win_lose MoreTurnovers;//更少失误时的胜负关系
+		private win_lose LessTurnovers;//更少失误时的胜负关系
 		
 		private win_lose banchanglingxian;//半场领先
 		private win_lose banchangluohou;//半场落后
@@ -369,20 +369,29 @@ public class TeamPO implements Serializable {
 		public win_lose getMoreFGP() {
 			return MoreFGP;
 		}
-		public void setMoreFGP(win_lose moreFGP) {
-			MoreFGP = moreFGP;
+		public void addwinMoreFGP() {
+			MoreFGP.addWin();
+		}
+		public void addloseMoreFGP() {
+			MoreFGP.addLose();
 		}
 		public win_lose getMoreRebounds() {
 			return MoreRebounds;
 		}
-		public void setMoreRebounds(win_lose moreRebounds) {
-			MoreRebounds = moreRebounds;
+		public void addwinMoreRebounds() {
+			MoreRebounds.addWin();;
 		}
-		public win_lose getMoreTurnovers() {
-			return MoreTurnovers;
+		public void addloseMoreRebounds() {
+			MoreRebounds.addLose();;
 		}
-		public void setMoreTurnovers(win_lose moreTurnovers) {
-			MoreTurnovers = moreTurnovers;
+		public win_lose getLessTurnovers() {
+			return LessTurnovers;
+		}
+		public void addwinLessTurnovers() {
+			LessTurnovers.addWin();;
+		}
+		public void addloseLessTurnovers() {
+			LessTurnovers.addLose();;
 		}
 		public win_lose getSanjielinxian() {
 			return sanjielinxian;

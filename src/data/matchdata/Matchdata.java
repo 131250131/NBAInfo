@@ -180,6 +180,46 @@ public class Matchdata implements MatchDataService{
 			 */
 			TeamPO leftteam =teamdataoperator("left");
 			TeamPO rightteam =teamdataoperator("right");
+		    if(leftteam.getTeamFG()/leftteam.getTeamFGTry()>rightteam.getTeamFG()/rightteam.getTeamFGTry()  
+		    	&& lscore>rscore	){
+		    	leftteam.addwinMoreFGP();
+		    }
+		    if(leftteam.getTeamFG()/leftteam.getTeamFGTry()>rightteam.getTeamFG()/rightteam.getTeamFGTry()  
+			    	&& lscore<rscore	){
+			    	leftteam.addloseMoreFGP();
+			    }
+		    if(leftteam.getTeamFG()/leftteam.getTeamFGTry()<rightteam.getTeamFG()/rightteam.getTeamFGTry()  
+			    	&& lscore>rscore	){
+			    	rightteam.addloseMoreFGP();
+			    }
+		    if(leftteam.getTeamFG()/leftteam.getTeamFGTry()<rightteam.getTeamFG()/rightteam.getTeamFGTry()  
+			    	&& lscore<rscore	){
+			    	rightteam.addwinMoreFGP();
+			    }
+		    if(leftteam.getTeamTotalRebounds()>rightteam.getTeamTotalRebounds() && lscore>rscore){
+		    	  leftteam.addwinMoreRebounds();
+		    }
+		    if(leftteam.getTeamTotalRebounds()>rightteam.getTeamTotalRebounds() && lscore<rscore){
+		    	  leftteam.addloseMoreRebounds();
+		    }
+		    if(leftteam.getTeamTotalRebounds()>rightteam.getTeamTotalRebounds() && lscore>rscore){
+		    	  rightteam.addloseMoreRebounds();
+		    }
+		    if(leftteam.getTeamTotalRebounds()>rightteam.getTeamTotalRebounds() && lscore<rscore){
+		    	  rightteam.addwinMoreRebounds();
+		    }
+		    if(leftteam.getTeamTurnovers()<rightteam.getTeamTurnovers() && lscore>rscore){
+		    	  leftteam.addwinLessTurnovers();
+		    }
+		    if(leftteam.getTeamTurnovers()<rightteam.getTeamTurnovers() && lscore<rscore){
+		    	  leftteam.addloseLessTurnovers();
+		    }
+		    if(leftteam.getTeamTurnovers()<rightteam.getTeamTurnovers() && lscore>rscore){
+		    	  rightteam.addloseLessTurnovers();
+		    }
+		    if(leftteam.getTeamTurnovers()<rightteam.getTeamTurnovers() && lscore<rscore){
+		    	  rightteam.addwinLessTurnovers();
+		    }
 			match.setLeftTeam(leftteam);
 			match.setRightTeam(rightteam);
 			matches.add(match);
@@ -254,6 +294,7 @@ public class Matchdata implements MatchDataService{
 		int teamFouls = 0;
 		int teamScores = 0;
 		if(type.equals("left")){
+			team.addAttendmatches(matchnum);
 			if(lscore>rscore&&lscore>100){
 				team.addwinMyTeamMoreThan100();
 			}
@@ -297,6 +338,7 @@ public class Matchdata implements MatchDataService{
 			}
 		}
 		else if(type.equals("right")){
+			team.addAttendmatches(matchnum);
 			if(rscore>lscore&&rscore>100){
 				team.addwinMyTeamMoreThan100();
 			}
@@ -374,6 +416,8 @@ public class Matchdata implements MatchDataService{
 		}
 		
 	}
+	
+	
 	
 	
 

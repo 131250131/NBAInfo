@@ -17,4 +17,5 @@ public interface MatchDataService {
 			int assists, int steals, int blocks, int turnovers, int fouls, int scores);
 	public TeamPO teamdataoperator(String type);
 	public MatchPO getMatchbynum(int number);
+	
 }
