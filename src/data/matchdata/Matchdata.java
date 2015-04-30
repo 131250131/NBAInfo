@@ -31,6 +31,8 @@ public class Matchdata implements MatchDataService{
 	private String filePath = pathSaver.getMatchFilePath();
 	private int lscore=0;
 	private int rscore=0;
+	private int lhalfscore=0;
+	private int rhalfscore=0;
 	@Override
 	public void readMatch() {
 		// TODO Auto-generated method stub
@@ -77,6 +79,14 @@ public class Matchdata implements MatchDataService{
 	        		String scores2=context[1];
 	        		String scores3=context[2];
 	        		String scores4=context[3];
+	        		String[] s1=scores1.split("/-");
+	        		String[] s2=scores2.split("/-");
+	        		int lsc1=Integer.parseInt(s1[0]);
+	        		int lsc2=Integer.parseInt(s2[0]);
+	        		int rsc1=Integer.parseInt(s1[1]);
+	        		int rsc2=Integer.parseInt(s2[1]);
+	        		lhalfscore=lsc1+lsc2;
+	        		rhalfscore=rsc1+rsc2;
 	        		match.setScores1(scores1);
 	        		match.setScores2(scores2);
 	        		match.setScores3(scores3);
@@ -219,6 +229,38 @@ public class Matchdata implements MatchDataService{
 		    }
 		    if(leftteam.getTeamTurnovers()<rightteam.getTeamTurnovers() && lscore<rscore){
 		    	  rightteam.addwinLessTurnovers();
+		    }
+		    if(lscore>rscore){
+		    	leftteam.addwinGuest();
+		    	rightteam.addloseHome();
+		    }
+		    if(lscore<rscore){
+		    	leftteam.addloseGuest();
+		    	rightteam.addwinHome();
+		    }
+		    if(lhalfscore>rhalfscore && lscore<rscore){
+		    	leftteam.addloseBanchanglingxian();
+		    }
+		    if(lhalfscore>rhalfscore && lscore>rscore){
+		    	leftteam.addwinBanchanglingxian();
+		    }
+		    if(lhalfscore<rhalfscore && lscore<rscore){
+		    	rightteam.addwinBanchanglingxian();
+		    }
+		    if(lhalfscore<rhalfscore && lscore>rscore){
+		    	rightteam.addloseBanchanglingxian();
+		    }
+		    if(lhalfscore<rhalfscore && lscore<rscore){
+		    	leftteam.addloseBanchangluohou();
+		    }
+		    if(lhalfscore<rhalfscore && lscore>rscore){
+		    	leftteam.addwinBanchangluohou();
+		    }
+		    if(lhalfscore>rhalfscore && lscore<rscore){
+		    	rightteam.addwinBanchangluohou();
+		    }
+		    if(lhalfscore>rhalfscore && lscore>rscore){
+		    	rightteam.addloseBanchangluohou();
 		    }
 			match.setLeftTeam(leftteam);
 			match.setRightTeam(rightteam);

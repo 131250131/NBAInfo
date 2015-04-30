@@ -417,26 +417,38 @@ public class TeamPO implements Serializable {
 		public win_lose getBanchanglingxian() {
 			return banchanglingxian;
 		}
-		public void setBanchanglingxian(win_lose banchanglingxian) {
-			this.banchanglingxian = banchanglingxian;
+		public void addwinBanchanglingxian() {
+			this.banchanglingxian.addWin();
+		}
+		public void addloseBanchanglingxian() {
+			this.banchanglingxian.addLose();
 		}
 		public win_lose getBanchangluohou() {
 			return banchangluohou;
 		}
-		public void setBanchangluohou(win_lose banchangluohou) {
-			this.banchangluohou = banchangluohou;
+		public void addwinBanchangluohou() {
+			this.banchangluohou.addWin();
+		}
+		public void addloseBanchangluohou() {
+			this.banchangluohou.addLose();
 		}
 		public win_lose getHome() {
 			return home;
 		}
-		public void setHome(win_lose home) {
-			this.home = home;
+		public void addwinHome() {
+			this.home.addWin();
+		}
+		public void addloseHome() {
+			this.home.addLose();
 		}
 		public win_lose getGuest() {
 			return guest;
 		}
-		public void setGuest(win_lose guest) {
-			this.guest = guest;
+		public void addwinGuest() {
+			this.guest.addWin();
+		}
+		public void addloseGuest() {
+			this.guest.addLose();
 		}
 		public void addwinOppoTeamMoreThan100() {
 			this.oppoTeamMoreThan100.addWin();
