@@ -54,7 +54,7 @@ public class TeamPO implements Serializable {
 		private int teamScores;
 	//这场比赛，球队里的所有球员
 		private ArrayList<PlayerPO> players = new ArrayList<PlayerPO>();
-		
+		private ArrayList<Integer> attendmatches =new ArrayList<Integer>();
 		public String getTeamName() {
 			return teamName;
 		}
@@ -217,6 +217,12 @@ public class TeamPO implements Serializable {
 		public boolean getisEast() {
 			// TODO Auto-generated method stub
 			return isEast;
+		}
+		public ArrayList<Integer> getAttendmatches() {
+			return attendmatches;
+		}
+		public void addAttendmatches(int matchnum) {
+			attendmatches.add(matchnum);
 		}
 		
 /*
