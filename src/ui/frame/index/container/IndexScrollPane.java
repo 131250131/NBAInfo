@@ -20,7 +20,7 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 	
 	IndexPanel indexPanel;
 	Timer timer = new Timer(1, this);
-	public static JButton turnto0, turnto1, turnto2, turnto3;
+	public static JButton turnto0, turnto1, turnto2, turnto3 ,turnto4;
 	
 	public IndexScrollPane(){	
 		this.setBounds(x, y, width, height);
@@ -50,6 +50,10 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 		turnto3 = new JButton();
 		turnto3.addActionListener(this);
 		this.add(turnto3);
+		
+		turnto4 = new JButton();
+		turnto4.addActionListener(this);
+		this.add(turnto4);
 	}
 	
 	int currentLoction;
@@ -96,7 +100,11 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 		}
 		
 		if(events.getSource() == turnto3){
-			setScrollLoction((int) (UIData.rankingBoundsY + (100 * UIData.changeY)));
+			setScrollLoction((int) (UIData.rankingBoundsY + (80 * UIData.changeY)));
+		}
+		
+		if(events.getSource() == turnto4){
+			setScrollLoction((int) (UIData.teamBoundsY + (80 * UIData.changeY)));
 		}
 		
 	}
