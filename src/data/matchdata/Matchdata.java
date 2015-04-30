@@ -46,7 +46,7 @@ public class Matchdata implements MatchDataService{
 			match.setSeason(season);
 			//得到赛季
 			try{
-			InputStreamReader read = new InputStreamReader(new FileInputStream(file),"UTF-8");
+			InputStreamReader read = new InputStreamReader(new FileInputStream(matchFile[i]),"UTF-8");
 	        BufferedReader bufferedReader = new BufferedReader(read);
 	        String lineTxt = null;
 	        while((lineTxt = bufferedReader.readLine()) != null){

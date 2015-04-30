@@ -20,6 +20,7 @@ public class PlayerController implements playerControllerService{
 	
 	//构造函数，完成对球员数据的更新
 	private PlayerController(){
+		
 		this.updatePlayersInfo_Basic();
 	}
 	
@@ -60,6 +61,7 @@ public class PlayerController implements playerControllerService{
 	}
 	
 	public Player findPlayer(String playerName){
+		createAllPlayerVO();
 		Player player = null;
 		for(Player temp : this.allPlayers){
 			if(temp.getPlayerName().equals(playerName)){
@@ -71,6 +73,7 @@ public class PlayerController implements playerControllerService{
 	
 	/*调用playerreader，转换成vo返回给我*/
 	public PlayerVO findPlayerVO(String name) {
+		createAllPlayerVO();
 		PlayerVO vo = null;
 		for(PlayerVO tempvo : this.allPlayerVO){
 			if(tempvo.getPlayerName().equals(name)){

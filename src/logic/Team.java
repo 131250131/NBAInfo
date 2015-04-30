@@ -2,6 +2,7 @@ package logic;
 
 import po.TeamPO;
 import vo.TeamVO;
+import vo.win_lose;
 
 public class Team {
 	//球队名称： 
@@ -178,6 +179,42 @@ public class Team {
 		//球队助攻效率
 			private double teamAssE;
 			
+			
+		//Bonus功能;
+			private double winLose;//胜负场;
+			
+			private win_lose home;//主场输赢的次数;
+			private win_lose guest;//客场输赢的次数;
+			
+			private win_lose recent10;
+			private win_lose recent10_Home;
+			private win_lose recent10_Guest;
+			
+			private boolean lianxu_win;
+			private boolean lianxu_win_Home;
+			private boolean lianxu_win_Guest;
+			private int lianxu;
+			private int lianxu_Home;
+			private int lianxu_Guest;
+			private int longestWin;
+			private int longestLose;
+			
+			private win_lose lessThan3Points;//3分之内胜负场
+			private win_lose moreThan10Points;//10分以上胜负关系
+			
+			private win_lose myTeamMoreThan100;//本队得分上100时的胜负关系
+			private win_lose oppoTeamMoreThan100;//对手得分上100时的胜负关系
+			
+			private win_lose oppoIsStrong;//对手胜率50%时的胜负关系
+			
+			private win_lose MoreFGP;//命中率领先
+			private win_lose MoreRebounds;//篮板领先
+			private win_lose MoreTurnovers;//更少失误时的胜负关系
+			
+			private win_lose banchanglingxian;//半场领先
+			private win_lose banchangluohou;//半场落后
+			private win_lose sanjielinxian;//第三节领先
+			private win_lose sanjieluohou;//第三节落后
 			
 			
 		public Team(TeamPO teampo) {
@@ -1226,7 +1263,11 @@ public class Team {
 
 
 		public double getTeamDefERebE() {
+			try{
 			return teamDeffenceRebounds/(teamDeffenceRebounds+oppoOffenceRebounds);
+			}catch(Exception e){
+				return 0;
+			}
 
 		}
 

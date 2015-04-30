@@ -29,6 +29,7 @@ public class MatchController implements matchControllerService{
 		private static MatchController instance =null;
 		
 		private MatchController(){
+			matchdata.readMatch();
 			allMatchPO = this.matchdata.getAllMatch();
 			this.processAllMatches();//处理完毕当前的数据;
 			this.createAllMatchVO();//获得所有比赛的vo;
@@ -117,6 +118,7 @@ public class MatchController implements matchControllerService{
 
 		/*通过场次num找到match返回vo*/
 		public MatchVO getMatch(int num) {
+			createAllMatchVO();
 			for(MatchVO vo : this.allMatchVO){
 				if(vo.getNum()==num){
 					return vo;
