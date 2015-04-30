@@ -1395,10 +1395,168 @@ public class Team {
 		public ArrayList<Integer> getAttendmatches() {
 			return attendmatches;
 		}
-
-		public void setAttendmatches(int matchnum) {
-			attendmatches.add(matchnum);
+        public void addAttendmatches(int matchnum){
+        	attendmatches.add(matchnum);
+        }
+		
+		public double getWinLose() {
+			return winLose;
 		}
-
+		public void setWinLose(double winLose) {
+			this.winLose = winLose;
+		}
+		public win_lose getRecent10() {
+			return recent10;
+		}
+		public void setRecent10(win_lose recent10) {
+			this.recent10 = recent10;
+		}
+		public win_lose getRecent10_Home() {
+			return recent10_Home;
+		}
+		public void setRecent10_Home(win_lose recent10_Home) {
+			this.recent10_Home = recent10_Home;
+		}
+		public win_lose getRecent10_Guest() {
+			return recent10_Guest;
+		}
+		public void setRecent10_Guest(win_lose recent10_Guest) {
+			this.recent10_Guest = recent10_Guest;
+		}
+		public boolean isLianxu_win() {
+			return lianxu_win;
+		}
+		public void setLianxu_win(boolean lianxu_win) {
+			this.lianxu_win = lianxu_win;
+		}
+		public boolean isLianxu_win_Home() {
+			return lianxu_win_Home;
+		}
+		public void setLianxu_win_Home(boolean lianxu_win_Home) {
+			this.lianxu_win_Home = lianxu_win_Home;
+		}
+		public boolean isLianxu_win_Guest() {
+			return lianxu_win_Guest;
+		}
+		public void setLianxu_win_Guest(boolean lianxu_win_Guest) {
+			this.lianxu_win_Guest = lianxu_win_Guest;
+		}
+		public int getLianxu() {
+			return lianxu;
+		}
+		public void setLianxu(int lianxu) {
+			this.lianxu = lianxu;
+		}
+		public int getLianxu_Home() {
+			return lianxu_Home;
+		}
+		public void setLianxu_Home(int lianxu_Home) {
+			this.lianxu_Home = lianxu_Home;
+		}
+		public int getLianxu_Guest() {
+			return lianxu_Guest;
+		}
+		public void setLianxu_Guest(int lianxu_Guest) {
+			this.lianxu_Guest = lianxu_Guest;
+		}
+		public int getLongestWin() {
+			return longestWin;
+		}
+		public void setLongestWin(int longestWin) {
+			this.longestWin = longestWin;
+		}
+		public int getLongestLose() {
+			return longestLose;
+		}
+		public void setLongestLose(int longestLose) {
+			this.longestLose = longestLose;
+		}
+		public win_lose getMoreThan10Points() {
+			return moreThan10Points;
+		}
+		public void setMoreThan10Points(win_lose moreThan10Points) {
+			this.moreThan10Points = moreThan10Points;
+		}
+		public win_lose getMyTeamMoreThan100() {
+			return myTeamMoreThan100;
+		}
+		public void setMyTeamMoreThan100(win_lose myTeamMoreThan100) {
+			this.myTeamMoreThan100 = myTeamMoreThan100;
+		}
+		public win_lose getOppoTeamMoreThan100() {
+			return oppoTeamMoreThan100;
+		}
+		public void addwinOppoTeamMoreThan100() {
+			this.oppoTeamMoreThan100.addWin();
+		}
+		public void addloseOppoTeamMoreThan100() {
+			this.oppoTeamMoreThan100.addLose();
+		}
+		public win_lose getOppoIsStrong() {
+			return oppoIsStrong;
+		}
+		public void setOppoIsStrong(win_lose oppoIsStrong) {
+			this.oppoIsStrong = oppoIsStrong;
+		}
+		public win_lose getMoreFGP() {
+			return MoreFGP;
+		}
+		public void setMoreFGP(win_lose moreFGP) {
+			MoreFGP = moreFGP;
+		}
+		public win_lose getMoreRebounds() {
+			return MoreRebounds;
+		}
+		public void setMoreRebounds(win_lose moreRebounds) {
+			MoreRebounds = moreRebounds;
+		}
+		public win_lose getMoreTurnovers() {
+			return MoreTurnovers;
+		}
+		public void setMoreTurnovers(win_lose moreTurnovers) {
+			MoreTurnovers = moreTurnovers;
+		}
+		public win_lose getSanjielinxian() {
+			return sanjielinxian;
+		}
+		public void setSanjielinxian(win_lose sanjielinxian) {
+			this.sanjielinxian = sanjielinxian;
+		}
+		public win_lose getSanjieluohou() {
+			return sanjieluohou;
+		}
+		public void setSanjieluohou(win_lose sanjieluohou) {
+			this.sanjieluohou = sanjieluohou;
+		}
+		public win_lose getLessThan3Points() {
+			return lessThan3Points;
+		}
+		public void setLessThan3Points(win_lose lessThan3Points) {
+			this.lessThan3Points = lessThan3Points;
+		}
+		public win_lose getBanchanglingxian() {
+			return banchanglingxian;
+		}
+		public void setBanchanglingxian(win_lose banchanglingxian) {
+			this.banchanglingxian = banchanglingxian;
+		}
+		public win_lose getBanchangluohou() {
+			return banchangluohou;
+		}
+		public void setBanchangluohou(win_lose banchangluohou) {
+			this.banchangluohou = banchangluohou;
+		}
+		public win_lose getHome() {
+			return home;
+		}
+		public void setHome(win_lose home) {
+			this.home = home;
+		}
+		public win_lose getGuest() {
+			return guest;
+		}
+		public void setGuest(win_lose guest) {
+			this.guest = guest;
+		}
 			
 }

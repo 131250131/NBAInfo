@@ -29,7 +29,8 @@ public class Matchdata implements MatchDataService{
     int matchnum=0;
 	FilePathSaver pathSaver = new FilePathSaver();
 	private String filePath = pathSaver.getMatchFilePath();
-	
+	private int lscore=0;
+	private int rscore=0;
 	@Override
 	public void readMatch() {
 		// TODO Auto-generated method stub
@@ -61,6 +62,11 @@ public class Matchdata implements MatchDataService{
 	        		match.setDate(date);
 	        		String score=context[2];
 	        		match.setScore(score);
+	        		String[] s=score.split("/-");
+	        		String ls=s[0];
+	        		String rs=s[1];
+	        		lscore =Integer.parseInt(ls);
+	        		rscore =Integer.parseInt(rs);
 	        		String[] teamname=context[1].split("/-");
 	        		leftTeamShortName=teamname[0];
 	        		rightTeamShortName=teamname[1];
@@ -248,6 +254,30 @@ public class Matchdata implements MatchDataService{
 		int teamFouls = 0;
 		int teamScores = 0;
 		if(type.equals("left")){
+			if(lscore>rscore&&lscore>100){
+				team.addwinMyTeamMoreThan100();
+			}
+			if(lscore<rscore&&lscore>100){
+				team.addloseMyTeamMoreThan100();
+			}
+			if(lscore>rscore&&rscore>100){
+				team.addwinOppoTeamMoreThan100();
+			}
+			if(lscore<rscore&&rscore>100){
+				team.addloseOppoTeamMoreThan100();
+			}
+			if(Math.abs(lscore-rscore)<3&&lscore>rscore){
+				team.addwintLessThan3Points();
+			}
+			if(Math.abs(lscore-rscore)<3&&lscore<rscore){
+				team.addlosetLessThan3Points();
+			}
+			if(Math.abs(lscore-rscore)>10&&lscore<rscore){
+				team.addloseMoreThan10Points();
+			}
+			if(Math.abs(lscore-rscore)>10&&lscore>rscore){
+				team.addwinMoreThan10Points();
+			}
 			for(PlayerPO p:leftplayerlist){
 				 teamFG = teamFG+p.getPlayerFG();
 				 teamFGTry = teamFGTry+p.getPlayer3FG();
@@ -267,6 +297,30 @@ public class Matchdata implements MatchDataService{
 			}
 		}
 		else if(type.equals("right")){
+			if(rscore>lscore&&rscore>100){
+				team.addwinMyTeamMoreThan100();
+			}
+			if(rscore<lscore&&rscore>100){
+				team.addloseMyTeamMoreThan100();
+			}
+			if(lscore>rscore&&lscore>100){
+				team.addloseOppoTeamMoreThan100();
+			}
+			if(lscore<rscore&&lscore>100){
+				team.addwinOppoTeamMoreThan100();
+			}
+			if(Math.abs(lscore-rscore)<3&&lscore>rscore){
+				team.addlosetLessThan3Points();
+			}
+			if(Math.abs(lscore-rscore)<3&&lscore<rscore){
+				team.addwintLessThan3Points();
+			}
+			if(Math.abs(lscore-rscore)>10&&lscore>rscore){
+				team.addloseMoreThan10Points();
+			}
+			if(Math.abs(lscore-rscore)>10&&lscore<rscore){
+				team.addwinMoreThan10Points();
+			}
 			for(PlayerPO p:rightplayerlist){
 				 teamFG = teamFG+p.getPlayerFG();
 				 teamFGTry = teamFGTry+p.getPlayer3FG();
