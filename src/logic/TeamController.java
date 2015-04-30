@@ -8,6 +8,7 @@ import DataService.PlayerDataService;
 import DataService.TeamDataService;
 import data.playerdata.PlayerReader;
 import data.teamdata.TeamReader;
+import vo.MatchVO;
 import vo.TeamVO;
 import logicservice.teamControllerService;
 
@@ -160,6 +161,10 @@ public class TeamController implements teamControllerService{
 			result.add(this.allTeamVO.get(i));
 		}
 		return result;
-	}
+	} 
 	
+	
+	public ArrayList<MatchVO> getrecenttengames(String name){
+		return null;
+	}
 }

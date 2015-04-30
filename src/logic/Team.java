@@ -211,7 +211,7 @@ public class Team {
 			
 			private win_lose MoreFGP;//命中率领先
 			private win_lose MoreRebounds;//篮板领先
-			private win_lose MoreTurnovers;//更少失误时的胜负关系
+			private win_lose LessTurnovers;//更少失误时的胜负关系
 			
 			private win_lose banchanglingxian;//半场领先
 			private win_lose banchangluohou;//半场落后
@@ -1379,6 +1379,35 @@ public class Team {
 			teamFouls=teampo.getTeamFouls();
 			teamScores=teampo.getTeamScores();
 			attendmatches=teampo.getAttendmatches();
+			
+			//bonus项值得传递
+			winLose=teampo.getWinLose();
+			win_lose=teampo.getWin_lose();
+			home=teampo.getHome();
+			guest=teampo.getGuest();
+			recent10=teampo.getRecent10();
+			recent10_Home=teampo.getRecent10_Home();
+			recent10_Guest=teampo.getRecent10_Guest();
+			//lianxu_win=teampo.getl();
+		    //lianxu_win_Home;
+			//lianxu_win_Guest;
+			lianxu=teampo.getLianxu();
+		    lianxu_Home=teampo.getLianxu_Home();
+			lianxu_Guest=teampo.getLianxu_Guest();
+			longestWin=teampo.getLongestWin();
+		    longestLose=teampo.getLongestLose();
+			lessThan3Points=teampo.getLessThan3Points();//3分之内胜负场
+		    moreThan10Points=teampo.getMoreThan10Points();//10分以上胜负关系
+			
+            myTeamMoreThan100=teampo.getMyTeamMoreThan100();//本队得分上100时的胜负关系
+		    oppoTeamMoreThan100=teampo.getOppoTeamMoreThan100();//对手得分上100时的胜负关系
+			oppoIsStrong=teampo.getOppoIsStrong();//对手胜率50%时的胜负关系
+			MoreFGP=teampo.getMoreFGP();//命中率领先
+			MoreRebounds=teampo.getMoreRebounds();//篮板领先
+			LessTurnovers=teampo.getLessTurnovers();//更少失误时的胜负关系
+		    banchanglingxian=teampo.getBanchanglingxian();//半场领先
+			banchangluohou=teampo.getBanchangluohou();//半场落后
+		
 		}
 		
 		public TeamVO createTeamVO(){
@@ -1510,11 +1539,11 @@ public class Team {
 		public void setMoreRebounds(win_lose moreRebounds) {
 			MoreRebounds = moreRebounds;
 		}
-		public win_lose getMoreTurnovers() {
-			return MoreTurnovers;
+		public win_lose getLessTurnovers() {
+			return LessTurnovers;
 		}
-		public void setMoreTurnovers(win_lose moreTurnovers) {
-			MoreTurnovers = moreTurnovers;
+		public void setLessTurnovers(win_lose moreTurnovers) {
+			LessTurnovers = moreTurnovers;
 		}
 		public win_lose getSanjielinxian() {
 			return sanjielinxian;
@@ -1565,6 +1594,14 @@ public class Team {
 
 		public void setWin_lose(win_lose win_lose) {
 			this.win_lose = win_lose;
+		}
+
+		public void setOppoTeamMoreThan100(win_lose oppoTeamMoreThan100) {
+			this.oppoTeamMoreThan100 = oppoTeamMoreThan100;
+		}
+
+		public void setAttendmatches(ArrayList<Integer> attendmatches) {
+			this.attendmatches = attendmatches;
 		}
 			
 }

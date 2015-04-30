@@ -470,4 +470,43 @@ public class TeamPO implements Serializable {
 		public void addloseWin_lose() {
 			this.win_lose.addLose();
 		}
+		public void setWinLose(double winLose) {
+			this.winLose = winLose;
+		}
+		public void setWin_lose(win_lose win_lose) {
+			this.win_lose = win_lose;
+		}
+		public void setHome(win_lose home) {
+			this.home = home;
+		}
+		public void setGuest(win_lose guest) {
+			this.guest = guest;
+		}
+		public void setLessThan3Points(win_lose lessThan3Points) {
+			this.lessThan3Points = lessThan3Points;
+		}
+		public void setMoreThan10Points(win_lose moreThan10Points) {
+			this.moreThan10Points = moreThan10Points;
+		}
+		public void setMyTeamMoreThan100(win_lose myTeamMoreThan100) {
+			this.myTeamMoreThan100 = myTeamMoreThan100;
+		}
+		public void setMoreFGP(win_lose moreFGP) {
+			MoreFGP = moreFGP;
+		}
+		public void setMoreRebounds(win_lose moreRebounds) {
+			MoreRebounds = moreRebounds;
+		}
+		public void setLessTurnovers(win_lose lessTurnovers) {
+			LessTurnovers = lessTurnovers;
+		}
+		public void setBanchanglingxian(win_lose banchanglingxian) {
+			this.banchanglingxian = banchanglingxian;
+		}
+		public void setBanchangluohou(win_lose banchangluohou) {
+			this.banchangluohou = banchangluohou;
+		}
+		public void setAttendmatches(ArrayList<Integer> attendmatches) {
+			this.attendmatches = attendmatches;
+		}
 }

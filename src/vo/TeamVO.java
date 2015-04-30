@@ -35,7 +35,7 @@ public class TeamVO implements Comparable<TeamVO> {
 		private int losGames;//败场
 		private double winRate;//胜率
 		private double winLose;//胜负场;
-		private win_lose winlose;
+		private win_lose win_lose;
 		private win_lose home;//主场输赢的次数;
 		private win_lose guest;//客场输赢的次数;
 		
@@ -62,7 +62,7 @@ public class TeamVO implements Comparable<TeamVO> {
 		
 		private win_lose MoreFGP;//命中率领先
 		private win_lose MoreRebounds;//篮板领先
-		private win_lose MoreTurnovers;//更少失误时的胜负关系
+		private win_lose LessTurnovers;//更少失误时的胜负关系
 		
 		private win_lose banchanglingxian;//半场领先
 		private win_lose banchangluohou;//半场落后
@@ -861,6 +861,33 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.aver_oppoScores=team.getAver_oppoScores();
 			this.attendmatches=team.getAttendmatches();
 			
+			
+			winLose=team.getWinLose();
+			win_lose=team.getWin_lose();
+			home=team.getHome();
+			guest=team.getGuest();
+			recent10=team.getRecent10();
+			recent10_Home=team.getRecent10_Home();
+			recent10_Guest=team.getRecent10_Guest();
+			//lianxu_win=team.getl();
+		    //lianxu_win_Home;
+			//lianxu_win_Guest;
+			lianxu=team.getLianxu();
+		    lianxu_Home=team.getLianxu_Home();
+			lianxu_Guest=team.getLianxu_Guest();
+			longestWin=team.getLongestWin();
+		    longestLose=team.getLongestLose();
+			lessThan3Points=team.getLessThan3Points();//3分之内胜负场
+		    moreThan10Points=team.getMoreThan10Points();//10分以上胜负关系
+			
+            myTeamMoreThan100=team.getMyTeamMoreThan100();//本队得分上100时的胜负关系
+		    oppoTeamMoreThan100=team.getOppoTeamMoreThan100();//对手得分上100时的胜负关系
+			oppoIsStrong=team.getOppoIsStrong();//对手胜率50%时的胜负关系
+			MoreFGP=team.getMoreFGP();//命中率领先
+			MoreRebounds=team.getMoreRebounds();//篮板领先
+			LessTurnovers=team.getLessTurnovers();//更少失误时的胜负关系
+		    banchanglingxian=team.getBanchanglingxian();//半场领先
+			banchangluohou=team.getBanchangluohou();//半场落后
 		}
 		@Override
 		public int compareTo(TeamVO o) {
@@ -913,7 +940,12 @@ public class TeamVO implements Comparable<TeamVO> {
 				}
 				    return -1;
 			}
-           
+            if(comparetype.equals("胜场差")){
+            	if(this.getWinLose()-o.getWinRate()>0){
+            		return 1;
+            	}
+            	return -1;
+            }
 			return 0;
 		}
 		public String getComparetype() {
@@ -1038,10 +1070,10 @@ public class TeamVO implements Comparable<TeamVO> {
 			MoreRebounds = moreRebounds;
 		}
 		public win_lose getMoreTurnovers() {
-			return MoreTurnovers;
+			return LessTurnovers;
 		}
 		public void setMoreTurnovers(win_lose moreTurnovers) {
-			MoreTurnovers = moreTurnovers;
+			LessTurnovers = moreTurnovers;
 		}
 		public win_lose getSanjielinxian() {
 			return sanjielinxian;
@@ -1086,10 +1118,13 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.guest = guest;
 		}
 		public win_lose getWinlose() {
-			return winlose;
+			return win_lose;
 		}
 		public void setWinlose(win_lose winlose) {
-			this.winlose = winlose;
+			this.win_lose = winlose;
+		}
+		public void setAttendmatches(ArrayList<Integer> attendmatches) {
+			this.attendmatches = attendmatches;
 		}
 
 }
