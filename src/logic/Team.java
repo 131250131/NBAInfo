@@ -184,7 +184,7 @@ public class Team {
 			
 		//Bonus功能;
 			private double winLose;//胜负场;
-			
+			private win_lose win_lose;
 			private win_lose home;//主场输赢的次数;
 			private win_lose guest;//客场输赢的次数;
 			
@@ -1557,6 +1557,14 @@ public class Team {
 		}
 		public void setGuest(win_lose guest) {
 			this.guest = guest;
+		}
+
+		public win_lose getWin_lose() {
+			return win_lose;
+		}
+
+		public void setWin_lose(win_lose win_lose) {
+			this.win_lose = win_lose;
 		}
 			
 }

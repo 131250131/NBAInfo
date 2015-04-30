@@ -35,7 +35,7 @@ public class TeamVO implements Comparable<TeamVO> {
 		private int losGames;//败场
 		private double winRate;//胜率
 		private double winLose;//胜负场;
-		
+		private win_lose winlose;
 		private win_lose home;//主场输赢的次数;
 		private win_lose guest;//客场输赢的次数;
 		
@@ -1084,6 +1084,12 @@ public class TeamVO implements Comparable<TeamVO> {
 		}
 		public void setGuest(win_lose guest) {
 			this.guest = guest;
+		}
+		public win_lose getWinlose() {
+			return winlose;
+		}
+		public void setWinlose(win_lose winlose) {
+			this.winlose = winlose;
 		}
 
 }

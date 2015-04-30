@@ -14,6 +14,7 @@ public class MatchVO {
 	String date;
 	TeamVO leftTeam;
 	TeamVO rightTeam;
+	String winteamname="";
 	String score;
 	ArrayList<PlayerVO> leftplayerlist=new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> rightplayerlist=new ArrayList<PlayerVO>();
@@ -115,6 +116,7 @@ public class MatchVO {
  	   scores3=match.getScores3();
  	   scores4=match.getScores4();
  	   extrascores=match.getExtrascores();
+ 	   winteamname=match.getWinteamname();
  	   ArrayList<Player> lpl=match.getleftplayers();
  	   for(Player p:lpl){
  		   PlayerVO player=new PlayerVO();
@@ -131,5 +133,11 @@ public class MatchVO {
 	public String getScore() {
 		// TODO Auto-generated method stub
 		return this.score;
+	}
+	public String getWinteamname() {
+		return winteamname;
+	}
+	public void setWinteamname(String winteamname) {
+		this.winteamname = winteamname;
 	}
 }

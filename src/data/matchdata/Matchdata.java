@@ -233,10 +233,12 @@ public class Matchdata implements MatchDataService{
 		    if(lscore>rscore){
 		    	leftteam.addwinGuest();
 		    	rightteam.addloseHome();
+		    	match.setWinteamname(leftteam.getTeamName());
 		    }
 		    if(lscore<rscore){
 		    	leftteam.addloseGuest();
 		    	rightteam.addwinHome();
+		    	match.setWinteamname(rightteam.getTeamName());
 		    }
 		    if(lhalfscore>rhalfscore && lscore<rscore){
 		    	leftteam.addloseBanchanglingxian();

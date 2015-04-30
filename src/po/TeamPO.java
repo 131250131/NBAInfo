@@ -56,7 +56,7 @@ public class TeamPO implements Serializable {
 		private int teamScores;
 		
 		private double winLose;//胜负场;
-		
+		private win_lose win_lose;
 		private win_lose home;//主场输赢的次数;
 		private win_lose guest;//客场输赢的次数;
 		
@@ -267,7 +267,7 @@ public class TeamPO implements Serializable {
 		public double getWinLose() {
 			return winLose;
 		}
-		public void setWinLose(double winLose) {
+		public void WinLose(double winLose) {
 			this.winLose = winLose;
 		}
 		public win_lose getRecent10() {
@@ -461,4 +461,13 @@ public class TeamPO implements Serializable {
  *      分层结构会不会影响速度?多次调用对速度的影响?
  *      跨包调用会不会比不同类之间调用耗费的时间更多; 
  * */
+		public win_lose getWin_lose() {
+			return win_lose;
+		}
+		public void addwinWin_lose() {
+			this.win_lose.addWin();
+		}
+		public void addloseWin_lose() {
+			this.win_lose.addLose();
+		}
 }

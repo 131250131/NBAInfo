@@ -18,6 +18,7 @@ public class Match implements Comparable<Match> {
 	Team leftTeam;
 	Team rightTeam;
 	String score;
+	String winteamname="";
 	ArrayList<Player> leftplayerlist=new ArrayList<Player>();
 	ArrayList<Player> rightplayerlist=new ArrayList<Player>();
 //每一节的具体得分；
@@ -140,6 +141,7 @@ public class Match implements Comparable<Match> {
     	   scores3=matchpo.getScores3();
     	   scores4=matchpo.getScores4();
     	   extrascores=matchpo.getExtrascores();
+    	   winteamname=matchpo.getWinteamname();
     	   ArrayList<PlayerPO> lpl=matchpo.getleftplayers();
     	   for(PlayerPO p:lpl){
     		   Player player=new Player();
@@ -223,6 +225,14 @@ public Object[][] getData(String team,int matchnum){
 				}
 				return -1;
 			
+			}
+
+			public String getWinteamname() {
+				return winteamname;
+			}
+
+			public void setWinteamname(String winteamname) {
+				this.winteamname = winteamname;
 			}
 
 }

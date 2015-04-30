@@ -11,6 +11,7 @@ public class MatchPO implements Serializable {
 		TeamPO leftTeam;
 		TeamPO rightTeam;
 		String score;
+		String winteamname="";
 		ArrayList<PlayerPO> leftplayerlist=new ArrayList<PlayerPO>();
 		ArrayList<PlayerPO> rightplayerlist=new ArrayList<PlayerPO>();
 	//每一节的具体得分；
@@ -100,5 +101,11 @@ public class MatchPO implements Serializable {
 /*
  * 我还有一个问题，加时的比分算不算在里面;
  * */
+		public String getWinteamname() {
+			return winteamname;
+		}
+		public void setWinteamname(String winteamname) {
+			this.winteamname = winteamname;
+		}
 		
 }
