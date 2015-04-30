@@ -1,5 +1,7 @@
 package vo;
 
+import java.util.ArrayList;
+
 import logic.Team;
 import po.TeamPO;
 
@@ -64,7 +66,7 @@ public class TeamVO implements Comparable<TeamVO> {
 		public void setWinRate(double winRate) {
 			this.winRate = winRate;
 		}
-
+		private ArrayList<Integer> attendmatches =new ArrayList<Integer>();
 			//接下来是球队赛季总数据；	
 /*接下俩的一些数据，均来自于比赛文件，不做任何的处理，只是简单得通过+=更新
  * */
@@ -824,7 +826,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.aver_oppoTurnovers=team.getAver_oppoTurnovers();
 			this.aver_oppoFouls=team.getAver_oppoFouls();
 			this.aver_oppoScores=team.getAver_oppoScores();
-			
+			this.attendmatches=team.getAttendmatches();
 			
 		}
 		@Override
@@ -887,6 +889,12 @@ public class TeamVO implements Comparable<TeamVO> {
 		public void setComparetype(String comparetype) {
 			this.comparetype = comparetype;
 		}
+		public ArrayList<Integer> getAttendmatches() {
+			return attendmatches;
+		}
 
+		public void setAttendmatches(int matchnum) {
+			attendmatches.add(matchnum);
+		}
 
 }

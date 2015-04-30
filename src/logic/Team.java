@@ -1337,6 +1337,7 @@ public class Team {
 			teamTurnovers=teampo.getTeamTurnovers();
 			teamFouls=teampo.getTeamFouls();
 			teamScores=teampo.getTeamScores();
+			attendmatches=teampo.getAttendmatches();
 		}
 		
 		public TeamVO createTeamVO(){
