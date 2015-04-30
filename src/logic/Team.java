@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.ArrayList;
+
 import po.TeamPO;
 import vo.TeamVO;
 import vo.win_lose;
@@ -216,6 +218,7 @@ public class Team {
 			private win_lose sanjielinxian;//第三节领先
 			private win_lose sanjieluohou;//第三节落后
 			
+			private ArrayList<Integer> attendmatches =new ArrayList<Integer>();
 			
 		public Team(TeamPO teampo) {
 			//Basic info
@@ -1375,6 +1378,7 @@ public class Team {
 			teamTurnovers=teampo.getTeamTurnovers();
 			teamFouls=teampo.getTeamFouls();
 			teamScores=teampo.getTeamScores();
+			attendmatches=teampo.getAttendmatches();
 		}
 		
 		public TeamVO createTeamVO(){
@@ -1386,6 +1390,14 @@ public class Team {
 
 		public boolean getisEast() {
 			return isEast;
+		}
+
+		public ArrayList<Integer> getAttendmatches() {
+			return attendmatches;
+		}
+
+		public void setAttendmatches(int matchnum) {
+			attendmatches.add(matchnum);
 		}
 
 			

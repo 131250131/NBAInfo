@@ -8,8 +8,6 @@ import javax.swing.JPanel;
 
 import ui.frame.index.hotspot.HotspotBounds;
 import ui.myUI.BackColorPanel;
-import ui.myUI.ImageLabel;
-import ui.system.ImageSaver;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")

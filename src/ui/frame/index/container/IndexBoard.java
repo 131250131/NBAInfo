@@ -213,5 +213,9 @@ public class IndexBoard extends JPanel implements ActionListener{
 		if(events.getSource() == textButton[3]){
 			IndexScrollPane.turnto3.doClick();
 		}
+		
+		if(events.getSource() == textButton[4]){
+			IndexScrollPane.turnto4.doClick();
+		}
 	}
 }

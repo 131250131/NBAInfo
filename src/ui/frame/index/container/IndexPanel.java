@@ -8,6 +8,7 @@ import ui.frame.index.homepage.HomepagePanel;
 import ui.frame.index.hotspot.HotspotPanel;
 import ui.frame.index.match.MatchPanel;
 import ui.frame.index.rank.RankPanel;
+import ui.frame.index.team.TeamPanel;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
@@ -17,6 +18,7 @@ public class IndexPanel extends JPanel{
 	HotspotPanel hotspotPanel;
 	MatchPanel matchPanel;
 	RankPanel rankPanel;
+	TeamPanel teamPanel;
 	
 	public IndexPanel(){		
 		this.setLayout(null);
@@ -32,6 +34,8 @@ public class IndexPanel extends JPanel{
 		this.add(matchPanel);
 		rankPanel = new RankPanel();
 		this.add(rankPanel);
+		teamPanel = new TeamPanel();
+		this.add(teamPanel);
 		}
 
 }
