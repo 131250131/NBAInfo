@@ -1,5 +1,7 @@
 package logic;
 
+import java.util.ArrayList;
+
 import po.TeamPO;
 import vo.TeamVO;
 
@@ -179,7 +181,7 @@ public class Team {
 			private double teamAssE;
 			
 			
-			
+			private ArrayList<Integer> attendmatches =new ArrayList<Integer>();
 		public Team(TeamPO teampo) {
 			//Basic info
 			teamName=teampo.getTeamName();
