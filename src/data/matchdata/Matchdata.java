@@ -124,7 +124,7 @@ public class Matchdata implements MatchDataService{
 	        			int player3FGTry = Integer.parseInt(context[6]);
 	        			int playerFTG = Integer.parseInt(context[7]);
 	        			int playerFTGTry = Integer.parseInt(context[8]);
-	        			int playerOffenceRebounds = Integer.parseInt(context[9]);
+	           			int playerOffenceRebounds = Integer.parseInt(context[9]);
 	        			int playerDeffenceRebounds = Integer.parseInt(context[10]);
 	        			int playerTotalRebounds = Integer.parseInt(context[11]);
 	        			int playerAssists = Integer.parseInt(context[12]);
@@ -189,7 +189,7 @@ public class Matchdata implements MatchDataService{
 			 * 
 			 */
 			TeamPO leftteam =teamdataoperator("left");
-			TeamPO rightteam =teamdataoperator("right");
+			TeamPO rightteam =teamdataoperator("right");		
 		    if(leftteam.getTeamFG()/leftteam.getTeamFGTry()>rightteam.getTeamFG()/rightteam.getTeamFGTry()  
 		    	&& lscore>rscore	){
 		    	leftteam.addwinMoreFGP();
@@ -383,7 +383,7 @@ public class Matchdata implements MatchDataService{
 				 teamTurnovers = teamTurnovers+p.getPlayerTurnovers();
 				 teamFouls = teamFouls+p.getPlayerFouls();
 				 teamScores = teamScores+p.getScores();
-			}
+			}		
 		}
 		else if(type.equals("right")){
 			team.addAttendmatches(matchnum);

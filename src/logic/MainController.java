@@ -10,21 +10,33 @@ package logic;
 public class MainController {
 	private static MainController instance = null;
 	
-	private MainController(){
-			this.init();
-	}
+	PlayerController playerController;
+	TeamController teamController;
+	MatchController matchController;
 	
-	public MainController getInstance(){
+	public static MainController getInstance(){
 		if(instance == null){
 			instance = new MainController();
 		}
 		return instance;
 	}
 	
-	private void init(){
-		PlayerController playerController = PlayerController.getInstance();
-		TeamController teamController = TeamController.getInstance();
-		MatchController matchController = MatchController.getInstance();
+	public void init(){
+		playerController = PlayerController.getInstance();
+		teamController = TeamController.getInstance();
+		matchController = MatchController.getInstance();
+	}
+	
+	public PlayerController getPlayerController(){
+		return playerController;
+	}
+	
+	public TeamController getTeamController(){
+		return teamController;
+	}
+	
+	public MatchController getMatchController(){
+		return matchController;
 	}
 	
 }
