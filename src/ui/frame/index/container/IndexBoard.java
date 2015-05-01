@@ -51,7 +51,7 @@ public class IndexBoard extends JPanel implements ActionListener{
 	}
 	
 
-	int textNum = 7;
+	int textNum = 9;
 	JLabel[] textLabel = new JLabel[textNum];
 	OpaqueButton[] textButton = new OpaqueButton[textNum];
 	int labelHeight = (int) (30 * UIData.changeY);
@@ -139,6 +139,24 @@ public class IndexBoard extends JPanel implements ActionListener{
 				textLabel[6].setForeground(Color.GRAY);
 			}
 			}); 
+		
+		textButton[7].addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent arg0) {
+				textLabel[7].setForeground(Color.WHITE);
+			}
+			public void mouseExited(MouseEvent arg0) {
+				textLabel[7].setForeground(Color.GRAY);
+			}
+			}); 
+		
+		textButton[8].addMouseListener(new MouseAdapter(){
+			public void mouseEntered(MouseEvent arg0) {
+				textLabel[8].setForeground(Color.WHITE);
+			}
+			public void mouseExited(MouseEvent arg0) {
+				textLabel[8].setForeground(Color.GRAY);
+			}
+			}); 
 	}
 	
 	private int getTextY(int i){
@@ -153,16 +171,20 @@ public class IndexBoard extends JPanel implements ActionListener{
 		case 0:
 			return "首页";
 		case 1:
-			return "热点信息";
+			return "最佳球员";
 		case 2:
-			return "比赛信息";
+			return "热点信息";
 		case 3:
-			return "战绩排名";
+			return "比赛信息";
 		case 4:
-			return "球队列表";
+			return "战绩排名";
 		case 5:
-			return "我的球队";
+			return "球队列表";
 		case 6:
+			return "球员列表";
+		case 7:
+			return "我的球队";
+		case 8:
 			return "系统";
 		}
 		return null;
@@ -216,6 +238,18 @@ public class IndexBoard extends JPanel implements ActionListener{
 		
 		if(events.getSource() == textButton[4]){
 			IndexScrollPane.turnto4.doClick();
+		}
+		
+		if(events.getSource() == textButton[5]){
+			IndexScrollPane.turnto5.doClick();
+		}
+		
+		if(events.getSource() == textButton[6]){
+			IndexScrollPane.turnto6.doClick();
+		}
+		
+		if(events.getSource() == textButton[7]){
+			IndexScrollPane.turnto7.doClick();
 		}
 	}
 }

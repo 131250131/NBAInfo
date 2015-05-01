@@ -79,9 +79,7 @@ public class SingleRankPanel extends JPanel{
 			back2.setVisible(false);
 			this.add(back2);
 		}
-			
-		
-		
+					
 		backgroundEnterEffect = new JButton();
 		backgroundEnterEffect.setBounds(0, 0, width, height);
 		backgroundEnterEffect.setVisible(true);

@@ -39,6 +39,8 @@ public class UIData {
 		setMatchPanelBounds();
 		setRankingBounds();
 		setTeamBounds();
+		setPlayerBounds();
+		setMyTeamBounds();
 		
 		@SuppressWarnings("unused")
 		HomepageBounds homepageBounds = new HomepageBounds();
@@ -119,6 +121,20 @@ public class UIData {
 		teamBoundsHeight = (int)(1280 * changeY);
 	}
 	
+	private void setPlayerBounds(){
+		playerBoundsX = 0;
+		playerBoundsY = teamBoundsY + teamBoundsHeight;
+		playerBoundsWidth = teamBoundsWidth;
+		playerBoundsHeight = (int)(1280 * changeY);
+	}
+	
+	private void setMyTeamBounds(){
+		myTeamBoundsX = 0;
+		myTeamBoundsY = playerBoundsY + playerBoundsHeight;
+		myTeamBoundsWidth = playerBoundsWidth;
+		myTeamBoundsHeight = (int)(1280 * changeY);
+	}
+	
 	public static String favoriteTeam;
 	
 	public static void setFavoriteTeam(String teamName){
@@ -170,4 +186,12 @@ public class UIData {
 	public static int teamBoundsY;
 	public static int teamBoundsWidth;
 	public static int teamBoundsHeight;
+	public static int playerBoundsX;
+	public static int playerBoundsY;
+	public static int playerBoundsWidth;
+	public static int playerBoundsHeight;
+	public static int myTeamBoundsX;
+	public static int myTeamBoundsY;
+	public static int myTeamBoundsWidth;
+	public static int myTeamBoundsHeight;
 }

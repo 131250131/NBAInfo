@@ -2,7 +2,11 @@ package ui.frame.index.team;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -16,6 +20,7 @@ public class SingleTeamPanel extends JPanel{
 	TeamPicPanel[] picPanel = new TeamPicPanel[5];
 	
 	int width = (int) (600 * UIData.changeX);
+	int height = (int) (260 * UIData.changeY);
 	
 	public SingleTeamPanel(int division){
 		this.setVisible(true);
@@ -26,18 +31,19 @@ public class SingleTeamPanel extends JPanel{
 		int step = width / 5;
 		
 		for(int i = 0; i < 5; i++){
-			picPanel[i] = new TeamPicPanel(step * i, 0, step, (int) (220 * UIData.changeY), getTeamName(division, i));
+			picPanel[i] = new TeamPicPanel(step * i, 0, step, (int) (210 * UIData.changeY), getTeamName(division, i));
 			this.add(picPanel[i]);
 		}
 		
-		JLabel divisionName = new JLabel(getDivisionName(division), JLabel.RIGHT);
+		JLabel divisionName = new JLabel(getDivisionName(division) + "  ", JLabel.RIGHT);
 		divisionName.setVisible(true);
-		divisionName.setForeground(Color.WHITE);
+		divisionName.setForeground(Color.ORANGE);
 		divisionName.setFont(new Font("新細明體", Font.BOLD, (int)(30 * UIData.changeY)));
 		divisionName.setBounds(0, (int) ((260 - 38) * UIData.changeY), width, (int) (30 * UIData.changeY));
 		this.add(divisionName);
 	}
 	
+		
 	//太平洋区 西南区 西北区
 	//大西洋区 东南区 中部区
 	

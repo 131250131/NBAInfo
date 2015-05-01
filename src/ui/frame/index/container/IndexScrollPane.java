@@ -20,7 +20,7 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 	
 	IndexPanel indexPanel;
 	Timer timer = new Timer(1, this);
-	public static JButton turnto0, turnto1, turnto2, turnto3 ,turnto4;
+	public static JButton turnto0, turnto1, turnto2, turnto3 ,turnto4, turnto5, turnto6, turnto7;
 	
 	public IndexScrollPane(){	
 		this.setBounds(x, y, width, height);
@@ -54,6 +54,18 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 		turnto4 = new JButton();
 		turnto4.addActionListener(this);
 		this.add(turnto4);
+		
+		turnto5 = new JButton();
+		turnto5.addActionListener(this);
+		this.add(turnto5);
+		
+		turnto6 = new JButton();
+		turnto6.addActionListener(this);
+		this.add(turnto6);
+		
+		turnto7 = new JButton();
+		turnto7.addActionListener(this);
+		this.add(turnto7);
 	}
 	
 	int currentLoction;
@@ -96,20 +108,27 @@ public class IndexScrollPane extends JScrollPane implements ActionListener{
 		}
 		
 		if(events.getSource() == turnto2){
-			setScrollLoction((int) (UIData.matchBoundsY + (80 * UIData.changeY)));
+			setScrollLoction(UIData.hotspotBoundsY + (int)(1670 * UIData.changeY));
 		}
 		
 		if(events.getSource() == turnto3){
-			setScrollLoction((int) (UIData.rankingBoundsY + (80 * UIData.changeY)));
+			setScrollLoction((int) (UIData.matchBoundsY + (80 * UIData.changeY)));
 		}
 		
 		if(events.getSource() == turnto4){
+			setScrollLoction((int) (UIData.rankingBoundsY + (80 * UIData.changeY)));
+		}
+		
+		if(events.getSource() == turnto5){
 			setScrollLoction((int) (UIData.teamBoundsY + (80 * UIData.changeY)));
 		}
 		
+		if(events.getSource() == turnto6){
+			setScrollLoction((int) (UIData.playerBoundsY + (80 * UIData.changeY)));
+		}
+		
+		if(events.getSource() == turnto7){
+			setScrollLoction((int) (UIData.myTeamBoundsY + (80 * UIData.changeY)));
+		}
 	}
-	
-	
-	
-
 }
