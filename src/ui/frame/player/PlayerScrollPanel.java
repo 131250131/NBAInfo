@@ -7,7 +7,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 
+import ui.myUI.ImageLabel;
 import ui.system.Controller;
+import ui.system.ImageSaver;
 import ui.system.UIData;
 import vo.PlayerVO;
 
@@ -35,8 +37,8 @@ public class PlayerScrollPanel extends JScrollPane  implements ActionListener{
 		this.getVerticalScrollBar().setBorder(BorderFactory.createEmptyBorder());
 		this.getVerticalScrollBar().setUnitIncrement(35);
 		
-		PlayerPanel playerPanel = new PlayerPanel();
-		setViewportView(playerPanel);
+		PlayerPanel playerPanel = new PlayerPanel(player);
+		this.setViewportView(playerPanel);
 		
 		button = new JButton();
 		button.setBounds((int) (1720 * UIData.changeX), y, (int) (200 * UIData.changeX), playerPanel.height);
@@ -46,6 +48,9 @@ public class PlayerScrollPanel extends JScrollPane  implements ActionListener{
 		button.setContentAreaFilled(false);
 		button.addActionListener(this);
 		this.add(button);
+		
+		ImageLabel addback1 = new ImageLabel(ImageSaver.getIcon("新增页面背景2"), 0, 0, UIData.frameWidth, UIData.frameHeight);
+		this.add(addback1);
 	}
 	
 	public void actionPerformed(ActionEvent e) {

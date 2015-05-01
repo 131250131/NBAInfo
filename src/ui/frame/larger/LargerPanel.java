@@ -26,9 +26,13 @@ public class LargerPanel extends JPanel implements ActionListener{
 	
 	public LargerPanel(){
 		this.setLayout(null);
-		this.setPreferredSize(new Dimension(UIData.largerPanelWidth + 100, UIData.largerPanelHeight));
+		this.setPreferredSize(new Dimension(UIData.largerPanelWidth, UIData.largerPanelHeight));
 		this.setBackground(Color.BLACK);
 		this.setVisible(true);
+		
+		ImageLabel scrollBack = new ImageLabel(ImageSaver.getIcon("滑轮背景"), (int) (UIData.indexScrollPaneX + (1920 - 25) * UIData.changeX)
+				, 0, (int) (25 * UIData.changeX), UIData.frameHeight);
+		this.add(scrollBack);
 		
 		indexBoard = new IndexBoard();
 		this.add(indexBoard);
@@ -42,7 +46,7 @@ public class LargerPanel extends JPanel implements ActionListener{
 		this.add(addback2);
 		
 		ImageLabel addback3 = new ImageLabel(ImageSaver.getIcon("新增页面背景"), 0, 0, UIData.frameWidth, UIData.frameHeight);
-		this.add(addback3);
+		this.add(addback3);	
 		
 		ImageLabel lb_Background3 = new ImageLabel(ImageSaver.getIcon("首页图片2"), UIData.indexScrollPaneX, 0, UIData.frameWidth, UIData.frameHeight);
 		this.add(lb_Background3);
