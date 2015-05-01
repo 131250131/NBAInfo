@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import ui.frame.index.homepage.HomepageBounds;
+import ui.frame.larger.LargerScrollPane;
 
 public class UIData {
 	
@@ -27,6 +28,7 @@ public class UIData {
 	
 	public static double changeX;
 	public static double changeY;
+	public static int currentStep = 0;
 		
 	private void init(){		
 		setFrameLoction();
@@ -57,18 +59,35 @@ public class UIData {
 	
 	public static int slideSize;
 	
+	public static int getNextX(){
+		currentStep++;	
+		return (3 - currentStep) * slideSize;
+	}
+	
+	public static void returnToFormerStep(){
+		currentStep--;
+		switch(UIData.currentStep){
+		case 0:
+			LargerScrollPane.turnto3.doClick();break;
+		case 1:
+			LargerScrollPane.turnto2.doClick();break;
+		case 2:
+			LargerScrollPane.turnto1.doClick();break;
+		}	
+	}
+	
 	private void setLargerBounds(){
 		largerScrollPaneX = 0;
 		largerScrollPaneY = 0;
-		slideSize = (int) (1650 * changeX);
+		slideSize = (int) (1920 * changeX);
 		largerScrollPaneWidth = fwidth;
 		largerScrollPaneHeight = fheight;
-		largerPanelWidth = frameWidth + slideSize * 2;
+		largerPanelWidth = frameWidth + slideSize * 3;
 		largerPanelHeight = frameHeight - 10;
 	}
 	
 	private void setIndexScrollPaneBounds(){
-		indexScrollPaneX = slideSize * 2;
+		indexScrollPaneX = slideSize * 3;
 		indexScrollPaneY = 0;
 		indexScrollPaneWidth = frameWidth;
 		indexScrollPaneHeight = frameHeight;
@@ -87,7 +106,7 @@ public class UIData {
 	}
 	
 	private void setIndexBoardBounds(){
-		indexBoardX = slideSize * 2;
+		indexBoardX = slideSize * 3;
 		indexBoardY = 0;
 		indexBoardWidth = (int) (175 * changeX);
 		indexBoardHeight = frameHeight;

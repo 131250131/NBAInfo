@@ -1,4 +1,4 @@
-package ui.frame.index.container;
+package ui.frame.larger;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,7 +19,7 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 	
 	LargerPanel largerPanel;
 	Timer timer = new Timer(1, this);
-	public static JButton turnto0, turnto1, turnto2;
+	public static JButton turnto0, turnto1, turnto2, turnto3;
 	
 	public LargerScrollPane(){	
 		this.setBounds(x, y, width, height);
@@ -44,6 +44,10 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 		turnto2 = new JButton();
 		turnto2.addActionListener(this);
 		this.add(turnto2);	
+		
+		turnto3 = new JButton();
+		turnto3.addActionListener(this);
+		this.add(turnto3);
 	}
 	
 	int currentLoction;
@@ -52,10 +56,10 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 	int move = 0;
 	
 	private void setScrollLoction(int _destination){
-		currentLoction = this.getVerticalScrollBar().getValue();
+		currentLoction = this.getHorizontalScrollBar().getValue();
 		destination = _destination;
 		move = 0;
-		step = (destination - currentLoction) / 3;
+		step = (destination - currentLoction) / 4;
 		timer.start();	
 	}
 	
@@ -63,7 +67,7 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == timer){
-			if(move == 3){
+			if(move == 4){
 				timer.stop();				
 			}else{
 				move++;
@@ -82,6 +86,10 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 		
 		if(events.getSource() == turnto2){
 			setScrollLoction(UIData.slideSize * 2);
+		}
+		
+		if(events.getSource() == turnto3){
+			setScrollLoction(UIData.slideSize * 3);
 		}
 		
 	}

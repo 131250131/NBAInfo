@@ -1,6 +1,6 @@
 package ui.frame.mainframe;
 
-import ui.frame.index.container.LargerScrollPane;
+import ui.frame.larger.LargerScrollPane;
 import ui.myUI.MyFrame;
 
 @SuppressWarnings("serial")
@@ -11,7 +11,7 @@ public class MainFrame extends MyFrame{
 	public MainFrame(){		
 		largerScrollPane = new LargerScrollPane();
 		this.add(largerScrollPane);
-		LargerScrollPane.turnto2.doClick();
+		LargerScrollPane.turnto3.doClick();
 	}
 
 }

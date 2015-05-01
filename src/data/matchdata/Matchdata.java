@@ -73,6 +73,7 @@ public class Matchdata implements MatchDataService{
 	        		String ls=s[0];
 	        		String rs=s[1];
 	        		lscore =Integer.parseInt(ls);
+	        		System.out.println(lscore);
 	        		rscore =Integer.parseInt(rs);
 	        		String[] teamname=context[1].split("-");
 	        		leftTeamShortName=teamname[0];
@@ -125,7 +126,7 @@ public class Matchdata implements MatchDataService{
 	        			int minute =Integer.parseInt(timestring[0])*60;
 	        			int second =Integer.parseInt(timestring[1]);
 	        			int time =minute + second;
-	        			int playerFG = Integer.parseInt(context[3]);
+	        			int playerFG = Integer.parseInt(context[3]);		
 	        			int playerFGTry = Integer.parseInt(context[4]);
 	        			int player3FG = Integer.parseInt(context[5]);
 	        			int player3FGTry = Integer.parseInt(context[6]);
@@ -351,7 +352,7 @@ public class Matchdata implements MatchDataService{
 		int teamBlocks = 0;
 		int teamTurnovers = 0;
 		int teamFouls = 0;
-		int teamScores = 0;
+		int teamScores = 0;	
 		if(type.equals("left")){
 			team.addAttendmatches(matchnum);
 			if(lscore>rscore&&lscore>100){

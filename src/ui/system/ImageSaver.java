@@ -38,6 +38,7 @@ public class ImageSaver {
 			case "rankW2" : return new ImageIcon(iconPath + "rankW2.png");
 			case "rankE" : return new ImageIcon(iconPath + "rankE.png");
 			case "rankE2" : return new ImageIcon(iconPath + "rankE2.png");
+			case "新增页面背景" : return new ImageIcon(iconPath + "新增页面背景.png");
 		}
 		
 		return null;

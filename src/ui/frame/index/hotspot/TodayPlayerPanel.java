@@ -18,7 +18,9 @@ import javax.swing.JPanel;
 
 
 
+
 import ui.myUI.ImageLabel;
+import ui.system.Controller;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 
@@ -121,7 +123,9 @@ public class TodayPlayerPanel extends JPanel implements ActionListener{
 	
 	public void actionPerformed(ActionEvent events) {
 		
-		
+		if(events.getSource() == button){
+			Controller.addPlayerPanel(player.getPlayerName());
+		}
 		
 	}
 
