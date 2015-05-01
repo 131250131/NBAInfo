@@ -1,5 +1,6 @@
 package logic;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -33,6 +34,12 @@ public class TeamController implements teamControllerService{
 	//下面两个方法不会并没有读到任何球队啊，根据比赛更新球队的方法是哪个？
 	public void updateTeamInfo_Basic(){
 		ArrayList<TeamPO> allTeamPO =  new ArrayList<TeamPO>();
+		try {
+			allTeamPO =tds.readTeamsBaiscInfo();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("读取球队基本数据出错");
+		}
 		for(TeamPO po : allTeamPO){
 			this.allTeams.add(new Team(po));
 		}
