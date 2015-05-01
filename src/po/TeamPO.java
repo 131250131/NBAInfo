@@ -56,13 +56,13 @@ public class TeamPO implements Serializable {
 		private int teamScores;
 		
 		private double winLose;//胜负场;
-		private win_lose win_lose;
-		private win_lose home;//主场输赢的次数;
-		private win_lose guest;//客场输赢的次数;
+		private win_lose win_lose=new win_lose();
+		private win_lose home=new win_lose();//主场输赢的次数;
+		private win_lose guest=new win_lose();//客场输赢的次数;
 		
-		private win_lose recent10;
-		private win_lose recent10_Home;
-		private win_lose recent10_Guest;
+		private win_lose recent10=new win_lose();
+		private win_lose recent10_Home=new win_lose();
+		private win_lose recent10_Guest=new win_lose();
 		
 		private boolean lianxu_win;
 		private boolean lianxu_win_Home;
@@ -73,22 +73,22 @@ public class TeamPO implements Serializable {
 		private int longestWin;
 		private int longestLose;
 		
-		private win_lose lessThan3Points;//3分之内胜负场
-		private win_lose moreThan10Points;//10分以上胜负关系
+		private win_lose lessThan3Points=new win_lose();//3分之内胜负场
+		private win_lose moreThan10Points=new win_lose();//10分以上胜负关系
 		
-		private win_lose myTeamMoreThan100;//本队得分上100时的胜负关系
-		private win_lose oppoTeamMoreThan100;//对手得分上100时的胜负关系
+		private win_lose myTeamMoreThan100=new win_lose();//本队得分上100时的胜负关系
+		private win_lose oppoTeamMoreThan100=new win_lose();//对手得分上100时的胜负关系
 		
-		private win_lose oppoIsStrong;//对手胜率50%时的胜负关系
+		private win_lose oppoIsStrong=new win_lose();//对手胜率50%时的胜负关系
 		
-		private win_lose MoreFGP;//命中率领先
-		private win_lose MoreRebounds;//篮板领先
-		private win_lose LessTurnovers;//更少失误时的胜负关系
+		private win_lose MoreFGP=new win_lose();//命中率领先
+		private win_lose MoreRebounds=new win_lose();//篮板领先
+		private win_lose LessTurnovers=new win_lose();//更少失误时的胜负关系
 		
-		private win_lose banchanglingxian;//半场领先
-		private win_lose banchangluohou;//半场落后
-		private win_lose sanjielinxian;//第三节领先
-		private win_lose sanjieluohou;//第三节落后
+		private win_lose banchanglingxian=new win_lose();//半场领先
+		private win_lose banchangluohou=new win_lose();//半场落后
+		private win_lose sanjielinxian=new win_lose();//第三节领先
+		private win_lose sanjieluohou=new win_lose();//第三节落后
 	//这场比赛，球队里的所有球员
 		private ArrayList<PlayerPO> players = new ArrayList<PlayerPO>();
 		private ArrayList<Integer> attendmatches =new ArrayList<Integer>();
