@@ -24,6 +24,7 @@ public class Matchdata implements MatchDataService{
 	private ArrayList<MatchPO> matches=new ArrayList<MatchPO>();
 	private ArrayList<PlayerPO> leftplayerlist=new ArrayList<PlayerPO>();
 	private ArrayList<PlayerPO> rightplayerlist=new ArrayList<PlayerPO>();
+	private ArrayList<Integer>  wrong=new ArrayList<Integer>();
 	private String leftTeamShortName="";
 	private String rightTeamShortName="";
     int matchnum=0;
@@ -57,8 +58,6 @@ public class Matchdata implements MatchDataService{
 	        	String[] context=lineTxt.split(";");
 	        	System.out.println(lineTxt);
 	        	//System.out.println(context.length);
-	        	match.setNum(matchnum);
-	        	matchnum++;
 	        	if(context.length==1){
 	        	
 	        		count++;
@@ -73,7 +72,7 @@ public class Matchdata implements MatchDataService{
 	        		String ls=s[0];
 	        		String rs=s[1];
 	        		lscore =Integer.parseInt(ls);
-	        		System.out.println(lscore);
+	        		//System.out.println(lscore);
 	        		rscore =Integer.parseInt(rs);
 	        		String[] teamname=context[1].split("-");
 	        		leftTeamShortName=teamname[0];
@@ -81,7 +80,6 @@ public class Matchdata implements MatchDataService{
 	        		line++;
 	        	}
 	        	if(line==2){
-	        		System.out.println(lineTxt);
 	        		String scores1=context[0];
 	        		String scores2=context[1];
 	        		String scores3=context[2];
@@ -123,6 +121,7 @@ public class Matchdata implements MatchDataService{
 	        			String playername=context[0];
 	        			String position=context[1];
 	        			String[] timestring=context[2].split(":");
+	        			//System.out.println(timestring[0]);
 	        			int minute =Integer.parseInt(timestring[0])*60;
 	        			int second =Integer.parseInt(timestring[1]);
 	        			int time =minute + second;
@@ -149,7 +148,8 @@ public class Matchdata implements MatchDataService{
 	        			leftplayerlist.add(player);
 	        			}
 	        			catch(Exception e){
-	        				System.out.println("数据出错");
+	        				e.printStackTrace();
+	        				break;
 	        			}
 	        		}
 	        		if(count==2){
@@ -184,14 +184,18 @@ public class Matchdata implements MatchDataService{
 		        			rightplayerlist.add(player);
 		        			}
 		        			catch(Exception e){
-		        				System.out.println("数据出错");
+		        				e.printStackTrace();
+		        				break;
 		        			}
 	        		}
 	        	}
 	        	 
 	        }
+	        match.setNum(matchnum);
+        	matchnum++;
 			}catch(Exception e){
 				e.printStackTrace();
+				break;
 			}
 			/*下面处理球队
 			 * 

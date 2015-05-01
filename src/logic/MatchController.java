@@ -30,8 +30,10 @@ public class MatchController implements matchControllerService{
 		private MatchController(){
 			matchdata.readMatch();
 			allMatchPO = this.matchdata.getAllMatch();
-			System.out.println(allMatchPO.get(0).getScore()+"111");
+			System.out.print("ppp");
+			//System.out.println(allMatchPO.get(0).getScore()+"111");
 			this.processAllMatches();//处理完毕当前的数据;
+			System.out.print("ttt");
 			this.createAllMatchVO();//获得所有比赛的vo;
 		}
 		
@@ -44,6 +46,7 @@ public class MatchController implements matchControllerService{
 		
 		//返回所有未经处理过的比赛信息;
 		public ArrayList<MatchVO> getAllMatchVO(){
+			
 			return this.allMatchVO;
 		}
 		
@@ -62,6 +65,7 @@ public class MatchController implements matchControllerService{
 				Match tempMatch = new Match();
 				tempMatch.creatmatch(matchpo);//match数据更新;
 				this.allMatches.add(tempMatch);
+				System.out.println(tempMatch.getNum());
 				TeamController teamController = TeamController.getInstance();
 				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
 				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
@@ -75,6 +79,7 @@ public class MatchController implements matchControllerService{
 				}
 				//这两个循环用来更新球员数据
 			}
+			System.out.print("gg");
 		}
 		
 		//根据具体日期来选择比赛;
