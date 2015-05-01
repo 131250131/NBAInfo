@@ -49,5 +49,9 @@ public class ImageSaver {
 	public static ImageIcon getTeamIcon(String teamName){
 		return new ImageIcon("image/team/" + teamName + ".png");
 	}
+	
+	public static ImageIcon getPlayerIcon(String playerName){
+		return new ImageIcon("data/newImage/portrait/" + playerName + ".png");
+	}
 
 }
