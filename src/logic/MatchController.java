@@ -13,11 +13,11 @@ import vo.TeamShortName;
 
 //controller都运用了单体模式，每类Controller整个程序中只有一个 ;
 public class MatchController implements matchControllerService{
-		ArrayList<Match> allMatches = new ArrayList<Match>();
-		ArrayList<Match> matchesOfTaday = new ArrayList<Match>();
-		MatchDataService matchdata = new Matchdata();
-		ArrayList<MatchPO> allMatchPO = new ArrayList<MatchPO>();
-		ArrayList<MatchVO> allMatchVO = new ArrayList<MatchVO>();
+		static ArrayList<Match> allMatches = new ArrayList<Match>();
+		static ArrayList<Match> matchesOfTaday = new ArrayList<Match>();
+		static MatchDataService matchdata = new Matchdata();
+		static ArrayList<MatchPO> allMatchPO = new ArrayList<MatchPO>();
+		static ArrayList<MatchVO> allMatchVO = new ArrayList<MatchVO>();
 //		TeamController teamController = TeamController.getInstance();
 //		PlayerController playerController = PlayerController.getInstance();
 		
@@ -31,6 +31,7 @@ public class MatchController implements matchControllerService{
 		private MatchController(){
 			matchdata.readMatch();
 			allMatchPO = this.matchdata.getAllMatch();
+			System.out.println(allMatchPO.get(0).getScore()+"111");
 			this.processAllMatches();//处理完毕当前的数据;
 			this.createAllMatchVO();//获得所有比赛的vo;
 		}

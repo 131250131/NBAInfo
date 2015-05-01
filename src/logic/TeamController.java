@@ -17,9 +17,9 @@ public class TeamController implements teamControllerService{
 	
 	private static TeamController instance =null;
 	
-	TeamDataService tds = new TeamReader();
-	ArrayList<Team> allTeams = new ArrayList<Team>();
-	ArrayList<TeamVO> allTeamVO = new ArrayList<TeamVO>();
+	public TeamDataService tds = new TeamReader();
+	public ArrayList<Team> allTeams = new ArrayList<Team>();
+	public ArrayList<TeamVO> allTeamVO = new ArrayList<TeamVO>();
 	
 	private TeamController(){
 		this.updateTeamInfo_Basic();
@@ -44,6 +44,7 @@ public class TeamController implements teamControllerService{
 			this.allTeams.add(new Team(po));
 		}
 	}
+	
 	
 	public void updateTeamInfo_Advanced(Team myTeam,Team oppoTeam){
 		for(Team team:this.allTeams){

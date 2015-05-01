@@ -189,23 +189,25 @@ public class Matchdata implements MatchDataService{
 			 * 
 			 */
 			TeamPO leftteam =teamdataoperator("left");
-			TeamPO rightteam =teamdataoperator("right");		
-		    if(leftteam.getTeamFG()/leftteam.getTeamFGTry()>rightteam.getTeamFG()/rightteam.getTeamFGTry()  
-		    	&& lscore>rscore	){
-		    	leftteam.addwinMoreFGP();
-		    }
-		    if(leftteam.getTeamFG()/leftteam.getTeamFGTry()>rightteam.getTeamFG()/rightteam.getTeamFGTry()  
-			    	&& lscore<rscore	){
-			    	leftteam.addloseMoreFGP();
-			    }
-		    if(leftteam.getTeamFG()/leftteam.getTeamFGTry()<rightteam.getTeamFG()/rightteam.getTeamFGTry()  
-			    	&& lscore>rscore	){
-			    	rightteam.addloseMoreFGP();
-			    }
-		    if(leftteam.getTeamFG()/leftteam.getTeamFGTry()<rightteam.getTeamFG()/rightteam.getTeamFGTry()  
-			    	&& lscore<rscore	){
-			    	rightteam.addwinMoreFGP();
-			    }
+			TeamPO rightteam =teamdataoperator("right");	
+			if(leftteam.getTeamFGTry()!=0){
+					if(leftteam.getTeamFG()/leftteam.getTeamFGTry()>rightteam.getTeamFG()/rightteam.getTeamFGTry()  
+						&& lscore>rscore	){
+						leftteam.addwinMoreFGP();
+					}
+					if(leftteam.getTeamFG()/leftteam.getTeamFGTry()>rightteam.getTeamFG()/rightteam.getTeamFGTry()  
+			    		&& lscore<rscore	){
+			    		leftteam.addloseMoreFGP();
+		    		}
+		    		if(leftteam.getTeamFG()/leftteam.getTeamFGTry()<rightteam.getTeamFG()/rightteam.getTeamFGTry()  
+			    		&& lscore>rscore	){
+			    		rightteam.addloseMoreFGP();
+		    		}
+		    		if(leftteam.getTeamFG()/leftteam.getTeamFGTry()<rightteam.getTeamFG()/rightteam.getTeamFGTry()  
+			    		&& lscore<rscore	){
+			    		rightteam.addwinMoreFGP();
+			    	}
+			}
 		    if(leftteam.getTeamTotalRebounds()>rightteam.getTeamTotalRebounds() && lscore>rscore){
 		    	  leftteam.addwinMoreRebounds();
 		    }

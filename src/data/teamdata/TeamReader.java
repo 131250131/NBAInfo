@@ -63,12 +63,5 @@ public class TeamReader implements TeamDataService{
 	    }
 		return allTeams;
 	}
-
-	@Override
-	public ArrayList<TeamPO> getAllTeam() throws IOException {
-		// TODO Auto-generated method stub
-		//这个需要写完
-		return null;
-	}
 	
 }
