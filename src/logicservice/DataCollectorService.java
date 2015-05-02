@@ -30,4 +30,5 @@ public interface DataCollectorService {
 		public ArrayList<PlayerVO> getSomeDayPlayers_Assist(String date);
 		public ArrayList<PlayerVO> getSomeDayPlayers_Block(String date);
 		public ArrayList<PlayerVO> getSomeDayPlayers_Steal(String date);
+		public ArrayList<PlayerVO> getSomeDayAllPlayers(String date);
 }

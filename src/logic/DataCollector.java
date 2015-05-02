@@ -42,11 +42,11 @@ public class DataCollector implements DataCollectorService{
 	ArrayList<TeamVO> seasonHotTeams_FGP= new ArrayList<TeamVO>();
 	ArrayList<TeamVO> seasonHotTeams_FTGP= new ArrayList<TeamVO>();
 	
-	ArrayList<PlayerVO> SomeDayHotPlayers_Score= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> SomeDayPlayers_Rebound= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> SomeDayPlayers_Assist= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> SomeDayPlayers_Block= new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> SomeDayPlayers_Steal= new ArrayList<PlayerVO>();
+//	ArrayList<PlayerVO> SomeDayHotPlayers_Score= new ArrayList<PlayerVO>();
+//	ArrayList<PlayerVO> SomeDayPlayers_Rebound= new ArrayList<PlayerVO>();
+//	ArrayList<PlayerVO> SomeDayPlayers_Assist= new ArrayList<PlayerVO>();
+//	ArrayList<PlayerVO> SomeDayPlayers_Block= new ArrayList<PlayerVO>();
+//	ArrayList<PlayerVO> SomeDayPlayers_Steal= new ArrayList<PlayerVO>();
 	
 //	//用来更新最新的赛季热点球员信息
 //	public void updateSeasonHotPlayers(){
@@ -298,49 +298,79 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	
-	
 	public ArrayList<PlayerVO> getSomeDayPlayers_Score(String date) {
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
+		for(PlayerVO pvo : someDayPlayer){
+			pvo.setComparetype("得分");
+		}
+		Collections.sort(someDayPlayer);
 		
-		
-		return SomeDayHotPlayers_Score;
+		for(int i=10;i<someDayPlayer.size();i++){
+			someDayPlayer.remove(i);
+		}
+		return someDayPlayer;
 	}
 
-	public void setSomeDayHotPlayers_Score(
-			ArrayList<PlayerVO> someDayHotPlayers_Score) {
-		SomeDayHotPlayers_Score = someDayHotPlayers_Score;
-	}
+
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Rebound(String date) {
-		return SomeDayPlayers_Rebound;
+		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
+		for(PlayerVO pvo : someDayPlayer){
+			pvo.setComparetype("篮板");
+		}
+		Collections.sort(someDayPlayer);
+		
+		for(int i=10;i<someDayPlayer.size();i++){
+			someDayPlayer.remove(i);
+		}
+		return someDayPlayer;
 	}
 
-	public void setSomeDayPlayers_Rebound(ArrayList<PlayerVO> someDayPlayers_Rebound) {
-		SomeDayPlayers_Rebound = someDayPlayers_Rebound;
-	}
+
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Assist(String date) {
-		return SomeDayPlayers_Assist;
+		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
+		for(PlayerVO pvo : someDayPlayer){
+			pvo.setComparetype("助攻");
+		}
+		Collections.sort(someDayPlayer);
+		
+		for(int i=10;i<someDayPlayer.size();i++){
+			someDayPlayer.remove(i);
+		}
+		return someDayPlayer;
 	}
 
-	public void setSomeDayPlayers_Assist(ArrayList<PlayerVO> someDayPlayers_Assist) {
-		SomeDayPlayers_Assist = someDayPlayers_Assist;
-	}
+
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Block(String date) {
-		return SomeDayPlayers_Block;
+		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
+		for(PlayerVO pvo : someDayPlayer){
+			pvo.setComparetype("盖帽");
+		}
+		Collections.sort(someDayPlayer);
+		
+		for(int i=10;i<someDayPlayer.size();i++){
+			someDayPlayer.remove(i);
+		}
+		return someDayPlayer;
 	}
 
-	public void setSomeDayPlayers_Block(ArrayList<PlayerVO> someDayPlayers_Block) {
-		SomeDayPlayers_Block = someDayPlayers_Block;
-	}
+
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Steal(String date) {
-		return SomeDayPlayers_Steal;
+		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
+		for(PlayerVO pvo : someDayPlayer){
+			pvo.setComparetype("抢断");
+		}
+		Collections.sort(someDayPlayer);
+		
+		for(int i=10;i<someDayPlayer.size();i++){
+			someDayPlayer.remove(i);
+		}
+		return someDayPlayer;
 	}
 
-	public void setSomeDayPlayers_Steal(ArrayList<PlayerVO> someDayPlayers_Steal) {
-		SomeDayPlayers_Steal = someDayPlayers_Steal;
-	}
+
 
 }
