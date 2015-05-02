@@ -66,18 +66,18 @@ public class MatchController implements matchControllerService{
 				tempMatch.creatmatch(matchpo);//match数据更新;
 				this.allMatches.add(tempMatch);
 				System.out.println(tempMatch.getNum());
-				TeamController teamController = TeamController.getInstance();
-				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
-				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
-				//team 更新完毕;
-				PlayerController playerController = PlayerController.getInstance();
-				for(Player tempPlayer: tempMatch.getleftplayers()){
-					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
-				}
-				for(Player tempPlayer: tempMatch.getrightplayers()){
-					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
-				}
-				//这两个循环用来更新球员数据
+//				TeamController teamController = TeamController.getInstance();
+//				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
+//				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
+//				//team 更新完毕;
+//				PlayerController playerController = PlayerController.getInstance();
+//				for(Player tempPlayer: tempMatch.getleftplayers()){
+//					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
+//				}
+//				for(Player tempPlayer: tempMatch.getrightplayers()){
+//					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
+//				}
+//				//这两个循环用来更新球员数据
 			}
 			System.out.print("gg");
 		}
