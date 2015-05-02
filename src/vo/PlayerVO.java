@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import logic.Player;
 
-public class PlayerVO {
+public class PlayerVO implements Comparable<PlayerVO>{
 		private int scores=0;
 		private double advancedP=0;
+		private String comparetype="";
+		private int double_double=0;
 		public PlayerVO(){
 		
 		}
@@ -820,6 +822,109 @@ public class PlayerVO {
 
 			public void setAdvancedP(double advancedP) {
 				this.advancedP = advancedP;
+			}
+
+			@Override
+			public int compareTo(PlayerVO o) {
+				// TODO Auto-generated method stub
+				if(comparetype.equals("两双")){
+					   if(double_double-o.getdouble_double()<0)
+		     		       return 1;
+					   return -1;
+		     	   }
+		     	
+		     	   if(comparetype.equals("得分/篮板/助攻")){
+		     		   if( (this.getPlayerScores()+this.getPlayerTotalRebounds()+this.getPlayerAssists() )-( o.getPlayerScores()+o.getPlayerTotalRebounds()+o.getPlayerAssists())<0)
+		     		       return 1;
+		     		   return -1;
+		     	   }
+		     	  
+		     	   if(comparetype.equals("助攻")){
+		     		   if( (this.getPlayerAssists()-o.getPlayerAssists() )<0)
+		     		       return 1;
+		     		   return -1;
+		     	   }
+		     	   if(comparetype.equals("分钟")){
+		     		   if((this.getPlayerPlayTime()-o.getPlayerPlayTime())<0)
+		     		       return 1;
+		               return -1;
+		     	   }
+		     	  
+		     	   if(comparetype.equals("篮板")){
+		     		  if((this.getPlayerTotalRebounds()-o.getPlayerTotalRebounds())<0)
+		    		       return 1;
+		              return -1;
+		     	   }
+		     	   if(comparetype.equals("抢断")){
+		     		  if((this.getPlayerSteals()-o.getPlayerSteals())<0)
+		   		           return 1;
+		    		  return -1;
+		     	   }
+		     	   if(comparetype.equals("盖帽")){
+		     		  if((this.getPlayerBlocks()-o.getPlayerBlocks())<0)
+		  		           return 1;
+		   		      return -1;
+		     	   }
+		     	   if(comparetype.equals("失误")){
+		     		  if((this.getPlayerTurnovers()-o.getPlayerTurnovers()<0))
+		 		           return 1;
+		  		      return -1;
+		     	   }
+		     	   if(comparetype.equals("犯规")){
+		     		  if((this.getPlayerFouls()-o.getPlayerFouls()<0))
+		    		           return 1;
+		     		      return -1;
+		     	   }
+		     	   if(comparetype.equals("得分")){
+		     		  if((this.getPlayerScores()-o.getPlayerScores()<0))
+		   		           return 1;
+		    		      return -1;
+		     	   }
+		     	   if(comparetype.equals("投篮")){
+		     		  if((this.getPlayerFGP()-o.getPlayerFGP()<0))
+		  		           return 1;
+		   		      return -1;
+		     	   }
+		     	   if(comparetype.equals("三分")){
+		     		  if((this.getPlayer3FGP()-o.getPlayer3FGP()<0))
+		 		           return 1;
+		  		      return -1;
+		     	   }
+		     	   if(comparetype.equals("罚球")){
+		     		  if((this.getPlayerFTGP()-o.getPlayerFTGP()<0))
+				           return 1;
+		 		      return -1;
+		     	   }
+		     	   if(comparetype.equals("效率")){
+		     		  if((this.getPlayerPER()-o.getPlayerPER()<0))
+				           return 1;
+		 		      return -1;
+		     	   }
+		     	  if(comparetype.equals("进步率")){
+		     		   if(this.getAdvancedP()-o.getAdvancedP()<0){
+		     			   return 1;
+		     		   }
+		     		   return -1;	   
+		     	   }
+
+					return 0;
+					
+			}
+
+			public String getComparetype() {
+				return comparetype;
+			}
+
+			public void setComparetype(String comparetype) {
+				this.comparetype = comparetype;
+			}
+
+			public int getdouble_double() {
+				return double_double;
+			}
+
+			public void setdouble_double(int double_double) {
+				this.double_double = double_double;
 			}
 
 	}
