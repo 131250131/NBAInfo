@@ -405,7 +405,8 @@ public class AssociationData implements associationDataService{
 	}
 
 	public void updateAssociationdate(){
-		MainController mainController = MainController.getInstance();
+		MainController mainController = new MainController();
+		mainController.init();
 		PlayerController playerController  = mainController.playerController;
 		int playerAssists =0;//队员平均助攻数
 		int playerPlayTime  =0;//	队员平均在场时间

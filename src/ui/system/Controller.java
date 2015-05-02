@@ -3,20 +3,21 @@ package ui.system;
 import ui.frame.larger.LargerPanel;
 import ui.frame.larger.LargerScrollPane;
 import logic.MainController;
-import logic.MatchController;
-import logic.PlayerController;
-import logic.TeamController;
+import logicservice.mainControllerService;
+import logicservice.matchControllerService;
+import logicservice.playerControllerService;
+import logicservice.teamControllerService;
 
 public class Controller {
 	
-	public static PlayerController playerController;
-	public static TeamController teamController;
-	public static MatchController matchController;
+	public static playerControllerService playerController;
+	public static teamControllerService teamController;
+	public static matchControllerService matchController;
 	
 	public static String currentPlayerName;
 	
 	public static void init(){
-		MainController mainController = MainController.getInstance();
+		mainControllerService mainController = new MainController();
 		mainController.init();
 		playerController = mainController.getPlayerController();
 		teamController = mainController.getTeamController();
