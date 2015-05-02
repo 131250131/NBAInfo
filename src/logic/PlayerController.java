@@ -226,5 +226,19 @@ public class PlayerController implements playerControllerService{
 		return result;
 	}
 
+	@Override
+	public ArrayList<PlayerVO> getplayerbyteam(String teamname) {
+		// TODO Auto-generated method stub
+		createAllPlayerVO();
+		ArrayList<PlayerVO> result =new ArrayList<PlayerVO>();
+		for(PlayerVO p:this.allPlayerVO){
+		   // System.out.println(p.getTeamShortName());
+			if(p.getTeamShortName().equals(teamname)){
+				result.add(p);
+			}
+		}
+		return result;
+	}
+
 
 }
