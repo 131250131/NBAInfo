@@ -9,6 +9,7 @@ import data.matchdata.*;
 import DataService.MatchDataService;
 import logicservice.matchControllerService;
 import vo.MatchVO;
+import vo.PlayerVO;
 import vo.TeamShortName;
 
 //controller都运用了单体模式，每类Controller整个程序中只有一个 ;
@@ -135,6 +136,7 @@ public class MatchController implements matchControllerService{
 		}
 		
 		
+		
 		public double playeradvcal(String name,ArrayList<Integer> attendedMatches,String type){
 			Matchdata matchdata=new Matchdata();
         	ArrayList<MatchPO> matchpos=new ArrayList<MatchPO>();
@@ -217,11 +219,19 @@ public class MatchController implements matchControllerService{
         		return 0;
      	}
 		}
-		
-		
-		
-		
+
+		public ArrayList<MatchVO> getMatchOfPlayer(String playerName) {
+			ArrayList<MatchVO> list = new ArrayList<MatchVO>();
+			PlayerVO vo = playerController.findPlayerVO(playerName);
+			
+			ArrayList<Integer> numList = vo.getAttendedMatches();
+			for(Integer i : numList){
+				list.add(this.getMatch((int)i));
+			}
+			return list;
 		}
+			
+}
 
 		
 

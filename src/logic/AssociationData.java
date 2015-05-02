@@ -3,7 +3,10 @@ package logic;
 import java.sql.Date;
 import java.util.ArrayList;
 
-public class AssociationData {
+import logicservice.associationDataService;
+import vo.PlayerVO;
+
+public class AssociationData implements associationDataService{
 	//联盟数据;
 	//所有有比赛的日期;
 	ArrayList<Date> dateList = new ArrayList<Date>();
@@ -29,9 +32,9 @@ public class AssociationData {
 	private double player3FGP ;//队员三分命中率
 	private double playerFTGP ;//队员罚球命中率	
 	private double playerPER ;//队员效率(PER)
-	private double playerGmScER ;//队员GmSc效率值
-	private double playerTSP ;//队员真实命中率
-	private double playerSER ;//队员投篮效率
+//	private double playerGmScER ;//队员GmSc效率值
+//	private double playerTSP ;//队员真实命中率
+//	private double playerSER ;//队员投篮效率
 		
 	//联盟球队平均数据;
 	private double aver_teamAssists;	//球队场均助攻数
@@ -233,29 +236,29 @@ public class AssociationData {
 		this.playerPER = playerPER;
 	}
 
-	public double getPlayerGmScER() {
-		return playerGmScER;
-	}
-
-	public void setPlayerGmScER(double playerGmScER) {
-		this.playerGmScER = playerGmScER;
-	}
-
-	public double getPlayerTSP() {
-		return playerTSP;
-	}
-
-	public void setPlayerTSP(double playerTSP) {
-		this.playerTSP = playerTSP;
-	}
-
-	public double getPlayerSER() {
-		return playerSER;
-	}
-
-	public void setPlayerSER(double playerSER) {
-		this.playerSER = playerSER;
-	}
+//	public double getPlayerGmScER() {
+//		return playerGmScER;
+//	}
+//
+//	public void setPlayerGmScER(double playerGmScER) {
+//		this.playerGmScER = playerGmScER;
+//	}
+//
+//	public double getPlayerTSP() {
+//		return playerTSP;
+//	}
+//
+//	public void setPlayerTSP(double playerTSP) {
+//		this.playerTSP = playerTSP;
+//	}
+//
+//	public double getPlayerSER() {
+//		return playerSER;
+//	}
+//
+//	public void setPlayerSER(double playerSER) {
+//		this.playerSER = playerSER;
+//	}
 
 	public double getAver_teamAssists() {
 		return aver_teamAssists;
@@ -401,7 +404,83 @@ public class AssociationData {
 		this.aver_teamScores = aver_teamScores;
 	}
 
-	
+	public void updateAssociationdate(){
+		MainController mainController = MainController.getInstance();
+		PlayerController playerController  = mainController.playerController;
+		int playerAssists =0;//队员平均助攻数
+		int playerPlayTime  =0;//	队员平均在场时间
+		int playerFG  =0;//队员平均投篮命中数
+		int playerFGTry =0;//队员平均投篮出手数
+		int player3FG =0;//队员平均三分命中数
+		int player3FGTry =0;//队员平均三分出手数
+		int playerFTG =0;//队员平均罚球命中数
+		int playerFTGTry =0;//队员平均罚球出手数
+		int playerOffenceRebounds =0;//队员平均进攻篮板数
+		int playerDeffenceRebounds =0;//队员平均防守篮板数
+		int playerTotalRebounds =0;//队员平均总篮板数
+		int playerSteals =0;//队员平均抢断数
+		int playerBlocks =0;//队员平均盖帽数
+		int playerTurnovers =0;//队员平均失误数
+		int playerFouls =0;//队员平均犯规数
+		int playerScores =0;//队员平均得分
+		int playerAttends=0;//队员总出场
+		
+		double playerFGP =0;//队员投篮命中率
+		double player3FGP =0;//队员三分命中率
+		double playerFTGP =0;//队员罚球命中率	
+		double playerPER =0;//队员效率(PER)
+//		double playerGmScER =0;//队员GmSc效率值
+//		double playerTSP =0;//队员真实命中率
+//		double playerSER =0;//队员投篮效率
+
+		
+		for(PlayerVO vo : playerController.getAllPlayerVO()){
+			playerAssists+=vo.getPlayerAssists();
+			playerPlayTime+=vo.getPlayerPlayTime();
+			playerFG+=vo.getPlayerFG();
+			playerFGTry+=vo.getPlayerFGTry();
+			player3FG+=vo.getPlayer3FG();
+			player3FGTry+=vo.getPlayer3FGTry();
+			playerFTG+=vo.getPlayerFG();
+			playerFTGTry+=vo.getPlayerFGTry();
+			playerOffenceRebounds+=vo.getPlayerOffenceRebounds();
+			playerDeffenceRebounds+=vo.getPlayerDeffenceRebounds();
+			playerTotalRebounds+=vo.getPlayerTotalRebounds();
+			playerSteals+=vo.getPlayerSteals();
+			playerBlocks+=vo.getPlayerBlocks();
+			playerTurnovers+=vo.getPlayerTurnovers();
+			playerFouls+=vo.getPlayerFouls();
+			playerScores+=vo.getPlayerScores();
+			playerAttends+=vo.getAttendedMatches().size();
+		}
+		
+		playerFGP=Double.parseDouble(String.format("%.3f",(playerFG+0.0)/(playerFGTry+0.0)));
+		player3FGP=Double.parseDouble(String.format("%.3f",(player3FG+0.0)/(player3FGTry+0.0)));
+		playerFTGP=Double.parseDouble(String.format("%.3f",(playerFTG+0.0)/(playerFTGTry+0.0)));
+		playerPER=((playerScores + playerTotalRebounds + playerAssists + playerSteals + playerBlocks) 
+				- (playerFGTry - playerFG) - (playerFTGTry - playerFTG) - playerTurnovers) / playerAttends;
+		
+		this.setAver_playerAssists(Double.parseDouble(String.format("%.3f",(playerAssists+0.0)/(playerAttends+0.0))));//队员平均助攻数
+		this.setAver_playerPlayTime(Double.parseDouble(String.format("%.3f",(playerPlayTime+0.0)/(playerAttends+0.0))));//	队员平均在场时间
+		this.setAver_playerFG(Double.parseDouble(String.format("%.3f",(playerFG+0.0)/(playerAttends+0.0))))  ;//队员平均投篮命中数
+		this.setAver_playerFGTry(Double.parseDouble(String.format("%.3f",(playerFGTry+0.0)/(playerAttends+0.0)))) ;//队员平均投篮出手数
+		this.setAver_player3FG(Double.parseDouble(String.format("%.3f",(player3FG+0.0)/(playerAttends+0.0)))) ;//队员平均三分命中数
+		this.setAver_player3FGTry(Double.parseDouble(String.format("%.3f",(player3FGTry+0.0)/(playerAttends+0.0)))) ;//队员平均三分出手数
+		this.setAver_playerFTG(Double.parseDouble(String.format("%.3f",(playerFTG+0.0)/(playerAttends+0.0)))) ;//队员平均罚球命中数
+		this.setAver_playerFTGTry(Double.parseDouble(String.format("%.3f",(playerFTGTry+0.0)/(playerAttends+0.0)))) ;//队员平均罚球出手数
+		this.setAver_playerOffenceRebounds(Double.parseDouble(String.format("%.3f",(playerOffenceRebounds+0.0)/(playerAttends+0.0)))) ;//队员平均进攻篮板数
+		this.setAver_playerDeffenceRebounds(Double.parseDouble(String.format("%.3f",(playerDeffenceRebounds+0.0)/(playerAttends+0.0)))) ;//队员平均防守篮板数
+		this.setAver_playerTotalRebounds(Double.parseDouble(String.format("%.3f",(playerTotalRebounds+0.0)/(playerAttends+0.0)))) ;//队员平均总篮板数
+		this.setAver_playerSteals(Double.parseDouble(String.format("%.3f",(playerSteals+0.0)/(playerAttends+0.0)))) ;//队员平均抢断数
+		this.setAver_playerBlocks(Double.parseDouble(String.format("%.3f",(playerBlocks+0.0)/(playerAttends+0.0)))) ;//队员平均盖帽数
+		this.setAver_playerTurnovers(Double.parseDouble(String.format("%.3f",(playerTurnovers+0.0)/(playerAttends+0.0)))) ;//队员平均失误数
+		this.setAver_playerFouls(Double.parseDouble(String.format("%.3f",(playerFouls+0.0)/(playerAttends+0.0)))) ;//队员平均犯规数
+		this.setAver_playerScores(Double.parseDouble(String.format("%.3f",(playerScores+0.0)/(playerAttends+0.0)))) ;//队员平均得分
+		this.setPlayerFGP(playerFGP);//队员投篮命中率
+		this.setPlayer3FGP(player3FGP);//队员三分命中率
+		this.setPlayerFTGP(playerFTGP);//队员罚球命中率	
+		this.setPlayerPER(playerPER);//队员效率(PER)
+	}
 		
 	
 		

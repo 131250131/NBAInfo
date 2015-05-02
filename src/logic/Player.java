@@ -908,47 +908,36 @@ public class Player implements Comparable<Player>{
 			this.scores = scores;
 		}
 		public String getHeight() {
-			// TODO Auto-generated method stub
 			return height;
 		}
 		public double getWeight() {
-			// TODO Auto-generated method stub
 			return weight;
 		}
 		public String getPlayerBirth() {
-			// TODO Auto-generated method stub
 			return playerBirth;
 		}
 		public int getPlayerAge() {
-			// TODO Auto-generated method stub
 			return playerAge;
 		}
 		public int getExp() {
-			// TODO Auto-generated method stub
 			return exp;
 		}
 		public int getPlayerFGTry() {
-			// TODO Auto-generated method stub
 			return playerFGTry;
 		}
 		public int getPlayer3FG() {
-			// TODO Auto-generated method stub
 			return player3FG;
 		}
 		public int getPlayer3FGTry() {
-			// TODO Auto-generated method stub
 			return player3FGTry;
 		}
 		public int getPlayerFTG() {
-			// TODO Auto-generated method stub
 			return playerFTG;
 		}
 		public int getPlayerFTGTry() {
-			// TODO Auto-generated method stub
 			return playerFTGTry;
 		}
 		public String getTeamShortName() {
-			// TODO Auto-generated method stub
 			return teamShortName;
 		}
         public int getdouble_double(){
@@ -956,7 +945,6 @@ public class Player implements Comparable<Player>{
         }
 		@Override
 		public int compareTo(Player o) {
-			// TODO Auto-generated method stub
 			if(comparetype.equals("两双")){
 				   if(double_double-o.getdouble_double()<0)
 	     		       return 1;
@@ -1042,7 +1030,6 @@ public class Player implements Comparable<Player>{
 		} 
 
         public int getaddate(String type) {
-			// TODO Auto-generated method stub
 			if(type.equals("得分")){
 				return scores;
 			}
@@ -1064,7 +1051,6 @@ public class Player implements Comparable<Player>{
 		}
 
 		public void setcompare(String string) {
-			// TODO Auto-generated method stub
 			comparetype=string;
 		}
 
