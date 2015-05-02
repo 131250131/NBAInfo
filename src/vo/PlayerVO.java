@@ -3,6 +3,7 @@ package vo;
 import java.util.ArrayList;
 
 import logic.Player;
+import logic.TeamController;
 
 public class PlayerVO implements Comparable<PlayerVO>{
 		private int scores=0;
@@ -1066,7 +1067,36 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				this.double_double = double_double;
 			}
 
+			public String getPlayerPosition(){
+				String result = null;
+				if(this.getPosition().equals("F")
+						||(this.getPosition().equals("F-C"))
+						||(this.getPosition().equals("C-F"))
+						||(this.getPosition().equals("F-G"))
+						||(this.getPosition().equals("G-F"))){
+					result = "前锋";
+				}
+				if(this.getPosition().equals("C")
+						||this.getPosition().equals("C-F")
+						||this.getPosition().equals("F-C")){
+					result = "中锋";
+				}
+				if(this.getPosition().equals("G")
+						||(this.getPosition().equals("F-G"))
+						||(this.getPosition().equals("G-F"))){
+					result = "后卫";
+				}
+				return result;
+			}
 
+			public String getPlayerDistribution() {
+				String result = null;
+				String teamName = this.getTeamShortName();
+				result = TeamController.getTeamDistribution(teamName);
+				return result;
+			}
+			
+	
 			
 
 	}

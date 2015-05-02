@@ -45,6 +45,42 @@ public class TeamController implements teamControllerService{
 		}
 	}
 	
+	public static String getTeamDistribution(String teamShortName){
+		String result = null;
+    		switch(teamShortName){
+    			case "SAS":result="西南区";break;
+    			case "MEM":result="西南区";break;
+    			case "HOU":result="西南区";break;
+    			case "DAL":result="西南区";break;
+    			case "NOL":result="西南区";break;
+    			case "SAC":result="太平洋区";break;
+    			case "PHX":result="太平洋区";break;
+    			case "LAL":result="太平洋区";break;
+    			case "GSW":result="太平洋区";break;
+    			case "LAC":result="太平洋区";break;
+    			case "MIN":result="西北区";break;
+    			case "DEN":result="西北区";break;
+    			case "UTH":result="西北区";break;
+    			case "POR":result="西北区";break;
+    			case "OTC":result="西北区";break;
+    			case "MIA":result="东南区 ";break;
+    			case "ORL":result="东南区 ";break;
+    			case "ATL":result="东南区 ";break;
+    			case "WAS":result="东南区 ";break;
+    			case "CHA":result="东南区 ";break;
+    			case "DET":result="中央区";break;
+    			case "IND":result="中央区";break;
+    			case "CLE":result="中央区";break;
+    			case "CHI":result="中央区";break;
+    			case "MIL":result="中央区";break;
+    			case "NYN":result="大西洋区";break;
+    			case "PHI":result="大西洋区";break;
+    			case "CEL":result="大西洋区";break;
+    			case "NJN":result="大西洋区";break;
+    			case "TOR":result="大西洋区";break;	
+    		}
+		return result;
+	}
 	
 	public void updateTeamInfo_Advanced(Team myTeam,Team oppoTeam){
 		for(Team team:this.allTeams){

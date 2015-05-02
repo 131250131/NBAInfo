@@ -88,8 +88,64 @@ public class PlayerController implements playerControllerService{
 	}
 	
 	//筛选功能;我还没写好;
-	public ArrayList<PlayerVO> getSelectedPlayers(){
-		return null;
+	public ArrayList<PlayerVO> getSelectedPlayers(String position,String distribution,String infoType){
+		ArrayList<PlayerVO> result = this.getAllPlayerVO();
+		result = this.getSelectedPlayers_Distribution(result,distribution);
+		result = this.getSelectedPlayers_Position(result,position);
+		result = this.getSelectedPlayers_InfoType(result,infoType);
+		return result;
+	}
+	
+	public ArrayList<PlayerVO> getSelectedPlayers_Position(ArrayList<PlayerVO> list,String position){
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		if(position==null){
+			return list;
+		}
+		for(PlayerVO vo : list){
+			if(vo.getPlayerPosition().equals(position)){
+				result.add(vo);
+			}
+		}
+		return result;
+	}
+	
+	public ArrayList<PlayerVO> getSelectedPlayers_Distribution(ArrayList<PlayerVO> list,String distribution){
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		if(distribution==null){
+			return list;
+		}
+		if(distribution.equals("东部")||distribution.equals("西部")){
+			for(PlayerVO vo : list){
+				if(vo.getPlayerDistribution().equals(distribution)){
+					result.add(vo);
+				}
+			}
+		}else{
+			if(distribution.equals("东部")){
+				for(PlayerVO vo : list){
+					if(vo.getPlayerDistribution().equals("东南区")
+							||vo.getPlayerDistribution().equals("中央区")
+							||vo.getPlayerDistribution().equals("大西洋区")){
+						result.add(vo);
+					}
+				}
+			}else{
+				for(PlayerVO vo : list){
+					if(vo.getPlayerDistribution().equals("西南区")
+							||vo.getPlayerDistribution().equals("太平洋区")
+							||vo.getPlayerDistribution().equals("西北区")){
+						result.add(vo);
+					}
+				}
+			}
+		}
+		return result;
+	}
+	
+	public ArrayList<PlayerVO> getSelectedPlayers_InfoType(ArrayList<PlayerVO> list,String infoType){
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		
+		return result;
 	}
 	
  	public ArrayList<PlayerVO> getSeasonHotPlayers_Score(){
@@ -205,9 +261,8 @@ public class PlayerController implements playerControllerService{
 		}
 		return tempList;
 	} 
-	@Override
+	
 	public ArrayList<PlayerVO> getAdvancedPlayers(String type) {
-		// TODO Auto-generated method stub
 		MatchController matchcontroller =MatchController.getInstance();
 		ArrayList<PlayerVO> playervos=new ArrayList<PlayerVO>();
 		ArrayList<PlayerVO> result =new ArrayList<PlayerVO>();
