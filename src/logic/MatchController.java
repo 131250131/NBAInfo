@@ -3,6 +3,7 @@ package logic;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
+
 import po.MatchPO;
 import data.matchdata.*;
 import DataService.MatchDataService;
@@ -17,8 +18,8 @@ public class MatchController implements matchControllerService{
 		static MatchDataService matchdata = new Matchdata();
 		static ArrayList<MatchPO> allMatchPO = new ArrayList<MatchPO>();
 		static ArrayList<MatchVO> allMatchVO = new ArrayList<MatchVO>();
-//		TeamController teamController = TeamController.getInstance();
-//		PlayerController playerController = PlayerController.getInstance();
+		TeamController teamController = TeamController.getInstance();
+		PlayerController playerController = PlayerController.getInstance();
 		
 		/*
 		 * Controller在构造的时候就完成对data层数据的调用；
@@ -30,10 +31,8 @@ public class MatchController implements matchControllerService{
 		private MatchController(){
 			matchdata.readMatch();
 			allMatchPO = this.matchdata.getAllMatch();
-			System.out.print("ppp");
 			//System.out.println(allMatchPO.get(0).getScore()+"111");
 			this.processAllMatches();//处理完毕当前的数据;
-			System.out.print("ttt");
 			this.createAllMatchVO();//获得所有比赛的vo;
 		}
 		
@@ -66,24 +65,27 @@ public class MatchController implements matchControllerService{
 				tempMatch.creatmatch(matchpo);//match数据更新;
 				this.allMatches.add(tempMatch);
 				System.out.println(tempMatch.getNum());
-//				TeamController teamController = TeamController.getInstance();
-//				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
-//				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
-//				//team 更新完毕;
-//				PlayerController playerController = PlayerController.getInstance();
-//				for(Player tempPlayer: tempMatch.getleftplayers()){
-//					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
-//				}
-//				for(Player tempPlayer: tempMatch.getrightplayers()){
-//					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
-//				}
-//				//这两个循环用来更新球员数据
+
+				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
+				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
+				
+				
+				//team 更新完毕;
+				for(Player tempPlayer: tempMatch.getleftplayers()){
+					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
+				}
+				for(Player tempPlayer: tempMatch.getrightplayers()){
+					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
+				}
+				System.out.println(tempMatch.getNum());
+				
+				//这两个循环用来更新球员数据
+
 			}
-			System.out.print("gg");
 		}
 		
 		//根据具体日期来选择比赛;
-		public ArrayList<MatchVO> getSomeMacthVO(Date date){
+		public ArrayList<MatchVO> getSomeMacthVO(String date){
 			ArrayList<MatchVO> someMatchVO = new ArrayList<MatchVO>();
 			for(MatchVO matchvo : this.getAllMatchVO()){
 				if(matchvo.getDate().equals(date)){

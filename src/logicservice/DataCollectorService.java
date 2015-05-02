@@ -9,8 +9,8 @@ import vo.TeamVO;
 public interface DataCollectorService {
 //	public ArrayList<ArrayList<PlayerVO>> getSeasonHotPlayers();
 //	public ArrayList<ArrayList<TeamVO>> getSeasonHotTeams();
-		public ArrayList<PlayerVO> getTodayAllPlayers() ;
-		public ArrayList<PlayerVO> getTodayHotPlayers() ;
+		public ArrayList<PlayerVO> getSeasonHotPlayers_Score() ;
+		public ArrayList<PlayerVO> getSeasonHotPlayers_Rebound();
 		public ArrayList<PlayerVO> getSeasonHotPlayers_Assist() ;
 		public ArrayList<PlayerVO> getSeasonHotPlayers_Block();
 		public ArrayList<PlayerVO> getSeasonHotPlayers_Steal() ;
@@ -25,4 +25,9 @@ public interface DataCollectorService {
 		public ArrayList<TeamVO> getSeasonHotTeams_3FGP() ;
 		public ArrayList<TeamVO> getSeasonHotTeams_FGP();
 		public ArrayList<TeamVO> getSeasonHotTeams_FTGP() ;
+		public ArrayList<PlayerVO> getSomeDayPlayers_Score(String date);
+		public ArrayList<PlayerVO> getSomeDayPlayers_Rebound(String date);
+		public ArrayList<PlayerVO> getSomeDayPlayers_Assist(String date);
+		public ArrayList<PlayerVO> getSomeDayPlayers_Block(String date);
+		public ArrayList<PlayerVO> getSomeDayPlayers_Steal(String date);
 }

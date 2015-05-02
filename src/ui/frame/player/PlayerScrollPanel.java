@@ -62,9 +62,8 @@ public class PlayerScrollPanel extends JScrollPane  implements ActionListener{
 		
 	}
 	
-	private PlayerVO getPlayer(){
-		return null;
-		//return Controller.playerController.findPlayerVO(playerName);
+	private PlayerVO getPlayer(){		
+		return Controller.playerController.findPlayerVO(playerName);
 	}
 	
 	private void init(String _playerName){

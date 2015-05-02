@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import logicservice.DataCollectorService;
+import vo.MatchVO;
 import vo.PlayerVO;
 import vo.TeamVO;
 
@@ -41,8 +42,11 @@ public class DataCollector implements DataCollectorService{
 	ArrayList<TeamVO> seasonHotTeams_FGP= new ArrayList<TeamVO>();
 	ArrayList<TeamVO> seasonHotTeams_FTGP= new ArrayList<TeamVO>();
 	
-	ArrayList<PlayerVO> todayAllPlayers = new ArrayList<PlayerVO>();
-	ArrayList<PlayerVO> todayHotPlayers = new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> SomeDayHotPlayers_Score= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> SomeDayPlayers_Rebound= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> SomeDayPlayers_Assist= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> SomeDayPlayers_Block= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> SomeDayPlayers_Steal= new ArrayList<PlayerVO>();
 	
 //	//用来更新最新的赛季热点球员信息
 //	public void updateSeasonHotPlayers(){
@@ -109,26 +113,21 @@ public class DataCollector implements DataCollectorService{
 	
 	
 	
-	//更新今天参与比赛的所有球员
-	public void updateTodayAllPlayers(){
-		//调用
-		this.todayAllPlayers = null;
-	}
-	
-	//更新今天的热点球员
-	public void updateTodayHotPlayers(){
-		this.todayHotPlayers = null;
-	}
 
 	//获得今天参与比赛的所有球员
-	public ArrayList<PlayerVO> getTodayAllPlayers() {
-		
-		return todayAllPlayers;
-	}
-
-	//获得今天的热点球员
-	public ArrayList<PlayerVO> getTodayHotPlayers() {
-		return todayHotPlayers;
+	public ArrayList<PlayerVO> getSomeDayAllPlayers(String date) {
+		MatchController matchController = MatchController.getInstance();
+		ArrayList<PlayerVO> someDayPlayerVO = new ArrayList<PlayerVO>();
+		ArrayList<MatchVO> someDayMatch = matchController.getSomeMacthVO(date);
+		for(MatchVO vo : someDayMatch){
+			for(PlayerVO pvo : vo.getLeftplayerlist()){
+				someDayPlayerVO.add(pvo);
+			}
+			for(PlayerVO pvo : vo.getRightplayerlist()){
+				someDayPlayerVO.add(pvo);
+			}
+		}
+		return someDayPlayerVO;
 	}
 	
 	//获得赛季热点球员或球队的套路:
@@ -143,9 +142,6 @@ public class DataCollector implements DataCollectorService{
 	}
 
 	public void setSeasonHotPlayers_Score(ArrayList<PlayerVO> seasonHotPlayers_Score) {
-		PlayerController playerController = PlayerController.getInstance();
-//		ArrayList<PlayerVO> allPlayerVO = playerController.getAllPlayerVO();
-	
 		this.seasonHotPlayers_Score = seasonHotPlayers_Score;
 	}
 
@@ -301,16 +297,50 @@ public class DataCollector implements DataCollectorService{
 		this.seasonHotTeams_FTGP = seasonHotTeams_FTGP;
 	}
 
-	public void setTodayAllPlayers(ArrayList<PlayerVO> todayAllPlayers) {
-		this.todayAllPlayers = todayAllPlayers;
-	}
-
-	public void setTodayHotPlayers(ArrayList<PlayerVO> todayHotPlayers) {
-		this.todayHotPlayers = todayHotPlayers;
-	}
-
-	//还需要把TeamController和PlayerController完善一下;
+	
+	
+	public ArrayList<PlayerVO> getSomeDayPlayers_Score(String date) {
+		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		
-	
-	
+		
+		return SomeDayHotPlayers_Score;
+	}
+
+	public void setSomeDayHotPlayers_Score(
+			ArrayList<PlayerVO> someDayHotPlayers_Score) {
+		SomeDayHotPlayers_Score = someDayHotPlayers_Score;
+	}
+
+	public ArrayList<PlayerVO> getSomeDayPlayers_Rebound(String date) {
+		return SomeDayPlayers_Rebound;
+	}
+
+	public void setSomeDayPlayers_Rebound(ArrayList<PlayerVO> someDayPlayers_Rebound) {
+		SomeDayPlayers_Rebound = someDayPlayers_Rebound;
+	}
+
+	public ArrayList<PlayerVO> getSomeDayPlayers_Assist(String date) {
+		return SomeDayPlayers_Assist;
+	}
+
+	public void setSomeDayPlayers_Assist(ArrayList<PlayerVO> someDayPlayers_Assist) {
+		SomeDayPlayers_Assist = someDayPlayers_Assist;
+	}
+
+	public ArrayList<PlayerVO> getSomeDayPlayers_Block(String date) {
+		return SomeDayPlayers_Block;
+	}
+
+	public void setSomeDayPlayers_Block(ArrayList<PlayerVO> someDayPlayers_Block) {
+		SomeDayPlayers_Block = someDayPlayers_Block;
+	}
+
+	public ArrayList<PlayerVO> getSomeDayPlayers_Steal(String date) {
+		return SomeDayPlayers_Steal;
+	}
+
+	public void setSomeDayPlayers_Steal(ArrayList<PlayerVO> someDayPlayers_Steal) {
+		SomeDayPlayers_Steal = someDayPlayers_Steal;
+	}
+
 }

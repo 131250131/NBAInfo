@@ -15,20 +15,20 @@ public class Main_UI_Test {
 		UIData.setFavoriteTeam("CLE");
 		
 		//初始化后端
-		Controller.init();
-				
+		Controller.init();			
+		
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
 	}
 	
 	public static int getFrameSizeX(){
-		double k = 1;
+		double k = 0.8;
 		double returnValue = 1920 * k;
 		return (int) returnValue;
 	}
 	
 	public static int getFrameSizeY(){
-		double k = 1;
+		double k = 0.8;
 		double returnValue = 1080 * k;
 		return (int) returnValue;
 	}

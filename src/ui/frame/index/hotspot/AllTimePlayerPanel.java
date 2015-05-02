@@ -6,21 +6,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.myUI.ImageLabel;
+import ui.system.Controller;
 import ui.system.ImageSaver;
 import ui.system.UIData;
-
-import com.nba.data.Player;
-import com.nba.initProcess.InitProcess;
-import com.nba.registerList.RegisterList;
+import vo.PlayerVO;
 
 @SuppressWarnings("serial")
 public class AllTimePlayerPanel extends JPanel implements ActionListener{
@@ -32,7 +28,7 @@ public class AllTimePlayerPanel extends JPanel implements ActionListener{
 	
 	String title = ": 赛季数据效率王";
 	
-	Player player;
+	PlayerVO player;
 	
 	JButton button;
 	JLabel nameLabel;
@@ -69,12 +65,12 @@ public class AllTimePlayerPanel extends JPanel implements ActionListener{
 		back2.setVisible(true);
 		this.add(back2);
 			
-		playerIcon = new ImageLabel(new ImageIcon("data/ui/image/action/" + player.getPlayerName() + ".png"), 
+		playerIcon = new ImageLabel(ImageSaver.getPlayerAcitonIcon(player.getPlayerName()), 
 				(int) (375 * UIData.changeX), (int) (-70 * UIData.changeY),(int) (440 * 1.1 * UIData.changeX) , (int) (700 * 1.1 * UIData.changeY));
 		playerIcon.setVisible(true);
 		this.add(playerIcon);
 		
-		ImageLabel teamLabel = new ImageLabel(new ImageIcon("data/newImage/Team/" + player.getTeamShortName() + ".png"),
+		ImageLabel teamLabel = new ImageLabel(ImageSaver.getTeamIcon(player.getTeamShortName()),
 				(int) (360 * UIData.changeX), (int) (100 * UIData.changeY), (int) (420 * UIData.changeX), (int) (420 * UIData.changeY));
 		teamLabel.setVisible(true);
 		this.add(teamLabel);
@@ -97,17 +93,15 @@ public class AllTimePlayerPanel extends JPanel implements ActionListener{
 			}); 
 	}
 	
-	private Player getPlayer(){
-		InitProcess init = new InitProcess();
-		init.init();
-		@SuppressWarnings("unchecked")
-		ArrayList<Player> list = (ArrayList<Player>) RegisterList.saveList.get(3);
-		return list.get(5);
+	private PlayerVO getPlayer(){
+		return Controller.playerController.findPlayerVO("Kevin Garnett");
 	}
 	
 	public void actionPerformed(ActionEvent events) {
 		
-		
+		if(events.getSource() == button){
+			Controller.addPlayerPanel(player.getPlayerName());
+		}
 		
 	}
 

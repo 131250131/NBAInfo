@@ -11,6 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import logic.Player;
 import po.MatchPO;
 import po.PlayerPO;
 import po.TeamPO;
@@ -285,37 +286,12 @@ public class Matchdata implements MatchDataService{
 			match.setLeftTeam(leftteam);
 			match.setRightTeam(rightteam);
 			matches.add(match);
-		}
-		/*序列化
-		 * 
-		 */
-		
-		try {
-			//System.out.println("aaa");
-			FileOutputStream fos = new FileOutputStream("MatchList");
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(matches);
-            oos.close();                  
-		} catch (Exception e) {
-		
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-         
+		}  
 	}
 	@Override
 	public ArrayList<MatchPO> getAllMatch() {
 		// TODO Auto-generated method stub
-		 ArrayList<MatchPO> result =new ArrayList<MatchPO>();
-		 try{
-		 FileInputStream fis = new FileInputStream("MatchList");
-         ObjectInputStream ois = new ObjectInputStream(fis);
-         result= (ArrayList<MatchPO>) ois.readObject();
-		 }catch(Exception e){
-			 System.out.println(e);
-			 return null;
-		 }
-		return result;
+		return this.matches;
 	}
 	
 	
