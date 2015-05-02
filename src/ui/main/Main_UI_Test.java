@@ -15,8 +15,8 @@ public class Main_UI_Test {
 		UIData.setFavoriteTeam("CLE");
 		
 		//初始化后端
-		Controller.init();
-				
+		Controller.init();			
+		
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
 	}

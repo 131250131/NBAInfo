@@ -53,5 +53,9 @@ public class ImageSaver {
 	public static ImageIcon getPlayerIcon(String playerName){
 		return new ImageIcon("data/newImage/portrait/" + playerName + ".png");
 	}
+	
+	public static ImageIcon getPlayerAcitonIcon(String playerName){
+		return new ImageIcon("data/ui/image/action/" + playerName + ".png");
+	}
 
 }
