@@ -6,30 +6,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-
-
-
-
-
 
 import ui.myUI.ImageLabel;
 import ui.system.Controller;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 import vo.PlayerVO;
-
-import com.nba.data.Player;
-import com.nba.initProcess.InitProcess;
-import com.nba.registerList.RegisterList;
-
 
 @SuppressWarnings("serial")
 public class TodayPlayerPanel extends JPanel implements ActionListener{

@@ -23,8 +23,8 @@ public class PlayerPanel extends JPanel{
 		this.setVisible(true);
 		
 		JLabel title = new JLabel("球员信息");
-		title.setBounds((int) (85 * UIData.changeX), (int) (30 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
-		title.setForeground(Color.ORANGE);
+		title.setBounds((int) (285 * UIData.changeX), (int) (30 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
+		title.setForeground(Color.LIGHT_GRAY);
 		title.setFont(new Font("新細明體", Font.BOLD, (int)(30 * UIData.changeY)));
 		title.setVisible(true);
 		this.add(title);
@@ -35,6 +35,12 @@ public class PlayerPanel extends JPanel{
 		int playerLabelHeight = (int) (300 * UIData.changeY);
 		PlayerInfoLabel playerInfoLabel = new PlayerInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, player);
 		this.add(playerInfoLabel);
+		
+		JPanel backPanel = new JPanel();
+		backPanel.setBounds(labelX, 0, labelWidth, height);
+		backPanel.setBackground(new Color(0, 0, 0, 0.8f));
+		backPanel.setVisible(true);
+		this.add(backPanel);
 	}
 
 }

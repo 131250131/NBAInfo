@@ -31,47 +31,47 @@ public class PlayerInfoLabel extends JPanel{
 		this.add(nameLabel);
 		
 		TextLabel text1 = new TextLabel("所属球队: " );
-		text1.setLocation(400, 30);
+		text1.setLocation((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
 		this.add(text1);
 		
 		TextLabel text2 = new TextLabel("身高体重: " + player.getHeight() + "; " + player.getWeight());
-		text2.setLocation(400, 60);
+		text2.setLocation((int) (400 * UIData.changeX), (int) (60 * UIData.changeY));
 		this.add(text2);
 		
 		TextLabel text3 = new TextLabel("擅长位置: " + player.getPosition());
-		text3.setLocation(400, 90);
+		text3.setLocation((int) (400 * UIData.changeX), (int) (90 * UIData.changeY));
 		this.add(text3);
 		
 		TextLabel text4 = new TextLabel("生日日期: " + player.getPlayerBirth());
-		text4.setLocation(400, 120);
+		text4.setLocation((int) (400 * UIData.changeX), (int) (120 * UIData.changeY));
 		this.add(text4);
 		
 		TextLabel text5 = new TextLabel("资历年数: " + player.getExp());
-		text5.setLocation(400, 150);
+		text5.setLocation((int) (400 * UIData.changeX), (int) (150 * UIData.changeY));
 		this.add(text5);
 		
 		TextLabel text6 = new TextLabel("来       自: " + player.getSchool());
-		text6.setLocation(400, 180);
+		text6.setLocation((int) (400 * UIData.changeX), (int) (180 * UIData.changeY));
 		this.add(text6);
 		
 		TextLabel2 text7 = new TextLabel2("场均得分: " + player.getAver_playerScores());
-		text7.setLocation(700, 65);
+		text7.setLocation((int) (700 * UIData.changeX), (int) (65 * UIData.changeY));
 		this.add(text7);
 		
 		TextLabel2 text8 = new TextLabel2("场均篮板: " + player.getAver_playerTotalRebounds());
-		text8.setLocation(900, 65);
+		text8.setLocation((int) (900 * UIData.changeX), (int) (65 * UIData.changeY));
 		this.add(text8);
 		
 		TextLabel2 text9 = new TextLabel2("场均助攻: " + player.getAver_playerAssists());
-		text9.setLocation(1100, 65);
+		text9.setLocation((int) (1100 * UIData.changeX), (int) (65 * UIData.changeY));
 		this.add(text9);
 		
 		TextLabel2 text10 = new TextLabel2("赛季效率: " + player.getPlayerGmScER());
-		text10.setLocation(700, 140);
+		text10.setLocation((int) (700 * UIData.changeX), (int) (140 * UIData.changeY));
 		this.add(text10);
 		
 		TextLabel2 text11 = new TextLabel2("EYE-NBA 智能评分: " + 82);
-		text11.setLocation(900, 140);
+		text11.setLocation((int) (970 * UIData.changeX), (int) (140 * UIData.changeY));
 		this.add(text11);
 		
 		ImageLabel image = new ImageLabel(ImageSaver.getPlayerIcon(player.getPlayerName())
@@ -102,7 +102,7 @@ public class PlayerInfoLabel extends JPanel{
 			this.setForeground(Color.WHITE);
 			this.setBackground(null);
 			this.setVisible(true);
-			this.setSize(300, 30);
+			this.setSize((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
 			this.setFont(new Font("Arail", Font.PLAIN, (int) (20 * UIData.changeY)));
 		}
 	}
@@ -114,7 +114,7 @@ public class PlayerInfoLabel extends JPanel{
 			this.setForeground(Color.LIGHT_GRAY);
 			this.setBackground(null);
 			this.setVisible(true);
-			this.setSize(400, 30);
+			this.setSize((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
 			this.setFont(new Font("Arail", Font.PLAIN, (int) (30 * UIData.changeY)));
 		}
 	}
