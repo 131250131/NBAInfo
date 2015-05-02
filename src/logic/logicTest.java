@@ -16,5 +16,6 @@ public class logicTest {
 		MatchController matchController = MatchController.getInstance();
 		ArrayList<MatchVO> list = matchController.getAllMatchVO();
 		
+		
 	}
 }

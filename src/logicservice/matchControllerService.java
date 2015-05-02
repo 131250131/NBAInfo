@@ -8,7 +8,7 @@ import vo.TeamShortName;
 
 public interface matchControllerService {
 	public ArrayList<MatchVO> getAllMatchVO();
-	public ArrayList<MatchVO> getSomeMacthVO(Date date);
+	public ArrayList<MatchVO> getSomeMacthVO(String date);
 	public ArrayList<MatchVO> getSomeMatchVO(String playerName);
 	public ArrayList<MatchVO> getSomeMatchVO(TeamShortName teamShortName);
 	public Object[][] getTeamData(String team,int matchnum);//查找队伍本场比赛数据，team：left/right,matchnum为场次
