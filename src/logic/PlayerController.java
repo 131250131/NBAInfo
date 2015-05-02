@@ -15,7 +15,7 @@ public class PlayerController implements playerControllerService{
 	PlayerDataService pds=new PlayerReader();
 	ArrayList<Player> allPlayers = new ArrayList<Player>();
 	ArrayList<PlayerVO> allPlayerVO = new ArrayList<PlayerVO>();
-	
+	//MatchController matchController = MatchController.getInstance();
 	private static PlayerController instance =null;
 	
 	//构造函数，完成对球员数据的更新
@@ -41,6 +41,7 @@ public class PlayerController implements playerControllerService{
 	
 	//对球员信息进一步更新;
 	public void updataPlayersInfo_Advanced(Player player,Team myteam){
+	    updatePlayersInfo_Basic();
 		for(Player tempplayer : this.allPlayers){
 			if(tempplayer.getPlayerName().equals(player.getPlayerName())){
 				player.updatePlayer(tempplayer,myteam);
@@ -57,6 +58,7 @@ public class PlayerController implements playerControllerService{
 	}
 	
 	public ArrayList<PlayerVO> getAllPlayerVO(){
+	    createAllPlayerVO();
 		return this.allPlayerVO;
 	}
 	

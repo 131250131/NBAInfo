@@ -84,7 +84,7 @@ public class Player implements Comparable<Player>{
 		playerAge = po.getPlayerAge();
 		exp = po.getExp();
 		school = po.getSchool();
-	
+	    teamShortName="";
 		playerAttends = 0;
 		startTimes = 0;
 		playerAssists = 0;
