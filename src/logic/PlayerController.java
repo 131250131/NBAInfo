@@ -43,15 +43,18 @@ public class PlayerController implements playerControllerService{
 	public void updataPlayersInfo_Advanced(Player player,Team myteam){
 		for(Player tempplayer : this.allPlayers){
 			if(tempplayer.getPlayerName().equals(player.getPlayerName())){
-				player.updatePlayer(tempplayer,myteam);
+				//System.out.println("true");
+				tempplayer.updatePlayer(player,myteam);
 			}
 		}
 	}
 	
 	public void createAllPlayerVO(){
 		for(Player player : this.allPlayers){
+			//System.out.println(player.getPlayerAssists());
 			PlayerVO vo = new PlayerVO();
 			vo.creatplayervo(player);
+			//System.out.println(vo.getPlayerAssists());
 			this.allPlayerVO.add(vo);
 		}
 	}
@@ -206,25 +209,15 @@ public class PlayerController implements playerControllerService{
 	public ArrayList<PlayerVO> getAdvancedPlayers(String type) {
 		// TODO Auto-generated method stub
 		MatchController matchcontroller =MatchController.getInstance();
-		ArrayList<PlayerPO> playerpos =pds.getallplayers();
-		ArrayList<Player> players=new ArrayList<Player>();
 		ArrayList<PlayerVO> playervos=new ArrayList<PlayerVO>();
 		ArrayList<PlayerVO> result =new ArrayList<PlayerVO>();
-		for(PlayerPO playerpo:playerpos){
-			Player player =new Player();
-			player.creatplayer(playerpo);
-			players.add(player);
+		for(PlayerVO playervo:this.allPlayerVO){
+			//System.out.println(matchcontroller.playeradvcal(player.getPlayerName(), player.getAttendedMatches(), type));
+			playervo.setAdvancedP(matchcontroller.playeradvcal(playervo.getPlayerName(), playervo.getAttendedMatches(), type));
+			playervo.setComparetype("进步率");
 		}
-		for(Player player:players){
-			player.setAdvancedP(matchcontroller.playeradvcal(player.getPlayerName(), player.getAttendedMatches(), type));
-			player.setcompare("进步率");
-		}
-		Collections.sort(players);
-		for(Player player:players){
-			PlayerVO playervo =new PlayerVO();
-			playervo.creatplayervo(player);
-			playervos.add(playervo);
-		}
+		playervos=this.allPlayerVO;
+		Collections.sort(playervos);
 		result.add(playervos.get(0));
 		result.add(playervos.get(1));
 		result.add(playervos.get(2));

@@ -334,6 +334,7 @@ public class Matchdata implements MatchDataService{
 		int teamFouls = 0;
 		int teamScores = 0;	
 		if(type.equals("left")){
+			team.setShortName(leftTeamShortName);
 			team.addAttendmatches(matchnum);
 			if(lscore>rscore&&lscore>100){
 				team.addwinMyTeamMoreThan100();
@@ -378,6 +379,7 @@ public class Matchdata implements MatchDataService{
 			}		
 		}
 		else if(type.equals("right")){
+			team.setShortName(rightTeamShortName);
 			team.addAttendmatches(matchnum);
 			if(rscore>lscore&&rscore>100){
 				team.addwinMyTeamMoreThan100();

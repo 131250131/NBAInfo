@@ -49,6 +49,8 @@ public class TeamController implements teamControllerService{
 	public void updateTeamInfo_Advanced(Team myTeam,Team oppoTeam){
 		for(Team team:this.allTeams){
 			if(team.getShortName().equals(myTeam.getShortName())){
+				//System.out.println("true");
+				//System.out.println("p"+myTeam.getTeamAssists());
 				team.updateTeamInfo(myTeam, oppoTeam);
 			}
 		}
@@ -61,6 +63,7 @@ public class TeamController implements teamControllerService{
 	}
 	
 	public ArrayList<TeamVO> getSeasonAllTeamInfo() {
+		createSeasonAllTeamInfo();
 		return this.allTeamVO;
 	}
 

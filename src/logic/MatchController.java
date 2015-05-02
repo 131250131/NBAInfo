@@ -65,7 +65,7 @@ public class MatchController implements matchControllerService{
 				Match tempMatch = new Match();
 				tempMatch.creatmatch(matchpo);//match数据更新;
 				this.allMatches.add(tempMatch);
-				System.out.println(tempMatch.getNum());
+				//System.out.println(tempMatch.getNum());
 
 				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
 				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
@@ -74,11 +74,12 @@ public class MatchController implements matchControllerService{
 				//team 更新完毕;
 				for(Player tempPlayer: tempMatch.getleftplayers()){
 					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
+					//System.out.println(tempPlayer.getPlayerAssists());
 				}
 				for(Player tempPlayer: tempMatch.getrightplayers()){
 					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
 				}
-				System.out.println(tempMatch.getNum());
+				//System.out.println(tempMatch.getNum());
 				
 				//这两个循环用来更新球员数据
 
@@ -138,18 +139,16 @@ public class MatchController implements matchControllerService{
 		
 		
 		public double playeradvcal(String name,ArrayList<Integer> attendedMatches,String type){
-			Matchdata matchdata=new Matchdata();
-        	ArrayList<MatchPO> matchpos=new ArrayList<MatchPO>();
         	ArrayList<Match> resultmatch=new ArrayList<Match>();
+        	//System.out.println(attendedMatches.size());
         	double form_total=0;
             double now_total=0;
         	double now_aveg=0;
         	double form_aveg=0;
         	int have=0;
-        	matchpos=matchdata.getAllMatch();
-        	if(matchpos!=null){
+        	
         	for(Integer i:attendedMatches){
-        		for(MatchPO matchpo:matchpos){
+        		for(MatchPO matchpo:allMatchPO){
         			if(i.equals(matchpo.getNum())){
         				Match match=new Match();
         				match.creatmatch(matchpo);
@@ -163,6 +162,8 @@ public class MatchController implements matchControllerService{
         		return 0;
         	}
         	else{
+        		//System.out.println("true");
+        		     
         			for(int i=0;i<5;i++){   
         				    have=0;
                 			ArrayList<Player> l=resultmatch.get(i).getleftplayers();
@@ -215,10 +216,7 @@ public class MatchController implements matchControllerService{
         	
         	
         	}
-        	else{
-        		return 0;
-     	}
-		}
+        	
 
 		public ArrayList<MatchVO> getMatchOfPlayer(String playerName) {
 			ArrayList<MatchVO> list = new ArrayList<MatchVO>();

@@ -211,7 +211,7 @@ public class Player implements Comparable<Player>{
 		if(player.isStart==true){
 			startTimes++;
 		}
-		
+		attendedMatches.add(player.getAttendedMatches().get(0));
 		playerFG = playerFG + player.getPlayerFG();
 		playerFGTry = playerFGTry + player.getPlayerFGTry();
 		player3FG = player3FG + player.getPlayer3FG();
