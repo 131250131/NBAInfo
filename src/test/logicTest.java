@@ -21,9 +21,21 @@ public class logicTest {
 		playerController = mainController.getPlayerController();
 		teamController = mainController.getTeamController();
 		matchController = mainController.getMatchController();
+		/*
 		ArrayList<TeamVO> t=teamController.getSeasonAllTeamInfo();
 		for(TeamVO te:t){
 			System.out.println();
+		}
+		*/
+		/*
+		ArrayList<PlayerVO> p=playerController.getSeasonHotPlayers_3FGP();
+		for(PlayerVO pl:p){
+			System.out.println(pl.getTeamShortName());
+		}
+		*/
+		ArrayList<PlayerVO> p=playerController.getplayerbyteam("MIA");
+		for(PlayerVO pl:p){
+			System.out.println(pl.getTeamShortName());
 		}
 	}
 	

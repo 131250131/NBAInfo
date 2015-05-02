@@ -78,6 +78,7 @@ public class Matchdata implements MatchDataService{
 	        		String[] teamname=context[1].split("-");
 	        		leftTeamShortName=teamname[0];
 	        		rightTeamShortName=teamname[1];
+	        		if(leftTeamShortName.equals(" ")||rightTeamShortName.equals(" ")) break;
 	        		line++;
 	        	}
 	        	if(line==2){
