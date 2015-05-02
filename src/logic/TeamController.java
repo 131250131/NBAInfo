@@ -31,7 +31,7 @@ public class TeamController implements teamControllerService{
 	       }
 	      return instance ;
 	}
-	//下面两个方法不会并没有读到任何球队啊，根据比赛更新球队的方法是哪个？
+
 	public void updateTeamInfo_Basic(){
 		ArrayList<TeamPO> allTeamPO =  new ArrayList<TeamPO>();
 		try {

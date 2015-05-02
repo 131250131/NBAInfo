@@ -11,6 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import logic.Player;
 import po.MatchPO;
 import po.PlayerPO;
 import po.TeamPO;

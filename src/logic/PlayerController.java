@@ -41,7 +41,6 @@ public class PlayerController implements playerControllerService{
 	
 	//对球员信息进一步更新;
 	public void updataPlayersInfo_Advanced(Player player,Team myteam){
-	    updatePlayersInfo_Basic();
 		for(Player tempplayer : this.allPlayers){
 			if(tempplayer.getPlayerName().equals(player.getPlayerName())){
 				player.updatePlayer(tempplayer,myteam);
