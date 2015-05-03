@@ -57,7 +57,7 @@ public class Matchdata implements MatchDataService{
 	        String lineTxt = null;
 	        while((lineTxt = bufferedReader.readLine() ) != null){
 	        	String[] context=lineTxt.split(";");
-	        	System.out.println(lineTxt);
+	        	//System.out.println(lineTxt);
 	        	//System.out.println(context.length);
 	        	if(context.length==1){
 	        	
@@ -127,6 +127,7 @@ public class Matchdata implements MatchDataService{
 	        			int minute =Integer.parseInt(timestring[0])*60;
 	        			int second =Integer.parseInt(timestring[1]);
 	        			int time =minute + second;
+	        			
 	        			int playerFG = Integer.parseInt(context[3]);		
 	        			int playerFGTry = Integer.parseInt(context[4]);
 	        			int player3FG = Integer.parseInt(context[5]);
