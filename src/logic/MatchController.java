@@ -232,6 +232,16 @@ public class MatchController implements matchControllerService{
 		@Override
 		public ArrayList<MatchVO> gettodaysmatch() {
 			// TODO Auto-generated method stub
+			
+			return null;
+		}
+
+		@Override
+		public ArrayList<String> getDatehavematches() {
+			// TODO Auto-generated method stub
+			for(MatchPO matchpo:this.allMatchPO){
+				
+			}
 			return null;
 		}
 			

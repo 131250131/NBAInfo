@@ -15,5 +15,5 @@ public interface matchControllerService {
 	public ArrayList<MatchVO> getMatchOfPlayer(String playerName);
 	public MatchVO getMatch(int num);//根据场次查找比赛
 	public ArrayList<MatchVO> gettodaysmatch();
-	
+	public ArrayList<String>  getDatehavematches();
 }

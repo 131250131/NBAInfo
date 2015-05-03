@@ -152,7 +152,7 @@ public class Matchdata implements MatchDataService{
 	        			leftplayerlist.add(player);
 	        			}
 	        			catch(Exception e){
-	        				e.printStackTrace();
+	      
 	        				break;
 	        			}
 	        		}
@@ -188,7 +188,7 @@ public class Matchdata implements MatchDataService{
 		        			rightplayerlist.add(player);
 		        			}
 		        			catch(Exception e){
-		        				e.printStackTrace();
+		        			
 		        				break;
 		        			}
 	        		}
