@@ -14,7 +14,7 @@ public class Controller {
 	public static teamControllerService teamController;
 	public static matchControllerService matchController;
 	
-	public static String currentPlayerName;
+	public static String currentPlayerName, currentTeamName;
 	
 	public static void init(){
 		mainControllerService mainController = new MainController();
@@ -27,6 +27,20 @@ public class Controller {
 	public static void addPlayerPanel(String playerName){
 		currentPlayerName = playerName;
 		LargerPanel.addPlayerPanel.doClick();
+		switch(UIData.currentStep){
+		case 1:
+			LargerScrollPane.turnto2.doClick();break;
+		case 2:
+			LargerScrollPane.turnto1.doClick();break;
+		case 3:
+			LargerScrollPane.turnto0.doClick();break;
+		}	
+	}
+	
+	public static void addTeamPanel(String teamShortName){
+		
+		currentTeamName = teamShortName;
+		LargerPanel.addTeamPanel.doClick();
 		switch(UIData.currentStep){
 		case 1:
 			LargerScrollPane.turnto2.doClick();break;
