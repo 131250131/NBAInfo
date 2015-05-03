@@ -567,7 +567,7 @@ public class Player implements Comparable<Player>{
 		}
 		
 		public int getPlayerPlayTime(){
-			return (attendedMatches.size()==0)?0:(playerPlayTime / attendedMatches.size() ) / 60;
+			return playerPlayTime;
 		}
 		
 		public int getPlayerSteals() {

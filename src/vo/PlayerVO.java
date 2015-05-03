@@ -892,11 +892,12 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				this.exp=player.getExp();
 				this.school=player.getSchool();
 				playerPlayTime=player.getPlayerPlayTime();
+				
 				//球员单项总数据;
 				this.playerAttends=player.getPlayerAttends();
 				this.playerScores=player.getPlayerScores();
 				this.playerAssists=player.getPlayerAssists();
-				this.playerPlayTime=player.getPlayerPlayTime();
+				//this.playerPlayTime=player.getPlayerPlayTime();
 				this.playerFG=player.getPlayerFG();
 				this.playerFGTry=player.getPlayerFGTry();
 				this.player3FG=player.getPlayer3FG();
@@ -912,7 +913,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				this.playerFouls=player.getPlayerFouls();
 				this.teamShortName=player.getTeamShortName();
 				this.attendedMatches=player.getAttendedMatches();
-				
+			
 				//球员场均数据;
 				this.aver_playerScores=this.getAver_playerScores();
 				this.aver_playerAssists=this.getAver_playerAssists();
