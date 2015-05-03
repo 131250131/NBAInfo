@@ -6,7 +6,7 @@ import logic.Player;
 import logic.TeamController;
 
 public class PlayerVO implements Comparable<PlayerVO>{
-		private int scores=0;
+		
 		private double advancedP=0;
 		private String comparetype="";
 		private int double_double=0;
@@ -259,14 +259,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			private double allEnemyOffenceTimes;
 			
 			
-			
-			public int getScores() {
-				return scores;
-			}
-
-			public void setScores(int scores) {
-				this.scores = scores;
-			}
+		
 
 			public void setAttendedMatches(ArrayList<Integer> attendedMatches) {
 				this.attendedMatches = attendedMatches;
@@ -397,67 +390,67 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			}
 
 			public double getAver_playerAssists() {
-				return (playerAttends==0)?0:playerAssists / playerAttends;
+				return (playerAttends==0)?0:playerAssists / (playerAttends+0.0);
 			}
 
 			public double getAver_playerPlayTime() {
-				return (playerAttends==0)?0:playerPlayTime / playerAttends;
+				return (playerAttends==0)?0:playerPlayTime / (playerAttends+0.0);
 			}
 
 			public double getAver_playerFG() {
-				return (playerAttends==0)?0:playerFG / playerAttends;
+				return (playerAttends==0)?0:playerFG / (playerAttends+0.0);
 			}
 
 			public double getAver_playerFGTry() {
-				return (playerAttends==0)?0:playerFGTry / playerAttends;
+				return (playerAttends==0)?0:playerFGTry / (playerAttends+0.0);
 			}
 
 			public double getAver_player3FG() {
-				return  (playerAttends==0)?0:player3FG / playerAttends;
+				return  (playerAttends==0)?0:player3FG / (playerAttends+0.0);
 			}
 
 			public double getAver_player3FGTry() {
-				return (playerAttends==0)?0:player3FGTry / playerAttends;
+				return (playerAttends==0)?0:player3FGTry / (playerAttends+0.0);
 			}
 
 			public double getAver_playerFTG() {
-				return  (playerAttends==0)?0:playerFTG / playerAttends;
+				return  (playerAttends==0)?0:playerFTG / (playerAttends+0.0);
 			}
 
 			public double getAver_playerFTGTry() {
-				return (playerAttends==0)?0:playerFTGTry / playerAttends;
+				return (playerAttends==0)?0:playerFTGTry / (playerAttends+0.0);
 			}
 
 			public double getAver_playerOffenceRebounds() {
-				return (playerAttends==0)?0:playerOffenceRebounds / playerAttends;
+				return (playerAttends==0)?0:playerOffenceRebounds / (playerAttends+0.0);
 			}
 
 			public double getAver_playerDeffenceRebounds() {
-				return  (playerAttends==0)?0:playerDeffenceRebounds / playerAttends;
+				return  (playerAttends==0)?0:playerDeffenceRebounds / (playerAttends+0.0);
 			}
 
 			public double getAver_playerTotalRebounds() {
-				return  (playerAttends==0)?0:playerTotalRebounds / playerAttends;
+				return  (playerAttends==0)?0:playerTotalRebounds / (playerAttends+0.0);
 			}
 
 			public double getAver_playerSteals() {
-				return (playerAttends==0)?0:playerSteals / playerAttends;
+				return (playerAttends==0)?0:playerSteals / (playerAttends+0.0);
 			}
 
 			public double getAver_playerBlocks() {
-				return (playerAttends==0)?0:playerBlocks / playerAttends;
+				return (playerAttends==0)?0:playerBlocks / (playerAttends+0.0);
 			}
 
 			public double getAver_playerTurnovers() {
-				return (playerAttends==0)?0:playerTurnovers / playerAttends;
+				return (playerAttends==0)?0:playerTurnovers / (playerAttends+0.0);
 			}
 
 			public double getAver_playerFouls() {
-				return (playerAttends==0)?0:playerFouls / playerAttends;
+				return (playerAttends==0)?0:playerFouls / (playerAttends+0.0);
 			}
 
 			public double getAver_playerScores() {
-				return (playerAttends==0)?0:playerScores / playerAttends;
+				return (playerAttends==0)?0:playerScores / (playerAttends+0.0);
 			}
 
 			public double getPlayerFGP() {
@@ -900,7 +893,8 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				this.school=player.getSchool();
 				
 				//球员单项总数据;
-				this.scores=player.getScores();
+				this.playerAttends=player.getPlayerAttends();
+				this.playerScores=player.getPlayerScores();
 				this.playerAssists=player.getPlayerAssists();
 				this.playerPlayTime=player.getPlayerPlayTime();
 				this.playerFG=player.getPlayerFG();
