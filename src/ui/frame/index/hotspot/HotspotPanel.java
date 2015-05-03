@@ -8,8 +8,10 @@ import javax.swing.JPanel;
 
 import ui.myUI.BackColorPanel;
 import ui.myUI.ImageLabel;
+import ui.system.Controller;
 import ui.system.ImageSaver;
 import ui.system.UIData;
+import vo.PlayerVO;
 
 @SuppressWarnings("serial")
 public class HotspotPanel extends JPanel{
@@ -34,17 +36,20 @@ public class HotspotPanel extends JPanel{
 		
 		HotspotRankPanel hotspotRankPanel = new HotspotRankPanel();
 		this.add(hotspotRankPanel);
-
-		InfoPanel_All infoAll = new InfoPanel_All();
-		this.add(infoAll);
+	
+		PlayerVO todayPlayer = getTodayPlayer();
+		PlayerVO allPlayer = getAllPlayer();
 		
-		InfoPanel_Today infoToday = new InfoPanel_Today();
+		InfoPanel_Today infoToday = new InfoPanel_Today(todayPlayer);
 		this.add(infoToday);
 		
-		TodayPlayerPanel todayPlayerPanel = new TodayPlayerPanel();
+		TodayPlayerPanel todayPlayerPanel = new TodayPlayerPanel(todayPlayer);
 		this.add(todayPlayerPanel);
 		
-		AllTimePlayerPanel allTimePlayerPanel = new AllTimePlayerPanel();
+		InfoPanel_All infoAll = new InfoPanel_All(allPlayer);
+		this.add(infoAll);
+		
+		AllTimePlayerPanel allTimePlayerPanel = new AllTimePlayerPanel(allPlayer);
 		this.add(allTimePlayerPanel);
 		
 		ImageLabel backgroundPic = new ImageLabel(ImageSaver.getIcon("热点球员背景"), HotspotBounds.rankingPanelX
@@ -72,6 +77,14 @@ public class HotspotPanel extends JPanel{
 		
 		BackColorPanel backPanel = new BackColorPanel(0, 0, width, height, 2);
 		this.add(backPanel);
+	}
+	
+	private PlayerVO getTodayPlayer(){
+		return Controller.playerController.findPlayerVO("Chris Paul");
+	}
+	
+	private PlayerVO getAllPlayer(){
+		return Controller.playerController.findPlayerVO("Kevin Garnett");
 	}
 
 }
