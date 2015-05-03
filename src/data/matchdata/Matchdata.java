@@ -68,7 +68,7 @@ public class Matchdata implements MatchDataService{
 	        		count++;
 	        	}
 	        	if(line==2){
-	        		System.out.println(lineTxt);
+	        		//System.out.println(lineTxt);
 	        		String scores1=context[0];
 	        		String scores2=context[1];
 	        		String scores3=context[2];
