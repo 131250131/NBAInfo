@@ -31,6 +31,7 @@ public class DataCollector implements DataCollectorService{
 	ArrayList<PlayerVO> seasonHotPlayers_3FGP= new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> seasonHotPlayers_FGP= new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> seasonHotPlayers_FTGP= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> seasonHotPlayers_GmScER= new ArrayList<PlayerVO>();
 	
 	/*赛季热点球队： 依据筛选条件（筛选条件包括但不仅限于以 下几个方面：场均得分，场均篮板，场均助攻，场均盖帽， 场均抢断，三分命中率，投篮命中率，罚球命中率等）*/
 	ArrayList<TeamVO> seasonHotTeams_Score= new ArrayList<TeamVO>();
@@ -213,6 +214,13 @@ public class DataCollector implements DataCollectorService{
 		return seasonHotPlayers_FTGP;
 	}
 
+	public ArrayList<PlayerVO> getSeasonHotPlayers_GmScER() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_GmScER = playerController.getSeasonHotPlayers_GmScER();
+		return seasonHotPlayers_GmScER;
+	}
+
+	
 	public void setSeasonHotPlayers_FTGP(ArrayList<PlayerVO> seasonHotPlayers_FTGP) {
 		this.seasonHotPlayers_FTGP = seasonHotPlayers_FTGP;
 	}
@@ -362,6 +370,21 @@ public class DataCollector implements DataCollectorService{
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo : someDayPlayer){
 			pvo.setComparetype("抢断");
+		}
+		Collections.sort(someDayPlayer);
+		
+		for(int i=10;i<someDayPlayer.size();i++){
+			someDayPlayer.remove(i);
+		}
+		return someDayPlayer;
+	}
+
+
+	@Override
+	public ArrayList<PlayerVO> getSomeDayPlayers_GmScER(String date) {
+		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
+		for(PlayerVO pvo : someDayPlayer){
+			pvo.setComparetype("效率");
 		}
 		Collections.sort(someDayPlayer);
 		

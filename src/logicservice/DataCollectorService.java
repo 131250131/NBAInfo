@@ -17,6 +17,8 @@ public interface DataCollectorService {
 		public ArrayList<PlayerVO> getSeasonHotPlayers_3FGP() ;
 		public ArrayList<PlayerVO> getSeasonHotPlayers_FGP();
 		public ArrayList<PlayerVO> getSeasonHotPlayers_FTGP() ;
+		public ArrayList<PlayerVO> getSeasonHotPlayers_GmScER() ;
+		
 		public ArrayList<TeamVO> getSeasonHotTeams_Score();
 		public ArrayList<TeamVO> getSeasonHotTeams_Rebound();
 		public ArrayList<TeamVO> getSeasonHotTeams_Assist();
@@ -25,10 +27,12 @@ public interface DataCollectorService {
 		public ArrayList<TeamVO> getSeasonHotTeams_3FGP() ;
 		public ArrayList<TeamVO> getSeasonHotTeams_FGP();
 		public ArrayList<TeamVO> getSeasonHotTeams_FTGP() ;
+		
 		public ArrayList<PlayerVO> getSomeDayPlayers_Score(String date);
 		public ArrayList<PlayerVO> getSomeDayPlayers_Rebound(String date);
 		public ArrayList<PlayerVO> getSomeDayPlayers_Assist(String date);
 		public ArrayList<PlayerVO> getSomeDayPlayers_Block(String date);
 		public ArrayList<PlayerVO> getSomeDayPlayers_Steal(String date);
+		public ArrayList<PlayerVO> getSomeDayPlayers_GmScER(String date);
 		public ArrayList<PlayerVO> getSomeDayAllPlayers(String date);
 }

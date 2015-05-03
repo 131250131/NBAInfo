@@ -269,6 +269,21 @@ public class PlayerController implements playerControllerService{
 		return tempList;
 	} 
 	
+
+	public ArrayList<PlayerVO> getSeasonHotPlayers_GmScER() {
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="效率";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	}
+	
 	public ArrayList<PlayerVO> getAdvancedPlayers(String type) {
 		MatchController matchcontroller =MatchController.getInstance();
 		ArrayList<PlayerVO> playervos=new ArrayList<PlayerVO>();
@@ -288,7 +303,6 @@ public class PlayerController implements playerControllerService{
 		return result;
 	}
 
-	@Override
 	public ArrayList<PlayerVO> getplayerbyteam(String teamname) {
 		// TODO Auto-generated method stub
 		createAllPlayerVO();
@@ -301,6 +315,7 @@ public class PlayerController implements playerControllerService{
 		}
 		return result;
 	}
+
 
 
 }
