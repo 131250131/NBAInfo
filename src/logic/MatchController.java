@@ -228,6 +228,12 @@ public class MatchController implements matchControllerService{
 			}
 			return list;
 		}
+
+		@Override
+		public ArrayList<MatchVO> gettodaysmatch() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 			
 }
 
