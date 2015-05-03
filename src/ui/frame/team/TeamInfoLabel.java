@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import ui.myUI.ImageLabel;
 import ui.system.ChineseTranslator;
+import ui.system.DataTransform;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 import vo.TeamVO;
@@ -55,28 +56,32 @@ public class TeamInfoLabel extends JPanel{
 		text6.setLocation((int) (400 * UIData.changeX), (int) (180 * UIData.changeY));
 		this.add(text6);
 		
-		TextLabel2 text7 = new TextLabel2("场均得分: " + team.getAver_teamScores());
-		text7.setLocation((int) (700 * UIData.changeX), (int) (65 * UIData.changeY));
+		TextLabel2 text7 = new TextLabel2("场均得分: " + DataTransform.transDoubleTopointXXString(team.getAver_teamScores()));
+		text7.setLocation((int) (900 * UIData.changeX), (int) (30 * UIData.changeY));
 		this.add(text7);
 		
-		TextLabel2 text8 = new TextLabel2("场均篮板: " + team.getAver_teamTotalRebounds());
-		text8.setLocation((int) (900 * UIData.changeX), (int) (65 * UIData.changeY));
+		TextLabel2 text8 = new TextLabel2("场均篮板: " + DataTransform.transDoubleTopointXXString(team.getAver_teamTotalRebounds()));
+		text8.setLocation((int) (900 * UIData.changeX), (int) (60 * UIData.changeY));
 		this.add(text8);
 		
-		TextLabel2 text9 = new TextLabel2("场均助攻: " + team.getAver_teamAssists());
-		text9.setLocation((int) (1100 * UIData.changeX), (int) (65 * UIData.changeY));
+		TextLabel2 text9 = new TextLabel2("场均助攻: " + DataTransform.transDoubleTopointXXString(team.getAver_teamAssists()));
+		text9.setLocation((int) (900 * UIData.changeX), (int) (90 * UIData.changeY));
 		this.add(text9);
 		
-//		TextLabel2 text10 = new TextLabel2("赛季效率: " + team.get);
-//		text10.setLocation((int) (700 * UIData.changeX), (int) (140 * UIData.changeY));
-//		this.add(text10);
+		TextLabel2 text10 = new TextLabel2("球队胜率: " + DataTransform.transDoubleTopointXXString(team.getWinRate()));
+		text10.setLocation((int) (900 * UIData.changeX), (int) (150 * UIData.changeY));
+		this.add(text10);
 		
-		TextLabel2 text11 = new TextLabel2("EYE-NBA 智能评分: " + 82);
-		text11.setLocation((int) (970 * UIData.changeX), (int) (140 * UIData.changeY));
+		TextLabel2 text11 = new TextLabel2("EYE-NBA 智能评分: " + team.getTeamOffE());
+		text11.setLocation((int) (900 * UIData.changeX), (int) (180 * UIData.changeY));
 		this.add(text11);
 		
+		TextLabel2 text12 = new TextLabel2("平均上场: " + team.getTeamDefE());
+		text12.setLocation((int) (900 * UIData.changeX), (int) (120 * UIData.changeY));
+		this.add(text12);
+		
 		ImageLabel image = new ImageLabel(ImageSaver.getTeamIcon(team.getShortName())
-				, (int) (30 * UIData.changeX), (int) (30 * UIData.changeY), (int) (240 * UIData.changeX), (int) (200 * UIData.changeY));
+				, (int) (30 * UIData.changeX), (int) (0 * UIData.changeY), (int) (240 * UIData.changeX), (int) (240 * UIData.changeY));
 		this.add(image);
 		
 		int bacX = (int) (0 * UIData.changeX);
@@ -111,7 +116,7 @@ public class TeamInfoLabel extends JPanel{
 			this.setBackground(null);
 			this.setVisible(true);
 			this.setSize((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
-			this.setFont(new Font("Arail", Font.PLAIN, (int) (30 * UIData.changeY)));
+			this.setFont(new Font("Arail", Font.PLAIN, (int) (20 * UIData.changeY)));
 		}
 	}
 

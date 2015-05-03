@@ -15,10 +15,13 @@ public class Main_UI_Test {
 		UIData.setFavoriteTeam("CLE");
 		
 		//初始化后端
-		Controller.init();			
+		Controller.init();	
+		
+		System.out.println(Controller.matchController.getSomeMatchVO("BOS").get(0).getScore());
 		
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
+		
 	}
 	
 	public static int getFrameSizeX(){

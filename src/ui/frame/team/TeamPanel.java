@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.system.ImageSaver;
 import ui.system.UIData;
 import vo.TeamVO;
 
@@ -38,7 +39,7 @@ public class TeamPanel extends JPanel{
 		
 		JPanel backPanel = new JPanel();
 		backPanel.setBounds(labelX, 0, labelWidth, height);
-		backPanel.setBackground(new Color(0, 0, 0, 0.8f));
+		backPanel.setBackground(ImageSaver.getTeamBackColor(team.getShortName()));
 		backPanel.setVisible(true);
 		this.add(backPanel);
 	}
