@@ -57,7 +57,7 @@ public class Matchdata implements MatchDataService{
 	        String lineTxt = null;
 	        while((lineTxt = bufferedReader.readLine() ) != null){
 	        	String[] context=lineTxt.split(";");
-	        	System.out.println(lineTxt);
+	        	//System.out.println(lineTxt);
 	        	//System.out.println(context.length);
 	        	if(context.length==1){
 	        	
