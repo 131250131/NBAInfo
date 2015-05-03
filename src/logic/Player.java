@@ -148,6 +148,8 @@ public class Player implements Comparable<Player>{
 		teamShortName=playerpo.getTeamShortName();
 		attendedMatches=playerpo.getAttendedMatches();
 		advancedP=playerpo.getAdvancedP();
+		playerPlayTime=playerpo.getPlayerPlayTime();
+		
 	}
 
 	
@@ -205,7 +207,7 @@ public class Player implements Comparable<Player>{
 		playerAttends++;
 		playerPlayTime = playerPlayTime + player.getPlayerPlayTime();
 		
-		//System.out.println(playerPlayTime);
+		//System.out.println("gg"+player.getPlayerPlayTime());
 		
 		//是否首发
 		if(player.isStart==true){
@@ -565,7 +567,7 @@ public class Player implements Comparable<Player>{
 		}
 		
 		public int getPlayerPlayTime(){
-			return (playerAttends==0)?0:(playerPlayTime / playerAttends) / 60;
+			return playerPlayTime;
 		}
 		
 		public int getPlayerSteals() {

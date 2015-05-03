@@ -1,4 +1,4 @@
-package ui.frame.player;
+package ui.frame.team;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,19 +11,19 @@ import ui.system.ChineseTranslator;
 import ui.system.DataTransform;
 import ui.system.ImageSaver;
 import ui.system.UIData;
-import vo.PlayerVO;
+import vo.TeamVO;
 
 @SuppressWarnings("serial")
-public class PlayerInfoLabel extends JPanel{
-		
-	public PlayerInfoLabel(int x, int y, int width, int height, PlayerVO player){
+public class TeamInfoLabel extends JPanel{
+	
+	public TeamInfoLabel(int x, int y, int width, int height, TeamVO team){
 		this.setVisible(true);
 		this.setBounds(x, y, width, height);
 		this.setLayout(null);
 		//this.setOpaque(false);
 		this.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
 		
-		JLabel nameLabel = new JLabel(player.getPlayerName(), JLabel.CENTER);
+		JLabel nameLabel = new JLabel(ChineseTranslator.TeamNameTrans(team.getShortName()), JLabel.CENTER);
 		nameLabel.setBounds((int) (30 * UIData.changeX), (int) (245 * UIData.changeY)
 				, (int) (244 * UIData.changeX), (int) (30 * UIData.changeY));
 		nameLabel.setForeground(Color.WHITE);
@@ -32,61 +32,57 @@ public class PlayerInfoLabel extends JPanel{
 		nameLabel.setFont(new Font("新細明體", Font.PLAIN, (int) (30 * UIData.changeY)));
 		this.add(nameLabel);
 		
-		TextLabel text1 = new TextLabel("所属球队: " + ChineseTranslator.TeamNameTrans(player.getTeamShortName()));
+		TextLabel text1 = new TextLabel("球队全名: " + team.getTeamName());
 		text1.setLocation((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
 		this.add(text1);
 		
-		TextLabel text2 = new TextLabel("身高体重: " + player.getHeight() + "; " + player.getWeight());
+		TextLabel text2 = new TextLabel("所属分部: " + ChineseTranslator.teamEastOrWest(team.isEast()));
 		text2.setLocation((int) (400 * UIData.changeX), (int) (60 * UIData.changeY));
 		this.add(text2);
 		
-		TextLabel text3 = new TextLabel("擅长位置: " + player.getPosition());
+		TextLabel text3 = new TextLabel("所属分区: " + ChineseTranslator.teamDivisionTrans(team.getDivision()));
 		text3.setLocation((int) (400 * UIData.changeX), (int) (90 * UIData.changeY));
 		this.add(text3);
 		
-		TextLabel text4 = new TextLabel("生日日期: " + player.getPlayerBirth());
+		TextLabel text4 = new TextLabel("创始日期: " + team.getBirthYear());
 		text4.setLocation((int) (400 * UIData.changeX), (int) (120 * UIData.changeY));
 		this.add(text4);
 		
-		TextLabel text5 = new TextLabel("资历年数: " + player.getExp());
+		TextLabel text5 = new TextLabel("体育馆名称: " + team.getGymName());
 		text5.setLocation((int) (400 * UIData.changeX), (int) (150 * UIData.changeY));
 		this.add(text5);
 		
-		TextLabel text6 = new TextLabel("来       自: " + player.getSchool());
+		TextLabel text6 = new TextLabel("球队所在地: " + team.getLocation());
 		text6.setLocation((int) (400 * UIData.changeX), (int) (180 * UIData.changeY));
 		this.add(text6);
 		
-		TextLabel2 text7 = new TextLabel2("场均得分: " + DataTransform.transDoubleTopointXXString(player.getAver_playerScores()));
+		TextLabel2 text7 = new TextLabel2("场均得分: " + DataTransform.transDoubleTopointXXString(team.getAver_teamScores()));
 		text7.setLocation((int) (900 * UIData.changeX), (int) (30 * UIData.changeY));
 		this.add(text7);
 		
-		TextLabel2 text8 = new TextLabel2("场均篮板: " + DataTransform.transDoubleTopointXXString(player.getAver_playerTotalRebounds()));
+		TextLabel2 text8 = new TextLabel2("场均篮板: " + DataTransform.transDoubleTopointXXString(team.getAver_teamTotalRebounds()));
 		text8.setLocation((int) (900 * UIData.changeX), (int) (60 * UIData.changeY));
 		this.add(text8);
 		
-		TextLabel2 text9 = new TextLabel2("场均助攻: " + DataTransform.transDoubleTopointXXString(player.getAver_playerAssists()));
+		TextLabel2 text9 = new TextLabel2("场均助攻: " + DataTransform.transDoubleTopointXXString(team.getAver_teamAssists()));
 		text9.setLocation((int) (900 * UIData.changeX), (int) (90 * UIData.changeY));
 		this.add(text9);
 		
-		TextLabel2 text10 = new TextLabel2("赛季效率: " + DataTransform.transDoubleTopointXXString(player.getPlayerGmScER()));
+		TextLabel2 text10 = new TextLabel2("球队胜率: " + DataTransform.transDoubleTopointXXString(team.getWinRate()));
 		text10.setLocation((int) (900 * UIData.changeX), (int) (150 * UIData.changeY));
 		this.add(text10);
 		
-		TextLabel2 text11 = new TextLabel2("EYE-NBA 智能评分: " + DataTransform.getNBAEYEScore(player.getPlayerGmScER()));
+		TextLabel2 text11 = new TextLabel2("EYE-NBA 智能评分: " + team.getTeamOffE());
 		text11.setLocation((int) (900 * UIData.changeX), (int) (180 * UIData.changeY));
 		this.add(text11);
 		
-		TextLabel2 text12 = new TextLabel2("平均上场: " + DataTransform.transDoubleTopointXXString(player.getAver_playerPlayTime() / 60) + "分");
+		TextLabel2 text12 = new TextLabel2("平均上场: " + team.getTeamDefE());
 		text12.setLocation((int) (900 * UIData.changeX), (int) (120 * UIData.changeY));
 		this.add(text12);
-
-		ImageLabel image = new ImageLabel(ImageSaver.getPlayerIcon(player.getPlayerName())
-				, (int) (30 * UIData.changeX), (int) (30 * UIData.changeY), (int) (240 * UIData.changeX), (int) (200 * UIData.changeY));
-		this.add(image);
 		
-		ImageLabel teamImage = new ImageLabel(ImageSaver.getTeamIcon(player.getTeamShortName())
-				, (int) (155 * UIData.changeX), (int) (20 * UIData.changeY), (int) (220 * UIData.changeX), (int) (220 * UIData.changeY));
-		this.add(teamImage);
+		ImageLabel image = new ImageLabel(ImageSaver.getTeamIcon(team.getShortName())
+				, (int) (30 * UIData.changeX), (int) (0 * UIData.changeY), (int) (240 * UIData.changeX), (int) (240 * UIData.changeY));
+		this.add(image);
 		
 		int bacX = (int) (0 * UIData.changeX);
 		int bacY = (int) (234 * UIData.changeY);
@@ -107,7 +103,7 @@ public class PlayerInfoLabel extends JPanel{
 			this.setForeground(Color.WHITE);
 			this.setBackground(null);
 			this.setVisible(true);
-			this.setSize((int) (500 * UIData.changeX), (int) (30 * UIData.changeY));
+			this.setSize((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
 			this.setFont(new Font("Arail", Font.PLAIN, (int) (20 * UIData.changeY)));
 		}
 	}
@@ -119,9 +115,10 @@ public class PlayerInfoLabel extends JPanel{
 			this.setForeground(Color.LIGHT_GRAY);
 			this.setBackground(null);
 			this.setVisible(true);
-			this.setSize((int) (500 * UIData.changeX), (int) (30 * UIData.changeY));
+			this.setSize((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
 			this.setFont(new Font("Arail", Font.PLAIN, (int) (20 * UIData.changeY)));
 		}
 	}
 
 }
+

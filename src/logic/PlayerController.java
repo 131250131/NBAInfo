@@ -53,6 +53,7 @@ public class PlayerController implements playerControllerService{
 		for(Player player : this.allPlayers){
 			//System.out.println(player.getPlayerAssists());
 			PlayerVO vo = new PlayerVO();
+			//System.out.println("kk"+player.getPlayerPlayTime());
 			vo.creatplayervo(player);
 			//System.out.println(vo.getPlayerAssists());
 			this.allPlayerVO.add(vo);

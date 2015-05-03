@@ -45,7 +45,7 @@ public class Matchdata implements MatchDataService{
 		for(int i = 0; i < matchFile.length; i++){
 			MatchPO match=new MatchPO();
 			int count = 0;   //用于判断是客队还是主队球员,为1时左队，为2时右队
-			int line=0;
+			int line=1;
 			//每次处理比赛的初始化
 			String[] a = matchFile[i].toString().split("_");
 			String season =a[0];
@@ -55,6 +55,10 @@ public class Matchdata implements MatchDataService{
 			InputStreamReader read = new InputStreamReader(new FileInputStream(matchFile[i]),"UTF-8");
 	        BufferedReader bufferedReader = new BufferedReader(read);
 	        String lineTxt = null;
+	        String filename =matchFile[i].getName();
+	        String[] ghk=filename.split("_");
+	        match.setDetaildate(ghk[0]+"-"+ghk[1]);
+	        //System.out.println(ghk[0]+"-"+ghk[1]);
 	        while((lineTxt = bufferedReader.readLine() ) != null){
 	        	String[] context=lineTxt.split(";");
 	        	//System.out.println(lineTxt);
@@ -63,29 +67,13 @@ public class Matchdata implements MatchDataService{
 	        	
 	        		count++;
 	        	}
-	        	if(context.length==3){
-	        	
-	        		String date =context[0];
-	        		match.setDate(date);
-	        		String score=context[2];
-	        		match.setScore(score);
-	        		String[] s=score.split("-");
-	        		String ls=s[0];
-	        		String rs=s[1];
-	        		lscore =Integer.parseInt(ls);
-	        		//System.out.println(lscore);
-	        		rscore =Integer.parseInt(rs);
-	        		String[] teamname=context[1].split("-");
-	        		leftTeamShortName=teamname[0];
-	        		rightTeamShortName=teamname[1];
-	        		if(leftTeamShortName.equals(" ")||rightTeamShortName.equals(" ")) break;
-	        		line++;
-	        	}
 	        	if(line==2){
+	        		//System.out.println(lineTxt);
 	        		String scores1=context[0];
 	        		String scores2=context[1];
 	        		String scores3=context[2];
 	        		String scores4=context[3];
+	        		//System.out.println("true");
 	        		String[] s1=scores1.split("-");
 	        		String[] s2=scores2.split("-");
 	        		int lsc1=Integer.parseInt(s1[0]);
@@ -115,6 +103,25 @@ public class Matchdata implements MatchDataService{
 	        		}
 	        		line++;
 	        	}
+	        	if(context.length==3){
+	        		String date =context[0];
+	        		match.setDate(date);
+	        		String score=context[2];
+	        		match.setScore(score);
+	        		String[] s=score.split("-");
+	        		String ls=s[0];
+	        		String rs=s[1];
+	        		lscore =Integer.parseInt(ls);
+	        		//System.out.println(lscore);
+	        		rscore =Integer.parseInt(rs);
+	        		String[] teamname=context[1].split("-");
+	        		leftTeamShortName=teamname[0];
+	        		rightTeamShortName=teamname[1];
+	        		if(leftTeamShortName.equals(" ")||rightTeamShortName.equals(" ")) break;
+	        		line++;
+	        		
+	        	}
+	        	
 	        	if(context.length==18){
 	        
 	        		if(count==1){
@@ -127,6 +134,7 @@ public class Matchdata implements MatchDataService{
 	        			int minute =Integer.parseInt(timestring[0])*60;
 	        			int second =Integer.parseInt(timestring[1]);
 	        			int time =minute + second;
+	        			
 	        			int playerFG = Integer.parseInt(context[3]);		
 	        			int playerFGTry = Integer.parseInt(context[4]);
 	        			int player3FG = Integer.parseInt(context[5]);
@@ -147,10 +155,11 @@ public class Matchdata implements MatchDataService{
 	        					playerAssists, playerSteals, playerBlocks, playerTurnovers, playerFouls, playerScores);
 	        			match.addleftplayer(player);
 	        			player.addAttendedMatches(matchnum);
+	        			//System.out.println("gg"+player.getPlayerPlayTime());
 	        			leftplayerlist.add(player);
 	        			}
 	        			catch(Exception e){
-	        				e.printStackTrace();
+	      
 	        				break;
 	        			}
 	        		}
@@ -186,7 +195,7 @@ public class Matchdata implements MatchDataService{
 		        			rightplayerlist.add(player);
 		        			}
 		        			catch(Exception e){
-		        				e.printStackTrace();
+		        			
 		        				break;
 		        			}
 	        		}

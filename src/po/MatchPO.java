@@ -14,6 +14,7 @@ public class MatchPO implements Serializable {
 		String winteamname="";
 		ArrayList<PlayerPO> leftplayerlist=new ArrayList<PlayerPO>();
 		ArrayList<PlayerPO> rightplayerlist=new ArrayList<PlayerPO>();
+		String detaildate="";
 	//每一节的具体得分；
 		String scores1;
 		String scores2;
@@ -106,6 +107,34 @@ public class MatchPO implements Serializable {
 		}
 		public void setWinteamname(String winteamname) {
 			this.winteamname = winteamname;
+		}
+		public String getDetaildate() {
+			return detaildate;
+		}
+		public void setDetaildate(String season) {
+			String[] s=season.split("-");
+		    int s1=Integer.parseInt(s[0]);
+		    int s2=Integer.parseInt(s[1]);
+		    int month=Integer.parseInt(s[2]);
+		    int day=Integer.parseInt(s[3]);
+		    int year1=0;
+		    int year2=0;
+		    String ddate="";
+		    if(s1<50){
+		    	year1=2000+s1;
+		    	year2=2000+s2;
+		    }
+		    else{
+		    	year1=1900+s1;
+		    	year2=1900+s2;
+		    }
+		    if(month>7){
+		    	ddate=String.valueOf(year1)+"-"+s[2]+"-"+s[3];
+		    }
+		    else{
+		    	ddate=String.valueOf(year2)+"-"+s[2]+"-"+s[3];
+		    }
+		    detaildate=ddate;
 		}
 		
 }

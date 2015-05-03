@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import ui.frame.index.container.IndexBoard;
 import ui.frame.index.container.IndexScrollPane;
 import ui.frame.player.PlayerScrollPanel;
+import ui.frame.team.TeamScrollPane;
 import ui.myUI.ImageLabel;
 import ui.system.Controller;
 import ui.system.ImageSaver;
@@ -22,7 +23,7 @@ public class LargerPanel extends JPanel implements ActionListener{
 	
 	IndexScrollPane indexScrollPane;
 	IndexBoard indexBoard;
-	public static JButton addPlayerPanel, addReturnPanel;
+	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel;
 	
 	public LargerPanel(){
 		this.setLayout(null);
@@ -61,7 +62,11 @@ public class LargerPanel extends JPanel implements ActionListener{
 		
 		addPlayerPanel = new JButton();
 		addPlayerPanel.addActionListener(this);
-		this.add(addPlayerPanel);	
+		this.add(addPlayerPanel);
+		
+		addTeamPanel = new JButton();
+		addTeamPanel.addActionListener(this);
+		this.add(addTeamPanel);
 		}
 
 	public void actionPerformed(ActionEvent e) {
@@ -69,6 +74,11 @@ public class LargerPanel extends JPanel implements ActionListener{
 		if(e.getSource() == addPlayerPanel){
 			PlayerScrollPanel playerScrollPanel = new PlayerScrollPanel(Controller.currentPlayerName);
 			this.add(playerScrollPanel);
+		}	
+		
+		if(e.getSource() == addTeamPanel){
+			TeamScrollPane teamScrollPanel = new TeamScrollPane(Controller.currentTeamName);
+			this.add(teamScrollPanel);
 		}	
 	}
 

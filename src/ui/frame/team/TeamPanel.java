@@ -1,4 +1,4 @@
-package ui.frame.player;
+package ui.frame.team;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,16 +7,17 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.system.ImageSaver;
 import ui.system.UIData;
-import vo.PlayerVO;
+import vo.TeamVO;
 
 @SuppressWarnings("serial")
-public class PlayerPanel extends JPanel{
+public class TeamPanel extends JPanel{
 	
 	int width = (int) (1720 * UIData.changeX);
 	int height = (int) (3000 * UIData.changeY);
 	
-	public PlayerPanel(PlayerVO player){
+	public TeamPanel(TeamVO team){
 		this.setLayout(null);
 		this.setPreferredSize(new Dimension(width, height));
 		this.setOpaque(false);
@@ -33,16 +34,12 @@ public class PlayerPanel extends JPanel{
 		int labelWidth = (int) (1410 * UIData.changeX);
 		int playerLabelY = (int) (100 * UIData.changeY);
 		int playerLabelHeight = (int) (300 * UIData.changeY);
-		int dataLabelHeight = (int) (2000 * UIData.changeY);
-		
-		PlayerInfoLabel playerInfoLabel = new PlayerInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, player);
-		this.add(playerInfoLabel);
-		PlayerDataLabel playerDataLabel = new PlayerDataLabel(labelX, playerLabelY + playerLabelHeight, labelWidth, dataLabelHeight, player);
-		this.add(playerDataLabel);
+		TeamInfoLabel teamInfoLabel = new TeamInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, team);
+		this.add(teamInfoLabel);
 		
 		JPanel backPanel = new JPanel();
 		backPanel.setBounds(labelX, 0, labelWidth, height);
-		backPanel.setBackground(new Color(0, 0, 0, 0.8f));
+		backPanel.setBackground(ImageSaver.getTeamBackColor(team.getShortName()));
 		backPanel.setVisible(true);
 		this.add(backPanel);
 	}

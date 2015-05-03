@@ -7,7 +7,6 @@ import po.PlayerPO;
 import po.TeamPO;
 import vo.MatchVO;
 import DataService.MatchDataService;
-
 import data.matchdata.*;
 
 
@@ -21,6 +20,7 @@ public class Match implements Comparable<Match> {
 	String winteamname="";
 	ArrayList<Player> leftplayerlist=new ArrayList<Player>();
 	ArrayList<Player> rightplayerlist=new ArrayList<Player>();
+	String detaildate="";
 //每一节的具体得分；
 	String scores1;
 	String scores2;
@@ -129,6 +129,7 @@ public class Match implements Comparable<Match> {
     	   Num=matchpo.getNum();
     	   season=matchpo.getSeason();
     	   date=matchpo.getDate();
+    	   detaildate=matchpo.getDetaildate();
     	   Team rteam=new Team();
     	   Team lteam=new Team();
     	   rteam.creatteam(matchpo.getRightTeam());
@@ -146,6 +147,7 @@ public class Match implements Comparable<Match> {
     	   for(PlayerPO p:lpl){
     		   Player player=new Player();
     		   player.creatplayer(p);
+    		 //  System.out.println("tt"+player.getPlayerPlayTime());
     		   leftplayerlist.add(player);
     	   }
     	   ArrayList<PlayerPO> rpl=matchpo.getrightplayers();
@@ -233,6 +235,14 @@ public Object[][] getData(String team,int matchnum){
 
 			public void setWinteamname(String winteamname) {
 				this.winteamname = winteamname;
+			}
+
+			public String getDetaildate() {
+				return detaildate;
+			}
+
+			public void setDetaildate(String detaildate) {
+				this.detaildate = detaildate;
 			}
 
 }

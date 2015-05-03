@@ -74,7 +74,7 @@ public class MatchController implements matchControllerService{
 				//team 更新完毕;
 				for(Player tempPlayer: tempMatch.getleftplayers()){
 					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
-					//System.out.println(tempPlayer.getPlayerAssists());
+					//System.out.println(tempPlayer.getPlayerPlayTime());
 				}
 				for(Player tempPlayer: tempMatch.getrightplayers()){
 					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
@@ -90,7 +90,7 @@ public class MatchController implements matchControllerService{
 		public ArrayList<MatchVO> getSomeMacthVO(String date){
 			ArrayList<MatchVO> someMatchVO = new ArrayList<MatchVO>();
 			for(MatchVO matchvo : this.getAllMatchVO()){
-				if(matchvo.getDate().equals(date)){
+				if(matchvo.getDetaildate().equals(date)){
 					someMatchVO.add(matchvo);
 				}
 			}
@@ -227,6 +227,29 @@ public class MatchController implements matchControllerService{
 				list.add(this.getMatch((int)i));
 			}
 			return list;
+		}
+
+		@Override
+		public ArrayList<MatchVO> gettodaysmatch() {
+			//该方法可能会用到
+			// TODO Auto-generated method stub
+			//ArrayList<MatchVO> matchvo =new ArrayList<MatchVO>();
+			//Date today=new Date();
+			return null;
+		}
+
+		@Override
+		public ArrayList<String> getDatehavematches() {
+			// TODO Auto-generated method stub
+			ArrayList<String> havematches =new ArrayList<String>();
+			for(MatchPO matchpo:this.allMatchPO){
+				String ddate =matchpo.getDetaildate();
+				if(!havematches.contains(ddate)){
+					havematches.add(ddate);
+				}
+			}
+			Collections.sort(havematches);
+			return havematches;
 		}
 			
 }
