@@ -59,7 +59,7 @@ public class logicTest {
 //		}
 		PlayerVO vo = playerController.findPlayerVO("Andrew Bogut");
 		System.out.println(vo.getPlayerName()+" "+vo.getPlayerFTG()+" "+vo.getPlayerScores()+" "
-		+vo.getPlayerAttends()+" "+vo.getAver_playerFG());
+		+vo.getPlayerAttends()+" "+vo.getAver_playerFG()+" "+vo.getSR()+" "+vo.getAver_playerFouls());
 	}
 	
 }
