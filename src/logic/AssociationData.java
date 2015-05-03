@@ -31,10 +31,19 @@ public class AssociationData implements associationDataService{
 	private double playerFGP ;//队员投篮命中率
 	private double player3FGP ;//队员三分命中率
 	private double playerFTGP ;//队员罚球命中率	
+	
 	private double playerPER ;//队员效率(PER)
-//	private double playerGmScER ;//队员GmSc效率值
-//	private double playerTSP ;//队员真实命中率
-//	private double playerSER ;//队员投篮效率
+	private double playerGmScER =0.623;//49.队员GmSc效率值
+	private double playerTSP =0.532;//50.队员真实命中率
+	private double playerSER =0.455;//51.队员投篮效率
+	private double RR = 0.233;//52.队员篮板率
+	private double o_RR = 0.216;//53.进攻篮板
+	private double d_RR = 0.242;//54.防守篮板率
+	private double AR = 0.136;//55.助攻率
+	private double SR= 0.136;//56.抢断率
+	private double BR= 0.131;//57.盖帽率
+	private double TR= 0.154;//58.失误率
+	private double UR= 0.;//59.使用率
 		
 	//联盟球队平均数据;
 	private double aver_teamAssists;	//球队场均助攻数
@@ -402,6 +411,96 @@ public class AssociationData implements associationDataService{
 
 	public void setAver_teamScores(double aver_teamScores) {
 		this.aver_teamScores = aver_teamScores;
+	}
+
+	
+	
+	public double getPlayerGmScER() {
+		return playerGmScER;
+	}
+
+	public void setPlayerGmScER(double playerGmScER) {
+		this.playerGmScER = playerGmScER;
+	}
+
+	public double getPlayerTSP() {
+		return playerTSP;
+	}
+
+	public void setPlayerTSP(double playerTSP) {
+		this.playerTSP = playerTSP;
+	}
+
+	public double getPlayerSER() {
+		return playerSER;
+	}
+
+	public void setPlayerSER(double playerSER) {
+		this.playerSER = playerSER;
+	}
+
+	public double getRR() {
+		return RR;
+	}
+
+	public void setRR(double rR) {
+		RR = rR;
+	}
+
+	public double getO_RR() {
+		return o_RR;
+	}
+
+	public void setO_RR(double o_RR) {
+		this.o_RR = o_RR;
+	}
+
+	public double getD_RR() {
+		return d_RR;
+	}
+
+	public void setD_RR(double d_RR) {
+		this.d_RR = d_RR;
+	}
+
+	public double getAR() {
+		return AR;
+	}
+
+	public void setAR(double aR) {
+		AR = aR;
+	}
+
+	public double getSR() {
+		return SR;
+	}
+
+	public void setSR(double sR) {
+		SR = sR;
+	}
+
+	public double getBR() {
+		return BR;
+	}
+
+	public void setBR(double bR) {
+		BR = bR;
+	}
+
+	public double getTR() {
+		return TR;
+	}
+
+	public void setTR(double tR) {
+		TR = tR;
+	}
+
+	public double getUR() {
+		return UR;
+	}
+
+	public void setUR(double uR) {
+		UR = uR;
 	}
 
 	public void updateAssociationdate(){
