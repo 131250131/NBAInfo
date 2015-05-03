@@ -52,7 +52,7 @@ public class TeamController implements teamControllerService{
     			case "MEM":result="西南区";break;
     			case "HOU":result="西南区";break;
     			case "DAL":result="西南区";break;
-    			case "NOL":result="西南区";break;
+    			case "NOP":result="西南区";break;
     			case "SAC":result="太平洋区";break;
     			case "PHX":result="太平洋区";break;
     			case "LAL":result="太平洋区";break;
@@ -60,9 +60,9 @@ public class TeamController implements teamControllerService{
     			case "LAC":result="太平洋区";break;
     			case "MIN":result="西北区";break;
     			case "DEN":result="西北区";break;
-    			case "UTH":result="西北区";break;
+    			case "UTA":result="西北区";break;
     			case "POR":result="西北区";break;
-    			case "OTC":result="西北区";break;
+    			case "OKC":result="西北区";break;
     			case "MIA":result="东南区 ";break;
     			case "ORL":result="东南区 ";break;
     			case "ATL":result="东南区 ";break;
@@ -73,11 +73,12 @@ public class TeamController implements teamControllerService{
     			case "CLE":result="中央区";break;
     			case "CHI":result="中央区";break;
     			case "MIL":result="中央区";break;
-    			case "NYN":result="大西洋区";break;
+    			case "NYK":result="大西洋区";break;
     			case "PHI":result="大西洋区";break;
-    			case "CEL":result="大西洋区";break;
-    			case "NJN":result="大西洋区";break;
+    			case "BOS":result="大西洋区";break;
+    			case "BKN":result="大西洋区";break;
     			case "TOR":result="大西洋区";break;	
+    			default:result = "西南区";break;
     		}
 		return result;
 	}

@@ -114,7 +114,7 @@ public class PlayerController implements playerControllerService{
 		if(distribution==null){
 			return list;
 		}
-		if(distribution.equals("东部")||distribution.equals("西部")){
+		if(!(distribution.equals("东部")||distribution.equals("西部"))){
 			for(PlayerVO vo : list){
 				if(vo.getPlayerDistribution().equals(distribution)){
 					result.add(vo);
@@ -144,7 +144,13 @@ public class PlayerController implements playerControllerService{
 	
 	public ArrayList<PlayerVO> getSelectedPlayers_InfoType(ArrayList<PlayerVO> list,String infoType){
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
-		
+		for(PlayerVO vo :list){
+			vo.setComparetype(infoType);
+		}
+		Collections.sort(list);
+		for(int i=0;i<20;i++){
+			result.add(list.get(i));
+		}
 		return result;
 	}
 	
