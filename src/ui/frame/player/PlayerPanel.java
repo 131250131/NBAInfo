@@ -14,7 +14,7 @@ import vo.PlayerVO;
 public class PlayerPanel extends JPanel{
 	
 	int width = (int) (1720 * UIData.changeX);
-	int height = (int) (3000 * UIData.changeY);
+	int height = (int) (4000 * UIData.changeY);
 	
 	public PlayerPanel(PlayerVO player){
 		this.setLayout(null);
@@ -33,7 +33,7 @@ public class PlayerPanel extends JPanel{
 		int labelWidth = (int) (1410 * UIData.changeX);
 		int playerLabelY = (int) (100 * UIData.changeY);
 		int playerLabelHeight = (int) (300 * UIData.changeY);
-		int dataLabelHeight = (int) (2000 * UIData.changeY);
+		int dataLabelHeight = (int) (3000 * UIData.changeY);
 		
 		PlayerInfoLabel playerInfoLabel = new PlayerInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, player);
 		this.add(playerInfoLabel);

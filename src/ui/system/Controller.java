@@ -2,7 +2,9 @@ package ui.system;
 
 import ui.frame.larger.LargerPanel;
 import ui.frame.larger.LargerScrollPane;
+import logic.AssociationData;
 import logic.MainController;
+import logicservice.associationDataService;
 import logicservice.mainControllerService;
 import logicservice.matchControllerService;
 import logicservice.playerControllerService;
@@ -13,6 +15,7 @@ public class Controller {
 	public static playerControllerService playerController;
 	public static teamControllerService teamController;
 	public static matchControllerService matchController;
+	public static associationDataService associationController;
 	
 	public static String currentPlayerName, currentTeamName;
 	
@@ -22,6 +25,7 @@ public class Controller {
 		playerController = mainController.getPlayerController();
 		teamController = mainController.getTeamController();
 		matchController = mainController.getMatchController();
+		associationController = new AssociationData();
 	}
 	
 	public static void addPlayerPanel(String playerName){
