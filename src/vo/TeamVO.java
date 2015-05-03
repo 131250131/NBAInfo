@@ -96,8 +96,12 @@ public class TeamVO implements Comparable<TeamVO> {
 		public double getWinRate() {
 			return winRate;
 		}
-		public void setWinRate(double winRate) {
-			this.winRate = winRate;
+		public void setWinRate() {
+			try{
+			this.winRate = winGames/compGames;
+			}catch(Exception e){
+				this.winRate=0;
+			}
 		}
 		private ArrayList<Integer> attendmatches =new ArrayList<Integer>();
 			//接下来是球队赛季总数据；	
@@ -773,13 +777,15 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.division=team.getDivision();
 			this.gymName=team.getGymName();
 			this.birthYear=team.getBirthYear();
-			
-			//整体数据
-			this.teamID=team.getTeamID();
 			this.compGames=team.getCompGames();
 			this.winGames=team.getWinGames();
 			this.losGames=team.getLosGames();
-			this.winRate=team.getWinRate();
+			//整体数据
+			this.teamID=team.getTeamID();
+			this.compGames=team.getCompGames();
+			//System.out.println(compGames);
+			this.winGames=team.getWinGames();
+			this.losGames=team.getLosGames();
 			
 			//球队单项数据总计;
 			this.teamAssists=team.getTeamAssists();
@@ -888,6 +894,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			LessTurnovers=team.getLessTurnovers();//更少失误时的胜负关系
 		    banchanglingxian=team.getBanchanglingxian();//半场领先
 			banchangluohou=team.getBanchangluohou();//半场落后
+			winRate=team.getWinRate();
 		}
 		@Override
 		public int compareTo(TeamVO o) {

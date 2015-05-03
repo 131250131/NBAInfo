@@ -94,8 +94,11 @@ public class TeamController implements teamControllerService{
 	}
 	
 	public void createSeasonAllTeamInfo(){
+		
 		for(Team team : this.allTeams){
+			//System.out.println("pp"+team.getCompGames());
 			this.allTeamVO.add(team.createTeamVO());
+			//System.out.println("pp"+team.createTeamVO().getWinGames());
 		}
 	}
 	

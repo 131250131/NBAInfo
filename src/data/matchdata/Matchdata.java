@@ -45,7 +45,7 @@ public class Matchdata implements MatchDataService{
 		for(int i = 0; i < matchFile.length; i++){
 			MatchPO match=new MatchPO();
 			int count = 0;   //用于判断是客队还是主队球员,为1时左队，为2时右队
-			int line=0;
+			int line=1;
 			//每次处理比赛的初始化
 			String[] a = matchFile[i].toString().split("_");
 			String season =a[0];
@@ -67,29 +67,13 @@ public class Matchdata implements MatchDataService{
 	        	
 	        		count++;
 	        	}
-	        	if(context.length==3){
-	        	
-	        		String date =context[0];
-	        		match.setDate(date);
-	        		String score=context[2];
-	        		match.setScore(score);
-	        		String[] s=score.split("-");
-	        		String ls=s[0];
-	        		String rs=s[1];
-	        		lscore =Integer.parseInt(ls);
-	        		//System.out.println(lscore);
-	        		rscore =Integer.parseInt(rs);
-	        		String[] teamname=context[1].split("-");
-	        		leftTeamShortName=teamname[0];
-	        		rightTeamShortName=teamname[1];
-	        		if(leftTeamShortName.equals(" ")||rightTeamShortName.equals(" ")) break;
-	        		line++;
-	        	}
 	        	if(line==2){
+	        		System.out.println(lineTxt);
 	        		String scores1=context[0];
 	        		String scores2=context[1];
 	        		String scores3=context[2];
 	        		String scores4=context[3];
+	        		//System.out.println("true");
 	        		String[] s1=scores1.split("-");
 	        		String[] s2=scores2.split("-");
 	        		int lsc1=Integer.parseInt(s1[0]);
@@ -119,6 +103,25 @@ public class Matchdata implements MatchDataService{
 	        		}
 	        		line++;
 	        	}
+	        	if(context.length==3){
+	        		String date =context[0];
+	        		match.setDate(date);
+	        		String score=context[2];
+	        		match.setScore(score);
+	        		String[] s=score.split("-");
+	        		String ls=s[0];
+	        		String rs=s[1];
+	        		lscore =Integer.parseInt(ls);
+	        		//System.out.println(lscore);
+	        		rscore =Integer.parseInt(rs);
+	        		String[] teamname=context[1].split("-");
+	        		leftTeamShortName=teamname[0];
+	        		rightTeamShortName=teamname[1];
+	        		if(leftTeamShortName.equals(" ")||rightTeamShortName.equals(" ")) break;
+	        		line++;
+	        		
+	        	}
+	        	
 	        	if(context.length==18){
 	        
 	        		if(count==1){

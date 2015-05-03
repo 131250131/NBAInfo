@@ -387,8 +387,8 @@ public class Team {
 
 
 
-		public void setWinRate(double winRate) {
-			this.winRate = winRate;
+		public void setWinRate(double winrate) {
+			winRate=winrate;
 		}
 
 
@@ -1312,6 +1312,7 @@ public class Team {
 		public void updateTeamInfo(Team myTeam,Team oppoTeam){
 			this.compGames++;
 			if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){
+				
 				this.winGames++;
 			}else{
 				this.losGames++;
@@ -1352,7 +1353,7 @@ public class Team {
 			this.oppoTurnovers+=oppoTeam.getTeamTurnovers();
 			this.oppoFouls+=oppoTeam.getTeamFouls();
 			this.oppoScores+=oppoTeam.getTeamScores();
-				
+		    
 		}
 		
 		public void creatteam(TeamPO teampo){
@@ -1379,7 +1380,7 @@ public class Team {
 			teamFouls=teampo.getTeamFouls();
 			teamScores=teampo.getTeamScores();
 			attendmatches=teampo.getAttendmatches();
-			
+		
 			//bonus项值得传递
 			winLose=teampo.getWinLose();
 			win_lose=teampo.getWin_lose();
@@ -1407,12 +1408,12 @@ public class Team {
 			LessTurnovers=teampo.getLessTurnovers();//更少失误时的胜负关系
 		    banchanglingxian=teampo.getBanchanglingxian();//半场领先
 			banchangluohou=teampo.getBanchangluohou();//半场落后
-		
 		}
 		
 		public TeamVO createTeamVO(){
 			TeamVO vo = new TeamVO();
 			vo.creatteamvo(this);
+			//System.out.println("tt"+vo.getCompGames());
 			return vo;
 		}
 

@@ -231,8 +231,10 @@ public class MatchController implements matchControllerService{
 
 		@Override
 		public ArrayList<MatchVO> gettodaysmatch() {
+			//该方法可能会用到
 			// TODO Auto-generated method stub
-			
+			//ArrayList<MatchVO> matchvo =new ArrayList<MatchVO>();
+			//Date today=new Date();
 			return null;
 		}
 
