@@ -55,6 +55,10 @@ public class Matchdata implements MatchDataService{
 			InputStreamReader read = new InputStreamReader(new FileInputStream(matchFile[i]),"UTF-8");
 	        BufferedReader bufferedReader = new BufferedReader(read);
 	        String lineTxt = null;
+	        String filename =matchFile[i].getName();
+	        String[] ghk=filename.split("_");
+	        match.setDetaildate(ghk[0]+"-"+ghk[1]);
+	        //System.out.println(ghk[0]+"-"+ghk[1]);
 	        while((lineTxt = bufferedReader.readLine() ) != null){
 	        	String[] context=lineTxt.split(";");
 	        	//System.out.println(lineTxt);

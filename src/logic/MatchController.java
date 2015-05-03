@@ -90,7 +90,7 @@ public class MatchController implements matchControllerService{
 		public ArrayList<MatchVO> getSomeMacthVO(String date){
 			ArrayList<MatchVO> someMatchVO = new ArrayList<MatchVO>();
 			for(MatchVO matchvo : this.getAllMatchVO()){
-				if(matchvo.getDate().equals(date)){
+				if(matchvo.getDetaildate().equals(date)){
 					someMatchVO.add(matchvo);
 				}
 			}
@@ -239,10 +239,15 @@ public class MatchController implements matchControllerService{
 		@Override
 		public ArrayList<String> getDatehavematches() {
 			// TODO Auto-generated method stub
+			ArrayList<String> havematches =new ArrayList<String>();
 			for(MatchPO matchpo:this.allMatchPO){
-				
+				String ddate =matchpo.getDetaildate();
+				if(!havematches.contains(ddate)){
+					havematches.add(ddate);
+				}
 			}
-			return null;
+			Collections.sort(havematches);
+			return havematches;
 		}
 			
 }

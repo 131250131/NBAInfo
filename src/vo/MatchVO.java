@@ -18,6 +18,7 @@ public class MatchVO {
 	String score;
 	ArrayList<PlayerVO> leftplayerlist=new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> rightplayerlist=new ArrayList<PlayerVO>();
+	String detaildate="";
 //每一节的具体得分；
 	String scores1;
 	String scores2;
@@ -101,7 +102,7 @@ public class MatchVO {
 		this.score=score;
 	}
 	public void creatMatchvo(Match match){
-		Num=match.getNum();
+	   Num=match.getNum();
  	   season=match.getSeason();
  	   date=match.getDate();
  	   TeamVO rteam=new TeamVO();
@@ -117,6 +118,8 @@ public class MatchVO {
  	   scores4=match.getScores4();
  	   extrascores=match.getExtrascores();
  	   winteamname=match.getWinteamname();
+ 	   detaildate=match.getDetaildate();
+ 	   //System.out.println(detaildate);
  	   ArrayList<Player> lpl=match.getleftplayers();
  	   for(Player p:lpl){
  		   PlayerVO player=new PlayerVO();
@@ -139,5 +142,11 @@ public class MatchVO {
 	}
 	public void setWinteamname(String winteamname) {
 		this.winteamname = winteamname;
+	}
+	public String getDetaildate() {
+		return detaildate;
+	}
+	public void setDetaildate(String detaildate) {
+		this.detaildate = detaildate;
 	}
 }
