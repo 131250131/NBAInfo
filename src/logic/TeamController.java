@@ -105,6 +105,7 @@ public class TeamController implements teamControllerService{
 	}
 
 	public TeamVO getOneTeamInfo(String shortName) {
+		createSeasonAllTeamInfo();
 		for(TeamVO vo : this.allTeamVO){
 			if(vo.getShortName().equals(shortName)){
 				return vo;
