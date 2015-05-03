@@ -35,9 +35,11 @@ public class AllTimePlayerPanel extends JPanel implements ActionListener{
 	ImageLabel back, back3;
 	ImageLabel playerIcon;
 	
-	public AllTimePlayerPanel(){
+	PlayerVO _player;
+	
+	public AllTimePlayerPanel(PlayerVO player){
 		
-		player = getPlayer();
+		_player = player;
 		
 		this.setBounds(x, y, width, height);
 		this.setLayout(null);
@@ -93,14 +95,10 @@ public class AllTimePlayerPanel extends JPanel implements ActionListener{
 			}); 
 	}
 	
-	private PlayerVO getPlayer(){
-		return Controller.playerController.findPlayerVO("Kevin Garnett");
-	}
-	
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == button){
-			Controller.addPlayerPanel(player.getPlayerName());
+			Controller.addPlayerPanel(_player.getPlayerName());
 		}
 		
 	}

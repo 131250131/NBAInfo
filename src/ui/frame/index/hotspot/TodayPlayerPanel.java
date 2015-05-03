@@ -27,17 +27,16 @@ public class TodayPlayerPanel extends JPanel implements ActionListener{
 	int height = HotspotBounds.TodayPlayerPanelHeight;
 	
 	String title = "今日最佳球员";
-	
-	PlayerVO player;
-	
 	JButton button;
 	JLabel nameLabel;
 	ImageLabel back, back3;
 	ImageLabel playerIcon;
 	
-	public TodayPlayerPanel(){
+	PlayerVO _player;
+	
+	public TodayPlayerPanel(PlayerVO player){
 		
-		player = getPlayer();
+		_player = player;
 		
 		this.setBounds(x, y, width, height);
 		this.setLayout(null);
@@ -102,14 +101,10 @@ public class TodayPlayerPanel extends JPanel implements ActionListener{
 			}); 
 	}
 	
-	private PlayerVO getPlayer(){
-		return Controller.playerController.findPlayerVO("Andrew Bogut");
-	}
-	
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == button){
-			Controller.addPlayerPanel(player.getPlayerName());
+			Controller.addPlayerPanel(_player.getPlayerName());
 		}
 		
 	}
