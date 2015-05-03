@@ -148,6 +148,7 @@ public class Matchdata implements MatchDataService{
 	        					playerAssists, playerSteals, playerBlocks, playerTurnovers, playerFouls, playerScores);
 	        			match.addleftplayer(player);
 	        			player.addAttendedMatches(matchnum);
+	        			//System.out.println("gg"+player.getPlayerPlayTime());
 	        			leftplayerlist.add(player);
 	        			}
 	        			catch(Exception e){

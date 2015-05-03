@@ -146,6 +146,7 @@ public class Match implements Comparable<Match> {
     	   for(PlayerPO p:lpl){
     		   Player player=new Player();
     		   player.creatplayer(p);
+    		 //  System.out.println("tt"+player.getPlayerPlayTime());
     		   leftplayerlist.add(player);
     	   }
     	   ArrayList<PlayerPO> rpl=matchpo.getrightplayers();

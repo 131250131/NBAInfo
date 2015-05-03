@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import po.PlayerPO;
 
 public class Player implements Comparable<Player>{
-	private int scores=0;
+
 	static String comparetype="";
 	private double advancedP=0;
 	public Player(){
@@ -128,7 +128,7 @@ public class Player implements Comparable<Player>{
 		playerAge=playerpo.getPlayerAge();
 		exp=playerpo.getExp();
 		school=playerpo.getSchool();
-		setScores(playerpo.getScores());
+		playerScores=playerpo.getScores();
 		this.isStart=playerpo.isStart();
 		playerAssists=playerpo.getPlayerAssists();
 		playerPlayTime=playerpo.getPlayerPlayTime();
@@ -148,6 +148,8 @@ public class Player implements Comparable<Player>{
 		teamShortName=playerpo.getTeamShortName();
 		attendedMatches=playerpo.getAttendedMatches();
 		advancedP=playerpo.getAdvancedP();
+		playerPlayTime=playerpo.getPlayerPlayTime();
+		
 	}
 
 	
@@ -205,7 +207,7 @@ public class Player implements Comparable<Player>{
 		playerAttends++;
 		playerPlayTime = playerPlayTime + player.getPlayerPlayTime();
 		
-		//System.out.println(playerPlayTime);
+		//System.out.println("gg"+player.getPlayerPlayTime());
 		
 		//是否首发
 		if(player.isStart==true){
@@ -399,7 +401,7 @@ public class Player implements Comparable<Player>{
 		int playerFouls;
 		
 	//28.队员总得分数 (*****要传*****)
-		int playerScores; 
+		int playerScores=0; 
 		
 //	//29.队员平均助攻数
 //		private double aver_playerAssists ;
@@ -565,7 +567,7 @@ public class Player implements Comparable<Player>{
 		}
 		
 		public int getPlayerPlayTime(){
-			return (playerAttends==0)?0:(playerPlayTime / playerAttends) / 60;
+			return (attendedMatches.size()==0)?0:(playerPlayTime / attendedMatches.size() ) / 60;
 		}
 		
 		public int getPlayerSteals() {
@@ -901,13 +903,7 @@ public class Player implements Comparable<Player>{
 //        	   return 0;
 //        }
 
-		public int getScores() {
-			return scores;
-		}
 
-		public void setScores(int scores) {
-			this.scores = scores;
-		}
 		public String getHeight() {
 			return height;
 		}
@@ -1032,7 +1028,7 @@ public class Player implements Comparable<Player>{
 
         public int getaddate(String type) {
 			if(type.equals("得分")){
-				return scores;
+				return playerScores;
 			}
 			if(type.equals("篮板")){
     			return playerTotalRebounds;

@@ -74,7 +74,7 @@ public class MatchController implements matchControllerService{
 				//team 更新完毕;
 				for(Player tempPlayer: tempMatch.getleftplayers()){
 					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
-					//System.out.println(tempPlayer.getPlayerAssists());
+					//System.out.println(tempPlayer.getPlayerPlayTime());
 				}
 				for(Player tempPlayer: tempMatch.getrightplayers()){
 					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
