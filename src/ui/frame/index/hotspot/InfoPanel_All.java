@@ -2,12 +2,15 @@ package ui.frame.index.hotspot;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.system.Controller;
 import ui.system.DataTransform;
 import ui.system.UIData;
+import vo.MatchVO;
 import vo.PlayerVO;
 
 @SuppressWarnings("serial")
@@ -22,11 +25,32 @@ public class InfoPanel_All extends JPanel{
 	TextLabel[][] textLabel = new TextLabel[4][num];
 	double[][] numArray = new double[2][num];
 	
-	PlayerVO _player;
+	PlayerVO _player, todayPlayer;
 	
 	public InfoPanel_All(PlayerVO player){
 		
 		_player = player;
+		ArrayList<MatchVO> array = Controller.matchController.getMatchOfPlayer(player.getPlayerName());
+		boolean flag = true;
+		ArrayList<PlayerVO> list1 = array.get(array.size() - 1).getRightplayerlist();
+		ArrayList<PlayerVO> list2 = array.get(array.size() - 1).getLeftplayerlist();
+		
+		for(int i = 0; i < list1.size(); i++){
+			PlayerVO playerr = list1.get(i);
+			if(playerr.getPlayerName().equals(player.getPlayerName())){
+				todayPlayer = playerr;
+				flag = false;
+			}
+		}
+		
+		if(flag == true){
+			for(int i = 0; i < list2.size(); i++){
+				PlayerVO playerr = list2.get(i);
+				if(playerr.getPlayerName().equals(player.getPlayerName())){
+					todayPlayer = playerr;
+				}
+			}
+		}
 		
 		this.setBounds(x, y, width, height);
 		this.setLayout(null);
@@ -130,19 +154,39 @@ public class InfoPanel_All extends JPanel{
 	
 	private String getInfoNum1(int i){
 		switch(i){
-		case 0:numArray[0][i] = 10;return "" + 10;
-		case 1:numArray[0][i] = 2;return "" + 2;
-		case 2:numArray[0][i] = 7;return "" + 7;
-		case 3:numArray[0][i] = 3;return "" + 3;
-		case 4:numArray[0][i] = 2;return "" + 2;
-		
-		case 5:numArray[0][i] = 4;return "" + 4;
-		case 6:numArray[0][i] = 0.612;return "" + 0.612;
-		case 7:numArray[0][i] = 0.760;return "" + 0.760;
-		case 8:numArray[0][i] = 0.201;return "" + 0.201;
-		case 9:numArray[0][i] = 23.01;return "" + 23.01;
-		
-		case 10:numArray[0][i] = 7.134;return "" + 7.134;
+		case 0:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerScores());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerScores()) + "";
+		case 1:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerAssists());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerAssists()) + "";
+		case 2:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerTotalRebounds());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerTotalRebounds()) + "";
+		case 3:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerSteals());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerSteals()) + "";
+		case 4:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerBlocks());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerBlocks()) + "";	
+		case 5:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerTurnovers());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerTurnovers()) + "";	
+		case 6:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerFGP());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerFGP()) + "";	
+		case 7:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerFTGP());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerFTGP()) + "";
+		case 8:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayer3FGP());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayer3FGP()) + "";
+		case 9:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerPlayTime() / 60);
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerPlayTime() / 60) + "";
+		case 10:
+			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerGmScER());
+			return  DataTransform.transDoubleTopointXXString(todayPlayer.getPlayerGmScER()) + "";
 		}
 		
 		return null;
