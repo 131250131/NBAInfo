@@ -30,28 +30,28 @@ public class InfoPanel_All extends JPanel{
 	public InfoPanel_All(PlayerVO player){
 		
 		_player = player;
-	
-		ArrayList<MatchVO> array = Controller.matchController.getMatchOfPlayer(player.getPlayerName());
-		boolean flag = true;
-		ArrayList<PlayerVO> list1 = array.get(array.size() - 1).getRightplayerlist();
-		ArrayList<PlayerVO> list2 = array.get(array.size() - 1).getLeftplayerlist();
+		todayPlayer = player;
+//		ArrayList<MatchVO> array = Controller.matchController.getMatchOfPlayer(player.getPlayerName());
+//		boolean flag = true;
+//		ArrayList<PlayerVO> list1 = array.get(array.size() - 1).getRightplayerlist();
+//		ArrayList<PlayerVO> list2 = array.get(array.size() - 1).getLeftplayerlist();
+//		
+//		for(int i = 0; i < list1.size(); i++){
+//			PlayerVO playerr = list1.get(i);
+//			if(playerr.getPlayerName().equals(player.getPlayerName())){
+//				todayPlayer = playerr;
+//				flag = false;
+//			}
+//		}
 		
-		for(int i = 0; i < list1.size(); i++){
-			PlayerVO playerr = list1.get(i);
-			if(playerr.getPlayerName().equals(player.getPlayerName())){
-				todayPlayer = playerr;
-				flag = false;
-			}
-		}
-		
-		if(flag == true){
-			for(int i = 0; i < list2.size(); i++){
-				PlayerVO playerr = list2.get(i);
-				if(playerr.getPlayerName().equals(player.getPlayerName())){
-					todayPlayer = playerr;
-				}
-			}
-		}
+//		if(flag == true){
+//			for(int i = 0; i < list2.size(); i++){
+//				PlayerVO playerr = list2.get(i);
+//				if(playerr.getPlayerName().equals(player.getPlayerName())){
+//					todayPlayer = playerr;
+//				}
+//			}
+//		}
 		
 		this.setBounds(x, y, width, height);
 		this.setLayout(null);
