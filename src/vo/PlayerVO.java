@@ -894,7 +894,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				playerPlayTime=player.getPlayerPlayTime();
 				
 				//球员单项总数据;
-				this.playerAttends=player.getPlayerAttends();
+				this.playerAttends=1;
 				this.playerScores=player.getPlayerScores();
 				this.playerAssists=player.getPlayerAssists();
 				//this.playerPlayTime=player.getPlayerPlayTime();
