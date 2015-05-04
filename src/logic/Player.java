@@ -547,7 +547,7 @@ public class Player implements Comparable<Player>{
 			attendedMatches.add(num);
 		}
 		public int getPlayerAttends(){
-			return playerAttends;
+			return (playerAttends==0)?1:playerAttends;
 		}
 		
 		public int getPlayerStartTimes(){
