@@ -80,11 +80,11 @@ public class HotspotPanel extends JPanel{
 	}
 	
 	private PlayerVO getTodayPlayer(){
-		return Controller.playerController.findPlayerVO("Chris Paul");
+		return Controller.dataCollectorService.getSomeDayPlayers_GmScER(Controller.dateList.get(Controller.dateList.size() - 1)).get(0);
 	}
 	
 	private PlayerVO getAllPlayer(){
-		return Controller.playerController.findPlayerVO("Kevin Garnett");
+		return Controller.dataCollectorService.getSeasonHotPlayers_GmScER().get(0);
 	}
 
 }

@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,8 +12,10 @@ import javax.swing.JPanel;
 
 import ui.frame.index.hotspot.HotspotBounds;
 import ui.myUI.BackColorPanel;
+import ui.system.Controller;
 import ui.system.ImageSaver;
 import ui.system.UIData;
+import vo.MatchVO;
 
 @SuppressWarnings("serial")
 public class MatchPanel extends JPanel implements ActionListener{
@@ -37,14 +40,13 @@ public class MatchPanel extends JPanel implements ActionListener{
 		
 		matchScrollPane = new MatchScrollPane();
 		this.add(matchScrollPane);
-		matchesListPanel = new MatchListPanel();
-		matchScrollPane.setViewportView(matchesListPanel);
 		
 		searchButton = new JButton("搜索");
 		searchButton.setBounds((int) (440  * UIData.changeX), (int) (190 * UIData.changeY),
 				(int) (200 * UIData.changeX), (int) (35 * UIData.changeY));
 		searchButton.setBackground(Color.DARK_GRAY);
 		searchButton.setForeground(Color.WHITE);
+		searchButton.addActionListener(this);
 		searchButton.setVisible(true);
 		this.add(searchButton);
 		
@@ -53,6 +55,7 @@ public class MatchPanel extends JPanel implements ActionListener{
 				(int) (200 * UIData.changeX), (int) (35 * UIData.changeY));
 		searchButton2.setBackground(Color.DARK_GRAY);
 		searchButton2.setForeground(Color.WHITE);
+		searchButton2.addActionListener(this);
 		searchButton2.setVisible(true);
 		this.add(searchButton2);
 		
@@ -78,13 +81,18 @@ public class MatchPanel extends JPanel implements ActionListener{
 		
 		BackColorPanel backPanel = new BackColorPanel(0, 0, width, height, 3);
 		this.add(backPanel);
+		
+		searchButton.doClick();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == searchButton){
-			
+			int maxNum = Controller.dateList.size();
+			ArrayList<MatchVO> matchArray = Controller.matchController.getSomeMacthVO(Controller.dateList.get(maxNum - matchComboBox.getSelectedIndex() - 1));
+			matchesListPanel = new MatchListPanel(matchArray);
+			matchScrollPane.setViewportView(matchesListPanel);
 		}
 	}
 

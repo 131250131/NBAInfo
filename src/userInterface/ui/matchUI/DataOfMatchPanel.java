@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import userInterface.myUI.ImageSaver;
 import vo.MatchVO;
 
 import com.nba.davisUI.myUI.ImageBin;
@@ -183,7 +184,7 @@ public class DataOfMatchPanel extends JPanel {
 		total2.setBounds(215, 330, 40, 40);
 		date2.setBounds(255, 330, 80, 40);
 		
-		test();
+//		test();
 		this.add(first,0);
 		this.add(second,1);
 		this.add(third,2);
@@ -267,18 +268,20 @@ public class DataOfMatchPanel extends JPanel {
 		name1.setText("ATL");
 		name2.setText("BKN");
 		
-		//队伍图片
-		team1.setIcon(ImageBin.getImage("teams/ATL"));
-		team2.setIcon(ImageBin.getImage("teams/BKN"));
+		
 	}
 	public void update(MatchVO match){
 		
-		String[] score1=match.getScores1().split(":");
-		String[] score2=match.getScores2().split(":");
-		String[] score3=match.getScores3().split(":");
-		String[] score4=match.getScores4().split(":");
-		String[] total=match.getScore().split(":");
-		String[] extra=match.getExtrascores().split(":");
+		String[] score1=match.getScores1().split("-");
+		String[] score2=match.getScores2().split("-");
+		String[] score3=match.getScores3().split("-");
+		String[] score4=match.getScores4().split("-");
+		String[] total=match.getScore().split("-");
+		if(match.getExtrascores() != null){
+			String[] extra=match.getExtrascores().split("-");
+			extra1.setText(extra[0]);//未完
+			extra2.setText(extra[1]);//未完
+		}
 		//信息
 		first1.setText(score1[0]);
 		first2.setText(score1[1]);
@@ -288,17 +291,18 @@ public class DataOfMatchPanel extends JPanel {
 		third2.setText(score3[1]);
 		fourth1.setText(score4[0]);
 		fourth2.setText(score4[1]);
-		extra1.setText(extra[0]);//未完
-		extra2.setText(extra[1]);//未完
 		total1.setText(total[0]);
 		total2.setText(total[1]);
 		date1.setText(match.getDate());
 		date2.setText(match.getDate());
 		
-		team1.setText(match.getLeftTeam().getTeamName());
-		team2.setText(match.getRightTeam().getTeamName());
-		name1.setText(match.getLeftTeam().getTeamName());
-		name2.setText(match.getRightTeam().getTeamName());
+		team1.setText(match.getLeftTeam().getShortName());
+		team2.setText(match.getRightTeam().getShortName());
+		name1.setText(match.getLeftTeam().getShortName());
+		name2.setText(match.getRightTeam().getShortName());
+		//队伍图片
+		team1.setIcon(ImageSaver.getIcon("teams/"+match.getLeftTeam().getShortName()));
+		team2.setIcon(ImageSaver.getIcon("teams/"+match.getRightTeam().getShortName()));
 	}
 	
 }

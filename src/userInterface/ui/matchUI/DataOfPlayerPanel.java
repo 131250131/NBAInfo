@@ -3,6 +3,7 @@ package userInterface.ui.matchUI;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -98,10 +99,10 @@ public class DataOfPlayerPanel extends JPanel {
 		playerBirth.setBounds(255, 170, 200, 20);
 		playerAge.setBounds(455, 10, 200, 20);
 		exp.setBounds(455, 50, 200, 20);
-		school.setBounds(455, 90, 200, 20);
+		school.setBounds(455, 90, 300, 20);
 		weight.setBounds(455, 130, 200, 20);
 		
-		test();
+		empty();
 		this.add(playerName,0);
 		this.add(playerNumber,1);
 		this.add(position,2);
@@ -127,25 +128,42 @@ public class DataOfPlayerPanel extends JPanel {
 		school.setText("毕业院校："+"Blue Shit");
 		weight.setText("体重："+"70");
 	}
+	void empty(){
+		//头像
+		portrait.setIcon(ImageSaver.getIcon("portrait/null"));
+		//信息
+		playerName.setText("球员：???");
+		playerNumber.setText("号码：???");
+		position.setText("位置：???");
+		height.setText("身高：???");
+		playerBirth.setText("生日：???");
+		playerAge.setText("年龄：???");
+		exp.setText("球龄：???");
+		school.setText("毕业院校：???");
+		weight.setText("体重：???");
+	}
 	public void update(String player){
 		playerControllerService playerController = PlayerController.getInstance();
 		teamControllerService teamController = TeamController.getInstance();
 		matchControllerService matchController = MatchController.getInstance();
 		System.out.println(player);
 		PlayerVO temp = pcs.findPlayerVO(player);
-		//头像
-		System.out.println(temp);
-		portrait.setIcon(ImageSaver.getIcon("portrait/"+temp.getPlayerName()));
-		System.out.println(temp.getPlayerName());
-		//信息
-		playerName.setText("球员："+temp.getPlayerName());
-		playerNumber.setText("号码："+temp.getPlayerNumber());
-		position.setText("位置："+temp.getPosition());
-		height.setText("身高："+temp.getHeight());
-		playerBirth.setText("生日："+temp.getPlayerBirth());
-		playerAge.setText("年龄："+String.valueOf(temp.getPlayerAge()));
-		exp.setText("球龄："+String.valueOf(temp.getExp()));
-		school.setText("毕业院校："+temp.getSchool());
-		weight.setText("体重："+String.valueOf(temp.getWeight()));
+		if(temp==null){
+			empty();
+		}
+		else{
+			//头像
+			portrait.setIcon(ImageSaver.getIcon("portrait/"+temp.getPlayerName()));
+			//信息
+			playerName.setText("球员："+temp.getPlayerName());
+			playerNumber.setText("号码："+temp.getPlayerNumber());
+			position.setText("位置："+temp.getPosition());
+			height.setText("身高："+temp.getHeight());
+			playerBirth.setText("生日："+temp.getPlayerBirth());
+			playerAge.setText("年龄："+String.valueOf(temp.getPlayerAge()));
+			exp.setText("球龄："+String.valueOf(temp.getExp()));
+			school.setText("毕业院校："+temp.getSchool());
+			weight.setText("体重："+String.valueOf(temp.getWeight()));
+		}
 	}
 }

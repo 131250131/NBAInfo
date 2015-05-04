@@ -13,6 +13,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import ui.system.Controller;
 import vo.MatchVO;
 import vo.PlayerVO;
 
@@ -139,7 +140,11 @@ public class MatchDataPanel extends JPanel {
 		test.setUndecorated(true);
 		test.setBounds(20, 20, 1280, 720);
 		test.setLayout(null);
-		test.add(new MatchDataPanel());
+		Controller.init();	
+		MatchDataPanel m = new MatchDataPanel();
+		m.update(Controller.matchController.getMatch(0));
+		m.setVisible(true);
+		test.add(m);
 		
 		test.setVisible(true);
 	}

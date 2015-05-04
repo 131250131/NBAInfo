@@ -12,11 +12,11 @@ public class Main_UI_Test {
 	
 	public static void main(String[] args) {
 		
-		int frameSizeX = getFrameSizeX();
-		int frameSizeY = getFrameSizeY();
+//		int frameSizeX = getFrameSizeX();
+//		int frameSizeY = getFrameSizeY();
 		
-//		int frameSizeX = getFullScreenSizeX();
-//		int frameSizeY = getFullScreenSizeY();
+		int frameSizeX = getFullScreenSizeX();
+		int frameSizeY = getFullScreenSizeY();
 		
 		@SuppressWarnings("unused")
 		UIData uiData = new UIData(frameSizeX , frameSizeY);

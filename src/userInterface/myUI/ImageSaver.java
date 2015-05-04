@@ -102,7 +102,6 @@ public class ImageSaver {
 		case "mouseEffect" : return new ImageIcon(iconPath + "TodayTeam/mouseEffect.png");
 		//用于其他通用路径，文件夹/图片名
 		default: 
-			System.out.println(iconPath + iconName+".png");
 			return new ImageIcon(iconPath + iconName+".png");
 		
 		}
