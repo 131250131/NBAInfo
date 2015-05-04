@@ -70,23 +70,10 @@ public class MyTable extends JScrollPane implements MouseListener{
 	}
 	/*空表格构造*/
 	public MyTable(){
-		String[] temp={"未命名1","未命名2","未命名3"};
-		Object[][] data =
-			{
-			{"Aaron Brooks", new Integer(5),"5.00"},
-	         {"Oranges", new Integer(3),"6.00"},
-	         {"Pears", new Integer(2),"4.00"},
-	         {"Grapes", new Integer(3),"2.00"},
-	         {"Grapes", new Integer(3),"2.00"},
-	         {"Grapes", new Integer(3),"2.00"},
-	         {"Grapes", new Integer(3),"2.00"},
-	         {"Grapes", new Integer(3),"2.00"},
-	         {"Grapes", new Integer(3),"2.00"},
-	         {"Grapes", new Integer(3),"2.00"},
-	         {"Grapes", new Integer(3),"2.00"},
-	         {"Grapes", new Integer(3),"2.00"},
-	         {"Grapes", new Integer(3),"2.00"}
-			};
+		String[] temp={"姓名","位置","分钟","%","命中","出手","三分%"
+				,"三分命中","三分出手","罚球%","罚球命中","罚球出手","+/-","进攻"
+				,"防守","篮板","助攻","犯规","抢断","失误","盖帽","得分"};
+		Object[][] data =new Object[1][22];
 
 		initial(temp,data);//初始化
 		this.setOpaque(false);
@@ -94,6 +81,9 @@ public class MyTable extends JScrollPane implements MouseListener{
    /*获取当前选中行的标识*/
 	public String getSign(int num){
 		int selectRow=table.getSelectedRow();
+		if(selectRow==-1){
+			return "";
+		}
 		String result=(String)this.model.getValueAt(selectRow, num);
 		return result;
 		
