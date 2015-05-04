@@ -2,6 +2,7 @@ package ui.system;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.util.ArrayList;
 
 import ui.frame.index.homepage.HomepageBounds;
 import ui.frame.larger.LargerScrollPane;
@@ -49,10 +50,14 @@ public class UIData {
 		HomepageBounds homepageBounds = new HomepageBounds();
 	}
 	
+	static double k = 1;
+	
 	private void setFrameLoction(){
 		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 		int screenWidth = (int)screensize.getWidth();
 		int screenHeight = (int)screensize.getHeight();
+		
+		k = (screenWidth + 0.0) / 1920;
 		
 		frameX = (screenWidth - frameWidth) /2;
 		frameY = (screenHeight - frameHeight) /2;
@@ -166,6 +171,18 @@ public class UIData {
 	
 	public static void setFavoriteTeam(String teamName){
 		favoriteTeam = teamName;
+	}
+	
+	public static ArrayList<String> getSuitableSize(){
+		ArrayList<String> returnArray = new ArrayList<String>();
+		int width = 1920;
+		int height = 1080;
+		for(double i = 1; i >= 0.4; i-=0.1){
+			if(k >= i){
+				returnArray.add((int)(width * i) + "x" + (int)(height * i));
+			}
+		}
+		return returnArray;
 	}
 	
 	//frame

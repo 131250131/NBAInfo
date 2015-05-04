@@ -2,6 +2,8 @@ package ui.frame.index.match;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,7 +15,7 @@ import ui.system.ImageSaver;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
-public class MatchPanel extends JPanel{
+public class MatchPanel extends JPanel implements ActionListener{
 	
 	int x = UIData.matchBoundsX;
 	int y = UIData.matchBoundsY;
@@ -76,6 +78,14 @@ public class MatchPanel extends JPanel{
 		
 		BackColorPanel backPanel = new BackColorPanel(0, 0, width, height, 3);
 		this.add(backPanel);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent events) {
+		
+		if(events.getSource() == searchButton){
+			
+		}
 	}
 
 }

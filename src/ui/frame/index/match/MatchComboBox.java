@@ -1,9 +1,11 @@
 package ui.frame.index.match;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
 
+import ui.system.Controller;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
@@ -19,11 +21,10 @@ public class MatchComboBox extends JComboBox<String>{
 	}
 	
 	private void addItem(){
-		
-		int itemSize = 10;
-
-		for(int i = 0; i < itemSize; i++){
-			this.addItem("比赛信息");
+		ArrayList<String> dateList = Controller.matchController.getDatehavematches();
+		for(int i = dateList.size() - 1; i >= 0 ; i--){
+			String date = dateList.get(i);	
+			this.addItem(date + " (" + Controller.matchController.getSomeMacthVO(dateList.get(i)).size() +")");
 		}
 	}
 }
