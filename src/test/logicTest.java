@@ -25,6 +25,15 @@ public class logicTest {
 		playerController = mainController.getPlayerController();
 		teamController = mainController.getTeamController();
 		matchController = mainController.getMatchController();
+		
+		DataCollectorService dc= new DataCollector();
+		ArrayList<PlayerVO> list = dc.getSomeDayPlayers_Score("2013-12-25");
+		System.out.println("??????");
+
+		for(PlayerVO pl:list){
+			System.out.println(pl.getTeamShortName()+" "+pl.getPlayerScores()+ " "+pl.getPlayerAssists()+" "+pl.getPlayerGmScER()+" "+pl.getPlayerName()+"???");
+		}
+		System.out.println("??ttt??");
 //		ArrayList<PlayerVO> o=playerController.getAllPlayerVO();
 //		for(PlayerVO pl:o){
 //
@@ -82,7 +91,7 @@ public class logicTest {
 //		System.out.println(vo.getLeftTeam().getTeamScores()+vo.getLeftTeam().getShortName()
 //				);
 		
-		ArrayList<MatchVO> list = matchController.getAllMatchVO();
+///	ArrayList<MatchVO> list = matchController.getAllMatchVO();
 //		for(MatchVO vo : list){
 //			System.out.println(vo.getLeftTeam().getShortName()+" "+vo.getLeftTeam().getTeamScores()+
 //					vo.getRightTeam().getShortName()+" "+vo.getRightTeam().getTeamScores());
