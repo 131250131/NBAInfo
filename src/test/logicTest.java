@@ -2,6 +2,8 @@ package test;
 
 import java.util.ArrayList;
 
+import ui.system.Controller;
+import vo.MatchVO;
 import vo.PlayerVO;
 import vo.TeamVO;
 import logic.DataCollector;
@@ -23,11 +25,11 @@ public class logicTest {
 		playerController = mainController.getPlayerController();
 		teamController = mainController.getTeamController();
 		matchController = mainController.getMatchController();
-		ArrayList<PlayerVO> o=playerController.getAllPlayerVO();
-		for(PlayerVO pl:o){
-
-			//System.out.println(pl.getPlayerGmScER());
-		}
+//		ArrayList<PlayerVO> o=playerController.getAllPlayerVO();
+//		for(PlayerVO pl:o){
+//
+//			//System.out.println(pl.getPlayerGmScER());
+//		}
 		/*
 		ArrayList<TeamVO> t=teamController.getSeasonAllTeamInfo();
 		for(TeamVO te:t){
@@ -71,7 +73,22 @@ public class logicTest {
 //		for(PlayerVO pl:list){
 //			System.out.println(pl.getPlayerName()+" "+pl.getPlayerFTG());
 //		}
-
+//		Controller controller = new Controller();
+//		controller.init();
+//		matchControllerService matchController = controller.matchController;
+//		
+//		ArrayList<MatchVO> list = matchController.getAllMatchVO();
+//		MatchVO vo =list.get(0);
+//		System.out.println(vo.getLeftTeam().getTeamScores()+vo.getLeftTeam().getShortName()
+//				);
+		
+		ArrayList<MatchVO> list = matchController.getAllMatchVO();
+//		for(MatchVO vo : list){
+//			System.out.println(vo.getLeftTeam().getShortName()+" "+vo.getLeftTeam().getTeamScores()+
+//					vo.getRightTeam().getShortName()+" "+vo.getRightTeam().getTeamScores());
+//		}
+//		
+		
 	}
-	
+
 }

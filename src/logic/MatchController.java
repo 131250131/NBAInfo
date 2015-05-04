@@ -33,6 +33,10 @@ public class MatchController implements matchControllerService{
 			matchdata.readMatch();
 			allMatchPO = this.matchdata.getAllMatch();
 			//System.out.println(allMatchPO.get(0).getScore()+"111");
+//			for(MatchPO matchpo:this.allMatchPO){
+//				System.out.println(matchpo.getLeftTeam().getShortName()+" "+matchpo.getLeftTeam().getTeamScores()+
+//						matchpo.getRightTeam().getShortName()+" "+matchpo.getRightTeam().getTeamScores());
+//			}
 			this.processAllMatches();//处理完毕当前的数据;
 			this.createAllMatchVO();//获得所有比赛的vo;
 		}
@@ -65,6 +69,7 @@ public class MatchController implements matchControllerService{
 				Match tempMatch = new Match();
 				tempMatch.creatmatch(matchpo);//match数据更新;
 				this.allMatches.add(tempMatch);
+				
 				//System.out.println(tempMatch.getNum());
 
 				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());

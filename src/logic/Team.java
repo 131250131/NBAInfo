@@ -61,7 +61,7 @@ public class Team {
 		//球队犯规数（*****需要更新*****）
 			private int teamFouls;
 		//球队总得分数（*****需要更新*****）
-			private int teamScores;
+			private int teamScores=0;
 			
 		//对手进攻回合数（*****需要更新*****）
 			private double oppoattackRounds;
@@ -1379,6 +1379,7 @@ public class Team {
 			teamTurnovers=teampo.getTeamTurnovers();
 			teamFouls=teampo.getTeamFouls();
 			teamScores=teampo.getTeamScores();
+			//System.out.println(teampo.getShortName()+" "+teampo.getTeamScores());
 			attendmatches=teampo.getAttendmatches();
 		
 			//bonus项值得传递

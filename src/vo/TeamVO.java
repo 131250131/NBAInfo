@@ -138,7 +138,7 @@ public class TeamVO implements Comparable<TeamVO> {
 		//球队犯规数（*****需要更新*****）
 			private int teamFouls;
 		//球队总得分数（*****需要更新*****）
-			private int teamScores;
+			private int teamScores=0;
 			
 		//对手进攻回合数（*****需要更新*****）
 			private double oppoattackRounds;

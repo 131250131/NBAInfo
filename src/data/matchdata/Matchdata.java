@@ -51,6 +51,8 @@ public class Matchdata implements MatchDataService{
 			String season =a[0];
 			match.setSeason(season);
 			//得到赛季
+			leftplayerlist=new ArrayList<PlayerPO>();
+			rightplayerlist=new ArrayList<PlayerPO>();
 			try{
 			InputStreamReader read = new InputStreamReader(new FileInputStream(matchFile[i]),"UTF-8");
 	        BufferedReader bufferedReader = new BufferedReader(read);
@@ -213,6 +215,7 @@ public class Matchdata implements MatchDataService{
 			 */
 			TeamPO leftteam =teamdataoperator("left");
 			TeamPO rightteam =teamdataoperator("right");	
+
 			if(leftteam.getTeamFGTry()!=0){
 					if(leftteam.getTeamFG()/leftteam.getTeamFGTry()>rightteam.getTeamFG()/rightteam.getTeamFGTry()  
 						&& lscore>rscore	){
@@ -300,7 +303,10 @@ public class Matchdata implements MatchDataService{
 	}
 	@Override
 	public ArrayList<MatchPO> getAllMatch() {
-		// TODO Auto-generated method stub
+//		for(MatchPO matchpo:this.matches){
+//			System.out.println(matchpo.getLeftTeam().getShortName()+" "+matchpo.getLeftTeam().getTeamScores()+
+//					matchpo.getRightTeam().getShortName()+" "+matchpo.getRightTeam().getTeamScores());
+//		}
 		return this.matches;
 	}
 	
