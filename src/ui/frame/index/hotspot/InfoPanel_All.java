@@ -30,6 +30,7 @@ public class InfoPanel_All extends JPanel{
 	public InfoPanel_All(PlayerVO player){
 		
 		_player = player;
+	
 		ArrayList<MatchVO> array = Controller.matchController.getMatchOfPlayer(player.getPlayerName());
 		boolean flag = true;
 		ArrayList<PlayerVO> list1 = array.get(array.size() - 1).getRightplayerlist();
