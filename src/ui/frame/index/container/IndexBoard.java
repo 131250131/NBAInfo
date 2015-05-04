@@ -10,6 +10,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.frame.larger.LargerPanel;
+import ui.frame.larger.LargerScrollPane;
 import ui.myUI.ImageLabel;
 import ui.myUI.OpaqueButton;
 import ui.system.ImageSaver;
@@ -209,7 +211,7 @@ public class IndexBoard extends JPanel implements ActionListener{
 		background.setVisible(false);
 		background2.setVisible(true);
 	}
-
+	
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == switchButton){
@@ -250,6 +252,11 @@ public class IndexBoard extends JPanel implements ActionListener{
 		
 		if(events.getSource() == textButton[7]){
 			IndexScrollPane.turnto7.doClick();
+		}
+		
+		if(events.getSource() == textButton[8]){
+			LargerPanel.addSystemPanel.doClick();
+			LargerScrollPane.turnto2.doClick();
 		}
 	}
 }

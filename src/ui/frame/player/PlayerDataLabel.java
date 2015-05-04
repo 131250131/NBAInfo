@@ -153,7 +153,7 @@ public class PlayerDataLabel extends JPanel{
 			case 14:
 				return 3.2 * player.getPlayerAttends();
 			case 15:
-				return 10 * player.getPlayerAttends();
+				return 10.4;
 			}
 			return 0;
 		}else{
@@ -173,7 +173,7 @@ public class PlayerDataLabel extends JPanel{
 			case 6:
 				return 20 * player.getPlayerAttends();
 			case 7:
-				return 10 * player.getPlayerAttends();
+				return 20 * player.getPlayerAttends();
 			case 8:
 				return 10 * player.getPlayerAttends();
 			case 9:
@@ -189,7 +189,7 @@ public class PlayerDataLabel extends JPanel{
 			case 14:
 				return 8 * player.getPlayerAttends();
 			case 15:
-				return 20 * player.getPlayerAttends();
+				return 40;
 			}
 			return 0;
 		}

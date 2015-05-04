@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import ui.frame.index.container.IndexBoard;
 import ui.frame.index.container.IndexScrollPane;
 import ui.frame.player.PlayerScrollPanel;
+import ui.frame.system.SystemScrollPane;
 import ui.frame.team.TeamScrollPane;
 import ui.myUI.ImageLabel;
 import ui.system.Controller;
@@ -23,7 +24,7 @@ public class LargerPanel extends JPanel implements ActionListener{
 	
 	IndexScrollPane indexScrollPane;
 	IndexBoard indexBoard;
-	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel;
+	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel;
 	
 	public LargerPanel(){
 		this.setLayout(null);
@@ -38,7 +39,7 @@ public class LargerPanel extends JPanel implements ActionListener{
 		indexBoard = new IndexBoard();
 		this.add(indexBoard);
 		indexScrollPane = new IndexScrollPane();
-		this.add(indexScrollPane);
+		this.add(indexScrollPane);	
 		
 		ImageLabel addback1 = new ImageLabel(ImageSaver.getIcon("新增页面背景"), UIData.slideSize * 2, 0, UIData.frameWidth, UIData.frameHeight);
 		this.add(addback1);
@@ -67,6 +68,10 @@ public class LargerPanel extends JPanel implements ActionListener{
 		addTeamPanel = new JButton();
 		addTeamPanel.addActionListener(this);
 		this.add(addTeamPanel);
+		
+		addSystemPanel = new JButton();
+		addSystemPanel.addActionListener(this);
+		this.add(addSystemPanel);
 		}
 
 	public void actionPerformed(ActionEvent e) {
@@ -80,6 +85,12 @@ public class LargerPanel extends JPanel implements ActionListener{
 			TeamScrollPane teamScrollPanel = new TeamScrollPane(Controller.currentTeamName);
 			this.add(teamScrollPanel);
 		}	
+		
+		if(e.getSource() == addSystemPanel){
+			SystemScrollPane systemScrollPanel = new SystemScrollPane();
+			this.add(systemScrollPanel);
+		}	
+	
 	}
 
 }

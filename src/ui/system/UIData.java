@@ -34,6 +34,7 @@ public class UIData {
 		setFrameLoction();
 		setLargerBounds();
 		setIndexBoardBounds();
+		setSystemBoardBounds();
 		setIndexScrollPaneBounds();
 		setIndexPanelBounds();
 		setHomepagePanelBounds();
@@ -110,6 +111,13 @@ public class UIData {
 		indexBoardY = 0;
 		indexBoardWidth = (int) (175 * changeX);
 		indexBoardHeight = frameHeight;
+	}
+	
+	private void setSystemBoardBounds(){
+		systemBoardX = indexBoardX + indexBoardWidth;
+		systemBoardY = (int) ((825 - 160) * changeY);
+		systemBoardWidth = (int) (175 * changeX);
+		systemBoardHeight = (int) (160 * 2 * changeY);
 	}
 	
 	private void setHotspotPanelBounds(){
@@ -189,6 +197,10 @@ public class UIData {
 	public static int indexBoardY;
 	public static int indexBoardWidth;
 	public static int indexBoardHeight;
+	public static int systemBoardX;
+	public static int systemBoardY;
+	public static int systemBoardWidth;
+	public static int systemBoardHeight;
 	public static int hotspotBoundsX;
 	public static int hotspotBoundsY;
 	public static int hotspotBoundsWidth;

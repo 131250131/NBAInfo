@@ -6,16 +6,17 @@ import java.awt.Toolkit;
 import ui.frame.mainframe.MainFrame;
 import ui.system.Controller;
 import ui.system.UIData;
+import userInterface.ui.matchUI.MatchDataPanel;
 
 public class Main_UI_Test {
 	
 	public static void main(String[] args) {
 		
-		int frameSizeX = getFrameSizeX();
-		int frameSizeY = getFrameSizeY();
+//		int frameSizeX = getFrameSizeX();
+//		int frameSizeY = getFrameSizeY();
 		
-//		int frameSizeX = getFullScreenSizeX();
-//		int frameSizeY = getFullScreenSizeY();
+		int frameSizeX = getFullScreenSizeX();
+		int frameSizeY = getFullScreenSizeY();
 		
 		@SuppressWarnings("unused")
 		UIData uiData = new UIData(frameSizeX , frameSizeY);
@@ -26,6 +27,10 @@ public class Main_UI_Test {
 		
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);
+		
+//		MatchDataPanel m = new MatchDataPanel();
+//		m.update(Controller.matchController.getMatch(0));
+//		m.setVisible(true);
 		
 	}
 	
