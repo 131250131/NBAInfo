@@ -315,7 +315,19 @@ public class PlayerController implements playerControllerService{
 		}
 		return result;
 	}
-
+	
+	public ArrayList<PlayerVO> getPlayerbyChar(char temp){
+		PlayerController playerController = PlayerController.getInstance();
+		ArrayList<PlayerVO> list =playerController.getAllPlayerVO();
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		for(PlayerVO vo : list){
+			char[] str = vo.getPlayerName().toCharArray();
+			if(str[0]==temp){
+				result.add(vo);
+			}
+		}
+		return result;
+	}
 
 
 }
