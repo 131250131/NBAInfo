@@ -273,12 +273,16 @@ public class DataOfMatchPanel extends JPanel {
 	}
 	public void update(MatchVO match){
 		
-		String[] score1=match.getScores1().split(":");
-		String[] score2=match.getScores2().split(":");
-		String[] score3=match.getScores3().split(":");
-		String[] score4=match.getScores4().split(":");
-		String[] total=match.getScore().split(":");
-		String[] extra=match.getExtrascores().split(":");
+		String[] score1=match.getScores1().split("-");
+		String[] score2=match.getScores2().split("-");
+		String[] score3=match.getScores3().split("-");
+		String[] score4=match.getScores4().split("-");
+		String[] total=match.getScore().split("-");
+		if(match.getExtrascores() != null){
+			String[] extra=match.getExtrascores().split("-");
+			extra1.setText(extra[0]);//未完
+			extra2.setText(extra[1]);//未完
+		}
 		//信息
 		first1.setText(score1[0]);
 		first2.setText(score1[1]);
@@ -288,8 +292,6 @@ public class DataOfMatchPanel extends JPanel {
 		third2.setText(score3[1]);
 		fourth1.setText(score4[0]);
 		fourth2.setText(score4[1]);
-		extra1.setText(extra[0]);//未完
-		extra2.setText(extra[1]);//未完
 		total1.setText(total[0]);
 		total2.setText(total[1]);
 		date1.setText(match.getDate());

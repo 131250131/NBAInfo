@@ -3,34 +3,34 @@ package ui.frame.index.match;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.system.UIData;
+import vo.MatchVO;
 
 @SuppressWarnings("serial")
 public class MatchListPanel extends JPanel{
 	
-	public MatchListPanel(){	
+	public MatchListPanel(ArrayList<MatchVO> matchArray){	
 		this.setLayout(null);
-		this.setPreferredSize(new Dimension((int) ((1920 - 25) * UIData.changeX), (int) (160 * 1.5 * UIData.changeY) * 15));
-		this.setOpaque(false);
-		
-		createMatches();
+		matchNum = matchArray.size();
+		this.setPreferredSize(new Dimension((int) ((1920 - 25) * UIData.changeX), (int) (160 * 1.5 * UIData.changeY) * (matchNum + 1)));
+		this.setOpaque(false);	
+		createMatches(matchArray);
 	}
 	
 	int matchNum;
 	
 	JLabel matchInfoLabel;
 	
-	private void createMatches(){
-		matchNum = 8;
+	private void createMatches(ArrayList<MatchVO> matchArray){	
 		SingleMatchPanel[] singleMatchPanel = new SingleMatchPanel[matchNum];
 		for(int i = 0; i < matchNum; i++){
-			singleMatchPanel[i] = new SingleMatchPanel();
+			singleMatchPanel[i] = new SingleMatchPanel(matchArray.get(i));
 			singleMatchPanel[i].setLocation(0, i * (int) (160 * 1.5 * UIData.changeY));
-			singleMatchPanel[i].initSingleMatchPanelWithMatch();
 			this.add(singleMatchPanel[i]);
 		}
 		

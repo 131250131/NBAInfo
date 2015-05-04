@@ -1,5 +1,7 @@
 package ui.system;
 
+import java.util.ArrayList;
+
 import ui.frame.larger.LargerPanel;
 import ui.frame.larger.LargerScrollPane;
 import logic.AssociationData;
@@ -29,6 +31,12 @@ public class Controller {
 		matchController = mainController.getMatchController();
 		dataCollectorService = new DataCollector();
 		associationController = new AssociationData();
+	}
+	
+	public static ArrayList<String> dateList;
+	
+	public static void readAllMatch(){
+		dateList = Controller.matchController.getDatehavematches();
 	}
 	
 	public static void addPlayerPanel(String playerName){

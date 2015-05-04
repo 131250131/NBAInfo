@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 
 import ui.system.ImageSaver;
 import ui.system.UIData;
+import vo.MatchVO;
 
 @SuppressWarnings("serial")
 public class SingleMatchPanel extends JPanel{
@@ -26,34 +27,36 @@ public class SingleMatchPanel extends JPanel{
 	
 	JLabel teamLogo1, teamLogo2, scoreLabel, scoreTitle, leftScoreLabel, rightScoreLabel, dateLabel;
 	
-	public SingleMatchPanel(){
+	MatchVO match;
+	
+	public SingleMatchPanel(MatchVO _match){
+		match = _match;
 		this.setSize(width, height);
 		this.setVisible(true);
 		this.setOpaque(false);
 		this.setLayout(null);
+		initSingleMatchPanelWithMatch();
 	}
 	
-	String leftTeamName;
-	String rightTeamName;
-	int leftTeamScore_total = 116;
-	int rightTeamScore_total = 103;
-	
-	int leftTeamScore_1Q = 20;
-	int rightTeamScore_1Q = 35;
-	int leftTeamScore_2Q = 12;
-	int rightTeamScore_2Q = 26;
-	int leftTeamScore_3Q = 40;
-	String rightTeamScore_3Q = "08";
-	int leftTeamScore_4Q = 32;
-	int rightTeamScore_4Q = 10;
-	String leftTeamScore_OT = "00";
-	String rightTeamScore_OT = "00";
-	
-	String matchDate = "2013.12.11";
-	
 	public void initSingleMatchPanelWithMatch(){
-		leftTeamName = "BOS";
-		rightTeamName = "POR";
+		String leftTeamName = match.getLeftTeam().getShortName();
+		String rightTeamName= match.getRightTeam().getShortName();
+		
+		int leftTeamScore_total = 100;
+		int rightTeamScore_total = 103;
+		
+		int leftTeamScore_1Q = 20;
+		int rightTeamScore_1Q = 35;
+		int leftTeamScore_2Q = 12;
+		int rightTeamScore_2Q = 26;
+		int leftTeamScore_3Q = 40;
+		String rightTeamScore_3Q = "08";
+		int leftTeamScore_4Q = 32;
+		int rightTeamScore_4Q = 10;
+		String leftTeamScore_OT = "00";
+		String rightTeamScore_OT = "00";
+		
+		String matchDate = match.getDate();
 		int picSizeX = (int) (140 * 1.5 * UIData.changeX);
 		int picSizeY = (int) (140 * 1.5 * UIData.changeY);
 		ImageIcon image1 = new ImageIcon("data/newImage/Team/" + leftTeamName + ".png");

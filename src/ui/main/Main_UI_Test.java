@@ -12,11 +12,11 @@ public class Main_UI_Test {
 	
 	public static void main(String[] args) {
 		
-		int frameSizeX = getFrameSizeX();
-		int frameSizeY = getFrameSizeY();
+//		int frameSizeX = getFrameSizeX();
+//		int frameSizeY = getFrameSizeY();
 		
-//		int frameSizeX = getFullScreenSizeX();
-//		int frameSizeY = getFullScreenSizeY();
+		int frameSizeX = getFullScreenSizeX();
+		int frameSizeY = getFullScreenSizeY();
 		
 		@SuppressWarnings("unused")
 		UIData uiData = new UIData(frameSizeX , frameSizeY);
@@ -25,12 +25,12 @@ public class Main_UI_Test {
 		//初始化后端
 		Controller.init();	
 		
-		MainFrame mainFrame = new MainFrame();
-		mainFrame.setVisible(true);
+//		MainFrame mainFrame = new MainFrame();
+//		mainFrame.setVisible(true);
 		
-//		MatchDataPanel m = new MatchDataPanel();
-//		m.update(Controller.matchController.getMatch(0));
-//		m.setVisible(true);
+		MatchDataPanel m = new MatchDataPanel();
+		m.update(Controller.matchController.getMatch(0));
+		m.setVisible(true);
 		
 	}
 	

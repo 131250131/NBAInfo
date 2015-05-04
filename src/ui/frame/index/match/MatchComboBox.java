@@ -21,7 +21,7 @@ public class MatchComboBox extends JComboBox<String>{
 	}
 	
 	private void addItem(){
-		ArrayList<String> dateList = Controller.matchController.getDatehavematches();
+		ArrayList<String> dateList = Controller.dateList;
 		for(int i = dateList.size() - 1; i >= 0 ; i--){
 			String date = dateList.get(i);	
 			this.addItem(date + " (" + Controller.matchController.getSomeMacthVO(dateList.get(i)).size() +")");
