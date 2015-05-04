@@ -31,6 +31,7 @@ public class Controller {
 		matchController = mainController.getMatchController();
 		dataCollectorService = new DataCollector();
 		associationController = new AssociationData();
+		readAllMatch();
 	}
 	
 	public static ArrayList<String> dateList;

@@ -33,7 +33,6 @@ public class MatchPanel extends JPanel implements ActionListener{
 	MatchListPanel matchesListPanel;
 	
 	public MatchPanel(){
-		Controller.readAllMatch();
 		this.setLayout(null);
 		this.setBounds(x, y, width, height);
 		this.setOpaque(false);
@@ -82,6 +81,8 @@ public class MatchPanel extends JPanel implements ActionListener{
 		
 		BackColorPanel backPanel = new BackColorPanel(0, 0, width, height, 3);
 		this.add(backPanel);
+		
+		searchButton.doClick();
 	}
 
 	@Override

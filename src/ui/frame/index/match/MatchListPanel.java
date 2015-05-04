@@ -35,7 +35,7 @@ public class MatchListPanel extends JPanel{
 		}
 		
 		matchInfoLabel = new JLabel("已加载 " + matchNum + " 场比赛", JLabel.CENTER);
-		matchInfoLabel.setBounds(0, (int) ((matchNum * 150 * 1.5 + 90 ) * UIData.changeY), (int) (1500 * UIData.changeX), (int) (120 * UIData.changeY));
+		matchInfoLabel.setBounds(0, (int) ((matchNum * 160 * 1.5 + 40 ) * UIData.changeY), (int) (1500 * UIData.changeX), (int) (120 * UIData.changeY));
 		matchInfoLabel.setFont(new Font("新細明體", Font.BOLD, (int) (20 * 1.5 * UIData.changeY)));
 		matchInfoLabel.setForeground(Color.BLACK);
 		this.add(matchInfoLabel);
