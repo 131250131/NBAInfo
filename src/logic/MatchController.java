@@ -133,12 +133,8 @@ public class MatchController implements matchControllerService{
 		/*通过场次num找到match返回vo*/
 		public MatchVO getMatch(int num) {
 			createAllMatchVO();
-			for(MatchVO vo : this.allMatchVO){
-				if(vo.getNum()==num){
-					return vo;
-				}
-			}
-			return null;
+			return this.allMatchVO.get(num);
+			
 		}
 		
 		
@@ -226,10 +222,11 @@ public class MatchController implements matchControllerService{
 		public ArrayList<MatchVO> getMatchOfPlayer(String playerName) {
 			ArrayList<MatchVO> list = new ArrayList<MatchVO>();
 			PlayerVO vo = playerController.findPlayerVO(playerName);
-			
+			createAllMatchVO();
 			ArrayList<Integer> numList = vo.getAttendedMatches();
 			for(Integer i : numList){
-				list.add(this.getMatch((int)i));
+				list.add(this.allMatchVO.get(i));
+				System.out.println(i);
 			}
 			return list;
 		}

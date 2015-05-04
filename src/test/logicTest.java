@@ -97,7 +97,8 @@ public class logicTest {
 //					vo.getRightTeam().getShortName()+" "+vo.getRightTeam().getTeamScores());
 //		}
 //		
-		
+		//Kevin Durant
+		matchController.getMatchOfPlayer("Kevin Durant");
 	}
 
 }
