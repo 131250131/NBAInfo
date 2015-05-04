@@ -18,5 +18,6 @@ public interface playerControllerService {
 	public ArrayList<PlayerVO> getSeasonHotPlayers_FGP();
 	public ArrayList<PlayerVO> getSeasonHotPlayers_FTGP();
 	public ArrayList<PlayerVO> getplayerbyteam(String teamname);
+	public ArrayList<PlayerVO> getPlayerbyChar(char temp);
 
 }
