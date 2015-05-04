@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import userInterface.myUI.ImageSaver;
 import vo.MatchVO;
 
 import com.nba.davisUI.myUI.ImageBin;
@@ -183,7 +184,7 @@ public class DataOfMatchPanel extends JPanel {
 		total2.setBounds(215, 330, 40, 40);
 		date2.setBounds(255, 330, 80, 40);
 		
-		test();
+//		test();
 		this.add(first,0);
 		this.add(second,1);
 		this.add(third,2);
@@ -267,9 +268,7 @@ public class DataOfMatchPanel extends JPanel {
 		name1.setText("ATL");
 		name2.setText("BKN");
 		
-		//队伍图片
-		team1.setIcon(ImageBin.getImage("teams/ATL"));
-		team2.setIcon(ImageBin.getImage("teams/BKN"));
+		
 	}
 	public void update(MatchVO match){
 		
@@ -297,10 +296,13 @@ public class DataOfMatchPanel extends JPanel {
 		date1.setText(match.getDate());
 		date2.setText(match.getDate());
 		
-		team1.setText(match.getLeftTeam().getTeamName());
-		team2.setText(match.getRightTeam().getTeamName());
-		name1.setText(match.getLeftTeam().getTeamName());
-		name2.setText(match.getRightTeam().getTeamName());
+		team1.setText(match.getLeftTeam().getShortName());
+		team2.setText(match.getRightTeam().getShortName());
+		name1.setText(match.getLeftTeam().getShortName());
+		name2.setText(match.getRightTeam().getShortName());
+		//队伍图片
+		team1.setIcon(ImageSaver.getIcon("teams/"+match.getLeftTeam().getShortName()));
+		team2.setIcon(ImageSaver.getIcon("teams/"+match.getRightTeam().getShortName()));
 	}
 	
 }
