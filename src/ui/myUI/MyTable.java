@@ -114,7 +114,7 @@ public class MyTable extends JScrollPane implements MouseListener{
         this.getVerticalScrollBar().setOpaque(false);
         //this.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
         this.getHorizontalScrollBar().setOpaque(false);
-        this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
+       // this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         
 		//用参数初始化model
         if(!columnNames[0].equals("序号")){//如果没有序号列，自动添加序号列

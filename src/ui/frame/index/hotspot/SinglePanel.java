@@ -57,7 +57,7 @@ public class SinglePanel extends JPanel{
 		
 		nameLabel = new JLabel();
 		nameLabel.setBounds(0, 0, (int) (300 * UIData.changeX), (int) (20 * UIData.changeY));
-		nameLabel.setFont(new Font("Copperplate Gothic Light", Font.BOLD, (int) (20 * UIData.changeY)));
+		nameLabel.setFont(new Font("Arail", Font.BOLD, (int) (20 * UIData.changeY)));
 		nameLabel.setVisible(true);
 		nameLabel.setForeground(Color.ORANGE);
 		this.add(nameLabel);
@@ -128,6 +128,7 @@ public class SinglePanel extends JPanel{
 	}
 	
 	private void setTeamIcon(String playerName){
+		picLabel.setSize((int) (110 * UIData.changeX), (int) (110 * UIData.changeY));
 		ImageIcon image = ImageSaver.getTeamIcon(playerName);
 		image.setImage(image.getImage().getScaledInstance(picLabel.getSize().width, picLabel.getSize().height,Image.SCALE_DEFAULT));
 		picLabel.setIcon(image);

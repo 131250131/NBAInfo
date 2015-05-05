@@ -49,7 +49,7 @@ public class DataOfPlayerPanel extends JPanel {
 	private JLabel school;
 		
 	//调用逻辑层接口
-	playerControllerService pcs=PlayerController.getInstance();
+	playerControllerService pcs = PlayerController.getInstance();
 	public DataOfPlayerPanel(){
 		this.setLayout(null);
 		//设置面板透明
@@ -66,7 +66,7 @@ public class DataOfPlayerPanel extends JPanel {
 		exp = new JLabel();
 		school = new JLabel();
 		weight = new JLabel();
-		portrait = new ImageLabel(ImageSaver.getPlayerIcon("null2"),0,0,1,1);
+		portrait = new ImageLabel(ImageSaver.getPlayerIcon("null2"), 0, 0, 1, 1);
 		
 		//设置标签字体
 		position.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
@@ -78,6 +78,7 @@ public class DataOfPlayerPanel extends JPanel {
 		exp.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
 		school.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
 		weight.setFont(new Font("Arail", Font.BOLD, (int) (14 * UIData.changeY)));
+		
 		//设置字体颜色
 		position.setForeground(Color.white);
 		playerName.setForeground(Color.white);
@@ -109,6 +110,8 @@ public class DataOfPlayerPanel extends JPanel {
 		this.add(exp);
 		this.add(school);
 		this.add(weight);
+		
+		empty();
 	}
 
 	void empty(){
@@ -130,6 +133,8 @@ public class DataOfPlayerPanel extends JPanel {
 	}
 	
 	public void update(String player){
+		String[] str = player.split("[(]");
+		player = str[0];
 		PlayerVO temp = pcs.findPlayerVO(player);
 		portrait.setVisible(false);
 		if(temp == null){

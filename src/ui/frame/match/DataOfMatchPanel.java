@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.myUI.ImageLabel;
+import ui.system.ChineseTranslator;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 import vo.MatchVO;
@@ -132,7 +133,7 @@ public class DataOfMatchPanel extends JPanel {
 		extra1.setForeground(Color.white);
 		total1.setForeground(Color.white);
 		date1.setForeground(Color.white);
-		name1.setForeground(Color.white);
+		name1.setForeground(Color.GRAY);
 		
 		//设置标签字体
 		first2.setFont(new Font("Arail", Font.BOLD, (int) (14 * UIData.changeY)));
@@ -152,9 +153,8 @@ public class DataOfMatchPanel extends JPanel {
 		extra2.setForeground(Color.white);
 		total2.setForeground(Color.white);
 		date2.setForeground(Color.white);
-		name2.setForeground(Color.white);
-		
-		
+		name2.setForeground(Color.gray);
+			
 		//设置标签大小位置
 		name1.setBounds((int) (0 * UIData.changeX), (int) (0 * UIData.changeY), (int) (350 * UIData.changeX), (int) (50 * UIData.changeY));
 		name2.setBounds((int) (0 * UIData.changeX),(int) (570 * UIData.changeY), (int) (350 * UIData.changeX), (int) (50 * UIData.changeY));
@@ -260,8 +260,9 @@ public class DataOfMatchPanel extends JPanel {
 		date1.setText(match.getDate());
 		date2.setText(match.getDate());
 		
-		name1.setText(match.getLeftTeam().getShortName());
-		name2.setText(match.getRightTeam().getShortName());
+		name1.setText(ChineseTranslator.TeamNameTrans(match.getLeftTeam().getShortName()));
+		name2.setText(ChineseTranslator.TeamNameTrans(match.getRightTeam().getShortName()));
+		
 		//队伍图片
 		team1 = new ImageLabel(ImageSaver.getTeamIcon(match.getLeftTeam().getShortName()), (int) (75 * UIData.changeX)
 				, (int) (50 * UIData.changeY), (int) (200 * UIData.changeX), (int) (200 * UIData.changeY));
