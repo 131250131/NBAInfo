@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.myUI.ImageLabel;
-import ui.system.Controller;
 import ui.system.DataTransform;
 import ui.system.ImageSaver;
 import ui.system.UIData;
@@ -25,19 +24,18 @@ public class PlayerDataLabel extends JPanel{
 		this.setVisible(true);
 		this.setBounds(x, y, width, height);
 		this.setLayout(null);
-		//this.setOpaque(false);
 		this.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
 		this.player = player;
 		
 		for(int i = 0; i < num1; i++){
-			singleDataLabel[i] = new SingleDataLabel(getAverTitle(i), getAverData(0,i), getAverData(1,i), getAverData(2,i));
+			singleDataLabel[i] = new SingleDataLabel(getAverTitle(i), getAverData(0, i), getAverData(1, i), getAverData(2, i));
 			singleDataLabel[i].setBounds((int) (150 * UIData.changeX), (int) ((80 * i + 60) * UIData.changeY)
 					, (int) (1000 * UIData.changeX), (int) (70 * UIData.changeX));
 			this.add(singleDataLabel[i]);
 		}
 		
 		for(int i = 0; i < num2; i++){
-			singleDataLabel2[i] = new SingleDataLabel2(getAllTitle(i), getAllData(0,i), getAllData(1,i), getAllData(2,i));
+			singleDataLabel2[i] = new SingleDataLabel2(getAllTitle(i), getAllData(0, i), getAllData(1, i), getAllData(2, i));
 			singleDataLabel2[i].setBounds((int) (150 * UIData.changeX), (int) ((80 * num1 + 60 + 40 + 80 * i) * UIData.changeY)
 					, (int) (1000 * UIData.changeX), (int) (70 * UIData.changeX));
 			this.add(singleDataLabel2[i]);

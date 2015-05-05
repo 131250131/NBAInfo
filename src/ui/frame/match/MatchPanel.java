@@ -31,6 +31,9 @@ public class MatchPanel extends JPanel{
 		
 		int labelX = (int) (200 * UIData.changeX);
 		int labelWidth = (int) (1410 * UIData.changeX);
+		
+		MatchVSLabel vsLabel = new MatchVSLabel(labelX, (int) ((1020 - 165) * UIData.changeY), labelWidth, (int) (2500 * UIData.changeY), match);
+		this.add(vsLabel);
 
 		MatchDataPanel matchDataPanel = new MatchDataPanel(match);
 		matchDataPanel.setBounds((int) (300 * UIData.changeX), (int) (120 * UIData.changeY)
