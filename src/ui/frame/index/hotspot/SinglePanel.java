@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.myUI.ImageLabel;
+import ui.system.ChineseTranslator;
+import ui.system.DataTransform;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 
@@ -65,9 +67,9 @@ public class SinglePanel extends JPanel{
 		picLabel.setVisible(true);
 		this.add(picLabel);
 		
-		scoreLabel = new JLabel("0", JLabel.RIGHT);
-		scoreLabel.setBounds(0, 0, (int) (50 * UIData.changeX), (int)(20 * UIData.changeY));
-		scoreLabel.setFont(new Font("Copperplate Gothic Light", Font.BOLD, (int)(20 * UIData.changeY)));
+		scoreLabel = new JLabel("0", JLabel.CENTER);
+		scoreLabel.setBounds((int) (-5 * UIData.changeX), 0, (int) (100 * UIData.changeX), (int)(20 * UIData.changeY));
+		scoreLabel.setFont(new Font("Arail", Font.BOLD, (int)(20 * UIData.changeY)));
 		scoreLabel.setVisible(true);
 		scoreLabel.setForeground(Color.WHITE);
 		this.add(scoreLabel);
@@ -88,16 +90,23 @@ public class SinglePanel extends JPanel{
 //		this.add(button);
 	}
 	
-	public void updatePanel(int score, int step, String playerName){
-		setScore(score);
-		locateUI(score, step);
-		setIcon(playerName);
-		setLabelName(playerName);
+	public void updatePanel(double score, int step, String playerName, int i){
+		if(i == 0){
+			setScore(score);
+			locateUI(score, step);
+			setIcon(playerName);
+			setLabelName(playerName);
+		}else{
+			setScore(score);
+			locateUI(score, step);
+			setTeamIcon(playerName);
+			setTeamName(playerName);
+		}
 	}
 	
-	private void locateUI(int score, int step){
-		colorPanel.setLocation(getPanelX(score, step), (int) (45 * UIData.changeY));
-		colorLabel.setLocation((int) (getPanelX(score, step) - 230 * UIData.changeX), (int) (25 * UIData.changeY));
+	private void locateUI(double score, int step){
+		colorPanel.setLocation(getPanelX((int) score, step), (int) (45 * UIData.changeY));
+		colorLabel.setLocation((int) (getPanelX((int) score, step) - 230 * UIData.changeX), (int) (25 * UIData.changeY));
 		scoreLabel.setLocation((int) (colorLabel.getLocation().x + 160 * UIData.changeX)
 				, (int) (colorLabel.getLocation().y + 27 * UIData.changeY));
 		picLabel.setLocation((int) (colorLabel.getLocation().x + 12 * UIData.changeX)
@@ -106,16 +115,22 @@ public class SinglePanel extends JPanel{
 				, (int) (colorLabel.getLocation().y + 70 * UIData.changeY));
 	}
 	
-	private void setScore(int score){
-		if(score < 10){
-			scoreLabel.setText("0" + String.valueOf(score));
-		}else{
-			scoreLabel.setText(String.valueOf(score));
-		}
+	private void setScore(double score){
+			scoreLabel.setText(DataTransform.transDoubleTopointXXString(score));	
 	}
 	
 	private void setLabelName(String playerName){
 		nameLabel.setText("  - "+ playerName);
+	}
+	
+	private void setTeamName(String playerName){
+		nameLabel.setText("  - "+ ChineseTranslator.TeamNameTrans(playerName));
+	}
+	
+	private void setTeamIcon(String playerName){
+		ImageIcon image = ImageSaver.getTeamIcon(playerName);
+		image.setImage(image.getImage().getScaledInstance(picLabel.getSize().width, picLabel.getSize().height,Image.SCALE_DEFAULT));
+		picLabel.setIcon(image);
 	}
 	
 	private void setIcon(String playerName){

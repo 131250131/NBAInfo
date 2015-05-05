@@ -1,14 +1,17 @@
 package ui.frame.index.hotspot;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
-public class HotspotRankPanel extends JPanel{
+public class HotspotRankPanel extends JPanel implements ActionListener{
 
 	int x = HotspotBounds.HotspotRankX;
 	int y = HotspotBounds.HotspotRankY;
@@ -18,7 +21,8 @@ public class HotspotRankPanel extends JPanel{
 	HotSpotComboBox1 cb_1;
 	HotSpotComboBox2 cb_2;
 	RankingPanel rankingPanel;
-	
+	JButton searchButton;
+
 	public HotspotRankPanel(){
 		this.setBounds(x, y, width, height);
 		this.setLayout(null);
@@ -26,12 +30,32 @@ public class HotspotRankPanel extends JPanel{
 		this.setVisible(true);
 //		this.setBackground(new Color(0.1f,0.1f,0.1f,0.7f));
 		
+		searchButton = new JButton("查看");
+		searchButton.setBounds((int) (755  * UIData.changeX), (int) (30 * UIData.changeY),
+				(int) (200 * UIData.changeX), (int) (35 * UIData.changeY));
+		searchButton.setBackground(Color.DARK_GRAY);
+		searchButton.setForeground(Color.WHITE);
+		searchButton.addActionListener(this);
+		searchButton.setVisible(true);
+		this.add(searchButton);
+		
 		cb_1 = new HotSpotComboBox1();
 		this.add(cb_1);
 		cb_2 = new HotSpotComboBox2();
 		this.add(cb_2);
 		rankingPanel = new RankingPanel();
 		this.add(rankingPanel);
+	}
+	
+	public static int index1 = 0, index2 = 0;
+	
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == searchButton){
+			index1 = cb_1.getSelectedIndex();
+			index2 = cb_2.getSelectedIndex();
+			RankingPanel.update.doClick();
+		}
 	}
 	
 	
@@ -79,10 +103,9 @@ class HotSpotComboBox2 extends JComboBox<String>{
 			this.addItem("篮板");
 			this.addItem("盖帽");
 			this.addItem("抢断");
-			this.addItem("效率");
-			this.addItem("命中率");
-			this.addItem("三分命中率");
-			this.addItem("罚球命中率");
+//			this.addItem("命中率");
+//			this.addItem("三分命中率");
+//			this.addItem("罚球命中率");
 		}
 	}
 	
