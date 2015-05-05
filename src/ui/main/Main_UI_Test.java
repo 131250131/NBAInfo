@@ -23,7 +23,7 @@ public class Main_UI_Test {
 		
 		//初始化后端
 		Controller.init();	
-		
+//		System.out.println(Controller.dataCollectorService.getSeasonHotTeams_Score().size());
 		MainFrame mainFrame = new MainFrame();
 		mainFrame.setVisible(true);	
 		

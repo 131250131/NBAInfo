@@ -103,9 +103,9 @@ class HotSpotComboBox2 extends JComboBox<String>{
 			this.addItem("篮板");
 			this.addItem("盖帽");
 			this.addItem("抢断");
-//			this.addItem("命中率");
-//			this.addItem("三分命中率");
-//			this.addItem("罚球命中率");
+			this.addItem("命中率");
+			this.addItem("三分命中率");
+			this.addItem("罚球命中率");
 		}
 	}
 	

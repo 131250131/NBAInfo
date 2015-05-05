@@ -129,6 +129,27 @@ public class RankingPanel extends JPanel implements ActionListener{
 					playerNames[i] = playerList.get(i).getPlayerName();
 				}
 				break;
+			case 5:
+				playerList = Controller.dataCollectorService.getSomeDayPlayers_FGP(date);
+				for(int i = 0; i < 5; i++){
+					showInfo[i] = playerList.get(i).getPlayerFGP() * 100;
+					playerNames[i] = playerList.get(i).getPlayerName();
+				}
+				break;
+			case 6:
+				playerList = Controller.dataCollectorService.getSomeDayPlayers_3FGP(date);
+				for(int i = 0; i < 5; i++){
+					showInfo[i] = playerList.get(i).getPlayer3FGP() * 100;
+					playerNames[i] = playerList.get(i).getPlayerName();
+				}
+				break;
+			case 7:
+				playerList = Controller.dataCollectorService.getSomeDayPlayers_FTGP(date);
+				for(int i = 0; i < 5; i++){
+					showInfo[i] = playerList.get(i).getPlayerFTGP() * 100;
+					playerNames[i] = playerList.get(i).getPlayerName();
+				}
+				break;
 			}
 		}else if(kindIndex == 1){
 			
@@ -136,37 +157,58 @@ public class RankingPanel extends JPanel implements ActionListener{
 			
 			switch(itemIndex){
 			case 0:
-				playerList = Controller.dataCollectorService.getSeasonHotPlayers_Score();
+				playerList = Controller.dataCollectorService.getSeasonHotPlayers_AverScore();
 				for(int i = 0; i < 5; i++){
 					showInfo[i] = playerList.get(i).getAver_playerScores();
 					playerNames[i] = playerList.get(i).getPlayerName();
 				}
 				break;
 			case 1:
-				playerList = Controller.dataCollectorService.getSeasonHotPlayers_Assist();
+				playerList = Controller.dataCollectorService.getSeasonHotPlayers_AverAssist();
 				for(int i = 0; i < 5; i++){
 					showInfo[i] = playerList.get(i).getAver_playerAssists();
 					playerNames[i] = playerList.get(i).getPlayerName();
 				}
 				break;
 			case 2:
-				playerList = Controller.dataCollectorService.getSeasonHotPlayers_Rebound();
+				playerList = Controller.dataCollectorService.getSeasonHotPlayers_AverRebound();
 				for(int i = 0; i < 5; i++){
 					showInfo[i] = playerList.get(i).getAver_playerTotalRebounds();
 					playerNames[i] = playerList.get(i).getPlayerName();
 				}
 				break;
 			case 3:
-				playerList = Controller.dataCollectorService.getSeasonHotPlayers_Block();
+				playerList = Controller.dataCollectorService.getSeasonHotPlayers_AverBlock();
 				for(int i = 0; i < 5; i++){
 					showInfo[i] = playerList.get(i).getAver_playerBlocks();
 					playerNames[i] = playerList.get(i).getPlayerName();
 				}
 				break;
 			case 4:
-				playerList = Controller.dataCollectorService.getSeasonHotPlayers_Steal();
+				playerList = Controller.dataCollectorService.getSeasonHotPlayers_AverSteal();
 				for(int i = 0; i < 5; i++){
 					showInfo[i] = playerList.get(i).getAver_playerSteals();
+					playerNames[i] = playerList.get(i).getPlayerName();
+				}
+				break;
+			case 5:
+				playerList = Controller.dataCollectorService.getSeasonHotPlayers_FGP();
+				for(int i = 0; i < 5; i++){
+					showInfo[i] = playerList.get(i).getPlayerFGP() * 100;
+					playerNames[i] = playerList.get(i).getPlayerName();
+				}
+				break;
+			case 6:
+				playerList = Controller.dataCollectorService.getSeasonHotPlayers_3FGP();
+				for(int i = 0; i < 5; i++){
+					showInfo[i] = playerList.get(i).getPlayer3FGP() * 100;
+					playerNames[i] = playerList.get(i).getPlayerName();
+				}
+				break;
+			case 7:
+				playerList = Controller.dataCollectorService.getSeasonHotPlayers_FTGP();
+				for(int i = 0; i < 5; i++){
+					showInfo[i] = playerList.get(i).getPlayerFTGP() * 100;
 					playerNames[i] = playerList.get(i).getPlayerName();
 				}
 				break;
@@ -244,6 +286,27 @@ public class RankingPanel extends JPanel implements ActionListener{
 					playerNames[i] = teamList.get(i).getShortName();
 				}
 				break;
+			case 5:
+				teamList = Controller.dataCollectorService.getSeasonHotTeams_FGP();
+				for(int i = 0; i < 5; i++){
+					showInfo[i] = teamList.get(i).getTeamFGP() * 100;
+					playerNames[i] = teamList.get(i).getShortName();
+				}
+				break;
+			case 6:
+				teamList = Controller.dataCollectorService.getSeasonHotTeams_3FGP();
+				for(int i = 0; i < 5; i++){
+					showInfo[i] = teamList.get(i).getTeam3FGP() * 100;
+					playerNames[i] = teamList.get(i).getShortName();
+				}
+				break;
+			case 7:
+				teamList = Controller.dataCollectorService.getSeasonHotTeams_FTGP();
+				for(int i = 0; i < 5; i++){
+					showInfo[i] = teamList.get(i).getTeamFTGP() * 100;
+					playerNames[i] = teamList.get(i).getShortName();
+				}
+				break;
 			case 4:
 				teamList = Controller.dataCollectorService.getSeasonHotTeams_Steal();
 				for(int i = 0; i < 5; i++){
@@ -272,6 +335,12 @@ public class RankingPanel extends JPanel implements ActionListener{
 					step = 15;break;
 				case 4:
 					step = 15;break;
+				case 5:
+					step = 100;break;
+				case 6:
+					step = 100;break;
+				case 7:
+					step = 100;break;
 				}	
 			
 			if(kindIndex == 1)
@@ -286,6 +355,12 @@ public class RankingPanel extends JPanel implements ActionListener{
 					step = 5;break;
 				case 4:
 					step = 5;break;
+				case 5:
+					step = 100;break;
+				case 6:
+					step = 100;break;
+				case 7:
+					step = 100;break;
 				}
 		}else{
 			switch(itemIndex){
@@ -299,6 +374,12 @@ public class RankingPanel extends JPanel implements ActionListener{
 				step = 15;break;
 			case 4:
 				step = 15;break;
+			case 5:
+				step = 100;break;
+			case 6:
+				step = 100;break;
+			case 7:
+				step = 100;break;
 			}
 			
 		}
