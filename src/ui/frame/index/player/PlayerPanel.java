@@ -30,6 +30,9 @@ public class PlayerPanel extends JPanel{
 		title.setVisible(true);
 		this.add(title);
 		
+//		PlayersPanel player = new PlayersPanel();
+//		this.add(player);
+		
 		BackColorPanel backPanel = new BackColorPanel(0, 0, width, height, 6);
 		this.add(backPanel);
 	}
