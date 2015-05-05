@@ -329,5 +329,75 @@ public class PlayerController implements playerControllerService{
 		return result;
 	}
 
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverAssist() {
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="平均助攻";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	}
+
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverSteal() {
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="平均抢断";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	}
+
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverBlock() {
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="平均盖帽";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	}
+
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverRebound() {
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="平均篮板";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	}
+
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverScore() {
+		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
+		for(Player tempPlayer : this.allPlayers){
+			tempPlayer.comparetype="平均得分";
+		}
+		Collections.sort(this.allPlayers);
+		for(int i=0;i<50;i++){
+			PlayerVO vo = new PlayerVO();
+			vo.creatplayervo(this.allPlayers.get(i));
+			tempList.add(vo);
+		}
+		return tempList;
+	}
+
 
 }

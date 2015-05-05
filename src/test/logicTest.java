@@ -27,11 +27,10 @@ public class logicTest {
 		matchController = mainController.getMatchController();
 		
 		DataCollectorService dc= new DataCollector();
-		ArrayList<PlayerVO> list = dc.getSomeDayPlayers_Score("2013-12-25");
-		System.out.println("??????");
+		ArrayList<PlayerVO> list = dc.getSomeDayPlayers_Steal("2013-12-25");
 
 		for(PlayerVO pl:list){
-			System.out.println(pl.getTeamShortName()+" "+pl.getPlayerScores()+ " "+pl.getPlayerAssists()+" "+pl.getPlayerGmScER()+" "+pl.getPlayerName()+"???");
+			System.out.println(pl.getTeamShortName()+" "+pl.getPlayerSteals()+ " "+pl.getPlayerAssists()+" "+pl.getPlayerGmScER()+" "+pl.getPlayerName()+"???");
 		}
 		System.out.println("??ttt??");
 //		ArrayList<PlayerVO> o=playerController.getAllPlayerVO();
@@ -97,8 +96,15 @@ public class logicTest {
 //					vo.getRightTeam().getShortName()+" "+vo.getRightTeam().getTeamScores());
 //		}
 //		
-		//Kevin Durant
-		matchController.getMatchOfPlayer("Kevin Durant");
+//		//Kevin Durant
+//		matchController.getMatchOfPlayer("Kevin Durant");
+//		
+//		DataCollectorService dc= new DataCollector();
+//		ArrayList<PlayerVO> list = dc.getSeasonHotPlayers_Rebound();
+//		for(PlayerVO pl:list){
+//			System.out.println(pl.getPlayerName()+" "+pl.getPlayerTotalRebounds());
+//		}
+		
 	}
 
 }

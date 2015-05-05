@@ -24,6 +24,14 @@ public interface DataCollectorService {
 		public ArrayList<TeamVO> getSeasonHotTeams_Assist();
 		public ArrayList<TeamVO> getSeasonHotTeams_Block();
 		public ArrayList<TeamVO> getSeasonHotTeams_Steal() ;
+		
+		public ArrayList<PlayerVO> getSeasonHotPlayers_AverScore();
+		public ArrayList<PlayerVO> getSeasonHotPlayers_AverRebound();
+		public ArrayList<PlayerVO> getSeasonHotPlayers_AverAssist();
+		public ArrayList<PlayerVO> getSeasonHotPlayers_AverBlock();
+		public ArrayList<PlayerVO> getSeasonHotPlayers_AverSteal() ;
+		
+		
 		public ArrayList<TeamVO> getSeasonHotTeams_3FGP() ;
 		public ArrayList<TeamVO> getSeasonHotTeams_FGP();
 		public ArrayList<TeamVO> getSeasonHotTeams_FTGP() ;

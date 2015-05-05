@@ -28,6 +28,12 @@ public class DataCollector implements DataCollectorService{
 	ArrayList<PlayerVO> seasonHotPlayers_Assist= new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> seasonHotPlayers_Block= new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> seasonHotPlayers_Steal= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> seasonHotPlayers_AverScore= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> seasonHotPlayers_AverRebound= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> seasonHotPlayers_AverAssist= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> seasonHotPlayers_AverBlock= new ArrayList<PlayerVO>();
+	ArrayList<PlayerVO> seasonHotPlayers_AverSteal= new ArrayList<PlayerVO>();
+	
 	ArrayList<PlayerVO> seasonHotPlayers_3FGP= new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> seasonHotPlayers_FGP= new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> seasonHotPlayers_FTGP= new ArrayList<PlayerVO>();
@@ -220,6 +226,35 @@ public class DataCollector implements DataCollectorService{
 		return seasonHotPlayers_GmScER;
 	}
 
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverScore() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_AverScore = playerController.getSeasonHotPlayers_AverScore();
+		return seasonHotPlayers_AverScore;
+	}
+
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverRebound() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_AverRebound = playerController.getSeasonHotPlayers_AverRebound();
+		return seasonHotPlayers_AverRebound;
+	}
+
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverAssist() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_AverAssist = playerController.getSeasonHotPlayers_AverAssist();
+		return seasonHotPlayers_AverAssist;
+	}
+
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverBlock() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_AverBlock = playerController.getSeasonHotPlayers_AverBlock();
+		return seasonHotPlayers_AverBlock;
+	}
+
+	public ArrayList<PlayerVO> getSeasonHotPlayers_AverSteal() {
+		PlayerController playerController = PlayerController.getInstance();
+		this.seasonHotPlayers_AverSteal = playerController.getSeasonHotPlayers_AverAssist();
+		return seasonHotPlayers_AverSteal;
+	}
 	
 	public void setSeasonHotPlayers_FTGP(ArrayList<PlayerVO> seasonHotPlayers_FTGP) {
 		this.seasonHotPlayers_FTGP = seasonHotPlayers_FTGP;
@@ -393,6 +428,47 @@ public class DataCollector implements DataCollectorService{
 		}
 		return someDayPlayer;
 	}
+	
+	public ArrayList<PlayerVO> getSomeDayPlayers_FGP(String date) {
+		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
+		for(PlayerVO pvo : someDayPlayer){
+			pvo.setComparetype("投篮命中率");
+		}
+		Collections.sort(someDayPlayer);
+		
+		for(int i=10;i<someDayPlayer.size();i++){
+			someDayPlayer.remove(i);
+		}
+		return someDayPlayer;
+	}
+	
+	public ArrayList<PlayerVO> getSomeDayPlayers_3FGP(String date) {
+		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
+		for(PlayerVO pvo : someDayPlayer){
+			pvo.setComparetype("三分命中率");
+		}
+		Collections.sort(someDayPlayer);
+		
+		for(int i=10;i<someDayPlayer.size();i++){
+			someDayPlayer.remove(i);
+		}
+		return someDayPlayer;
+	}
+	
+	public ArrayList<PlayerVO> getSomeDayPlayers_FTGP(String date) {
+		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
+		for(PlayerVO pvo : someDayPlayer){
+			pvo.setComparetype("罚篮命中率");
+		}
+		Collections.sort(someDayPlayer);
+		
+		for(int i=10;i<someDayPlayer.size();i++){
+			someDayPlayer.remove(i);
+		}
+		return someDayPlayer;
+	}
+
+
 
 
 
