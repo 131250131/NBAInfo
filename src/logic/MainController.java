@@ -25,6 +25,10 @@ public class MainController implements mainControllerService{
 		matchController = MatchController.getInstance();
 	}
 	
+	public void updateAll(){
+		
+	}
+	
 	public PlayerController getPlayerController(){
 		return playerController;
 	}

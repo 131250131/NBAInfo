@@ -201,18 +201,7 @@ public class Team {
 			private win_lose recent10=new win_lose();
 			private win_lose recent10_Home=new win_lose();
 			private win_lose recent10_Guest=new win_lose();
-			
-			private boolean lianxu_win;
-			private boolean lianxu_win_Home;
-			private boolean lianxu_win_Guest;
-			private int lianxu;
-			private boolean homelianxu;
-			private boolean guestlianxu;
-			private int lianxu_Home;
-			private int lianxu_Guest;
-			private int longestWin;
-			private int longestLose;
-			
+						
 			private win_lose lessThan3Points=new win_lose();//3分之内胜负场
 			private win_lose moreThan10Points=new win_lose();//10分以上胜负关系
 			
@@ -229,6 +218,22 @@ public class Team {
 			private win_lose banchangluohou=new win_lose();//半场落后
 			private win_lose sanjielinxian=new win_lose();//第三节领先
 			private win_lose sanjieluohou=new win_lose();//第三节落后
+			
+			private boolean homeWin;
+			private boolean lastGame_Home;
+			private int lianxu_Home;
+			private int lianxu_Home_now;
+			
+			private boolean guestWin;
+			private boolean lastGame_Guest;
+			private int lianxu_Guest;
+			private int lianxu_Guest_now;
+			
+			private boolean nowWin=true;
+			private boolean lastGame=true;
+			private int lianxu=0;//目前连续几场;
+			private int longestWin=0;
+			private int longestLose=0;
 			
 			private ArrayList<Integer> attendmatches =new ArrayList<Integer>();
 			
@@ -1319,22 +1324,51 @@ public class Team {
 		}
 
 
+//		private boolean homeWin;
+//		private boolean lastGame_Home;
+//		private int lianxu_Home;
+//		private int lianxu_Home_now;
+//		
+//		private boolean guestWin;
+//		private boolean lastGame_Guest;
+//		private int lianxu_Guest;
+//		private int lianxu_Guest_now;
+//		
+//		private boolean nowWin;
+//		private boolean lastGame;
+//		private int lianxu;//目前连续几场;
+//		private int longestWin;
+//		private int longestLose;
 
 		//更新的方法，
 		public void updateTeamInfo(Team myTeam,Team oppoTeam,boolean isHome){
 			this.compGames++;
-			if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){
-				
+			if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){	
 				this.winGames++;
+				if(lastGame){
+					lianxu++;
+				}else{
+					lianxu=1;
+					lastGame=true;
+				}
+				//longestWin 
 			}else{
 				this.losGames++;
+				if(!lastGame){
+					lianxu++;
+				}else{
+					lianxu=1;
+					lastGame=false;
+				}
 			}
+			
+			
 			
 			if(isHome){
 				
-			}else{
 				
 			}
+			
 			
 			this.attackRounds+=myTeam.getTeamFGTry() + 0.4 * myTeam.getTeamFTGTry() - 1.07 * (myTeam.getTeamOffenceRebounds() /
 					(myTeam.getTeamOffenceRebounds() + oppoTeam.getTeamDeffenceRebounds()) * (myTeam.getTeamFGTry() - myTeam.getTeamFG())) + 1.07 * myTeam.getTeamTurnovers();
@@ -1405,17 +1439,7 @@ public class Team {
 			win_lose=teampo.getWin_lose();
 			home=teampo.getHome();
 			guest=teampo.getGuest();
-			recent10=teampo.getRecent10();
-			recent10_Home=teampo.getRecent10_Home();
-			recent10_Guest=teampo.getRecent10_Guest();
-			//lianxu_win=teampo.getl();
-		    //lianxu_win_Home;
-			//lianxu_win_Guest;
-			lianxu=teampo.getLianxu();
-		    lianxu_Home=teampo.getLianxu_Home();
-			lianxu_Guest=teampo.getLianxu_Guest();
-			longestWin=teampo.getLongestWin();
-		    longestLose=teampo.getLongestLose();
+
 			lessThan3Points=teampo.getLessThan3Points();//3分之内胜负场
 		    moreThan10Points=teampo.getMoreThan10Points();//10分以上胜负关系
 			
@@ -1471,54 +1495,6 @@ public class Team {
 		}
 		public void setRecent10_Guest(win_lose recent10_Guest) {
 			this.recent10_Guest = recent10_Guest;
-		}
-		public boolean isLianxu_win() {
-			return lianxu_win;
-		}
-		public void setLianxu_win(boolean lianxu_win) {
-			this.lianxu_win = lianxu_win;
-		}
-		public boolean isLianxu_win_Home() {
-			return lianxu_win_Home;
-		}
-		public void setLianxu_win_Home(boolean lianxu_win_Home) {
-			this.lianxu_win_Home = lianxu_win_Home;
-		}
-		public boolean isLianxu_win_Guest() {
-			return lianxu_win_Guest;
-		}
-		public void setLianxu_win_Guest(boolean lianxu_win_Guest) {
-			this.lianxu_win_Guest = lianxu_win_Guest;
-		}
-		public int getLianxu() {
-			return lianxu;
-		}
-		public void setLianxu(int lianxu) {
-			this.lianxu = lianxu;
-		}
-		public int getLianxu_Home() {
-			return lianxu_Home;
-		}
-		public void setLianxu_Home(int lianxu_Home) {
-			this.lianxu_Home = lianxu_Home;
-		}
-		public int getLianxu_Guest() {
-			return lianxu_Guest;
-		}
-		public void setLianxu_Guest(int lianxu_Guest) {
-			this.lianxu_Guest = lianxu_Guest;
-		}
-		public int getLongestWin() {
-			return longestWin;
-		}
-		public void setLongestWin(int longestWin) {
-			this.longestWin = longestWin;
-		}
-		public int getLongestLose() {
-			return longestLose;
-		}
-		public void setLongestLose(int longestLose) {
-			this.longestLose = longestLose;
 		}
 		public win_lose getMoreThan10Points() {
 			return moreThan10Points;
@@ -1622,6 +1598,26 @@ public class Team {
 
 		public void setAttendmatches(ArrayList<Integer> attendmatches) {
 			this.attendmatches = attendmatches;
+		}
+
+		public int getLianXu() {
+			return this.lianxu;
+		}
+
+		public int getlianxu_Home() {
+			return this.lianxu_Home;
+		}
+
+		public int getlianxu_Guest() {
+			return this.lianxu_Guest;
+		}
+
+		public int longestWin() {
+			return this.longestWin;
+		}
+
+		public int longestLose() {
+			return this.longestLose;
 		}
 			
 }

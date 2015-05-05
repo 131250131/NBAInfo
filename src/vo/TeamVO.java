@@ -43,9 +43,7 @@ public class TeamVO implements Comparable<TeamVO> {
 		private win_lose recent10_Home=new win_lose();
 		private win_lose recent10_Guest=new win_lose();
 		
-		private boolean lianxu_win;
-		private boolean lianxu_win_Home;
-		private boolean lianxu_win_Guest;
+
 		private int lianxu;
 		private int lianxu_Home;
 		private int lianxu_Guest;
@@ -795,6 +793,12 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.winGames=team.getWinGames();
 			this.losGames=team.getLosGames();
 			
+			this.lianxu=team.getLianXu();
+			this.lianxu_Home=team.getlianxu_Home();
+			this.lianxu_Guest=team.getlianxu_Guest();
+			this.longestWin=team.longestWin();
+			this.longestLose=team.longestLose();
+				
 			//球队单项数据总计;
 			this.teamAssists=team.getTeamAssists();
 			this.teamFG=team.getTeamFG();
@@ -890,11 +894,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			//lianxu_win=team.getl();
 		    //lianxu_win_Home;
 			//lianxu_win_Guest;
-			lianxu=team.getLianxu();
-		    lianxu_Home=team.getLianxu_Home();
-			lianxu_Guest=team.getLianxu_Guest();
-			longestWin=team.getLongestWin();
-		    longestLose=team.getLongestLose();
+
 			lessThan3Points=team.getLessThan3Points();//3分之内胜负场
 		    moreThan10Points=team.getMoreThan10Points();//10分以上胜负关系
 			
@@ -1003,24 +1003,6 @@ public class TeamVO implements Comparable<TeamVO> {
 		}
 		public void setRecent10_Guest(win_lose recent10_Guest) {
 			this.recent10_Guest = recent10_Guest;
-		}
-		public boolean isLianxu_win() {
-			return lianxu_win;
-		}
-		public void setLianxu_win(boolean lianxu_win) {
-			this.lianxu_win = lianxu_win;
-		}
-		public boolean isLianxu_win_Home() {
-			return lianxu_win_Home;
-		}
-		public void setLianxu_win_Home(boolean lianxu_win_Home) {
-			this.lianxu_win_Home = lianxu_win_Home;
-		}
-		public boolean isLianxu_win_Guest() {
-			return lianxu_win_Guest;
-		}
-		public void setLianxu_win_Guest(boolean lianxu_win_Guest) {
-			this.lianxu_win_Guest = lianxu_win_Guest;
 		}
 		public int getLianxu() {
 			return lianxu;

@@ -965,84 +965,164 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				if(comparetype.equals("两双")){
 					   if(double_double-o.getdouble_double()<0)
 		     		       return 1;
+					   if(double_double-o.getdouble_double()==0)
+						   return 0;
 					   return -1;
 		     	   }
 		     	
 		     	   if(comparetype.equals("得分/篮板/助攻")){
 		     		   if( (this.getPlayerScores()+this.getPlayerTotalRebounds()+this.getPlayerAssists() )-( o.getPlayerScores()+o.getPlayerTotalRebounds()+o.getPlayerAssists())<0)
 		     		       return 1;
-		     		   return -1;
+		     		  if( (this.getPlayerScores()+this.getPlayerTotalRebounds()+this.getPlayerAssists() )-( o.getPlayerScores()+o.getPlayerTotalRebounds()+o.getPlayerAssists())==0)
+		     		   return 0;
 		     	   }
 		     	  
 		     	   if(comparetype.equals("助攻")){
 		     		   if( (this.getPlayerAssists()-o.getPlayerAssists() )<0)
 		     		       return 1;
+		     		  if( (this.getPlayerAssists()-o.getPlayerAssists() )==0)
+		     			  return 0;
 		     		   return -1;
 		     	   }
 		     	   if(comparetype.equals("分钟")){
 		     		   if((this.getPlayerPlayTime()-o.getPlayerPlayTime())<0)
 		     		       return 1;
+		     		  if((this.getPlayerPlayTime()-o.getPlayerPlayTime())==0)
+		     			  return 0;
 		               return -1;
 		     	   }
 		     	  
 		     	   if(comparetype.equals("篮板")){
 		     		  if((this.getPlayerTotalRebounds()-o.getPlayerTotalRebounds())<0)
 		    		       return 1;
+		     		 if((this.getPlayerTotalRebounds()-o.getPlayerTotalRebounds())==0)
+		     			 return 0;
 		              return -1;
 		     	   }
 		     	   if(comparetype.equals("抢断")){
+		     		  // System.out.println("ppp");
 		     		  if((this.getPlayerSteals()-o.getPlayerSteals())<0)
 		   		           return 1;
+		     		  if((this.getPlayerSteals()-o.getPlayerSteals())==0)
+		     			  return 0;
 		    		  return -1;
 		     	   }
 		     	   if(comparetype.equals("盖帽")){
 		     		  if((this.getPlayerBlocks()-o.getPlayerBlocks())<0)
 		  		           return 1;
+		     		 if((this.getPlayerBlocks()-o.getPlayerBlocks())==0)
+		     			 return 0;
 		   		      return -1;
 		     	   }
 		     	   if(comparetype.equals("失误")){
 		     		  if((this.getPlayerTurnovers()-o.getPlayerTurnovers()<0))
 		 		           return 1;
+		     		 if((this.getPlayerTurnovers()-o.getPlayerTurnovers()==0))
+		     			 return 0;
 		  		      return -1;
 		     	   }
 		     	   if(comparetype.equals("犯规")){
 		     		  if((this.getPlayerFouls()-o.getPlayerFouls()<0))
 		    		           return 1;
+		     		 if((this.getPlayerFouls()-o.getPlayerFouls()==0))
+		     			 return 0;
 		     		      return -1;
 		     	   }
 		     	   if(comparetype.equals("得分")){
 		     		  if((this.getPlayerScores()-o.getPlayerScores()<0))
 		   		           return 1;
+		     		 if((this.getPlayerScores()-o.getPlayerScores()==0))
+		     			 return 0;
 		    		      return -1;
 		     	   }
 		     	   if(comparetype.equals("投篮")){
 		     		  if((this.getPlayerFGP()-o.getPlayerFGP()<0))
 		  		           return 1;
+		     		 if((this.getPlayerFGP()-o.getPlayerFGP()==0))
+		     			 return 0;
 		   		      return -1;
 		     	   }
 		     	   if(comparetype.equals("三分")){
 		     		  if((this.getPlayer3FGP()-o.getPlayer3FGP()<0))
 		 		           return 1;
+		     		 if((this.getPlayer3FGP()-o.getPlayer3FGP()==0))
+		     			 return 0;
 		  		      return -1;
 		     	   }
-		     	   if(comparetype.equals("罚球")){
+
+
+	if(comparetype.equals("罚球")){
 		     		  if((this.getPlayerFTGP()-o.getPlayerFTGP()<0))
 				           return 1;
+		     		  if((this.getPlayerFTGP()-o.getPlayerFTGP()==0))
+		     			  return 0;
 		 		      return -1;
 		     	   }
 		     	   if(comparetype.equals("效率")){
 		     		  if((this.getPlayerPER()-o.getPlayerPER()<0))
 				           return 1;
+		     		 if((this.getPlayerPER()-o.getPlayerPER()==0))
+		     			 return 0;
 		 		      return -1;
 		     	   }
 		     	  if(comparetype.equals("进步率")){
 		     		   if(this.getAdvancedP()-o.getAdvancedP()<0){
 		     			   return 1;
 		     		   }
+		     		  if(this.getAdvancedP()-o.getAdvancedP()==0)
+		     			  return 0;
 		     		   return -1;	   
 		     	   }
-
+		     	 if(comparetype.equals("效率")){
+		     		   if(this.getPlayerGmScER()-o.getPlayerGmScER()<0){
+		     			   return 1;
+		     		   }
+		     		  if(this.getPlayerGmScER()-o.getPlayerGmScER()==0)
+		     			  return 0;
+		     		   return -1;	   
+		     	   }
+		     	if(comparetype.equals("平均篮板")){
+		     		   if(this.getAver_playerTotalRebounds()-o.getAver_playerTotalRebounds()<0){
+		     			   return 1;
+		     		   }
+		     		  if(this.getAver_playerTotalRebounds()-o.getAver_playerTotalRebounds()==0)
+		     			  return 0;
+		     		   return -1;	   
+		     	   }
+		     	if(comparetype.equals("平均助攻")){
+		     		   if(this.getAver_playerAssists()-o.getAver_playerAssists()<0){
+		     			   return 1;
+		     		   }
+		     		  if(this.getAver_playerAssists()-o.getAver_playerAssists()==0)
+		     			  return 0;
+		     		   return -1;	   
+		     	   }
+		     	if(comparetype.equals("平均抢断")){
+		     		   if(this.getAver_playerSteals()-o.getAver_playerSteals()<0){
+		     			   return 1;
+		     		   }
+		     		  if(this.getAver_playerSteals()-o.getAver_playerSteals()==0)
+		     			  return 0;
+		     		   return -1;	   
+		     	   }
+		     	if(comparetype.equals("平均得分")){
+		     		   if(this.getAver_playerScores()-o.getAver_playerTotalRebounds()<0){
+		     			   return 1;
+		     		   }
+		     		  if(this.getAver_playerScores()-o.getAver_playerTotalRebounds()==0)
+		     			  return 0;
+		     		   return -1;	   
+		     	   }
+		     	if(comparetype.equals("平均盖帽")){
+		     		   if(this.getAver_playerBlocks()-o.getAver_playerBlocks()<0){
+		     			   return 1;
+		     		   }
+		     		  if(this.getAver_playerBlocks()-o.getAver_playerBlocks()==0)
+		     			  return 0;
+		     		   return -1;	   
+		     	   }
 					return 0;
+
 					
 			}
 

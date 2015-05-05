@@ -28,9 +28,14 @@ public class logicTest {
 		
 		DataCollectorService dc= new DataCollector();
 
-		ArrayList<TeamVO> t = dc.getSeasonHotTeams_Score();
-		for(TeamVO vo :t){
-			System.out.println(vo.getShortName()+" "+vo.getAver_teamScores());
+		ArrayList<PlayerVO> t = dc.getSomeDayPlayers_Steal("2013-12-25");
+		for(PlayerVO vo :t){
+			System.out.println(vo.getPlayerScores());
+		}
+		System.out.println("1111111111");
+		ArrayList<PlayerVO> p = dc.getSomeDayPlayers_Block("2013-12-25");
+		for(PlayerVO vo :p){
+			System.out.println(vo.getPlayerBlocks());
 		}
 		
 //		ArrayList<PlayerVO> p=playerController.getPlayerbyChar('B');
