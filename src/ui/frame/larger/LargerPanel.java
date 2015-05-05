@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import ui.frame.index.container.IndexBoard;
 import ui.frame.index.container.IndexScrollPane;
+import ui.frame.match.MatchScorllPane;
 import ui.frame.player.PlayerScrollPanel;
 import ui.frame.system.SystemScrollPane;
 import ui.frame.team.TeamScrollPane;
@@ -24,7 +25,7 @@ public class LargerPanel extends JPanel implements ActionListener{
 	
 	IndexScrollPane indexScrollPane;
 	IndexBoard indexBoard;
-	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel;
+	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel, addMatchPanel;
 	
 	public LargerPanel(){
 		this.setLayout(null);
@@ -72,6 +73,10 @@ public class LargerPanel extends JPanel implements ActionListener{
 		addSystemPanel = new JButton();
 		addSystemPanel.addActionListener(this);
 		this.add(addSystemPanel);
+		
+		addMatchPanel = new JButton();
+		addMatchPanel.addActionListener(this);
+		this.add(addMatchPanel);
 		}
 
 	public void actionPerformed(ActionEvent e) {
@@ -90,6 +95,11 @@ public class LargerPanel extends JPanel implements ActionListener{
 			SystemScrollPane systemScrollPanel = new SystemScrollPane();
 			this.add(systemScrollPanel);
 		}	
+		
+		if(e.getSource() == addMatchPanel){
+			MatchScorllPane matchSP = new MatchScorllPane(Controller.currentMatch);
+			this.add(matchSP);
+		}
 	
 	}
 

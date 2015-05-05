@@ -3,6 +3,8 @@ package ui.frame.index.match;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -13,13 +15,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.system.ChineseTranslator;
+import ui.system.Controller;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 import vo.MatchVO;
 import vo.TeamVO;
 
 @SuppressWarnings("serial")
-public class SingleMatchPanel extends JPanel{
+public class SingleMatchPanel extends JPanel implements ActionListener{
 	
 	int width = (int) (1500 * UIData.changeX);
 	int height = (int) (160 * 1.5 * UIData.changeY);
@@ -38,6 +41,15 @@ public class SingleMatchPanel extends JPanel{
 		this.setOpaque(false);
 		this.setLayout(null);
 		initSingleMatchPanelWithMatch();
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		if(e.getSource() == backgroundEnterEffect){
+			Controller.addMatchPanel(match);
+		}
+		
 	}
 	
 	private String spliterL(String string){
@@ -170,6 +182,7 @@ public class SingleMatchPanel extends JPanel{
 		backgroundEnterEffect.setOpaque(false);
 		backgroundEnterEffect.setBackground(null);
 		backgroundEnterEffect.setContentAreaFilled(false);
+		backgroundEnterEffect.addActionListener(this);
 		backgroundEnterEffect.addMouseListener(new MouseAdapter(){
 			public void mouseEntered(MouseEvent arg0) {
 				backgroundLabel.setIcon(image4);

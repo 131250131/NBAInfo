@@ -6,7 +6,6 @@ import java.awt.Toolkit;
 import ui.frame.mainframe.MainFrame;
 import ui.system.Controller;
 import ui.system.UIData;
-import userInterface.ui.matchUI.MatchDataPanel;
 
 public class Main_UI_Test {
 	

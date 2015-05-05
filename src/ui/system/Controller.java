@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import ui.frame.larger.LargerPanel;
 import ui.frame.larger.LargerScrollPane;
+import vo.MatchVO;
 import logic.AssociationData;
 import logic.DataCollector;
 import logic.MainController;
@@ -22,6 +23,7 @@ public class Controller {
 	public static associationDataService associationController;
 	public static DataCollectorService dataCollectorService;
 	public static String currentPlayerName, currentTeamName;
+	public static MatchVO currentMatch;
 	
 	public static void init(){
 		mainControllerService mainController = new MainController();
@@ -38,6 +40,19 @@ public class Controller {
 	
 	public static void readAllMatch(){
 		dateList = Controller.matchController.getDatehavematches();
+	}
+	
+	public static void addMatchPanel(MatchVO match){
+		currentMatch = match;
+		LargerPanel.addMatchPanel.doClick();
+		switch(UIData.currentStep){
+		case 1:
+			LargerScrollPane.turnto2.doClick();break;
+		case 2:
+			LargerScrollPane.turnto1.doClick();break;
+		case 3:
+			LargerScrollPane.turnto0.doClick();break;
+		}	
 	}
 	
 	public static void addPlayerPanel(String playerName){
