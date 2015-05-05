@@ -24,12 +24,9 @@ public class Main_UI_Test {
 		//初始化后端
 		Controller.init();	
 		
-//		MainFrame mainFrame = new MainFrame();
-//		mainFrame.setVisible(true);	
-		System.out.println("4" + Controller.playerController.getplayerbyteam("BOS").size());
-		System.out.println("4" + Controller.playerController.getplayerbyteam("BOS").size());
-		System.out.println("4" + Controller.playerController.getplayerbyteam("BOS").size());
-		System.out.println("4" + Controller.playerController.getplayerbyteam("BOS").size());
+		MainFrame mainFrame = new MainFrame();
+		mainFrame.setVisible(true);	
+		
 	}
 	
 	public static int getFrameSizeX(){
