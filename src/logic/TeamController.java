@@ -83,12 +83,12 @@ public class TeamController implements teamControllerService{
 		return result;
 	}
 	
-	public void updateTeamInfo_Advanced(Team myTeam,Team oppoTeam){
+	public void updateTeamInfo_Advanced(Team myTeam,Team oppoTeam,boolean isHome){
 		for(Team team:this.allTeams){
 			if(team.getShortName().equals(myTeam.getShortName())){
 				//System.out.println("true");
 				//System.out.println("p"+myTeam.getTeamAssists());
-				team.updateTeamInfo(myTeam, oppoTeam);
+				team.updateTeamInfo(myTeam, oppoTeam,isHome);
 			}
 		}
 	}

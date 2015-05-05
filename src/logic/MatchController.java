@@ -73,8 +73,8 @@ public class MatchController implements matchControllerService{
 				
 				//System.out.println(tempMatch.getNum());
 
-				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam());
-				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam());
+				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam(),false);
+				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam(),true);
 				
 				
 				//team 更新完毕;

@@ -1321,13 +1321,19 @@ public class Team {
 
 
 		//更新的方法，
-		public void updateTeamInfo(Team myTeam,Team oppoTeam){
+		public void updateTeamInfo(Team myTeam,Team oppoTeam,boolean isHome){
 			this.compGames++;
 			if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){
 				
 				this.winGames++;
 			}else{
 				this.losGames++;
+			}
+			
+			if(isHome){
+				
+			}else{
+				
 			}
 			
 			this.attackRounds+=myTeam.getTeamFGTry() + 0.4 * myTeam.getTeamFTGTry() - 1.07 * (myTeam.getTeamOffenceRebounds() /
