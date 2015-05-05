@@ -1324,10 +1324,7 @@ public class Team {
 		}
 
 
-//		private boolean homeWin;
-//		private boolean lastGame_Home;
-//		private int lianxu_Home;
-//		private int lianxu_Home_now;
+
 //		
 //		private boolean guestWin;
 //		private boolean lastGame_Guest;
@@ -1351,7 +1348,8 @@ public class Team {
 					lianxu=1;
 					lastGame=true;
 				}
-				//longestWin 
+				longestWin = (longestWin<lianxu)? lianxu:longestWin;
+				nowWin=true;
 			}else{
 				this.losGames++;
 				if(!lastGame){
@@ -1360,12 +1358,62 @@ public class Team {
 					lianxu=1;
 					lastGame=false;
 				}
+				longestLose = (longestLose<lianxu)? lianxu:longestLose;
+				nowWin=false;
 			}
 			
 			
-			
+//			private boolean homeWin;
+//			private boolean lastGame_Home;
+//			private int lianxu_Home;
+//			private int lianxu_Home_now;
 			if(isHome){
+				if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){	
+					if(lastGame_Home){
+						lianxu_Home_now++;
+					}else{
+						lianxu_Home_now=1;
+						lastGame_Home=true;
+					}
+					if(homeWin){
+						lianxu_Home = (lianxu_Home>lianxu_Home_now)?lianxu_Home:lianxu_Home_now;
+					}
+					
+				}else{
+					if(!lastGame_Home){
+						lianxu_Home_now++;
+					}else{
+						lianxu_Home_now=1;
+						lastGame_Home=false;
+					}
+					if(!homeWin){
+						lianxu_Home = (lianxu_Home>lianxu_Home_now)?lianxu_Home:lianxu_Home_now;
+					}
+				}
 				
+			}else{
+				if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){	
+					if(lastGame_Guest){
+						lianxu_Guest_now++;
+					}else{
+						lianxu_Guest_now=1;
+						lastGame_Guest=true;
+					}
+					if(homeWin){
+						lianxu_Guest = (lianxu_Guest>lianxu_Guest_now)?lianxu_Home:lianxu_Guest_now;
+					}
+					
+				}else{
+					if(!lastGame_Guest){
+						lianxu_Guest_now++;
+					}else{
+						lianxu_Guest_now=1;
+						lastGame_Guest=false;
+					}
+					if(!homeWin){
+						lianxu_Guest = (lianxu_Guest>lianxu_Guest_now)?lianxu_Home:lianxu_Guest_now;
+					}
+				}
 				
 			}
 			
@@ -1618,6 +1666,10 @@ public class Team {
 
 		public int longestLose() {
 			return this.longestLose;
+		}
+
+		public boolean getlianxu_Win() {
+			return this.nowWin;
 		}
 			
 }

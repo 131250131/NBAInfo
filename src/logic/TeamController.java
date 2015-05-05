@@ -33,6 +33,7 @@ public class TeamController implements teamControllerService{
 	}
 
 	public void updateTeamInfo_Basic(){
+		allTeams = new ArrayList<Team>();
 		ArrayList<TeamPO> allTeamPO =  new ArrayList<TeamPO>();
 		try {
 			allTeamPO =tds.readTeamsBaiscInfo();

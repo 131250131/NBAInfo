@@ -390,67 +390,67 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			}
 
 			public double getAver_playerAssists() {
-				return (playerAttends==0)?0:playerAssists / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerAssists / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerPlayTime() {
-				return (playerAttends==0)?0:playerPlayTime / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerPlayTime / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerFG() {
-				return (playerAttends==0)?0:playerFG / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFG / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerFGTry() {
-				return (playerAttends==0)?0:playerFGTry / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFGTry / (playerAttends+0.0))));
 			}
 
 			public double getAver_player3FG() {
-				return  (playerAttends==0)?0:player3FG / (playerAttends+0.0);
+				return   Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:player3FG / (playerAttends+0.0))));
 			}
 
 			public double getAver_player3FGTry() {
-				return (playerAttends==0)?0:player3FGTry / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:player3FGTry / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerFTG() {
-				return  (playerAttends==0)?0:playerFTG / (playerAttends+0.0);
+				return   Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFTG / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerFTGTry() {
-				return (playerAttends==0)?0:playerFTGTry / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFTGTry / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerOffenceRebounds() {
-				return (playerAttends==0)?0:playerOffenceRebounds / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerOffenceRebounds / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerDeffenceRebounds() {
-				return  (playerAttends==0)?0:playerDeffenceRebounds / (playerAttends+0.0);
+				return   Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerDeffenceRebounds / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerTotalRebounds() {
-				return  (playerAttends==0)?0:playerTotalRebounds / (playerAttends+0.0);
+				return   Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerTotalRebounds / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerSteals() {
-				return (playerAttends==0)?0:playerSteals / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerSteals / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerBlocks() {
-				return (playerAttends==0)?0:playerBlocks / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerBlocks / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerTurnovers() {
-				return (playerAttends==0)?0:playerTurnovers / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerTurnovers / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerFouls() {
-				return (playerAttends==0)?0:playerFouls / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFouls / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerScores() {
-				return (playerAttends==0)?0:playerScores / (playerAttends+0.0);
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerScores / (playerAttends+0.0))));
 			}
 
 			public double getPlayerFGP() {
@@ -1051,7 +1051,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		     	   }
 
 
-	if(comparetype.equals("罚球")){
+		     	   if(comparetype.equals("罚球")){
 		     		  if((this.getPlayerFTGP()-o.getPlayerFTGP()<0))
 				           return 1;
 		     		  if((this.getPlayerFTGP()-o.getPlayerFTGP()==0))

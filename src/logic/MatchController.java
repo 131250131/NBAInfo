@@ -49,6 +49,21 @@ public class MatchController implements matchControllerService{
 			return instance;
 		}
 		
+		public boolean hasUpdate(){
+			return matchdata.Matchupdate();
+		}
+		
+		public void updateAll(){
+			playerController.updatePlayersInfo_Basic();
+			teamController.updateTeamInfo_Basic();
+			matchdata.readMatch();
+			allMatchPO = this.matchdata.getAllMatch();
+			this.processAllMatches();//处理完毕当前的数据;
+			this.createAllMatchVO();//获得所有比赛的vo;
+			teamController.createSeasonAllTeamInfo();
+			playerController.createAllPlayerVO();
+		}
+		
 		//返回所有未经处理过的比赛信息;
 		public ArrayList<MatchVO> getAllMatchVO(){
 			

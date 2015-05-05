@@ -43,7 +43,7 @@ public class TeamVO implements Comparable<TeamVO> {
 		private win_lose recent10_Home=new win_lose();
 		private win_lose recent10_Guest=new win_lose();
 		
-
+		private boolean lianxu_Win;
 		private int lianxu;
 		private int lianxu_Home;
 		private int lianxu_Guest;
@@ -264,6 +264,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			private double teamSteE;
 		//球队助攻效率
 			private double teamAssE;
+		  
 
 			
 			public double getAver_teamAssists() {
@@ -793,6 +794,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.winGames=team.getWinGames();
 			this.losGames=team.getLosGames();
 			
+			this.lianxu_Win = team.getlianxu_Win();
 			this.lianxu=team.getLianXu();
 			this.lianxu_Home=team.getlianxu_Home();
 			this.lianxu_Guest=team.getlianxu_Guest();
@@ -1126,6 +1128,12 @@ public class TeamVO implements Comparable<TeamVO> {
 		}
 		public void setAttendmatches(ArrayList<Integer> attendmatches) {
 			this.attendmatches = attendmatches;
+		}
+		public boolean isLianxu_Win() {
+			return lianxu_Win;
+		}
+		public void setLianxu_Win(boolean lianxu_Win) {
+			this.lianxu_Win = lianxu_Win;
 		}
 
 }

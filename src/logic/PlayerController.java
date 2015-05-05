@@ -33,6 +33,7 @@ public class PlayerController implements playerControllerService{
 	
 	//这个功能是用来获取球员的基本信息
 	public void updatePlayersInfo_Basic(){
+		this.allPlayers = new ArrayList<Player>();
 		ArrayList<PlayerPO> allPlayersPO = pds.getallplayers();
 		for(PlayerPO po : allPlayersPO){
 			this.allPlayers.add(new Player(po));
@@ -306,7 +307,6 @@ public class PlayerController implements playerControllerService{
 
 	public ArrayList<PlayerVO> getplayerbyteam(String teamname) {
 		// TODO Auto-generated method stub
-		createAllPlayerVO();
 		ArrayList<PlayerVO> result =new ArrayList<PlayerVO>();
 		for(PlayerVO p:this.allPlayerVO){
 		   // System.out.println(p.getTeamShortName());
