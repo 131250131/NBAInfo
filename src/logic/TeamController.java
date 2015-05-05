@@ -103,7 +103,7 @@ public class TeamController implements teamControllerService{
 	}
 	
 	public ArrayList<TeamVO> getSeasonAllTeamInfo() {
-		createSeasonAllTeamInfo();
+
 		return this.allTeamVO;
 	}
 
