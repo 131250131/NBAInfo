@@ -119,7 +119,7 @@ public class SinglePanel extends JPanel{
 	}
 	
 	private void setIcon(String playerName){
-		ImageIcon image = new ImageIcon("data/ui/image/portrait/" + playerName +".png");
+		ImageIcon image = ImageSaver.getPlayerIcon(playerName);
 		image.setImage(image.getImage().getScaledInstance(picLabel.getSize().width, picLabel.getSize().height,Image.SCALE_DEFAULT));
 		picLabel.setIcon(image);
 	}

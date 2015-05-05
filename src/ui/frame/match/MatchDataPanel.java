@@ -9,9 +9,9 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import ui.myUI.JSortTable;
+import ui.myUI.MyTable;
 import ui.system.UIData;
-import userInterface.ui.matchUI.JSortTable;
-import userInterface.ui.matchUI.MyTable;
 import vo.MatchVO;
 import vo.PlayerVO;
 

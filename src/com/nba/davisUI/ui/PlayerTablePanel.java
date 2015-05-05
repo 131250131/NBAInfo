@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import userInterface.ui.matchUI.JSortTable;
-import userInterface.ui.matchUI.MyTable;
+import ui.myUI.JSortTable;
+import ui.myUI.MyTable;
 
 import com.nba.data.Player;
 import com.nba.davisUI.myUI.ImageBin;

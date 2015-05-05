@@ -1,4 +1,4 @@
-package userInterface.ui.matchUI;
+package ui.myUI;
 
 import java.awt.Color;
 import java.awt.Component;

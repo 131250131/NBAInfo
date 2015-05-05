@@ -2,7 +2,7 @@ package com.nba.ui;
 
 import javax.swing.JPanel;
 
-import userInterface.ui.matchUI.MyTable;
+import ui.myUI.MyTable;
 
 public class PlayerPanel extends JPanel{
 

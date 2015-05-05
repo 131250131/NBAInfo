@@ -1,4 +1,4 @@
-package userInterface.ui.matchUI;
+package ui.myUI;
 
 import javax.swing.*;
 import javax.swing.event.TableModelListener;

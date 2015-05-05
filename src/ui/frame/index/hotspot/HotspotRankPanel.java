@@ -1,14 +1,11 @@
 package ui.frame.index.hotspot;
 
 import java.awt.Color;
-import java.awt.Font;
 
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.system.UIData;
-import userInterface.ui.hotspotUI.HotSpotBounds;
 
 @SuppressWarnings("serial")
 public class HotspotRankPanel extends JPanel{

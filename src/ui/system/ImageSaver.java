@@ -8,7 +8,7 @@ public class ImageSaver {
 	
 	public static ImageIcon getIcon(String iconName){
 		
-		String iconPath = "image/";
+		String iconPath = "image/effect/";
 		
 		switch(iconName){
 			case "最底层背景图": return new ImageIcon(iconPath + "最底层背景图.png");
@@ -53,11 +53,11 @@ public class ImageSaver {
 	}
 	
 	public static ImageIcon getPlayerIcon(String playerName){
-		return new ImageIcon("data/newImage/portrait/" + playerName + ".png");
+		return new ImageIcon("image/player/portrait/" + playerName + ".png");
 	}
 	
 	public static ImageIcon getPlayerAcitonIcon(String playerName){
-		return new ImageIcon("data/ui/image/action/" + playerName + ".png");
+		return new ImageIcon("image/player/action/" + playerName + ".png");
 	}
 
 	public static Color getTeamBackColor(String teamName){

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import userInterface.ui.matchUI.JSortTable;
-import userInterface.ui.matchUI.MyTable;
+import ui.myUI.JSortTable;
+import ui.myUI.MyTable;
 
 import com.nba.data.Team;
 import com.nba.davisUI.myUI.ImageBin;

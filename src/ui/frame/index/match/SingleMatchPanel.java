@@ -95,8 +95,8 @@ public class SingleMatchPanel extends JPanel implements ActionListener{
 		String matchDate = match.getDate();
 		int picSizeX = (int) (140 * 1.5 * UIData.changeX);
 		int picSizeY = (int) (140 * 1.5 * UIData.changeY);
-		ImageIcon image1 = new ImageIcon("data/newImage/Team/" + leftTeamName + ".png");
-		ImageIcon image2 = new ImageIcon("data/newImage/Team/" + rightTeamName + ".png");
+		ImageIcon image1 = ImageSaver.getTeamIcon(leftTeamName);
+		ImageIcon image2 = ImageSaver.getTeamIcon(rightTeamName);
 		image1.setImage(image1.getImage().getScaledInstance(picSizeX, picSizeY,Image.SCALE_DEFAULT));
 		image2.setImage(image2.getImage().getScaledInstance(picSizeX, picSizeY,Image.SCALE_DEFAULT));
 		
