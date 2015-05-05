@@ -20,6 +20,8 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
+import ui.system.UIData;
+
 public class MyTable extends JScrollPane implements MouseListener{
 	
 	Timer timer;
@@ -129,8 +131,6 @@ public class MyTable extends JScrollPane implements MouseListener{
                        }//表格不允许被编辑
             };
 			
-		
-		
 		//表格的初始化 一些美化
 		table.setOpaque(false);
 		table.setSelectionForeground(new Color(0, 0, 0, 0.999f));//选中字体颜色
@@ -140,9 +140,9 @@ public class MyTable extends JScrollPane implements MouseListener{
         
         table.setForeground(Color.white);
         table.setBorder(null);
-		table.setFont(new Font("Segoe UI", Font.PLAIN, 17));//字体
+		table.setFont(new Font("Arail", Font.PLAIN, (int) (17 * UIData.changeY)));//字体
 		
-		
+
 		//table.setColumnSelectionAllowed(true); 
 		table.setRowSelectionAllowed(true);
 		

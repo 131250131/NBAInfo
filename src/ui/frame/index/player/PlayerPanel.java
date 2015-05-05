@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.frame.index.hotspot.HotspotBounds;
 import ui.myUI.BackColorPanel;
 import ui.system.UIData;
 
@@ -30,11 +31,15 @@ public class PlayerPanel extends JPanel{
 		title.setVisible(true);
 		this.add(title);
 		
-//		PlayersPanel player = new PlayersPanel();
-//		this.add(player);
+		PlayersPanel player = new PlayersPanel();
+		this.add(player);
 		
 		BackColorPanel backPanel = new BackColorPanel(0, 0, width, height, 6);
 		this.add(backPanel);
+		
+		BackColorPanel backPanel1 = new BackColorPanel(0,
+				(int) (((1280 - 900) / 2 - 20) * UIData.changeY), HotspotBounds.BackPanel1Width, (int) (940 * UIData.changeY), 0);
+		this.add(backPanel1);
 	}
 	
 }
