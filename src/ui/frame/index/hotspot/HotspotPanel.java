@@ -38,8 +38,8 @@ public class HotspotPanel extends JPanel{
 		this.add(hotspotRankPanel);
 	
 		PlayerVO todayPlayer = getTodayPlayer();
-		PlayerVO allPlayer = getAllPlayer();
-		
+		PlayerVO allPlayer = getAllPlayer();			
+			
 		InfoPanel_Today infoToday = new InfoPanel_Today(todayPlayer);
 		this.add(infoToday);
 		
@@ -51,7 +51,7 @@ public class HotspotPanel extends JPanel{
 		
 		AllTimePlayerPanel allTimePlayerPanel = new AllTimePlayerPanel(allPlayer);
 		this.add(allTimePlayerPanel);
-		
+			
 		ImageLabel backgroundPic = new ImageLabel(ImageSaver.getIcon("热点球员背景"), HotspotBounds.rankingPanelX
 				, HotspotBounds.rankingPanelY + HotspotBounds.HotspotRankY, HotspotBounds.rankingPanelWidth, HotspotBounds.rankingPanelHeight);
 		this.add(backgroundPic);

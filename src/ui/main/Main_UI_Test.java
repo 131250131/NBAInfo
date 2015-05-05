@@ -24,13 +24,12 @@ public class Main_UI_Test {
 		//初始化后端
 		Controller.init();	
 		
-		MainFrame mainFrame = new MainFrame();
-		mainFrame.setVisible(true);
-		
-//		MatchDataPanel m = new MatchDataPanel();
-//		m.update(Controller.matchController.getMatch(0));
-//		m.setVisible(true);
-		
+//		MainFrame mainFrame = new MainFrame();
+//		mainFrame.setVisible(true);	
+		System.out.println("4" + Controller.playerController.getplayerbyteam("BOS").size());
+		System.out.println("4" + Controller.playerController.getplayerbyteam("BOS").size());
+		System.out.println("4" + Controller.playerController.getplayerbyteam("BOS").size());
+		System.out.println("4" + Controller.playerController.getplayerbyteam("BOS").size());
 	}
 	
 	public static int getFrameSizeX(){
