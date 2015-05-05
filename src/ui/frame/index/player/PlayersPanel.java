@@ -1,4 +1,4 @@
-package userInterface.ui.matchUI;
+package ui.frame.index.player;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,15 +13,17 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import logic.PlayerController;
 import logicservice.playerControllerService;
+import ui.myUI.JSortTable;
+import ui.myUI.MyTable;
 import ui.system.ChineseTranslator;
 import ui.system.Controller;
 import vo.PlayerVO;
 
+@SuppressWarnings("serial")
 public class PlayersPanel extends JPanel {
 
-	private JComboBox teamName;
+	private JComboBox<String> teamName;
 	private MyTable table;
 	String[] columname={"球员","球队","位置","身高","体重","经验","国籍"
 	};
@@ -48,7 +50,7 @@ public class PlayersPanel extends JPanel {
 		//所属球队下拉框
 		String[] teamNames={"选择球队","小牛","掘金","勇士","火箭","快船","湖人","灰熊","灰狼","鹈鹕","拓荒者","雷霆","太阳","国王","马刺","爵士",
 				"老鹰","篮网","凯尔特人","黄蜂","公牛","骑士","活塞","步行者","热火","雄鹿","尼克斯","魔术","76人","猛龙","奇才"};
-		teamName = new JComboBox(teamNames);
+		teamName = new JComboBox<String>(teamNames);
 		
 		teamName.addItemListener(new ItemListener(){
 
