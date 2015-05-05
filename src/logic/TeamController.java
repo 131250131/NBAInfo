@@ -94,7 +94,7 @@ public class TeamController implements teamControllerService{
 	}
 	
 	public void createSeasonAllTeamInfo(){
-		
+		allTeamVO = new ArrayList<TeamVO>();
 		for(Team team : this.allTeams){
 			//System.out.println("pp"+team.getCompGames());
 			this.allTeamVO.add(team.createTeamVO());
@@ -125,7 +125,7 @@ public class TeamController implements teamControllerService{
 			vo.comparetype = "得分";
 		}
 		Collections.sort(this.allTeamVO);
-		for(int i=0;i<50;i++){
+		for(int i=0;i<10;i++){
 			result.add(this.allTeamVO.get(i));
 		}
 		return result;
@@ -137,7 +137,7 @@ public class TeamController implements teamControllerService{
 			vo.comparetype = "篮板";
 		}
 		Collections.sort(this.allTeamVO);
-		for(int i=0;i<50;i++){
+		for(int i=0;i<10;i++){
 			result.add(this.allTeamVO.get(i));
 		}
 		return result;
@@ -149,19 +149,20 @@ public class TeamController implements teamControllerService{
 			vo.comparetype = "助攻";
 		}
 		Collections.sort(this.allTeamVO);
-		for(int i=0;i<50;i++){
+		for(int i=0;i<10;i++){
 			result.add(this.allTeamVO.get(i));
 		}
 		return result;
 	}
 	
 	public ArrayList<TeamVO> getSeasonHotTeams_Block(){
+		createSeasonAllTeamInfo();
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		for(TeamVO vo :  this.allTeamVO){
 			vo.comparetype = "盖帽";
 		}
 		Collections.sort(this.allTeamVO);
-		for(int i=0;i<50;i++){
+		for(int i=0;i<10;i++){
 			result.add(this.allTeamVO.get(i));
 		}
 		return result;
@@ -173,7 +174,7 @@ public class TeamController implements teamControllerService{
 			vo.comparetype = "抢断";
 		}
 		Collections.sort(this.allTeamVO);
-		for(int i=0;i<50;i++){
+		for(int i=0;i<10;i++){
 			result.add(this.allTeamVO.get(i));
 		}
 		return result;
@@ -185,7 +186,7 @@ public class TeamController implements teamControllerService{
 			vo.comparetype = "3FGP";
 		}
 		Collections.sort(this.allTeamVO);
-		for(int i=0;i<50;i++){
+		for(int i=0;i<10;i++){
 			result.add(this.allTeamVO.get(i));
 		}
 		return result;
@@ -197,7 +198,7 @@ public class TeamController implements teamControllerService{
 			vo.comparetype = "FGP";
 		}
 		Collections.sort(this.allTeamVO);
-		for(int i=0;i<50;i++){
+		for(int i=0;i<10;i++){
 			result.add(this.allTeamVO.get(i));
 		}
 		return result;
@@ -209,7 +210,7 @@ public class TeamController implements teamControllerService{
 			vo.comparetype = "FTGP";
 		}
 		Collections.sort(this.allTeamVO);
-		for(int i=0;i<50;i++){
+		for(int i=0;i<10;i++){
 			result.add(this.allTeamVO.get(i));
 		}
 		return result;

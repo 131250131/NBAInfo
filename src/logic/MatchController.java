@@ -39,6 +39,7 @@ public class MatchController implements matchControllerService{
 //			}
 			this.processAllMatches();//处理完毕当前的数据;
 			this.createAllMatchVO();//获得所有比赛的vo;
+//			teamController.createSeasonAllTeamInfo();
 		}
 		
 		public static MatchController getInstance(){

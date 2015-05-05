@@ -181,6 +181,16 @@ public class Team {
 		//球队助攻效率
 			private double teamAssE;
 			
+			private double aver_teamAttackRounds;
+			private double aver_oppoAttackRounds;
+			
+			public double getAver_teamAttackRounds(){
+				return 	Double.parseDouble(String.format("%.3f", (this.attackRounds/this.getCompGames())));
+			}
+			
+			public double getAver_oppoAttackRounds(){
+				return Double.parseDouble(String.format("%.3f", (this.oppoattackRounds/this.getCompGames())));
+			}
 			
 		//Bonus功能;
 			private double winLose;//胜负场;
@@ -396,7 +406,7 @@ public class Team {
 
 
 		public double getAttackRounds() {
-			return Double.parseDouble(String.format("%.3f", (this.attackRounds + 0.0)/(winGames+losGames)));
+			return Double.parseDouble(String.format("%.3f", (this.attackRounds + 0.0)));
 		}
 
 
@@ -1000,7 +1010,7 @@ public class Team {
 
 
 		public double getTeamFTGP() {
-			return Double.parseDouble(String.format("%.3f",(this.teamFTG + 0.0) / (this.compGames + 0.0)));
+			return Double.parseDouble(String.format("%.3f",(this.teamFTG + 0.0) / (this.teamFTGTry + 0.0)));
 
 		}
 

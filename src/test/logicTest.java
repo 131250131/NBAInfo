@@ -28,15 +28,20 @@ public class logicTest {
 		
 		DataCollectorService dc= new DataCollector();
 
-		ArrayList<PlayerVO> p=playerController.getPlayerbyChar('B');
-		for(PlayerVO pl:p){
-			//System.out.println(pl.getPlayerName());
+		ArrayList<TeamVO> t = dc.getSeasonHotTeams_Block();
+		for(TeamVO vo :t){
+			System.out.println(vo.getShortName()+" "+vo.getAver_attacRounds());
 		}
 		
-		ArrayList<PlayerVO> pp=playerController.getPlayerbyChar('B');
-		for(PlayerVO pl:pp){
-			System.out.println(pl.getPlayerName());
-		}
+//		ArrayList<PlayerVO> p=playerController.getPlayerbyChar('B');
+//		for(PlayerVO pl:p){
+//			//System.out.println(pl.getPlayerName());
+//		}
+//		
+//		ArrayList<PlayerVO> pp=playerController.getPlayerbyChar('B');
+//		for(PlayerVO pl:pp){
+//			System.out.println(pl.getPlayerName());
+//		}
 		
 //		for(PlayerVO pl:list){
 //			System.out.println(pl.getTeamShortName()+" "+pl.getPlayerSteals()+ " "+pl.getPlayerAssists()+" "+pl.getPlayerGmScER()+" "+pl.getPlayerName()+"???");
@@ -47,12 +52,12 @@ public class logicTest {
 //
 //			//System.out.println(pl.getPlayerGmScER());
 //		}
-		/*
-		ArrayList<TeamVO> t=teamController.getSeasonAllTeamInfo();
-		for(TeamVO te:t){
-			System.out.println();
-		}
-		*/
+//		/*
+//		ArrayList<TeamVO> t=teamController.getSeasonAllTeamInfo();
+//		for(TeamVO te:t){
+//			System.out.println();
+//		}
+//		*/
 		/*
 		ArrayList<PlayerVO> p=playerController.getSeasonHotPlayers_3FGP();
 		for(PlayerVO pl:p){
@@ -113,6 +118,8 @@ public class logicTest {
 //		for(PlayerVO pl:list){
 //			System.out.println(pl.getPlayerName()+" "+pl.getPlayerTotalRebounds());
 //		}
+		
+
 		
 	}
 

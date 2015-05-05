@@ -166,7 +166,13 @@ public class TeamVO implements Comparable<TeamVO> {
 			private int oppoSteals;	
 		//对手盖帽数（*****需要更新*****）
 			private int oppoBlocks;		
-		//对手失误数（*****需要更新*****）
+		public double getAver_attacRounds() {
+				return aver_attacRounds;
+			}
+		public double getAver_oppoattacRounds() {
+				return aver_oppoattacRounds;
+			}
+			//对手失误数（*****需要更新*****）
 			private int oppoTurnovers;
 		//球队犯规数（*****需要更新*****）
 			private int oppoFouls;	
@@ -174,6 +180,8 @@ public class TeamVO implements Comparable<TeamVO> {
 			private int oppoScores;
 			
 //这是球队的平均信息；
+			private double aver_attacRounds=0;
+			private double aver_oppoattacRounds=0;
 		//球队场均助攻数
 			private double aver_teamAssists;
 		//对手场均助攻数
@@ -803,7 +811,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.teamTurnovers=team.getTeamTurnovers();
 			this.teamFouls=team.getTeamFouls();
 			this.teamScores=team.getTeamScores();
-			
+			this.attackRounds=team.getAttackRounds();
 			//球队单项平均数据统计;
 			this.aver_teamAssists=team.getAver_teamAssists();
 			this.aver_teamFG=team.getAver_teamFG();
@@ -820,6 +828,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.aver_teamTurnovers=team.getAver_teamTurnovers();
 			this.aver_teamFouls=team.getAver_teamFouls();
 			this.aver_teamScores=team.getAver_teamScores();
+			this.aver_attacRounds=team.getAver_teamAttackRounds();
 			
 			//球队各种效率;
 			this.teamFGP = team.getTeamFGP();
@@ -829,10 +838,11 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.teamDefE = team.getTeamDefE();
 			this.teamOffERebE = team.getTeamOffE();
 			this.teamDefERebE = team.getTeamDefERebE();
-			this.teamSteals = team.getTeamSteals();
+			this.teamSteE = team.getTeamSteE();
 			this.teamAssE = team.getTeamAssE();
 			
 			//对手单项总数据统计;
+			this.oppoattackRounds=team.getOppoattackRounds();
 			this.oppoAssists=team.getOppoAssists();
 			this.oppoFG=team.getOppoFG();
 			this.oppoFGTry=team.getOppoFGTry();
@@ -866,6 +876,8 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.aver_oppoFouls=team.getAver_oppoFouls();
 			this.aver_oppoScores=team.getAver_oppoScores();
 			this.attendmatches=team.getAttendmatches();
+			this.aver_oppoattacRounds=team.getAver_oppoAttackRounds();
+			
 			
 			
 			winLose=team.getWinLose();
