@@ -50,6 +50,7 @@ public class PlayerController implements playerControllerService{
 	}
 	
 	public void createAllPlayerVO(){
+		this.allPlayerVO = new ArrayList<PlayerVO>();
 		for(Player player : this.allPlayers){
 			//System.out.println(player.getPlayerAssists());
 			PlayerVO vo = new PlayerVO();

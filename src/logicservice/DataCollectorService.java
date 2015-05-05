@@ -42,5 +42,9 @@ public interface DataCollectorService {
 		public ArrayList<PlayerVO> getSomeDayPlayers_Block(String date);
 		public ArrayList<PlayerVO> getSomeDayPlayers_Steal(String date);
 		public ArrayList<PlayerVO> getSomeDayPlayers_GmScER(String date);
+		public ArrayList<PlayerVO> getSomeDayPlayers_FGP(String date) ;
+		
 		public ArrayList<PlayerVO> getSomeDayAllPlayers(String date);
+		public ArrayList<PlayerVO> getSomeDayPlayers_3FGP(String date);
+		public ArrayList<PlayerVO> getSomeDayPlayers_FTGP(String date);
 }

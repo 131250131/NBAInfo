@@ -196,6 +196,8 @@ public class Team {
 			private boolean lianxu_win_Home;
 			private boolean lianxu_win_Guest;
 			private int lianxu;
+			private boolean homelianxu;
+			private boolean guestlianxu;
 			private int lianxu_Home;
 			private int lianxu_Guest;
 			private int longestWin;

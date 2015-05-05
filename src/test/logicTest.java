@@ -27,12 +27,21 @@ public class logicTest {
 		matchController = mainController.getMatchController();
 		
 		DataCollectorService dc= new DataCollector();
-		ArrayList<PlayerVO> list = dc.getSomeDayPlayers_Steal("2013-12-25");
 
-		for(PlayerVO pl:list){
-			System.out.println(pl.getTeamShortName()+" "+pl.getPlayerSteals()+ " "+pl.getPlayerAssists()+" "+pl.getPlayerGmScER()+" "+pl.getPlayerName()+"???");
+		ArrayList<PlayerVO> p=playerController.getPlayerbyChar('B');
+		for(PlayerVO pl:p){
+			//System.out.println(pl.getPlayerName());
 		}
-		System.out.println("??ttt??");
+		
+		ArrayList<PlayerVO> pp=playerController.getPlayerbyChar('B');
+		for(PlayerVO pl:pp){
+			System.out.println(pl.getPlayerName());
+		}
+		
+//		for(PlayerVO pl:list){
+//			System.out.println(pl.getTeamShortName()+" "+pl.getPlayerSteals()+ " "+pl.getPlayerAssists()+" "+pl.getPlayerGmScER()+" "+pl.getPlayerName()+"???");
+//		}
+//		System.out.println("??ttt??");
 //		ArrayList<PlayerVO> o=playerController.getAllPlayerVO();
 //		for(PlayerVO pl:o){
 //
