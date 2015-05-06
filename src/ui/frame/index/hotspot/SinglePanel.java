@@ -3,6 +3,10 @@ package ui.frame.index.hotspot;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,13 +15,14 @@ import javax.swing.JPanel;
 
 import ui.myUI.ImageLabel;
 import ui.system.ChineseTranslator;
+import ui.system.Controller;
 import ui.system.DataTransform;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 
 
 @SuppressWarnings("serial")
-public class SinglePanel extends JPanel{
+public class SinglePanel extends JPanel implements ActionListener{
 	
 	JLabel scoreLabel, background, picLabel, nameLabel;
 	JButton button;
@@ -26,15 +31,13 @@ public class SinglePanel extends JPanel{
 	int height = (int) (120 * UIData.changeY);
 	int index = 9;
 	
-	public SinglePanel(int i){
-		
+	public SinglePanel(int i){		
 		index = i;
 		this.setBounds(0, getPanelY(), (int) (1775 * UIData.changeY), height);
 		this.setSize(HotspotBounds.rankingPanelWidth, height);
 		this.setVisible(true);
 		this.setLayout(null);
 		this.setOpaque(false);
-		//this.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.7f));
 
 		ImageIcon image = null, image2 = null;
 		switch(i){
@@ -65,6 +68,11 @@ public class SinglePanel extends JPanel{
 		picLabel = new JLabel();
 		picLabel.setBounds(0, 0, (int) (180 * UIData.changeX), (int) (140 * UIData.changeY));
 		picLabel.setVisible(true);
+		picLabel.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent arg0) {
+				button.doClick();
+			}
+		});
 		this.add(picLabel);
 		
 		scoreLabel = new JLabel("0", JLabel.CENTER);
@@ -82,15 +90,17 @@ public class SinglePanel extends JPanel{
 		colorPanel.setVisible(true);
 		this.add(colorPanel);
 		
-//		button = new JButton();
-//		button.setBounds(0, 0, sizeX, sizeY);
-//		button.setBorder(BorderFactory.createEmptyBorder());
-//		button.setOpaque(false);
-//		button.setContentAreaFilled(false);
-//		this.add(button);
+		button = new JButton();
+		button.addActionListener(this);
+		this.add(button);
 	}
 	
+	boolean flag = true;
+	
 	public void updatePanel(double score, int step, String playerName, int i){
+		
+		this.playerName = playerName;
+		
 		if(i == 0){
 			setScore(score);
 			locateUI(score, step);
@@ -99,6 +109,7 @@ public class SinglePanel extends JPanel{
 		}else{
 			setScore(score);
 			locateUI(score, step);
+			flag = false;
 			setTeamIcon(playerName);
 			setTeamName(playerName);
 		}
@@ -111,12 +122,14 @@ public class SinglePanel extends JPanel{
 				, (int) (colorLabel.getLocation().y + 27 * UIData.changeY));
 		picLabel.setLocation((int) (colorLabel.getLocation().x + 12 * UIData.changeX)
 				, (int) (colorLabel.getLocation().y - 18 * UIData.changeY));
+		button.setLocation((int) (colorLabel.getLocation().x + 12 * UIData.changeX)
+				, (int) (colorLabel.getLocation().y - 18 * UIData.changeY));
 		nameLabel.setLocation((int) (colorLabel.getLocation().x + 142 * UIData.changeX)
 				, (int) (colorLabel.getLocation().y + 70 * UIData.changeY));
 	}
 	
 	private void setScore(double score){
-			scoreLabel.setText(DataTransform.transDoubleTopointXXString(score));	
+		scoreLabel.setText(DataTransform.transDoubleTopointXXString(score));	
 	}
 	
 	private void setLabelName(String playerName){
@@ -124,11 +137,14 @@ public class SinglePanel extends JPanel{
 	}
 	
 	private void setTeamName(String playerName){
+		picLabel.setSize((int) (180 * UIData.changeX), (int) (140 * UIData.changeY));
 		nameLabel.setText("  - "+ ChineseTranslator.TeamNameTrans(playerName));
 	}
 	
 	private void setTeamIcon(String playerName){
 		picLabel.setSize((int) (110 * UIData.changeX), (int) (110 * UIData.changeY));
+		picLabel.setLocation((int) (colorLabel.getLocation().x + 42 * UIData.changeX)
+				, (int) (colorLabel.getLocation().y - 8 * UIData.changeY));
 		ImageIcon image = ImageSaver.getTeamIcon(playerName);
 		image.setImage(image.getImage().getScaledInstance(picLabel.getSize().width, picLabel.getSize().height,Image.SCALE_DEFAULT));
 		picLabel.setIcon(image);
@@ -140,10 +156,8 @@ public class SinglePanel extends JPanel{
 		picLabel.setIcon(image);
 	}
 	
-	private int getPanelX(int score, int step){
-		
+	private int getPanelX(int score, int step){		
 		int length = step * 5;
-		
 		if(score > length){
 			return (int) (275 * UIData.changeX);
 		}else{
@@ -156,6 +170,18 @@ public class SinglePanel extends JPanel{
 		int y = (int) (100 * UIData.changeY), blank = (int) (10 * UIData.changeY);		
 		return y + (height + blank) * index;
 	}
+	
+	String playerName;
 
+	public void actionPerformed(ActionEvent e) {
+
+		if(e.getSource() == button){
+			if(flag == true){
+				Controller.addPlayerPanel(playerName);
+			}else{
+				Controller.addTeamPanel(playerName);
+			}
+		}
+	}
 
 }

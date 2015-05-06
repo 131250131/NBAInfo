@@ -16,6 +16,8 @@ public class UIData {
 	
 	public static int fwidth, fheight;
 	
+	public static int slideMax = 100;
+	
 	public UIData(int width, int height){
 			
 			frameWidth = width;
@@ -59,27 +61,20 @@ public class UIData {
 		
 		k = (screenWidth + 0.0) / 1920;
 		
-		frameX = (screenWidth - frameWidth) /2;
-		frameY = (screenHeight - frameHeight) /2;
+		frameX = (screenWidth - frameWidth) / 2;
+		frameY = (screenHeight - frameHeight) / 2;
 	}
 	
 	public static int slideSize;
 	
 	public static int getNextX(){
 		currentStep++;	
-		return (3 - currentStep) * slideSize;
+		return (slideMax - currentStep) * slideSize;
 	}
 	
 	public static void returnToFormerStep(){
-		currentStep--;
-		switch(UIData.currentStep){
-		case 0:
-			LargerScrollPane.turnto3.doClick();break;
-		case 1:
-			LargerScrollPane.turnto2.doClick();break;
-		case 2:
-			LargerScrollPane.turnto1.doClick();break;
-		}	
+		currentStep--;	
+		LargerScrollPane.turnto.doClick();
 	}
 	
 	private void setLargerBounds(){
@@ -88,12 +83,12 @@ public class UIData {
 		slideSize = (int) (1920 * changeX);
 		largerScrollPaneWidth = fwidth;
 		largerScrollPaneHeight = fheight;
-		largerPanelWidth = frameWidth + slideSize * 3;
+		largerPanelWidth = frameWidth + slideSize * slideMax;
 		largerPanelHeight = frameHeight - 10;
 	}
 	
 	private void setIndexScrollPaneBounds(){
-		indexScrollPaneX = slideSize * 3;
+		indexScrollPaneX = slideSize * slideMax;
 		indexScrollPaneY = 0;
 		indexScrollPaneWidth = frameWidth;
 		indexScrollPaneHeight = frameHeight;
@@ -112,7 +107,7 @@ public class UIData {
 	}
 	
 	private void setIndexBoardBounds(){
-		indexBoardX = slideSize * 3;
+		indexBoardX = slideSize * slideMax;
 		indexBoardY = 0;
 		indexBoardWidth = (int) (175 * changeX);
 		indexBoardHeight = frameHeight;

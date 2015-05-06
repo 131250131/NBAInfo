@@ -35,12 +35,14 @@ public class Matchdata implements MatchDataService{
 	private int rscore=0;
 	private int lhalfscore=0;
 	private int rhalfscore=0;
+	int number=0;
 	@Override
 	public void readMatch() {
 		// TODO Auto-generated method stub
 		
 		File file = new File(filePath);                
 		File[] matchFile = file.listFiles();
+		number=matchFile.length;
 		int index = 0;
 		for(int i = 0; i < matchFile.length; i++){
 			MatchPO match=new MatchPO();
@@ -309,11 +311,22 @@ public class Matchdata implements MatchDataService{
 	
 	@Override
 	public boolean Matchupdate() {
-		// TODO Auto-generated method stub
-		JudgeUpdate hasupdate=new JudgeUpdate(filePath);
-		//System.out.println("pp");
-		hasupdate.run();
-		return hasupdate.getHasupdate();
+		// 
+        
+		boolean Hasupdate=false;
+		File file = new File(filePath);                
+ 		File[] File = file.listFiles();
+		   if(File.length!=number){
+			   Hasupdate=true;
+			  // System.out.println("ppp");
+		   matches=new ArrayList<MatchPO>();
+		   this.readMatch();
+		   //System.out.println("ttt");
+		   }
+		  return Hasupdate;
+		
+		
+
 	}
 	@Override
 	public PlayerPO playerdataoperator(String name,String team,int time, int FG, int FGTry,

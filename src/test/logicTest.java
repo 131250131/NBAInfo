@@ -2,6 +2,9 @@ package test;
 
 import java.util.ArrayList;
 
+
+import data.matchdata.Matchdata;
+
 import Utibility.JudgeUpdate;
 import ui.system.Controller;
 import vo.MatchVO;
@@ -31,6 +34,12 @@ public class logicTest {
 		
 		DataCollectorService dc= new DataCollector();
 
+   
+      // JudgeUpdate j =new JudgeUpdate("data/data/matches");
+       //j.run();
+       
+
+
 //        ArrayList<TeamVO> t =teamController.getteamrank();
 //        for(TeamVO tt:t){
 //        	System.out.println(tt.getTeamName()+tt.getWinRate());
@@ -46,11 +55,14 @@ public class logicTest {
 			}
 		
 */ 
-		ArrayList<PlayerVO> temp = dc.getSomeDayPlayers_3FGP("2014-04-16");
-		for(PlayerVO vo : temp){
-			System.out.println(vo.getPlayerName()+" "+vo.getPlayer3FGP());
-		}
+
         
+		ArrayList<PlayerVO> temp = dc.getSeasonHotPlayers_AverScore();
+		for(PlayerVO vo : temp){
+			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores());
+		}
+		
+		
 //		ArrayList<PlayerVO> temp = playerController.getSelectedPlayers("后卫", "西南区", "助攻");
 //		for(PlayerVO vo : temp){
 //			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores()+" "+vo.getPlayerAssists());
@@ -62,15 +74,12 @@ public class logicTest {
 //		}
 		
         
+
 	}
 
-		/*
-	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
-	    for(PlayerVO pp:pd){
-	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
-	    }
-		System.out.println(pd.size());
->>>>>>> branch 'master' of ssh://git@github.com/131250131/NBAInfo.git
+		
+	   
+
 
 		
 

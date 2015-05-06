@@ -31,9 +31,9 @@ public interface associationDataService {
 //	public double getPlayerSER();
 	
 	public int getscreenWidth();
-	public void setscreenWidth(int width);
+    public void setwh();
 	public int getscreenHeight();
-	public void setscreenHeight(int height) ;
+
 	
 	public double getAver_teamAssists();
 	public double getAver_teamFG();

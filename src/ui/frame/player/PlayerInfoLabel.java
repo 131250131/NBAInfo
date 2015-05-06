@@ -4,13 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ui.frame.larger.LargerScrollPane;
 import ui.myUI.ImageLabel;
 import ui.system.ChineseTranslator;
 import ui.system.Controller;
@@ -44,16 +44,16 @@ public class PlayerInfoLabel extends JPanel implements ActionListener{
 		this.add(nameLabel);
 	
 		teamBt2 = new JButton();
-		teamBt2.setBounds((int) (400 * UIData.changeX), (int) (30 * UIData.changeY), (int) (220 * UIData.changeX), (int) (20 * UIData.changeY));
-		teamBt2.setVisible(true);
-		teamBt2.setOpaque(false);
-		teamBt2.setContentAreaFilled(false);
-		teamBt2.setBorder(BorderFactory.createEmptyBorder());
 		teamBt2.addActionListener(this);
 		this.add(teamBt2);
 		
 		TextLabel text1 = new TextLabel("所属球队: " + ChineseTranslator.TeamNameTrans(player.getTeamShortName()));
 		text1.setLocation((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
+		text1.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent arg0) {
+				teamBt2.doClick();
+			}
+		});
 		this.add(text1);
 		
 		TextLabel text2 = new TextLabel("身高体重: " + player.getHeight() + "; " + player.getWeight());
@@ -105,16 +105,16 @@ public class PlayerInfoLabel extends JPanel implements ActionListener{
 		this.add(image);
 
 		teamBt1 = new JButton();
-		teamBt1.setBounds((int) (155 * UIData.changeX), (int) (20 * UIData.changeY), (int) (220 * UIData.changeX), (int) (220 * UIData.changeY));
-		teamBt1.setVisible(true);
-		teamBt1.setOpaque(false);
-		teamBt1.setContentAreaFilled(false);
-		teamBt1.setBorder(BorderFactory.createEmptyBorder());
 		teamBt1.addActionListener(this);
 		this.add(teamBt1);
 		
 		ImageLabel teamImage = new ImageLabel(ImageSaver.getTeamIcon(player.getTeamShortName())
 				, (int) (155 * UIData.changeX), (int) (20 * UIData.changeY), (int) (220 * UIData.changeX), (int) (220 * UIData.changeY));
+		teamImage.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent arg0) {
+				teamBt1.doClick();
+			}
+		});
 		this.add(teamImage);
 		
 		int bacX = (int) (0 * UIData.changeX);
@@ -157,7 +157,11 @@ public class PlayerInfoLabel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == teamBt1){
-			Controller.playerToTeam(_player.getTeamShortName());
+			Controller.addTeamPanel(_player.getTeamShortName());
+		}
+		
+		if(events.getSource() == teamBt2){
+			Controller.addTeamPanel(_player.getTeamShortName());
 		}
 		
 	}

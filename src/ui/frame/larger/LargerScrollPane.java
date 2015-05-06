@@ -19,7 +19,7 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 	
 	LargerPanel largerPanel;
 	Timer timer = new Timer(1, this);
-	public static JButton turnto0, turnto1, turnto2, turnto3;
+	public static JButton turnto;
 	
 	public LargerScrollPane(){	
 		this.setBounds(x, y, width, height);
@@ -33,21 +33,9 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 		largerPanel = new LargerPanel();
 		setViewportView(largerPanel);
 		
-		turnto0 = new JButton();
-		turnto0.addActionListener(this);
-		this.add(turnto0);	
-		
-		turnto1 = new JButton();
-		turnto1.addActionListener(this);
-		this.add(turnto1);	
-		
-		turnto2 = new JButton();
-		turnto2.addActionListener(this);
-		this.add(turnto2);	
-		
-		turnto3 = new JButton();
-		turnto3.addActionListener(this);
-		this.add(turnto3);
+		turnto = new JButton();
+		turnto.addActionListener(this);
+		this.add(turnto);	
 	}
 	
 	int currentLoction;
@@ -76,22 +64,10 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 			}			
 		}
 		
-		if(events.getSource() == turnto0){
-			setScrollLoction(0);
+		if(events.getSource() == turnto){
+			setScrollLoction(UIData.slideSize * (UIData.slideMax - UIData.currentStep));
 		}
-		
-		if(events.getSource() == turnto1){
-			setScrollLoction(UIData.slideSize);
-		}
-		
-		if(events.getSource() == turnto2){
-			setScrollLoction(UIData.slideSize * 2);
-		}
-		
-		if(events.getSource() == turnto3){
-			setScrollLoction(UIData.slideSize * 3);
-		}
-		
+				
 	}
 
 }

@@ -252,7 +252,7 @@ public class DataCollector implements DataCollectorService{
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_AverSteal() {
 		PlayerController playerController = PlayerController.getInstance();
-		this.seasonHotPlayers_AverSteal = playerController.getSeasonHotPlayers_AverAssist();
+		this.seasonHotPlayers_AverSteal = playerController.getSeasonHotPlayers_AverSteal();
 		return seasonHotPlayers_AverSteal;
 	}
 	
@@ -439,7 +439,7 @@ public class DataCollector implements DataCollectorService{
 		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
-			pvo.setComparetype("投篮命中率");
+			pvo.setComparetype("FGP");
 		}
 		Collections.sort(someDayPlayer);
 		
@@ -453,7 +453,7 @@ public class DataCollector implements DataCollectorService{
 		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
-			pvo.setComparetype("三分命中率");
+			pvo.setComparetype("3FGP");
 		}
 		Collections.sort(someDayPlayer);
 		
@@ -467,7 +467,7 @@ public class DataCollector implements DataCollectorService{
 		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
-			pvo.setComparetype("罚篮命中率");
+			pvo.setComparetype("FTGP");
 		}
 		Collections.sort(someDayPlayer);
 		

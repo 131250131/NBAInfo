@@ -3,8 +3,9 @@ package ui.frame.index.team;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -51,15 +52,15 @@ public class TeamPicPanel extends JPanel implements ActionListener{
 		this.add(colorLabel);
 		
 		ImageLabel teamImage = new ImageLabel(ImageSaver.getTeamIcon(teamName), picX, picY, picWidth, picHeight);
+		teamImage.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent arg0) {
+				button.doClick();
+			}
+		});
 		this.add(teamImage);
 		
 		button = new JButton();
-		button.setBounds(0, 0, width, height);
-		button.setVisible(true);
 		button.addActionListener(this);
-		button.setOpaque(false);
-		button.setBorder(BorderFactory.createEmptyBorder());
-		button.setContentAreaFilled(false);
 		this.add(button);
 	}
 	

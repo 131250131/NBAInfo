@@ -59,13 +59,9 @@ public class Controller {
 		today_FP = Controller.dataCollectorService.getSomeDayPlayers_FGP(today);
 		today_3FTP = Controller.dataCollectorService.getSomeDayPlayers_3FGP(today);
 		today_FTP = Controller.dataCollectorService.getSomeDayPlayers_FTGP(today);
-		//all_Scores = Controller.dataCollectorService.getSeasonHotPlayers_AverScore();
+//		all_Scores = Controller.dataCollectorService.getSeasonHotPlayers_AverScore();
 		all_Assists = Controller.dataCollectorService.getSeasonHotPlayers_AverAssist();
 		all_rebounds = Controller.dataCollectorService.getSeasonHotPlayers_AverRebound();
-		System.out.println(all_rebounds.get(0).getPlayerName());
-		System.out.println(all_rebounds.get(0).getAver_playerTotalRebounds());
-		System.out.println(all_rebounds.get(1).getPlayerName());
-		System.out.println(all_rebounds.get(1).getAver_playerTotalRebounds());
 		all_blocks = Controller.dataCollectorService.getSeasonHotPlayers_AverBlock();
 		all_steals = Controller.dataCollectorService.getSeasonHotPlayers_AverSteal();
 		all_FP = Controller.dataCollectorService.getSeasonHotPlayers_FGP();
@@ -81,60 +77,20 @@ public class Controller {
 	public static void addMatchPanel(MatchVO match){
 		currentMatch = match;
 		LargerPanel.addMatchPanel.doClick();
-		switch(UIData.currentStep){
-		case 1:
-			LargerScrollPane.turnto2.doClick();break;
-		case 2:
-			LargerScrollPane.turnto1.doClick();break;
-		case 3:
-			LargerScrollPane.turnto0.doClick();break;
-		}	
+		LargerScrollPane.turnto.doClick();
 	}
 	
 	public static void addPlayerPanel(String playerName){
 		currentPlayerName = playerName;
 		LargerPanel.addPlayerPanel.doClick();
-		switch(UIData.currentStep){
-		case 1:
-			LargerScrollPane.turnto2.doClick();break;
-		case 2:
-			LargerScrollPane.turnto1.doClick();break;
-		case 3:
-			LargerScrollPane.turnto0.doClick();break;
-		}	
+		LargerScrollPane.turnto.doClick();
+		
 	}
 	
-	public static void addTeamPanel(String teamShortName){
-		
+	public static void addTeamPanel(String teamShortName){		
 		currentTeamName = teamShortName;
 		LargerPanel.addTeamPanel.doClick();
-		switch(UIData.currentStep){
-		case 1:
-			LargerScrollPane.turnto2.doClick();break;
-		case 2:
-			LargerScrollPane.turnto1.doClick();break;
-		case 3:
-			LargerScrollPane.turnto0.doClick();break;
-		}	
+		LargerScrollPane.turnto.doClick();		
 	}
-
-	public static void playerToTeam(String teamShortName){
-		
-		currentTeamName = teamShortName;
-		
-		if(UIData.currentStep == 1){
-			LargerScrollPane.turnto0.doClick();
-			LargerPanel.addTeamPanel.doClick();
-			switch(UIData.currentStep){
-			case 1:
-				LargerScrollPane.turnto2.doClick();break;
-			case 2:
-				LargerScrollPane.turnto1.doClick();break;
-			case 3:
-				LargerScrollPane.turnto0.doClick();break;
-			}	
-		}else{
-			
-		}
-	}
+	
 }

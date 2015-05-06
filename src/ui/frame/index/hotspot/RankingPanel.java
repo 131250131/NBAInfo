@@ -90,9 +90,7 @@ public class RankingPanel extends JPanel implements ActionListener{
 	private void getPlayerList(int kindIndex, int itemIndex){
 			
 		if(kindIndex == 0){
-			String date = Controller.today;
 			ArrayList<PlayerVO> playerList;
-			
 			switch(itemIndex){
 			case 0:
 				playerList = Controller.today_Scores;
@@ -327,9 +325,9 @@ public class RankingPanel extends JPanel implements ActionListener{
 				case 2:
 					step = 20;break;
 				case 3:
-					step = 15;break;
+					step = 10;break;
 				case 4:
-					step = 15;break;
+					step = 10;break;
 				case 5:
 					step = 100;break;
 				case 6:
@@ -384,11 +382,11 @@ public class RankingPanel extends JPanel implements ActionListener{
 			case 1:
 				step = 30;break;
 			case 2:
-				step = 40;break;
+				step = 50;break;
 			case 3:
-				step = 15;break;
+				step = 10;break;
 			case 4:
-				step = 15;break;
+				step = 10;break;
 			case 5:
 				step = 100;break;
 			case 6:
