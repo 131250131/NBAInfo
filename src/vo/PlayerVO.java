@@ -1106,10 +1106,10 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		     		   return -1;	   
 		     	   }
 		     	if(comparetype.equals("平均得分")){
-		     		   if(this.getAver_playerScores()-o.getAver_playerTotalRebounds()<0){
+		     		   if(this.getAver_playerScores()-o.getAver_playerScores()<0){
 		     			   return 1;
 		     		   }
-		     		  if(this.getAver_playerScores()-o.getAver_playerTotalRebounds()==0)
+		     		  if(this.getAver_playerScores()-o.getAver_playerScores()==0)
 		     			  return 0;
 		     		   return -1;	   
 		     	   }
