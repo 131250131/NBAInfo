@@ -334,74 +334,60 @@ public class PlayerController implements playerControllerService{
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_AverAssist() {
 		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
-		for(Player tempPlayer : this.allPlayers){
-			tempPlayer.comparetype="平均助攻";
+		for(PlayerVO tempPlayerVO : this.allPlayerVO){
+			tempPlayerVO.comparetype="平均助攻";
 		}
-		Collections.sort(this.allPlayers);
+		Collections.sort(this.allPlayerVO);
 		for(int i=0;i<50;i++){
-			PlayerVO vo = new PlayerVO();
-			vo.creatplayervo(this.allPlayers.get(i));
-			tempList.add(vo);
+			tempList.add(this.allPlayerVO.get(i));
 		}
 		return tempList;
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_AverSteal() {
 		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
-		for(Player tempPlayer : this.allPlayers){
-			tempPlayer.comparetype="平均抢断";
+		for(PlayerVO tempPlayerVO : this.allPlayerVO){
+			tempPlayerVO.comparetype="平均抢断";
 		}
-		Collections.sort(this.allPlayers);
+		Collections.sort(this.allPlayerVO);
 		for(int i=0;i<50;i++){
-			PlayerVO vo = new PlayerVO();
-			vo.creatplayervo(this.allPlayers.get(i));
-			tempList.add(vo);
+			tempList.add(this.allPlayerVO.get(i));
 		}
 		return tempList;
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_AverBlock() {
 		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
-		for(Player tempPlayer : this.allPlayers){
-			tempPlayer.comparetype="平均盖帽";
+		for(PlayerVO tempPlayerVO : this.allPlayerVO){
+			tempPlayerVO.comparetype="平均盖帽";
 		}
-		Collections.sort(this.allPlayers);
-		//for(Player ppp:this.allPlayers){
-		//	System.out.println(ppp.getAver_playerBlocks());
-	//	}
+		Collections.sort(this.allPlayerVO);
 		for(int i=0;i<50;i++){
-			PlayerVO vo = new PlayerVO();
-			vo.creatplayervo(this.allPlayers.get(i));
-			//System.out.println(this.allPlayers.get(i).getAver_playerBlocks());
-			tempList.add(vo);
+			tempList.add(this.allPlayerVO.get(i));
 		}
 		return tempList;
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_AverRebound() {
 		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
-		for(Player tempPlayer : this.allPlayers){
-			tempPlayer.comparetype="平均篮板";
+		for(PlayerVO tempPlayerVO : this.allPlayerVO){
+			tempPlayerVO.comparetype="平均篮板";
 		}
-		Collections.sort(this.allPlayers);
+		Collections.sort(this.allPlayerVO);
 		for(int i=0;i<50;i++){
-			PlayerVO vo = new PlayerVO();
-			vo.creatplayervo(this.allPlayers.get(i));
-			tempList.add(vo);
+			tempList.add(this.allPlayerVO.get(i));
 		}
 		return tempList;
 	}
 
 	public ArrayList<PlayerVO> getSeasonHotPlayers_AverScore() {
 		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
-		for(Player tempPlayer : this.allPlayers){
-			tempPlayer.comparetype="平均得分";
+		for(PlayerVO tempPlayerVO : this.allPlayerVO){
+			tempPlayerVO.comparetype="平均得分";
 		}
-		Collections.sort(this.allPlayers);
+		Collections.sort(this.allPlayerVO);
 		for(int i=0;i<50;i++){
-			PlayerVO vo = new PlayerVO();
-			vo.creatplayervo(this.allPlayers.get(i));
-			tempList.add(vo);
+			tempList.add(this.allPlayerVO.get(i));
 		}
 		return tempList;
 	}

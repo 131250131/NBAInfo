@@ -30,122 +30,29 @@ public class logicTest {
 		
 		DataCollectorService dc= new DataCollector();
 
-
-        }
-		/*
-	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
-	    for(PlayerVO pp:pd){
-	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
-	    }
-		System.out.println(pd.size());
->>>>>>> branch 'master' of ssh://git@github.com/131250131/NBAInfo.git
-
 		
-
-//		ArrayList<TeamVO> t=teamController.getSeasonAllTeamInfo();
-//		for(TeamVO te:t){
-//			System.out.println(te.getShortName()+" "+te.getWinRate());
+//		ArrayList<PlayerVO> list = dc.getSomeDayPlayers_Assist("2014-04-16");
+//		for(PlayerVO vo : list){
+//			System.out.println(vo.getPlayerName()+" "+vo.getPlayerAssists());
 //		}
-		
-////
-//		ArrayList<TeamVO> list = dc.getSeasonHotTeams_Score();
-//		for(TeamVO vo : list){
-//			System.out.println(vo.getShortName()+ " "+vo.getTeamScores());
-//		}
-		
-//		ArrayList<PlayerVO> p=dc.getSeasonHotPlayers_AverBlock();
-//		for(PlayerVO pl:p){
-//				System.out.println(pl.getPlayerName()+pl.getAver_playerBlocks());
-//		}
-		
-//		ArrayList<PlayerVO> p=playerController.getPlayerbyChar('B');
-//		for(PlayerVO pl:p){
-//			//System.out.println(pl.getPlayerName());
-//		}
-//		
-//		ArrayList<PlayerVO> pp=playerController.getPlayerbyChar('B');
-//		for(PlayerVO pl:pp){
-//			System.out.println(pl.getPlayerName());
-//		}
-		
-//		for(PlayerVO pl:list){
-//			System.out.println(pl.getTeamShortName()+" "+pl.getPlayerSteals()+ " "+pl.getPlayerAssists()+" "+pl.getPlayerGmScER()+" "+pl.getPlayerName()+"???");
-//		}
-//		System.out.println("??ttt??");
-//		ArrayList<PlayerVO> o=playerController.getAllPlayerVO();
-//		for(PlayerVO pl:o){
+//		System.out.println("-----------------------------------");
 //
-//			//System.out.println(pl.getPlayerGmScER());
+//		ArrayList<PlayerVO> list2 = dc.getSomeDayPlayers_Steal("2014-04-16");
+//		for(PlayerVO vo : list2){
+//			System.out.println(vo.getPlayerName()+" "+vo.getPlayerSteals());
 //		}
-//		/*
-//		ArrayList<TeamVO> t=teamController.getSeasonAllTeamInfo();
-//		for(TeamVO te:t){
-//			System.out.println();
-//		}
-//		*/
-		/*
-		ArrayList<PlayerVO> p=playerController.getSeasonHotPlayers_3FGP();
-		for(PlayerVO pl:p){
-			System.out.println(pl.getTeamShortName());
+		
+
+		ArrayList<PlayerVO> list2 = dc.getSeasonHotPlayers_AverAssist();
+		for(PlayerVO vo : list2){
+			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerAssists());
 		}
-		*/
-//		ArrayList<PlayerVO> p=playerController.getplayerbyteam("MIA");
-//		for(PlayerVO pl:p){
-//			System.out.println(pl.getTeamShortName());
-//		}
-
-		/*
-		ArrayList<PlayerVO> temp = playerController.getSelectedPlayers("后卫", "西南区", "助攻");
-		for(PlayerVO vo : temp){
-			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores()+" "+vo.getPlayerAssists());
+		System.out.println("-----------------------------------");
+		ArrayList<PlayerVO> list = dc.getSeasonHotPlayers_AverRebound();
+		for(PlayerVO vo : list){
+			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerTotalRebounds());
 		}
-		System.out.println("hhh");
-		*/
-
-//		
-//		ArrayList<PlayerVO> temp = playerController.getSelectedPlayers("后卫", "西南区", "助攻");
-//		for(PlayerVO vo : temp){
-//			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores()+" "+vo.getPlayer3FG());
-//		}
-//		System.out.println("hhh");
 		
 		
-//		DataCollectorService dc= new DataCollector();
-//		ArrayList<PlayerVO> list = dc.getSeasonHotPlayers_3FGP();
-//		for(PlayerVO pl:list){
-//			System.out.println(pl.getTeamShortName()+" "+pl.getPlayer3FGP()+" "+pl.getPlayerName());
-//		}
-		
-//		ArrayList<PlayerVO> list = playerController.getAllPlayerVO();
-//		for(PlayerVO pl:list){
-//			System.out.println(pl.getPlayerName()+" "+pl.getPlayerFTG());
-//		}
-//		Controller controller = new Controller();
-//		controller.init();
-//		matchControllerService matchController = controller.matchController;
-//		
-//		ArrayList<MatchVO> list = matchController.getAllMatchVO();
-//		MatchVO vo =list.get(0);
-//		System.out.println(vo.getLeftTeam().getTeamScores()+vo.getLeftTeam().getShortName()
-//				);
-		
-///	ArrayList<MatchVO> list = matchController.getAllMatchVO();
-//		for(MatchVO vo : list){
-//			System.out.println(vo.getLeftTeam().getShortName()+" "+vo.getLeftTeam().getTeamScores()+
-//					vo.getRightTeam().getShortName()+" "+vo.getRightTeam().getTeamScores());
-//		}
-//		
-//		//Kevin Durant
-//		matchController.getMatchOfPlayer("Kevin Durant");
-//		
-//		DataCollectorService dc= new DataCollector();
-//		ArrayList<PlayerVO> list = dc.getSeasonHotPlayers_Rebound();
-//		for(PlayerVO pl:list){
-//			System.out.println(pl.getPlayerName()+" "+pl.getPlayerTotalRebounds());
-//		}
-		
-
-		
-	
-
+        }
 }

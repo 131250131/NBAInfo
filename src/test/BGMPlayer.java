@@ -20,7 +20,7 @@ public class BGMPlayer {
 	    //播放音频文件
 		public static void Play(){
 	        try {
-	        	String fileurl = "";
+	        	String fileurl = "data/bgm/Remeber The Name Fort Minor.wav";
 	            AudioInputStream ais = AudioSystem.getAudioInputStream(new File(fileurl));
 	            AudioFormat aif = ais.getFormat();System.out.println(aif);
 	            final SourceDataLine sdl;

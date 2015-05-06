@@ -172,7 +172,7 @@ public class AudioPlayer  implements Runnable{
 		
 	}
 	public static void main(String[] args) {
-		AudioPlayer t=new AudioPlayer("data/bgm/Remeber The Name Fort Minor.wav");
+		AudioPlayer t=new AudioPlayer("data/bgm/Amazing.wav");
 		t.playloop();
 	}
 }
