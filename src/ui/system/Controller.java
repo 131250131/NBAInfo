@@ -59,9 +59,13 @@ public class Controller {
 		today_FP = Controller.dataCollectorService.getSomeDayPlayers_FGP(today);
 		today_3FTP = Controller.dataCollectorService.getSomeDayPlayers_3FGP(today);
 		today_FTP = Controller.dataCollectorService.getSomeDayPlayers_FTGP(today);
-		all_Scores = Controller.dataCollectorService.getSeasonHotPlayers_AverScore();
+		//all_Scores = Controller.dataCollectorService.getSeasonHotPlayers_AverScore();
 		all_Assists = Controller.dataCollectorService.getSeasonHotPlayers_AverAssist();
 		all_rebounds = Controller.dataCollectorService.getSeasonHotPlayers_AverRebound();
+		System.out.println(all_rebounds.get(0).getPlayerName());
+		System.out.println(all_rebounds.get(0).getAver_playerTotalRebounds());
+		System.out.println(all_rebounds.get(1).getPlayerName());
+		System.out.println(all_rebounds.get(1).getAver_playerTotalRebounds());
 		all_blocks = Controller.dataCollectorService.getSeasonHotPlayers_AverBlock();
 		all_steals = Controller.dataCollectorService.getSeasonHotPlayers_AverSteal();
 		all_FP = Controller.dataCollectorService.getSeasonHotPlayers_FGP();
