@@ -234,7 +234,7 @@ public class Matchdata implements MatchDataService{
 			    		rightteam.addwinMoreFGP();
 			    	}
 			}
-*/			
+
 		    if(leftteam.getTeamTotalRebounds()>rightteam.getTeamTotalRebounds() && lscore>rscore){
 		    	  leftteam.addwinMoreRebounds();
 		    }
@@ -265,6 +265,7 @@ public class Matchdata implements MatchDataService{
 		    if(lscore<rscore){
 		    	match.setWinteamname(rightteam.getTeamName());
 		    }
+		    */
 		    if(lhalfscore>rhalfscore && lscore<rscore){
 		    	leftteam.addloseBanchanglingxian();
 		    }
@@ -346,6 +347,7 @@ public class Matchdata implements MatchDataService{
 		if(type.equals("left")){
 			team.setShortName(leftTeamShortName);
 			team.addAttendmatches(matchnum);
+			/*
 			if(lscore>rscore&&lscore>100){
 				team.addwinMyTeamMoreThan100();
 			}
@@ -370,6 +372,7 @@ public class Matchdata implements MatchDataService{
 			if(Math.abs(lscore-rscore)>10&&lscore>rscore){
 				team.addwinMoreThan10Points();
 			}
+			*/
 			for(PlayerPO p:leftplayerlist){
 				 teamFG = teamFG+p.getPlayerFG();
 				 teamFGTry = teamFGTry+p.getPlayerFGTry();
@@ -392,6 +395,7 @@ public class Matchdata implements MatchDataService{
 		else if(type.equals("right")){
 			team.setShortName(rightTeamShortName);
 			team.addAttendmatches(matchnum);
+			/*
 			if(rscore>lscore&&rscore>100){
 				team.addwinMyTeamMoreThan100();
 			}
@@ -416,6 +420,7 @@ public class Matchdata implements MatchDataService{
 			if(Math.abs(lscore-rscore)>10&&lscore<rscore){
 				team.addwinMoreThan10Points();
 			}
+			*/
 			for(PlayerPO p:rightplayerlist){
 				 teamFG = teamFG+p.getPlayerFG();
 				 teamFGTry = teamFGTry+p.getPlayerFGTry();

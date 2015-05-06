@@ -245,4 +245,15 @@ public class TeamController implements teamControllerService{
 		Collections.sort(result);
 		return result;
 	}
+
+	@Override
+	public ArrayList<TeamVO> getteamrank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result =this.allTeamVO;
+		for(TeamVO g:result){
+			g.setComparetype("胜率");
+		}
+		Collections.sort(result);
+		return result;
+	}
 }

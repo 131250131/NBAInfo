@@ -17,4 +17,5 @@ public interface teamControllerService {
 		public ArrayList<TeamVO> getSeasonHotTeams_FTGP();
 		public ArrayList<TeamVO> gethomeraterank();
 		public ArrayList<TeamVO> getguestraterank();
+		public ArrayList<TeamVO> getteamrank();
 }

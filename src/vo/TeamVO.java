@@ -988,6 +988,17 @@ public class TeamVO implements Comparable<TeamVO> {
             		return 0;
             	return -1;
             }
+            if(comparetype.equals("胜率")){
+            	winRate = (double)winGames/(double)compGames;
+            	double p =(double)o.getWinGames()/(double)o.getCompGames();
+            	if(winRate-p<0){
+            		return 1;
+            	}
+            	if(winRate-p==0){
+            		return 0;
+            	}
+            	return -1;
+            }
             if(comparetype.equals("主场胜率")){
             	
             	home_winrate=(double)this.getHome().getWin()/((double)this.getHome().getWin()+(double)this.getHome().getLose());
@@ -1001,6 +1012,7 @@ public class TeamVO implements Comparable<TeamVO> {
             	return -1;
             	
             }
+            
             if(comparetype.equals("客场胜率")){
             	
             	guset_winrate=(double)this.getGuest().getWin()/((double)this.getGuest().getWin()+(double)this.getGuest().getLose());
@@ -1031,7 +1043,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			attendmatches.add(matchnum);
 		}
 		public double getWinLose() {
-			return winLose;
+			return (double)winGames/(double)compGames;
 		}
 		public void setWinLose(double winLose) {
 			this.winLose = winLose;

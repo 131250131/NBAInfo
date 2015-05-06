@@ -1351,7 +1351,25 @@ public class Team {
 				longestWin = (longestWin<lianxu)? lianxu:longestWin;
 				nowWin=true;
 				if(myTeam.getTeamScores()>100){
-					
+					myTeam.myTeamMoreThan100.addWin();
+				}
+				if(oppoTeam.getTeamScores()>100){
+					myTeam.oppoTeamMoreThan100.addWin();
+				}
+				if(myTeam.getTeamScores()-oppoTeam.getTeamScores()<3){
+					myTeam.lessThan3Points.addWin();
+				}
+				if(myTeam.getTeamScores()-oppoTeam.getTeamScores()>10){
+					myTeam.moreThan10Points.addWin();
+				}
+				if((double)myTeam.getTeamFG()/(double)myTeam.getTeamFGTry()>(double)oppoTeam.getTeamFG()/(double)oppoTeam.getTeamFGTry()){
+					myTeam.MoreFGP.addWin();
+				}
+				if(myTeam.getTeamTotalRebounds()>oppoTeam.getTeamTotalRebounds()){
+					myTeam.MoreRebounds.addWin();
+				}
+				if(myTeam.getTeamTurnovers()<oppoTeam.getTeamTurnovers()){
+					myTeam.LessTurnovers.addWin();
 				}
 			}else{
 				this.losGames++;
@@ -1363,9 +1381,40 @@ public class Team {
 				}
 				longestLose = (longestLose<lianxu)? lianxu:longestLose;
 				nowWin=false;
+				if(myTeam.getTeamScores()>100){
+					myTeam.myTeamMoreThan100.addLose();
+				}
+				if(oppoTeam.getTeamScores()>100){
+					myTeam.oppoTeamMoreThan100.addLose();
+				}
+				if(oppoTeam.getTeamScores()-myTeam.getTeamScores()<3){
+					myTeam.lessThan3Points.addLose();
+				}
+				if(oppoTeam.getTeamScores()-myTeam.getTeamScores()>10){
+					myTeam.moreThan10Points.addLose();
+				}
+				if((double)myTeam.getTeamFG()/(double)myTeam.getTeamFGTry()>(double)oppoTeam.getTeamFG()/(double)oppoTeam.getTeamFGTry()){
+					myTeam.MoreFGP.addLose();
+				}
+				if(myTeam.getTeamTotalRebounds()>oppoTeam.getTeamTotalRebounds()){
+					myTeam.MoreRebounds.addLose();
+				}
+				if(myTeam.getTeamTurnovers()<oppoTeam.getTeamTurnovers()){
+					myTeam.LessTurnovers.addLose();
+				}
 			}
-			
-			
+			if(myTeam.getBanchanglingxian().getWin()>0){
+				myTeam.banchanglingxian.addWin();
+			}
+			if(myTeam.getBanchangluohou().getWin()>0){
+				myTeam.banchangluohou.addWin();
+			}
+			if(myTeam.getBanchanglingxian().getLose()>0){
+				myTeam.banchanglingxian.addLose();
+			}
+			if(myTeam.getBanchangluohou().getLose()>0){
+				myTeam.banchangluohou.addLose();
+			}
 //			private boolean homeWin;
 //			private boolean lastGame_Home;
 //			private int lianxu_Home;
