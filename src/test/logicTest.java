@@ -2,6 +2,8 @@ package test;
 
 import java.util.ArrayList;
 
+import data.matchdata.Matchdata;
+import Utibility.JudgeUpdate;
 import ui.system.Controller;
 import vo.MatchVO;
 import vo.PlayerVO;
@@ -29,20 +31,20 @@ public class logicTest {
 		matchController = mainController.getMatchController();
 		
 		DataCollectorService dc= new DataCollector();
-
-        ArrayList<TeamVO> t =teamController.getteamrank();
-        for(TeamVO tt:t){
-        	System.out.println(tt.getTeamName()+tt.getWinRate());
+        ArrayList<PlayerVO> pv = dc.getSeasonHotPlayers_AverScore();
+        for(PlayerVO p:pv){
+        	System.out.println(p.getAver_playerScores());
         }
+      // JudgeUpdate j =new JudgeUpdate("data/data/matches");
+       //j.run();
+        Matchdata m =new Matchdata();
+        System.out.println(m.Matchupdate());
+        System.out.println("aaaa");
 	}
 
-		/*
-	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
-	    for(PlayerVO pp:pd){
-	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
-	    }
-		System.out.println(pd.size());
->>>>>>> branch 'master' of ssh://git@github.com/131250131/NBAInfo.git
+		
+	   
+
 
 		
 
