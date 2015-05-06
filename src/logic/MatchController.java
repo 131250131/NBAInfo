@@ -197,6 +197,7 @@ public class MatchController implements matchControllerService{
                 		    	for(Player rp:r){
                     				if(rp.getPlayerName().equals(name)){
                     					now_total=now_total+rp.getaddate(type);
+                    					//System.out.println("true"+rp.getaddate(type));
                     				    break;
                     			}
                 		    }
@@ -224,9 +225,9 @@ public class MatchController implements matchControllerService{
             		    }
             		}
         		}
-        		
+        			
         			form_aveg=form_total/(double)(resultmatch.size()-5);
-        			System.out.println("FALSE"+form_aveg);
+        			//System.out.println("FALSE"+form_aveg);
         			if(form_aveg==0){
         				return 0;
         			}

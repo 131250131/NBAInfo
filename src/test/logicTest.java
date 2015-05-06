@@ -36,9 +36,9 @@ public class logicTest {
         }
         
 		
-	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("得分");
+	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
 	    for(PlayerVO pp:pd){
-	    	System.out.println(pp.getAdvancedP());
+	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
 	    }
 		System.out.println(pd.size());
 		

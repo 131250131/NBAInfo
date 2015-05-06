@@ -1105,7 +1105,7 @@ public class Player implements Comparable<Player>{
 
 		} 
 
-        public int getaddate(String type) {
+        public double getaddate(String type) {
 			if(type.equals("得分")){
 				return playerScores;
 			}
@@ -1114,6 +1114,30 @@ public class Player implements Comparable<Player>{
     		}
     		if(type.equals("助攻")){
     			return playerAssists;
+    		}
+    		if(type.equals("抢断")){
+    			return playerSteals;
+    		}
+    		if(type.equals("盖帽")){
+    			return playerBlocks;
+    		}
+    		if(type.equals("FGP")){
+    			if(playerFGTry==0){
+    				return 0;
+    			}
+    			return (double)playerFG/(double)playerFGTry;
+    		}
+    		if(type.equals("FTGP")){
+    			if(playerFTGTry==0){
+    				return 0;
+    			}
+    			return (double)playerFTG/(double)playerFTGTry;
+    		}
+    		if(type.equals("3FGP")){
+    			if(player3FGTry==0){
+    				return 0;
+    			}
+    			return (double)player3FG/(double)player3FGTry;
     		}
     		return 0;
 		}
