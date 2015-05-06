@@ -5,8 +5,9 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -42,14 +43,10 @@ public class MatchPanel extends JPanel implements ActionListener{
 		int labelX = (int) (200 * UIData.changeX);
 		int labelWidth = (int) (1410 * UIData.changeX);
 		
-		int bx1 = (int) (390 * UIData.changeX), by1 = (int) (150 * UIData.changeY)
-				, bwidth1 = (int) (200 * UIData.changeX), bheight1 = (int) (20 * UIData.changeY), by2 = (int) (500 * UIData.changeY);
+		int bx1 = (int) ((390 - 235) * UIData.changeX), by1 = (int) ((150 + 170) * UIData.changeY)
+				, bwidth1 = (int) (200 * UIData.changeX), bheight1 = (int) (20 * UIData.changeY), by2 = (int) ((500 - 135 + 288) * UIData.changeY);
 		
 		checkLeft = new JButton();
-		checkLeft.setBounds(bx1, by1, bwidth1, bheight1);
-		checkLeft.setVisible(true);
-		checkLeft.setContentAreaFilled(false);
-		checkLeft.setBorder(BorderFactory.createEmptyBorder());
 		checkLeft.addActionListener(this);
 		this.add(checkLeft);
 		
@@ -57,13 +54,22 @@ public class MatchPanel extends JPanel implements ActionListener{
 		lbLeft.setBounds(bx1, by1, bwidth1, bheight1);
 		lbLeft.setVisible(true);
 		lbLeft.setForeground(Color.GRAY);
+		lbLeft.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent arg0) {
+				checkLeft.doClick();
+			}
+			
+			public void mouseEntered(MouseEvent arg0) {
+				lbLeft.setForeground(Color.RED);
+			}
+
+			public void mouseExited(MouseEvent arg0) {
+				lbLeft.setForeground(Color.GRAY);
+			}	
+		});
 		this.add(lbLeft);
 		
 		checkRight = new JButton();
-		checkRight.setBounds(bx1, by1, bwidth1, bheight1);
-		checkRight.setVisible(true);
-		checkRight.setContentAreaFilled(false);
-		checkRight.setBorder(BorderFactory.createEmptyBorder());
 		checkRight.addActionListener(this);
 		this.add(checkRight);
 		
@@ -71,6 +77,19 @@ public class MatchPanel extends JPanel implements ActionListener{
 		lbRight.setBounds(bx1, by2, bwidth1, bheight1);
 		lbRight.setVisible(true);
 		lbRight.setForeground(Color.GRAY);
+		lbRight.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent arg0) {
+				checkRight.doClick();
+			}
+			
+			public void mouseEntered(MouseEvent arg0) {
+				lbRight.setForeground(Color.RED);
+			}
+
+			public void mouseExited(MouseEvent arg0) {
+				lbRight.setForeground(Color.GRAY);
+			}	
+		});
 		this.add(lbRight);
 		
 		MatchVSLabel vsLabel = new MatchVSLabel(labelX, (int) ((1020 - 165) * UIData.changeY), labelWidth, (int) (2500 * UIData.changeY), match);

@@ -15,7 +15,7 @@ import vo.TeamVO;
 public class TeamPanel extends JPanel{
 	
 	int width = (int) (1720 * UIData.changeX);
-	int height = (int) (3000 * UIData.changeY);
+	int height = (int) (5000 * UIData.changeY);
 	
 	public TeamPanel(TeamVO team){
 		this.setLayout(null);
@@ -36,6 +36,13 @@ public class TeamPanel extends JPanel{
 		int playerLabelHeight = (int) (300 * UIData.changeY);
 		TeamInfoLabel teamInfoLabel = new TeamInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, team);
 		this.add(teamInfoLabel);
+		
+		TeamDataLabel dataLabel = new TeamDataLabel(labelX, playerLabelY + playerLabelHeight * 4, labelWidth, playerLabelHeight * 10, team);
+		this.add(dataLabel);
+		
+		TeamList teamList = new TeamList(team);
+		teamList.setBounds(labelX, playerLabelY + playerLabelHeight, labelWidth, playerLabelHeight * 3);
+		this.add(teamList);
 		
 		JPanel backPanel = new JPanel();
 		backPanel.setBounds(labelX, 0, labelWidth, height);
