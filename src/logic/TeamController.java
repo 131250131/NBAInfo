@@ -256,4 +256,125 @@ public class TeamController implements teamControllerService{
 		Collections.sort(result);
 		return result;
 	}
-}
+
+	@Override
+	public ArrayList<TeamVO> getdongnanrank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result=new ArrayList<TeamVO>();
+		for(TeamVO teamvo:this.allTeamVO){
+			String dis=getTeamDistribution(teamvo.getShortName());
+			if(dis.equals("东南区")){
+				teamvo.setComparetype("胜率");
+				result.add(teamvo);
+			}
+		}
+		Collections.sort(result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<TeamVO> getdaxiyangrank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result=new ArrayList<TeamVO>();
+		for(TeamVO teamvo:this.allTeamVO){
+			String dis=getTeamDistribution(teamvo.getShortName());
+			if(dis.equals("大西洋区")){
+				teamvo.setComparetype("胜率");
+				result.add(teamvo);
+			}
+		}
+		Collections.sort(result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<TeamVO> getzhongburank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result=new ArrayList<TeamVO>();
+		for(TeamVO teamvo:this.allTeamVO){
+			String dis=getTeamDistribution(teamvo.getShortName());
+			if(dis.equals("中央区")){
+				teamvo.setComparetype("胜率");
+				result.add(teamvo);
+			}
+		}
+		Collections.sort(result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<TeamVO> getxinanrank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result=new ArrayList<TeamVO>();
+		for(TeamVO teamvo:this.allTeamVO){
+			String dis=getTeamDistribution(teamvo.getShortName());
+			if(dis.equals("西南区")){
+				teamvo.setComparetype("胜率");
+				result.add(teamvo);
+			}
+		}
+		Collections.sort(result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<TeamVO> getxibeirank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result=new ArrayList<TeamVO>();
+		for(TeamVO teamvo:this.allTeamVO){
+			String dis=getTeamDistribution(teamvo.getShortName());
+			if(dis.equals("西北区")){
+				teamvo.setComparetype("胜率");
+				result.add(teamvo);
+			}
+		}
+		Collections.sort(result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<TeamVO> gettaipingyangrank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result=new ArrayList<TeamVO>();
+		for(TeamVO teamvo:this.allTeamVO){
+			String dis=getTeamDistribution(teamvo.getShortName());
+			if(dis.equals("太平洋区")){
+				teamvo.setComparetype("胜率");
+				result.add(teamvo);
+			}
+		}
+		Collections.sort(result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<TeamVO> geteastrank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result=new ArrayList<TeamVO>();
+		for(TeamVO teamvo:this.allTeamVO){
+			String dis=getTeamDistribution(teamvo.getShortName());
+			if(dis.equals("东南区")||dis.equals("中央区")||dis.equals("大西洋")){
+				teamvo.setComparetype("胜率");
+				result.add(teamvo);
+			}
+		}
+		Collections.sort(result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<TeamVO> getwestrank() {
+		// TODO Auto-generated method stub
+				ArrayList<TeamVO> result=new ArrayList<TeamVO>();
+				for(TeamVO teamvo:this.allTeamVO){
+					String dis=getTeamDistribution(teamvo.getShortName());
+					if(dis.equals("西南区")||dis.equals("西北区")||dis.equals("太平洋")){
+						teamvo.setComparetype("胜率");
+						result.add(teamvo);
+					}
+				}
+				Collections.sort(result);
+				return result;
+			}
+	}
+

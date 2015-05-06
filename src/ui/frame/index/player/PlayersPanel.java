@@ -29,7 +29,6 @@ public class PlayersPanel extends JPanel {
 	//调用逻辑层接口
 	
 	public PlayersPanel(){
-		Controller.init();
 		this.setBounds((int) (390 * UIData.changeX), (int) (220 * UIData.changeY), (int) (1480 * UIData.changeX), (int) (1000 * UIData.changeY));
 		this.setOpaque(false);
 		this.setLayout(null);

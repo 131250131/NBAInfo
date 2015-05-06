@@ -18,4 +18,12 @@ public interface teamControllerService {
 		public ArrayList<TeamVO> gethomeraterank();
 		public ArrayList<TeamVO> getguestraterank();
 		public ArrayList<TeamVO> getteamrank();
+		public ArrayList<TeamVO> getdongnanrank();
+		public ArrayList<TeamVO> getdaxiyangrank();
+		public ArrayList<TeamVO> getzhongburank();
+		public ArrayList<TeamVO> getxinanrank();
+		public ArrayList<TeamVO> getxibeirank();
+		public ArrayList<TeamVO> gettaipingyangrank();
+		public ArrayList<TeamVO> geteastrank();
+		public ArrayList<TeamVO> getwestrank();
 }

@@ -342,130 +342,139 @@ public class DataCollector implements DataCollectorService{
 
 	
 	public ArrayList<PlayerVO> getSomeDayPlayers_Score(String date) {
+		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
-		for(PlayerVO pvo : someDayPlayer){
+		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("得分");
 		}
 		Collections.sort(someDayPlayer);
 		
-		for(int i=10;i<someDayPlayer.size();i++){
-			someDayPlayer.remove(i);
+		for(int i=0;i<10;i++){
+			result.add(someDayPlayer.get(i));
 		}
-		return someDayPlayer;
+		return result;
 	}
 
 
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Rebound(String date) {
+		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
-		for(PlayerVO pvo : someDayPlayer){
+		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("篮板");
 		}
 		Collections.sort(someDayPlayer);
 		
-		for(int i=10;i<someDayPlayer.size();i++){
-			someDayPlayer.remove(i);
+		for(int i=0;i<10;i++){
+			result.add(someDayPlayer.get(i));
 		}
-		return someDayPlayer;
+		return result;
 	}
 
 
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Assist(String date) {
+		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
-		for(PlayerVO pvo : someDayPlayer){
+		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("助攻");
 		}
 		Collections.sort(someDayPlayer);
 		
-		for(int i=10;i<someDayPlayer.size();i++){
-			someDayPlayer.remove(i);
+		for(int i=0;i<10;i++){
+			result.add(someDayPlayer.get(i));
 		}
-		return someDayPlayer;
+		return result;
 	}
 
 
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Block(String date) {
+		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
-		for(PlayerVO pvo : someDayPlayer){
+		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("盖帽");
 		}
 		Collections.sort(someDayPlayer);
 		
-		for(int i=10;i<someDayPlayer.size();i++){
-			someDayPlayer.remove(i);
+		for(int i=0;i<10;i++){
+			result.add(someDayPlayer.get(i));
 		}
-		return someDayPlayer;
+		return result;
 	}
 
 
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Steal(String date) {
+		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
-		for(PlayerVO pvo : someDayPlayer){
+		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("抢断");
 		}
 		Collections.sort(someDayPlayer);
 		
-		for(int i=10;i<someDayPlayer.size();i++){
-			someDayPlayer.remove(i);
+		for(int i=0;i<10;i++){
+			result.add(someDayPlayer.get(i));
 		}
-		return someDayPlayer;
+		return result;
 	}
 
 
 	@Override
 	public ArrayList<PlayerVO> getSomeDayPlayers_GmScER(String date) {
+		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
-		for(PlayerVO pvo : someDayPlayer){
+		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("效率");
 		}
 		Collections.sort(someDayPlayer);
 		
-		for(int i=10;i<someDayPlayer.size();i++){
-			someDayPlayer.remove(i);
+		for(int i=0;i<10;i++){
+			result.add(someDayPlayer.get(i));
 		}
-		return someDayPlayer;
+		return result;
 	}
 	
 	public ArrayList<PlayerVO> getSomeDayPlayers_FGP(String date) {
+		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
-		for(PlayerVO pvo : someDayPlayer){
+		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("投篮命中率");
 		}
 		Collections.sort(someDayPlayer);
 		
-		for(int i=10;i<someDayPlayer.size();i++){
-			someDayPlayer.remove(i);
+		for(int i=0;i<10;i++){
+			result.add(someDayPlayer.get(i));
 		}
-		return someDayPlayer;
+		return result;
 	}
 	
 	public ArrayList<PlayerVO> getSomeDayPlayers_3FGP(String date) {
+		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
-		for(PlayerVO pvo : someDayPlayer){
+		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("三分命中率");
 		}
 		Collections.sort(someDayPlayer);
 		
-		for(int i=10;i<someDayPlayer.size();i++){
-			someDayPlayer.remove(i);
+		for(int i=0;i<10;i++){
+			result.add(someDayPlayer.get(i));
 		}
-		return someDayPlayer;
+		return result;
 	}
 	
 	public ArrayList<PlayerVO> getSomeDayPlayers_FTGP(String date) {
+		ArrayList<PlayerVO> result = new ArrayList<>();
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
-		for(PlayerVO pvo : someDayPlayer){
+		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("罚篮命中率");
 		}
 		Collections.sort(someDayPlayer);
 		
-		for(int i=10;i<someDayPlayer.size();i++){
-			someDayPlayer.remove(i);
+		for(int i=0;i<10;i++){
+			result.add(someDayPlayer.get(i));
 		}
-		return someDayPlayer;
+		return result;
 	}
 
 

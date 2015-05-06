@@ -1,5 +1,7 @@
 package logic;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -10,7 +12,27 @@ public class AssociationData implements associationDataService{
 	//联盟数据;
 	//所有有比赛的日期;
 	ArrayList<Date> dateList = new ArrayList<Date>();
-		
+
+	Dimension screensize=Toolkit.getDefaultToolkit().getScreenSize(); 
+	private int screenwidth = (int)screensize.getWidth();
+	private int screenheight = (int)screensize.getHeight();
+
+	public int getscreenWidth() {
+		return screenwidth;
+	}
+
+	public void setscreenWidth(int width) {
+		this.screenwidth = width;
+	}
+
+	public int getscreenHeight() {
+		return screenheight;
+	}
+
+	public void setscreenHeight(int height) {
+		this.screenheight = height;
+	}
+
 	//联盟球员平均数据;
 	private double aver_playerAssists ;//队员平均助攻数
 	private double aver_playerPlayTime  ;//	队员平均在场时间

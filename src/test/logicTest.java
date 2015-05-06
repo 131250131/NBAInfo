@@ -29,12 +29,13 @@ public class logicTest {
 		matchController = mainController.getMatchController();
 		
 		DataCollectorService dc= new DataCollector();
+
         ArrayList<TeamVO> t =teamController.getteamrank();
         for(TeamVO tt:t){
         	System.out.println(tt.getTeamName()+tt.getWinRate());
         }
 	}
-}
+
 		/*
 	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
 	    for(PlayerVO pp:pd){
@@ -148,7 +149,5 @@ public class logicTest {
 //		}
 		
 
-		
-	
-
+}
 

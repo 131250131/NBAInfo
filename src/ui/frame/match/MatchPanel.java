@@ -3,20 +3,30 @@ package ui.frame.match;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.system.Controller;
 import ui.system.UIData;
 import vo.MatchVO;
 
 @SuppressWarnings("serial")
-public class MatchPanel extends JPanel{
+public class MatchPanel extends JPanel implements ActionListener{
 	
 	int width = (int) (1720 * UIData.changeX);
 	int height = (int) (4000 * UIData.changeY);
 	
+	JButton checkLeft, checkRight;
+	JLabel lbLeft, lbRight;
+	MatchVO _match;
 	public MatchPanel(MatchVO match){
+		_match = match;
+		
 		this.setLayout(null);
 		this.setPreferredSize(new Dimension(width, height));
 		this.setOpaque(false);
@@ -31,6 +41,37 @@ public class MatchPanel extends JPanel{
 		
 		int labelX = (int) (200 * UIData.changeX);
 		int labelWidth = (int) (1410 * UIData.changeX);
+		
+		int bx1 = (int) (390 * UIData.changeX), by1 = (int) (150 * UIData.changeY)
+				, bwidth1 = (int) (200 * UIData.changeX), bheight1 = (int) (20 * UIData.changeY), by2 = (int) (500 * UIData.changeY);
+		
+		checkLeft = new JButton();
+		checkLeft.setBounds(bx1, by1, bwidth1, bheight1);
+		checkLeft.setVisible(true);
+		checkLeft.setContentAreaFilled(false);
+		checkLeft.setBorder(BorderFactory.createEmptyBorder());
+		checkLeft.addActionListener(this);
+		this.add(checkLeft);
+		
+		lbLeft = new JLabel("查看队伍信息", JLabel.CENTER);
+		lbLeft.setBounds(bx1, by1, bwidth1, bheight1);
+		lbLeft.setVisible(true);
+		lbLeft.setForeground(Color.GRAY);
+		this.add(lbLeft);
+		
+		checkRight = new JButton();
+		checkRight.setBounds(bx1, by1, bwidth1, bheight1);
+		checkRight.setVisible(true);
+		checkRight.setContentAreaFilled(false);
+		checkRight.setBorder(BorderFactory.createEmptyBorder());
+		checkRight.addActionListener(this);
+		this.add(checkRight);
+		
+		lbRight = new JLabel("查看队伍信息", JLabel.CENTER);
+		lbRight.setBounds(bx1, by2, bwidth1, bheight1);
+		lbRight.setVisible(true);
+		lbRight.setForeground(Color.GRAY);
+		this.add(lbRight);
 		
 		MatchVSLabel vsLabel = new MatchVSLabel(labelX, (int) ((1020 - 165) * UIData.changeY), labelWidth, (int) (2500 * UIData.changeY), match);
 		this.add(vsLabel);
@@ -69,6 +110,19 @@ public class MatchPanel extends JPanel{
 		backPanel.setBackground(new Color(0, 0, 0, 0.8f));
 		backPanel.setVisible(true);
 		this.add(backPanel);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent events) {
+	
+		if(events.getSource() == checkLeft){
+			Controller.addTeamPanel(_match.getLeftTeam().getShortName());
+		}
+		
+		if(events.getSource() == checkRight){
+			Controller.addTeamPanel(_match.getRightTeam().getShortName());
+		}
+		
 	}
 
 }
