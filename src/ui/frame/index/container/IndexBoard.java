@@ -256,7 +256,7 @@ public class IndexBoard extends JPanel implements ActionListener{
 		
 		if(events.getSource() == textButton[8]){
 			LargerPanel.addSystemPanel.doClick();
-			LargerScrollPane.turnto2.doClick();
+			LargerScrollPane.turnto.doClick();
 		}
 	}
 }

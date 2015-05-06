@@ -17,7 +17,7 @@ public class MainFrame extends MyFrame implements ActionListener{
 	public MainFrame(){		
 		largerScrollPane = new LargerScrollPane();
 		this.add(largerScrollPane);
-		LargerScrollPane.turnto3.doClick();
+		LargerScrollPane.turnto.doClick();
 		
 		mini = new JButton();
 		mini.addActionListener(this);

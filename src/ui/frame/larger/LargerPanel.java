@@ -42,14 +42,11 @@ public class LargerPanel extends JPanel implements ActionListener{
 		indexScrollPane = new IndexScrollPane();
 		this.add(indexScrollPane);	
 		
-		ImageLabel addback1 = new ImageLabel(ImageSaver.getIcon("新增页面背景"), UIData.slideSize * 2, 0, UIData.frameWidth, UIData.frameHeight);
-		this.add(addback1);
-		
-		ImageLabel addback2 = new ImageLabel(ImageSaver.getIcon("新增页面背景"), UIData.slideSize, 0, UIData.frameWidth, UIData.frameHeight);
-		this.add(addback2);
-		
-		ImageLabel addback3 = new ImageLabel(ImageSaver.getIcon("新增页面背景"), 0, 0, UIData.frameWidth, UIData.frameHeight);
-		this.add(addback3);	
+		ImageLabel[] addback1 = new ImageLabel[100];
+		for(int i = 0; i < 100; i++){
+			addback1[i] = new ImageLabel(ImageSaver.getIcon("新增页面背景"), UIData.slideSize * i, 0, UIData.frameWidth, UIData.frameHeight);
+			this.add(addback1[i]);
+		}
 		
 		ImageLabel lb_Background3 = new ImageLabel(ImageSaver.getIcon("首页图片2"), UIData.indexScrollPaneX, 0, UIData.frameWidth, UIData.frameHeight);
 		this.add(lb_Background3);

@@ -2,11 +2,9 @@ package ui.main;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.util.ArrayList;
 
 import ui.system.Controller;
 import ui.system.UIData;
-import vo.PlayerVO;
 
 public class Main_UI_Test {
 	
@@ -23,10 +21,7 @@ public class Main_UI_Test {
 		UIData.setFavoriteTeam("CLE");
 		
 		Controller.init();
-		Controller.start();
-		//Controller.associationController.setscreenWidth(1000);
-		//Controller.associationController.setscreenWidth(800);
-		
+		Controller.start();		
 	}
 	
 	public static int getFrameSizeX(){
