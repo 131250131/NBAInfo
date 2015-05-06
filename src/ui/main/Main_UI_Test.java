@@ -24,6 +24,9 @@ public class Main_UI_Test {
 		
 		Controller.init();
 		Controller.start();
+		//Controller.associationController.setscreenWidth(1000);
+		//Controller.associationController.setscreenWidth(800);
+		
 	}
 	
 	public static int getFrameSizeX(){

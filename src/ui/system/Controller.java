@@ -118,4 +118,23 @@ public class Controller {
 		}	
 	}
 
+	public static void playerToTeam(String teamShortName){
+		
+		currentTeamName = teamShortName;
+		
+		if(UIData.currentStep == 1){
+			LargerScrollPane.turnto0.doClick();
+			LargerPanel.addTeamPanel.doClick();
+			switch(UIData.currentStep){
+			case 1:
+				LargerScrollPane.turnto2.doClick();break;
+			case 2:
+				LargerScrollPane.turnto1.doClick();break;
+			case 3:
+				LargerScrollPane.turnto0.doClick();break;
+			}	
+		}else{
+			
+		}
+	}
 }

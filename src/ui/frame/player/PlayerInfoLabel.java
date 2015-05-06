@@ -2,21 +2,32 @@ package ui.frame.player;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.frame.larger.LargerScrollPane;
 import ui.myUI.ImageLabel;
 import ui.system.ChineseTranslator;
+import ui.system.Controller;
 import ui.system.DataTransform;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 import vo.PlayerVO;
 
 @SuppressWarnings("serial")
-public class PlayerInfoLabel extends JPanel{
-		
+public class PlayerInfoLabel extends JPanel implements ActionListener{
+
+	JButton teamBt1, teamBt2;
+	PlayerVO _player;
+	
 	public PlayerInfoLabel(int x, int y, int width, int height, PlayerVO player){
+		
+		_player = player;
 		this.setVisible(true);
 		this.setBounds(x, y, width, height);
 		this.setLayout(null);
@@ -31,6 +42,15 @@ public class PlayerInfoLabel extends JPanel{
 		nameLabel.setVisible(true);
 		nameLabel.setFont(new Font("新細明體", Font.PLAIN, (int) (30 * UIData.changeY)));
 		this.add(nameLabel);
+	
+		teamBt2 = new JButton();
+		teamBt2.setBounds((int) (400 * UIData.changeX), (int) (30 * UIData.changeY), (int) (220 * UIData.changeX), (int) (20 * UIData.changeY));
+		teamBt2.setVisible(true);
+		teamBt2.setOpaque(false);
+		teamBt2.setContentAreaFilled(false);
+		teamBt2.setBorder(BorderFactory.createEmptyBorder());
+		teamBt2.addActionListener(this);
+		this.add(teamBt2);
 		
 		TextLabel text1 = new TextLabel("所属球队: " + ChineseTranslator.TeamNameTrans(player.getTeamShortName()));
 		text1.setLocation((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
@@ -83,6 +103,15 @@ public class PlayerInfoLabel extends JPanel{
 		ImageLabel image = new ImageLabel(ImageSaver.getPlayerIcon(player.getPlayerName())
 				, (int) (30 * UIData.changeX), (int) (30 * UIData.changeY), (int) (240 * UIData.changeX), (int) (200 * UIData.changeY));
 		this.add(image);
+
+		teamBt1 = new JButton();
+		teamBt1.setBounds((int) (155 * UIData.changeX), (int) (20 * UIData.changeY), (int) (220 * UIData.changeX), (int) (220 * UIData.changeY));
+		teamBt1.setVisible(true);
+		teamBt1.setOpaque(false);
+		teamBt1.setContentAreaFilled(false);
+		teamBt1.setBorder(BorderFactory.createEmptyBorder());
+		teamBt1.addActionListener(this);
+		this.add(teamBt1);
 		
 		ImageLabel teamImage = new ImageLabel(ImageSaver.getTeamIcon(player.getTeamShortName())
 				, (int) (155 * UIData.changeX), (int) (20 * UIData.changeY), (int) (220 * UIData.changeX), (int) (220 * UIData.changeY));
@@ -122,6 +151,15 @@ public class PlayerInfoLabel extends JPanel{
 			this.setSize((int) (500 * UIData.changeX), (int) (30 * UIData.changeY));
 			this.setFont(new Font("Arail", Font.PLAIN, (int) (20 * UIData.changeY)));
 		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent events) {
+		
+		if(events.getSource() == teamBt1){
+			Controller.playerToTeam(_player.getTeamShortName());
+		}
+		
 	}
 
 }

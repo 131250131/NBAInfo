@@ -100,7 +100,6 @@ public class LargerPanel extends JPanel implements ActionListener{
 			MatchScorllPane matchSP = new MatchScorllPane(Controller.currentMatch);
 			this.add(matchSP);
 		}
-	
 	}
 
 }
