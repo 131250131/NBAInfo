@@ -319,7 +319,8 @@ public class Matchdata implements MatchDataService{
 		   if(File.length!=number){
 			   Hasupdate=true;
 			  // System.out.println("ppp");
-		   
+		   matches=new ArrayList<MatchPO>();
+		   this.readMatch();
 		   //System.out.println("ttt");
 		   }
 		  return Hasupdate;
