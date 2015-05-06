@@ -87,7 +87,7 @@ public class MatchController implements matchControllerService{
 				this.allMatches.add(tempMatch);
 				
 				//System.out.println(tempMatch.getNum());
-
+				//System.out.println(tempMatch.getLeftTeam().getTeamFGTry());
 				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam(),false);
 				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam(),true);
 				
@@ -179,7 +179,7 @@ public class MatchController implements matchControllerService{
         		return 0;
         	}
         	else{
-        		//System.out.println("true");
+        		//System.out.println("true"+resultmatch.size());
         		     
         			for(int i=0;i<5;i++){   
         				    have=0;
@@ -188,6 +188,7 @@ public class MatchController implements matchControllerService{
                 			for(Player lp:l){
                 				if(lp.getPlayerName().equals(name)){
                 					now_total=now_total+lp.getaddate(type);
+                					
                 				    have=1;
                 				    break;
                 			}
@@ -196,12 +197,14 @@ public class MatchController implements matchControllerService{
                 		    	for(Player rp:r){
                     				if(rp.getPlayerName().equals(name)){
                     					now_total=now_total+rp.getaddate(type);
+                    					//System.out.println("true"+rp.getaddate(type));
                     				    break;
                     			}
                 		    }
                 		}
         			}
         			now_aveg=now_total/5;
+        			//System.out.println("true"+now_aveg);
         			for(int j=5;j<resultmatch.size();j++){   
     				    have=0;
             			ArrayList<Player> lplayer=resultmatch.get(j).getleftplayers();
@@ -222,8 +225,13 @@ public class MatchController implements matchControllerService{
             		    }
             		}
         		}
-        		
+        			
         			form_aveg=form_total/(double)(resultmatch.size()-5);
+        			//System.out.println("FALSE"+form_aveg);
+        			if(form_aveg==0){
+        				return 0;
+        			}
+        			//System.out.println("FALSE"+(now_aveg-form_aveg)/(form_aveg));
         			return (now_aveg-form_aveg)/(form_aveg);
         		}
         		

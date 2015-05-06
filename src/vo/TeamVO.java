@@ -38,7 +38,8 @@ public class TeamVO implements Comparable<TeamVO> {
 		private win_lose win_lose=new win_lose();
 		private win_lose home=new win_lose();//主场输赢的次数;
 		private win_lose guest=new win_lose();//客场输赢的次数;
-		
+		private double home_winrate=0;
+		private double guset_winrate=0;
 		private win_lose recent10=new win_lose();
 		private win_lose recent10_Home=new win_lose();
 		private win_lose recent10_Guest=new win_lose();
@@ -777,6 +778,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			 * */
 			
 			//球队基本信息
+			
 			this.teamName=team.getTeamName();
 			this.shortName=team.getShortName();
 			this.location=team.getLocation();
@@ -808,7 +810,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.team3FG=team.getTeam3FG();
 			this.team3FGTry=team.getTeam3FGTry();
 			this.teamFTG=team.getTeamFTG();
-			this.teamFTGTry=team.getTeamFGTry();
+			this.teamFTGTry=team.getTeamFTGTry();
 			this.teamOffenceRebounds=team.getTeamOffenceRebounds();
 			this.teamDeffenceRebounds=team.getTeamDeffenceRebounds();
 			this.teamTotalRebounds=team.getTeamTotalRebounds();
@@ -914,58 +916,105 @@ public class TeamVO implements Comparable<TeamVO> {
 		public int compareTo(TeamVO o) {
 			// TODO Auto-generated method stub
 			if(comparetype.equals("得分")){
-				if(this.getAver_teamScores()-o.getOppoScores()<0){
+				if(this.getAver_teamScores()-o.getAver_teamScores()<0){
 					return 1;
 				}
+				if(this.getAver_teamScores()-o.getAver_teamScores()==0)
+					return 0;
+				//System.out.println("tt");
 				    return -1;
 			}
             if(comparetype.equals("篮板")){
 				if(this.getAver_teamTotalRebounds()-o.getAver_teamTotalRebounds()<0){
 					return 1;
 				}
+				if(this.getAver_teamTotalRebounds()-o.getAver_teamTotalRebounds()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("助攻")){
 				if(this.getAver_teamAssists()-o.getAver_teamAssists()<0){
 					return 1;
 				}
+				if(this.getAver_teamAssists()-o.getAver_teamAssists()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("盖帽")){
 				if(this.getAver_teamBlocks()-o.getAver_teamBlocks()<0){
 					return 1;
 				}
+				if(this.getAver_teamBlocks()-o.getAver_teamBlocks()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("抢断")){
 				if(this.getAver_teamSteals()-o.getAver_teamSteals()<0){
 					return 1;
 				}
+				if(this.getAver_teamSteals()-o.getAver_teamSteals()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("3FGP")){
 				if(this.getTeam3FGP()-o.getTeam3FGP()<0){
 					return 1;
 				}
+				if(this.getTeam3FGP()-o.getTeam3FGP()==0)
+					return 0;
 				    return -1;
  			}
             if(comparetype.equals("FGP")){
 				if(this.getTeamFGP()-o.getTeamFGP()<0){
 					return 1;
 				}
+				if(this.getTeamFGP()-o.getTeamFGP()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("FTGP")){
 				if(this.getTeamFTGP()-o.getTeamFTGP()<0){
 					return 1;
 				}
+				if(this.getTeamFTGP()-o.getTeamFTGP()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("胜场差")){
             	if(this.getWinLose()-o.getWinRate()>0){
             		return 1;
             	}
+            	if(this.getWinLose()-o.getWinRate()==0)
+            		return 0;
             	return -1;
+            }
+            if(comparetype.equals("主场胜率")){
+            	try{
+            	home_winrate=(double)this.getHome().getWin()/((double)this.getHome().getWin()+(double)this.getHome().getLose());
+            	double thatwin=(double)o.getHome().getWin()/((double)o.getHome().getWin()+(double)o.getHome().getLose());
+            	if(home_winrate-thatwin<0){
+            		return 1;
+            	}
+            	if(home_winrate-thatwin==0){
+            		return 0;
+            	}
+            	}catch(Exception e){
+            		return 0;
+            	}
+            }
+            if(comparetype.equals("客场胜率")){
+            	try{
+            	guset_winrate=(double)this.getGuest().getWin()/((double)this.getGuest().getWin()+(double)this.getGuest().getLose());
+            	double thatwin=(double)o.getGuest().getWin()/((double)o.getGuest().getWin()+(double)o.getGuest().getLose());
+            	if(guset_winrate-thatwin<0){
+            		return 1;
+            	}
+            	if(guset_winrate-thatwin==0){
+            		return 0;
+            	}
+            	}catch(Exception e){
+            		return 0;
+            	}
             }
 			return 0;
 		}
@@ -1134,6 +1183,18 @@ public class TeamVO implements Comparable<TeamVO> {
 		}
 		public void setLianxu_Win(boolean lianxu_Win) {
 			this.lianxu_Win = lianxu_Win;
+		}
+		public double getHome_winrate() {
+			return home_winrate;//((double)this.getHome().getWin() )/((double)this.getHome().getWin()+(double)this.getHome().getLose());
+		}
+		public void setHome_winrate(double home_winrate) {
+			this.home_winrate = home_winrate;
+		}
+		public double getGuset_winrate() {
+			return guset_winrate;//(double)this.getGuest().getWin()/((double)this.getGuest().getWin()+(double)this.getGuest().getLose());
+		}
+		public void setGuset_winrate(double guset_winrate) {
+			this.guset_winrate = guset_winrate;
 		}
 
 }

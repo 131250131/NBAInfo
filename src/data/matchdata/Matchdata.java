@@ -215,7 +215,7 @@ public class Matchdata implements MatchDataService{
 			 */
 			TeamPO leftteam =teamdataoperator("left");
 			TeamPO rightteam =teamdataoperator("right");	
-
+/*
 			if(leftteam.getTeamFGTry()!=0){
 					if(leftteam.getTeamFG()/leftteam.getTeamFGTry()>rightteam.getTeamFG()/rightteam.getTeamFGTry()  
 						&& lscore>rscore	){
@@ -234,6 +234,7 @@ public class Matchdata implements MatchDataService{
 			    		rightteam.addwinMoreFGP();
 			    	}
 			}
+*/			
 		    if(leftteam.getTeamTotalRebounds()>rightteam.getTeamTotalRebounds() && lscore>rscore){
 		    	  leftteam.addwinMoreRebounds();
 		    }
@@ -259,18 +260,10 @@ public class Matchdata implements MatchDataService{
 		    	  rightteam.addwinLessTurnovers();
 		    }
 		    if(lscore>rscore){
-		    	leftteam.addwinGuest();
-		    	rightteam.addloseHome();
 		    	match.setWinteamname(leftteam.getTeamName());
-		    	leftteam.addwinWin_lose();
-		    	rightteam.addloseWin_lose();
 		    }
 		    if(lscore<rscore){
-		    	leftteam.addloseGuest();
-		    	rightteam.addwinHome();
 		    	match.setWinteamname(rightteam.getTeamName());
-		    	leftteam.addloseWin_lose();
-		    	rightteam.addwinWin_lose();
 		    }
 		    if(lhalfscore>rhalfscore && lscore<rscore){
 		    	leftteam.addloseBanchanglingxian();
@@ -297,6 +290,7 @@ public class Matchdata implements MatchDataService{
 		    	rightteam.addloseBanchangluohou();
 		    }
 			match.setLeftTeam(leftteam);
+			//System.out.println(leftteam.getTeamFTGTry());
 			match.setRightTeam(rightteam);
 			matches.add(match);
 		}  
@@ -378,11 +372,12 @@ public class Matchdata implements MatchDataService{
 			}
 			for(PlayerPO p:leftplayerlist){
 				 teamFG = teamFG+p.getPlayerFG();
-				 teamFGTry = teamFGTry+p.getPlayer3FG();
+				 teamFGTry = teamFGTry+p.getPlayerFGTry();
 				 team3FG = team3FG+p.getPlayer3FG();
 				 team3FGTry = team3FGTry+p.getPlayer3FGTry();
 				 teamFTG = teamFTG+p.getPlayerFTG();
 				 teamFTGTry = teamFTGTry+p.getPlayerFTGTry();
+				// System.out.println(teamFTGTry);
 				 teamOffenceRebounds = teamOffenceRebounds+p.getPlayerOffenceRebounds();
 				 teamDeffenceRebounds = teamDeffenceRebounds+p.getPlayerDeffenceRebounds();
 				 teamTotalRebounds = teamTotalRebounds+p.getPlayerTotalRebounds();
@@ -423,7 +418,8 @@ public class Matchdata implements MatchDataService{
 			}
 			for(PlayerPO p:rightplayerlist){
 				 teamFG = teamFG+p.getPlayerFG();
-				 teamFGTry = teamFGTry+p.getPlayer3FG();
+				 teamFGTry = teamFGTry+p.getPlayerFGTry();
+				// System.out.println(teamFGTry);
 				 team3FG = team3FG+p.getPlayer3FG();
 				 team3FGTry = team3FGTry+p.getPlayer3FGTry();
 				 teamFTG = teamFTG+p.getPlayerFTG();
@@ -440,10 +436,11 @@ public class Matchdata implements MatchDataService{
 			}
 		}
 		team.setTeamFG(teamFG);
-		team.setTeamFTGTry(teamFTGTry);
+		team.setTeamFGTry(teamFGTry);
 		team.setTeam3FG(team3FG);
 		team.setTeam3FGTry(team3FGTry);
 		team.setTeamFTG(teamFTG);
+		//System.out.println(teamFTGTry);
 		team.setTeamFTGTry(teamFTGTry);
 		team.setTeamOffenceRebounds(teamOffenceRebounds);
 		team.setTeamDeffenceRebounds(teamDeffenceRebounds);

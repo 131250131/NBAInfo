@@ -1369,6 +1369,7 @@ public class Team {
 //			private int lianxu_Home_now;
 			if(isHome){
 				if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){	
+					home.addWin();
 					if(lastGame_Home){
 						lianxu_Home_now++;
 					}else{
@@ -1380,6 +1381,7 @@ public class Team {
 					}
 					
 				}else{
+					home.addLose();
 					if(!lastGame_Home){
 						lianxu_Home_now++;
 					}else{
@@ -1393,6 +1395,7 @@ public class Team {
 				
 			}else{
 				if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){	
+					guest.addWin();
 					if(lastGame_Guest){
 						lianxu_Guest_now++;
 					}else{
@@ -1404,6 +1407,7 @@ public class Team {
 					}
 					
 				}else{
+					guest.addLose();
 					if(!lastGame_Guest){
 						lianxu_Guest_now++;
 					}else{
@@ -1427,6 +1431,7 @@ public class Team {
 			this.team3FGTry+=myTeam.getTeam3FGTry();
 			this.teamFTG+=myTeam.getTeamFTG();
 			this.teamFTGTry+=myTeam.getTeamFTGTry();
+			//System.out.println(teamFTGTry);
 			this.teamOffenceRebounds+=myTeam.getTeamOffenceRebounds();
 			this.teamDeffenceRebounds+=myTeam.getTeamDeffenceRebounds();
 			this.teamTotalRebounds+=myTeam.getTeamTotalRebounds();
@@ -1467,10 +1472,13 @@ public class Team {
 			teamAssists=teampo.getTeamAssists();
 			teamFG=teampo.getTeamFG();
 			teamFGTry=teampo.getTeamFGTry();
+			
 			team3FG=teampo.getTeam3FG();
 			team3FGTry=teampo.getTeam3FGTry();
 			teamFTG=teampo.getTeamFTG();
-			teamFTGTry=teampo.getTeamFGTry();
+			//System.out.println(teampo.getTeamFTGTry());
+			teamFTGTry=teampo.getTeamFTGTry();
+			//System.out.println(teamFTGTry);
 			teamOffenceRebounds=teampo.getTeamOffenceRebounds();
 			teamDeffenceRebounds=teampo.getTeamDeffenceRebounds();
 			teamTotalRebounds=teampo.getTeamTotalRebounds();

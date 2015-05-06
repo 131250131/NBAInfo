@@ -8,6 +8,8 @@ import vo.PlayerVO;
 import vo.TeamVO;
 import logic.DataCollector;
 import logic.MainController;
+import logic.PlayerController;
+import logic.TeamController;
 import logicservice.DataCollectorService;
 import logicservice.mainControllerService;
 import logicservice.matchControllerService;
@@ -27,11 +29,20 @@ public class logicTest {
 		matchController = mainController.getMatchController();
 		
 		DataCollectorService dc= new DataCollector();
+
+        ArrayList<TeamVO> p=teamController.getSeasonAllTeamInfo();
+        for(TeamVO tt:p){
+        	//System.out.println(tt.getAver_teamScores());
+        	//System.out.println("win"+tt.getGuest().getWin());
+        }
+        
 		
-		ArrayList<PlayerVO> p=dc.getSeasonHotPlayers_AverBlock();
-		for(PlayerVO pl:p){
-				System.out.println(pl.getPlayerName()+pl.getAver_playerBlocks());
-		}
+	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
+	    for(PlayerVO pp:pd){
+	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
+	    }
+		System.out.println(pd.size());
+
 		
 
 //		ArrayList<TeamVO> t=teamController.getSeasonAllTeamInfo();
