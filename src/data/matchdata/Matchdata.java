@@ -311,6 +311,7 @@ public class Matchdata implements MatchDataService{
 	public boolean Matchupdate() {
 		// TODO Auto-generated method stub
 		JudgeUpdate hasupdate=new JudgeUpdate(filePath);
+		//System.out.println("pp");
 		hasupdate.run();
 		return hasupdate.getHasupdate();
 	}

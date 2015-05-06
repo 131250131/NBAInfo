@@ -31,6 +31,7 @@ public class MainController implements mainControllerService{
 	
 	public void updateAllInfo(){
 		matchController.updateAll();
+		System.out.println("11111");
 	}
 	
 	public PlayerController getPlayerController(){

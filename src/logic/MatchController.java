@@ -278,6 +278,11 @@ public class MatchController implements matchControllerService{
 			Collections.sort(havematches);
 			return havematches;
 		}
+
+		@Override
+		public int getAllMatchesNum() {
+			return this.allMatches.size();
+		}
 			
 }
 

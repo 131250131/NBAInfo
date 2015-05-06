@@ -1168,7 +1168,6 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				String result = null;
 				String teamName = this.getTeamShortName();
 				result = TeamController.getTeamDistribution(teamName);
-				System.out.println(this.getPlayerName()+"distribution"+" "+result+" "+teamName);
 				return result;
 			}
 			
