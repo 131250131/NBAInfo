@@ -808,7 +808,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.team3FG=team.getTeam3FG();
 			this.team3FGTry=team.getTeam3FGTry();
 			this.teamFTG=team.getTeamFTG();
-			this.teamFTGTry=team.getTeamFGTry();
+			this.teamFTGTry=team.getTeamFTGTry();
 			this.teamOffenceRebounds=team.getTeamOffenceRebounds();
 			this.teamDeffenceRebounds=team.getTeamDeffenceRebounds();
 			this.teamTotalRebounds=team.getTeamTotalRebounds();

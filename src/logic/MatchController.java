@@ -87,7 +87,7 @@ public class MatchController implements matchControllerService{
 				this.allMatches.add(tempMatch);
 				
 				//System.out.println(tempMatch.getNum());
-
+				//System.out.println(tempMatch.getLeftTeam().getTeamFGTry());
 				teamController.updateTeamInfo_Advanced(tempMatch.getLeftTeam(), tempMatch.getRightTeam(),false);
 				teamController.updateTeamInfo_Advanced(tempMatch.getRightTeam(), tempMatch.getLeftTeam(),true);
 				
