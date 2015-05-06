@@ -29,9 +29,7 @@ public class logicTest {
 		matchController = mainController.getMatchController();
 		
 		DataCollectorService dc= new DataCollector();
-        ArrayList<PlayerVO> p=dc.getSeasonHotPlayers_AverBlock();
-        for(PlayerVO P:p){
-        	System.out.println(P.getAver_playerBlocks());
+
         }
 		/*
 	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
@@ -39,14 +37,24 @@ public class logicTest {
 	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
 	    }
 		System.out.println(pd.size());
+
+		
+
+//		ArrayList<TeamVO> t=teamController.getSeasonAllTeamInfo();
+//		for(TeamVO te:t){
+//			System.out.println(te.getShortName()+" "+te.getWinRate());
+//		}
 		
 //
-//		ArrayList<TeamVO> list = dc.getSeasonHotTeams_Score();
+//		ArrayList<TeamVO> list = dc.getSeasonHotTeams_Block();
 //		for(TeamVO vo : list){
 //			System.out.println(vo.getShortName()+ " "+vo.getTeamScores());
 //		}
 		
-		
+//		ArrayList<PlayerVO> p=dc.getSeasonHotPlayers_AverBlock();
+//		for(PlayerVO pl:p){
+//				System.out.println(pl.getPlayerName()+pl.getAver_playerBlocks());
+//		}
 		
 //		ArrayList<PlayerVO> p=playerController.getPlayerbyChar('B');
 //		for(PlayerVO pl:p){
