@@ -311,19 +311,19 @@ public class Matchdata implements MatchDataService{
 	
 	@Override
 	public boolean Matchupdate() {
-		// TODO Auto-generated method stub
-
+		// 
+        
 		boolean Hasupdate=false;
 		File file = new File(filePath);                
  		File[] File = file.listFiles();
-		for(;;){
 		   if(File.length!=number){
 			   Hasupdate=true;
 			  // System.out.println("ppp");
-		   }
+		   
 		   //System.out.println("ttt");
+		   }
 		  return Hasupdate;
-		}
+		
 		
 
 	}
