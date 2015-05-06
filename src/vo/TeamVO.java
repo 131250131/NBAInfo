@@ -914,11 +914,12 @@ public class TeamVO implements Comparable<TeamVO> {
 		public int compareTo(TeamVO o) {
 			// TODO Auto-generated method stub
 			if(comparetype.equals("得分")){
-				if(this.getAver_teamScores()-o.getOppoScores()<0){
+				if(this.getAver_teamScores()-o.getAver_teamScores()<0){
 					return 1;
 				}
-				if(this.getAver_teamScores()-o.getOppoScores()==0)
+				if(this.getAver_teamScores()-o.getAver_teamScores()==0)
 					return 0;
+				//System.out.println("tt");
 				    return -1;
 			}
             if(comparetype.equals("篮板")){
