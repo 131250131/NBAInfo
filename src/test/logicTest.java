@@ -29,9 +29,9 @@ public class logicTest {
 		matchController = mainController.getMatchController();
 		
 		DataCollectorService dc= new DataCollector();
-        ArrayList<TeamVO> t=teamController.getSeasonHotTeams_Block();
+        ArrayList<TeamVO> t=teamController.getSeasonHotTeams_Score();
 		for(TeamVO te:t){
-			System.out.println(te.getAver_teamBlocks());
+			System.out.println(te.getAver_teamScores());
 		}
 		
 		//ArrayList<PlayerVO> p =playerController.getAdvancedPlayers("score");
