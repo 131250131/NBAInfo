@@ -2,6 +2,12 @@ package logic;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.sql.Date;
 import java.util.ArrayList;
 
@@ -18,20 +24,37 @@ public class AssociationData implements associationDataService{
 	private int screenheight = (int)screensize.getHeight();
 
 	public int getscreenWidth() {
-		return screenwidth;
+		int result=0;
+		try {
+			FileInputStream fis = new FileInputStream("canshu");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			ArrayList<Integer> i=(ArrayList<Integer>)ois.readObject();
+			result=i.get(0);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       
+		return result;
 	}
 
-	public void setscreenWidth(int width) {
-		this.screenwidth = width;
-	}
+	
 
 	public int getscreenHeight() {
-		return screenheight;
+		int result=0;
+		try {
+			FileInputStream fis = new FileInputStream("canshu");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			ArrayList<Integer> i=(ArrayList<Integer>)ois.readObject();
+			result=i.get(1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
 	}
 
-	public void setscreenHeight(int height) {
-		this.screenheight = height;
-	}
+	
 
 	//联盟球员平均数据;
 	private double aver_playerAssists ;//队员平均助攻数
@@ -602,6 +625,32 @@ public class AssociationData implements associationDataService{
 		this.setPlayer3FGP(player3FGP);//队员三分命中率
 		this.setPlayerFTGP(playerFTGP);//队员罚球命中率	
 		this.setPlayerPER(playerPER);//队员效率(PER)
+	}
+
+
+
+	
+
+
+	@Override
+	public void setwh() {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> p=new ArrayList<Integer>();
+		p.add(screenwidth);
+		p.add(screenheight);
+		ObjectOutputStream os;
+		try {
+			os = new ObjectOutputStream(new FileOutputStream("canshu",false));
+			  os.writeObject(p);
+			   os.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}                        
+      
 	}
 		
 	
