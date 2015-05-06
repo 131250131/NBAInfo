@@ -1,4 +1,4 @@
-package userInterface.ui.matchUI;
+package ui.myUI;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -6,19 +6,17 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import userInterface.ui.matchUI.JSortTable;
-import userInterface.ui.matchUI.MyTable;
+import ui.system.Controller;
+import ui.system.ImageSaver;
+import vo.PlayerVO;
 
-import com.nba.data.Player;
-import com.nba.davisUI.myUI.ImageBin;
-import com.nba.davisUI.myUI.MyPanel;
-import com.nba.registerList.RegisterList;
+
 
 @SuppressWarnings("serial")
 public class PlayerTablePanel extends MyPanel{
@@ -30,9 +28,9 @@ public class PlayerTablePanel extends MyPanel{
 	private String[] temp2;
 	
 	public PlayerTablePanel(){
-		
+		Controller.init();
 		this.setBounds(0, 0, 1280, 720);
-		this.setBackground(Color.WHITE);
+		this.setBackground(Color.BLACK);
 		
 		/*
 		 * 球员名称，所属球队，参赛场数，先发场数，篮板数，助攻数，在
@@ -45,18 +43,18 @@ public class PlayerTablePanel extends MyPanel{
 		 * 
 		 * 
 		 * */
-		String[] temp = {"序号","球员姓名","所属球队","参赛场数","先发场数","篮板数","进攻篮板","防守篮板","助攻数","场均出场时间"
+		String[] temp = {"球员姓名","所属球队","参赛场数","先发场数","篮板数","进攻篮板","防守篮板","助攻数","场均出场时间"
 						,"投篮命中率","三分命中率","罚球命中率","抢断数","盖帽数",
 						"失误数","犯规数","球员得分","效率","GmSc效率值","真实命中率","投篮效率","篮板率","进攻篮板率",
 						"防守篮板率","助攻率","抢断绿","盖帽率","失误率","使用率","两双次数"};
 		temp2 = temp;
-		data2 = new String[31][];
-		table = new MyTable(temp, data2);
+		data2 = new String[30][];
+		table = new MyTable();
 		
 		//背景
-		JLabel bg=new JLabel();
-		bg.setIcon(ImageBin.getImage("bgOfPlayer"));
-		bg.setBounds(0, 0, 1280, 720);
+//		JLabel bg=new JLabel();
+//		
+//		bg.setBounds(0, 0, 1280, 720);
 		
 		//筛选板
 		JPanel filtrate=new JPfiltrate();
@@ -67,7 +65,6 @@ public class PlayerTablePanel extends MyPanel{
 		
 		this.add(table,0);
 		this.add(filtrate,1);
-		this.add(bg,2);
 		
 		getData();
 		JSortTable.makeFace(table.getTable());
@@ -83,7 +80,7 @@ public class PlayerTablePanel extends MyPanel{
 		private JLabel distribution=new JLabel("分区");
 		private JLabel infoType=new JLabel("数据");
 //		private JLabel to=new JLabel("—",JLabel.CENTER);
-		private JLabel scan=new JLabel(ImageBin.getImage("scan"));
+		private JLabel scan=new JLabel(ImageSaver.getIcon("scan"));
 		
 		public String[] getCondition(){
 			String[] condition={positionCb.getSelectedItem().toString(),
@@ -177,7 +174,43 @@ public class PlayerTablePanel extends MyPanel{
 //					MainFrame.warnbt.showWarning("筛选条件不能为空");
 				}
 				else{
-					Object[][] data=RegisterList.getSomeData(condition[0], condition[1], condition[2]);
+					ArrayList<PlayerVO> tempPlayers=Controller.playerController.getSelectedPlayers(condition[0], condition[1], condition[2]);
+					
+					Object[][] data= new Object[tempPlayers.size()][30];
+					for(int index=0;index<tempPlayers.size();index++){
+						PlayerVO tempPlayer = tempPlayers.get(index);
+						data[index][0] = tempPlayer.getPlayerName();
+						data[index][1] = tempPlayer.getTeamShortName();//所属球队
+						data[index][2] = tempPlayer.getPlayerAttends();
+						data[index][3] = tempPlayer.getStartTimes();
+						data[index][4] = tempPlayer.getPlayerTotalRebounds();
+						data[index][5] = tempPlayer.getPlayerOffenceRebounds();
+						data[index][6] = tempPlayer.getPlayerDeffenceRebounds();
+						data[index][7] = tempPlayer.getPlayerAssists();
+						data[index][8] = tempPlayer.getPlayerPlayTime();
+						data[index][9] = tempPlayer.getPlayerFGP();
+						data[index][10] = tempPlayer.getPlayer3FGP();
+						data[index][11] = tempPlayer.getPlayerFTGP();
+						data[index][12] = tempPlayer.getPlayerSteals();
+						data[index][13] = tempPlayer.getPlayerBlocks();
+						data[index][14] = tempPlayer.getPlayerTurnovers();
+						data[index][15] = tempPlayer.getPlayerFouls();
+						data[index][16] = tempPlayer.getPlayerScores();
+						data[index][17] = tempPlayer.getPlayerPER();
+						data[index][18] = tempPlayer.getPlayerGmScER();
+						data[index][19] = tempPlayer.getPlayerTSP();
+						data[index][20] = tempPlayer.getPlayerSER();
+						data[index][21] = tempPlayer.getRR();
+						data[index][22] = tempPlayer.getO_RR();
+						data[index][23] = tempPlayer.getD_RR();
+						data[index][24] = tempPlayer.getAR();
+						data[index][25] = tempPlayer.getSR();
+						data[index][26] = tempPlayer.getBR();
+						data[index][27] = tempPlayer.getTR();
+						data[index][28] = tempPlayer.getUR();
+						data[index][29] = tempPlayer.getdouble_double();
+					}	
+					
 					Object[][] data2=new Object[50][];
 					System.out.println(data.length);
 					if(data.length>50){
@@ -223,54 +256,59 @@ public class PlayerTablePanel extends MyPanel{
 	@SuppressWarnings("unchecked")
 	public void getData(){
 		
-		Object[][] data = new Object[RegisterList.getPlayerNumber()][31];
+		Object[][] data = new Object[Controller.playerController.getAllPlayerVO().size()][30];
 		
 		//System.out.println(RegisterList.getPlayerNumber());
 		
 		int index = 0;
-		int sequence=0;
 		
-		for(int i = 0; i < 26; i++){
-			ArrayList<Player> playerList = (ArrayList<Player>) RegisterList.saveList.get(i);
+//		for(int i = 0; i < 26; i++){
+			ArrayList<PlayerVO> playerList = Controller.playerController.getAllPlayerVO();
 			int size = playerList.size();	
 			for(int j = 0; j < size; j++){
-				Player tempPlayer = playerList.get(j);
-				sequence++;
-				data[index][0] =sequence;
-				data[index][1] = tempPlayer.getPlayerName();
-				data[index][2] = tempPlayer.getTeamShortName();//所属球队
-				data[index][3] = tempPlayer.getPlayerAttends();
-				data[index][4] = tempPlayer.getPlayerStartTimes();
-				data[index][5] = tempPlayer.getPlayerTotalRebounds();
-				data[index][6] = tempPlayer.getPlayerOffenceRebounds();
-				data[index][7] = tempPlayer.getPlayerDeffenceRebounds();
-				data[index][8] = tempPlayer.getPlayerAssists();
-				data[index][9] = tempPlayer.getPlayerPlayTime();
-				data[index][10] = tempPlayer.getPlayerFGP();
-				data[index][11] = tempPlayer.getPlayer3FGP();
-				data[index][12] = tempPlayer.getPlayerFTGP();
-				data[index][13] = tempPlayer.getPlayerSteals();
-				data[index][14] = tempPlayer.getPlayerBlocks();
-				data[index][15] = tempPlayer.getPlayerTurnovers();
-				data[index][16] = tempPlayer.getPlayerFouls();
-				data[index][17] = tempPlayer.getPlayerScores();
-				data[index][18] = tempPlayer.getPlayerPER();
-				data[index][19] = tempPlayer.getPlayerGmScER();
-				data[index][20] = tempPlayer.getPlayerTSP();
-				data[index][21] = tempPlayer.getPlayerSER();
-				data[index][22] = tempPlayer.getRR();
-				data[index][23] = tempPlayer.getO_RR();
-				data[index][24] = tempPlayer.getD_RR();
-				data[index][25] = tempPlayer.getAR();
-				data[index][26] = tempPlayer.getSR();
-				data[index][27] = tempPlayer.getBR();
-				data[index][28] = tempPlayer.getTR();
-				data[index][29] = tempPlayer.getUR();
-				data[index][30] = tempPlayer.getdouble_double();
+				PlayerVO tempPlayer = playerList.get(j);
+				data[index][0] = tempPlayer.getPlayerName();
+				data[index][1] = tempPlayer.getTeamShortName();//所属球队
+				data[index][2] = tempPlayer.getPlayerAttends();
+				data[index][3] = tempPlayer.getStartTimes();
+				data[index][4] = tempPlayer.getPlayerTotalRebounds();
+				data[index][5] = tempPlayer.getPlayerOffenceRebounds();
+				data[index][6] = tempPlayer.getPlayerDeffenceRebounds();
+				data[index][7] = tempPlayer.getPlayerAssists();
+				data[index][8] = tempPlayer.getPlayerPlayTime();
+				data[index][9] = tempPlayer.getPlayerFGP();
+				data[index][10] = tempPlayer.getPlayer3FGP();
+				data[index][11] = tempPlayer.getPlayerFTGP();
+				data[index][12] = tempPlayer.getPlayerSteals();
+				data[index][13] = tempPlayer.getPlayerBlocks();
+				data[index][14] = tempPlayer.getPlayerTurnovers();
+				data[index][15] = tempPlayer.getPlayerFouls();
+				data[index][16] = tempPlayer.getPlayerScores();
+				data[index][17] = tempPlayer.getPlayerPER();
+				data[index][18] = tempPlayer.getPlayerGmScER();
+				data[index][19] = tempPlayer.getPlayerTSP();
+				data[index][20] = tempPlayer.getPlayerSER();
+				data[index][21] = tempPlayer.getRR();
+				data[index][22] = tempPlayer.getO_RR();
+				data[index][23] = tempPlayer.getD_RR();
+				data[index][24] = tempPlayer.getAR();
+				data[index][25] = tempPlayer.getSR();
+				data[index][26] = tempPlayer.getBR();
+				data[index][27] = tempPlayer.getTR();
+				data[index][28] = tempPlayer.getUR();
+				data[index][29] = tempPlayer.getdouble_double();
 				index++;
 			}
-		}
+//		}
 		
 		table.update(temp2, data);
+	}
+	public static void main(String[] args){
+		JFrame test=new JFrame();
+		test.setSize(1280, 720);
+		test.setUndecorated(true);
+		test.add(new PlayerTablePanel());
+		test.setLocation(50, 50);
+		test.setVisible(true);
 	}
 }

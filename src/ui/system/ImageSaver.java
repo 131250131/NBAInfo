@@ -43,6 +43,7 @@ public class ImageSaver {
 			case "新增页面背景" : return new ImageIcon(iconPath + "新增页面背景.png");
 			case "新增页面背景2" : return new ImageIcon(iconPath + "新增页面背景2.png");
 			case "滑轮背景" : return new ImageIcon(iconPath + "滑轮背景.png");
+			case "scan" : return new ImageIcon(iconPath + "littleScan.png");
 		}
 		
 		return null;
