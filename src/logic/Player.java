@@ -1031,7 +1031,7 @@ public class Player implements Comparable<Player>{
 	     	   }
 
 
-if(comparetype.equals("罚球")){
+                if(comparetype.equals("罚球")){
 	     		  if((this.getPlayerFTGP()-o.getPlayerFTGP()<0))
 			           return 1;
 	     		  if((this.getPlayerFTGP()-o.getPlayerFTGP()==0))

@@ -221,4 +221,28 @@ public class TeamController implements teamControllerService{
 	public ArrayList<MatchVO> getrecenttengames(String name){
 		return null;
 	}
+
+	@Override
+	public ArrayList<TeamVO> gethomeraterank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result =new ArrayList<TeamVO>();
+		result=this.allTeamVO;
+		for(TeamVO t:result){
+			t.setComparetype("主场胜率");
+		}
+		Collections.sort(result);
+		return result;
+	}
+
+	@Override
+	public ArrayList<TeamVO> getguestraterank() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> result =new ArrayList<TeamVO>();
+		result=this.allTeamVO;
+		for(TeamVO t:result){
+			t.setComparetype("客场胜率");
+		}
+		Collections.sort(result);
+		return result;
+	}
 }

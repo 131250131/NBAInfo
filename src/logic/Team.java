@@ -1369,6 +1369,7 @@ public class Team {
 //			private int lianxu_Home_now;
 			if(isHome){
 				if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){	
+					home.addWin();
 					if(lastGame_Home){
 						lianxu_Home_now++;
 					}else{
@@ -1380,6 +1381,7 @@ public class Team {
 					}
 					
 				}else{
+					home.addLose();
 					if(!lastGame_Home){
 						lianxu_Home_now++;
 					}else{
@@ -1393,6 +1395,7 @@ public class Team {
 				
 			}else{
 				if(myTeam.getTeamScores()>oppoTeam.getTeamScores()){	
+					guest.addWin();
 					if(lastGame_Guest){
 						lianxu_Guest_now++;
 					}else{
@@ -1404,6 +1407,7 @@ public class Team {
 					}
 					
 				}else{
+					guest.addLose();
 					if(!lastGame_Guest){
 						lianxu_Guest_now++;
 					}else{

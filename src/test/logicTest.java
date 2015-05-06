@@ -31,12 +31,16 @@ public class logicTest {
 		DataCollectorService dc= new DataCollector();
         ArrayList<TeamVO> p=teamController.getSeasonAllTeamInfo();
         for(TeamVO tt:p){
-        	System.out.println(tt.getTeamFGTry());
+        	//System.out.println(tt.getAver_teamScores());
+        	//System.out.println("win"+tt.getGuest().getWin());
         }
         
 		
-		//ArrayList<PlayerVO> p =playerController.getAdvancedPlayers("score");
-		//System.out.println(p.size());
+	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("得分");
+	    for(PlayerVO pp:pd){
+	    	System.out.println(pp.getAdvancedP());
+	    }
+		System.out.println(pd.size());
 		
 //
 //		ArrayList<TeamVO> list = dc.getSeasonHotTeams_Score();

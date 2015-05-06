@@ -234,7 +234,7 @@ public class Matchdata implements MatchDataService{
 			    		rightteam.addwinMoreFGP();
 			    	}
 			}
-			*/
+*/			
 		    if(leftteam.getTeamTotalRebounds()>rightteam.getTeamTotalRebounds() && lscore>rscore){
 		    	  leftteam.addwinMoreRebounds();
 		    }
@@ -260,18 +260,10 @@ public class Matchdata implements MatchDataService{
 		    	  rightteam.addwinLessTurnovers();
 		    }
 		    if(lscore>rscore){
-		    	leftteam.addwinGuest();
-		    	rightteam.addloseHome();
 		    	match.setWinteamname(leftteam.getTeamName());
-		    	leftteam.addwinWin_lose();
-		    	rightteam.addloseWin_lose();
 		    }
 		    if(lscore<rscore){
-		    	leftteam.addloseGuest();
-		    	rightteam.addwinHome();
 		    	match.setWinteamname(rightteam.getTeamName());
-		    	leftteam.addloseWin_lose();
-		    	rightteam.addwinWin_lose();
 		    }
 		    if(lhalfscore>rhalfscore && lscore<rscore){
 		    	leftteam.addloseBanchanglingxian();

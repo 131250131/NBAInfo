@@ -38,7 +38,8 @@ public class TeamVO implements Comparable<TeamVO> {
 		private win_lose win_lose=new win_lose();
 		private win_lose home=new win_lose();//主场输赢的次数;
 		private win_lose guest=new win_lose();//客场输赢的次数;
-		
+		private double home_winrate=0;
+		private double guset_winrate=0;
 		private win_lose recent10=new win_lose();
 		private win_lose recent10_Home=new win_lose();
 		private win_lose recent10_Guest=new win_lose();
@@ -777,6 +778,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			 * */
 			
 			//球队基本信息
+			
 			this.teamName=team.getTeamName();
 			this.shortName=team.getShortName();
 			this.location=team.getLocation();
@@ -986,6 +988,34 @@ public class TeamVO implements Comparable<TeamVO> {
             		return 0;
             	return -1;
             }
+            if(comparetype.equals("主场胜率")){
+            	try{
+            	home_winrate=(double)this.getHome().getWin()/((double)this.getHome().getWin()+(double)this.getHome().getLose());
+            	double thatwin=(double)o.getHome().getWin()/((double)o.getHome().getWin()+(double)o.getHome().getLose());
+            	if(home_winrate-thatwin<0){
+            		return 1;
+            	}
+            	if(home_winrate-thatwin==0){
+            		return 0;
+            	}
+            	}catch(Exception e){
+            		return 0;
+            	}
+            }
+            if(comparetype.equals("客场胜率")){
+            	try{
+            	guset_winrate=(double)this.getGuest().getWin()/((double)this.getGuest().getWin()+(double)this.getGuest().getLose());
+            	double thatwin=(double)o.getGuest().getWin()/((double)o.getGuest().getWin()+(double)o.getGuest().getLose());
+            	if(guset_winrate-thatwin<0){
+            		return 1;
+            	}
+            	if(guset_winrate-thatwin==0){
+            		return 0;
+            	}
+            	}catch(Exception e){
+            		return 0;
+            	}
+            }
 			return 0;
 		}
 		public String getComparetype() {
@@ -1153,6 +1183,18 @@ public class TeamVO implements Comparable<TeamVO> {
 		}
 		public void setLianxu_Win(boolean lianxu_Win) {
 			this.lianxu_Win = lianxu_Win;
+		}
+		public double getHome_winrate() {
+			return home_winrate;//((double)this.getHome().getWin() )/((double)this.getHome().getWin()+(double)this.getHome().getLose());
+		}
+		public void setHome_winrate(double home_winrate) {
+			this.home_winrate = home_winrate;
+		}
+		public double getGuset_winrate() {
+			return guset_winrate;//(double)this.getGuest().getWin()/((double)this.getGuest().getWin()+(double)this.getGuest().getLose());
+		}
+		public void setGuset_winrate(double guset_winrate) {
+			this.guset_winrate = guset_winrate;
 		}
 
 }
