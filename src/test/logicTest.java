@@ -22,22 +22,35 @@ import logicservice.teamControllerService;
 
 public class logicTest {
 	public static void main(String args[]){
-		playerControllerService playerController;
-		teamControllerService teamController;
-		matchControllerService matchController;
-		
-		mainControllerService mainController = new MainController();
-		mainController.init();
-		playerController = mainController.getPlayerController();
-		teamController = mainController.getTeamController();
-		matchController = mainController.getMatchController();
-		
-		DataCollectorService dc= new DataCollector();
+//		playerControllerService playerController;
+//		teamControllerService teamController;
+//		matchControllerService matchController;
+//		
+//		mainControllerService mainController = new MainController();
+//		mainController.init();
+//		playerController = mainController.getPlayerController();
+//		teamController = mainController.getTeamController();
+//		matchController = mainController.getMatchController();
+//		
+//		DataCollectorService dc= new DataCollector();
 
-   
+		
+		
       // JudgeUpdate j =new JudgeUpdate("data/data/matches");
        //j.run();
-       
+		Controller controlelr = new Controller();
+		Controller.init();
+		Controller.setUpRank();
+//		ArrayList<PlayerVO> temp = Controller.all_Scores;
+//		for(PlayerVO vo : temp){
+//		System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores());
+//		}
+		
+		 ArrayList<TeamVO> t = controlelr.teamController.getSeasonHotTeams_Score();
+		for(TeamVO tt:t){
+        	System.out.println(tt.getTeamName()+tt.getWinRate());
+        }
+		
 
 
 //        ArrayList<TeamVO> t =teamController.getteamrank();
@@ -57,10 +70,10 @@ public class logicTest {
 */ 
 
         
-		ArrayList<PlayerVO> temp = dc.getSeasonHotPlayers_AverScore();
-		for(PlayerVO vo : temp){
-			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores());
-		}
+//		ArrayList<PlayerVO> temp = dc.getSeasonHotPlayers_AverScore();
+//		for(PlayerVO vo : temp){
+//			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores());
+//		}
 		
 		
 //		ArrayList<PlayerVO> temp = playerController.getSelectedPlayers("后卫", "西南区", "助攻");

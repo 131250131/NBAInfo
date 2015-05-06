@@ -126,9 +126,9 @@ public class TeamController implements teamControllerService{
 			vo.comparetype = "得分";
 		}
 		Collections.sort(this.allTeamVO); 
-//		for(int i=0;i<10;i++){
-//			result.add(this.allTeamVO.get(i));
-//		}
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
 		return result;
 	}
 	
