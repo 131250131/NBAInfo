@@ -917,54 +917,72 @@ public class TeamVO implements Comparable<TeamVO> {
 				if(this.getAver_teamScores()-o.getOppoScores()<0){
 					return 1;
 				}
+				if(this.getAver_teamScores()-o.getOppoScores()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("篮板")){
 				if(this.getAver_teamTotalRebounds()-o.getAver_teamTotalRebounds()<0){
 					return 1;
 				}
+				if(this.getAver_teamTotalRebounds()-o.getAver_teamTotalRebounds()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("助攻")){
 				if(this.getAver_teamAssists()-o.getAver_teamAssists()<0){
 					return 1;
 				}
+				if(this.getAver_teamAssists()-o.getAver_teamAssists()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("盖帽")){
 				if(this.getAver_teamBlocks()-o.getAver_teamBlocks()<0){
 					return 1;
 				}
+				if(this.getAver_teamBlocks()-o.getAver_teamBlocks()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("抢断")){
 				if(this.getAver_teamSteals()-o.getAver_teamSteals()<0){
 					return 1;
 				}
+				if(this.getAver_teamSteals()-o.getAver_teamSteals()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("3FGP")){
 				if(this.getTeam3FGP()-o.getTeam3FGP()<0){
 					return 1;
 				}
+				if(this.getTeam3FGP()-o.getTeam3FGP()==0)
+					return 0;
 				    return -1;
  			}
             if(comparetype.equals("FGP")){
 				if(this.getTeamFGP()-o.getTeamFGP()<0){
 					return 1;
 				}
+				if(this.getTeamFGP()-o.getTeamFGP()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("FTGP")){
 				if(this.getTeamFTGP()-o.getTeamFTGP()<0){
 					return 1;
 				}
+				if(this.getTeamFTGP()-o.getTeamFTGP()==0)
+					return 0;
 				    return -1;
 			}
             if(comparetype.equals("胜场差")){
             	if(this.getWinLose()-o.getWinRate()>0){
             		return 1;
             	}
+            	if(this.getWinLose()-o.getWinRate()==0)
+            		return 0;
             	return -1;
             }
 			return 0;
