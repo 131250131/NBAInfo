@@ -26,4 +26,5 @@ public interface teamControllerService {
 		public ArrayList<TeamVO> gettaipingyangrank();
 		public ArrayList<TeamVO> geteastrank();
 		public ArrayList<TeamVO> getwestrank();
+		public void setAllwinlose();
 }

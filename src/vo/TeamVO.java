@@ -1043,7 +1043,7 @@ public class TeamVO implements Comparable<TeamVO> {
 			attendmatches.add(matchnum);
 		}
 		public double getWinLose() {
-			return (double)winGames/(double)compGames;
+			return winLose;
 		}
 		public void setWinLose(double winLose) {
 			this.winLose = winLose;

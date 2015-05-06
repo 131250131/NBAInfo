@@ -64,11 +64,11 @@ public class TeamController implements teamControllerService{
     			case "UTA":result="西北区";break;
     			case "POR":result="西北区";break;
     			case "OKC":result="西北区";break;
-    			case "MIA":result="东南区 ";break;
-    			case "ORL":result="东南区 ";break;
-    			case "ATL":result="东南区 ";break;
-    			case "WAS":result="东南区 ";break;
-    			case "CHA":result="东南区 ";break;
+    			case "MIA":result="东南区";break;
+    			case "ORL":result="东南区";break;
+    			case "ATL":result="东南区";break;
+    			case "WAS":result="东南区";break;
+    			case "CHA":result="东南区";break;
     			case "DET":result="中央区";break;
     			case "IND":result="中央区";break;
     			case "CLE":result="中央区";break;
@@ -263,11 +263,17 @@ public class TeamController implements teamControllerService{
 		ArrayList<TeamVO> result=new ArrayList<TeamVO>();
 		for(TeamVO teamvo:this.allTeamVO){
 			String dis=getTeamDistribution(teamvo.getShortName());
-			if(dis.equals("东南区")){
+			//System.out.println(teamvo.getShortName());
+			//System.out.println(dis);
+			//System.out.println(dis+dis.equals("东南区"));
+			if(dis.equals("东南区"))
+			{
+				//System.out.println("gg");
 				teamvo.setComparetype("胜率");
 				result.add(teamvo);
 			}
 		}
+		//System.out.println(result.size());
 		Collections.sort(result);
 		return result;
 	}
@@ -353,7 +359,7 @@ public class TeamController implements teamControllerService{
 		ArrayList<TeamVO> result=new ArrayList<TeamVO>();
 		for(TeamVO teamvo:this.allTeamVO){
 			String dis=getTeamDistribution(teamvo.getShortName());
-			if(dis.equals("东南区")||dis.equals("中央区")||dis.equals("大西洋")){
+			if(dis.equals("东南区")||dis.equals("中央区")||dis.equals("大西洋区")){
 				teamvo.setComparetype("胜率");
 				result.add(teamvo);
 			}
@@ -368,7 +374,7 @@ public class TeamController implements teamControllerService{
 				ArrayList<TeamVO> result=new ArrayList<TeamVO>();
 				for(TeamVO teamvo:this.allTeamVO){
 					String dis=getTeamDistribution(teamvo.getShortName());
-					if(dis.equals("西南区")||dis.equals("西北区")||dis.equals("太平洋")){
+					if(dis.equals("西南区")||dis.equals("西北区")||dis.equals("太平洋区")){
 						teamvo.setComparetype("胜率");
 						result.add(teamvo);
 					}
@@ -376,5 +382,24 @@ public class TeamController implements teamControllerService{
 				Collections.sort(result);
 				return result;
 			}
+
+	@Override
+	public void setAllwinlose() {
+		// TODO Auto-generated method stub
+		ArrayList<TeamVO> west =this.getwestrank();
+		ArrayList<TeamVO> east =this.geteastrank();
+		
+		west.get(0).setWinLose( ((double)west.get(0).getLosGames()-(double)west.get(0).getWinGames() )/2);
+		east.get(0).setWinLose( ((double)east.get(0).getLosGames()-(double)east.get(0).getWinGames() )/2);
+		double w=west.get(0).getWinLose();
+		double e=east.get(0).getWinLose();
+		for(TeamVO tv:west){
+			tv.setWinLose( ((double)tv.getLosGames()-(double)tv.getWinGames() )/2 -w);
+		}
+		for(TeamVO tv:east){
+			tv.setWinLose( ((double)tv.getLosGames()-(double)tv.getWinGames() )/2 -e);
+		}
+	}
+	
 	}
 
