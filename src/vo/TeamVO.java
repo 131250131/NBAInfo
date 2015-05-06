@@ -989,7 +989,7 @@ public class TeamVO implements Comparable<TeamVO> {
             	return -1;
             }
             if(comparetype.equals("主场胜率")){
-            	try{
+            	
             	home_winrate=(double)this.getHome().getWin()/((double)this.getHome().getWin()+(double)this.getHome().getLose());
             	double thatwin=(double)o.getHome().getWin()/((double)o.getHome().getWin()+(double)o.getHome().getLose());
             	if(home_winrate-thatwin<0){
@@ -998,13 +998,13 @@ public class TeamVO implements Comparable<TeamVO> {
             	if(home_winrate-thatwin==0){
             		return 0;
             	}
-            	}catch(Exception e){
-            		return 0;
-            	}
+            	return -1;
+            	
             }
             if(comparetype.equals("客场胜率")){
-            	try{
+            	
             	guset_winrate=(double)this.getGuest().getWin()/((double)this.getGuest().getWin()+(double)this.getGuest().getLose());
+                //System.out.println("true"+guset_winrate);
             	double thatwin=(double)o.getGuest().getWin()/((double)o.getGuest().getWin()+(double)o.getGuest().getLose());
             	if(guset_winrate-thatwin<0){
             		return 1;
@@ -1012,10 +1012,9 @@ public class TeamVO implements Comparable<TeamVO> {
             	if(guset_winrate-thatwin==0){
             		return 0;
             	}
-            	}catch(Exception e){
-            		return 0;
+            	return -1;
             	}
-            }
+            
 			return 0;
 		}
 		public String getComparetype() {
@@ -1185,13 +1184,13 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.lianxu_Win = lianxu_Win;
 		}
 		public double getHome_winrate() {
-			return home_winrate;//((double)this.getHome().getWin() )/((double)this.getHome().getWin()+(double)this.getHome().getLose());
+			return ((double)this.getHome().getWin() )/((double)this.getHome().getWin()+(double)this.getHome().getLose());
 		}
 		public void setHome_winrate(double home_winrate) {
 			this.home_winrate = home_winrate;
 		}
 		public double getGuset_winrate() {
-			return guset_winrate;//(double)this.getGuest().getWin()/((double)this.getGuest().getWin()+(double)this.getGuest().getLose());
+			return (double)this.getGuest().getWin()/((double)this.getGuest().getWin()+(double)this.getGuest().getLose());
 		}
 		public void setGuset_winrate(double guset_winrate) {
 			this.guset_winrate = guset_winrate;

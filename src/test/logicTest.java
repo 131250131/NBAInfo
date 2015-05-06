@@ -29,13 +29,11 @@ public class logicTest {
 		matchController = mainController.getMatchController();
 		
 		DataCollectorService dc= new DataCollector();
-        ArrayList<TeamVO> p=teamController.getSeasonAllTeamInfo();
-        for(TeamVO tt:p){
-        	//System.out.println(tt.getAver_teamScores());
-        	//System.out.println("win"+tt.getGuest().getWin());
+        ArrayList<PlayerVO> p=dc.getSeasonHotPlayers_AverBlock();
+        for(PlayerVO P:p){
+        	System.out.println(P.getAver_playerBlocks());
         }
-        
-		
+		/*
 	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
 	    for(PlayerVO pp:pd){
 	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
