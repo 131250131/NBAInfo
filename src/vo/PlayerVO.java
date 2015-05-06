@@ -1106,10 +1106,10 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		     		   return -1;	   
 		     	   }
 		     	if(comparetype.equals("平均得分")){
-		     		   if(this.getAver_playerScores()-o.getAver_playerTotalRebounds()<0){
+		     		   if(this.getAver_playerScores()-o.getAver_playerScores()<0){
 		     			   return 1;
 		     		   }
-		     		  if(this.getAver_playerScores()-o.getAver_playerTotalRebounds()==0)
+		     		  if(this.getAver_playerScores()-o.getAver_playerScores()==0)
 		     			  return 0;
 		     		   return -1;	   
 		     	   }
@@ -1121,6 +1121,31 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		     			  return 0;
 		     		   return -1;	   
 		     	   }
+		     	if(comparetype.equals("FGP")){
+		     		if(this.getPlayerFGP()-o.getPlayerFGP()<0){
+		     			return 1;
+		     		}
+		     		if(this.getPlayerFGP()-o.getPlayerFGP()==0)
+		     			return 0;
+		     		return -1;
+		     		
+		     	}
+		     	if(comparetype.equals("3FGP")){
+		     		if(this.getPlayer3FGP()-o.getPlayer3FGP()<0){
+		     			return 1;
+		     		}
+		     		if(this.getPlayer3FGP()-o.getPlayer3FGP()==0)
+		     			return 0;
+		     		return -1;
+		     	}
+		     	if(comparetype.equals("FTGP")){
+		     		if(this.getPlayerFTGP()-o.getPlayerFTGP()<0){
+		     			return 1;
+		     		}
+		     		if(this.getPlayerFTGP()-o.getPlayerFTGP()==0)
+		     			return 0;
+		     		return -1;
+		     	}
 					return 0;
 
 					

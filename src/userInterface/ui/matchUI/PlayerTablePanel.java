@@ -1,4 +1,4 @@
-package com.nba.davisUI.ui;
+package userInterface.ui.matchUI;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -12,8 +12,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import ui.myUI.JSortTable;
-import ui.myUI.MyTable;
+import userInterface.ui.matchUI.JSortTable;
+import userInterface.ui.matchUI.MyTable;
 
 import com.nba.data.Player;
 import com.nba.davisUI.myUI.ImageBin;
@@ -28,7 +28,6 @@ public class PlayerTablePanel extends MyPanel{
 	
 	private String[][] data2;
 	private String[] temp2;
-	private JLabel re;
 	
 	public PlayerTablePanel(){
 		
@@ -59,11 +58,6 @@ public class PlayerTablePanel extends MyPanel{
 		bg.setIcon(ImageBin.getImage("bgOfPlayer"));
 		bg.setBounds(0, 0, 1280, 720);
 		
-		//返回
-		re=new JLabel();
-		re.setBounds(20, 335, 50, 50);
-		re.addMouseListener(new MouseListenerOfRe());
-		
 		//筛选板
 		JPanel filtrate=new JPfiltrate();
 		filtrate.setBounds(350,40, 870, 100);
@@ -73,45 +67,10 @@ public class PlayerTablePanel extends MyPanel{
 		
 		this.add(table,0);
 		this.add(filtrate,1);
-		this.add(re,2);
-		this.add(bg,3);
+		this.add(bg,2);
 		
 		getData();
 		JSortTable.makeFace(table.getTable());
-		this.addMouseListener(new MouseListenerForLocating());
-	}
-	class MouseListenerOfRe implements MouseListener{
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			MainFrame.returnFromPlayerTablePanel.doClick();
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			re.setIcon(ImageBin.getImage("return"));
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			re.setIcon(new ImageIcon());
-		}
-		
 	}
 	/*筛选板块*/
 	class JPfiltrate extends JPanel{
@@ -215,7 +174,7 @@ public class PlayerTablePanel extends MyPanel{
 				//根据已经输入的条件判断并进行筛选球员
 				String[] condition=JPfiltrate.this.getCondition();
 				if(condition[0].equals("")&&condition[1].equals("")&&condition[2].equals("")){
-					MainFrame.warnbt.showWarning("筛选条件不能为空");
+//					MainFrame.warnbt.showWarning("筛选条件不能为空");
 				}
 				else{
 					Object[][] data=RegisterList.getSomeData(condition[0], condition[1], condition[2]);
@@ -229,7 +188,7 @@ public class PlayerTablePanel extends MyPanel{
 				    	table.update(temp2, data2);
 				    }
 					else if(data.length==0){
-						MainFrame.warnbt.showWarning("未搜索到符合条件的结果");
+//						MainFrame.warnbt.showWarning("未搜索到符合条件的结果");
 						table.update(temp2, new Object[][]{});
 					}
 					else{
