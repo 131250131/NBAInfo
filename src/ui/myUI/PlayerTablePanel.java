@@ -11,9 +11,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
+import ui.frame.match.DataOfPlayerPanel;
 import ui.system.Controller;
 import ui.system.ImageSaver;
+import ui.system.UIData;
 import vo.PlayerVO;
 
 
@@ -23,7 +28,7 @@ public class PlayerTablePanel extends MyPanel{
 	
 	
 	private MyTable table;
-	
+	private DataOfPlayerPanel players;
 	private String[][] data2;
 	private String[] temp2;
 	
@@ -60,11 +65,24 @@ public class PlayerTablePanel extends MyPanel{
 		JPanel filtrate=new JPfiltrate();
 		filtrate.setBounds(350,40, 870, 100);
 		
+		players = new DataOfPlayerPanel();
+		players.setLocation(350,150);
+		
 		table.setBounds(350,350, 870, 300);
 		table.setVisible(true);
 		
+		//单元格值变化事件监控输出球员姓名
+        ListSelectionModel cellSelectionModel = table.getJTable().getSelectionModel();  
+        cellSelectionModel.addListSelectionListener(new ListSelectionListener(){  
+            public void valueChanged(ListSelectionEvent e) {//单元格值变动事件  
+            	String s = table.getSign(1);
+            	players.update(s);
+            }  
+        });  
+        
 		this.add(table,0);
 		this.add(filtrate,1);
+		this.add(players,2);
 		
 		getData();
 		JSortTable.makeFace(table.getTable());
@@ -262,7 +280,6 @@ public class PlayerTablePanel extends MyPanel{
 		
 		int index = 0;
 		
-//		for(int i = 0; i < 26; i++){
 			ArrayList<PlayerVO> playerList = Controller.playerController.getAllPlayerVO();
 			int size = playerList.size();	
 			for(int j = 0; j < size; j++){
@@ -299,11 +316,10 @@ public class PlayerTablePanel extends MyPanel{
 				data[index][29] = tempPlayer.getdouble_double();
 				index++;
 			}
-//		}
-		
 		table.update(temp2, data);
 	}
 	public static void main(String[] args){
+		UIData ui = new UIData(1280, 720);
 		JFrame test=new JFrame();
 		test.setSize(1280, 720);
 		test.setUndecorated(true);
