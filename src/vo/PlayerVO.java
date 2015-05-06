@@ -8,7 +8,7 @@ import logic.TeamController;
 public class PlayerVO implements Comparable<PlayerVO>{
 		
 		private double advancedP=0;
-		private String comparetype="";
+		public String comparetype="";
 		private int double_double=0;
 		public PlayerVO(){
 		

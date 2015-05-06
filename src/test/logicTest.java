@@ -30,18 +30,18 @@ public class logicTest {
 		
 		DataCollectorService dc= new DataCollector();
 
-        ArrayList<TeamVO> p=teamController.getSeasonAllTeamInfo();
-        for(TeamVO tt:p){
-        	//System.out.println(tt.getAver_teamScores());
-        	//System.out.println("win"+tt.getGuest().getWin());
-        }
-        
-		
-	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
-	    for(PlayerVO pp:pd){
-	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
-	    }
-		System.out.println(pd.size());
+//        ArrayList<TeamVO> p=teamController.getSeasonAllTeamInfo();
+//        for(TeamVO tt:p){
+//        	//System.out.println(tt.getAver_teamScores());
+//        	//System.out.println("win"+tt.getGuest().getWin());
+//        }
+//        
+//		
+//	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
+//	    for(PlayerVO pp:pd){
+//	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
+//	    }
+//		System.out.println(pd.size());
 
 		
 
@@ -50,8 +50,8 @@ public class logicTest {
 //			System.out.println(te.getShortName()+" "+te.getWinRate());
 //		}
 		
-//
-//		ArrayList<TeamVO> list = dc.getSeasonHotTeams_Block();
+////
+//		ArrayList<TeamVO> list = dc.getSeasonHotTeams_Score();
 //		for(TeamVO vo : list){
 //			System.out.println(vo.getShortName()+ " "+vo.getTeamScores());
 //		}
