@@ -22,9 +22,11 @@ public class JudgeUpdate implements Runnable {
 		   if(File.length!=number){
 			   boolean Hasupdate=true;
 			   number=File.length;
+			   System.out.println("ppp");
 		   }
+		   System.out.println("ttt");
 		   try{
-			   Thread.sleep(10000);
+			   Thread.sleep(100);
 		   }catch(Exception e){
 			   System.out.println("获取数据超时");
 		   }
