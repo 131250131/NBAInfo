@@ -1350,6 +1350,9 @@ public class Team {
 				}
 				longestWin = (longestWin<lianxu)? lianxu:longestWin;
 				nowWin=true;
+				if(myTeam.getTeamScores()>100){
+					
+				}
 			}else{
 				this.losGames++;
 				if(!lastGame){

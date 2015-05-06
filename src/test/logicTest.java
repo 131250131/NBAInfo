@@ -30,18 +30,15 @@ public class logicTest {
 		
 		DataCollectorService dc= new DataCollector();
 
-//        ArrayList<TeamVO> p=teamController.getSeasonAllTeamInfo();
-//        for(TeamVO tt:p){
-//        	//System.out.println(tt.getAver_teamScores());
-//        	//System.out.println("win"+tt.getGuest().getWin());
-//        }
-//        
-//		
-//	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
-//	    for(PlayerVO pp:pd){
-//	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
-//	    }
-//		System.out.println(pd.size());
+
+        }
+		/*
+	    ArrayList<PlayerVO> pd =playerController.getAdvancedPlayers("FTGP");
+	    for(PlayerVO pp:pd){
+	    	System.out.println(pp.getPlayerName()+pp.getAdvancedP());
+	    }
+		System.out.println(pd.size());
+>>>>>>> branch 'master' of ssh://git@github.com/131250131/NBAInfo.git
 
 		
 
@@ -149,6 +146,6 @@ public class logicTest {
 		
 
 		
-	}
+	
 
 }

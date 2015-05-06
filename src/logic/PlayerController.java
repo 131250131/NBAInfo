@@ -366,9 +366,13 @@ public class PlayerController implements playerControllerService{
 			tempPlayer.comparetype="平均盖帽";
 		}
 		Collections.sort(this.allPlayers);
+		//for(Player ppp:this.allPlayers){
+		//	System.out.println(ppp.getAver_playerBlocks());
+	//	}
 		for(int i=0;i<50;i++){
 			PlayerVO vo = new PlayerVO();
 			vo.creatplayervo(this.allPlayers.get(i));
+			//System.out.println(this.allPlayers.get(i).getAver_playerBlocks());
 			tempList.add(vo);
 		}
 		return tempList;
