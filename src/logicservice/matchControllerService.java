@@ -6,6 +6,7 @@ import vo.MatchVO;
 import vo.TeamShortName;
 
 public interface matchControllerService {
+	public int getAllMatchesNum();
 	public ArrayList<MatchVO> getAllMatchVO();
 	public ArrayList<MatchVO> getSomeMacthVO(String date);
 	public ArrayList<MatchVO> getSomeMatchVO(String playerName);
