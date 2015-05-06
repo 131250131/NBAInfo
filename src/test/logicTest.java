@@ -8,6 +8,7 @@ import vo.PlayerVO;
 import vo.TeamVO;
 import logic.DataCollector;
 import logic.MainController;
+import logic.PlayerController;
 import logicservice.DataCollectorService;
 import logicservice.mainControllerService;
 import logicservice.matchControllerService;
@@ -32,6 +33,9 @@ public class logicTest {
 		for(TeamVO te:t){
 			System.out.println(te.getShortName()+" "+te.getLianxu());
 		}
+		
+		ArrayList<PlayerVO> p =playerController.getAdvancedPlayers("score");
+		//System.out.println(p.size());
 		
 //
 //		ArrayList<TeamVO> list = dc.getSeasonHotTeams_Score();

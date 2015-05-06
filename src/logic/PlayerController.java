@@ -287,6 +287,7 @@ public class PlayerController implements playerControllerService{
 	}
 	
 	public ArrayList<PlayerVO> getAdvancedPlayers(String type) {
+		createAllPlayerVO();
 		MatchController matchcontroller =MatchController.getInstance();
 		ArrayList<PlayerVO> playervos=new ArrayList<PlayerVO>();
 		ArrayList<PlayerVO> result =new ArrayList<PlayerVO>();
@@ -295,6 +296,7 @@ public class PlayerController implements playerControllerService{
 			playervo.setAdvancedP(matchcontroller.playeradvcal(playervo.getPlayerName(), playervo.getAttendedMatches(), type));
 			playervo.setComparetype("进步率");
 		}
+	
 		playervos=this.allPlayerVO;
 		Collections.sort(playervos);
 		result.add(playervos.get(0));
