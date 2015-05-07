@@ -7,7 +7,6 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ui.myUI.PlayerTablePanel;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")

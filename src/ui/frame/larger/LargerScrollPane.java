@@ -67,7 +67,7 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 		}
 		
 		if(events.getSource() == turnto){
-			if(JudgeUpdate.needUpdate == false){
+			if(JudgeUpdate.needUpdate == true){
 				Controller.reInit();
 				LargerPanel.refresh.doClick();
 				System.out.println("Asd");

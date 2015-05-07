@@ -1,4 +1,4 @@
-package ui.myUI;
+package ui.frame.hotspot;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -16,6 +16,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import ui.frame.match.DataOfPlayerPanel;
+import ui.myUI.JSortTable;
+import ui.myUI.MyPanel;
+import ui.myUI.MyTable;
 import ui.system.Controller;
 import ui.system.ImageSaver;
 import ui.system.UIData;
