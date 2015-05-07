@@ -53,6 +53,7 @@ public class Controller {
 		matchController = mainController.getMatchController();
 		dataCollectorService = new DataCollector();
 		associationController = new AssociationData();
+		clear();
 		readAllMatch();
 		setUpRank();
 	}
@@ -79,6 +80,26 @@ public class Controller {
 		all_FP = Controller.dataCollectorService.getSeasonHotPlayers_FGP();
 		all_3FTP = Controller.dataCollectorService.getSeasonHotPlayers_3FGP();
 		all_FTP = Controller.dataCollectorService.getSeasonHotPlayers_FTGP();
+	}
+	
+	public static void clear(){
+		today_Scores.clear();
+		today_Assists.clear();
+		today_rebounds.clear();
+		today_blocks.clear();
+		today_steals.clear();	
+		today_FP.clear();
+		today_3FTP.clear();
+		today_FTP.clear();
+		all_Scores.clear();
+		all_Assists.clear();
+		all_rebounds.clear();
+		all_blocks.clear();
+		all_steals.clear();
+		all_FP.clear();
+		all_3FTP.clear();
+		all_FTP.clear();
+		dateList.clear();
 	}
 	
 	public static void readAllMatch(){
