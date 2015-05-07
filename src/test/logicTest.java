@@ -34,6 +34,12 @@ public class logicTest {
 //		
 //		DataCollectorService dc= new DataCollector();
 
+
+         
+       JudgeUpdate j =new JudgeUpdate();
+       j.start();
+       
+
 		
 		
       // JudgeUpdate j =new JudgeUpdate("data/data/matches");
@@ -45,12 +51,6 @@ public class logicTest {
 //		for(PlayerVO vo : temp){
 //		System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores());
 //		}
-		
-		 ArrayList<TeamVO> t = controlelr.teamController.getSeasonHotTeams_Score();
-		for(TeamVO tt:t){
-        	System.out.println(tt.getTeamName()+tt.getWinRate());
-        }
-		
 
 
 //        ArrayList<TeamVO> t =teamController.getteamrank();
@@ -68,14 +68,9 @@ public class logicTest {
 			}
 		
 */ 
-
+	
         
-//		ArrayList<PlayerVO> temp = dc.getSeasonHotPlayers_AverScore();
-//		for(PlayerVO vo : temp){
-//			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores());
-//		}
-		
-		
+
 //		ArrayList<PlayerVO> temp = playerController.getSelectedPlayers("后卫", "西南区", "助攻");
 //		for(PlayerVO vo : temp){
 //			System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores()+" "+vo.getPlayerAssists());

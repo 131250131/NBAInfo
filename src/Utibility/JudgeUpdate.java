@@ -1,13 +1,21 @@
 package Utibility;
 
+import logic.MatchController;
+import logicservice.matchControllerService;
 import data.matchdata.Matchdata;
 
 public class JudgeUpdate extends Thread {
+<<<<<<< HEAD
 	 Matchdata m = new Matchdata();
 	 boolean judge = false;
+=======
+	 MatchController m=MatchController.getInstance();
+	 boolean judge =false;
+>>>>>>> origin/master
 	 public static boolean needUpdate = false;
 	 
 	 public void run() {
+		for(;;){
 		judge = m.Matchupdate();
 		if(judge == true){
 			needUpdate = true;
@@ -29,5 +37,6 @@ public class JudgeUpdate extends Thread {
 	    	  
 	      }  
 	}
+	 }
    
 }

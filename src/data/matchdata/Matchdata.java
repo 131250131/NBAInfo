@@ -11,6 +11,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import logic.MatchController;
 import logic.Player;
 import po.MatchPO;
 import po.PlayerPO;
@@ -312,21 +313,16 @@ public class Matchdata implements MatchDataService{
 	@Override
 	public boolean Matchupdate() {
 		// 
-        
 		boolean Hasupdate=false;
 		File file = new File(filePath);                
  		File[] File = file.listFiles();
-		   if(File.length!=number){
+ 		//System.out.println("number"+number);
+ 		//System.out.println("gg"+File.length);
+ 		if(File.length!=number){
 			   Hasupdate=true;
-			  // System.out.println("ppp");
-		   matches=new ArrayList<MatchPO>();
-		   this.readMatch();
-		   //System.out.println("ttt");
-		   }
-		  return Hasupdate;
-		
-		
-
+ 		}
+ 		return Hasupdate;
+ 		
 	}
 	@Override
 	public PlayerPO playerdataoperator(String name,String team,int time, int FG, int FGTry,
