@@ -51,14 +51,12 @@ public class MatchController implements matchControllerService{
 			return instance;
 		}
 		
-		public boolean hasUpdate(){
-			return matchdata.Matchupdate();
-		}
 		
 		public void updateAll(){
 			playerController.updatePlayersInfo_Basic();
 			teamController.updateTeamInfo_Basic();
 			matchdata.readMatch();
+			System.out.println("lll");
 			allMatchPO = this.matchdata.getAllMatch();
 			this.processAllMatches();//处理完毕当前的数据;
 			this.createAllMatchVO();//获得所有比赛的vo;
@@ -287,7 +285,9 @@ public class MatchController implements matchControllerService{
 		public boolean Matchupdate() {
 			// 
 			boolean Hasupdate=matchdata.Matchupdate();
+			//System.out.println("fuck"+Hasupdate);
 			   if(Hasupdate){
+				 // System.out.println("m");
 				  this.updateAll();
 			   }
 			  return Hasupdate;

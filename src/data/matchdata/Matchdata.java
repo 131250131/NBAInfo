@@ -316,6 +316,8 @@ public class Matchdata implements MatchDataService{
 		boolean Hasupdate=false;
 		File file = new File(filePath);                
  		File[] File = file.listFiles();
+ 		//System.out.println("number"+number);
+ 		//System.out.println("gg"+File.length);
  		if(File.length!=number){
 			   Hasupdate=true;
  		}

@@ -11,7 +11,7 @@ public class JudgeUpdate extends Thread {
 	 
 	 public void run() {
 		for(;;){
-		judge = m.hasUpdate();
+		judge = m.Matchupdate();
 		if(judge == true){
 			needUpdate = true;
 		}

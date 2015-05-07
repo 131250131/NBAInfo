@@ -9,6 +9,6 @@ public interface mainControllerService {
 		public PlayerController getPlayerController();
 		public TeamController getTeamController();	
 		public MatchController getMatchController();
-		public boolean hasUpdate();
+		
 		public void updateAllInfo();
 }
