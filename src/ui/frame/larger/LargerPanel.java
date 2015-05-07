@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.frame.hotspot.HotSpotScrollPane;
 import ui.frame.index.container.IndexBoard;
 import ui.frame.index.container.IndexScrollPane;
 import ui.frame.match.MatchScorllPane;
@@ -23,9 +24,9 @@ import ui.system.UIData;
 @SuppressWarnings("serial")
 public class LargerPanel extends JPanel implements ActionListener{
 	
-	public static IndexScrollPane indexScrollPane;
+	IndexScrollPane indexScrollPane;
 	IndexBoard indexBoard;
-	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel, addMatchPanel, refresh;
+	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel, addMatchPanel, refresh, addHotPanel;
 	
 	public LargerPanel(){
 		this.setLayout(null);
@@ -74,6 +75,14 @@ public class LargerPanel extends JPanel implements ActionListener{
 		addMatchPanel = new JButton();
 		addMatchPanel.addActionListener(this);
 		this.add(addMatchPanel);
+		
+		refresh = new JButton();
+		refresh.addActionListener(this);
+		this.add(refresh);
+		
+		addHotPanel = new JButton();
+		addHotPanel.addActionListener(this);
+		this.add(addHotPanel);
 		}
 
 	public void actionPerformed(ActionEvent e) {
@@ -98,10 +107,14 @@ public class LargerPanel extends JPanel implements ActionListener{
 			this.add(matchSP);
 		}
 		
+		if(e.getSource() == addHotPanel){
+			HotSpotScrollPane matchSP = new HotSpotScrollPane();
+			this.add(matchSP);
+		}
+		
 		if(e.getSource() == refresh){
-			indexScrollPane.setVisible(false);
 			indexScrollPane = new IndexScrollPane();
-			this.add(indexScrollPane); 
+			this.add(indexScrollPane);
 		}
 	}
 

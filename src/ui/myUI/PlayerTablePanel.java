@@ -29,13 +29,15 @@ public class PlayerTablePanel extends MyPanel{
 	
 	private MyTable table;
 	private DataOfPlayerPanel players;
+	@SuppressWarnings("unused")
 	private String[][] data2;
 	private String[] temp2;
 	
 	public PlayerTablePanel(){
 		Controller.init();
-		this.setBounds(0, 0, 1280, 720);
-		this.setBackground(Color.BLACK);
+		this.setBounds((int) (320 * UIData.changeX), (int) (100 * UIData.changeX)
+				, (int) (1280 * UIData.changeX), (int) (720 * UIData.changeY));
+		this.setOpaque(false);
 		
 		/*
 		 * 球员名称，所属球队，参赛场数，先发场数，篮板数，助攻数，在
@@ -63,12 +65,13 @@ public class PlayerTablePanel extends MyPanel{
 		
 		//筛选板
 		JPanel filtrate=new JPfiltrate();
-		filtrate.setBounds(350,40, 870, 100);
+		filtrate.setBounds((int) (350 * UIData.changeX),(int) (40 * UIData.changeY),
+				(int) (870 * UIData.changeX), (int) (100 * UIData.changeY));
 		
 		players = new DataOfPlayerPanel();
-		players.setLocation(350,150);
+		players.setLocation((int) (350 * UIData.changeX), (int) (150 * UIData.changeY));
 		
-		table.setBounds(350,350, 870, 300);
+		table.setBounds((int) (0 * UIData.changeX), (int) (350 * UIData.changeY), (int) (1280 * UIData.changeX), (int) (600 * UIData.changeY));
 		table.setVisible(true);
 		
 		//单元格值变化事件监控输出球员姓名
@@ -112,9 +115,9 @@ public class PlayerTablePanel extends MyPanel{
 			//设置面板透明
 			this.setOpaque(false);
 			//设置标签字体
-			position.setFont(new Font("宋体",Font.BOLD,14));
-			distribution.setFont(new Font("宋体",Font.BOLD,14));
-			infoType.setFont(new Font("宋体",Font.BOLD,14));
+			position.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
+			distribution.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
+			infoType.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
 //			to.setFont(new Font("宋体",Font.BOLD,14));
 			//设置字体颜色
 			position.setForeground(Color.white);
@@ -122,33 +125,33 @@ public class PlayerTablePanel extends MyPanel{
 			infoType.setForeground(Color.white);
 //			to.setForeground(Color.white);
 			//设置标签大小位置
-			position.setBounds(0, 30, 40, 20);
-			distribution.setBounds(240, 30, 40, 20);
-			infoType.setBounds(480, 30, 40, 20);
+			position.setBounds((int) (0 * UIData.changeX), (int) (30 * UIData.changeY), (int) (40 * UIData.changeX), (int) (20 * UIData.changeY));
+			distribution.setBounds((int) (240 * UIData.changeX), (int) (30 * UIData.changeY), (int) (40 * UIData.changeX), (int) (20 * UIData.changeY));
+			infoType.setBounds((int) (480 * UIData.changeX), (int) (30 * UIData.changeY), (int) (40 * UIData.changeX), (int) (20 * UIData.changeY));
 //			to.setBounds(730, 30, 20, 20);
 			
 			//搜索按钮
-			scan.setBounds(840, 28, 24, 24);
+			scan.setBounds((int) (840 * UIData.changeX), (int) (28 * UIData.changeY), 24, 24);
 			scan.addMouseListener(new MouseListenerForScan());
 			
 			String[] positions={"","前锋","中锋","后卫"};
 			positionCb = new JComboBox(positions);
-			positionCb.setFont(new Font("宋体",Font.BOLD,14));
-			positionCb.setBounds(40,30,150,20);
+			positionCb.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
+			positionCb.setBounds((int) (40 * UIData.changeX),(int) (30 * UIData.changeY),(int) (150 * UIData.changeX),(int) (20 * UIData.changeY));
 			positionCb.setBackground(Color.gray);
 			positionCb.setForeground(Color.white);
 			
 			String[] distributions={"","东部","西部","太平洋区","西南区","东南区","大西洋区","中央区","西北区"};
 			distributionCb = new JComboBox(distributions);
-			distributionCb.setFont(new Font("宋体",Font.BOLD,14));
-			distributionCb.setBounds(280,30, 150, 20);
+			distributionCb.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
+			distributionCb.setBounds((int) (280 * UIData.changeX),(int) (30 * UIData.changeY), (int) (150 * UIData.changeX), (int) (20 * UIData.changeY));
 			distributionCb.setBackground(Color.gray);
 			distributionCb.setForeground(Color.white);
 			
 			String[] infoTypes={"","得分","篮板","助攻","得分/篮板/助攻","盖帽","抢断","犯规","失误","分钟","效率","投篮","三分","罚球","两双"};
 			infoTypeCb = new JComboBox(infoTypes);
-			infoTypeCb.setFont(new Font("宋体",Font.BOLD,14));
-			infoTypeCb.setBounds(520,30, 150, 20);
+			infoTypeCb.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
+			infoTypeCb.setBounds((int) (520 * UIData.changeX),(int) (30 * UIData.changeY), (int) (150 * UIData.changeX), (int) (20 * UIData.changeY));
 			infoTypeCb.setBackground(Color.gray);
 			infoTypeCb.setForeground(Color.white);
 //			position.addKeyListener(KeyFindStrategy);

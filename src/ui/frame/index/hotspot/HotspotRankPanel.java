@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
+import ui.frame.larger.LargerPanel;
+import ui.frame.larger.LargerScrollPane;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
@@ -21,7 +23,7 @@ public class HotspotRankPanel extends JPanel implements ActionListener{
 	HotSpotComboBox1 cb_1;
 	HotSpotComboBox2 cb_2;
 	RankingPanel rankingPanel;
-	JButton searchButton;
+	JButton searchButton, searchButton2;
 
 	public HotspotRankPanel(){
 		this.setBounds(x, y, width, height);
@@ -39,6 +41,15 @@ public class HotspotRankPanel extends JPanel implements ActionListener{
 		searchButton.setVisible(true);
 		this.add(searchButton);
 		
+		searchButton2 = new JButton("查看更多");
+		searchButton2.setBounds((int) (1000  * UIData.changeX), (int) (30 * UIData.changeY),
+				(int) (200 * UIData.changeX), (int) (35 * UIData.changeY));
+		searchButton2.setBackground(Color.DARK_GRAY);
+		searchButton2.setForeground(Color.WHITE);
+		searchButton2.addActionListener(this);
+		searchButton2.setVisible(true);
+		this.add(searchButton2);
+		
 		cb_1 = new HotSpotComboBox1();
 		this.add(cb_1);
 		cb_2 = new HotSpotComboBox2();
@@ -55,6 +66,11 @@ public class HotspotRankPanel extends JPanel implements ActionListener{
 			index1 = cb_1.getSelectedIndex();
 			index2 = cb_2.getSelectedIndex();
 			RankingPanel.update.doClick();
+		}
+		
+		if(e.getSource() == searchButton2){
+			LargerPanel.addHotPanel.doClick();
+			LargerScrollPane.turnto.doClick();
 		}
 	}
 	

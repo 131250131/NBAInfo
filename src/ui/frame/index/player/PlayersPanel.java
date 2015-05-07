@@ -35,7 +35,7 @@ public class PlayersPanel extends JPanel {
 		this.setLayout(null);
 		
 		check = new JLabel("查看所选球员信息");
-		check.setBounds(100 + 845, 300 - 175, 200, 30);
+		check.setBounds((int) (945 * UIData.changeX), (int) (125 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
 		check.setForeground(Color.WHITE);
 		check.setVisible(true);
 		check.addMouseListener(new MouseAdapter(){

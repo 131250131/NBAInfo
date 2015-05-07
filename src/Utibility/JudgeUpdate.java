@@ -3,8 +3,8 @@ package Utibility;
 import data.matchdata.Matchdata;
 
 public class JudgeUpdate extends Thread {
-	 Matchdata m=new Matchdata();
-	 boolean judge =false;
+	 Matchdata m = new Matchdata();
+	 boolean judge = false;
 	 public static boolean needUpdate = false;
 	 
 	 public void run() {
