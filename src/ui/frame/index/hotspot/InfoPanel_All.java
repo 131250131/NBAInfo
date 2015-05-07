@@ -27,9 +27,7 @@ public class InfoPanel_All extends JPanel{
 	
 	PlayerVO _player, todayPlayer;
 	
-	public InfoPanel_All(PlayerVO player){
-		
-		
+	public InfoPanel_All(PlayerVO player){	
 		
 		_player = player;
 		ArrayList<MatchVO> array = Controller.matchController.getSomeMacthVO(Controller.today);
@@ -119,7 +117,8 @@ public class InfoPanel_All extends JPanel{
 			this.add(textLabel[3][i]);
 		}
 		
-		changeColor();
+		if(todayPlayer != null)
+			changeColor();
 		
 	}
 	
@@ -141,25 +140,29 @@ public class InfoPanel_All extends JPanel{
 	private String getInfoText1(int i){
 		
 		switch(i){
-		case 0:return "最近一场得分:    " ;
-		case 1:return "最近一场助攻:    " ;
-		case 2:return "最近一场篮板:    " ;
-		case 3:return "最近一场抢断:    " ;
-		case 4:return "最近一场盖帽:    " ;
+		case 0:return "今日得分:    " ;
+		case 1:return "今日助攻:    " ;
+		case 2:return "今日篮板:    " ;
+		case 3:return "今日抢断:    " ;
+		case 4:return "今日盖帽:    " ;
 		
-		case 5:return "最近一场失误:    " ;
-		case 6:return "最近一场命中:";
-		case 7:return "最近一场罚球命中:";
-		case 8:return "最近一场三分命中:" ;
-		case 9:return "最近一场上场时间:";
+		case 5:return "今日失误:    " ;
+		case 6:return "今日命中:";
+		case 7:return "今日罚球命中:";
+		case 8:return "今日三分命中:" ;
+		case 9:return "今日上场时间:";
 		
-		case 10:return "最近一场效率:  ";
+		case 10:return "今日效率:  ";
 		}
 		
 		return null;
 	}
 	
 	private String getInfoNum1(int i){
+		if(todayPlayer == null){
+			return  "今日无比赛";
+		}
+		
 		switch(i){
 		case 0:
 			numArray[0][i] = DataTransform.transDoubleTopointXX(todayPlayer.getPlayerScores());
