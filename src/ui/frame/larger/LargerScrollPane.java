@@ -7,6 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 
+import Utibility.JudgeUpdate;
+import ui.system.Controller;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
@@ -65,6 +67,11 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 		}
 		
 		if(events.getSource() == turnto){
+			if(JudgeUpdate.needUpdate == true){
+				Controller.reInit();
+				LargerPanel.refresh.doClick();
+				System.out.println("Asd");
+			}
 			setScrollLoction(UIData.slideSize * (UIData.slideMax - UIData.currentStep));
 		}
 				
