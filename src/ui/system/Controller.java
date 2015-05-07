@@ -48,15 +48,10 @@ public class Controller {
 	public static void reInit(){
 		mainControllerService mainController = new MainController();
 		mainController.init();
-		playerController = null;
 		playerController = mainController.getPlayerController();
-		teamController = null;
 		teamController = mainController.getTeamController();
-		matchController = null;
 		matchController = mainController.getMatchController();
-		dataCollectorService = null;
 		dataCollectorService = new DataCollector();
-		associationController = null;
 		associationController = new AssociationData();
 		readAllMatch();
 		setUpRank();

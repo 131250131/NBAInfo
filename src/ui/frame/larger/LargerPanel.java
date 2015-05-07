@@ -39,26 +39,26 @@ public class LargerPanel extends JPanel implements ActionListener{
 		this.add(scrollBack);
 		
 		indexBoard = new IndexBoard();
-		this.add(indexBoard);
+		this.add(indexBoard, 0);
 		indexScrollPane = new IndexScrollPane();
-		this.add(indexScrollPane);	
+		this.add(indexScrollPane, 1);	
 		
 		ImageLabel[] addback1 = new ImageLabel[100];
 		for(int i = 0; i < 100; i++){
 			addback1[i] = new ImageLabel(ImageSaver.getIcon("新增页面背景"), UIData.slideSize * i, 0, UIData.frameWidth, UIData.frameHeight);
-			this.add(addback1[i]);
+			this.add(addback1[i], i + 2);
 		}
 		
 		ImageLabel lb_Background3 = new ImageLabel(ImageSaver.getIcon("首页图片2"), UIData.indexScrollPaneX, 0, UIData.frameWidth, UIData.frameHeight);
-		this.add(lb_Background3);
+		this.add(lb_Background3, 103);
 		
 		JLabel lb_Background2 = new JLabel(ImageSaver.getIcon("主页背景"));
 		lb_Background2.setBounds(UIData.indexScrollPaneX + 2, 0, UIData.frameWidth, UIData.frameHeight);
 		lb_Background2.setVisible(true);
-		this.add(lb_Background2);
+		this.add(lb_Background2, 104);
 		
 		ImageLabel lb_Background = new ImageLabel(ImageSaver.getIcon("最底层背景图"), UIData.indexScrollPaneX, 0, UIData.frameWidth, UIData.frameHeight);
-		this.add(lb_Background);
+		this.add(lb_Background, 105);
 		
 		addPlayerPanel = new JButton();
 		addPlayerPanel.addActionListener(this);
@@ -113,8 +113,9 @@ public class LargerPanel extends JPanel implements ActionListener{
 		}
 		
 		if(e.getSource() == refresh){
+			indexScrollPane.setVisible(false);
 			indexScrollPane = new IndexScrollPane();
-			this.add(indexScrollPane);
+			this.add(indexScrollPane, 1);
 		}
 	}
 

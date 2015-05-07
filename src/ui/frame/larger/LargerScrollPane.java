@@ -70,7 +70,7 @@ public class LargerScrollPane extends JScrollPane implements ActionListener{
 			if(JudgeUpdate.needUpdate == true){
 				Controller.reInit();
 				LargerPanel.refresh.doClick();
-				System.out.println("Asd");
+				JudgeUpdate.setFalse();
 			}
 			setScrollLoction(UIData.slideSize * (UIData.slideMax - UIData.currentStep));
 		}
