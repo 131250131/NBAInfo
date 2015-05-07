@@ -178,6 +178,7 @@ public class MyTable extends JScrollPane implements MouseListener{
         	content=addSerialNum(content);
         	columnNames=addSerialNum(columnNames);
         }
+	   System.out.println(",,,,,,"+content[0][0]);
 		model.setDataVector(content, columnNames);
 		setWidth();
 		this.columnNames=columnNames;

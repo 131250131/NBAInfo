@@ -45,6 +45,23 @@ public class Controller {
 		setUpRank();
 	}
 	
+	public static void reInit(){
+		mainControllerService mainController = new MainController();
+		mainController.init();
+		playerController = null;
+		playerController = mainController.getPlayerController();
+		teamController = null;
+		teamController = mainController.getTeamController();
+		matchController = null;
+		matchController = mainController.getMatchController();
+		dataCollectorService = null;
+		dataCollectorService = new DataCollector();
+		associationController = null;
+		associationController = new AssociationData();
+		readAllMatch();
+		setUpRank();
+	}
+	
 	public static ArrayList<String> dateList;
 	
 	public static ArrayList<PlayerVO> today_Scores, today_Assists, today_rebounds, today_blocks, today_steals, today_FTP, today_3FTP, today_FP;
@@ -59,7 +76,7 @@ public class Controller {
 		today_FP = Controller.dataCollectorService.getSomeDayPlayers_FGP(today);
 		today_3FTP = Controller.dataCollectorService.getSomeDayPlayers_3FGP(today);
 		today_FTP = Controller.dataCollectorService.getSomeDayPlayers_FTGP(today);
-//		all_Scores = Controller.dataCollectorService.getSeasonHotPlayers_AverScore();
+		all_Scores = Controller.dataCollectorService.getSeasonHotPlayers_AverScore();
 		all_Assists = Controller.dataCollectorService.getSeasonHotPlayers_AverAssist();
 		all_rebounds = Controller.dataCollectorService.getSeasonHotPlayers_AverRebound();
 		all_blocks = Controller.dataCollectorService.getSeasonHotPlayers_AverBlock();

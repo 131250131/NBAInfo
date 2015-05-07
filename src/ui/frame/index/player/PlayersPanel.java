@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
@@ -25,13 +26,35 @@ public class PlayersPanel extends JPanel {
 	private JComboBox<String> teamName;
 	private MyTable table;
 	String[] columname={"球员","球队","位置","身高","体重","经验","来自"};
-	
+	JLabel check;
 	//调用逻辑层接口
 	
 	public PlayersPanel(){
 		this.setBounds((int) (390 * UIData.changeX), (int) (220 * UIData.changeY), (int) (1480 * UIData.changeX), (int) (1000 * UIData.changeY));
 		this.setOpaque(false);
 		this.setLayout(null);
+		
+		check = new JLabel("查看所选球员信息");
+		check.setBounds(100 + 845, 300 - 175, 200, 30);
+		check.setForeground(Color.WHITE);
+		check.setVisible(true);
+		check.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent arg0) {
+				if(getPlayerName() != null){
+					Controller.addPlayerPanel(getPlayerName());
+				}
+			}
+			
+			public void mouseEntered(MouseEvent arg0) {
+				check.setForeground(Color.RED);
+			}
+
+			public void mouseExited(MouseEvent arg0) {
+				check.setForeground(Color.WHITE);
+			}	
+		});
+		this.add(check);
+		
 		//加字母标签
 		char firstC = 'A';
 		int firstAS = (int)firstC - 1;
@@ -114,6 +137,14 @@ public class PlayersPanel extends JPanel {
 			data[i][6] = playerlist.get(i).getSchool();
 		}
 		table.update(columname, data);
+	}
+
+	private String getPlayerName(){
+		String str = null;
+		if(table.getTable().getSelectedColumnCount() != 0){
+			str = (String)table.getTable().getValueAt(table.getTable().getSelectedRow(), 1);
+		}
+		return str;
 	}
 	
 	class JLabelOfAlphabet extends JLabel implements MouseListener{

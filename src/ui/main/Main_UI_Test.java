@@ -3,6 +3,7 @@ package ui.main;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import Utibility.JudgeUpdate;
 import ui.system.Controller;
 import ui.system.UIData;
 
@@ -10,18 +11,20 @@ public class Main_UI_Test {
 	
 	public static void main(String[] args) {
 		
-//		int frameSizeX = getFrameSizeX();
-//		int frameSizeY = getFrameSizeY();
+		int frameSizeX = getFrameSizeX();
+		int frameSizeY = getFrameSizeY();
 		
-		int frameSizeX = getFullScreenSizeX();
-		int frameSizeY = getFullScreenSizeY();
+//		int frameSizeX = getFullScreenSizeX();
+//		int frameSizeY = getFullScreenSizeY();
 		
 		@SuppressWarnings("unused")
 		UIData uiData = new UIData(frameSizeX , frameSizeY);
-		UIData.setFavoriteTeam("CLE");
 		
 		Controller.init();
-		Controller.start();		
+		Controller.start();	
+		
+		JudgeUpdate judgeUpdate = new JudgeUpdate();
+		judgeUpdate.start();
 	}
 	
 	public static int getFrameSizeX(){

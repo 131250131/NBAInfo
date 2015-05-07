@@ -2,6 +2,8 @@ package ui.frame.match;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,6 +11,7 @@ import javax.swing.JPanel;
 import logic.PlayerController;
 import logicservice.playerControllerService;
 import ui.myUI.ImageLabel;
+import ui.system.Controller;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 import vo.PlayerVO;
@@ -47,6 +50,8 @@ public class DataOfPlayerPanel extends JPanel {
 	
 //9.球员学校或国家
 	private JLabel school;
+	
+	String _playerName;
 		
 	//调用逻辑层接口
 	playerControllerService pcs = PlayerController.getInstance();
@@ -119,6 +124,7 @@ public class DataOfPlayerPanel extends JPanel {
 		portrait = new ImageLabel(ImageSaver.getPlayerIcon("null2"), 
 				(int) (10 * UIData.changeX), (int) (10 * UIData.changeY), (int) (230 * UIData.changeX), (int) (185 * UIData.changeY));
 		this.add(portrait);
+		_playerName = "null";
 		this.repaint();
 		//信息
 		playerName.setText("球员：");
@@ -144,7 +150,13 @@ public class DataOfPlayerPanel extends JPanel {
 			//头像
 			portrait = new ImageLabel(ImageSaver.getPlayerIcon(temp.getPlayerName()), 
 					(int) (10 * UIData.changeX), (int) (10 * UIData.changeY), (int) (230 * UIData.changeX), (int) (185 * UIData.changeY));
+			portrait.addMouseListener(new MouseAdapter(){
+				public void mouseClicked(MouseEvent arg0) {	
+					Controller.addPlayerPanel(_playerName);
+				}
+			});
 			this.add(portrait);
+			_playerName = temp.getPlayerName();
 			this.repaint();
 			//信息
 			playerName.setText("球员：" + temp.getPlayerName());

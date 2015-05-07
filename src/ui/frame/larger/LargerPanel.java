@@ -23,9 +23,9 @@ import ui.system.UIData;
 @SuppressWarnings("serial")
 public class LargerPanel extends JPanel implements ActionListener{
 	
-	IndexScrollPane indexScrollPane;
+	public static IndexScrollPane indexScrollPane;
 	IndexBoard indexBoard;
-	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel, addMatchPanel;
+	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel, addMatchPanel, refresh;
 	
 	public LargerPanel(){
 		this.setLayout(null);
@@ -96,6 +96,12 @@ public class LargerPanel extends JPanel implements ActionListener{
 		if(e.getSource() == addMatchPanel){
 			MatchScorllPane matchSP = new MatchScorllPane(Controller.currentMatch);
 			this.add(matchSP);
+		}
+		
+		if(e.getSource() == refresh){
+			indexScrollPane.setVisible(false);
+			indexScrollPane = new IndexScrollPane();
+			this.add(indexScrollPane); 
 		}
 	}
 
