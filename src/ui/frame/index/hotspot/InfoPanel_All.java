@@ -29,26 +29,33 @@ public class InfoPanel_All extends JPanel{
 	
 	public InfoPanel_All(PlayerVO player){
 		
+		
+		
 		_player = player;
-		ArrayList<MatchVO> array = Controller.matchController.getMatchOfPlayer(player.getPlayerName());
-		boolean flag = true;
-		ArrayList<PlayerVO> list1 = array.get(array.size() - 1).getRightplayerlist();
-		ArrayList<PlayerVO> list2 = array.get(array.size() - 1).getLeftplayerlist();
+		ArrayList<MatchVO> array = Controller.matchController.getSomeMacthVO(Controller.today);
 		
-		for(int i = 0; i < list1.size(); i++){
-			PlayerVO playerr = list1.get(i);
-			if(playerr.getPlayerName().equals(player.getPlayerName())){
-				todayPlayer = playerr;
-				flag = false;
-			}
-		}
-		
-		if(flag == true){
-			for(int i = 0; i < list2.size(); i++){
-				PlayerVO playerr = list2.get(i);
-				if(playerr.getPlayerName().equals(player.getPlayerName())){
-					todayPlayer = playerr;
+		for(int i = 0; i < array.size(); i++){
+			boolean flag = true;
+			if(array.get(i).getLeftTeam().getShortName().equals(player.getTeamShortName())){
+				ArrayList<PlayerVO> list = array.get(i).getLeftplayerlist();
+				for(int j = 0; j < list.size(); j++){
+					if(list.get(j).getPlayerName().equals(player.getPlayerName())){
+						todayPlayer = list.get(j);
+					}
 				}
+			}
+			
+			if(array.get(i).getRightTeam().getShortName().equals(player.getTeamShortName())){
+				ArrayList<PlayerVO> list = array.get(i).getRightplayerlist();
+				for(int j = 0; j < list.size(); j++){
+					if(list.get(j).getPlayerName().equals(player.getPlayerName())){
+						todayPlayer = list.get(j);
+					}
+				}
+			}
+			
+			if(flag == false){
+				i += 100;
 			}
 		}
 		

@@ -46,8 +46,8 @@ public class HotspotPanel extends JPanel{
 		TodayPlayerPanel todayPlayerPanel = new TodayPlayerPanel(todayPlayer);
 		this.add(todayPlayerPanel);
 		
-//		InfoPanel_All infoAll = new InfoPanel_All(allPlayer);
-//		this.add(infoAll);
+		InfoPanel_All infoAll = new InfoPanel_All(allPlayer);
+		this.add(infoAll);
 		
 		AllTimePlayerPanel allTimePlayerPanel = new AllTimePlayerPanel(allPlayer);
 		this.add(allTimePlayerPanel);
