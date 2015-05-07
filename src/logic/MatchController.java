@@ -1,5 +1,6 @@
 package logic;
 
+import java.io.File;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -283,7 +284,17 @@ public class MatchController implements matchControllerService{
 		public int getAllMatchesNum() {
 			return this.allMatches.size();
 		}
+		public boolean Matchupdate() {
+			// 
+			boolean Hasupdate=matchdata.Matchupdate();
+			   if(Hasupdate){
+				  this.updateAll();
+			   }
+			  return Hasupdate;
 			
+			
+
+		}
 }
 
 		

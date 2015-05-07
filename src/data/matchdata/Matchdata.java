@@ -313,23 +313,14 @@ public class Matchdata implements MatchDataService{
 	@Override
 	public boolean Matchupdate() {
 		// 
-        
 		boolean Hasupdate=false;
 		File file = new File(filePath);                
  		File[] File = file.listFiles();
-		   if(File.length!=number){
+ 		if(File.length!=number){
 			   Hasupdate=true;
-			   System.out.println("ppp");
-		   matches=new ArrayList<MatchPO>();
-		   MatchController m=MatchController.getInstance();
-		   m.updateAll();
-		   System.out.println("ttt");
-		   }
-		   System.out.println(Hasupdate);
-		  return Hasupdate;
-		
-		
-
+ 		}
+ 		return Hasupdate;
+ 		
 	}
 	@Override
 	public PlayerPO playerdataoperator(String name,String team,int time, int FG, int FGTry,
