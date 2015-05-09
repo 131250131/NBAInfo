@@ -193,7 +193,7 @@ public class ParameterExplicate {
 		super();
 	}
 
-	public boolean isPlayer() {
+	public boolean getisPlayer() {
 		return isPlayer;
 	}
 

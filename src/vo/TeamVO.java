@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import logic.Team;
 import po.TeamPO;
+import test.data.TeamHighInfo;
+import test.data.TeamHotInfo;
+import test.data.TeamNormalInfo;
 
 public class TeamVO implements Comparable<TeamVO> {
 	//TeamVO用于bl层和ui层的交互，
@@ -1207,5 +1210,42 @@ public class TeamVO implements Comparable<TeamVO> {
 		public void setGuset_winrate(double guset_winrate) {
 			this.guset_winrate = guset_winrate;
 		}
-
+        public TeamHighInfo getTeamHighInfo(){
+        	TeamHighInfo t=new TeamHighInfo();
+        	t.setAssistEfficient(teamAssE);
+        	t.setDefendEfficient(teamDefE);
+        	t.setDefendReboundEfficient(teamDefERebE);
+        	t.setOffendEfficient(teamOffERebE);
+        	t.setOffendRound(attackRounds);
+        	t.setStealEfficient(teamSteE);
+        	t.setTeamName(teamName);
+        	t.setWinRate(winRate);
+        	return t;
+        }
+        public TeamNormalInfo getTeamNormalInfo(){
+        	TeamNormalInfo t=new TeamNormalInfo();
+        	t.setAssist(aver_teamAssists);
+        	t.setBlockShot(aver_teamBlocks);
+        	t.setDefendRebound(aver_teamDeffenceRebounds);
+        	t.setFault(aver_teamTurnovers);
+        	t.setFoul(aver_teamFouls);
+        	t.setNumOfGame(compGames);
+        	t.setOffendRebound(aver_teamOffenceRebounds);
+        	t.setPenalty(teamFTGP);
+        	t.setPoint(aver_teamScores);
+        	t.setRebound(aver_teamTotalRebounds);
+        	t.setShot(teamFGP);
+        	t.setSteal(aver_teamSteals);
+        	t.setTeamName(teamName);
+        	t.setThree(team3FGP);
+        	return t;
+        }
+        public TeamHotInfo getTeamHotInfo(String f){
+        	TeamHotInfo t =new TeamHotInfo();
+        	t.setField(f);
+        	t.setLeague(division);
+        	t.setTeamName(teamName);
+        	t.setValue();
+        	return t;
+        }
 }

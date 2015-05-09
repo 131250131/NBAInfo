@@ -50,8 +50,25 @@ public class MainController implements mainControllerService{
 	public ArrayList<Object> getResult(ParameterExplicate parameter) {
 		// TODO Auto-generated method stub
 		//根据各种结果调用方法
-		//下面是我写的一个例子，那个方法写的很详细，注释也很详细
-		
+		//下面是我写一个基本框架，你填一下然后加一下@阿超
+		//对球员的操作
+		if(parameter.getisPlayer()){
+			//平均
+			if(parameter.isAvarage()){
+			      if(parameter.getMode().getField().equals("score")){
+				          Play
+			      }
+			//秋员的得分、助攻、抢断、篮板等等最好全都加进去
+		      }
+			//总数据
+			else{
+				
+			}
+		}
+		//对球队的操作,差不多模仿一下player写
+		else{
+			
+		}
 		return null;
 	}
 	

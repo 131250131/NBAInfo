@@ -2,6 +2,10 @@ package vo;
 
 import java.util.ArrayList;
 
+import test.data.PlayerHighInfo;
+import test.data.PlayerHotInfo;
+import test.data.PlayerKingInfo;
+import test.data.PlayerNormalInfo;
 import logic.Player;
 import logic.TeamController;
 
@@ -1195,9 +1199,66 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				result = TeamController.getTeamDistribution(teamName);
 				return result;
 			}
-			
-	
-			
-
+		    public 
+	       public PlayerHighInfo getPlayerHighInfo(){
+	    	   PlayerHighInfo playerhighInfo =new PlayerHighInfo();
+	    	   playerhighInfo.setAssistEfficient(AR);
+	    	   playerhighInfo.setBlockShotEfficient(BR);
+	    	   playerhighInfo.setDefendReboundEfficient(d_RR);
+	    	   playerhighInfo.setFaultEfficient(TR);
+	    	   playerhighInfo.setGmSc(playerGmScER);
+	    	   playerhighInfo.setLeague("east");
+	    	   playerhighInfo.setName(playerName);
+	    	   playerhighInfo.setOffendReboundEfficient(o_RR);
+	    	   playerhighInfo.setPosition(position);
+	    	   //playerhighInfo.setRealShot(realShot);
+	    	   playerhighInfo.setReboundEfficient(RR);
+	    	   //playerhighInfo.setShotEfficient();
+	    	   playerhighInfo.setStealEfficient(SR);
+	    	   playerhighInfo.setTeamName(teamShortName);
+	    	   return playerhighInfo;
+	       }
+		  public PlayerNormalInfo getPlayerNormalInfo(){
+			  PlayerNormalInfo pl=new PlayerNormalInfo();
+			  pl.setAge(playerAge);
+			  pl.setAssist(aver_playerAssists);
+			  pl.setBlockShot(aver_playerBlocks);
+			  pl.setDefend(aver_playerDeffenceRebounds);
+			  pl.setEfficiency(playerPER);
+			  pl.setFault(aver_playerTurnovers);
+			  pl.setFoul(aver_playerFouls);
+			  pl.setMinute(aver_playerPlayTime);
+			  pl.setName(playerName);
+			  pl.setNumOfGame(Integer.parseInt(playerNumber));
+			  pl.setOffend(aver_playerOffenceRebounds);
+			  pl.setPenalty(playerFTGP);
+			  pl.setPoint(aver_playerScores);
+			  pl.setRebound(aver_playerTotalRebounds);
+			  pl.setShot(playerFGP);
+			  pl.setStart(startTimes);
+			  pl.setSteal(aver_playerSteals);
+			  pl.setTeamName(teamShortName);
+			  pl.setThree(player3FGP);
+			  return pl;
+		  }
+		  public PlayerHotInfo getPLayerHOTInfo(String f){
+			  PlayerHotInfo pl=new PlayerHotInfo();
+			  pl.setField(f);
+			  pl.setName(playerName);
+			  pl.setPosition(position);
+			  pl.setTeamName(teamShortName);
+			  pl.setUpgradeRate(advancedP);//!
+			  pl.setValue();
+			  return pl;
+		  }
+          public PlayerKingInfo getPlayerKingInfo(String f){
+        	  PlayerKingInfo pl=new PlayerKingInfo();
+        	  pl.setField(f);
+        	  pl.setName(playerName);
+        	  pl.setPosition(position);
+        	  pl.setTeamName(teamShortName);
+        	  pl.setValue();
+        	  return pl;
+          }
 	}
 
