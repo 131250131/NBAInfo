@@ -627,13 +627,15 @@ public class AssociationData implements associationDataService{
 		this.setPlayerPER(playerPER);//队员效率(PER)
 	}
 
-
+	public void setwh(int w, int h){
+		screenwidth = h;
+		screenheight =w;
+	}
 
 	
 
 
-	@Override
-	public void setwh() {
+	public void writewh( ){
 		// TODO Auto-generated method stub
 		ArrayList<Integer> p=new ArrayList<Integer>();
 		p.add(screenwidth);

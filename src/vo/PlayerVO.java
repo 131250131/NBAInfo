@@ -1199,9 +1199,9 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				result = TeamController.getTeamDistribution(teamName);
 				return result;
 			}
-	       public PlayerHighInfo getPlayerHighInfo(String option){//此处option可能没有用，但是确保万一还是传个"aveg"进去吧
+		   
+	       public PlayerHighInfo getPlayerHighInfo(){
 	    	   PlayerHighInfo playerhighInfo =new PlayerHighInfo();
-	    	   if(option.equals("aveg")) {
 	    	   playerhighInfo.setAssistEfficient(AR);
 	    	   playerhighInfo.setBlockShotEfficient(BR);
 	    	   playerhighInfo.setDefendReboundEfficient(d_RR);
@@ -1216,28 +1216,10 @@ public class PlayerVO implements Comparable<PlayerVO>{
 	    	   //playerhighInfo.setShotEfficient();
 	    	   playerhighInfo.setStealEfficient(SR);
 	    	   playerhighInfo.setTeamName(teamShortName);
-	    	   }
-	    	   else{
-	    		   playerhighInfo.setAssistEfficient(AR);
-		    	   playerhighInfo.setBlockShotEfficient(BR);
-		    	   playerhighInfo.setDefendReboundEfficient(d_RR);
-		    	   playerhighInfo.setFaultEfficient(TR);
-		    	   playerhighInfo.setGmSc(playerGmScER);
-		    	   playerhighInfo.setLeague("east");
-		    	   playerhighInfo.setName(playerName);
-		    	   playerhighInfo.setOffendReboundEfficient(o_RR);
-		    	   playerhighInfo.setPosition(position);
-		    	   //playerhighInfo.setRealShot(realShot);
-		    	   playerhighInfo.setReboundEfficient(RR);
-		    	   //playerhighInfo.setShotEfficient();
-		    	   playerhighInfo.setStealEfficient(SR);
-		    	   playerhighInfo.setTeamName(teamShortName);
-	    	   }
 	    	   return playerhighInfo;
 	       }
-		  public PlayerNormalInfo getPlayerNormalInfo(String option){
+		  public PlayerNormalInfo getPlayerNormalInfo(){
 			  PlayerNormalInfo pl=new PlayerNormalInfo();
-			  if(option.equals("aveg")){
 			  pl.setAge(playerAge);
 			  pl.setAssist(aver_playerAssists);
 			  pl.setBlockShot(aver_playerBlocks);
@@ -1257,103 +1239,26 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			  pl.setSteal(aver_playerSteals);
 			  pl.setTeamName(teamShortName);
 			  pl.setThree(player3FGP);
-			  }
-			  else{
-				  pl.setAge(playerAge);
-				  pl.setAssist(playerAssists);
-				  pl.setBlockShot(playerBlocks);
-				  pl.setDefend(playerDeffenceRebounds);
-				  pl.setEfficiency(playerPER);
-				  pl.setFault(playerTurnovers);
-				  pl.setFoul(playerFouls);
-				  pl.setMinute(playerPlayTime);
-				  pl.setName(playerName);
-				  pl.setNumOfGame(Integer.parseInt(playerNumber));
-				  pl.setOffend(playerOffenceRebounds);
-				  pl.setPenalty(playerFTGP);
-				  pl.setPoint(playerScores);
-				  pl.setRebound(playerTotalRebounds);
-				  pl.setShot(playerFGP);
-				  pl.setStart(startTimes);
-				  pl.setSteal(playerSteals);
-				  pl.setTeamName(teamShortName);
-				  pl.setThree(player3FGP);
-			  }
 			  return pl;
 		  }
-		  public PlayerHotInfo getPLayerHOTInfo(String f,String option){
+		  public PlayerHotInfo getPLayerHOTInfo(String f){
 			  PlayerHotInfo pl=new PlayerHotInfo();
 			  pl.setField(f);
 			  pl.setName(playerName);
 			  pl.setPosition(position);
 			  pl.setTeamName(teamShortName);
 			  pl.setUpgradeRate(advancedP);//!
-			  pl.setValue(this.getdatebystring(f, option));
+			  pl.setValue();
 			  return pl;
 		  }
-          public PlayerKingInfo getPlayerKingInfo(String f,String option){//此处option可能没有用，但是确保万一还是传个"aveg"进去吧
+          public PlayerKingInfo getPlayerKingInfo(String f){
         	  PlayerKingInfo pl=new PlayerKingInfo();
         	  pl.setField(f);
         	  pl.setName(playerName);
         	  pl.setPosition(position);
         	  pl.setTeamName(teamShortName);
-        	  pl.setValue(this.getdatebystring(f, option));
+        	  pl.setValue();
         	  return pl;
-          }
-          public double getdatebystring(String f,String option){
-        	  if(option.equals("aveg")){
-        		  if(f.equals("score")){
-        			  return this.aver_playerScores;
-        		  }
-        		  if(f.equals("rebound")){
-        			  return this.aver_playerTotalRebounds;
-        		  }
-        		  if(f.equals("assit")){
-        			  return this.aver_playerAssists;
-        		  }
-        		  if(f.equals("3FGP")){
-        			  return this.player3FGP;
-        		  }
-        		  if(f.equals("FGP")){
-        			  return this.playerFGP;
-        		  }
-        		  if(f.equals("FTGP")){
-        			  return this.playerFTGP;
-        		  }
-        		  if(f.equals("blockShot")){
-        			  return this.aver_playerBlocks;
-        		  }
-        		  if(f.equals("steal")){
-        			  return this.aver_playerSteals;
-        		  }
-        	  }
-        	  else{
-        		  if(f.equals("score")){
-        			  return this.playerScores;
-        		  }
-        		  if(f.equals("rebound")){
-        			  return this.playerTotalRebounds;
-        		  }
-        		  if(f.equals("assit")){
-        			  return this.playerAssists;
-        		  }
-        		  if(f.equals("3FGP")){
-        			  return this.player3FGP;
-        		  }
-        		  if(f.equals("FGP")){
-        			  return this.playerFGP;
-        		  }
-        		  if(f.equals("FTGP")){
-        			  return this.playerFTGP;
-        		  }
-        		  if(f.equals("blockShot")){
-        			  return this.playerBlocks;
-        		  }
-        		  if(f.equals("steal")){
-        			  return this.playerSteals;
-        		  }
-        	  }
-        	  return 0;
           }
 	}
 

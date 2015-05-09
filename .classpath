@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/user/Desktop/软工三/软工三迭代二/测试相关文档/docs/功能测试/testData.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -31,7 +31,8 @@ public interface associationDataService {
 //	public double getPlayerSER();
 	
 	public int getscreenWidth();
-    public void setwh();
+    public void setwh(int w,int h);
+    public void	writewh();
 	public int getscreenHeight();
 
 	
