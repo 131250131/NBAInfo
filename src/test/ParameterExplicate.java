@@ -12,85 +12,6 @@ public class ParameterExplicate {
 	private int number = 50;// 前多少条信息，默认最大
 	private boolean isHigh = false;// 是否为高阶数据
 	private boolean isAverage = true;// 是否为平均数，默认是
-	public class Mode {
-		private String mode = "all"; // all or hot or king，默认all
-		private String field; // score or rebound or assist
-		private boolean isDaily; // season or daily
-
-		public Mode() {
-			super();
-		}
-
-		public Mode(String mode, String field, boolean isDaily) {
-			super();
-			this.mode = mode;
-			this.field = field;
-			this.isDaily = isDaily;
-		}
-
-		public String getMode() {
-			return mode;
-		}
-
-		public void setMode(String mode) {
-			this.mode = mode;
-		}
-
-		public String getField() {
-			return field;
-		}
-
-		public void setField(String field) {
-			this.field = field;
-		}
-
-		public boolean isDaily() {
-			return isDaily;
-		}
-
-		public void setDaily(boolean isDaily) {
-			this.isDaily = isDaily;
-		}
-
-	}
-	public class Filter {
-		private String filterName;// position or league or age
-		private String filterValue;
-		private int[] range; // 2位整数数组，将会用到Integer.MAX,MIN
-
-		public Filter() {
-			super();
-			range = new int[] { Integer.MIN_VALUE, Integer.MAX_VALUE };
-			filterValue = "All";
-		}
-
-		public String getFilterName() {
-			return filterName;
-		}
-
-		public void setFilterName(String filterName) {
-			this.filterName = filterName;
-		}
-
-		public String getFilterValue() {
-			return filterValue;
-		}
-
-		public void setFilterValue(String filterValue) {
-			this.filterValue = filterValue;
-		}
-
-		public int[] getRange() {
-			return range;
-		}
-
-		public void setRange(int[] range) {
-			this.range = range;
-		}
-
-	}
-
-	
 	
 	public ParameterExplicate(String[] args) {
 		// 采用从前往后理解的方式进行读取命令
@@ -139,7 +60,7 @@ public class ParameterExplicate {
 				break;
 			case "-hot":
 				String field = input.get(1);
-				ParameterExplicate.Mode mode = new ParameterExplicate.Mode();
+				Mode mode = new Mode();
 				mode.setMode("hot");
 				mode.setField(field);
 				this.addSort(new Sort(field, false));
@@ -150,7 +71,7 @@ public class ParameterExplicate {
 			case "-king":
 				String fieldKing = input.get(1);
 				String during = input.get(2);
-				ParameterExplicate.Mode modeKing = new ParameterExplicate.Mode();
+				Mode modeKing = new Mode();
 				modeKing.setMode("king");
 				modeKing.setField(fieldKing);
 				this.addSort(new Sort(fieldKing, false));
@@ -189,7 +110,7 @@ public class ParameterExplicate {
 				for (String token : listFilter) {
 					token = token.trim();
 					String[] pair = token.split("\\.");
-					ParameterExplicate.Filter filter = new ParameterExplicate.Filter();
+					Filter filter = new Filter();
 					filter.setFilterName(pair[0]);
 					if (filter.getFilterName().equals("age")) {
 						// 处理此处为age的情况

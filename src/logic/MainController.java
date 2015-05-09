@@ -50,6 +50,8 @@ public class MainController implements mainControllerService{
 	public ArrayList<Object> getResult(ParameterExplicate parameter) {
 		// TODO Auto-generated method stub
 		//根据各种结果调用方法
+		//下面是我写的一个例子，那个方法写的很详细，注释也很详细
+		
 		return null;
 	}
 	
