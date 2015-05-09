@@ -1,5 +1,8 @@
 package logic;
 
+import java.util.ArrayList;
+
+import test.ParameterExplicate;
 import logicservice.mainControllerService;
 
 /*
@@ -41,6 +44,13 @@ public class MainController implements mainControllerService{
 	
 	public MatchController getMatchController(){
 		return matchController;
+	}
+
+	@Override
+	public ArrayList<Object> getResult(ParameterExplicate parameter) {
+		// TODO Auto-generated method stub
+		//根据各种结果调用方法
+		return null;
 	}
 	
 }

@@ -53,6 +53,7 @@ public class MatchController implements matchControllerService{
 		
 		
 		public void updateAll(){
+			
 			playerController.updatePlayersInfo_Basic();
 			teamController.updateTeamInfo_Basic();
 			matchdata.readMatch();

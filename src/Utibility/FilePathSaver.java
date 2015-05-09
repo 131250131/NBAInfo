@@ -49,5 +49,7 @@ public class FilePathSaver {
 	public String getTeamFilePath(){
 		return teamFilePath;
 	}
-
+    public void setMatchString(String path){
+    	  this.matchFilePath=path;
+    }
 }
