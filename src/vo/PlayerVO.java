@@ -1259,6 +1259,65 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	  pl.setTeamName(teamShortName);
         	  pl.setValue();
         	  return pl;
+//<<<<<<< HEAD
+//=======
+          }
+          
+          public double getdatebystring(String f,String option){
+        	  if(option.equals("aveg")){
+        		  if(f.equals("score")){
+        			  return this.aver_playerScores;
+        		  }
+        		  if(f.equals("rebound")){
+        			  return this.aver_playerTotalRebounds;
+        		  }
+        		  if(f.equals("assit")){
+        			  return this.aver_playerAssists;
+        		  }
+        		  if(f.equals("3FGP")){
+        			  return this.player3FGP;
+        		  }
+        		  if(f.equals("FGP")){
+        			  return this.playerFGP;
+        		  }
+        		  if(f.equals("FTGP")){
+        			  return this.playerFTGP;
+        		  }
+        		  if(f.equals("blockShot")){
+        			  return this.aver_playerBlocks;
+        		  }
+        		  if(f.equals("steal")){
+        			  return this.aver_playerSteals;
+        		  }
+        	  }
+        	  else{
+        		  if(f.equals("score")){
+        			  return this.playerScores;
+        		  }
+        		  if(f.equals("rebound")){
+        			  return this.playerTotalRebounds;
+        		  }
+        		  if(f.equals("assit")){
+        			  return this.playerAssists;
+        		  }
+        		  if(f.equals("3FGP")){
+        			  return this.player3FGP;
+        		  }
+        		  if(f.equals("FGP")){
+        			  return this.playerFGP;
+        		  }
+        		  if(f.equals("FTGP")){
+        			  return this.playerFTGP;
+        		  }
+        		  if(f.equals("blockShot")){
+        			  return this.playerBlocks;
+        		  }
+        		  if(f.equals("steal")){
+        			  return this.playerSteals;
+        		  }
+        	  }
+        	  return 0;
+//>>>>>>> branch 'master' of ssh://git@github.com/131250131/NBAInfo.git
           }
 	}
 
