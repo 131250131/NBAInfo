@@ -1300,6 +1300,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	  pl.setValue(this.getdatebystring(f, option));
         	  return pl;
           }
+          
           public double getdatebystring(String f,String option){
         	  if(option.equals("aveg")){
         		  if(f.equals("score")){
