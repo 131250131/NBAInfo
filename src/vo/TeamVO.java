@@ -1210,8 +1210,9 @@ public class TeamVO implements Comparable<TeamVO> {
 		public void setGuset_winrate(double guset_winrate) {
 			this.guset_winrate = guset_winrate;
 		}
-        public TeamHighInfo getTeamHighInfo(){
+        public TeamHighInfo getTeamHighInfo(String option){ //此处option可能没有用，但是确保万一还是传个"aveg"进去吧
         	TeamHighInfo t=new TeamHighInfo();
+        	if(option.equals("aveg")){
         	t.setAssistEfficient(teamAssE);
         	t.setDefendEfficient(teamDefE);
         	t.setDefendReboundEfficient(teamDefERebE);
@@ -1220,10 +1221,22 @@ public class TeamVO implements Comparable<TeamVO> {
         	t.setStealEfficient(teamSteE);
         	t.setTeamName(teamName);
         	t.setWinRate(winRate);
+        	}
+        	else{
+        		t.setAssistEfficient(teamAssE);
+            	t.setDefendEfficient(teamDefE);
+            	t.setDefendReboundEfficient(teamDefERebE);
+            	t.setOffendEfficient(teamOffERebE);
+            	t.setOffendRound(attackRounds);
+            	t.setStealEfficient(teamSteE);
+            	t.setTeamName(teamName);
+            	t.setWinRate(winRate);
+        	}
         	return t;
         }
-        public TeamNormalInfo getTeamNormalInfo(){
+        public TeamNormalInfo getTeamNormalInfo(String option){ 
         	TeamNormalInfo t=new TeamNormalInfo();
+        	if(option.equals("aveg")){
         	t.setAssist(aver_teamAssists);
         	t.setBlockShot(aver_teamBlocks);
         	t.setDefendRebound(aver_teamDeffenceRebounds);
@@ -1238,14 +1251,86 @@ public class TeamVO implements Comparable<TeamVO> {
         	t.setSteal(aver_teamSteals);
         	t.setTeamName(teamName);
         	t.setThree(team3FGP);
+        	}
+        	else{
+        		t.setAssist(teamAssists);
+            	t.setBlockShot(teamBlocks);
+            	t.setDefendRebound(teamDeffenceRebounds);
+            	t.setFault(teamTurnovers);
+            	t.setFoul(teamFouls);
+            	t.setNumOfGame(compGames);
+            	t.setOffendRebound(teamOffenceRebounds);
+            	t.setPenalty(teamFTGP);
+            	t.setPoint(teamScores);
+            	t.setRebound(teamTotalRebounds);
+            	t.setShot(teamFGP);
+            	t.setSteal(teamSteals);
+            	t.setTeamName(teamName);
+            	t.setThree(team3FGP);
+        	}
         	return t;
         }
-        public TeamHotInfo getTeamHotInfo(String f){
+        public TeamHotInfo getTeamHotInfo(String f,String option){
         	TeamHotInfo t =new TeamHotInfo();
         	t.setField(f);
         	t.setLeague(division);
         	t.setTeamName(teamName);
-        	t.setValue();
+        	t.setValue(this.getdatebystring(f, option));
         	return t;
+        }
+        public double getdatebystring(String f,String option){
+      	  if(option.equals("aveg")){
+      		  if(f.equals("score")){
+      			  return this.aver_teamScores;
+      		  }
+      		  if(f.equals("rebound")){
+      			  return this.aver_teamTotalRebounds;
+      		  }
+      		  if(f.equals("assit")){
+      			  return this.aver_teamAssists;
+      		  }
+      		  if(f.equals("3FGP")){
+      			  return this.team3FGP;
+      		  }
+      		  if(f.equals("FGP")){
+      			  return this.teamFGP;
+      		  }
+      		  if(f.equals("FTGP")){
+      			  return this.teamFTGP;
+      		  }
+      		  if(f.equals("blockShot")){
+      			  return this.aver_teamBlocks;
+      		  }
+      		  if(f.equals("steal")){
+      			  return this.aver_teamSteals;
+      		  }
+      	  }
+      	  else{
+      		 if(f.equals("score")){
+     			  return this.teamScores;
+     		  }
+     		  if(f.equals("rebound")){
+     			  return this.teamTotalRebounds;
+     		  }
+     		  if(f.equals("assit")){
+     			  return this.teamAssists;
+     		  }
+     		  if(f.equals("3FGP")){
+     			  return this.team3FGP;
+     		  }
+     		  if(f.equals("FGP")){
+     			  return this.teamFGP;
+     		  }
+     		  if(f.equals("FTGP")){
+     			  return this.teamFTGP;
+     		  }
+     		  if(f.equals("blockShot")){
+     			  return this.teamBlocks;
+     		  }
+     		  if(f.equals("steal")){
+     			  return this.teamSteals;
+     		  }
+      	  }
+      	  return 0;
         }
 }
