@@ -36,17 +36,20 @@ public class logicTest {
 
 
          
-       JudgeUpdate j =new JudgeUpdate();
-       j.start();
-       
-
+//       JudgeUpdate j =new JudgeUpdate();
+//       j.start();
+//       
+		ArrayList<PlayerVO> temp = playerController.getAllPlayerVO();
+		for(PlayerVO vo : temp){
+			System.out.println(vo.getPlayerName()+" "+vo.getUR()+vo.getPlayer3FG());
+		}
 		
 		
       // JudgeUpdate j =new JudgeUpdate("data/data/matches");
        //j.run();
-		Controller controlelr = new Controller();
-		Controller.init();
-		Controller.setUpRank();
+//		Controller controlelr = new Controller();
+//		Controller.init();
+//		Controller.setUpRank();
 //		ArrayList<PlayerVO> temp = Controller.all_Scores;
 //		for(PlayerVO vo : temp){
 //		System.out.println(vo.getPlayerName()+" "+vo.getAver_playerScores());
