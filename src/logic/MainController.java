@@ -152,8 +152,18 @@ public class MainController implements mainControllerService{
 			    				Collections.sort(pr,pl);
 			    			}//有排序
 			    			if(filter.size()!=0){
-			    				pr = playerController.getSelectedPlayers2();
+			    				pr = playerController.getAllPlayerVO();
+			    				for(int i=0;i<filter.size();i++){
+			    					Filter temp = filter.get(i);
+			    					switch(temp.getFilterName()){
+			    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
+			    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
+			    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
+			    					}
+			    				}
+			    				
 			    				//筛选操作。。。阿超你来弄一下
+			    				//筛选写完了。
 			    			}//有筛选
 			    			if(n>pr.size()){
 			    				for(int i=0;i<pr.size();i++){
@@ -175,7 +185,15 @@ public class MainController implements mainControllerService{
 			    				Collections.sort(pr,pl);
 			    			}//有排序
 			    			if(filter.size()!=0){
-			    				//筛选操作
+			    				pr = playerController.getAllPlayerVO();
+			    				for(int i=0;i<filter.size();i++){
+			    					Filter temp = filter.get(i);
+			    					switch(temp.getFilterName()){
+			    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
+			    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
+			    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
+			    					}
+			    				}
 			    			}//有筛选
 			    			if(n>pr.size()){
 			    				for(int i=0;i<pr.size();i++){
@@ -190,6 +208,31 @@ public class MainController implements mainControllerService{
 			    			return result;
 			    		}
 				 }
+				 case "hot":{
+			    		switch(parameter.getMode().getField()){
+			    			case "score" :{
+			    				if(parameter.getMode().isDaily()){
+			    					pr = dc.getSomeDayPlayers_Score(date);
+			    				}else{
+			    					pr = dc.getSeasonHotPlayers_Score();
+			    				}
+			    			}break;
+			    			case "assist" :{
+			    				if(parameter.getMode().isDaily()){
+			    					pr = dc.getSomeDayPlayers_Assist(date);
+			    				}else{
+			    					pr = dc.getSeasonHotPlayers_Assist();
+			    				}
+			    			}break;
+			    			case "rebound" :{
+			    				if(parameter.getMode().isDaily()){
+			    					pr = dc.getSomeDayPlayers_Rebound(date);
+			    				}else{
+			    					pr = dc.getSeasonHotPlayers_Rebound();
+			    				}
+			    			}break;
+			    		}
+			    	}break;
 			    	case "king":{
 			    		switch(parameter.getMode().getField()){
 		    			case "score" :{
@@ -214,20 +257,25 @@ public class MainController implements mainControllerService{
 		    				}
 		    			}break;
 		    		}
-			    	}break;
+			    	}break; 	
 			    }
-			}
-			//pr转result
-			
+				if(parameter.getMode().getMode().equals("hot")){
+				    for(PlayerVO vo : pr){
+				    	result.add(vo.getPLayerHOTInfo(parameter.getMode().getField()));
+				    }
+				}if(parameter.getMode().getMode().equals("king")){
+				    for(PlayerVO vo : pr){
+				    	result.add(vo.getPlayerKingInfo(parameter.getMode().getField()));
+				    }
+				}
+			}	
 		}
 		//对球队的操作,差不多模仿一下player写
 		else{
 			
 			
 			
-			for(TeamVO vo : tr){
-				result.add(vo);
-			}
+		
 		}
 		return result;
 	}

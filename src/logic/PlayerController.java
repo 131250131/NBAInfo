@@ -159,8 +159,11 @@ public class PlayerController implements playerControllerService{
 		return result;
 	}
 	
-	public ArrayList<PlayerVO> getSelectedPlayers2(String position,String distribution,String infoType ) {
-		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+	public ArrayList<PlayerVO> getSelectedPlayers2(String position,String distribution,int[] range ) {
+		ArrayList<PlayerVO> result = this.getAllPlayerVO();
+		result = this.getSelectedPlayers_Distribution(result,distribution);
+		result = this.getSelectedPlayers_Position(result,position);
+		result = this.getSelectedPlayers_Age(result,range);
 		
 		return result;
 	}
