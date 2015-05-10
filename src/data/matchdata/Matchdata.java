@@ -293,6 +293,13 @@ public class Matchdata implements MatchDataService{
 		    if(lhalfscore>rhalfscore && lscore>rscore){
 		    	rightteam.addloseBanchangluohou();
 		    }
+		   // leftteam.setOppo3FG(rightteam.getTeam3FG());
+		  //  leftteam.setOppo3FGTry(rightteam.getTeam3FGTry());
+		  //  leftteam.setOppoAssists(rightteam.getTeamAssists());
+		  //  leftteam.setAttackRounds(leftteam.getTeamFG()+0.4*leftteam.getTeamFTG()-1.07*
+		    //		(leftteam.getTeamOffenceRebounds()/((leftteam.getTeamOffenceRebounds()+rightteam.getTeamDeffenceRebounds())
+		    		//		*(leftteam.getTeamFGTry()-leftteam.getTeamFG()) ))+1.07*leftteam.getTeamTurnovers() );
+		  //  leftteam.setOppoattackRounds(rightteam.gett);
 			match.setLeftTeam(leftteam);
 			//System.out.println(leftteam.getTeamFTGTry());
 			match.setRightTeam(rightteam);

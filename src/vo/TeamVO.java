@@ -96,14 +96,12 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.losGames = losGames;
 		}
 		public double getWinRate() {
-			return winRate;
+			 return (double)winGames/(double)compGames;
 		}
 		public void setWinRate() {
-			try{
-			this.winRate = winGames/compGames;
-			}catch(Exception e){
-				this.winRate=0;
-			}
+		
+			this.winRate = (double)winGames/(double)compGames;
+			
 		}
 		private ArrayList<Integer> attendmatches =new ArrayList<Integer>();
 			//接下来是球队赛季总数据；	
@@ -1323,7 +1321,7 @@ public class TeamVO implements Comparable<TeamVO> {
         	t.setOffendEfficient(getTeamOffERebE());
         	t.setOffendRound(getAttackRounds());
         	t.setStealEfficient(getTeamSteE());
-        	t.setTeamName(teamName);
+        	t.setTeamName(shortName);
         	t.setWinRate(getWinRate());
         	}
         	else{
@@ -1333,7 +1331,7 @@ public class TeamVO implements Comparable<TeamVO> {
             	t.setOffendEfficient(getTeamOffERebE());
             	t.setOffendRound(getAttackRounds());
             	t.setStealEfficient(getTeamSteE());
-            	t.setTeamName(teamName);
+            	t.setTeamName(shortName);
             	t.setWinRate(getWinRate());
         	}
         	return t;
@@ -1353,7 +1351,7 @@ public class TeamVO implements Comparable<TeamVO> {
         	t.setRebound(getAver_teamTotalRebounds());
         	t.setShot(getTeamFGP());
         	t.setSteal(getAver_teamSteals());
-        	t.setTeamName(teamName);
+        	t.setTeamName(shortName);
         	t.setThree(getTeam3FGP());
         	}
         	else{
@@ -1369,7 +1367,7 @@ public class TeamVO implements Comparable<TeamVO> {
             	t.setRebound(getTeamTotalRebounds());
             	t.setShot(getTeamFGP());
             	t.setSteal(getTeamSteals());
-            	t.setTeamName(teamName);
+            	t.setTeamName(shortName);
             	t.setThree(getTeam3FGP());
         	}
         	return t;
@@ -1378,7 +1376,7 @@ public class TeamVO implements Comparable<TeamVO> {
         	TeamHotInfo t =new TeamHotInfo();
         	t.setField(f);
         	t.setLeague(division);
-        	t.setTeamName(teamName);
+        	t.setTeamName(shortName);
         	t.setValue(this.getdatebystring(f, option));
         	return t;
         }

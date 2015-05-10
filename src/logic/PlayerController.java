@@ -43,11 +43,11 @@ public class PlayerController implements playerControllerService{
 	}
 	
 	//对球员信息进一步更新;
-	public void updataPlayersInfo_Advanced(Player player,Team myteam){
+	public void updataPlayersInfo_Advanced(Player player,Team myteam,Team oppoteam){
 		for(Player tempplayer : this.allPlayers){
 			if(tempplayer.getPlayerName().equals(player.getPlayerName())){
 				//System.out.println("true");
-				tempplayer.updatePlayer(player,myteam);
+				tempplayer.updatePlayer(player,myteam,oppoteam);
 			}
 		}
 	}
@@ -59,7 +59,7 @@ public class PlayerController implements playerControllerService{
 			PlayerVO vo = new PlayerVO();
 			//System.out.println("kk"+player.getPlayerPlayTime());
 			vo.creatplayervo(player);
-			//System.out.println(vo.getPlayerAssists());
+			//System.out.println("tt"+player.getDouble_double());
 			this.allPlayerVO.add(vo);
 		}
 	}

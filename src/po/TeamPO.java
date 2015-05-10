@@ -54,7 +54,39 @@ public class TeamPO implements Serializable {
 		private int teamFouls;
 	//球队总得分数（*****需要更新*****）
 		private int teamScores;
-		
+		private double oppoattackRounds;
+		//对手助攻数（*****需要更新*****）
+			private int oppoAssists;
+		//投篮命中数（*****需要更新*****）
+			private int oppoFG ;
+		//对手投篮出手次数（*****需要更新*****）
+			private int oppoFGTry ;	
+		//对手三分命中数（*****需要更新*****）
+			private int oppo3FG ;
+		//对手三分出手次数（*****需要更新*****）
+			private int oppo3FGTry ;
+		//对手球队罚球命中数（*****需要更新*****）
+			private int oppoFTG;
+		//对手罚球出手数（*****需要更新*****）
+			private int oppoFTGTry;
+		//对手进攻篮板数（*****需要更新*****）
+			private int oppoOffenceRebounds;
+		//对手防守篮板（*****需要更新*****）
+			private int oppoDeffenceRebounds;
+		//对手总篮板数（*****需要更新*****）
+			private int oppoTotalRebounds;
+		//对手抢断数（*****需要更新*****）
+			private int oppoSteals;	
+		//对手盖帽数（*****需要更新*****）
+			private int oppoBlocks;		
+		//对手失误数（*****需要更新*****）
+			private int oppoTurnovers;
+		//球队犯规数（*****需要更新*****）
+			private int oppoFouls;	
+		//对手得分（*****需要更新*****）
+			private int oppoScores;
+			private double attackRounds;
+			
 		private double winLose;//胜负场;
 		private win_lose win_lose=new win_lose();
 		private win_lose home=new win_lose();//主场输赢的次数;
@@ -508,5 +540,107 @@ public class TeamPO implements Serializable {
 		}
 		public void setAttendmatches(ArrayList<Integer> attendmatches) {
 			this.attendmatches = attendmatches;
+		}
+		public double getOppoattackRounds() {
+			return oppoattackRounds;
+		}
+		public void setOppoattackRounds(double oppoattackRounds) {
+			this.oppoattackRounds = oppoattackRounds;
+		}
+		public int getOppoAssists() {
+			return oppoAssists;
+		}
+		public void setOppoAssists(int oppoAssists) {
+			this.oppoAssists = oppoAssists;
+		}
+		public int getOppoFG() {
+			return oppoFG;
+		}
+		public void setOppoFG(int oppoFG) {
+			this.oppoFG = oppoFG;
+		}
+		public int getOppoFGTry() {
+			return oppoFGTry;
+		}
+		public void setOppoFGTry(int oppoFGTry) {
+			this.oppoFGTry = oppoFGTry;
+		}
+		public int getOppo3FG() {
+			return oppo3FG;
+		}
+		public void setOppo3FG(int oppo3fg) {
+			oppo3FG = oppo3fg;
+		}
+		public int getOppo3FGTry() {
+			return oppo3FGTry;
+		}
+		public void setOppo3FGTry(int oppo3fgTry) {
+			oppo3FGTry = oppo3fgTry;
+		}
+		public int getOppoFTG() {
+			return oppoFTG;
+		}
+		public void setOppoFTG(int oppoFTG) {
+			this.oppoFTG = oppoFTG;
+		}
+		public int getOppoFTGTry() {
+			return oppoFTGTry;
+		}
+		public void setOppoFTGTry(int oppoFTGTry) {
+			this.oppoFTGTry = oppoFTGTry;
+		}
+		public int getOppoOffenceRebounds() {
+			return oppoOffenceRebounds;
+		}
+		public void setOppoOffenceRebounds(int oppoOffenceRebounds) {
+			this.oppoOffenceRebounds = oppoOffenceRebounds;
+		}
+		public int getOppoDeffenceRebounds() {
+			return oppoDeffenceRebounds;
+		}
+		public void setOppoDeffenceRebounds(int oppoDeffenceRebounds) {
+			this.oppoDeffenceRebounds = oppoDeffenceRebounds;
+		}
+		public int getOppoTotalRebounds() {
+			return oppoTotalRebounds;
+		}
+		public void setOppoTotalRebounds(int oppoTotalRebounds) {
+			this.oppoTotalRebounds = oppoTotalRebounds;
+		}
+		public int getOppoSteals() {
+			return oppoSteals;
+		}
+		public void setOppoSteals(int oppoSteals) {
+			this.oppoSteals = oppoSteals;
+		}
+		public int getOppoBlocks() {
+			return oppoBlocks;
+		}
+		public void setOppoBlocks(int oppoBlocks) {
+			this.oppoBlocks = oppoBlocks;
+		}
+		public int getOppoTurnovers() {
+			return oppoTurnovers;
+		}
+		public void setOppoTurnovers(int oppoTurnovers) {
+			this.oppoTurnovers = oppoTurnovers;
+		}
+		public int getOppoFouls() {
+			return oppoFouls;
+		}
+		public void setOppoFouls(int oppoFouls) {
+			this.oppoFouls = oppoFouls;
+		}
+		public int getOppoScores() {
+			return oppoScores;
+		}
+		public void setOppoScores(int oppoScores) {
+			this.oppoScores = oppoScores;
+		}
+		public double getAttackRounds() {
+			return attackRounds;
+		}
+		public void setAttackRounds(double attackRounds) {
+			this.attackRounds = attackRounds;
 		}
 }

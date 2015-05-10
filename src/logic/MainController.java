@@ -567,12 +567,12 @@ public class MainController implements mainControllerService{
 			    		}
 			    		if(n>tr.size()){
 		    				for(int i=0;i<tr.size();i++){
-		    					result.add(tr.get(i).getTeamHighInfo("aveg"));
+		    					result.add(tr.get(i).getTeamHotInfo(parameter.getMode().getField(), "aveg"));
 		    				}
 		    			}
 		    			else{
 		    				for(int i=0;i<n;i++){
-		    					result.add(tr.get(i).getTeamHighInfo("aveg"));
+		    					result.add(tr.get(i).getTeamHotInfo(parameter.getMode().getField(), "aveg"));
 		    				}
 		    			}
 		    			return result;
@@ -651,8 +651,8 @@ public class MainController implements mainControllerService{
 				 case "hot":{
 			    		switch(parameter.getMode().getField()){
 			    			case "score" :{tr=teamController.getSeasonHotTeams_Score();}break;
-			    			case "assist" :{tr=teamController.getSeasonHotTeams_Assist();}break;
-		    				case "rebound" :{tr=teamController.getSeasonHotTeams_Rebound();}break;
+			    			case"assist" :{tr=teamController.getSeasonHotTeams_Assist();}break;
+		    				case"rebound" :{tr=teamController.getSeasonHotTeams_Rebound();}break;
 		    				case"blockShot":{tr=teamController.getSeasonHotTeams_Block();}break;
 		    				case"steal":{tr=teamController.getSeasonHotTeams_Steal();}break;
 		    				case"foul":{tr=teamController.getSeasonHotTeams_Fouls();}break;
@@ -666,12 +666,12 @@ public class MainController implements mainControllerService{
 			    		
 			    		if(n>tr.size()){
 		    				for(int i=0;i<tr.size();i++){
-		    					result.add(tr.get(i).getTeamHighInfo("total"));
+		    					result.add(tr.get(i).getTeamHotInfo(parameter.getMode().getField(), "total"));
 		    				}
 		    			}
 		    			else{
 		    				for(int i=0;i<n;i++){
-		    					result.add(tr.get(i).getTeamHighInfo("total"));
+		    					result.add(tr.get(i).getTeamHotInfo(parameter.getMode().getField(), "total"));
 		    				}
 		    			}
 		    			return result;

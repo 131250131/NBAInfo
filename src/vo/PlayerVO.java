@@ -7,6 +7,7 @@ import test.data.PlayerHotInfo;
 import test.data.PlayerKingInfo;
 import test.data.PlayerNormalInfo;
 import logic.Player;
+import logic.PlayerController;
 import logic.TeamController;
 
 public class PlayerVO implements Comparable<PlayerVO>{
@@ -397,86 +398,86 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			}
 
 			public double getAver_playerAssists() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerAssists / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerAssists / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerPlayTime() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerPlayTime / (playerAttends+0.0))/60.0));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerPlayTime / (playerAttends+0.0))/60.0));
 			}
 
 			public double getAver_playerFG() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFG / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFG / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerFGTry() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFGTry / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFGTry / (playerAttends+0.0))));
 			}
 
 			public double getAver_player3FG() {
-				return   Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:player3FG / (playerAttends+0.0))));
+				return   Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:player3FG / (playerAttends+0.0))));
 			}
 
 			public double getAver_player3FGTry() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:player3FGTry / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:player3FGTry / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerFTG() {
-				return   Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFTG / (playerAttends+0.0))));
+				return   Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFTG / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerFTGTry() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFTGTry / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFTGTry / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerOffenceRebounds() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerOffenceRebounds / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerOffenceRebounds / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerDeffenceRebounds() {
-				return   Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerDeffenceRebounds / (playerAttends+0.0))));
+				return   Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerDeffenceRebounds / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerTotalRebounds() {
-				return   Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerTotalRebounds / (playerAttends+0.0))));
+				return   Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerTotalRebounds / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerSteals() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerSteals / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerSteals / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerBlocks() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerBlocks / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerBlocks / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerTurnovers() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerTurnovers / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerTurnovers / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerFouls() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerFouls / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFouls / (playerAttends+0.0))));
 			}
 
 			public double getAver_playerScores() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerScores / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerScores / (playerAttends+0.0))));
 			}
 
 			public double getPlayerFGP() {
 				if(playerFGTry == 0){
 					return 0;
 				}else{
-					return Double.parseDouble(String.format("%.3f",(playerFG+0.0)/(playerFGTry+0.0)));
+					return Double.parseDouble(String.format("%.8f",(playerFG+0.0)/(playerFGTry+0.0)));
 				}
 			}
 
 			public double getPlayer3FGP() {
 				if (player3FGTry!= 0)
-					return Double.parseDouble(String.format("%.3f",(player3FG+0.0)/(player3FGTry+0.0)));
+					return Double.parseDouble(String.format("%.8f",(player3FG+0.0)/(player3FGTry+0.0)));
 				else
 					return 0;
 			}
 
 			public double getPlayerFTGP() {
-				return (playerFTGTry==0)?0:Double.parseDouble(String.format("%.3f",(playerFTG+0.0)/(playerFTGTry+0.0)));
+				return (playerFTGTry==0)?0:Double.parseDouble(String.format("%.8f",(playerFTG+0.0)/(playerFTGTry+0.0)));
 			}
 
 			public double getPlayerPER() {
@@ -486,34 +487,34 @@ public class PlayerVO implements Comparable<PlayerVO>{
 
 			public double getPlayerGmScER() {
 				return  (playerAttends==0)?0:
-					Double.parseDouble(String.format("%.3f",(playerScores + 0.4 * playerFG - 0.7 * playerFGTry - 0.4 * (playerFTGTry - playerFTG)
+					Double.parseDouble(String.format("%.8f",(playerScores + 0.4 * playerFG - 0.7 * playerFGTry - 0.4 * (playerFTGTry - playerFTG)
 						+ 0.7 * playerOffenceRebounds + 0.3 * playerDeffenceRebounds + playerSteals + 0.7 * playerAssists 
 						+ 0.7 * playerBlocks - 0.4 * playerFouls - playerTurnovers) / playerAttends));
 			}
 
 			public double getPlayerTSP() {
-				return (playerFGTry==0)?0:Double.parseDouble(String.format("%.3f", (playerScores + 0.0)/ (2 * ((playerFGTry+0.0) + 0.44 * (playerFTGTry+0.0)))));
+				return (playerFGTry==0)?0:Double.parseDouble(String.format("%.8f", (playerScores + 0.0)/ (2 * ((playerFGTry+0.0) + 0.44 * (playerFTGTry+0.0)))));
 			}
 
 			public double getPlayerSER() {
-				return (playerFGTry==0)?0: Double.parseDouble(String.format("%.3f",(((playerFG + 0.0) + 0.5 * (player3FG + 0.0)) / (playerFGTry + 0.0))));
+				return (playerFGTry==0)?0: Double.parseDouble(String.format("%.8f",(((playerFG + 0.0) + 0.5 * (player3FG + 0.0)) / (playerFGTry + 0.0))));
 			}
 
 			public double getRR() {
 				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.3f",(playerTotalRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
+					Double.parseDouble(String.format("%.8f",(playerTotalRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
 					/(playerPlayTime + 0.0)/((allTeamRebounds + 0.0)+(allEnemyRebounds + 0.0))));
 			}
 
 			public double getO_RR() {
 				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.3f",(playerOffenceRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
+					Double.parseDouble(String.format("%.8f",(playerOffenceRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
 					/(playerPlayTime + 0.0)/((o_allTeamRebounds + 0.0)+(o_allEnemyRebounds + 0.0))));
 			}
 
 			public double getD_RR() {
 				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.3f",(playerDeffenceRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
+					Double.parseDouble(String.format("%.8f",(playerDeffenceRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
 					/(playerPlayTime + 0.0)/((d_allTeamRebounds + 0.0)+(d_allEnemyRebounds + 0.0))));
 			}
 
@@ -525,7 +526,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 					double b = (teammatePlayTime + playerPlayTime);
 					double c = playerPlayTime;
 					
-					return Double.parseDouble(String.format("%.3f",
+					return Double.parseDouble(String.format("%.8f",
 							playerAssists / (c / (b / 5) * allTeamFT - playerFG)                ));
 					//return playerAssists / (playerPlayTime / (teammatePlayTime + playerPlayTime) / 5) * ( allTeamFT - playerFG );
 				}
@@ -534,23 +535,23 @@ public class PlayerVO implements Comparable<PlayerVO>{
 
 			public double getSR() {
 				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.3f",playerSteals*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyOffenceTimes));
+					Double.parseDouble(String.format("%.8f",playerSteals*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyOffenceTimes));
 			}
 
 			public double getBR() {
 				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.3f",(playerBlocks + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))
+					Double.parseDouble(String.format("%.8f",(playerBlocks + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))
 							/5)/(playerPlayTime + 0.0)/(allEnemy2Shoots + 0.0)));
 			}
 
 			public double getTR() {
 				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.3f",playerTurnovers/(playerFGTry - player3FGTry + 0.44 * playerFTGTry+playerTurnovers)));
+					Double.parseDouble(String.format("%.8f",playerTurnovers/(playerFGTry - player3FGTry + 0.44 * playerFTGTry+playerTurnovers)));
 			}
 
 			public double getUR() {
 				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.3f",(playerFGTry+0.44*playerFTGTry+playerTurnovers)*
+					Double.parseDouble(String.format("%.8f",(playerFGTry+0.44*playerFTGTry+playerTurnovers)*
 						(teammatePlayTime+playerPlayTime)/5/playerPlayTime/
 						(allTeamShoots+0.44*allTeamFTShoots+allTeamTurnover)));
 			}
@@ -938,7 +939,18 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				this.aver_playerBlocks=player.getAver_playerBlocks();
 				this.aver_playerTurnovers=player.getAver_playerTurnovers();
 				this.aver_playerFouls=player.getAver_playerFouls();
-				
+				this.allTeamRebounds = player.getAllTeamRebounds();
+				this.allEnemyRebounds = player.getAllEnemyRebounds();
+				this.o_allTeamRebounds =player.getO_allTeamRebounds();
+				this.o_allEnemyRebounds = player.getO_allEnemyRebounds();
+				this.d_allTeamRebounds = player.getD_allTeamRebounds();
+				this.d_allEnemyRebounds = player.getD_allEnemyRebounds();
+				this.allTeamFT = player.getAllTeamFT();
+				this.allTeamShoots = player.getAllTeamShoots();
+				this.allEnemy2Shoots = player.getAllEnemy2Shoots();
+				this.allTeamFTShoots = player.getAllTeamFTShoots();
+				this.allTeamTurnover =player.getAllTeamTurnover();
+				this.allEnemyOffenceTimes = player.getAllEnemyOffenceTimes();
 				//球员各种统计数据,某某率;
 				this.playerFGP = player.getPlayerFGP();
 				this.player3FGP = player.getPlayer3FGP();
@@ -956,7 +968,8 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				this.TR = player.getTR();
 				this.UR = player.getUR();
 			    this.advancedP=player.getAdvancedP();
-			    this.double_double=player.getdouble_double();
+			    this.double_double=player.getDouble_double();
+			    //System.out.println(player.getDouble_double());
 			}
 
 			public double getAdvancedP() {
@@ -1198,6 +1211,17 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			}
 			public String getPlayerPositionEnglish(){
 				String result = null;
+				//System.out.println(this.getPosition());
+				if(this.getPosition()==null){
+					PlayerController p=PlayerController.getInstance();
+					ArrayList<PlayerVO> pp=p.getAllPlayerVO();
+					for(PlayerVO l:pp){
+						if(l.getPlayerName().equals(this.getPlayerName())){
+						    this.setPosition(l.getPosition());
+						    break;
+						}
+					}
+				}
 				if(this.getPosition().equals("F")
 						||(this.getPosition().equals("F-C"))
 						||(this.getPosition().equals("C-F"))
@@ -1312,7 +1336,9 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			  pl.setName(playerName);
 			  pl.setPosition(getPlayerPositionEnglish());
 			  pl.setTeamName(teamShortName);
-			  pl.setUpgradeRate(advancedP);//!
+			  PlayerController p=PlayerController.getInstance();
+			  p.getAdvancedPlayers("f");
+			  pl.setUpgradeRate(advancedP);
 			  pl.setValue(this.getdatebystring(f, "aveg"));
 			  return pl;
 		  }
@@ -1322,14 +1348,14 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	  pl.setName(playerName);
         	  pl.setPosition(getPlayerPositionEnglish());
         	  pl.setTeamName(teamShortName);
-        	  pl.setValue(this.getdatebystring(f, "aveg"));
+        	  pl.setValue(this.getdatebystring(f,"aveg"));
         	  return pl;
 
           }
           
           public double getdatebystring(String f,String option){
         	  if(option.equals("aveg")){
-        		  if(f.equals("score")){
+        		  if(f.equals("score")||f.equals("point")){
         			  return this.getAver_playerScores();
         		  }
         		  if(f.equals("rebound")){
@@ -1355,7 +1381,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         		  }
         	  }
         	  else{
-        		  if(f.equals("score")){
+        		  if(f.equals("score")||f.equals("point")){
         			  return this.getPlayerScores();
         		  }
         		  if(f.equals("rebound")){
@@ -1384,7 +1410,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
           }
           public Double getplayerdata(String field,String option){
         	 if(option.equals("aveg")){
-        		 if(field.equals("score")){
+        		 if(field.equals("score")||field.equals("point")){
         			 return this.getAver_playerScores();
         		 }
         	 
@@ -1421,7 +1447,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	 if(field.equals("penalty")){
         		 return this.getPlayerFTGP();
         	 }
-        	 if(field.equals("double Two")){
+        	 if(field.equals("doubleTwo")){
         		 return this.getaveg_double();
         	 }
         	 if(field.equals("realShot")){
@@ -1456,7 +1482,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	 }
           }
         	 else{
-        		 if(field.equals("score")){
+        		 if(field.equals("score")||field.equals("point")){
         			 return (double)this.getPlayerScores();
         		 }
         	 
@@ -1493,7 +1519,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	 if(field.equals("penalty")){
         		 return this.getPlayerFTGP();
         	 }
-        	 if(field.equals("double Two")){
+        	 if(field.equals("doubleTwo")){
         		 return (double)this.getdouble_double();
         	 }
         	 if(field.equals("realShot")){

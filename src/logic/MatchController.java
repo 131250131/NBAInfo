@@ -95,11 +95,11 @@ public class MatchController implements matchControllerService{
 				
 				//team 更新完毕;
 				for(Player tempPlayer: tempMatch.getleftplayers()){
-					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam());
+					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getLeftTeam(),tempMatch.getRightTeam());
 					//System.out.println(tempPlayer.getPlayerPlayTime());
 				}
 				for(Player tempPlayer: tempMatch.getrightplayers()){
-					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam());
+					playerController.updataPlayersInfo_Advanced(tempPlayer,tempMatch.getRightTeam(),tempMatch.getLeftTeam());
 				}
 				//System.out.println(tempMatch.getNum());
 				

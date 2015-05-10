@@ -204,7 +204,7 @@ public class Player implements Comparable<Player>{
 	}
 	
 	//这个方法用于更新
-	public void updatePlayer(Player player, Team myTeam ){
+	public void updatePlayer(Player player, Team myTeam,Team oppoTeam ){
 		playerAttends++;
 		playerPlayTime = playerPlayTime + player.getPlayerPlayTime();
 		
@@ -235,20 +235,23 @@ public class Player implements Comparable<Player>{
 //		teammatePlayTime = teammatePlayTime + 48;//是以秒为单位吗?   有待商榷;
 //这下面的几个看得我好迷醉。。。。
 		allTeamRebounds = allTeamRebounds + myTeam.getTeamTotalRebounds();
-		allEnemyRebounds = allEnemyRebounds + myTeam.getOppoTotalRebounds();
+		allEnemyRebounds = allEnemyRebounds + oppoTeam.getTeamTotalRebounds();
 		o_allTeamRebounds = o_allTeamRebounds + myTeam.getTeamOffenceRebounds();
-		o_allEnemyRebounds = o_allEnemyRebounds + myTeam.getOppoOffenceRebounds();
+		o_allEnemyRebounds = o_allEnemyRebounds + oppoTeam.getTeamOffenceRebounds();
 		d_allTeamRebounds = d_allTeamRebounds + myTeam.getTeamDeffenceRebounds();
-		d_allEnemyRebounds = d_allEnemyRebounds + myTeam.getOppoDeffenceRebounds();
+		d_allEnemyRebounds = d_allEnemyRebounds + oppoTeam.getTeamDeffenceRebounds();
 		allTeamFT = allTeamFT + myTeam.getTeamFG();
 		allTeamShoots = allTeamShoots + myTeam.getTeamFGTry();
-		allEnemy2Shoots = allEnemy2Shoots + myTeam.getOppoFG();
+		allEnemy2Shoots = allEnemy2Shoots + ( oppoTeam.getTeamFGTry()-oppoTeam.getTeam3FGTry() );
 		allTeamFTShoots = allTeamFTShoots + myTeam.getTeamFTG();
 		allTeamTurnover = allTeamTurnover + myTeam.getTeamTurnovers();
-		allEnemyOffenceTimes = allEnemyOffenceTimes + myTeam.getOppoattackRounds();
-		
+		allEnemyOffenceTimes = allEnemyOffenceTimes + oppoTeam.getTeamFGTry() + 0.4 * oppoTeam.getTeamFTGTry() - 1.07 * (oppoTeam.getTeamOffenceRebounds() /
+				(oppoTeam.getTeamOffenceRebounds() + myTeam.getTeamDeffenceRebounds()) * (oppoTeam.getTeamFGTry() - oppoTeam.getTeamFG())) + 1.07 * oppoTeam.getTeamTurnovers();
+		//System.out.println("stre"+allTeamRebounds);
 		if(ifhasdouble(player.getPlayerTotalRebounds(), player.getPlayerAssists(), player.getPlayerSteals(), player.getPlayerScores(), player.getPlayerBlocks()))
 			double_double++;	
+		
+		//System.out.println("xxx"+double_double);
 	}
 	
 	public boolean ifhasdouble(int tr,int assists,int steals,int scores,int blocks ){
@@ -1109,19 +1112,19 @@ public class Player implements Comparable<Player>{
 		} 
 
         public double getaddate(String type) {
-			if(type.equals("得分")){
+			if(type.equals("score")){
 				return playerScores;
 			}
-			if(type.equals("篮板")){
+			if(type.equals("rebound")){
     			return playerTotalRebounds;
     		}
-    		if(type.equals("助攻")){
+    		if(type.equals("assist")){
     			return playerAssists;
     		}
-    		if(type.equals("抢断")){
+    		if(type.equals("steal")){
     			return playerSteals;
     		}
-    		if(type.equals("盖帽")){
+    		if(type.equals("blockShot")){
     			return playerBlocks;
     		}
     		if(type.equals("FGP")){
@@ -1163,6 +1166,254 @@ public class Player implements Comparable<Player>{
 
 		public void setAveg_double(double aveg_double) {
 			this.aveg_double = aveg_double;
+		}
+
+		public static String getComparetype() {
+			return comparetype;
+		}
+
+		public static void setComparetype(String comparetype) {
+			Player.comparetype = comparetype;
+		}
+
+		public boolean isStart() {
+			return isStart;
+		}
+
+		public void setStart(boolean isStart) {
+			this.isStart = isStart;
+		}
+
+		public int getStartTimes() {
+			return startTimes;
+		}
+
+		public void setStartTimes(int startTimes) {
+			this.startTimes = startTimes;
+		}
+
+		public int getTeammatePlayTime() {
+			return teammatePlayTime;
+		}
+
+		public void setTeammatePlayTime(int teammatePlayTime) {
+			this.teammatePlayTime = teammatePlayTime;
+		}
+
+		public int getAllTeamRebounds() {
+			return allTeamRebounds;
+		}
+
+		public void setAllTeamRebounds(int allTeamRebounds) {
+			this.allTeamRebounds = allTeamRebounds;
+		}
+
+		public int getAllEnemyRebounds() {
+			return allEnemyRebounds;
+		}
+
+		public void setAllEnemyRebounds(int allEnemyRebounds) {
+			this.allEnemyRebounds = allEnemyRebounds;
+		}
+
+		public int getO_allTeamRebounds() {
+			return o_allTeamRebounds;
+		}
+
+		public void setO_allTeamRebounds(int o_allTeamRebounds) {
+			this.o_allTeamRebounds = o_allTeamRebounds;
+		}
+
+		public int getO_allEnemyRebounds() {
+			return o_allEnemyRebounds;
+		}
+
+		public void setO_allEnemyRebounds(int o_allEnemyRebounds) {
+			this.o_allEnemyRebounds = o_allEnemyRebounds;
+		}
+
+		public int getD_allTeamRebounds() {
+			return d_allTeamRebounds;
+		}
+
+		public void setD_allTeamRebounds(int d_allTeamRebounds) {
+			this.d_allTeamRebounds = d_allTeamRebounds;
+		}
+
+		public int getD_allEnemyRebounds() {
+			return d_allEnemyRebounds;
+		}
+
+		public void setD_allEnemyRebounds(int d_allEnemyRebounds) {
+			this.d_allEnemyRebounds = d_allEnemyRebounds;
+		}
+
+		public int getAllTeamFT() {
+			return allTeamFT;
+		}
+
+		public void setAllTeamFT(int allTeamFT) {
+			this.allTeamFT = allTeamFT;
+		}
+
+		public int getAllTeamShoots() {
+			return allTeamShoots;
+		}
+
+		public void setAllTeamShoots(int allTeamShoots) {
+			this.allTeamShoots = allTeamShoots;
+		}
+
+		public int getAllEnemy2Shoots() {
+			return allEnemy2Shoots;
+		}
+
+		public void setAllEnemy2Shoots(int allEnemy2Shoots) {
+			this.allEnemy2Shoots = allEnemy2Shoots;
+		}
+
+		public int getAllTeamFTShoots() {
+			return allTeamFTShoots;
+		}
+
+		public void setAllTeamFTShoots(int allTeamFTShoots) {
+			this.allTeamFTShoots = allTeamFTShoots;
+		}
+
+		public int getAllTeamTurnover() {
+			return allTeamTurnover;
+		}
+
+		public void setAllTeamTurnover(int allTeamTurnover) {
+			this.allTeamTurnover = allTeamTurnover;
+		}
+
+		public double getAllEnemyOffenceTimes() {
+			return allEnemyOffenceTimes;
+		}
+
+		public void setAllEnemyOffenceTimes(double allEnemyOffenceTimes) {
+			this.allEnemyOffenceTimes = allEnemyOffenceTimes;
+		}
+
+		public int getDouble_double() {
+			return double_double;
+		}
+
+		public void setDouble_double(int double_double) {
+			this.double_double = double_double;
+		}
+
+		public void setTeamShortName(String teamShortName) {
+			this.teamShortName = teamShortName;
+		}
+
+		public void setPlayerName(String playerName) {
+			this.playerName = playerName;
+		}
+
+		public void setPlayerNumber(String playerNumber) {
+			this.playerNumber = playerNumber;
+		}
+
+		public void setPosition(String position) {
+			this.position = position;
+		}
+
+		public void setHeight(String height) {
+			this.height = height;
+		}
+
+		public void setWeight(double weight) {
+			this.weight = weight;
+		}
+
+		public void setPlayerBirth(String playerBirth) {
+			this.playerBirth = playerBirth;
+		}
+
+		public void setPlayerAge(int playerAge) {
+			this.playerAge = playerAge;
+		}
+
+		public void setExp(int exp) {
+			this.exp = exp;
+		}
+
+		public void setSchool(String school) {
+			this.school = school;
+		}
+
+		public void setPlayerAttends(int playerAttends) {
+			this.playerAttends = playerAttends;
+		}
+
+		public void setPlayerAssists(int playerAssists) {
+			this.playerAssists = playerAssists;
+		}
+
+		public void setPlayerPlayTime(int playerPlayTime) {
+			this.playerPlayTime = playerPlayTime;
+		}
+
+		public void setPlayerFG(int playerFG) {
+			this.playerFG = playerFG;
+		}
+
+		public void setPlayerFGTry(int playerFGTry) {
+			this.playerFGTry = playerFGTry;
+		}
+
+		public void setPlayer3FG(int player3fg) {
+			player3FG = player3fg;
+		}
+
+		public void setPlayer3FGTry(int player3fgTry) {
+			player3FGTry = player3fgTry;
+		}
+
+		public void setPlayerFTG(int playerFTG) {
+			this.playerFTG = playerFTG;
+		}
+
+		public void setPlayerFTGTry(int playerFTGTry) {
+			this.playerFTGTry = playerFTGTry;
+		}
+
+		public void setPlayerOffenceRebounds(int playerOffenceRebounds) {
+			this.playerOffenceRebounds = playerOffenceRebounds;
+		}
+
+		public void setPlayerDeffenceRebounds(int playerDeffenceRebounds) {
+			this.playerDeffenceRebounds = playerDeffenceRebounds;
+		}
+
+		public void setPlayerTotalRebounds(int playerTotalRebounds) {
+			this.playerTotalRebounds = playerTotalRebounds;
+		}
+
+		public void setPlayerSteals(int playerSteals) {
+			this.playerSteals = playerSteals;
+		}
+
+		public void setPlayerBlocks(int playerBlocks) {
+			this.playerBlocks = playerBlocks;
+		}
+
+		public void setPlayerTurnovers(int playerTurnovers) {
+			this.playerTurnovers = playerTurnovers;
+		}
+
+		public void setPlayerFouls(int playerFouls) {
+			this.playerFouls = playerFouls;
+		}
+
+		public void setPlayerScores(int playerScores) {
+			this.playerScores = playerScores;
+		}
+
+		public void setAttendedMatches(ArrayList<Integer> attendedMatches) {
+			this.attendedMatches = attendedMatches;
 		}
 
 

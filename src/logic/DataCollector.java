@@ -125,7 +125,12 @@ public class DataCollector implements DataCollectorService{
 	public ArrayList<PlayerVO> getSomeDayAllPlayers(String date) {
 		MatchController matchController = MatchController.getInstance();
 		ArrayList<PlayerVO> someDayPlayerVO = new ArrayList<PlayerVO>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
+		//System.out.println("ll"+date);
 		ArrayList<MatchVO> someDayMatch = matchController.getSomeMacthVO(date);
+		//System.out.println("llll");
 		for(MatchVO vo : someDayMatch){
 			for(PlayerVO pvo : vo.getLeftplayerlist()){
 				someDayPlayerVO.add(pvo);
@@ -343,12 +348,14 @@ public class DataCollector implements DataCollectorService{
 	
 	public ArrayList<PlayerVO> getSomeDayPlayers_Score(String date) {
 		ArrayList<PlayerVO> result = new ArrayList<>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("得分");
 		}
 		Collections.sort(someDayPlayer);
-		
 		for(int i=0;i<10;i++){
 			result.add(someDayPlayer.get(i));
 		}
@@ -359,6 +366,9 @@ public class DataCollector implements DataCollectorService{
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Rebound(String date) {
 		ArrayList<PlayerVO> result = new ArrayList<>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("篮板");
@@ -375,6 +385,10 @@ public class DataCollector implements DataCollectorService{
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Assist(String date) {
 		ArrayList<PlayerVO> result = new ArrayList<>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
+		//System.out.println("klkl"+date);
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("助攻");
@@ -391,6 +405,9 @@ public class DataCollector implements DataCollectorService{
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Block(String date) {
 		ArrayList<PlayerVO> result = new ArrayList<>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("盖帽");
@@ -407,6 +424,9 @@ public class DataCollector implements DataCollectorService{
 
 	public ArrayList<PlayerVO> getSomeDayPlayers_Steal(String date) {
 		ArrayList<PlayerVO> result = new ArrayList<>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("抢断");
@@ -423,6 +443,9 @@ public class DataCollector implements DataCollectorService{
 	@Override
 	public ArrayList<PlayerVO> getSomeDayPlayers_GmScER(String date) {
 		ArrayList<PlayerVO> result = new ArrayList<>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("效率");
@@ -437,6 +460,9 @@ public class DataCollector implements DataCollectorService{
 	
 	public ArrayList<PlayerVO> getSomeDayPlayers_FGP(String date) {
 		ArrayList<PlayerVO> result = new ArrayList<>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("FGP");
@@ -451,6 +477,9 @@ public class DataCollector implements DataCollectorService{
 	
 	public ArrayList<PlayerVO> getSomeDayPlayers_3FGP(String date) {
 		ArrayList<PlayerVO> result = new ArrayList<>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("3FGP");
@@ -465,6 +494,9 @@ public class DataCollector implements DataCollectorService{
 	
 	public ArrayList<PlayerVO> getSomeDayPlayers_FTGP(String date) {
 		ArrayList<PlayerVO> result = new ArrayList<>();
+		MatchController m=MatchController.getInstance();
+		ArrayList<String> dates=m.getDatehavematches();
+		date=dates.get(dates.size()-1);
 		ArrayList<PlayerVO> someDayPlayer = this.getSomeDayAllPlayers(date);
 		for(PlayerVO pvo :someDayPlayer){
 			pvo.setComparetype("FTGP");
