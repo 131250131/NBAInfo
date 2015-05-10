@@ -73,35 +73,44 @@ public class MainController implements mainControllerService{
 			    switch(parameter.getMode().getMode()){
 			    	case "all":{
 			    		pr = playerController.getAllPlayerVO();
+			    		if(filter.size()!=0){
+		    				pr = playerController.getAllPlayerVO();
+		    				for(int i=0;i<filter.size();i++){
+		    					Filter temp = filter.get(i);
+		    					switch(temp.getFilterName()){
+		    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
+		    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
+		    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
+		    					}
+		    				}
+		    			}//有筛选
 			    		if(parameter.isHigh()){
 			    			if(sort.size()!=0){
 			    				playercomp pl=new playercomp();
 			    				pl.setSort(sort);
-			    				pl.setAveg("total");
+			    				pl.setAveg("aveg");
 			    				Collections.sort(pr,pl);
-			    			}//有排序
-			    			if(filter.size()!=0){
-			    				pr = playerController.getAllPlayerVO();
-			    				for(int i=0;i<filter.size();i++){
-			    					Filter temp = filter.get(i);
-			    					switch(temp.getFilterName()){
-			    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
-			    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
-			    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
-			    					}
-			    				}
-			    				
-			    				//筛选操作。。。阿超你来弄一下
-			    				//筛选写完了。
-			    			}//有筛选
+			    			}
+			    			else{
+			    				playercomp pl=new playercomp();
+			    				ArrayList<Sort> s =new ArrayList<Sort>();
+			    				Sort ss=new Sort();
+			    				ss.setAsc(false);
+			    				ss.setField("realShot");
+			    				s.add(ss);
+			    				pl.setAveg("aveg");
+			    				pl.setSort(s);
+			    				Collections.sort(pr,pl);
+			    			}
+			    			//有排序
 			    			if(n>pr.size()){
 			    				for(int i=0;i<pr.size();i++){
-			    					result.add(pr.get(i).getPlayerHighInfo("total"));
+			    					result.add(pr.get(i).getPlayerHighInfo("aveg"));
 			    				}
 			    			}
 			    			else{
 			    				for(int i=0;i<n;i++){
-			    					result.add(pr.get(i).getPlayerHighInfo("total"));
+			    					result.add(pr.get(i).getPlayerHighInfo("aveg"));
 			    				}
 			    			}
 			    			return result;
@@ -110,28 +119,28 @@ public class MainController implements mainControllerService{
 			    			if(sort.size()!=0){
 			    				playercomp pl=new playercomp();
 			    				pl.setSort(sort);
-			    				pl.setAveg("total");
+			    				pl.setAveg("aveg");
+			    				Collections.sort(pr,pl);
+			    			}
+			    			else{
+			    				playercomp pl=new playercomp();
+			    				ArrayList<Sort> s =new ArrayList<Sort>();
+			    				Sort ss=new Sort();
+			    				ss.setAsc(false);
+			    				ss.setField("score");
+			    				s.add(ss);
+			    				pl.setAveg("aveg");
+			    				pl.setSort(s);
 			    				Collections.sort(pr,pl);
 			    			}//有排序
-			    			if(filter.size()!=0){
-			    				pr = playerController.getAllPlayerVO();
-			    				for(int i=0;i<filter.size();i++){
-			    					Filter temp = filter.get(i);
-			    					switch(temp.getFilterName()){
-			    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
-			    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
-			    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
-			    					}
-			    				}
-			    			}//有筛选
 			    			if(n>pr.size()){
 			    				for(int i=0;i<pr.size();i++){
-			    					result.add(pr.get(i).getPlayerNormalInfo("total"));
+			    					result.add(pr.get(i).getPlayerNormalInfo("aveg"));
 			    				}
 			    			}
 			    			else{
 			    				for(int i=0;i<n;i++){
-			    					result.add(pr.get(i).getPlayerNormalInfo("total"));
+			    					result.add(pr.get(i).getPlayerNormalInfo("aveg"));
 			    				}
 			    			}
 			    			return result;
@@ -145,21 +154,57 @@ public class MainController implements mainControllerService{
 			    				}else{
 			    					pr = dc.getSeasonHotPlayers_AverScore();
 			    				}
-			    			}break;
+			    				if(n>pr.size()){
+				    				for(int i=0;i<pr.size();i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("score"));
+				    				}
+				    			}
+				    			else{
+				    				for(int i=0;i<n;i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("score"));
+				    				}
+				    				
+			    			}
+			    				return result;
+			    			}
 			    			case "assist" :{
 			    				if(parameter.getMode().isDaily()){
 			    					pr = dc.getSomeDayPlayers_Assist(date);
 			    				}else{
 			    					pr = dc.getSeasonHotPlayers_AverAssist();
 			    				}
-			    			}break;
+			    				if(n>pr.size()){
+				    				for(int i=0;i<pr.size();i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("assist"));
+				    				}
+				    			}
+				    			else{
+				    				for(int i=0;i<n;i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("assist"));
+				    				}
+				    				
+			    			}
+			    				return result;
+			    			}
 			    			case "rebound" :{
 			    				if(parameter.getMode().isDaily()){
 			    					pr = dc.getSomeDayPlayers_Rebound(date);
 			    				}else{
 			    					pr = dc.getSeasonHotPlayers_AverRebound();
 			    				}
-			    			}break;
+			    				if(n>pr.size()){
+				    				for(int i=0;i<pr.size();i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("rebound"));
+				    				}
+				    			}
+				    			else{
+				    				for(int i=0;i<n;i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("rebound"));
+				    				}
+				    				
+			    			}
+			    				return result;
+			    			}
 			    		}
 			    	}break;
 			    	case "king":{
@@ -170,37 +215,60 @@ public class MainController implements mainControllerService{
 		    				}else{
 		    					pr.add(dc.getSeasonHotPlayers_AverScore().get(0));
 		    				}
-		    			}break;
+		    				if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("score"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("score"));
+			    				}
+			    				
+		    			}
+		    				return result;
+		    			}
 		    			case "assist" :{
 		    				if(parameter.getMode().isDaily()){
 		    					pr.add(dc.getSomeDayPlayers_Assist(date).get(0));
 		    				}else{
 		    					pr.add(dc.getSeasonHotPlayers_AverAssist().get(0));
 		    				}
-		    			}break;
+		    				if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("assist"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("assist"));
+			    				}
+			    				
+		    			}
+		    				return result;
+		    			}
 		    			case "rebound" :{
 		    				if(parameter.getMode().isDaily()){
 		    					pr.add(dc.getSomeDayPlayers_Rebound(date).get(0));
 		    				}else{
 		    					pr.add(dc.getSeasonHotPlayers_AverRebound().get(0));
 		    				}
-		    			}break;
+		    				if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("rebound"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("rebound"));
+			    				}
+			    				
+		    			}
+		    				return result;
+		    			}
 		    		}
 			    	}break;
 			    }
-			    if(parameter.getMode().getMode().equals("hot")){
-			    	for(PlayerVO vo : pr){
-			    		result.add(vo.getPLayerHOTInfo(parameter.getMode().getField()));
-			    	}
-			    }if(parameter.getMode().getMode().equals("king")){
-			    	for(PlayerVO vo : pr){
-			    		result.add(vo.getPlayerKingInfo(parameter.getMode().getField()));
-			    	}
-			    }
-			    
-			    
-
-			    
 			    
 		      }
 			//总数据
@@ -208,27 +276,39 @@ public class MainController implements mainControllerService{
 				 switch(parameter.getMode().getMode()){
 				 case "all":{
 			    		pr = playerController.getAllPlayerVO();
+			    		if(filter.size()!=0){
+		    				pr = playerController.getAllPlayerVO();
+		    				for(int i=0;i<filter.size();i++){
+		    					Filter temp = filter.get(i);
+		    					switch(temp.getFilterName()){
+		    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
+		    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
+		    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
+		    					}
+		    				}
+		    				
+		    				
+		    				//筛选写完了。
+		    			}//有筛选
 			    		if(parameter.isHigh()){
 			    			if(sort.size()!=0){
 			    				playercomp pl=new playercomp();
 			    				pl.setSort(sort);
 			    				pl.setAveg("total");
 			    				Collections.sort(pr,pl);
-			    			}//有排序
-			    			if(filter.size()!=0){
-			    				pr = playerController.getAllPlayerVO();
-			    				for(int i=0;i<filter.size();i++){
-			    					Filter temp = filter.get(i);
-			    					switch(temp.getFilterName()){
-			    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
-			    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
-			    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
-			    					}
-			    				}
-			    				
-			    				//筛选操作。。。阿超你来弄一下
-			    				//筛选写完了。
-			    			}//有筛选
+			    			}
+			    			else{
+			    				playercomp pl=new playercomp();
+			    				ArrayList<Sort> s =new ArrayList<Sort>();
+			    				Sort ss=new Sort();
+			    				ss.setAsc(false);
+			    				ss.setField("realShot");
+			    				s.add(ss);
+			    				pl.setAveg("total");
+			    				pl.setSort(s);
+			    				Collections.sort(pr,pl);
+			    			}
+			    			//有排序
 			    			if(n>pr.size()){
 			    				for(int i=0;i<pr.size();i++){
 			    					result.add(pr.get(i).getPlayerHighInfo("total"));
@@ -247,18 +327,19 @@ public class MainController implements mainControllerService{
 			    				pl.setSort(sort);
 			    				pl.setAveg("total");
 			    				Collections.sort(pr,pl);
-			    			}//有排序
-			    			if(filter.size()!=0){
-			    				pr = playerController.getAllPlayerVO();
-			    				for(int i=0;i<filter.size();i++){
-			    					Filter temp = filter.get(i);
-			    					switch(temp.getFilterName()){
-			    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
-			    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
-			    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
-			    					}
-			    				}
-			    			}//有筛选
+			    			}
+			    			else{
+			    				playercomp pl=new playercomp();
+			    				ArrayList<Sort> s =new ArrayList<Sort>();
+			    				Sort ss=new Sort();
+			    				ss.setAsc(false);
+			    				ss.setField("score");
+			    				s.add(ss);
+			    				pl.setAveg("total");
+			    				pl.setSort(s);
+			    				Collections.sort(pr,pl);
+			    			}
+			    			//有排序
 			    			if(n>pr.size()){
 			    				for(int i=0;i<pr.size();i++){
 			    					result.add(pr.get(i).getPlayerNormalInfo("total"));
@@ -280,21 +361,57 @@ public class MainController implements mainControllerService{
 			    				}else{
 			    					pr = dc.getSeasonHotPlayers_Score();
 			    				}
-			    			}break;
+			    				if(n>pr.size()){
+				    				for(int i=0;i<pr.size();i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("score"));
+				    				}
+				    			}
+				    			else{
+				    				for(int i=0;i<n;i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("score"));
+				    				}
+				    				
+			    			}
+			    				return result;
+			    			}
 			    			case "assist" :{
 			    				if(parameter.getMode().isDaily()){
 			    					pr = dc.getSomeDayPlayers_Assist(date);
 			    				}else{
 			    					pr = dc.getSeasonHotPlayers_Assist();
 			    				}
-			    			}break;
+			    				if(n>pr.size()){
+				    				for(int i=0;i<pr.size();i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("assist"));
+				    				}
+				    			}
+				    			else{
+				    				for(int i=0;i<n;i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("assist"));
+				    				}
+				    				
+			    			}
+			    				return result;
+			    			}
 			    			case "rebound" :{
 			    				if(parameter.getMode().isDaily()){
 			    					pr = dc.getSomeDayPlayers_Rebound(date);
 			    				}else{
 			    					pr = dc.getSeasonHotPlayers_Rebound();
 			    				}
-			    			}break;
+			    				if(n>pr.size()){
+				    				for(int i=0;i<pr.size();i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("rebound"));
+				    				}
+				    			}
+				    			else{
+				    				for(int i=0;i<n;i++){
+				    					result.add(pr.get(i).getPLayerHOTInfo("rebound"));
+				    				}
+				    				
+			    			}
+			    				return result;
+			    			}
 			    		}
 			    	}break;
 			    	case "king":{
@@ -305,33 +422,61 @@ public class MainController implements mainControllerService{
 		    				}else{
 		    					pr.add(dc.getSeasonHotPlayers_Score().get(0));
 		    				}
-		    			}break;
+		    				if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("score"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("score"));
+			    				}
+			    				
+		    			}
+		    				return result;
+		    			}
 		    			case "assist" :{
 		    				if(parameter.getMode().isDaily()){
 		    					pr.add(dc.getSomeDayPlayers_Assist(date).get(0));
 		    				}else{
 		    					pr.add(dc.getSeasonHotPlayers_Assist().get(0));
 		    				}
-		    			}break;
+		    				if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("assist"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("assist"));
+			    				}
+			    				
+		    			}
+		    				return result;
+		    			}
 		    			case "rebound" :{
 		    				if(parameter.getMode().isDaily()){
 		    					pr.add(dc.getSomeDayPlayers_Rebound(date).get(0));
 		    				}else{
 		    					pr.add(dc.getSeasonHotPlayers_Rebound().get(0));
 		    				}
-		    			}break;
+		    				if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("rebound"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerKingInfo("rebound"));
+			    				}
+			    				
+		    			}
+		    				return result;
+		    			}
 		    		}
 			    	}break; 	
 			    }
-				if(parameter.getMode().getMode().equals("hot")){
-				    for(PlayerVO vo : pr){
-				    	result.add(vo.getPLayerHOTInfo(parameter.getMode().getField()));
-				    }
-				}if(parameter.getMode().getMode().equals("king")){
-				    for(PlayerVO vo : pr){
-				    	result.add(vo.getPlayerKingInfo(parameter.getMode().getField()));
-				    }
-				}
+				
 			}	
 		}
 		//对球队的操作,差不多模仿一下player写
@@ -340,22 +485,34 @@ public class MainController implements mainControllerService{
 			    switch(parameter.getMode().getMode()){
 			    	case "all":{
 			    		{
-				    		pr = playerController.getAllPlayerVO();
+				    		tr =teamController.getSeasonAllTeamInfo() ;
 				    		if(parameter.isHigh()){
 				    			if(sort.size()!=0){
 				    				teamcomp tl=new teamcomp();
 				    				tl.setSort(sort);
-				    				tl.setAveg("total");
+				    				tl.setAveg("aveg");
 				    				Collections.sort(tr,tl);
-				    			}//有排序
+				    			}
+				    			else{
+				    				teamcomp tc =new teamcomp();
+				    				Sort s =new Sort();
+				    				s.setAsc(false);
+				    				s.setField("winRate");
+				    				ArrayList<Sort> ss=new ArrayList<Sort>();
+				    				ss.add(s);
+				    				tc.setAveg("aveg");
+				    				tc.setSort(ss);
+				    				Collections.sort(tr, tc);
+				    			}
+				    			//有排序
 				    			if(n>tr.size()){
 				    				for(int i=0;i<tr.size();i++){
-				    					result.add(tr.get(i).getTeamHighInfo("total"));
+				    					result.add(tr.get(i).getTeamHighInfo("aveg"));
 				    				}
 				    			}
 				    			else{
 				    				for(int i=0;i<n;i++){
-				    					result.add(tr.get(i).getTeamHighInfo("total"));
+				    					result.add(tr.get(i).getTeamHighInfo("aveg"));
 				    				}
 				    			}
 				    			return result;
@@ -364,17 +521,29 @@ public class MainController implements mainControllerService{
 				    			if(sort.size()!=0){
 				    				teamcomp tl=new teamcomp();
 				    				tl.setSort(sort);
-				    				tl.setAveg("total");
+				    				tl.setAveg("aveg");
 				    				Collections.sort(tr,tl);
-				    			}//有排序
+				    			}
+				    			else{
+				    				teamcomp tc =new teamcomp();
+				    				Sort s =new Sort();
+				    				s.setAsc(false);
+				    				s.setField("score");
+				    				ArrayList<Sort> ss=new ArrayList<Sort>();
+				    				ss.add(s);
+				    				tc.setAveg("aveg");
+				    				tc.setSort(ss);
+				    				Collections.sort(tr, tc);
+				    			}
+				    			//有排序
 				    			if(n>pr.size()){
 				    				for(int i=0;i<tr.size();i++){
-				    					result.add(tr.get(i).getTeamNormalInfo("total"));
+				    					result.add(tr.get(i).getTeamNormalInfo("aveg"));
 				    				}
 				    			}
 				    			else{
 				    				for(int i=0;i<n;i++){
-				    					result.add(tr.get(i).getTeamNormalInfo("total"));
+				    					result.add(tr.get(i).getTeamNormalInfo("aveg"));
 				    				}
 				    			}
 				    			return result;
@@ -396,11 +565,18 @@ public class MainController implements mainControllerService{
 			    			case"defendRebound":{tr=teamController.getSeasonHotTeams_AverDeffenceRebound();}break;
 			    			case"offendRebound":{tr=teamController.getSeasonHotTeams_AverOffenceRebound();}break;
 			    		}
-			    	}break;
-			    }
-			    if(parameter.getMode().getMode().equals("hot")){
-			    	for(TeamVO vo :tr){
-			    		result.add(vo.getTeamHotInfo(parameter.getMode().getField(),"aveg"));
+			    		if(n>tr.size()){
+		    				for(int i=0;i<tr.size();i++){
+		    					result.add(tr.get(i).getTeamHighInfo("aveg"));
+		    				}
+		    			}
+		    			else{
+		    				for(int i=0;i<n;i++){
+		    					result.add(tr.get(i).getTeamHighInfo("aveg"));
+		    				}
+		    			}
+		    			return result;
+			    		
 			    	}
 			    }
 		      }
@@ -408,14 +584,26 @@ public class MainController implements mainControllerService{
 			else{
 				 switch(parameter.getMode().getMode()){
 				 case "all":{
-			    		pr = playerController.getAllPlayerVO();
+					 tr =teamController.getSeasonAllTeamInfo() ;
 			    		if(parameter.isHigh()){
 			    			if(sort.size()!=0){
 			    				teamcomp tl=new teamcomp();
 			    				tl.setSort(sort);
 			    				tl.setAveg("total");
 			    				Collections.sort(tr,tl);
-			    			}//有排序
+			    			}
+			    			else{
+			    				teamcomp tc =new teamcomp();
+			    				Sort s =new Sort();
+			    				s.setAsc(false);
+			    				s.setField("winRate");
+			    				ArrayList<Sort> ss=new ArrayList<Sort>();
+			    				ss.add(s);
+			    				tc.setAveg("total");
+			    				tc.setSort(ss);
+			    				Collections.sort(tr, tc);
+			    			}
+			    			//有排序
 			    			if(n>tr.size()){
 			    				for(int i=0;i<tr.size();i++){
 			    					result.add(tr.get(i).getTeamHighInfo("total"));
@@ -434,7 +622,19 @@ public class MainController implements mainControllerService{
 			    				tl.setSort(sort);
 			    				tl.setAveg("total");
 			    				Collections.sort(tr,tl);
-			    			}//有排序
+			    			}
+			    			else{
+			    				teamcomp tc =new teamcomp();
+			    				Sort s =new Sort();
+			    				s.setAsc(false);
+			    				s.setField("score");
+			    				ArrayList<Sort> ss=new ArrayList<Sort>();
+			    				ss.add(s);
+			    				tc.setAveg("total");
+			    				tc.setSort(ss);
+			    				Collections.sort(tr, tc);
+			    			}
+			    			//有排序
 			    			if(n>pr.size()){
 			    				for(int i=0;i<tr.size();i++){
 			    					result.add(tr.get(i).getTeamNormalInfo("total"));
@@ -463,13 +663,25 @@ public class MainController implements mainControllerService{
 		    				case"defendRebound":{tr=teamController.getSeasonHotTeams_DeffenceRebound();}break;
 		    				case"offendRebound":{tr=teamController.getSeasonHotTeams_OffenceRebound();}break;
 			    		}
-			    	}break;
+			    		
+			    		if(n>tr.size()){
+		    				for(int i=0;i<tr.size();i++){
+		    					result.add(tr.get(i).getTeamHighInfo("total"));
+		    				}
+		    			}
+		    			else{
+		    				for(int i=0;i<n;i++){
+		    					result.add(tr.get(i).getTeamHighInfo("total"));
+		    				}
+		    			}
+		    			return result;
+			    		
+			    		
+			    		
+			    		
+			    	}
 			    }
-				 if(parameter.getMode().getMode().equals("hot")){
-				    	for(TeamVO vo :tr){
-				    		result.add(vo.getTeamHotInfo(parameter.getMode().getField(),"total"));//这边是tota还是all?
-				    	}
-				 }
+				
 			}
 			
 			

@@ -58,6 +58,7 @@ public class TeamController implements teamControllerService{
     			case "HOU":result="西南区";break;
     			case "DAL":result="西南区";break;
     			case "NOP":result="西南区";break;
+    			case "NOL":result="西南区";break;
     			case "SAC":result="太平洋区";break;
     			case "PHX":result="太平洋区";break;
     			case "LAL":result="太平洋区";break;

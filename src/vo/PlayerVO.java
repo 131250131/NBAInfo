@@ -1384,7 +1384,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
           }
           public Double getplayerdata(String field,String option){
         	 if(option.equals("aveg")){
-        		 if(field.equals("point")){
+        		 if(field.equals("score")){
         			 return this.getAver_playerScores();
         		 }
         	 
@@ -1456,7 +1456,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	 }
           }
         	 else{
-        		 if(field.equals("point")){
+        		 if(field.equals("score")){
         			 return (double)this.getPlayerScores();
         		 }
         	 

@@ -30,5 +30,6 @@ public enum TeamShortName {
 	PHI,
 	CEL,
 	NJN,
+	NOP,
 	TOR
 }
