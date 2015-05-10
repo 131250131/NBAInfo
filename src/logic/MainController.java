@@ -121,9 +121,53 @@ public class MainController implements mainControllerService{
 			//总数据
 			else{
 				 switch(parameter.getMode().getMode()){
-			    	case "all":{
+				 case "all":{
 			    		pr = playerController.getAllPlayerVO();
-			    	}break;
+			    		if(parameter.isHigh()){
+			    			if(sort.size()!=0){
+			    				playercomp pl=new playercomp();
+			    				pl.setSort(sort);
+			    				pl.setAveg("total");
+			    				Collections.sort(pr,pl);
+			    			}//有排序
+			    			if(filter.size()!=0){
+			    				//筛选操作。。。阿超你来弄一下
+			    			}//有筛选
+			    			if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerHighInfo("total"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerHighInfo("total"));
+			    				}
+			    			}
+			    			return result;
+			    		}
+			    		else{
+			    			if(sort.size()!=0){
+			    				playercomp pl=new playercomp();
+			    				pl.setSort(sort);
+			    				pl.setAveg("total");
+			    				Collections.sort(pr,pl);
+			    			}//有排序
+			    			if(filter.size()!=0){
+			    				//筛选操作
+			    			}//有筛选
+			    			if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerNormalInfo("total"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerNormalInfo("total"));
+			    				}
+			    			}
+			    			return result;
+			    		}
+				 }
 			    	case "king":{
 			    		switch(parameter.getMode().getField()){
 		    			case "score" :{
