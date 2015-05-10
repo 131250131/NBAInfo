@@ -18,7 +18,9 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		public PlayerVO(){
 		
 		}
-		
+		public double getaveg_double(){
+			return aveg_double;
+		}
 		ArrayList<Integer> attendedMatches =new ArrayList<Integer>();
 		
 		public ArrayList<Integer> getAttendedMatches() {
@@ -954,6 +956,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				this.TR = player.getTR();
 				this.UR = player.getUR();
 			    this.advancedP=player.getAdvancedP();
+			    this.double_double=player.getdouble_double();
 			}
 
 			public double getAdvancedP() {
@@ -1193,7 +1196,27 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				}
 				return result;
 			}
-
+			public String getPlayerPositionEnglish(){
+				String result = null;
+				if(this.getPosition().equals("F")
+						||(this.getPosition().equals("F-C"))
+						||(this.getPosition().equals("C-F"))
+						||(this.getPosition().equals("F-G"))
+						||(this.getPosition().equals("G-F"))){
+					result = "F";
+				}
+				if(this.getPosition().equals("C")
+						||this.getPosition().equals("C-F")
+						||this.getPosition().equals("F-C")){
+					result = "C";
+				}
+				if(this.getPosition().equals("G")
+						||(this.getPosition().equals("F-G"))
+						||(this.getPosition().equals("G-F"))){
+					result = "G";
+				}
+				return result;
+			}
 			public String getPlayerDistribution() {
 				String result = null;
 				String teamName = this.getTeamShortName();
@@ -1204,35 +1227,35 @@ public class PlayerVO implements Comparable<PlayerVO>{
 	       public PlayerHighInfo getPlayerHighInfo(String option){
 	    	   PlayerHighInfo playerhighInfo =new PlayerHighInfo();
 	    	   if(option.equals("aveg")){
-	    	   playerhighInfo.setAssistEfficient(AR);
-	    	   playerhighInfo.setBlockShotEfficient(BR);
-	    	   playerhighInfo.setDefendReboundEfficient(d_RR);
-	    	   playerhighInfo.setFaultEfficient(TR);
-	    	   playerhighInfo.setGmSc(playerGmScER);
+	    	   playerhighInfo.setAssistEfficient(getAR());
+	    	   playerhighInfo.setBlockShotEfficient(getBR());
+	    	   playerhighInfo.setDefendReboundEfficient(getD_RR());
+	    	   playerhighInfo.setFaultEfficient(getTR());
+	    	   playerhighInfo.setGmSc(getPlayerGmScER());
 	    	   playerhighInfo.setLeague("east");
-	    	   playerhighInfo.setName(playerName);
-	    	   playerhighInfo.setOffendReboundEfficient(o_RR);
-	    	   playerhighInfo.setPosition(position);
-	    	   playerhighInfo.setRealShot(playerTSP);
-	    	   playerhighInfo.setReboundEfficient(RR);
-	    	   playerhighInfo.setShotEfficient(playerSER);
-	    	   playerhighInfo.setStealEfficient(SR);
+	    	   playerhighInfo.setName(getPlayerName());
+	    	   playerhighInfo.setOffendReboundEfficient(getO_RR());
+	    	   playerhighInfo.setPosition(getPlayerPositionEnglish());
+	    	   playerhighInfo.setRealShot(getPlayerTSP());
+	    	   playerhighInfo.setReboundEfficient(getRR());
+	    	   playerhighInfo.setShotEfficient(getPlayerSER());
+	    	   playerhighInfo.setStealEfficient(getSR());
 	    	   playerhighInfo.setTeamName(teamShortName);
 	    	   }
 	    	   else{
-	    		   playerhighInfo.setAssistEfficient(AR);
-		    	   playerhighInfo.setBlockShotEfficient(BR);
-		    	   playerhighInfo.setDefendReboundEfficient(d_RR);
-		    	   playerhighInfo.setFaultEfficient(TR);
-		    	   playerhighInfo.setGmSc(playerGmScER);
+	    		   playerhighInfo.setAssistEfficient(getAR());
+		    	   playerhighInfo.setBlockShotEfficient(getBR());
+		    	   playerhighInfo.setDefendReboundEfficient(getD_RR());
+		    	   playerhighInfo.setFaultEfficient(getTR());
+		    	   playerhighInfo.setGmSc(getPlayerGmScER());
 		    	   playerhighInfo.setLeague("east");
-		    	   playerhighInfo.setName(playerName);
-		    	   playerhighInfo.setOffendReboundEfficient(o_RR);
-		    	   playerhighInfo.setPosition(position);
-		    	   playerhighInfo.setRealShot(playerTSP);
-		    	   playerhighInfo.setReboundEfficient(RR);
-		    	   playerhighInfo.setShotEfficient(playerSER);
-		    	   playerhighInfo.setStealEfficient(SR);
+		    	   playerhighInfo.setName(getPlayerName());
+		    	   playerhighInfo.setOffendReboundEfficient(getO_RR());
+		    	   playerhighInfo.setPosition(getPlayerPositionEnglish());
+		    	   playerhighInfo.setRealShot(getPlayerTSP());
+		    	   playerhighInfo.setReboundEfficient(getRR());
+		    	   playerhighInfo.setShotEfficient(getPlayerSER());
+		    	   playerhighInfo.setStealEfficient(getSR());
 		    	   playerhighInfo.setTeamName(teamShortName);
 	    	   }
 	    	   return playerhighInfo;
@@ -1241,45 +1264,45 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			  PlayerNormalInfo pl=new PlayerNormalInfo();
 			  if(option.equals("aveg")){
 			  pl.setAge(playerAge);
-			  pl.setAssist(aver_playerAssists);
-			  pl.setBlockShot(aver_playerBlocks);
-			  pl.setDefend(aver_playerDeffenceRebounds);
-			  pl.setEfficiency(playerPER);
-			  pl.setFault(aver_playerTurnovers);
-			  pl.setFoul(aver_playerFouls);
-			  pl.setMinute(aver_playerPlayTime);
+			  pl.setAssist(getAver_playerAssists());
+			  pl.setBlockShot(getAver_playerBlocks());
+			  pl.setDefend(getAver_playerDeffenceRebounds());
+			  pl.setEfficiency(getPlayerPER());
+			  pl.setFault(getAver_playerTurnovers());
+			  pl.setFoul(getAver_playerFouls());
+			  pl.setMinute(getAver_playerPlayTime());
 			  pl.setName(playerName);
 			  pl.setNumOfGame(Integer.parseInt(playerNumber));
-			  pl.setOffend(aver_playerOffenceRebounds);
-			  pl.setPenalty(playerFTGP);
-			  pl.setPoint(aver_playerScores);
-			  pl.setRebound(aver_playerTotalRebounds);
-			  pl.setShot(playerFGP);
-			  pl.setStart(startTimes);
-			  pl.setSteal(aver_playerSteals);
+			  pl.setOffend(getAver_playerOffenceRebounds());
+			  pl.setPenalty(getPlayerFTGP());
+			  pl.setPoint(getAver_playerScores());
+			  pl.setRebound(getAver_playerTotalRebounds());
+			  pl.setShot(getPlayerFGP());
+			  pl.setStart(getStartTimes());
+			  pl.setSteal(getAver_playerSteals());
 			  pl.setTeamName(teamShortName);
-			  pl.setThree(player3FGP);
+			  pl.setThree(getPlayer3FGP());
 			  }
 			  else{
 				  pl.setAge(playerAge);
-				  pl.setAssist(playerAssists);
-				  pl.setBlockShot(playerBlocks);
-				  pl.setDefend(playerDeffenceRebounds);
-				  pl.setEfficiency(playerPER);
-				  pl.setFault(playerTurnovers);
-				  pl.setFoul(playerFouls);
-				  pl.setMinute(playerPlayTime);
+				  pl.setAssist(getPlayerAssists());
+				  pl.setBlockShot(getPlayerBlocks());
+				  pl.setDefend(getPlayerDeffenceRebounds());
+				  pl.setEfficiency(getPlayerPER());
+				  pl.setFault(getPlayerTurnovers());
+				  pl.setFoul(getPlayerFouls());
+				  pl.setMinute(getPlayerPlayTime());
 				  pl.setName(playerName);
 				  pl.setNumOfGame(Integer.parseInt(playerNumber));
-				  pl.setOffend(playerOffenceRebounds);
-				  pl.setPenalty(playerFTGP);
-				  pl.setPoint(playerScores);
-				  pl.setRebound(playerTotalRebounds);
-				  pl.setShot(playerFGP);
-				  pl.setStart(startTimes);
-				  pl.setSteal(playerSteals);
+				  pl.setOffend(getPlayerOffenceRebounds());
+				  pl.setPenalty(getPlayerFTGP());
+				  pl.setPoint(getPlayerScores());
+				  pl.setRebound(getPlayerTotalRebounds());
+				  pl.setShot(getPlayerFGP());
+				  pl.setStart(getStartTimes());
+				  pl.setSteal(getPlayerSteals());
 				  pl.setTeamName(teamShortName);
-				  pl.setThree(player3FGP);
+				  pl.setThree(getPlayer3FGP());
 			  }
 			  return pl;
 		  }
@@ -1287,7 +1310,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			  PlayerHotInfo pl=new PlayerHotInfo();
 			  pl.setField(f);
 			  pl.setName(playerName);
-			  pl.setPosition(position);
+			  pl.setPosition(getPlayerPositionEnglish());
 			  pl.setTeamName(teamShortName);
 			  pl.setUpgradeRate(advancedP);//!
 			  pl.setValue(this.getdatebystring(f, "aveg"));
@@ -1297,7 +1320,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	  PlayerKingInfo pl=new PlayerKingInfo();
         	  pl.setField(f);
         	  pl.setName(playerName);
-        	  pl.setPosition(position);
+        	  pl.setPosition(getPlayerPositionEnglish());
         	  pl.setTeamName(teamShortName);
         	  pl.setValue(this.getdatebystring(f, "aveg"));
         	  return pl;
@@ -1307,54 +1330,54 @@ public class PlayerVO implements Comparable<PlayerVO>{
           public double getdatebystring(String f,String option){
         	  if(option.equals("aveg")){
         		  if(f.equals("score")){
-        			  return this.aver_playerScores;
+        			  return this.getAver_playerScores();
         		  }
         		  if(f.equals("rebound")){
-        			  return this.aver_playerTotalRebounds;
+        			  return this.getAver_playerTotalRebounds();
         		  }
         		  if(f.equals("assit")){
-        			  return this.aver_playerAssists;
+        			  return this.getAver_playerAssists();
         		  }
         		  if(f.equals("3FGP")){
-        			  return this.player3FGP;
+        			  return this.getPlayer3FGP();
         		  }
         		  if(f.equals("FGP")){
-        			  return this.playerFGP;
+        			  return this.getPlayerFGP();
         		  }
         		  if(f.equals("FTGP")){
-        			  return this.playerFTGP;
+        			  return this.getPlayerFTGP();
         		  }
         		  if(f.equals("blockShot")){
-        			  return this.aver_playerBlocks;
+        			  return this.getAver_playerBlocks();
         		  }
         		  if(f.equals("steal")){
-        			  return this.aver_playerSteals;
+        			  return this.getAver_playerSteals();
         		  }
         	  }
         	  else{
         		  if(f.equals("score")){
-        			  return this.playerScores;
+        			  return this.getPlayerScores();
         		  }
         		  if(f.equals("rebound")){
-        			  return this.playerTotalRebounds;
+        			  return this.getPlayerTotalRebounds();
         		  }
         		  if(f.equals("assit")){
-        			  return this.playerAssists;
+        			  return this.getPlayerAssists();
         		  }
         		  if(f.equals("3FGP")){
-        			  return this.player3FGP;
+        			  return this.getPlayer3FGP();
         		  }
         		  if(f.equals("FGP")){
-        			  return this.playerFGP;
+        			  return this.getPlayerFGP();
         		  }
         		  if(f.equals("FTGP")){
-        			  return this.playerFTGP;
+        			  return this.getPlayerFTGP();
         		  }
         		  if(f.equals("blockShot")){
-        			  return this.playerBlocks;
+        			  return this.getPlayerBlocks();
         		  }
         		  if(f.equals("steal")){
-        			  return this.playerSteals;
+        			  return this.getPlayerSteals();
         		  }
         	  }
         	  return 0;
@@ -1362,74 +1385,74 @@ public class PlayerVO implements Comparable<PlayerVO>{
           public double getplayerdata(String field,String option){
         	 if(option.equals("aveg")){
         		 if(field.equals("point")){
-        			 return this.aver_playerScores;
+        			 return this.getAver_playerScores();
         		 }
         	 
         	 if(field.equals("rebound")){
-        		 return this.aver_playerTotalRebounds;
+        		 return this.getAver_playerTotalRebounds();
         	 }
         	 if(field.equals("assit")){
-        		 return this.aver_playerAssists;
+        		 return this.getAver_playerAssists();
         	 }
         	 if(field.equals("blockShot")){
-        		 return this.aver_playerBlocks;
+        		 return this.getAver_playerBlocks();
         	 }
         	 if(field.equals("steal")){
-        		 return this.aver_playerSteals;
+        		 return this.getAver_playerSteals();
         	 }
         	 if(field.equals("foul")){
-        		 return this.aver_playerFouls;
+        		 return this.getAver_playerFouls();
         	 }
         	 if(field.equals("fault")){
-        		 return this.aver_playerTurnovers;
+        		 return this.getAver_playerTurnovers();
         	 }
         	 if(field.equals("minute")){
-        		 return this.aver_playerPlayTime;
+        		 return this.getAver_playerPlayTime();
         	 }
         	 if(field.equals("efficient")){
-        		 return this.playerPER;
+        		 return this.getPlayerPER();
         	 }
         	 if(field.equals("shot")){
-        		 return this.playerFGP;
+        		 return this.getPlayerFGP();
         	 }
         	 if(field.equals("three")){
-        		 return this.player3FGP;
+        		 return this.getPlayer3FGP();
         	 }
         	 if(field.equals("penalty")){
-        		 return this.playerFTGP;
+        		 return this.getPlayerFTGP();
         	 }
         	 if(field.equals("double Two")){
-        		 return this.aveg_double;
+        		 return this.getaveg_double();
         	 }
         	 if(field.equals(" realShot")){
-        		return this.playerTSP;
+        		return this.getPlayerTSP();
         	 }
         	 if(field.equals("GmSc")){
-        		 return this.playerGmScER;
+        		 return this.getPlayerGmScER();
         	 }
         	 if(field.equals("shotEfficient")){
-        		 return this.playerSER;
+        		 return this.getPlayerSER();
         	 }
         	 if(field.equals("reboundEfficient")){
-        		 return this.RR;
+        		 return this.getRR();
         	 }
         	 if(field.equals("offendReboundEfficient")){
-        		 return o_RR;
+        		 return getO_RR();
         	 }
         	 if(field.equals("defendReboundEfficient")){
-        		 return d_RR;
+        		 return getD_RR();
         	 }
         	 if(field.equals("assistEfficient")){
-        		 return AR;
+        		 return getAR();
         	 }
         	 if(field.equals("blockShotEfficient")){
-        		 return BR;
+        		 return getBR();
         	 }
         	 if(field.equals("faultEfficient")){
-        		 return TR;
+        		 return getTR();
         	 }
         	 if(field.equals("frequency")){
-        		 return UR;
+        		 return getUR();
         	 }
           }
         	 else{

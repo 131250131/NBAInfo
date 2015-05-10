@@ -1213,60 +1213,60 @@ public class TeamVO implements Comparable<TeamVO> {
         public TeamHighInfo getTeamHighInfo(String option){ //此处option可能没有用，但是确保万一还是传个"aveg"进去吧
         	TeamHighInfo t=new TeamHighInfo();
         	if(option.equals("aveg")){
-        	t.setAssistEfficient(teamAssE);
-        	t.setDefendEfficient(teamDefE);
-        	t.setDefendReboundEfficient(teamDefERebE);
-        	t.setOffendEfficient(teamOffERebE);
-        	t.setOffendRound(attackRounds);
-        	t.setStealEfficient(teamSteE);
+        	t.setAssistEfficient(getTeamAssE());
+        	t.setDefendEfficient(getTeamDefE());
+        	t.setDefendReboundEfficient(getTeamDefERebE());
+        	t.setOffendEfficient(getTeamOffERebE());
+        	t.setOffendRound(getAttackRounds());
+        	t.setStealEfficient(getTeamSteE());
         	t.setTeamName(teamName);
-        	t.setWinRate(winRate);
+        	t.setWinRate(getWinRate());
         	}
         	else{
-        		t.setAssistEfficient(teamAssE);
-            	t.setDefendEfficient(teamDefE);
-            	t.setDefendReboundEfficient(teamDefERebE);
-            	t.setOffendEfficient(teamOffERebE);
-            	t.setOffendRound(attackRounds);
-            	t.setStealEfficient(teamSteE);
+        		t.setAssistEfficient(getTeamAssE());
+            	t.setDefendEfficient(getTeamDefE());
+            	t.setDefendReboundEfficient(getTeamDefERebE());
+            	t.setOffendEfficient(getTeamOffERebE());
+            	t.setOffendRound(getAttackRounds());
+            	t.setStealEfficient(getTeamSteE());
             	t.setTeamName(teamName);
-            	t.setWinRate(winRate);
+            	t.setWinRate(getWinRate());
         	}
         	return t;
         }
         public TeamNormalInfo getTeamNormalInfo(String option){ 
         	TeamNormalInfo t=new TeamNormalInfo();
         	if(option.equals("aveg")){
-        	t.setAssist(aver_teamAssists);
-        	t.setBlockShot(aver_teamBlocks);
-        	t.setDefendRebound(aver_teamDeffenceRebounds);
-        	t.setFault(aver_teamTurnovers);
-        	t.setFoul(aver_teamFouls);
-        	t.setNumOfGame(compGames);
-        	t.setOffendRebound(aver_teamOffenceRebounds);
-        	t.setPenalty(teamFTGP);
-        	t.setPoint(aver_teamScores);
-        	t.setRebound(aver_teamTotalRebounds);
-        	t.setShot(teamFGP);
-        	t.setSteal(aver_teamSteals);
+        	t.setAssist(getAver_teamAssists());
+        	t.setBlockShot(getAver_teamBlocks());
+        	t.setDefendRebound(getAver_oppoDeffenceRebounds());
+        	t.setFault(getAver_teamTurnovers());
+        	t.setFoul(getAver_teamFouls());
+        	t.setNumOfGame(getCompGames());
+        	t.setOffendRebound(getAver_teamOffenceRebounds());
+        	t.setPenalty(getTeamFTGP());
+        	t.setPoint(getAver_teamScores());
+        	t.setRebound(getAver_teamTotalRebounds());
+        	t.setShot(getTeamFGP());
+        	t.setSteal(getAver_teamSteals());
         	t.setTeamName(teamName);
-        	t.setThree(team3FGP);
+        	t.setThree(getTeam3FGP());
         	}
         	else{
-        		t.setAssist(teamAssists);
-            	t.setBlockShot(teamBlocks);
-            	t.setDefendRebound(teamDeffenceRebounds);
-            	t.setFault(teamTurnovers);
-            	t.setFoul(teamFouls);
-            	t.setNumOfGame(compGames);
-            	t.setOffendRebound(teamOffenceRebounds);
-            	t.setPenalty(teamFTGP);
-            	t.setPoint(teamScores);
-            	t.setRebound(teamTotalRebounds);
-            	t.setShot(teamFGP);
-            	t.setSteal(teamSteals);
+        		t.setAssist(getTeamAssists());
+            	t.setBlockShot(getTeamBlocks());
+            	t.setDefendRebound(getTeamDeffenceRebounds());
+            	t.setFault(getTeamTurnovers());
+            	t.setFoul(getTeamFouls());
+            	t.setNumOfGame(getCompGames());
+            	t.setOffendRebound(getTeamOffenceRebounds());
+            	t.setPenalty(getTeamFTGP());
+            	t.setPoint(getTeamScores());
+            	t.setRebound(getTeamTotalRebounds());
+            	t.setShot(getTeamFGP());
+            	t.setSteal(getTeamSteals());
             	t.setTeamName(teamName);
-            	t.setThree(team3FGP);
+            	t.setThree(getTeam3FGP());
         	}
         	return t;
         }
@@ -1281,56 +1281,190 @@ public class TeamVO implements Comparable<TeamVO> {
         public double getdatebystring(String f,String option){
       	  if(option.equals("aveg")){
       		  if(f.equals("score")){
-      			  return this.aver_teamScores;
+      			  return this.getAver_teamScores();
       		  }
       		  if(f.equals("rebound")){
-      			  return this.aver_teamTotalRebounds;
+      			  return this.getAver_teamTotalRebounds();
       		  }
       		  if(f.equals("assit")){
-      			  return this.aver_teamAssists;
+      			  return this.getAver_teamAssists();
       		  }
       		  if(f.equals("3FGP")){
-      			  return this.team3FGP;
+      			  return this.getTeam3FGP();
       		  }
       		  if(f.equals("FGP")){
-      			  return this.teamFGP;
+      			  return this.getTeamFGP();
       		  }
       		  if(f.equals("FTGP")){
-      			  return this.teamFTGP;
+      			  return this.getTeamFTGP();
       		  }
       		  if(f.equals("blockShot")){
-      			  return this.aver_teamBlocks;
+      			  return this.getAver_teamBlocks();
       		  }
       		  if(f.equals("steal")){
-      			  return this.aver_teamSteals;
+      			  return this.getAver_teamSteals();
       		  }
       	  }
       	  else{
       		 if(f.equals("score")){
-     			  return this.teamScores;
+     			  return this.getTeamScores();
      		  }
      		  if(f.equals("rebound")){
-     			  return this.teamTotalRebounds;
+     			  return this.getTeamTotalRebounds();
      		  }
      		  if(f.equals("assit")){
-     			  return this.teamAssists;
+     			  return this.getTeamAssists();
      		  }
      		  if(f.equals("3FGP")){
-     			  return this.team3FGP;
+     			  return this.getTeam3FGP();
      		  }
      		  if(f.equals("FGP")){
-     			  return this.teamFGP;
+     			  return this.getTeamFGP();
      		  }
      		  if(f.equals("FTGP")){
-     			  return this.teamFTGP;
+     			  return this.getTeamFTGP();
      		  }
      		  if(f.equals("blockShot")){
-     			  return this.teamBlocks;
+     			  return this.getTeamBlocks();
      		  }
      		  if(f.equals("steal")){
-     			  return this.teamSteals;
+     			  return this.getTeamSteals();
      		  }
       	  }
       	  return 0;
         }
+        public double getteamdate(String field,String option){
+        	if(option.equals("aveg")){
+       		 if(field.equals("point")){
+       			 return this.getAver_teamScores();
+       		 }
+       	 
+       	 if(field.equals("rebound")){
+       		 return this.getAver_teamTotalRebounds();
+       	 }
+       	 if(field.equals("assit")){
+       		 return this.getAver_teamAssists();
+       	 }
+       	 if(field.equals("blockShot")){
+       		 return this.getAver_teamBlocks();
+       	 }
+       	 if(field.equals("steal")){
+       		 return this.getAver_teamSteals();
+       	 }
+       	 if(field.equals("foul")){
+       		 return this.getAver_teamFouls();
+       	 }
+       	 if(field.equals("fault")){
+       		 return this.getAver_teamTurnovers();
+       	 }
+       	
+       	 if(field.equals("shot")){
+       		 return this.getTeamFGP();
+       	 }
+       	 if(field.equals("three")){
+       		 return this.getTeam3FGP();
+       	 }
+       	 if(field.equals("penalty")){
+       		 return this.getTeamFTGP();
+       	 }
+       	if(field.equals("defendRebound")){
+       		return this.getAver_oppoDeffenceRebounds();
+       	}
+       	if(field.equals("offendRebound")){
+       		return this.getAver_oppoOffenceRebounds();
+       	}
+       	if(field.equals("winRate")){
+       		this.setWinRate();
+       		return this.getWinRate();
+       	}
+       	if(field.equals("offendRound")){
+       		return this.getAttackRounds();
+       	}
+       	if(field.equals("offendEfficient")){
+       		return this.getTeamOffE();
+       	}
+       	if(field.equals("defendEfficient")){
+       		return this.getTeamDefE();
+       	}
+       	if(field.equals("offendReboundEfficient")){
+       		return this.getTeamOffERebE();
+       	}
+       	if(field.equals("defendReboundEfficient")){
+       		return this.getTeamDefERebE();
+       	}
+       	if(field.equals("stealEfficient")){
+       		return this.getTeamSteE();
+       	}
+       	if(field.equals("assistEfficient")){
+       		return this.getTeamAssE();
+       	}
+        	}
+        	else{
+        		if(field.equals("point")){
+          			 return this.getTeamScores();
+          		 }
+          	 
+          	 if(field.equals("rebound")){
+          		 return this.getTeamTotalRebounds();
+          	 }
+          	 if(field.equals("assit")){
+          		 return this.getTeamAssists();
+          	 }
+          	 if(field.equals("blockShot")){
+          		 return this.getTeamBlocks();
+          	 }
+          	 if(field.equals("steal")){
+          		 return this.getTeamSteals();
+          	 }
+          	 if(field.equals("foul")){
+          		 return this.getTeamFouls();
+          	 }
+          	 if(field.equals("fault")){
+          		 return this.getTeamTurnovers();
+          	 }
+          	
+          	 if(field.equals("shot")){
+          		 return this.getTeamFGP();
+          	 }
+          	 if(field.equals("three")){
+          		 return this.getTeam3FGP();
+          	 }
+          	 if(field.equals("penalty")){
+          		 return this.getTeamFTGP();
+          	 }
+          	if(field.equals("defendRebound")){
+          		return this.getOppoDeffenceRebounds();
+          	}
+          	if(field.equals("offendRebound")){
+          		return this.getOppoOffenceRebounds();
+          	}
+          	if(field.equals("winRate")){
+          		this.setWinRate();
+          		return this.getWinRate();
+          	}
+          	if(field.equals("offendRound")){
+          		return this.getAttackRounds();
+          	}
+          	if(field.equals("offendEfficient")){
+          		return this.getTeamOffE();
+          	}
+          	if(field.equals("defendEfficient")){
+          		return this.getTeamDefE();
+          	}
+          	if(field.equals("offendReboundEfficient")){
+          		return this.getTeamOffERebE();
+          	}
+          	if(field.equals("defendReboundEfficient")){
+          		return this.getTeamDefERebE();
+          	}
+          	if(field.equals("stealEfficient")){
+          		return this.getTeamSteE();
+          	}
+          	if(field.equals("assistEfficient")){
+          		return this.getTeamAssE();
+          	}
+           	}
+        	return 0;
+        	}
+        
 }

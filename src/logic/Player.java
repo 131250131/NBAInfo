@@ -8,6 +8,7 @@ public class Player implements Comparable<Player>{
 
 	static String comparetype="";
 	private double advancedP=0;
+	private double aveg_double;
 	public Player(){
 		
 	}
@@ -630,7 +631,7 @@ public class Player implements Comparable<Player>{
 		public double getAver_playerTotalRebounds() {
 			return  (playerAttends==0)?0:playerTotalRebounds / playerAttends;
 		}
-
+        
 		public double getAver_playerSteals() {
 			return (playerAttends==0)?0:playerSteals / playerAttends;
 		}
@@ -1154,6 +1155,14 @@ public class Player implements Comparable<Player>{
 
 		public void setcompare(String string) {
 			comparetype=string;
+		}
+
+		public double getAveg_double() {
+		   return (playerAttends==0)?0:(double)double_double /(double) playerAttends;
+		}
+
+		public void setAveg_double(double aveg_double) {
+			this.aveg_double = aveg_double;
 		}
 
 
