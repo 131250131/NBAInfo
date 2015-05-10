@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import Utibility.playercomp;
+import Utibility.teamcomp;
 import po.TeamPO;
 import DataService.PlayerDataService;
 import DataService.TeamDataService;
 import data.playerdata.PlayerReader;
 import data.teamdata.TeamReader;
+import test.Sort;
 import vo.MatchVO;
+import vo.PlayerVO;
 import vo.TeamVO;
 import logicservice.teamControllerService;
 
@@ -400,6 +404,16 @@ public class TeamController implements teamControllerService{
 			tv.setWinLose( ((double)tv.getLosGames()-(double)tv.getWinGames() )/2 -e);
 		}
 	}
-	
+	public ArrayList<TeamVO> multicomp(ArrayList<Sort> sort,String aveg,int n){
+    	ArrayList<TeamVO> result=new ArrayList<TeamVO>();
+    	teamcomp comp =new teamcomp();
+    	comp.setSort(sort);
+    	comp.setAveg(aveg);
+    	Collections.sort(this.allTeamVO, comp);
+    	for(int i=0;i<n;i++){
+    		result.add(this.allTeamVO.get(i));
+    	}
+    	return result;
+    }
 	}
 

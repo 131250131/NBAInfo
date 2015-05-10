@@ -402,7 +402,7 @@ public class PlayerController implements playerControllerService{
     	for(int i=0;i<n;i++){
     		result.add(this.allPlayerVO.get(i));
     	}
-    	return null;
+    	return result;
     }
 
 }

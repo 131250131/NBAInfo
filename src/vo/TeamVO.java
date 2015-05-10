@@ -1333,7 +1333,7 @@ public class TeamVO implements Comparable<TeamVO> {
       	  }
       	  return 0;
         }
-        public double getteamdate(String field,String option){
+        public Double getteamdate(String field,String option){
         	if(option.equals("aveg")){
        		 if(field.equals("point")){
        			 return this.getAver_teamScores();
@@ -1401,26 +1401,26 @@ public class TeamVO implements Comparable<TeamVO> {
         	}
         	else{
         		if(field.equals("point")){
-          			 return this.getTeamScores();
+          			 return (double)this.getTeamScores();
           		 }
           	 
           	 if(field.equals("rebound")){
-          		 return this.getTeamTotalRebounds();
+          		 return (double)this.getTeamTotalRebounds();
           	 }
           	 if(field.equals("assit")){
-          		 return this.getTeamAssists();
+          		 return (double)this.getTeamAssists();
           	 }
           	 if(field.equals("blockShot")){
-          		 return this.getTeamBlocks();
+          		 return (double)this.getTeamBlocks();
           	 }
           	 if(field.equals("steal")){
-          		 return this.getTeamSteals();
+          		 return (double)this.getTeamSteals();
           	 }
           	 if(field.equals("foul")){
-          		 return this.getTeamFouls();
+          		 return (double)this.getTeamFouls();
           	 }
           	 if(field.equals("fault")){
-          		 return this.getTeamTurnovers();
+          		 return (double)this.getTeamTurnovers();
           	 }
           	
           	 if(field.equals("shot")){
@@ -1433,10 +1433,10 @@ public class TeamVO implements Comparable<TeamVO> {
           		 return this.getTeamFTGP();
           	 }
           	if(field.equals("defendRebound")){
-          		return this.getOppoDeffenceRebounds();
+          		return (double)this.getOppoDeffenceRebounds();
           	}
           	if(field.equals("offendRebound")){
-          		return this.getOppoOffenceRebounds();
+          		return (double)this.getOppoOffenceRebounds();
           	}
           	if(field.equals("winRate")){
           		this.setWinRate();
@@ -1464,7 +1464,7 @@ public class TeamVO implements Comparable<TeamVO> {
           		return this.getTeamAssE();
           	}
            	}
-        	return 0;
+        	return 0.0;
         	}
         
 }
