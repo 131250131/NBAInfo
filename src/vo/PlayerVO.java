@@ -1424,7 +1424,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	 if(field.equals("double Two")){
         		 return this.getaveg_double();
         	 }
-        	 if(field.equals(" realShot")){
+        	 if(field.equals("realShot")){
         		return this.getPlayerTSP();
         	 }
         	 if(field.equals("GmSc")){
@@ -1496,7 +1496,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	 if(field.equals("double Two")){
         		 return (double)this.getdouble_double();
         	 }
-        	 if(field.equals(" realShot")){
+        	 if(field.equals("realShot")){
         		return this.getPlayerTSP();
         	 }
         	 if(field.equals("GmSc")){
