@@ -55,7 +55,8 @@ public class MainController implements mainControllerService{
 		if(parameter.getisPlayer()){
 			//平均
 			if(parameter.isAvarage()){
-			      
+			    //-all
+				//-hot field
 			
 		      }
 			//总数据
