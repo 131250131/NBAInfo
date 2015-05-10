@@ -73,7 +73,70 @@ public class MainController implements mainControllerService{
 			    switch(parameter.getMode().getMode()){
 			    	case "all":{
 			    		pr = playerController.getAllPlayerVO();
-			    	}break;
+			    		if(parameter.isHigh()){
+			    			if(sort.size()!=0){
+			    				playercomp pl=new playercomp();
+			    				pl.setSort(sort);
+			    				pl.setAveg("total");
+			    				Collections.sort(pr,pl);
+			    			}//有排序
+			    			if(filter.size()!=0){
+			    				pr = playerController.getAllPlayerVO();
+			    				for(int i=0;i<filter.size();i++){
+			    					Filter temp = filter.get(i);
+			    					switch(temp.getFilterName()){
+			    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
+			    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
+			    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
+			    					}
+			    				}
+			    				
+			    				//筛选操作。。。阿超你来弄一下
+			    				//筛选写完了。
+			    			}//有筛选
+			    			if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerHighInfo("total"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerHighInfo("total"));
+			    				}
+			    			}
+			    			return result;
+			    		}
+			    		else{
+			    			if(sort.size()!=0){
+			    				playercomp pl=new playercomp();
+			    				pl.setSort(sort);
+			    				pl.setAveg("total");
+			    				Collections.sort(pr,pl);
+			    			}//有排序
+			    			if(filter.size()!=0){
+			    				pr = playerController.getAllPlayerVO();
+			    				for(int i=0;i<filter.size();i++){
+			    					Filter temp = filter.get(i);
+			    					switch(temp.getFilterName()){
+			    					case "position":pr=playerController.getSelectedPlayers_Position(pr, temp.getFilterValue()); break;
+			    					case "league":pr=playerController.getSelectedPlayers_Distribution(pr, temp.getFilterValue());break;
+			    					case "age":pr=playerController.getSelectedPlayers_Age(pr, temp.getRange());break;
+			    					}
+			    				}
+			    			}//有筛选
+			    			if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerNormalInfo("total"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerNormalInfo("total"));
+			    				}
+			    			}
+			    			return result;
+			    		}
+				 }
 			    	case "hot":{
 			    		switch(parameter.getMode().getField()){
 			    			case "score" :{
@@ -276,8 +339,48 @@ public class MainController implements mainControllerService{
 			if(parameter.isAvarage()){
 			    switch(parameter.getMode().getMode()){
 			    	case "all":{
-			    		tr = teamController.allTeamVO;
-			    	}break;
+			    		{
+				    		pr = playerController.getAllPlayerVO();
+				    		if(parameter.isHigh()){
+				    			if(sort.size()!=0){
+				    				teamcomp tl=new teamcomp();
+				    				tl.setSort(sort);
+				    				tl.setAveg("total");
+				    				Collections.sort(tr,tl);
+				    			}//有排序
+				    			if(n>tr.size()){
+				    				for(int i=0;i<tr.size();i++){
+				    					result.add(tr.get(i).getTeamHighInfo("total"));
+				    				}
+				    			}
+				    			else{
+				    				for(int i=0;i<n;i++){
+				    					result.add(tr.get(i).getTeamHighInfo("total"));
+				    				}
+				    			}
+				    			return result;
+				    		}
+				    		else{
+				    			if(sort.size()!=0){
+				    				teamcomp tl=new teamcomp();
+				    				tl.setSort(sort);
+				    				tl.setAveg("total");
+				    				Collections.sort(tr,tl);
+				    			}//有排序
+				    			if(n>pr.size()){
+				    				for(int i=0;i<tr.size();i++){
+				    					result.add(tr.get(i).getTeamNormalInfo("total"));
+				    				}
+				    			}
+				    			else{
+				    				for(int i=0;i<n;i++){
+				    					result.add(tr.get(i).getTeamNormalInfo("total"));
+				    				}
+				    			}
+				    			return result;
+				    		}
+					 }
+			    	}
 			    	case "hot":{
 			    		switch(parameter.getMode().getField()){
 			    			case "score" :{tr=teamController.getSeasonHotTeams_AverScore();}break;
