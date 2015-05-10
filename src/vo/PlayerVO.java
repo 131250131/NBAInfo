@@ -401,7 +401,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			}
 
 			public double getAver_playerPlayTime() {
-				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerPlayTime / (playerAttends+0.0))));
+				return  Double.parseDouble(String.format("%.3f",((playerAttends==0)?0:playerPlayTime / (playerAttends+0.0))/60.0));
 			}
 
 			public double getAver_playerFG() {

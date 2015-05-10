@@ -18,7 +18,7 @@ public class FilePathSaver {
 	private String playerFilePath = "data/data/players/info";
 	
 	//比赛信息文件夹地址
-	private String matchFilePath = "data/data/matches";
+	private String matchFilePath = "data/data/matches2";
 	
 	//队伍信息文件夹地址
 	private String teamFilePath = "data/data/teams/teams";
