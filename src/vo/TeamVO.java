@@ -918,7 +918,7 @@ public class TeamVO implements Comparable<TeamVO> {
 		@Override
 		public int compareTo(TeamVO o) {
 			// TODO Auto-generated method stub
-			if(comparetype.equals("得分")){
+			if(comparetype.equals("平均得分")){
 				if(this.getAver_teamScores()-o.getAver_teamScores()<0){
 					return 1;
 				}
@@ -927,7 +927,7 @@ public class TeamVO implements Comparable<TeamVO> {
 				//System.out.println("tt");
 				    return -1;
 			}
-            if(comparetype.equals("篮板")){
+            if(comparetype.equals("平均篮板")){
 				if(this.getAver_teamTotalRebounds()-o.getAver_teamTotalRebounds()<0){
 					return 1;
 				}
@@ -935,7 +935,7 @@ public class TeamVO implements Comparable<TeamVO> {
 					return 0;
 				    return -1;
 			}
-            if(comparetype.equals("助攻")){
+            if(comparetype.equals("平均助攻")){
 				if(this.getAver_teamAssists()-o.getAver_teamAssists()<0){
 					return 1;
 				}
@@ -943,7 +943,7 @@ public class TeamVO implements Comparable<TeamVO> {
 					return 0;
 				    return -1;
 			}
-            if(comparetype.equals("盖帽")){
+            if(comparetype.equals("平均盖帽")){
 				if(this.getAver_teamBlocks()-o.getAver_teamBlocks()<0){
 					return 1;
 				}
@@ -951,11 +951,115 @@ public class TeamVO implements Comparable<TeamVO> {
 					return 0;
 				    return -1;
 			}
-            if(comparetype.equals("抢断")){
+            if(comparetype.equals("平均抢断")){
 				if(this.getAver_teamSteals()-o.getAver_teamSteals()<0){
 					return 1;
 				}
 				if(this.getAver_teamSteals()-o.getAver_teamSteals()==0)
+					return 0;
+				    return -1;
+			}if(comparetype.equals("总得分")){
+				if(this.getTeamScores()-o.getTeamScores()<0){
+					return 1;
+				}
+				if(this.getTeamScores()-o.getTeamScores()==0)
+					return 0;
+				//System.out.println("tt");
+				    return -1;
+			}
+            if(comparetype.equals("总篮板")){
+				if(this.getTeamTotalRebounds()-o.getTeamTotalRebounds()<0){
+					return 1;
+				}
+				if(this.getTeamTotalRebounds()-o.getTeamTotalRebounds()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("总助攻")){
+				if(this.getTeamAssists()-o.getTeamAssists()<0){
+					return 1;
+				}
+				if(this.getTeamAssists()-o.getTeamAssists()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("总盖帽")){
+				if(this.getTeamBlocks()-o.getTeamBlocks()<0){
+					return 1;
+				}
+				if(this.getTeamBlocks()-o.getTeamBlocks()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("总抢断")){
+				if(this.getTeamSteals()-o.getTeamSteals()<0){
+					return 1;
+				}
+				if(this.getTeamSteals()-o.getTeamSteals()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("总进攻篮板")){
+				if(this.getTeamOffenceRebounds()-o.getTeamOffenceRebounds()<0){
+					return 1;
+				}
+				if(this.getTeamOffenceRebounds()-o.getTeamOffenceRebounds()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("总防守篮板")){
+				if(this.getTeamDeffenceRebounds()-o.getTeamDeffenceRebounds()<0){
+					return 1;
+				}
+				if(this.getTeamDeffenceRebounds()-o.getTeamDeffenceRebounds()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("平均防守篮板")){
+				if(this.getAver_teamDeffenceRebounds()-o.getAver_teamDeffenceRebounds()<0){
+					return 1;
+				}
+				if(this.getAver_teamDeffenceRebounds()-o.getAver_teamDeffenceRebounds()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("平均进攻篮板")){
+				if(this.getAver_teamOffenceRebounds()-o.getAver_teamOffenceRebounds()<0){
+					return 1;
+				}
+				if(this.getAver_teamOffenceRebounds()-o.getAver_teamOffenceRebounds()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("总犯规")){
+				if(this.getTeamFouls()-o.getTeamFouls()<0){
+					return 1;
+				}
+				if(this.getTeamFouls()-o.getTeamFouls()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("平均犯规")){
+				if(this.getAver_teamFouls()-o.getAver_teamFouls()<0){
+					return 1;
+				}
+				if(this.getAver_teamFouls()-o.getAver_teamFouls()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("平均失误")){
+				if(this.getAver_teamTurnovers()-o.getAver_teamTurnovers()<0){
+					return 1;
+				}
+				if(this.getAver_teamTurnovers()-o.getAver_teamTurnovers()==0)
+					return 0;
+				    return -1;
+			}
+            if(comparetype.equals("总失误")){
+				if(this.getTeamTurnovers()-o.getTeamTurnovers()<0){
+					return 1;
+				}
+				if(this.getTeamTurnovers()-o.getTeamTurnovers()==0)
 					return 0;
 				    return -1;
 			}
