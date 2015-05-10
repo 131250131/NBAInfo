@@ -25,6 +25,7 @@ public class playercomp implements  Comparator<PlayerVO>{
 					i++;
 				}
 			}
+		
 			else{
 				if(pl2.getplayerdata(sort.get(i).getField(), aveg).compareTo(pl1.getplayerdata(sort.get(i).getField(), aveg))!=0){
 					return pl2.getplayerdata(sort.get(i).getField(), aveg).compareTo(pl1.getplayerdata(sort.get(i).getField(), aveg));
