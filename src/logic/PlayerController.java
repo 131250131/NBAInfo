@@ -171,7 +171,7 @@ public class PlayerController implements playerControllerService{
 	public ArrayList<PlayerVO> getSelectedPlayers_Age(ArrayList<PlayerVO> list,int[] range){
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
 		for(PlayerVO vo : list){
-			if(){
+			if(vo.getPlayerAge()<=range[1]&&vo.getPlayerAge()>range[0]){
 				result.add(vo);
 			}
 		}
