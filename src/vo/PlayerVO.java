@@ -1382,7 +1382,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	  }
         	  return 0;
           }
-          public double getplayerdata(String field,String option){
+          public Double getplayerdata(String field,String option){
         	 if(option.equals("aveg")){
         		 if(field.equals("point")){
         			 return this.getAver_playerScores();
@@ -1457,35 +1457,35 @@ public class PlayerVO implements Comparable<PlayerVO>{
           }
         	 else{
         		 if(field.equals("point")){
-        			 return this.getPlayerScores();
+        			 return (double)this.getPlayerScores();
         		 }
         	 
         	 if(field.equals("rebound")){
-        		 return this.getPlayerTotalRebounds();
+        		 return (double)this.getPlayerTotalRebounds();
         	 }
         	 if(field.equals("assit")){
-        		 return this.getPlayerAssists();
+        		 return (double)this.getPlayerAssists();
         	 }
         	 if(field.equals("blockShot")){
-        		 return this.getPlayerBlocks();
+        		 return (double)this.getPlayerBlocks();
         	 }
         	 if(field.equals("steal")){
-        		 return this.getPlayerSteals();
+        		 return (double)this.getPlayerSteals();
         	 }
         	 if(field.equals("foul")){
-        		 return this.getPlayerFouls();
+        		 return (double)this.getPlayerFouls();
         	 }
         	 if(field.equals("fault")){
-        		 return this.getPlayerTurnovers();
+        		 return (double)this.getPlayerTurnovers();
         	 }
         	 if(field.equals("minute")){
-        		 return this.getPlayerPlayTime();
+        		 return (double)this.getPlayerPlayTime();
         	 }
         	 if(field.equals("efficient")){
-        		 return this.getPlayerPER();
+        		 return (double)this.getPlayerPER();
         	 }
         	 if(field.equals("shot")){
-        		 return this.getPlayerFGP();
+        		 return (double)this.getPlayerFGP();
         	 }
         	 if(field.equals("three")){
         		 return this.getPlayer3FGP();
@@ -1494,7 +1494,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         		 return this.getPlayerFTGP();
         	 }
         	 if(field.equals("double Two")){
-        		 return this.getdouble_double();
+        		 return (double)this.getdouble_double();
         	 }
         	 if(field.equals(" realShot")){
         		return this.getPlayerTSP();
@@ -1528,7 +1528,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
         	 }
              }
           
-          return 0;
+          return 0.0;
 	}
 }
 

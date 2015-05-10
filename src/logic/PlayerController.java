@@ -3,6 +3,7 @@ package logic;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import Utibility.playercomp;
 import logicservice.playerControllerService;
 import po.PlayerPO;
 import test.Sort;
@@ -392,7 +393,15 @@ public class PlayerController implements playerControllerService{
 		}
 		return tempList;
 	}
-    public ArrayList<PlayerVO> multicomp(ArrayList<Sort> sort){
+    public ArrayList<PlayerVO> multicomp(ArrayList<Sort> sort,String aveg,int n){
+    	ArrayList<PlayerVO> result=new ArrayList<PlayerVO>();
+    	playercomp comp =new playercomp();
+    	comp.setSort(sort);
+    	comp.setAveg(aveg);
+    	Collections.sort(this.allPlayerVO, comp);
+    	for(int i=0;i<n;i++){
+    		result.add(this.allPlayerVO.get(i));
+    	}
     	return null;
     }
 
