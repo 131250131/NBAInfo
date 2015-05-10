@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import Utibility.playercomp;
+import Utibility.teamcomp;
 import test.Filter;
 import test.ParameterExplicate;
 import test.Sort;
@@ -272,7 +273,101 @@ public class MainController implements mainControllerService{
 		}
 		//对球队的操作,差不多模仿一下player写
 		else{
-			
+			if(parameter.isAvarage()){
+			    switch(parameter.getMode().getMode()){
+			    	case "all":{
+			    		tr = teamController.allTeamVO;
+			    	}break;
+			    	case "hot":{
+			    		switch(parameter.getMode().getField()){
+			    			case "score" :{tr=teamController.getSeasonHotTeams_AverScore();}break;
+			    			case "assist" :{tr=teamController.getSeasonHotTeams_AverAssist();}break;
+			    			case "rebound" :{tr=teamController.getSeasonHotTeams_AverRebound();}break;
+			    			case"blockShot":{tr=teamController.getSeasonHotTeams_AverBlock();}break;
+			    			case"steal":{tr=teamController.getSeasonHotTeams_AverSteal();}break;
+			    			case"foul":{tr=teamController.getSeasonHotTeams_AverFouls();}break;
+			    			case"fault":{tr=teamController.getSeasonHotTeams_AverTurnovers();}break;
+			    			case"shot":{tr=teamController.getSeasonHotTeams_FGP();}break;
+			    			case"three":{tr=teamController.getSeasonHotTeams_3FGP();}break;
+			    			case"penalty":{tr=teamController.getSeasonHotTeams_FTGP();}break;
+			    			case"defendRebound":{tr=teamController.getSeasonHotTeams_AverDeffenceRebound();}break;
+			    			case"offendRebound":{tr=teamController.getSeasonHotTeams_AverOffenceRebound();}break;
+			    		}
+			    	}break;
+			    }
+			    if(parameter.getMode().getMode().equals("hot")){
+			    	for(TeamVO vo :tr){
+			    		result.add(vo.getTeamHotInfo(parameter.getMode().getField(),"aveg"));
+			    	}
+			    }
+		      }
+			//总数据
+			else{
+				 switch(parameter.getMode().getMode()){
+				 case "all":{
+			    		pr = playerController.getAllPlayerVO();
+			    		if(parameter.isHigh()){
+			    			if(sort.size()!=0){
+			    				teamcomp tl=new teamcomp();
+			    				tl.setSort(sort);
+			    				tl.setAveg("total");
+			    				Collections.sort(tr,tl);
+			    			}//有排序
+			    			if(n>tr.size()){
+			    				for(int i=0;i<tr.size();i++){
+			    					result.add(tr.get(i).getTeamHighInfo("total"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(tr.get(i).getTeamHighInfo("total"));
+			    				}
+			    			}
+			    			return result;
+			    		}
+			    		else{
+			    			if(sort.size()!=0){
+			    				teamcomp tl=new teamcomp();
+			    				tl.setSort(sort);
+			    				tl.setAveg("total");
+			    				Collections.sort(tr,tl);
+			    			}//有排序
+			    			if(n>pr.size()){
+			    				for(int i=0;i<tr.size();i++){
+			    					result.add(tr.get(i).getTeamNormalInfo("total"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(tr.get(i).getTeamNormalInfo("total"));
+			    				}
+			    			}
+			    			return result;
+			    		}
+				 }
+				 case "hot":{
+			    		switch(parameter.getMode().getField()){
+			    			case "score" :{tr=teamController.getSeasonHotTeams_Score();}break;
+			    			case "assist" :{tr=teamController.getSeasonHotTeams_Assist();}break;
+		    				case "rebound" :{tr=teamController.getSeasonHotTeams_Rebound();}break;
+		    				case"blockShot":{tr=teamController.getSeasonHotTeams_Block();}break;
+		    				case"steal":{tr=teamController.getSeasonHotTeams_Steal();}break;
+		    				case"foul":{tr=teamController.getSeasonHotTeams_Fouls();}break;
+		    				case"fault":{tr=teamController.getSeasonHotTeams_Turnovers();}break;
+		    				case"shot":{tr=teamController.getSeasonHotTeams_FGP();}break;
+		    				case"three":{tr=teamController.getSeasonHotTeams_3FGP();}break;
+		    				case"penalty":{tr=teamController.getSeasonHotTeams_FTGP();}break;
+		    				case"defendRebound":{tr=teamController.getSeasonHotTeams_DeffenceRebound();}break;
+		    				case"offendRebound":{tr=teamController.getSeasonHotTeams_OffenceRebound();}break;
+			    		}
+			    	}break;
+			    }
+				 if(parameter.getMode().getMode().equals("hot")){
+				    	for(TeamVO vo :tr){
+				    		result.add(vo.getTeamHotInfo(parameter.getMode().getField(),"total"));//这边是tota还是all?
+				    	}
+				 }
+			}
 			
 			
 			

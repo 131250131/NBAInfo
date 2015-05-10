@@ -127,7 +127,7 @@ public class TeamController implements teamControllerService{
 	public ArrayList<TeamVO> getSeasonHotTeams_Score(){
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		for(TeamVO vo :  this.allTeamVO){
-			vo.comparetype = "得分";
+			vo.comparetype = "总得分";
 		}
 		Collections.sort(this.allTeamVO); 
 		for(int i=0;i<10;i++){
@@ -139,7 +139,31 @@ public class TeamController implements teamControllerService{
 	public ArrayList<TeamVO> getSeasonHotTeams_Rebound(){
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		for(TeamVO vo :  this.allTeamVO){
-			vo.comparetype = "篮板";
+			vo.comparetype = "总篮板";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_OffenceRebound(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "总进攻篮板";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_DeffenceRebound(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "总防守篮板";
 		}
 		Collections.sort(this.allTeamVO);
 		for(int i=0;i<10;i++){
@@ -151,7 +175,7 @@ public class TeamController implements teamControllerService{
 	public ArrayList<TeamVO> getSeasonHotTeams_Assist(){
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		for(TeamVO vo :  this.allTeamVO){
-			vo.comparetype = "助攻";
+			vo.comparetype = "总助攻";
 		}
 		Collections.sort(this.allTeamVO);
 		for(int i=0;i<10;i++){
@@ -164,7 +188,7 @@ public class TeamController implements teamControllerService{
 		createSeasonAllTeamInfo();
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		for(TeamVO vo :  this.allTeamVO){
-			vo.comparetype = "盖帽";
+			vo.comparetype = "总盖帽";
 		}
 		Collections.sort(this.allTeamVO);
 		for(int i=0;i<10;i++){
@@ -176,7 +200,140 @@ public class TeamController implements teamControllerService{
 	public ArrayList<TeamVO> getSeasonHotTeams_Steal() {
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		for(TeamVO vo :  this.allTeamVO){
-			vo.comparetype = "抢断";
+			vo.comparetype = "总抢断";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_Fouls() {
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "总犯规";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_Turnovers() {
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "总失误";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_AverScore(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "平均得分";
+		}
+		Collections.sort(this.allTeamVO); 
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_AverRebound(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "平均篮板";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_AverOffenceRebound(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "平均进攻篮板";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_AverDeffenceRebound(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "平均防守篮板";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_AverAssist(){
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "平均助攻";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_AverBlock(){
+		createSeasonAllTeamInfo();
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "平均盖帽";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_AverSteal() {
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "平均抢断";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_AverFouls() {
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "平均犯规";
+		}
+		Collections.sort(this.allTeamVO);
+		for(int i=0;i<10;i++){
+			result.add(this.allTeamVO.get(i));
+		}
+		return result;
+	}
+	
+	public ArrayList<TeamVO> getSeasonHotTeams_AverTurnovers() {
+		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
+		for(TeamVO vo :  this.allTeamVO){
+			vo.comparetype = "平均失误";
 		}
 		Collections.sort(this.allTeamVO);
 		for(int i=0;i<10;i++){
@@ -221,6 +378,7 @@ public class TeamController implements teamControllerService{
 		return result;
 	} 
 	
+
 	
 	public ArrayList<MatchVO> getrecenttengames(String name){
 		return null;
