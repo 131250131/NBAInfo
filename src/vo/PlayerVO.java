@@ -14,6 +14,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		private double advancedP=0;
 		public String comparetype="";
 		private int double_double=0;
+		private double aveg_double=0;
 		public PlayerVO(){
 		
 		}
@@ -1357,7 +1358,154 @@ public class PlayerVO implements Comparable<PlayerVO>{
         		  }
         	  }
         	  return 0;
-//>>>>>>> branch 'master' of ssh://git@github.com/131250131/NBAInfo.git
           }
+          public double getplayerdata(String field,String option){
+        	 if(option.equals("aveg")){
+        		 if(field.equals("point")){
+        			 return this.aver_playerScores;
+        		 }
+        	 
+        	 if(field.equals("rebound")){
+        		 return this.aver_playerTotalRebounds;
+        	 }
+        	 if(field.equals("assit")){
+        		 return this.aver_playerAssists;
+        	 }
+        	 if(field.equals("blockShot")){
+        		 return this.aver_playerBlocks;
+        	 }
+        	 if(field.equals("steal")){
+        		 return this.aver_playerSteals;
+        	 }
+        	 if(field.equals("foul")){
+        		 return this.aver_playerFouls;
+        	 }
+        	 if(field.equals("fault")){
+        		 return this.aver_playerTurnovers;
+        	 }
+        	 if(field.equals("minute")){
+        		 return this.aver_playerPlayTime;
+        	 }
+        	 if(field.equals("efficient")){
+        		 return this.playerPER;
+        	 }
+        	 if(field.equals("shot")){
+        		 return this.playerFGP;
+        	 }
+        	 if(field.equals("three")){
+        		 return this.player3FGP;
+        	 }
+        	 if(field.equals("penalty")){
+        		 return this.playerFTGP;
+        	 }
+        	 if(field.equals("double Two")){
+        		 return this.aveg_double;
+        	 }
+        	 if(field.equals(" realShot")){
+        		return this.playerTSP;
+        	 }
+        	 if(field.equals("GmSc")){
+        		 return this.playerGmScER;
+        	 }
+        	 if(field.equals("shotEfficient")){
+        		 return this.playerSER;
+        	 }
+        	 if(field.equals("reboundEfficient")){
+        		 return this.RR;
+        	 }
+        	 if(field.equals("offendReboundEfficient")){
+        		 return o_RR;
+        	 }
+        	 if(field.equals("defendReboundEfficient")){
+        		 return d_RR;
+        	 }
+        	 if(field.equals("assistEfficient")){
+        		 return AR;
+        	 }
+        	 if(field.equals("blockShotEfficient")){
+        		 return BR;
+        	 }
+        	 if(field.equals("faultEfficient")){
+        		 return TR;
+        	 }
+        	 if(field.equals("frequency")){
+        		 return UR;
+        	 }
+          }
+        	 else{
+        		 if(field.equals("point")){
+        			 return this.playerScores;
+        		 }
+        	 
+        	 if(field.equals("rebound")){
+        		 return this.playerTotalRebounds;
+        	 }
+        	 if(field.equals("assit")){
+        		 return this.playerAssists;
+        	 }
+        	 if(field.equals("blockShot")){
+        		 return this.playerBlocks;
+        	 }
+        	 if(field.equals("steal")){
+        		 return this.playerSteals;
+        	 }
+        	 if(field.equals("foul")){
+        		 return this.playerFouls;
+        	 }
+        	 if(field.equals("fault")){
+        		 return this.playerTurnovers;
+        	 }
+        	 if(field.equals("minute")){
+        		 return this.playerPlayTime;
+        	 }
+        	 if(field.equals("efficient")){
+        		 return this.playerPER;
+        	 }
+        	 if(field.equals("shot")){
+        		 return this.playerFGP;
+        	 }
+        	 if(field.equals("three")){
+        		 return this.player3FGP;
+        	 }
+        	 if(field.equals("penalty")){
+        		 return this.playerFTGP;
+        	 }
+        	 if(field.equals("double Two")){
+        		 return this.double_double;
+        	 }
+        	 if(field.equals(" realShot")){
+        		return this.playerTSP;
+        	 }
+        	 if(field.equals("GmSc")){
+        		 return this.playerGmScER;
+        	 }
+        	 if(field.equals("shotEfficient")){
+        		 return this.playerSER;
+        	 }
+        	 if(field.equals("reboundEfficient")){
+        		 return this.RR;
+        	 }
+        	 if(field.equals("offendReboundEfficient")){
+        		 return o_RR;
+        	 }
+        	 if(field.equals("defendReboundEfficient")){
+        		 return d_RR;
+        	 }
+        	 if(field.equals("assistEfficient")){
+        		 return AR;
+        	 }
+        	 if(field.equals("blockShotEfficient")){
+        		 return BR;
+        	 }
+        	 if(field.equals("faultEfficient")){
+        		 return TR;
+        	 }
+        	 if(field.equals("frequency")){
+        		 return UR;
+        	 }
+             }
+          
+          return 0;
 	}
+}
 

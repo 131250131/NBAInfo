@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import logicservice.playerControllerService;
 import po.PlayerPO;
+import test.Sort;
 import vo.PlayerVO;
 import DataService.PlayerDataService;
 import data.playerdata.PlayerReader;
@@ -391,6 +392,8 @@ public class PlayerController implements playerControllerService{
 		}
 		return tempList;
 	}
-    
+    public ArrayList<PlayerVO> multicomp(ArrayList<Sort> sort){
+    	return null;
+    }
 
 }
