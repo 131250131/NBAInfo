@@ -1,8 +1,12 @@
 package logic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
+import Utibility.playercomp;
+import test.Filter;
 import test.ParameterExplicate;
+import test.Sort;
 import vo.PlayerVO;
 import vo.TeamVO;
 import logicservice.mainControllerService;
@@ -59,13 +63,60 @@ public class MainController implements mainControllerService{
 		ArrayList<Object> result = new ArrayList<Object>(); 
 		String date = new String();//日期需要解决;
 		DataCollector dc = new DataCollector();
+		ArrayList<Sort> sort=parameter.getSortList();
+	    ArrayList<Filter> filter = parameter.getFilterList();
+		int n=parameter.getNumber();
 		if(parameter.getisPlayer()){
 			//平均
 			if(parameter.isAvarage()){
 			    switch(parameter.getMode().getMode()){
 			    	case "all":{
 			    		pr = playerController.getAllPlayerVO();
-			    	}break;
+			    		if(parameter.isHigh()){
+			    			if(sort.size()!=0){
+			    				playercomp pl=new playercomp();
+			    				pl.setSort(sort);
+			    				pl.setAveg("aveg");
+			    				Collections.sort(pr,pl);
+			    			}//有排序
+			    			if(filter.size()!=0){
+			    				//筛选操作。。。阿超你来弄一下
+			    			}//有筛选
+			    			if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerHighInfo("aveg"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerHighInfo("aveg"));
+			    				}
+			    			}
+			    			return result;
+			    		}
+			    		else{
+			    			if(sort.size()!=0){
+			    				playercomp pl=new playercomp();
+			    				pl.setSort(sort);
+			    				pl.setAveg("aveg");
+			    				Collections.sort(pr,pl);
+			    			}//有排序
+			    			if(filter.size()!=0){
+			    				//筛选操作
+			    			}//有筛选
+			    			if(n>pr.size()){
+			    				for(int i=0;i<pr.size();i++){
+			    					result.add(pr.get(i).getPlayerNormalInfo("aveg"));
+			    				}
+			    			}
+			    			else{
+			    				for(int i=0;i<n;i++){
+			    					result.add(pr.get(i).getPlayerNormalInfo("aveg"));
+			    				}
+			    			}
+			    			return result;
+			    		}
+			    	}
 			    	case "hot":{
 			    		switch(parameter.getMode().getField()){
 			    			case "score" :{
