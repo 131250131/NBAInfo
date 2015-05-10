@@ -159,6 +159,22 @@ public class PlayerController implements playerControllerService{
 		return result;
 	}
 	
+	public ArrayList<PlayerVO> getSelectedPlayers2(String position,String distribution,String infoType ) {
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		
+		return result;
+	}
+	
+	public ArrayList<PlayerVO> getSelectedPlayers_Age(ArrayList<PlayerVO> list,int[] range){
+		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		for(PlayerVO vo : list){
+			if(){
+				result.add(vo);
+			}
+		}
+		return result;
+	}
+	
  	public ArrayList<PlayerVO> getSeasonHotPlayers_Score(){
 		ArrayList<PlayerVO> tempList = new ArrayList<PlayerVO>();
 		for(Player tempPlayer : this.allPlayers){
@@ -404,5 +420,7 @@ public class PlayerController implements playerControllerService{
     	}
     	return result;
     }
+
+
 
 }

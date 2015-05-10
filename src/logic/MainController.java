@@ -124,6 +124,20 @@ public class MainController implements mainControllerService{
 		    		}
 			    	}break;
 			    }
+			    if(parameter.getMode().getMode().equals("hot")){
+			    	for(PlayerVO vo : pr){
+			    		result.add(vo.getPLayerHOTInfo(parameter.getMode().getField()));
+			    	}
+			    }if(parameter.getMode().getMode().equals("king")){
+			    	for(PlayerVO vo : pr){
+			    		result.add(vo.getPlayerKingInfo(parameter.getMode().getField()));
+			    	}
+			    }
+			    
+			    
+
+			    
+			    
 		      }
 			//总数据
 			else{
@@ -138,6 +152,7 @@ public class MainController implements mainControllerService{
 			    				Collections.sort(pr,pl);
 			    			}//有排序
 			    			if(filter.size()!=0){
+			    				pr = playerController.getSelectedPlayers2();
 			    				//筛选操作。。。阿超你来弄一下
 			    			}//有筛选
 			    			if(n>pr.size()){
