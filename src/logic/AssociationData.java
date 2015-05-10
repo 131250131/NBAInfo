@@ -110,6 +110,7 @@ public class AssociationData implements associationDataService{
 	private double aver_teamFouls;//球队场均犯规数
 	private double aver_teamScores;//球队场均总得分数
 	
+	
 	public void addDataList(Date date){
 		int size = this.dateList.size();
 		if(!(size==0)){
