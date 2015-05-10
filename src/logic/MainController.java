@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import Utibility.playercomp;
+import test.Filter;
 import test.ParameterExplicate;
+import test.Sort;
 import vo.PlayerVO;
 import vo.TeamVO;
 import logicservice.mainControllerService;
@@ -59,6 +61,9 @@ public class MainController implements mainControllerService{
 		ArrayList<PlayerVO> pr = new ArrayList<PlayerVO>();
 		ArrayList<TeamVO> tr = new ArrayList<TeamVO>();
 		ArrayList<Object> result = new ArrayList<Object>(); 
+		ArrayList<Sort> sort=parameter.getSortList();
+	    ArrayList<Filter> filter = parameter.getFilterList();
+		int n=parameter.getNumber();
 		String date = new String();//日期需要解决;
 		DataCollector dc = new DataCollector();
 		if(parameter.getisPlayer()){
