@@ -103,7 +103,7 @@ public class PlayerController implements playerControllerService{
 	
 	public ArrayList<PlayerVO> getSelectedPlayers_Position(ArrayList<PlayerVO> list,String position){
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
-		if(position==null){
+		if(position.equals("")){
 			return list;
 		}
 		for(PlayerVO vo : list){
@@ -116,7 +116,7 @@ public class PlayerController implements playerControllerService{
 	
 	public ArrayList<PlayerVO> getSelectedPlayers_Distribution(ArrayList<PlayerVO> list,String distribution){
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
-		if(distribution==null){
+		if(distribution.equals("")){
 			return list;
 		}
 		if(!(distribution.equals("东部")||distribution.equals("西部"))){
@@ -149,14 +149,18 @@ public class PlayerController implements playerControllerService{
 	
 	public ArrayList<PlayerVO> getSelectedPlayers_InfoType(ArrayList<PlayerVO> list,String infoType){
 		ArrayList<PlayerVO> result = new ArrayList<PlayerVO>();
+		if(infoType.equals("")){
+			return list;
+		}{
 		for(PlayerVO vo :list){
 			vo.setComparetype(infoType);
 		}
 		Collections.sort(list);
-		for(int i=0;i<20;i++){
+		for(int i=0;(i<10)||i<(list.size()-1);i++){
+			System.out.println(i);
 			result.add(list.get(i));
 		}
-		return result;
+		return result;}
 	}
 	
 	public ArrayList<PlayerVO> getSelectedPlayers2(String position,String distribution,int[] range ) {
