@@ -1,5 +1,8 @@
 package Utibility;
 
+import ui.frame.index.container.IndexScrollPane;
+import ui.frame.larger.LargerPanel;
+import ui.system.Controller;
 import logic.MatchController;
 
 public class JudgeUpdate extends Thread {
@@ -20,20 +23,19 @@ public class JudgeUpdate extends Thread {
 				
 				if(judge == true){
 					needUpdate = true;
-					
+					Controller.reInit();
+					LargerPanel.refresh.doClick();
+					JudgeUpdate.setFalse();
+					IndexScrollPane.turnto1.doClick();;
 				}
 				if(judge == false){
 					needUpdate = false;
 				}
 			}
-				System.out.println("================");
-				System.out.println(needUpdate);
-				System.out.println(judge);
-				System.out.println("================");
 				
 				try {  
 			        //每运行一次就睡4秒  
-			        Thread.sleep(2000); 
+			        Thread.sleep(10000); 
 			      }  
 			      catch (InterruptedException ex){
 			    	  

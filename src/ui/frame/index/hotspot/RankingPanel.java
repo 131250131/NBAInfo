@@ -69,6 +69,10 @@ public class RankingPanel extends JPanel implements ActionListener{
 	private void updateStanding(int kindIndex, int itemIndex){
 		int step = getStep(kindIndex, itemIndex);	
 		getPlayerList(kindIndex, itemIndex);
+		boolean flag2 = false;
+		if(itemIndex > 4){
+			flag2 = true;
+		}
 		
 		int flag = 0;
 		if(kindIndex == 2)
@@ -76,7 +80,7 @@ public class RankingPanel extends JPanel implements ActionListener{
 		
 		for(int i = 0; i < 5; i++){
 			stepLabel[i].setText(transToTwoNum(step * (5 - i)));
-			singlePanel[i].updatePanel(showInfo[i], step, playerNames[i], flag);
+			singlePanel[i].updatePanel(showInfo[i], step, playerNames[i], flag, flag2);
 		}
 	}
 	

@@ -38,8 +38,8 @@ public class PlayerTablePanel extends MyPanel{
 	
 	public PlayerTablePanel(){
 		Controller.init();
-		this.setBounds((int) (320 * UIData.changeX), (int) (100 * UIData.changeX)
-				, (int) (1280 * UIData.changeX), (int) (720 * UIData.changeY));
+		this.setBounds((int) (260 * UIData.changeX), (int) (100 * UIData.changeX)
+				, (int) (1280 * UIData.changeX), (int) (3000 * UIData.changeY));
 		this.setOpaque(false);
 		
 		/*

@@ -95,21 +95,21 @@ public class SinglePanel extends JPanel implements ActionListener{
 		this.add(button);
 	}
 	
-	boolean flag = true;
+	boolean flager = true;
 	
-	public void updatePanel(double score, int step, String playerName, int i){
+	public void updatePanel(double score, int step, String playerName, int i, boolean flag){
 		
 		this.playerName = playerName;
 		
 		if(i == 0){
-			setScore(score);
+			setScore(score, flag);
 			locateUI(score, step);
 			setIcon(playerName);
 			setLabelName(playerName);
 		}else{
-			setScore(score);
+			setScore(score, flag);
 			locateUI(score, step);
-			flag = false;
+			flager = false;
 			setTeamIcon(playerName);
 			setTeamName(playerName);
 		}
@@ -128,8 +128,12 @@ public class SinglePanel extends JPanel implements ActionListener{
 				, (int) (colorLabel.getLocation().y + 70 * UIData.changeY));
 	}
 	
-	private void setScore(double score){
-		scoreLabel.setText(DataTransform.transDoubleTopointXXString(score));	
+	private void setScore(double score, boolean flag2){
+		if(flag2 == true){
+			scoreLabel.setText(DataTransform.transDoubleTopointXXString(score) + "%");	
+		}else{
+			scoreLabel.setText(DataTransform.transDoubleTopointXXString(score));
+		}
 	}
 	
 	private void setLabelName(String playerName){
@@ -176,7 +180,7 @@ public class SinglePanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 
 		if(e.getSource() == button){
-			if(flag == true){
+			if(flager == true){
 				Controller.addPlayerPanel(playerName);
 			}else{
 				Controller.addTeamPanel(playerName);
