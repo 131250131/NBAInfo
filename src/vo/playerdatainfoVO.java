@@ -11,6 +11,7 @@ public class playerdatainfoVO {
 	 * 一个该类表示一个球员在一个赛季常规或者季后赛的数据统计
 	 */
     String id="";//球员编号
+    String name="";//球员名字 
     String season="";//赛季
     String teamname="";//teamname为总计时，表示该球员一个赛季在两个球队打过
     double attendmatches=0;
