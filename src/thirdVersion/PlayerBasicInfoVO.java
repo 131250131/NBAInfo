@@ -1,4 +1,4 @@
-package vo;
+package thirdVersion;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;

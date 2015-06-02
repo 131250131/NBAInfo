@@ -1,9 +1,9 @@
-package vo;
+package thirdVersion;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-public class playerdatainfoVO {
+public class PlayerdatainfoVO {
 	/*
 	 * 
 	 * 2015/6/2
@@ -132,8 +132,8 @@ public class playerdatainfoVO {
     String salary="";//薪水，带单位，所以用String
     int isplayoff=0;//是否是季候赛，是季后赛表示为1，不是为0 
     String name="";//球员名字
-    public ArrayList<playerdatainfoVO> getvo(ResultSet s){
-    	ArrayList<playerdatainfoVO> result=new ArrayList<playerdatainfoVO>();
+    public ArrayList<PlayerdatainfoVO> getvo(ResultSet s){
+    	ArrayList<PlayerdatainfoVO> result=new ArrayList<PlayerdatainfoVO>();
     	return result;
     }
 }
