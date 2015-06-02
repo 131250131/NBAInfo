@@ -10,8 +10,7 @@ public class playerdatainfoVO {
 	 * A-平均     T-总和   H-最高  因为3F不行，所以使用SF替代
 	 * 一个该类表示一个球员在一个赛季常规或者季后赛的数据统计
 	 */
-    String id="";//球员编号
-    String name="";//球员名字 
+    String id="";//球员编号 
     String season="";//赛季
     String teamname="";//teamname为总计时，表示该球员一个赛季在两个球队打过
     double attendmatches=0;
@@ -132,7 +131,7 @@ public class playerdatainfoVO {
     
     String salary="";//薪水，带单位，所以用String
     int isplayoff=0;//是否是季候赛，是季后赛表示为1，不是为0 
-    
+    String name="";//球员名字
     public ArrayList<playerdatainfoVO> getvo(ResultSet s){
     	ArrayList<playerdatainfoVO> result=new ArrayList<playerdatainfoVO>();
     	return result;
