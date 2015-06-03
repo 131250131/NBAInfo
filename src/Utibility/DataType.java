@@ -138,4 +138,5 @@ public enum DataType {
          HTurnovers ,
          HFeals ,
          HScores ,
+         salary,//年薪 单位是万美元 界面加一下吧 这边传给你前面的数字
 }
