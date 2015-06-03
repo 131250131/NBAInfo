@@ -42,7 +42,7 @@ public enum DataType {
          ASteals ,
          ABlocks ,
          ATurnovers ,
-         AFeals ,
+         AFouls ,
          AScores ,
    
          Win ,
@@ -65,7 +65,7 @@ public enum DataType {
          TSteals ,
          TBlocks ,
          TTurnovers ,
-         TFeals ,
+         TFouls ,
          TScores ,
     
     /*
@@ -133,7 +133,7 @@ public enum DataType {
          HSteals ,
          HBlocks ,
          HTurnovers ,
-         HFeals ,
+         HFouls ,
          HScores ,
          salary,//年薪 单位是万美元 界面加一下吧 这边传给你前面的数字
 }

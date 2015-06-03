@@ -14,6 +14,9 @@ public class PlayerControllerThird {
 	String user="root";
 	String password="";
 	String sql="";
+	/*
+	 * 常规赛特定数据
+	 */
     public ArrayList<PSpecificdata>  getnormalplayerdata(String pid,DataType t){
     	   ArrayList<PSpecificdata> result=new ArrayList<PSpecificdata>();
     	   ArrayList<String> seasons=new ArrayList<String>();
@@ -129,6 +132,10 @@ public class PlayerControllerThird {
        	}
     	   return result;
        }
+    
+   /*
+    * 季后赛特定数据
+    */
     public ArrayList<PSpecificdata>  getplayoffplayerdata(String pid,DataType t){
  	   ArrayList<PSpecificdata> result=new ArrayList<PSpecificdata>();
  	   ArrayList<String> seasons=new ArrayList<String>();
@@ -239,6 +246,57 @@ public class PlayerControllerThird {
     		System.out.println(e);
     	}
  	   return result;
+    }
+    
+    /*
+     * 初始化信息
+     */
+    public ArrayList<PlayerBasicInfoVO> VOinitial(){
+    	ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
+    	try{
+     		sql="SELECT * FROM playerbasicinfo" ;
+        		Class.forName("com.mysql.jdbc.Driver");
+        		Connection conn =DriverManager.getConnection(url, user, password);
+        		PreparedStatement pstmt=conn.prepareStatement(sql);
+        		ResultSet rs=pstmt.executeQuery();
+        		while(rs.next()){
+        			PlayerBasicInfoVO p=new PlayerBasicInfoVO();
+        			p.setPlayerID(rs.getString(1));
+        			p.setPlayerName(rs.getString(2));
+        			p.setPlayerPosition(rs.getString(3));
+        			p.setPlayerHeight(rs.getString(4));
+        			p.setPlayerWeight(rs.getString(5));
+        			p.setPlayerBirthDay(rs.getString(6));
+        			p.setPlayerBirthPlace(rs.getString(7));
+        			p.setPlayerHighSchool(rs.getString(8));
+        			p.setPlayerUniversity(rs.getString(9));
+        			p.setSimilarPlayerID(rs.getString(10));
+        			p.setAtime(rs.getDouble(11));
+        			p.setFGP(rs.getDouble(12));
+        			p.setAFGZ(rs.getDouble(13));
+        			p.setAFG(rs.getDouble(14));
+        			p.setSFGP(rs.getDouble(15));
+        			p.setASFGZ(rs.getDouble(16));
+        			p.setASFG(rs.getDouble(17));
+        			p.setFTGP(rs.getDouble(18));
+        			p.setAFTGZ(rs.getDouble(19));
+        			p.setAFTG(rs.getDouble(20));
+        			p.setARebounds(rs.getDouble(21));
+        			p.setAORebouns(rs.getDouble(22));
+        			p.setADRebounds(rs.getDouble(23));
+        			p.setAAssists(rs.getDouble(24));
+        			p.setASteals(rs.getDouble(25));
+        			p.setABlocks(rs.getDouble(26));
+        			p.setATurnovers(rs.getDouble(27));
+        			p.setAFeals(rs.getDouble(28));
+        			p.setAScores(rs.getDouble(29));
+        			result.add(p);
+        		}
+        		
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	return result;
     }
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();
