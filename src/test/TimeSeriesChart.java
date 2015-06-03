@@ -67,7 +67,7 @@ public class TimeSeriesChart {
     	
     }
      private static XYDataset createDataset() {  //这个数据集有点多，但都不难理解  
-            TimeSeries timeseries = new TimeSeries("legal & general欧洲指数信任",  
+            TimeSeries timeseries = new TimeSeries("得分",  
                     org.jfree.data.time.Year.class);  
             timeseries.add(new Year(2001), 181.80000000000001D);  
             timeseries.add(new Year(2002), 167.30000000000001D);  
@@ -87,7 +87,7 @@ public class TimeSeriesChart {
 //            timeseries.add(new Month(5, 2002), 139.80000000000001D);  
 //            timeseries.add(new Month(6, 2002), 137D);  
 //            timeseries.add(new Month(7, 2002), 132.80000000000001D);  
-            TimeSeries timeseries1 = new TimeSeries("legal & general英国指数信任",  
+            TimeSeries timeseries1 = new TimeSeries("篮板",  
                     org.jfree.data.time.Year.class);  
             timeseries1.add(new Year(2001), 129.59999999999999D);  
             timeseries1.add(new Year(2002), 123.2D);  
@@ -154,12 +154,14 @@ public class TimeSeriesChart {
       }
       public static void main(String[] args) {  
   	    JFrame frame=new JFrame("Java数据统计图");  
-  	    frame.setLayout(new GridLayout(2,2,10,10));  
+  	    frame.setLayout(null);  
 //  	    frame.add(new BarChart().getChartPanel());           //添加柱形图  
 //  	    frame.add(new BarChart1().getChartPanel());          //添加柱形图的另一种效果  
 //  	    frame.add(new PieChart().getChartPanel());           //添加饼状图
   	    TimeSeriesChart chartest=new TimeSeriesChart();
-  	    frame.add(chartest.getChartPanel());    //添加折线图  
+  	    ChartPanel test=chartest.getChartPanel();
+  	  	test.setBounds(0, 100, 800, 300);
+  	    frame.add(test);    //添加折线图  
   	    frame.addMouseListener(chartest.new MouseListenerOfUpdate());
   	    frame.setBounds(50, 50, 800, 600);  
   	    frame.setVisible(true);  

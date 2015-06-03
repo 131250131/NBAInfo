@@ -17,9 +17,8 @@ import ui.system.UIData;
 import vo.PlayerVO;
 
 @SuppressWarnings("serial")
-public class DataOfPlayerPanel extends JPanel {
+public class tempDataOfPlayerPanel extends JPanel {
 
-	private int numOfIni;
 	private static ImageLabel portrait;
 	
 //1.球员名称 （球员名称作为查找唯一标识）
@@ -56,13 +55,11 @@ public class DataOfPlayerPanel extends JPanel {
 		
 	//调用逻辑层接口
 	playerControllerService pcs = PlayerController.getInstance();
-	public DataOfPlayerPanel(){
+	public tempDataOfPlayerPanel(){
 		initial1();
-		numOfIni=1;
 	}
-	public DataOfPlayerPanel(int num){
+	public tempDataOfPlayerPanel(int num){
 		initial2();
-		numOfIni=2;
 	}
 	/*第一种初始化——横向摆放组件*/
 	public void initial1(){
@@ -70,7 +67,7 @@ public class DataOfPlayerPanel extends JPanel {
 		//设置面板透明
 		this.setOpaque(false);
 		
-		this.setSize((int) (850 * UIData.changeX), (int) (200 * UIData.changeY));
+		this.setSize(850 , 200 );
 		
 		position = new JLabel();
 		playerName = new JLabel();
@@ -84,15 +81,15 @@ public class DataOfPlayerPanel extends JPanel {
 		portrait = new ImageLabel(ImageSaver.getPlayerIcon("null2"), 0, 0, 1, 1);
 		
 		//设置标签字体
-		position.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		playerName.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		playerNumber.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		height.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		playerBirth.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		playerAge.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		exp.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		school.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		weight.setFont(new Font("Arail", Font.BOLD, (int) (14 * UIData.changeY)));
+		position.setFont(new Font("Arail", Font.BOLD,  14 ));
+		playerName.setFont(new Font("Arail", Font.BOLD,  14 ));
+		playerNumber.setFont(new Font("Arail", Font.BOLD,  14 ));
+		height.setFont(new Font("Arail", Font.BOLD,  14 ));
+		playerBirth.setFont(new Font("Arail", Font.BOLD,  14 ));
+		playerAge.setFont(new Font("Arail", Font.BOLD,  14 ));
+		exp.setFont(new Font("Arail", Font.BOLD,  14 ));
+		school.setFont(new Font("Arail", Font.BOLD,  14 ));
+		weight.setFont(new Font("Arail", Font.BOLD, 14 ));
 		
 		//设置字体颜色
 		position.setForeground(Color.white);
@@ -106,15 +103,15 @@ public class DataOfPlayerPanel extends JPanel {
 		weight.setForeground(Color.white);
 		
 		//设置标签大小位置
-		playerName.setBounds((int) (255 * UIData.changeX), (int) (10 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		playerNumber.setBounds((int) (255 * UIData.changeX), (int) (50 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		position.setBounds((int) (255 * UIData.changeX), (int) (90 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		height.setBounds((int) (255 * UIData.changeX), (int) (130 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		playerBirth.setBounds((int) (255 * UIData.changeX), (int) (170 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		playerAge.setBounds((int) (455 * UIData.changeX), (int) (10 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		exp.setBounds((int) (455 * UIData.changeX), (int) (50 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		school.setBounds((int) (455 * UIData.changeX), (int) (90 * UIData.changeY), (int) (500 * UIData.changeX), (int) (20 * UIData.changeY));
-		weight.setBounds((int) (455 * UIData.changeX), (int) (130 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
+		playerName.setBounds(255 , 10 , 200 , 20 );
+		playerNumber.setBounds(255 , 50 , 200 , 20 );
+		position.setBounds(255 , 90 , 200 , 20 );
+		height.setBounds(255 , 130 , 200 , 20 );
+		playerBirth.setBounds(255 , 170 , 200 , 20 );
+		playerAge.setBounds(455 , 10 , 200 , 20 );
+		exp.setBounds(455 , 50 , 200 , 20 );
+		school.setBounds(455 , 90 , 500 , 20 );
+		weight.setBounds(455 , 130 , 200 , 20 );
 		
 		this.add(playerName);
 		this.add(playerNumber);
@@ -131,10 +128,8 @@ public class DataOfPlayerPanel extends JPanel {
 	/*第二种初始化——纵向摆放组件*/
 	public void initial2(){
 		this.setLayout(null);
-		//设置面板透明
-		this.setOpaque(false);
-		
-		this.setSize((int) (300 * UIData.changeX), (int) (650 * UIData.changeY));
+		this.setBackground(Color.GRAY);
+		this.setSize(300 , 670);
 		
 		position = new JLabel();
 		playerName = new JLabel();
@@ -148,15 +143,15 @@ public class DataOfPlayerPanel extends JPanel {
 		portrait = new ImageLabel(ImageSaver.getPlayerIcon("null2"), 0, 0, 1, 1);
 		
 		//设置标签字体
-		position.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		playerName.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		playerNumber.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		height.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		playerBirth.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		playerAge.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		exp.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		school.setFont(new Font("Arail", Font.BOLD,  (int) (14 * UIData.changeY)));
-		weight.setFont(new Font("Arail", Font.BOLD, (int) (14 * UIData.changeY)));
+		position.setFont(new Font("Arail", Font.BOLD,  14 ));
+		playerName.setFont(new Font("Arail", Font.BOLD,  14 ));
+		playerNumber.setFont(new Font("Arail", Font.BOLD,  14 ));
+		height.setFont(new Font("Arail", Font.BOLD,  14 ));
+		playerBirth.setFont(new Font("Arail", Font.BOLD,  14 ));
+		playerAge.setFont(new Font("Arail", Font.BOLD,  14 ));
+		exp.setFont(new Font("Arail", Font.BOLD,  14 ));
+		school.setFont(new Font("Arail", Font.BOLD,  14 ));
+		weight.setFont(new Font("Arail", Font.BOLD, 14 ));
 		
 		//设置字体颜色
 		position.setForeground(Color.white);
@@ -170,15 +165,15 @@ public class DataOfPlayerPanel extends JPanel {
 		weight.setForeground(Color.white);
 		
 		//设置标签大小位置
-		playerName.setBounds((int) (10 * UIData.changeX), (int) (220 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		playerNumber.setBounds((int) (10 * UIData.changeX), (int) (270 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		position.setBounds((int) (10 * UIData.changeX), (int) (320 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		height.setBounds((int) (10 * UIData.changeX), (int) (370 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		playerBirth.setBounds((int) (10 * UIData.changeX), (int) (420 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		playerAge.setBounds((int) (10 * UIData.changeX), (int) (470 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		exp.setBounds((int) (10 * UIData.changeX), (int) (520 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
-		school.setBounds((int) (10 * UIData.changeX), (int) (570 * UIData.changeY), (int) (500 * UIData.changeX), (int) (20 * UIData.changeY));
-		weight.setBounds((int) (10 * UIData.changeX), (int) (620 * UIData.changeY), (int) (200 * UIData.changeX), (int) (20 * UIData.changeY));
+		playerName.setBounds(10 , 220 , 200 , 20 );
+		playerNumber.setBounds(10 , 270 , 200 , 20 );
+		position.setBounds(10 , 320 , 200 , 20 );
+		height.setBounds(10 , 370 , 200 , 20 );
+		playerBirth.setBounds(10 , 420 , 200 , 20 );
+		playerAge.setBounds(10 , 470 , 200 , 20 );
+		exp.setBounds(10 , 520 , 200 , 20 );
+		school.setBounds(10 , 570 , 500 , 20 );
+		weight.setBounds(10 , 620 , 200 , 20 );
 		
 		this.add(playerName);
 		this.add(playerNumber);
@@ -194,18 +189,8 @@ public class DataOfPlayerPanel extends JPanel {
 	}
 	void empty(){
 		//头像
-		int defx=0;
-		int defy=0;
-		if(numOfIni==1){
-			defx=10;
-			defy=10;
-		}
-		else if(numOfIni==2){
-			defx=35;
-			defy=15;
-		}
 		portrait = new ImageLabel(ImageSaver.getPlayerIcon("null2"), 
-				(int) (defx * UIData.changeX), (int) (defy * UIData.changeY), (int) (230 * UIData.changeX), (int) (185 * UIData.changeY));
+				35 , 15 , 230 , 185 );
 		this.add(portrait);
 		_playerName = "null";
 		this.repaint();
@@ -231,18 +216,8 @@ public class DataOfPlayerPanel extends JPanel {
 		}
 		else{
 			//头像
-			int defx=0;
-			int defy=0;
-			if(numOfIni==1){
-				defx=10;
-				defy=10;
-			}
-			else if(numOfIni==2){
-				defx=35;
-				defy=15;
-			}
 			portrait = new ImageLabel(ImageSaver.getPlayerIcon(temp.getPlayerName()), 
-					(int) (defx * UIData.changeX), (int) (defy * UIData.changeY), (int) (230 * UIData.changeX), (int) (185 * UIData.changeY));
+					35 , 15 , 230 , 185 );
 			portrait.addMouseListener(new MouseAdapter(){
 				public void mouseClicked(MouseEvent arg0) {	
 					Controller.addPlayerPanel(_playerName);
