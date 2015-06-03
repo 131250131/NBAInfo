@@ -300,18 +300,14 @@ public class PlayerControllerThird {
     }
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();
-    	   for(int i=1;i<1000;i++){
-    	   String in=String.valueOf(i);
-    	   System.out.println(i);
-    	   ArrayList<PSpecificdata> l=p.getplayoffplayerdata(in, DataType.AAssists);
-    	   for(PSpecificdata lm:l){
-    		   if(lm.isIsuseful()){
-    			   System.out.println(lm.getSeason()+" "+lm.getData());
-    			   System.out.println();
-    		   }
+    	   
+    	   ArrayList<PlayerBasicInfoVO> l=p.VOinitial();
+    	 
+    	   for(PlayerBasicInfoVO lm:l){
+    		  System.out.println(lm.getPlayerName());
     	   }
     	  
-    	   }
+    	   
        }
       
 }
