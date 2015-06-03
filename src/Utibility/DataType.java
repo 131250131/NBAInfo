@@ -20,10 +20,7 @@ public enum DataType {
 	 * win       球员上场赢的比赛数目
 	 * lose       球员上场输的比赛数目
 	 */
-        id,//球员编号 
-        season,//赛季
-        teamname,//teamname为总计时，表示该球员一个赛季在两个球队打过,并且这一条为在所有球队打过的比赛的总计
-        attendmatches,
+        attendmatches,//出场次数
         First,//首发场数
     /*
      * Average
