@@ -66,7 +66,8 @@ public class PlayerControllerThird {
         			p.setATurnovers(Double.parseDouble(df.format(rs.getDouble(27))));//球员场均失误数
         			p.setAFeals(Double.parseDouble(df.format(rs.getDouble(28))));//球员场均犯规数
         			p.setAScores(Double.parseDouble(df.format(rs.getDouble(29))));//球员场均得分
-        			inidata.add(p);
+        			if(p.getFGP()<=100&&p.getSFGP()<100&&p.getFTGP()<100)
+        			     inidata.add(p);
         		}
         		
     	}catch(Exception e){
@@ -340,9 +341,18 @@ public class PlayerControllerThird {
 		
 	}
     
-//       public static void main(String args[]){
-//    	   PlayerControllerThird p=new PlayerControllerThird();    	   
-//    	   ArrayList<PlayerBasicInfoVO> l=p.getPlayersbyChar('A');
+       public static void main(String args[]){
+    	   PlayerControllerThird p=new PlayerControllerThird();    	
+    	  // System.out.println(p.VOinitial().size());
+//    	   for(PlayerBasicInfoVO pb:p.VOinitial()){
+//    		   System.out.println(pb.getFGP());
+//    		   System.out.println(pb.getSFGP());
+//    		   System.out.println(pb.getFTGP());
+//    	   }
+//    	   ArrayList<PSpecificdata> l=p.getnormalplayerdata("100", DataType.AAssists);
+//    	   for(PSpecificdata k:l){
+//    		   System.out.println(k.getData());
+//    	   }
 //    	   PlayerBasicInfoVO ppp=p.getPlayerbyname("Aaron Brooks");
 //    	   System.out.println(ppp.getAAssists());
 //    	   for(PlayerBasicInfoVO lm:l){
@@ -350,8 +360,8 @@ public class PlayerControllerThird {
 //    			 System.out.println(lm.getAAssists());
 //    		 }
 //    	   }
-//    	  
-//    	   
-//       }
+    	  
+    	   
+       }
       
 }
