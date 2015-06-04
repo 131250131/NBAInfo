@@ -212,6 +212,7 @@ public class tempDataOfPlayerPanel extends JPanel {
 		PlayerVO temp = pcs.findPlayerVO(player);
 		portrait.setVisible(false);
 		if(temp == null){
+			System.out.println("null");
 			empty();
 		}
 		else{

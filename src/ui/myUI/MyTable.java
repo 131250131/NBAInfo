@@ -295,7 +295,13 @@ public class MyTable extends JScrollPane implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		System.out.println(getSign(1));
+		if(columnNames[1].equals("球员ID")){
+			System.out.println(getSign(2));
+		}
+		
+		else{
+			System.out.println(getSign(1));
+		}
 	}
 	@Override
 	public void mouseEntered(MouseEvent e) {
