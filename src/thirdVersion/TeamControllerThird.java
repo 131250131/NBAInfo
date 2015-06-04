@@ -1,5 +1,6 @@
 package thirdVersion;
 
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -44,7 +45,7 @@ public class TeamControllerThird {
 			Connection conn =DriverManager.getConnection(url, user, password);
 			ArrayList<TeamVO> teamList =this.getAllTeamVO();
 			for(TeamVO vo: teamList){
-				sql = "SELECT * FROM matches WHERE leftteam="+vo.getTeamChineseName();
+				sql="SELECT * FROM matches WHERE leftteam="+"'"+vo.getTeamChineseName()+"队"+"'";
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				ResultSet rs=pstmt.executeQuery();
 				vo.setEndSeanson("1985");
