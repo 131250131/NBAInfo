@@ -1,31 +1,22 @@
-package test;  
+package ui.frame.player;
   
-import java.awt.Color;
-import java.awt.Font;  
-import java.awt.GridLayout;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.text.SimpleDateFormat;  
-  
-
-
-
-
-
+import java.text.SimpleDateFormat;
 
 import javax.swing.JFrame;
 
-import org.jfree.chart.ChartFactory;  
-import org.jfree.chart.ChartPanel;  
-import org.jfree.chart.JFreeChart;  
-import org.jfree.chart.axis.DateAxis;  
-import org.jfree.chart.axis.ValueAxis;  
-import org.jfree.chart.plot.XYPlot;  
-import org.jfree.data.time.Month;  
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.DateAxis;
+import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
 import org.jfree.data.time.Year;
-import org.jfree.data.time.TimeSeries;  
-import org.jfree.data.time.TimeSeriesCollection;  
-import org.jfree.data.xy.XYDataset;  
+import org.jfree.data.xy.XYDataset;
   
 public class TimeSeriesChart {  
     private ChartPanel frame1;  
@@ -37,32 +28,44 @@ public class TimeSeriesChart {
          JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("球员个人能力演变折线图", "赛季", "数据值",xydataset, true, true, true);  
          XYPlot xyplot = (XYPlot) jfreechart.getPlot();  
          DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();  
-         dateaxis.setDateFormatOverride(new SimpleDateFormat("yyyy"));  
-         frame1=new ChartPanel(null);  
-         frame1.setChart(jfreechart);
+         dateaxis.setDateFormatOverride(new SimpleDateFormat("yyyy")); 
+         jfreechart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));  
+         jfreechart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体  
          dateaxis.setLabelFont(new Font("黑体",Font.BOLD,14));         //水平底部标题  
          dateaxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  //垂直标题  
          ValueAxis rangeAxis=xyplot.getRangeAxis();//获取柱状  
          rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));  
-         jfreechart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));  
-         jfreechart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体  
+         frame1=new ChartPanel(null);  
+         frame1.setChart(jfreechart);
     }
-    public void update(String dataType,int[] years,double[] data){
-    	 XYDataset xydataset = createDatasetForNBA(dataType,years,data);  
-         JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("球员个人能力演变折线图", "赛季", "数据值",xydataset, true, true, true);  
+    public void update(String dataType,int[] years1,double[] data1,int[] years2,double[] data2){
+    	 XYDataset xydataset = createDatasetForNBA(dataType,years1,data1,years2,data2);  
+         JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("球员个人能力演变折线图", "赛季", dataType,xydataset, true, true, true);  
          XYPlot xyplot = (XYPlot) jfreechart.getPlot();  
          DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();  
          dateaxis.setDateFormatOverride(new SimpleDateFormat("yyyy"));  
+         jfreechart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));  
+         jfreechart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体  
+         dateaxis.setLabelFont(new Font("黑体",Font.BOLD,14));         //水平底部标题  
+         dateaxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  //垂直标题  
+         ValueAxis rangeAxis=xyplot.getRangeAxis();//获取柱状  
+         rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));  
     	 frame1.setChart(jfreechart);
 //    	 frame1.updateUI();
     }
-    private static XYDataset createDatasetForNBA(String dataType,int[] years,double[] data){
-    	TimeSeries timeseries = new TimeSeries(dataType, org.jfree.data.time.Year.class); 
-    	for(int i=0;i<years.length;i++){
-    		timeseries.add(new Year(years[i]),data[i]);
+    private static XYDataset createDatasetForNBA(String dataType,int[] years1,double[] data1,int[] year2,double[] data2){
+    	TimeSeries timeseries = new TimeSeries("常规赛", org.jfree.data.time.Year.class); 
+    	TimeSeries timeseries2 = new TimeSeries("季后赛", org.jfree.data.time.Year.class);
+    	TimeSeriesCollection timeseriescollection = new TimeSeriesCollection(); 
+    	for(int i=0;i<years1.length;i++){
+    		timeseries.addOrUpdate(new Year(years1[i]),data1[i]);
     	}
-    	TimeSeriesCollection timeseriescollection = new TimeSeriesCollection();  
-        timeseriescollection.addSeries(timeseries);  
+    	
+    	for(int i=0;i<year2.length;i++){
+    		timeseries2.addOrUpdate(new Year(year2[i]),data2[i]);
+    	}
+    	timeseriescollection.addSeries(timeseries); 
+        timeseriescollection.addSeries(timeseries2);  
     	return timeseriescollection;
     	
     }
@@ -128,9 +131,6 @@ public class TimeSeriesChart {
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			//test update
-	         int[] years={1994,1995,1996,1997,2001,2007};
-	         double[] data={56,78,30,45,67,77};
-	         update("场均得分", years, data);
 		}
 
 		@Override

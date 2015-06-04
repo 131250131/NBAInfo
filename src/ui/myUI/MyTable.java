@@ -83,11 +83,17 @@ public class MyTable extends JScrollPane implements MouseListener{
    /*获取当前选中行的标识*/
 	public String getSign(int num){
 		int selectRow=table.getSelectedRow();
+		System.out.println("选中行————————————"+selectRow);
 		if(selectRow==-1){
-			return "";
+			return (String)this.model.getValueAt(0, num);
 		}
 		String result=(String)this.model.getValueAt(selectRow, num);
 		return result;
+		
+	}
+	/*获取任意单元格数据*/
+	public String getCell(int x,int y){
+		return (String)this.model.getValueAt(x, y);
 		
 	}
 	/*获取表格类*/
