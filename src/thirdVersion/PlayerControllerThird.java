@@ -316,7 +316,7 @@ public class PlayerControllerThird {
     /*
      * 根据首字母筛选
      */
-    public ArrayList<PlayerBasicInfoVO> getPlayerbyChar(char temp){
+    public ArrayList<PlayerBasicInfoVO> getPlayersbyChar(char temp){
     	ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
 		for(PlayerBasicInfoVO vo : inidata){
 			char[] str = vo.getPlayerName().toCharArray();
@@ -326,17 +326,32 @@ public class PlayerControllerThird {
 		}
 		return result;
 	}
-
-       public static void main(String args[]){
-    	   PlayerControllerThird p=new PlayerControllerThird();    	   
-    	   ArrayList<PlayerBasicInfoVO> l=p.getPlayerbyChar('A');
-    	   for(PlayerBasicInfoVO lm:l){
-    		 if(lm.getPlayerName().equals("Aaron Brooks")){
-    			 System.out.println(lm.getAAssists());
-    		 }
-    	   }
-    	  
-    	   
-       }
+/*
+ * 姓名得到基本信息
+ */
+    public PlayerBasicInfoVO getPlayerbyname(String name){
+    	PlayerBasicInfoVO p=new PlayerBasicInfoVO();
+		for(PlayerBasicInfoVO vo : inidata){
+		   if(vo.getPlayerName().equals(name)){
+			   return vo;
+		   }
+		}
+		return p;
+		
+	}
+    
+//       public static void main(String args[]){
+//    	   PlayerControllerThird p=new PlayerControllerThird();    	   
+//    	   ArrayList<PlayerBasicInfoVO> l=p.getPlayersbyChar('A');
+//    	   PlayerBasicInfoVO ppp=p.getPlayerbyname("Aaron Brooks");
+//    	   System.out.println(ppp.getAAssists());
+//    	   for(PlayerBasicInfoVO lm:l){
+//    		 if(lm.getPlayerName().equals("Aaron Brooks")){
+//    			 System.out.println(lm.getAAssists());
+//    		 }
+//    	   }
+//    	  
+//    	   
+//       }
       
 }
