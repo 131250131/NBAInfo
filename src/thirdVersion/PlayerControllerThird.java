@@ -271,25 +271,25 @@ public class PlayerControllerThird {
         			p.setPlayerHighSchool(rs.getString(8));//球员毕业高中
         			p.setPlayerUniversity(rs.getString(9));//球员毕业大学
         			p.setSimilarPlayerID(rs.getString(10));//相似球员编号
-        			p.setAtime(rs.getDouble(11));
-        			p.setFGP(rs.getDouble(12));
-        			p.setAFGZ(rs.getDouble(13));
-        			p.setAFG(rs.getDouble(14));
-        			p.setSFGP(rs.getDouble(15));
-        			p.setASFGZ(rs.getDouble(16));
-        			p.setASFG(rs.getDouble(17));
-        			p.setFTGP(rs.getDouble(18));
-        			p.setAFTGZ(rs.getDouble(19));
-        			p.setAFTG(rs.getDouble(20));
-        			p.setARebounds(rs.getDouble(21));
-        			p.setAORebouns(rs.getDouble(22));
-        			p.setADRebounds(rs.getDouble(23));
-        			p.setAAssists(rs.getDouble(24));
-        			p.setASteals(rs.getDouble(25));
-        			p.setABlocks(rs.getDouble(26));
-        			p.setATurnovers(rs.getDouble(27));
-        			p.setAFeals(rs.getDouble(28));
-        			p.setAScores(rs.getDouble(29));
+        			p.setAtime(rs.getDouble(11));//球员场均出场时间
+        			p.setFGP(rs.getDouble(12));//球员投篮命中率
+        			p.setAFGZ(rs.getDouble(13));//球员场均投篮命中数
+        			p.setAFG(rs.getDouble(14));//球员场均投篮出手数
+        			p.setSFGP(rs.getDouble(15));//球员三分命中率
+        			p.setASFGZ(rs.getDouble(16));//球员场均三分命中数
+        			p.setASFG(rs.getDouble(17));//球员场均三分出手数
+        			p.setFTGP(rs.getDouble(18));//球员罚球命中率
+        			p.setAFTGZ(rs.getDouble(19));//球员场均罚球命中数
+        			p.setAFTG(rs.getDouble(20));//球员场均罚球出手数
+        			p.setARebounds(rs.getDouble(21));//球员场均篮板数
+        			p.setAORebouns(rs.getDouble(22));//球员场均前场篮板数
+        			p.setADRebounds(rs.getDouble(23));//球员场均后场篮板数
+        			p.setAAssists(rs.getDouble(24));//球员场均助攻数
+        			p.setASteals(rs.getDouble(25));//球员场均抢断数
+        			p.setABlocks(rs.getDouble(26));//球员场均盖帽数
+        			p.setATurnovers(rs.getDouble(27));//球员场均失误数
+        			p.setAFeals(rs.getDouble(28));//球员场均犯规数
+        			p.setAScores(rs.getDouble(29));//球员场均得分
         			result.add(p);
         		}
         		
