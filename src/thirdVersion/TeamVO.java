@@ -7,6 +7,9 @@ public class TeamVO {
 	String teamEnglishName;
 	//目前是否在联盟中
 	boolean isNowTeam;
+	String startSeason;
+	String endSeanson;
+	
 	public String getTeamChineseName() {
 		return teamChineseName;
 	}
@@ -24,6 +27,18 @@ public class TeamVO {
 	}
 	public void setNowTeam(boolean isNowTeam) {
 		this.isNowTeam = isNowTeam;
+	}
+	public String getStartSeason() {
+		return startSeason;
+	}
+	public void setStartSeason(String startSeason) {
+		this.startSeason = startSeason;
+	}
+	public String getEndSeanson() {
+		return endSeanson;
+	}
+	public void setEndSeanson(String endSeanson) {
+		this.endSeanson = endSeanson;
 	}
 	
 	

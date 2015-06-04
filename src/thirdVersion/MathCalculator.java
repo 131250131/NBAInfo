@@ -9,6 +9,8 @@ public class MathCalculator {
 		return 0;
 	}
 	
+	
+	
 	/*
 	 * 方差
 	 * 标准差
