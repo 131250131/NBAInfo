@@ -44,7 +44,7 @@ public class TeamControllerThird {
 			Connection conn =DriverManager.getConnection(url, user, password);
 			ArrayList<TeamVO> teamList =this.getAllTeamVO();
 			for(TeamVO vo: teamList){
-				sql = "SELECT * FROM matches WHERE leftteam="+"华盛顿子弹队";
+				sql = "SELECT * FROM matches WHERE leftteam="+vo.getTeamChineseName();
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				ResultSet rs=pstmt.executeQuery();
 				vo.setEndSeanson("1985");
@@ -58,6 +58,10 @@ public class TeamControllerThird {
 						vo.setEndSeanson(yearOfMatch);
 					}
 				}
+				int startYear = Integer.parseInt(vo.getStartSeason());
+				int endYear = Integer.parseInt(vo.getEndSeanson());
+				vo.setStartSeason(String.valueOf(startYear)+"-"+String.valueOf(startYear+1));
+				vo.setEndSeanson(String.valueOf(endYear-1)+"-"+String.valueOf(endYear));
 			}
 			
 			for(TeamVO vo: teamList){
