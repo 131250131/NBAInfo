@@ -1,5 +1,7 @@
 package thirdVersion;
 
+import java.util.ArrayList;
+
 public class MatchVO {
 	String matchID;
 	String date;//比赛日期.time
@@ -11,7 +13,8 @@ public class MatchVO {
 	String forthScore;
 	String exttaScore;
 	String totalScore;
-	
+	ArrayList<PlayerMatchDataVO> pdate=new ArrayList<PlayerMatchDataVO>();
+	ArrayList<TeamMatchDataVO> tdate=new ArrayList<TeamMatchDataVO>();
 	public String getMatchID() {
 		return matchID;
 	}
@@ -89,6 +92,22 @@ public class MatchVO {
 	
 	public void setTotalScore(String totalScore) {
 		this.totalScore = totalScore;
+	}
+
+	public ArrayList<PlayerMatchDataVO> getPdate() {
+		return pdate;
+	}
+
+	public void addPdate(PlayerMatchDataVO pdate) {
+		this.pdate.add(pdate);
+	}
+
+	public ArrayList<TeamMatchDataVO> getTdate() {
+		return tdate;
+	}
+
+	public void addTdate(TeamMatchDataVO tdate) {
+		this.tdate.add(tdate);
 	}
 	
 	

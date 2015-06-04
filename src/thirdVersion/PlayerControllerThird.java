@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import logic.PlayerController;
+import vo.PlayerVO;
 import Utibility.DataType;
 
 public class PlayerControllerThird {
@@ -14,6 +16,62 @@ public class PlayerControllerThird {
 	String user="root";
 	String password="";
 	String sql="";
+	ArrayList<PlayerBasicInfoVO> inidata=new ArrayList<PlayerBasicInfoVO>();
+	/*
+	 * 构造函数
+	 */
+	public PlayerControllerThird(){
+		initial();
+	}
+	/*
+	 * 初始化
+	 */
+	public void initial(){
+    	try{
+     		sql="SELECT * FROM playerbasicinfo" ;
+        		Class.forName("com.mysql.jdbc.Driver");
+        		Connection conn =DriverManager.getConnection(url, user, password);
+        		PreparedStatement pstmt=conn.prepareStatement(sql);
+        		ResultSet rs=pstmt.executeQuery();
+        		while(rs.next()){
+        			PlayerBasicInfoVO p=new PlayerBasicInfoVO();
+        			p.setPlayerID(rs.getString(1));//球员编号
+        			p.setPlayerName(rs.getString(2));//球员姓名
+        			p.setPlayerPosition(rs.getString(3));//球员位置
+        			p.setPlayerHeight(rs.getString(4));//球员身高
+        			p.setPlayerWeight(rs.getString(5));//球员体重
+        			p.setPlayerBirthDay(rs.getString(6));//球员生日
+        			p.setPlayerBirthPlace(rs.getString(7));//球员出生地
+        			p.setPlayerHighSchool(rs.getString(8));//球员毕业高中
+        			p.setPlayerUniversity(rs.getString(9));//球员毕业大学
+        			p.setSimilarPlayerID(rs.getString(10));//相似球员编号
+        			p.setAtime(rs.getDouble(11));//球员场均出场时间
+        			p.setFGP(rs.getDouble(12));//球员投篮命中率
+        			p.setAFGZ(rs.getDouble(13));//球员场均投篮命中数
+        			p.setAFG(rs.getDouble(14));//球员场均投篮出手数
+        			p.setSFGP(rs.getDouble(15));//球员三分命中率
+        			p.setASFGZ(rs.getDouble(16));//球员场均三分命中数
+        			p.setASFG(rs.getDouble(17));//球员场均三分出手数
+        			p.setFTGP(rs.getDouble(18));//球员罚球命中率
+        			p.setAFTGZ(rs.getDouble(19));//球员场均罚球命中数
+        			p.setAFTG(rs.getDouble(20));//球员场均罚球出手数
+        			p.setARebounds(rs.getDouble(21));//球员场均篮板数
+        			p.setAORebouns(rs.getDouble(22));//球员场均前场篮板数
+        			p.setADRebounds(rs.getDouble(23));//球员场均后场篮板数
+        			p.setAAssists(rs.getDouble(24));//球员场均助攻数
+        			p.setASteals(rs.getDouble(25));//球员场均抢断数
+        			p.setABlocks(rs.getDouble(26));//球员场均盖帽数
+        			p.setATurnovers(rs.getDouble(27));//球员场均失误数
+        			p.setAFeals(rs.getDouble(28));//球员场均犯规数
+        			p.setAScores(rs.getDouble(29));//球员场均得分
+        			inidata.add(p);
+        		}
+        		
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	
+	}
 	/*
 	 * 常规赛特定数据
 	 */
@@ -247,64 +305,36 @@ public class PlayerControllerThird {
     	}
  	   return result;
     }
-    
     /*
-     * 初始化信息
+     * 得到界面初始化的信息
      */
     public ArrayList<PlayerBasicInfoVO> VOinitial(){
-    	ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
-    	try{
-     		sql="SELECT * FROM playerbasicinfo" ;
-        		Class.forName("com.mysql.jdbc.Driver");
-        		Connection conn =DriverManager.getConnection(url, user, password);
-        		PreparedStatement pstmt=conn.prepareStatement(sql);
-        		ResultSet rs=pstmt.executeQuery();
-        		while(rs.next()){
-        			PlayerBasicInfoVO p=new PlayerBasicInfoVO();
-        			p.setPlayerID(rs.getString(1));//球员编号
-        			p.setPlayerName(rs.getString(2));//球员姓名
-        			p.setPlayerPosition(rs.getString(3));//球员位置
-        			p.setPlayerHeight(rs.getString(4));//球员身高
-        			p.setPlayerWeight(rs.getString(5));//球员体重
-        			p.setPlayerBirthDay(rs.getString(6));//球员生日
-        			p.setPlayerBirthPlace(rs.getString(7));//球员出生地
-        			p.setPlayerHighSchool(rs.getString(8));//球员毕业高中
-        			p.setPlayerUniversity(rs.getString(9));//球员毕业大学
-        			p.setSimilarPlayerID(rs.getString(10));//相似球员编号
-        			p.setAtime(rs.getDouble(11));//球员场均出场时间
-        			p.setFGP(rs.getDouble(12));//球员投篮命中率
-        			p.setAFGZ(rs.getDouble(13));//球员场均投篮命中数
-        			p.setAFG(rs.getDouble(14));//球员场均投篮出手数
-        			p.setSFGP(rs.getDouble(15));//球员三分命中率
-        			p.setASFGZ(rs.getDouble(16));//球员场均三分命中数
-        			p.setASFG(rs.getDouble(17));//球员场均三分出手数
-        			p.setFTGP(rs.getDouble(18));//球员罚球命中率
-        			p.setAFTGZ(rs.getDouble(19));//球员场均罚球命中数
-        			p.setAFTG(rs.getDouble(20));//球员场均罚球出手数
-        			p.setARebounds(rs.getDouble(21));//球员场均篮板数
-        			p.setAORebouns(rs.getDouble(22));//球员场均前场篮板数
-        			p.setADRebounds(rs.getDouble(23));//球员场均后场篮板数
-        			p.setAAssists(rs.getDouble(24));//球员场均助攻数
-        			p.setASteals(rs.getDouble(25));//球员场均抢断数
-        			p.setABlocks(rs.getDouble(26));//球员场均盖帽数
-        			p.setATurnovers(rs.getDouble(27));//球员场均失误数
-        			p.setAFeals(rs.getDouble(28));//球员场均犯规数
-        			p.setAScores(rs.getDouble(29));//球员场均得分
-        			result.add(p);
-        		}
-        		
-    	}catch(Exception e){
-    		e.printStackTrace();
-    	}
-    	return result;
+    	 return inidata;
     }
+    /*
+     * 根据首字母筛选
+     */
+    public ArrayList<PlayerBasicInfoVO> getPlayerbyChar(char temp){
+    	ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
+		for(PlayerBasicInfoVO vo : inidata){
+			char[] str = vo.getPlayerName().toCharArray();
+			if(str[0]==temp){
+				result.add(vo);
+			}
+		}
+		return result;
+	}
+
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();
     	   
-    	   ArrayList<PlayerBasicInfoVO> l=p.VOinitial();
-    	 
+    	   ArrayList<PlayerBasicInfoVO> l=p.getPlayerbyChar('A');
+    	  
+    	
     	   for(PlayerBasicInfoVO lm:l){
-    		  System.out.println(lm.getPlayerName());
+    		 if(lm.getPlayerName().equals("Aaron Brooks")){
+    			 System.out.println("gg");
+    		 }
     	   }
     	  
     	   
