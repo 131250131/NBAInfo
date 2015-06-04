@@ -17,7 +17,7 @@ public class MatchControllerThird {
 	public ArrayList<MatchVO> getmatchbydate(String date){
 		ArrayList<MatchVO> result =new ArrayList<MatchVO>();
 		System.out.println(date);
-		sql="SELECT * FROM matches WHERE time="+date;
+		sql="SELECT * FROM matches WHERE time="+"'"+date+"'";
 		try{
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection conn =DriverManager.getConnection(url, user, password);
@@ -43,12 +43,12 @@ public class MatchControllerThird {
 		
 		return result;
 	}
-	public static void main(String args[]){
-		MatchControllerThird m=new MatchControllerThird();
-		ArrayList<MatchVO> r=m.getmatchbydate("1985-10-25");
-		System.out.println(r.size());
-		for(MatchVO mv:r){
-			System.out.println(mv.getDate());
-		}
-	}
+//	public static void main(String args[]){
+//		MatchControllerThird m=new MatchControllerThird();
+//		ArrayList<MatchVO> r=m.getmatchbydate("1985-10-25");
+//		System.out.println(r.size());
+//		for(MatchVO mv:r){
+//			System.out.println(mv.getDate());
+//		}
+//	}
 }
