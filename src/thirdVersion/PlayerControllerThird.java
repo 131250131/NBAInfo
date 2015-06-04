@@ -349,10 +349,10 @@ public class PlayerControllerThird {
 //    		   System.out.println(pb.getSFGP());
 //    		   System.out.println(pb.getFTGP());
 //    	   }
-//    	   ArrayList<PSpecificdata> l=p.getnormalplayerdata("100", DataType.AAssists);
-//    	   for(PSpecificdata k:l){
-//    		   System.out.println(k.getData());
-//    	   }
+    	   ArrayList<PSpecificdata> l=p.getnormalplayerdata("1001", DataType.AAssists);
+    	   for(PSpecificdata k:l){
+    		   System.out.println(k.getData());
+    	   }
 //    	   PlayerBasicInfoVO ppp=p.getPlayerbyname("Aaron Brooks");
 //    	   System.out.println(ppp.getAAssists());
 //    	   for(PlayerBasicInfoVO lm:l){
