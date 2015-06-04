@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import logic.PlayerController;
@@ -17,6 +18,7 @@ public class PlayerControllerThird {
 	String password="";
 	String sql="";
 	ArrayList<PlayerBasicInfoVO> inidata=new ArrayList<PlayerBasicInfoVO>();
+	DecimalFormat    df   = new DecimalFormat("######0.00"); 
 	/*
 	 * 构造函数
 	 */
@@ -45,25 +47,25 @@ public class PlayerControllerThird {
         			p.setPlayerHighSchool(rs.getString(8));//球员毕业高中
         			p.setPlayerUniversity(rs.getString(9));//球员毕业大学
         			p.setSimilarPlayerID(rs.getString(10));//相似球员编号
-        			p.setAtime(rs.getDouble(11));//球员场均出场时间
-        			p.setFGP(rs.getDouble(12));//球员投篮命中率
-        			p.setAFGZ(rs.getDouble(13));//球员场均投篮命中数
-        			p.setAFG(rs.getDouble(14));//球员场均投篮出手数
-        			p.setSFGP(rs.getDouble(15));//球员三分命中率
-        			p.setASFGZ(rs.getDouble(16));//球员场均三分命中数
-        			p.setASFG(rs.getDouble(17));//球员场均三分出手数
-        			p.setFTGP(rs.getDouble(18));//球员罚球命中率
-        			p.setAFTGZ(rs.getDouble(19));//球员场均罚球命中数
-        			p.setAFTG(rs.getDouble(20));//球员场均罚球出手数
-        			p.setARebounds(rs.getDouble(21));//球员场均篮板数
-        			p.setAORebouns(rs.getDouble(22));//球员场均前场篮板数
-        			p.setADRebounds(rs.getDouble(23));//球员场均后场篮板数
-        			p.setAAssists(rs.getDouble(24));//球员场均助攻数
-        			p.setASteals(rs.getDouble(25));//球员场均抢断数
-        			p.setABlocks(rs.getDouble(26));//球员场均盖帽数
-        			p.setATurnovers(rs.getDouble(27));//球员场均失误数
-        			p.setAFeals(rs.getDouble(28));//球员场均犯规数
-        			p.setAScores(rs.getDouble(29));//球员场均得分
+        			p.setAtime(Double.parseDouble(df.format(rs.getDouble(11))));//球员场均出场时间
+        			p.setFGP(Double.parseDouble(df.format(rs.getDouble(12)*100)));//球员投篮命中率
+        			p.setAFGZ(Double.parseDouble(df.format(rs.getDouble(13))));//球员场均投篮命中数
+        			p.setAFG(Double.parseDouble(df.format(rs.getDouble(14))));//球员场均投篮出手数
+        			p.setSFGP(Double.parseDouble(df.format(rs.getDouble(15)*100)));//球员三分命中率
+        			p.setASFGZ(Double.parseDouble(df.format(rs.getDouble(16))));//球员场均三分命中数
+        			p.setASFG(Double.parseDouble(df.format(rs.getDouble(17))));//球员场均三分出手数
+        			p.setFTGP(Double.parseDouble(df.format(rs.getDouble(18)*100)));//球员罚球命中率
+        			p.setAFTGZ(Double.parseDouble(df.format(rs.getDouble(19))));//球员场均罚球命中数
+        			p.setAFTG(Double.parseDouble(df.format(rs.getDouble(20))));//球员场均罚球出手数
+        			p.setARebounds(Double.parseDouble(df.format(rs.getDouble(21))));//球员场均篮板数
+        			p.setAORebouns(Double.parseDouble(df.format(rs.getDouble(22))));//球员场均前场篮板数
+        			p.setADRebounds(Double.parseDouble(df.format(rs.getDouble(23))));//球员场均后场篮板数
+        			p.setAAssists(Double.parseDouble(df.format(rs.getDouble(24))));//球员场均助攻数
+        			p.setASteals(Double.parseDouble(df.format(rs.getDouble(25))));//球员场均抢断数
+        			p.setABlocks(Double.parseDouble(df.format(rs.getDouble(26))));//球员场均盖帽数
+        			p.setATurnovers(Double.parseDouble(df.format(rs.getDouble(27))));//球员场均失误数
+        			p.setAFeals(Double.parseDouble(df.format(rs.getDouble(28))));//球员场均犯规数
+        			p.setAScores(Double.parseDouble(df.format(rs.getDouble(29))));//球员场均得分
         			inidata.add(p);
         		}
         		
@@ -326,14 +328,11 @@ public class PlayerControllerThird {
 	}
 
        public static void main(String args[]){
-    	   PlayerControllerThird p=new PlayerControllerThird();
-    	   
+    	   PlayerControllerThird p=new PlayerControllerThird();    	   
     	   ArrayList<PlayerBasicInfoVO> l=p.getPlayerbyChar('A');
-    	  
-    	
     	   for(PlayerBasicInfoVO lm:l){
     		 if(lm.getPlayerName().equals("Aaron Brooks")){
-    			 System.out.println("gg");
+    			 System.out.println(lm.getAAssists());
     		 }
     	   }
     	  
