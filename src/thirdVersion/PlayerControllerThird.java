@@ -141,11 +141,11 @@ public class PlayerControllerThird {
        	    else{
        		while(rs.next()){
        		   PSpecificdata p=new PSpecificdata();
-       		   String s=rs.getString(t.toString());
+       		   Double s=rs.getDouble(t.toString());
        		   if(s.equals("-1"))
        			   p.setData(0.0);
        		   else
-       			   p.setData(Double.parseDouble(s));
+       			   p.setData(Double.parseDouble(df.format(s)));
        		   
        		String season=rs.getString("season");
         	String team=rs.getString("teamname");
@@ -258,11 +258,11 @@ public class PlayerControllerThird {
     	    else{
     		while(rs.next()){
     		   PSpecificdata p=new PSpecificdata();
-    		   String s=rs.getString(t.toString());
+    		   Double s=rs.getDouble(t.toString());
     		   if(s.equals("-1"))
     			   p.setData(0.0);
     		   else
-    			   p.setData(Double.parseDouble(s));
+    			   p.setData(Double.parseDouble(df.format(s)));
     			String season=rs.getString("season");
             	String team=rs.getString("teamname");
             	double attendmatches=rs.getDouble("attendmatches");

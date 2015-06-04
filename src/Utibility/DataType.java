@@ -25,48 +25,49 @@ public enum DataType {
     /*
      * Average
      */
-         Atime,
-         FGP,
-         AFGZ ,//Z代表命中
-         AFG ,
-         SFGP ,
-         ASFGZ ,
-         ASFG ,
-         FTGP ,
-         AFTGZ ,
-         AFTG ,
-         ARebounds ,
-         AORebouns ,
-         ADRebounds ,
-         AAssists ,
-         ASteals ,
-         ABlocks ,
-         ATurnovers ,
-         AFouls ,
-         AScores ,
+       
+         Atime,//平均时间
+         FGP,//命中率
+         AFGZ ,//平均投篮命中数
+         AFG ,//平均投篮出手数
+         SFGP ,//三分命中率
+         ASFGZ ,//平均三分命中数
+         ASFG ,//平均三分出手数
+         FTGP ,//平均罚球命中率
+         AFTGZ ,//平均罚球命中数
+         AFTG ,//平均罚球数
+         ARebounds ,//平均篮板
+         AORebouns ,//平均球场篮板
+         ADRebounds ,//平均后场篮板
+         AAssists ,//平均助攻
+         ASteals ,//平均抢断
+         ABlocks ,//平均盖帽
+         ATurnovers ,//平均失误
+         AFouls ,//平均犯规
+         AScores ,//平均得分
    
-         Win ,
-         Lose ,
+         Win ,//参加比赛球队胜场
+         Lose ,//参加比赛球队负场
     
     /*
      * Total
      */
-         Ttime ,
-         TFGZ ,
-         TFG ,
-         TSFGZ ,
-         TSFG ,
-         TFTGZ ,
-         TFTG ,
-         TRebounds ,
-         TORebouns ,
-         TDRebounds ,
-         TAssists ,
-         TSteals ,
-         TBlocks ,
-         TTurnovers ,
-         TFouls ,
-         TScores ,
+         Ttime ,//总时间
+         TFGZ ,//总投篮命中
+         TFG ,//总投篮出手
+         TSFGZ ,//总三分命中
+         TSFG ,//总三分出手
+         TFTGZ ,//总罚球命中
+         TFTG ,//总罚球出手
+         TRebounds ,//总篮板
+         TORebouns ,//总前场板
+         TDRebounds ,//总后场板
+         TAssists ,//总助攻
+         TSteals ,//总抢断
+         TBlocks ,//总盖帽
+         TTurnovers ,//总失误
+         TFouls ,//总犯规
+         TScores ,//总得分
     
     /*
      * Advanced data
@@ -81,34 +82,34 @@ public enum DataType {
          UseRate ,//使用率(上场率)
          OR ,//进攻率
          DR ,//防守率
-         WS ,//WS
-         O_WS ,//进攻WS
-         D_WS ,//防守WS
+         WS ,//WS ，不需要
+         O_WS ,//进攻WS，不需要
+         D_WS ,//防守WS，不需要
          PER ,//效率
-         Dunk ,//扣篮个数
-         TTPO ,//2/3+1(并不知道是什么)
-         Blocked ,//被冒个数
+         Dunk ,//扣篮个数，不需要
+         TTPO ,//2/3+1(并不知道是什么)，不需要
+         Blocked ,//被冒个数，不需要
          ShootDistance ,//投篮距离
     
-         LXFGP ,//LX表示篮下
-         LXFGZ ,
-         LXFG ,
-         LXFGRate ,//表示篮下投篮在所有投篮中比例，以下类推
+         LXFGP ,//篮下命中率
+         LXFGZ ,//篮下命中数
+         LXFG ,//篮下出手数
+         LXFGRate ,//篮下出手比例
     
-         JJLFGP ,//JJ表示近距离
-         JJLFGZ ,
-         JJLFG ,
-         JJLFGRate ,
+         JJLFGP ,//近距离投篮命中率
+         JJLFGZ ,//近距离投篮命中数
+         JJLFG ,//近距离投篮数
+         JJLFGRate ,//近距离投篮比例
     
-         ZJLFGP ,//ZJL表示中距离
-         ZJLFGZ ,
-         ZJLFG ,
-         ZJLFGRate ,
+         ZJLFGP ,//中距离投篮命中率
+         ZJLFGZ ,//中距离投篮命中数
+         ZJLFG ,//中距离投篮出手数
+         ZJLFGRate ,//中距离投篮比例
     
-         YJLFGP ,//YJL表示远距离
-         YJLFGZ ,
-         YJLFG ,
-         YJLFGRate ,
+         YJLFGP ,//远距离投篮命中率
+         YJLFGZ ,//远距离投篮命中数
+         YJLFG ,//远距离投篮出手数
+         YJLFGRate ,//远距离投篮比例
     
          RealShootRate ,//真实命中率
          S_RR ,//投篮效率
@@ -116,24 +117,24 @@ public enum DataType {
     /*
      * High data
      */
-         Htime ,
-         HFGP ,
-         HFGZ ,//Z代表命中
-         HFG ,
-         HSFGP ,
-         HSFGZ ,
-         HSFG ,
-         HFTGP ,
-         HFTGZ ,
-         HFTG ,
-         HRebounds ,
-         HORebouns ,
-         HDRebounds ,
-         HAssists ,
-         HSteals ,
-         HBlocks ,
-         HTurnovers ,
-         HFouls ,
-         HScores ,
+         Htime ,//最高出场时间
+         HFGP ,//最高命中率
+         HFGZ ,////最高命中数
+         HFG ,//最高出手数
+         HSFGP ,//最高三分命中率
+         HSFGZ ,//最高三分命中
+         HSFG ,//最高三分出手
+         HFTGP ,//最高罚球命中率
+         HFTGZ ,//最高罚球命中
+         HFTG ,//最高罚球数
+         HRebounds ,//最高篮板
+         HORebouns ,//最高前场板
+         HDRebounds ,//最高后场板
+         HAssists ,//最高助攻
+         HSteals ,//最高抢断
+         HBlocks ,//最高篮板
+         HTurnovers ,//最高失误
+         HFouls ,//最高犯规
+         HScores ,//最高得分
          salary,//年薪 单位是万美元 界面加一下吧 这边传给你前面的数字
 }
