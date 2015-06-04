@@ -261,16 +261,16 @@ public class PlayerControllerThird {
         		ResultSet rs=pstmt.executeQuery();
         		while(rs.next()){
         			PlayerBasicInfoVO p=new PlayerBasicInfoVO();
-        			p.setPlayerID(rs.getString(1));
-        			p.setPlayerName(rs.getString(2));
-        			p.setPlayerPosition(rs.getString(3));
-        			p.setPlayerHeight(rs.getString(4));
-        			p.setPlayerWeight(rs.getString(5));
-        			p.setPlayerBirthDay(rs.getString(6));
-        			p.setPlayerBirthPlace(rs.getString(7));
-        			p.setPlayerHighSchool(rs.getString(8));
-        			p.setPlayerUniversity(rs.getString(9));
-        			p.setSimilarPlayerID(rs.getString(10));
+        			p.setPlayerID(rs.getString(1));//球员编号
+        			p.setPlayerName(rs.getString(2));//球员姓名
+        			p.setPlayerPosition(rs.getString(3));//球员位置
+        			p.setPlayerHeight(rs.getString(4));//球员身高
+        			p.setPlayerWeight(rs.getString(5));//球员体重
+        			p.setPlayerBirthDay(rs.getString(6));//球员生日
+        			p.setPlayerBirthPlace(rs.getString(7));//球员出生地
+        			p.setPlayerHighSchool(rs.getString(8));//球员毕业高中
+        			p.setPlayerUniversity(rs.getString(9));//球员毕业大学
+        			p.setSimilarPlayerID(rs.getString(10));//相似球员编号
         			p.setAtime(rs.getDouble(11));
         			p.setFGP(rs.getDouble(12));
         			p.setAFGZ(rs.getDouble(13));
