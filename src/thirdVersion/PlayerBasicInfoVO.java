@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 public class PlayerBasicInfoVO {
+	
 	//球员编号
 	String playerID;
 	//球员姓名
