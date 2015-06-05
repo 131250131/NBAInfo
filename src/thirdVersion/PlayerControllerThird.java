@@ -340,6 +340,9 @@ public class PlayerControllerThird {
 		return p;
 		
 	}
+    /*
+     * 根据DataType和数据
+     */
     
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();    	
