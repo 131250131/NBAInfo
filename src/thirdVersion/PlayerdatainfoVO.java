@@ -130,10 +130,610 @@ public class PlayerdatainfoVO {
     double HScores=0;
     
     String salary="";//薪水，带单位，所以用String
-    int isplayoff=0;//是否是季候赛，是季后赛表示为1，不是为0 
+    boolean isplayoff=false;//是否是季候赛，是季后赛表示为1，不是为0 
     String name="";//球员名字
     public ArrayList<PlayerdatainfoVO> getvo(ResultSet s){
     	ArrayList<PlayerdatainfoVO> result=new ArrayList<PlayerdatainfoVO>();
     	return result;
     }
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getSeason() {
+		return season;
+	}
+	public void setSeason(String season) {
+		this.season = season;
+	}
+	public String getTeamname() {
+		return teamname;
+	}
+	public void setTeamname(String teamname) {
+		this.teamname = teamname;
+	}
+	public double getAttendmatches() {
+		return attendmatches;
+	}
+	public void setAttendmatches(double attendmatches) {
+		this.attendmatches = attendmatches;
+	}
+	public double getFirst() {
+		return First;
+	}
+	public void setFirst(double first) {
+		First = first;
+	}
+	public double getAtime() {
+		return Atime;
+	}
+	public void setAtime(double atime) {
+		Atime = atime;
+	}
+	public double getFGP() {
+		return FGP;
+	}
+	public void setFGP(double fGP) {
+		FGP = fGP;
+	}
+	public double getAFGZ() {
+		return AFGZ;
+	}
+	public void setAFGZ(double aFGZ) {
+		AFGZ = aFGZ;
+	}
+	public double getAFG() {
+		return AFG;
+	}
+	public void setAFG(double aFG) {
+		AFG = aFG;
+	}
+	public double getSFGP() {
+		return SFGP;
+	}
+	public void setSFGP(double sFGP) {
+		SFGP = sFGP;
+	}
+	public double getASFGZ() {
+		return ASFGZ;
+	}
+	public void setASFGZ(double aSFGZ) {
+		ASFGZ = aSFGZ;
+	}
+	public double getASFG() {
+		return ASFG;
+	}
+	public void setASFG(double aSFG) {
+		ASFG = aSFG;
+	}
+	public double getFTGP() {
+		return FTGP;
+	}
+	public void setFTGP(double fTGP) {
+		FTGP = fTGP;
+	}
+	public double getAFTGZ() {
+		return AFTGZ;
+	}
+	public void setAFTGZ(double aFTGZ) {
+		AFTGZ = aFTGZ;
+	}
+	public double getAFTG() {
+		return AFTG;
+	}
+	public void setAFTG(double aFTG) {
+		AFTG = aFTG;
+	}
+	public double getARebounds() {
+		return ARebounds;
+	}
+	public void setARebounds(double aRebounds) {
+		ARebounds = aRebounds;
+	}
+	public double getAORebouns() {
+		return AORebouns;
+	}
+	public void setAORebouns(double aORebouns) {
+		AORebouns = aORebouns;
+	}
+	public double getADRebounds() {
+		return ADRebounds;
+	}
+	public void setADRebounds(double aDRebounds) {
+		ADRebounds = aDRebounds;
+	}
+	public double getAAssists() {
+		return AAssists;
+	}
+	public void setAAssists(double aAssists) {
+		AAssists = aAssists;
+	}
+	public double getASteals() {
+		return ASteals;
+	}
+	public void setASteals(double aSteals) {
+		ASteals = aSteals;
+	}
+	public double getABlocks() {
+		return ABlocks;
+	}
+	public void setABlocks(double aBlocks) {
+		ABlocks = aBlocks;
+	}
+	public double getATurnovers() {
+		return ATurnovers;
+	}
+	public void setATurnovers(double aTurnovers) {
+		ATurnovers = aTurnovers;
+	}
+	public double getAFeals() {
+		return AFeals;
+	}
+	public void setAFeals(double aFeals) {
+		AFeals = aFeals;
+	}
+	public double getAScores() {
+		return AScores;
+	}
+	public void setAScores(double aScores) {
+		AScores = aScores;
+	}
+	public double getWin() {
+		return Win;
+	}
+	public void setWin(double win) {
+		Win = win;
+	}
+	public double getLose() {
+		return Lose;
+	}
+	public void setLose(double lose) {
+		Lose = lose;
+	}
+	public double getTtime() {
+		return Ttime;
+	}
+	public void setTtime(double ttime) {
+		Ttime = ttime;
+	}
+	public double getTFGZ() {
+		return TFGZ;
+	}
+	public void setTFGZ(double tFGZ) {
+		TFGZ = tFGZ;
+	}
+	public double getTFG() {
+		return TFG;
+	}
+	public void setTFG(double tFG) {
+		TFG = tFG;
+	}
+	public double getTSFGZ() {
+		return TSFGZ;
+	}
+	public void setTSFGZ(double tSFGZ) {
+		TSFGZ = tSFGZ;
+	}
+	public double getTSFG() {
+		return TSFG;
+	}
+	public void setTSFG(double tSFG) {
+		TSFG = tSFG;
+	}
+	public double getTFTGZ() {
+		return TFTGZ;
+	}
+	public void setTFTGZ(double tFTGZ) {
+		TFTGZ = tFTGZ;
+	}
+	public double getTFTG() {
+		return TFTG;
+	}
+	public void setTFTG(double tFTG) {
+		TFTG = tFTG;
+	}
+	public double getTRebounds() {
+		return TRebounds;
+	}
+	public void setTRebounds(double tRebounds) {
+		TRebounds = tRebounds;
+	}
+	public double getTORebouns() {
+		return TORebouns;
+	}
+	public void setTORebouns(double tORebouns) {
+		TORebouns = tORebouns;
+	}
+	public double getTDRebounds() {
+		return TDRebounds;
+	}
+	public void setTDRebounds(double tDRebounds) {
+		TDRebounds = tDRebounds;
+	}
+	public double getTAssists() {
+		return TAssists;
+	}
+	public void setTAssists(double tAssists) {
+		TAssists = tAssists;
+	}
+	public double getTSteals() {
+		return TSteals;
+	}
+	public void setTSteals(double tSteals) {
+		TSteals = tSteals;
+	}
+	public double getTBlocks() {
+		return TBlocks;
+	}
+	public void setTBlocks(double tBlocks) {
+		TBlocks = tBlocks;
+	}
+	public double getTTurnovers() {
+		return TTurnovers;
+	}
+	public void setTTurnovers(double tTurnovers) {
+		TTurnovers = tTurnovers;
+	}
+	public double getTFeals() {
+		return TFeals;
+	}
+	public void setTFeals(double tFeals) {
+		TFeals = tFeals;
+	}
+	public double getTScores() {
+		return TScores;
+	}
+	public void setTScores(double tScores) {
+		TScores = tScores;
+	}
+	public double getRR() {
+		return RR;
+	}
+	public void setRR(double rR) {
+		RR = rR;
+	}
+	public double getO_RR() {
+		return O_RR;
+	}
+	public void setO_RR(double o_RR) {
+		O_RR = o_RR;
+	}
+	public double getD_RR() {
+		return D_RR;
+	}
+	public void setD_RR(double d_RR) {
+		D_RR = d_RR;
+	}
+	public double getAR() {
+		return AR;
+	}
+	public void setAR(double aR) {
+		AR = aR;
+	}
+	public double getSR() {
+		return SR;
+	}
+	public void setSR(double sR) {
+		SR = sR;
+	}
+	public double getBR() {
+		return BR;
+	}
+	public void setBR(double bR) {
+		BR = bR;
+	}
+	public double getTR() {
+		return TR;
+	}
+	public void setTR(double tR) {
+		TR = tR;
+	}
+	public double getUseRate() {
+		return UseRate;
+	}
+	public void setUseRate(double useRate) {
+		UseRate = useRate;
+	}
+	public double getOR() {
+		return OR;
+	}
+	public void setOR(double oR) {
+		OR = oR;
+	}
+	public double getDR() {
+		return DR;
+	}
+	public void setDR(double dR) {
+		DR = dR;
+	}
+	public double getWS() {
+		return WS;
+	}
+	public void setWS(double wS) {
+		WS = wS;
+	}
+	public double getO_WS() {
+		return O_WS;
+	}
+	public void setO_WS(double o_WS) {
+		O_WS = o_WS;
+	}
+	public double getD_WS() {
+		return D_WS;
+	}
+	public void setD_WS(double d_WS) {
+		D_WS = d_WS;
+	}
+	public double getPER() {
+		return PER;
+	}
+	public void setPER(double pER) {
+		PER = pER;
+	}
+	public double getDunk() {
+		return Dunk;
+	}
+	public void setDunk(double dunk) {
+		Dunk = dunk;
+	}
+	public double getTTPO() {
+		return TTPO;
+	}
+	public void setTTPO(double tTPO) {
+		TTPO = tTPO;
+	}
+	public double getBlocked() {
+		return Blocked;
+	}
+	public void setBlocked(double blocked) {
+		Blocked = blocked;
+	}
+	public double getShootDistance() {
+		return ShootDistance;
+	}
+	public void setShootDistance(double shootDistance) {
+		ShootDistance = shootDistance;
+	}
+	public double getLXFGP() {
+		return LXFGP;
+	}
+	public void setLXFGP(double lXFGP) {
+		LXFGP = lXFGP;
+	}
+	public double getLXFGZ() {
+		return LXFGZ;
+	}
+	public void setLXFGZ(double lXFGZ) {
+		LXFGZ = lXFGZ;
+	}
+	public double getLXFG() {
+		return LXFG;
+	}
+	public void setLXFG(double lXFG) {
+		LXFG = lXFG;
+	}
+	public double getLXFGRate() {
+		return LXFGRate;
+	}
+	public void setLXFGRate(double lXFGRate) {
+		LXFGRate = lXFGRate;
+	}
+	public double getJJLFGP() {
+		return JJLFGP;
+	}
+	public void setJJLFGP(double jJLFGP) {
+		JJLFGP = jJLFGP;
+	}
+	public double getJJLFGZ() {
+		return JJLFGZ;
+	}
+	public void setJJLFGZ(double jJLFGZ) {
+		JJLFGZ = jJLFGZ;
+	}
+	public double getJJLFG() {
+		return JJLFG;
+	}
+	public void setJJLFG(double jJLFG) {
+		JJLFG = jJLFG;
+	}
+	public double getJJLFGRate() {
+		return JJLFGRate;
+	}
+	public void setJJLFGRate(double jJLFGRate) {
+		JJLFGRate = jJLFGRate;
+	}
+	public double getZJLFGP() {
+		return ZJLFGP;
+	}
+	public void setZJLFGP(double zJLFGP) {
+		ZJLFGP = zJLFGP;
+	}
+	public double getZJLFGZ() {
+		return ZJLFGZ;
+	}
+	public void setZJLFGZ(double zJLFGZ) {
+		ZJLFGZ = zJLFGZ;
+	}
+	public double getZJLFG() {
+		return ZJLFG;
+	}
+	public void setZJLFG(double zJLFG) {
+		ZJLFG = zJLFG;
+	}
+	public double getZJLFGRate() {
+		return ZJLFGRate;
+	}
+	public void setZJLFGRate(double zJLFGRate) {
+		ZJLFGRate = zJLFGRate;
+	}
+	public double getYJLFGP() {
+		return YJLFGP;
+	}
+	public void setYJLFGP(double yJLFGP) {
+		YJLFGP = yJLFGP;
+	}
+	public double getYJLFGZ() {
+		return YJLFGZ;
+	}
+	public void setYJLFGZ(double yJLFGZ) {
+		YJLFGZ = yJLFGZ;
+	}
+	public double getYJLFG() {
+		return YJLFG;
+	}
+	public void setYJLFG(double yJLFG) {
+		YJLFG = yJLFG;
+	}
+	public double getYJLFGRate() {
+		return YJLFGRate;
+	}
+	public void setYJLFGRate(double yJLFGRate) {
+		YJLFGRate = yJLFGRate;
+	}
+	public double getRealShootRate() {
+		return RealShootRate;
+	}
+	public void setRealShootRate(double realShootRate) {
+		RealShootRate = realShootRate;
+	}
+	public double getS_RR() {
+		return S_RR;
+	}
+	public void setS_RR(double s_RR) {
+		S_RR = s_RR;
+	}
+	public double getHtime() {
+		return Htime;
+	}
+	public void setHtime(double htime) {
+		Htime = htime;
+	}
+	public double getHFGP() {
+		return HFGP;
+	}
+	public void setHFGP(double hFGP) {
+		HFGP = hFGP;
+	}
+	public double getHFGZ() {
+		return HFGZ;
+	}
+	public void setHFGZ(double hFGZ) {
+		HFGZ = hFGZ;
+	}
+	public double getHFG() {
+		return HFG;
+	}
+	public void setHFG(double hFG) {
+		HFG = hFG;
+	}
+	public double getHSFGP() {
+		return HSFGP;
+	}
+	public void setHSFGP(double hSFGP) {
+		HSFGP = hSFGP;
+	}
+	public double getHSFGZ() {
+		return HSFGZ;
+	}
+	public void setHSFGZ(double hSFGZ) {
+		HSFGZ = hSFGZ;
+	}
+	public double getHSFG() {
+		return HSFG;
+	}
+	public void setHSFG(double hSFG) {
+		HSFG = hSFG;
+	}
+	public double getHFTGP() {
+		return HFTGP;
+	}
+	public void setHFTGP(double hFTGP) {
+		HFTGP = hFTGP;
+	}
+	public double getHFTGZ() {
+		return HFTGZ;
+	}
+	public void setHFTGZ(double hFTGZ) {
+		HFTGZ = hFTGZ;
+	}
+	public double getHFTG() {
+		return HFTG;
+	}
+	public void setHFTG(double hFTG) {
+		HFTG = hFTG;
+	}
+	public double getHRebounds() {
+		return HRebounds;
+	}
+	public void setHRebounds(double hRebounds) {
+		HRebounds = hRebounds;
+	}
+	public double getHORebouns() {
+		return HORebouns;
+	}
+	public void setHORebouns(double hORebouns) {
+		HORebouns = hORebouns;
+	}
+	public double getHDRebounds() {
+		return HDRebounds;
+	}
+	public void setHDRebounds(double hDRebounds) {
+		HDRebounds = hDRebounds;
+	}
+	public double getHAssists() {
+		return HAssists;
+	}
+	public void setHAssists(double hAssists) {
+		HAssists = hAssists;
+	}
+	public double getHSteals() {
+		return HSteals;
+	}
+	public void setHSteals(double hSteals) {
+		HSteals = hSteals;
+	}
+	public double getHBlocks() {
+		return HBlocks;
+	}
+	public void setHBlocks(double hBlocks) {
+		HBlocks = hBlocks;
+	}
+	public double getHTurnovers() {
+		return HTurnovers;
+	}
+	public void setHTurnovers(double hTurnovers) {
+		HTurnovers = hTurnovers;
+	}
+	public double getHFeals() {
+		return HFeals;
+	}
+	public void setHFeals(double hFeals) {
+		HFeals = hFeals;
+	}
+	public double getHScores() {
+		return HScores;
+	}
+	public void setHScores(double hScores) {
+		HScores = hScores;
+	}
+	public String getSalary() {
+		return salary;
+	}
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
+	public boolean isIsplayoff() {
+		return isplayoff;
+	}
+	public void setIsplayoff(boolean isplayoff) {
+		this.isplayoff = isplayoff;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 }
