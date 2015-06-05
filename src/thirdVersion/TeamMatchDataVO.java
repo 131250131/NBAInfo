@@ -6,6 +6,7 @@ public class TeamMatchDataVO {
 	//球队中文名
 	String teamChinsesName;
 	//各项单场数据
+	int isplayoff;
 	double FGP;
 	int FGZ;
 	int FG;
@@ -150,6 +151,12 @@ public class TeamMatchDataVO {
 	}
 	public void setScores(int scores) {
 		Scores = scores;
+	}
+	public int getIsplayoff() {
+		return isplayoff;
+	}
+	public void setIsplayoff(int isplayoff) {
+		this.isplayoff = isplayoff;
 	}
 
 	

@@ -20,12 +20,18 @@ public class TeamControllerThird {
 	
 	public static void main(String args[]){
 		TeamControllerThird teamController = new TeamControllerThird();
+		ArrayList<TeamMatchDataVO> list = new ArrayList<TeamMatchDataVO>();
+		teamController.createSeasonDateA();
 		
-		ArrayList<TeamVO> teamList=teamController.getAllTeamVO();
-		for(TeamVO vo: teamList){
-			System.out.println(vo.getTeamChineseName()+" "+vo.getTeamEnglishName()+" "
-							+vo.isNowTeam()+" "+vo.getStartSeason()+" "+vo.getEndSeason());
-		}
+//		list = teamController.getMatches("纽约尼克斯", "2013-2014", 0);
+//		for(TeamMatchDataVO vo : list){
+//			System.out.println(vo.getMatchID()+" "+vo.getAssists()+" 111");
+//		}
+//		ArrayList<TeamVO> teamList=teamController.getAllTeamVO();
+//		for(TeamVO vo: teamList){
+//			System.out.println(vo.getTeamChineseName()+" "+vo.getTeamEnglishName()+" "
+//							+vo.isNowTeam()+" "+vo.getStartSeason()+" "+vo.getEndSeason());
+//		}
 	}
 
 	//我现在有的数据是：
@@ -37,8 +43,8 @@ public class TeamControllerThird {
 	 * 
 	 * 获得每个球队的生存赛季;完成！
 	 * 每个球队每个赛季的常规赛平均数据
-	 * 1.给每场比赛加一个赛季
-	 * 2.获得每个球队，每个赛季的比赛，常规赛季后赛分开来
+	 * 1.给每场比赛加一个赛季  完成
+	 * 2.获得每个球队，每个赛季的比赛，常规赛季后赛分开来 
 	 * 3。创建一张球队赛季平均数据的表
 	 * 4.通过步骤2获得的数据来获得每个赛季球队的单项平均数据；
 	 * 5.拓展，可以获得其对手任意赛季平均数据
@@ -46,7 +52,7 @@ public class TeamControllerThird {
 	 * 照着迭代二的需求填写各种方法
 	 * */
 	
-	//这个方法可以不再调用了
+	//这个方法可以不再调用了,在展示数据库设计中可以展示出来
 //	private void getTeamLife(){
 //		try{
 //			Class.forName("com.mysql.jdbc.Driver");
@@ -96,13 +102,168 @@ public class TeamControllerThird {
 //		}		
 //	}
 	
-//这个方法用来创造球队的平均数据，在数据库里搞一点大动作
-	public void processAlltheSeasons(){
-		
+//这个方法用来创造球队的平均数据，在数据库里搞一点大动作  
+	public void processAlltheSeasons_Match(){
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn =DriverManager.getConnection(url, user, password);
+			sql="SELECT * FROM matches";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			String date;
+			int year;
+			int month;
+			String id;
+			while(rs.next()){
+				id = rs.getString(1);
+				date = rs.getString(2);
+				year = Integer.parseInt(date.substring(0,4));
+				month = Integer.parseInt(date.split("-")[1]);
+				if(month>8){
+					date = String.valueOf(year)+"-"+String.valueOf(year+1);
+				}else{
+					date = String.valueOf(year-1)+"-"+String.valueOf(year);
+				}
+				sql = "UPDATE matches SET season="+"'"+date+"'"+" WHERE id="+"'"+id+"'";
+				Statement stmt = conn.createStatement();
+				stmt.executeUpdate(sql);
+			}
+			System.out.println("球队比赛都加了一个赛季");
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+			System.out.println("数据库的连接出现了问题");
+		}
 	}
 	
-	public void getMatches(String teanName,String season,boolean isPlayOffs){
-		
+	//这个方法用来创造所有球队所有赛季的平均数据
+	public void createSeasonDateA(){
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			ArrayList<TeamVO> list = this.getAllTeamVO();
+			String season = new String();
+			ArrayList<TeamAverData> seasonDataList = new ArrayList<TeamAverData>();
+			for(TeamVO vo : list){
+				int nowYear = Integer.parseInt(vo.getStartSeason().substring(0,4));
+				int endYear = Integer.parseInt(vo.getEndSeason().substring(0,4));
+//				String teamShortName = 
+				ArrayList<TeamMatchDataVO> seasonMatches = new ArrayList<TeamMatchDataVO>();
+				while(nowYear<=endYear){
+					seasonMatches = this.getMatches(vo.getTeamChineseName().substring(0,vo.getTeamChineseName().length()-1), season, 0);
+					TeamAverData temp = new TeamAverData();
+					season = String.valueOf(nowYear)+"-"+String.valueOf(nowYear+1);	
+					temp.setTeamChinsesName(vo.getTeamChineseName());
+					temp.setSeason(season);
+					temp.setIsPlayOff(0);
+					temp.setAttends(seasonMatches.size());
+					for(TeamMatchDataVO matchvo : seasonMatches){
+						temp.setAll_assists(temp.getAll_assists()+matchvo.getAssists());
+						temp.setAll_blocks(temp.getAll_blocks()+matchvo.getBlocks());
+						temp.setAll_DRebounds(temp.getAll_DRebounds()+matchvo.getDRebounds());
+						temp.setAll_FG(temp.getAll_FG()+matchvo.getFG());
+						temp.setAll_FGZ(temp.getAll_FGZ()+matchvo.getFGZ());
+						temp.setAll_ORebounds(temp.getAll_ORebounds()+matchvo.getORebounds());
+						temp.setAll_Rebounds(temp.getAll_DRebounds()+matchvo.getRebounds());
+						temp.setAll_scores(temp.getAll_scores()+matchvo.getScores());
+						temp.setAll_steals(temp.getAll_steals()+matchvo.getSteals());
+						temp.setAll_ThreeFG(temp.getAll_ThreeFG()+matchvo.getThreeFG());
+						temp.setAll_ThreeFGZ(temp.getAll_ThreeFGZ()+matchvo.getFGZ());
+						temp.setAll_turnovers(temp.getAll_turnovers()+matchvo.getTurnovers());
+						temp.setAll_FTG(temp.getAll_FTG());
+						temp.setAll_FTGZ(temp.getAll_FTGZ());
+					}
+					temp.setAll_ThreeFGP((temp.getAll_ThreeFGZ()+0.0)/(temp.getAll_ThreeFG()));
+					temp.setAll_FGP((temp.getAll_FGZ()+0.0)/(temp.getAll_FG()));
+					temp.setAll_FTGP((temp.getAll_FTGZ()+0.0)/(temp.getAll_FTG()));
+					temp.setAver_assists((temp.getAll_assists()+0.0)/temp.getAttends());
+					temp.setAver_blocks((temp.getAll_blocks()+0.0)/temp.getAttends());
+					temp.setAver_DRebounds((temp.getAll_DRebounds()+0.0)/temp.getAttends());
+					temp.setAver_FG((temp.getAll_FG()+0.0)/temp.getAttends());
+					temp.setAver_FGZ((temp.getAll_FGZ()+0.0)/temp.getAttends());
+					temp.setAver_fouls((temp.getAll_fouls()+0.0)/temp.getAttends());
+					temp.setAver_FTG((temp.getAll_FTG()+0.0)/temp.getAttends());
+					temp.setAver_FTGZ((temp.getAll_FTGZ()+0.0)/temp.getAttends());
+					temp.setAver_ORebounds((temp.getAll_ORebounds()+0.0)/temp.getAttends());
+					temp.setAver_Rebounds((temp.getAll_Rebounds()+0.0)/temp.getAttends());
+					temp.setAver_scores((temp.getAll_scores()+0.0)/temp.getAttends());
+					temp.setAver_steals((temp.getAll_steals()+0.0)/temp.getAttends());
+					temp.setAver_ThreeFG((temp.getAll_ThreeFG()+0.0)/temp.getAttends());
+					temp.setAver_ThreeFGZ((temp.getAll_ThreeFGZ()+0.0)/temp.getAttends());
+					temp.setAver_turnovers((temp.getAll_turnovers()+0.0)/temp.getAttends());		
+					nowYear++;
+					seasonDataList.add(temp);
+					System.out.println(vo.getTeamChineseName()+" "+season+" "+temp.getAll_assists()+" "+temp.getAver_assists());
+				}
+				
+			}
+			conn.close();
+		}catch(Exception e){
+			
+		}
+	}
+	
+	//这个方法用来创造所有虚拟对手所有赛季的平均数据
+	public void createSeasonDateB(){
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql = "";
+			
+		}catch(Exception e){
+			
+		}
+	}
+	
+	public ArrayList<TeamMatchDataVO> getMatches(String teamName,String season,int isPlayOffs){
+		ArrayList<TeamMatchDataVO> oneSeasonMatches = new ArrayList<TeamMatchDataVO>();
+		try{
+			int attends = 0;
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql = "SELECT id FROM matches WHERE (leftteam="+"'"+teamName+"'"
+					+" OR rightteam="+"'"+teamName+"'"+") AND season="+"'"
+					+season+"'"+" and isplayoff="+isPlayOffs;
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				sql = "SELECT * FROM teammatchdata WHERE matchid="+"'"+rs.getString(1)+"'";
+				pstmt =conn.prepareStatement(sql);
+				ResultSet rs2=pstmt.executeQuery();
+				TeamMatchDataVO temp = new TeamMatchDataVO();
+				while(rs2.next()){
+					temp.setMatchID(rs2.getString(1));
+					temp.setTeamChinsesName(rs2.getString(2));
+					temp.setFGP(rs2.getDouble(3));
+					temp.setFGZ(rs2.getInt(4));
+					temp.setFG(rs2.getInt(5));
+					temp.setThreeFGP(rs2.getDouble(6));
+					temp.setThreeFGZ(rs2.getInt(7));
+					temp.setThreeFGZ(rs2.getInt(8));
+					temp.setFTGP(rs2.getDouble(9));
+					temp.setFTGZ(rs2.getInt(10));
+					temp.setFTG(rs2.getInt(11));
+					temp.setRealShootRate(rs2.getDouble(12));
+					temp.setRebounds(rs2.getInt(13));
+					temp.setORebounds(rs2.getInt(14));
+					temp.setDRebounds(rs2.getInt(15));
+					temp.setAssists(rs2.getInt(16));
+					temp.setSteals(rs2.getInt(17));
+					temp.setBlocks(rs2.getInt(18));
+					temp.setTurnovers(rs2.getInt(19));
+					temp.setFouls(rs2.getInt(20));
+					temp.setScores(rs2.getInt(21));
+					temp.setIsplayoff(rs2.getInt(22));
+				}					
+				oneSeasonMatches.add(temp);
+				attends++;
+			}
+			System.out.println("获得了"+teamName+" "+season+ " "+isPlayOffs+" 所有比赛"+attends);
+			conn.close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return oneSeasonMatches;
 	}
 	
 	//获得该球队历史上所有赛季的单赛季平均数据
