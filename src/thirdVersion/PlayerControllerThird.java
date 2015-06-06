@@ -38,7 +38,7 @@ public class PlayerControllerThird {
         		while(rs.next()){
         			PlayerBasicInfoVO p=new PlayerBasicInfoVO();
         			p.setPlayerID(rs.getString(1));//球员编号
-        			p.setPlayerName(rs.getString(2));//球员姓名
+        			p.setEnglishName(rs.getString(2));//球员姓名
         			p.setPlayerPosition(rs.getString(3));//球员位置
         			p.setPlayerHeight(rs.getString(4));//球员身高
         			p.setPlayerWeight(rs.getString(5));//球员体重
@@ -66,6 +66,7 @@ public class PlayerControllerThird {
         			p.setATurnovers(Double.parseDouble(df.format(rs.getDouble(27))));//球员场均失误数
         			p.setAFeals(Double.parseDouble(df.format(rs.getDouble(28))));//球员场均犯规数
         			p.setAScores(Double.parseDouble(df.format(rs.getDouble(29))));//球员场均得分
+        			p.setChinesename(rs.getString(30));
         			if(p.getFGP()<=100&&p.getSFGP()<100&&p.getFTGP()<100)
         			     inidata.add(p);
         		}
@@ -145,9 +146,14 @@ public class PlayerControllerThird {
        		   Double s=rs.getDouble(t.toString());
        		   if(s.equals("-1"))
        			   p.setData(0.0);
-       		   else
-       			   p.setData(Double.parseDouble(df.format(s)));
-       		   
+       		else{
+ 			   if(t==DataType.FGP||t==DataType.SFGP||t==DataType.FTGP||t==DataType.JJLFGP||t==DataType.LXFGP||t==DataType.ZJLFGP||t==DataType.YJLFGP||t==DataType.HFGP||t==DataType.HSFGP||t==DataType.HFTGP){
+ 				   p.setData(Double.parseDouble(df.format(s*100)));
+ 			   }
+ 			   else{
+ 			   p.setData(Double.parseDouble(df.format(s)));
+ 			   }
+       		}
        		String season=rs.getString("season");
         	String team=rs.getString("teamname");
         	double attendmatches=rs.getDouble("attendmatches");
@@ -155,7 +161,6 @@ public class PlayerControllerThird {
         	p.setTeam(team);
         	p.setAttendmatches(attendmatches);
         	p.setIsuseful(true);
-        	
         	if(!seasons.contains(season)){
         		seasons.add(season);
         		result.add(p);
@@ -262,8 +267,14 @@ public class PlayerControllerThird {
     		   Double s=rs.getDouble(t.toString());
     		   if(s.equals("-1"))
     			   p.setData(0.0);
-    		   else
+    		   else{
+    			   if(t==DataType.FGP||t==DataType.SFGP||t==DataType.FTGP||t==DataType.JJLFGP||t==DataType.LXFGP||t==DataType.ZJLFGP||t==DataType.YJLFGP||t==DataType.HFGP||t==DataType.HSFGP||t==DataType.HFTGP){
+    				   p.setData(Double.parseDouble(df.format(s*100)));
+    			   }
+    			   else{
     			   p.setData(Double.parseDouble(df.format(s)));
+    			   }
+    		   }
     			String season=rs.getString("season");
             	String team=rs.getString("teamname");
             	double attendmatches=rs.getDouble("attendmatches");
@@ -320,7 +331,7 @@ public class PlayerControllerThird {
     public ArrayList<PlayerBasicInfoVO> getPlayersbyChar(char temp){
     	ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
 		for(PlayerBasicInfoVO vo : inidata){
-			char[] str = vo.getPlayerName().toCharArray();
+			char[] str = vo.getEnglishName().toCharArray();
 			if(str[0]==temp){
 				result.add(vo);
 			}
@@ -333,7 +344,7 @@ public class PlayerControllerThird {
     public PlayerBasicInfoVO getPlayerbyname(String name){
     	PlayerBasicInfoVO p=new PlayerBasicInfoVO();
 		for(PlayerBasicInfoVO vo : inidata){
-		   if(vo.getPlayerName().equals(name)){
+		   if(vo.getEnglishName().equals(name)){
 			   return vo;
 		   }
 		}
@@ -489,13 +500,13 @@ public class PlayerControllerThird {
         			    p.attendmatches=Double.parseDouble(df.format(rs.getDouble(4)));
         			    p.First=Double.parseDouble(df.format(rs.getDouble(5)));
         			    p.Atime=Double.parseDouble(df.format(rs.getDouble(6)));
-        			    p.FGP=Double.parseDouble(df.format(rs.getDouble(7)));
+        			    p.FGP=Double.parseDouble(df.format(rs.getDouble(7)*100));
         			    p.AFGZ=Double.parseDouble(df.format(rs.getDouble(8)));//Z代表命中
         			    p.AFG=Double.parseDouble(df.format(rs.getDouble(9)));
-        			    p.SFGP=Double.parseDouble(df.format(rs.getDouble(10)));
+        			    p.SFGP=Double.parseDouble(df.format(rs.getDouble(10)*100));
         			    p.ASFGZ=Double.parseDouble(df.format(rs.getDouble(11)));
         			    p.ASFG=Double.parseDouble(df.format(rs.getDouble(12)));
-        			    p.FTGP=Double.parseDouble(df.format(rs.getDouble(13)));
+        			    p.FTGP=Double.parseDouble(df.format(rs.getDouble(13)*100));
         			    p.AFTGZ=Double.parseDouble(df.format(rs.getDouble(14)));
         			    p.AFTG=Double.parseDouble(df.format(rs.getDouble(15)));
         			    p.ARebounds=Double.parseDouble(df.format(rs.getDouble(16)));
@@ -543,32 +554,32 @@ public class PlayerControllerThird {
         			    p.TTPO=Double.parseDouble(df.format(rs.getDouble(58)));//2/3+1(并不知道是什么)
         			    p.Blocked=Double.parseDouble(df.format(rs.getDouble(59)));//被冒个数
         			    p.ShootDistance=Double.parseDouble(df.format(rs.getDouble(60)));//投篮距离	    
-        			    p.LXFGP=Double.parseDouble(df.format(rs.getDouble(61)));//LX表示篮下
+        			    p.LXFGP=Double.parseDouble(df.format(rs.getDouble(61)*100));//LX表示篮下
         			    p.LXFGZ=Double.parseDouble(df.format(rs.getDouble(62)));
         			    p.LXFG=Double.parseDouble(df.format(rs.getDouble(63)));
         			    p.LXFGRate=Double.parseDouble(df.format(rs.getDouble(64)));//表示篮下投篮在所有投篮中比例，以下类推 
-        			    p.JJLFGP=Double.parseDouble(df.format(rs.getDouble(65)));//JJ表示近距离
+        			    p.JJLFGP=Double.parseDouble(df.format(rs.getDouble(65)*100));//JJ表示近距离
         			    p.JJLFGZ=Double.parseDouble(df.format(rs.getDouble(66)));
         			    p.JJLFG=Double.parseDouble(df.format(rs.getDouble(67)));
         			    p.JJLFGRate=Double.parseDouble(df.format(rs.getDouble(68)));
-        			    p.ZJLFGP=Double.parseDouble(df.format(rs.getDouble(69)));//ZJL表示中距离
+        			    p.ZJLFGP=Double.parseDouble(df.format(rs.getDouble(69)*100));//ZJL表示中距离
         			    p.ZJLFGZ=Double.parseDouble(df.format(rs.getDouble(70)));
         			    p.ZJLFG=Double.parseDouble(df.format(rs.getDouble(71)));
         			    p.ZJLFGRate=Double.parseDouble(df.format(rs.getDouble(72)));
-        			    p.YJLFGP=Double.parseDouble(df.format(rs.getDouble(73)));//YJL表示远距离
+        			    p.YJLFGP=Double.parseDouble(df.format(rs.getDouble(73)*100));//YJL表示远距离
         			    p.YJLFGZ=Double.parseDouble(df.format(rs.getDouble(74)));
         			    p.YJLFG=Double.parseDouble(df.format(rs.getDouble(75)));
         			    p.YJLFGRate=Double.parseDouble(df.format(rs.getDouble(76)));
         			    p.RealShootRate=Double.parseDouble(df.format(rs.getDouble(77)));//真实命中率
         			    p.S_RR=Double.parseDouble(df.format(rs.getDouble(78)));//投篮效率
         			    p.Htime=Double.parseDouble(df.format(rs.getDouble(79)));
-        			    p.HFGP=Double.parseDouble(df.format(rs.getDouble(80)));
+        			    p.HFGP=Double.parseDouble(df.format(rs.getDouble(80)*100));
         			    p.HFGZ=Double.parseDouble(df.format(rs.getDouble(81)));//Z代表命中
         			    p.HFG=Double.parseDouble(df.format(rs.getDouble(82)));
-        			    p.HSFGP=Double.parseDouble(df.format(rs.getDouble(83)));
+        			    p.HSFGP=Double.parseDouble(df.format(rs.getDouble(83)*100));
         			    p.HSFGZ=Double.parseDouble(df.format(rs.getDouble(84)));
         			    p.HSFG=Double.parseDouble(df.format(rs.getDouble(85)));
-        			    p.HFTGP=Double.parseDouble(df.format(rs.getDouble(86)));
+        			    p.HFTGP=Double.parseDouble(df.format(rs.getDouble(86)*100));
         			    p.HFTGZ=Double.parseDouble(df.format(rs.getDouble(87)));
         			    p.HFTG=Double.parseDouble(df.format(rs.getDouble(88)));
         			    p.HRebounds=Double.parseDouble(df.format(rs.getDouble(89)));
@@ -614,13 +625,13 @@ public class PlayerControllerThird {
     			    p.attendmatches=Double.parseDouble(df.format(rs.getDouble(4)));
     			    p.First=Double.parseDouble(df.format(rs.getDouble(5)));
     			    p.Atime=Double.parseDouble(df.format(rs.getDouble(6)));
-    			    p.FGP=Double.parseDouble(df.format(rs.getDouble(7)));
+    			    p.FGP=Double.parseDouble(df.format(rs.getDouble(7)*100));
     			    p.AFGZ=Double.parseDouble(df.format(rs.getDouble(8)));//Z代表命中
     			    p.AFG=Double.parseDouble(df.format(rs.getDouble(9)));
-    			    p.SFGP=Double.parseDouble(df.format(rs.getDouble(10)));
+    			    p.SFGP=Double.parseDouble(df.format(rs.getDouble(10)*100));
     			    p.ASFGZ=Double.parseDouble(df.format(rs.getDouble(11)));
     			    p.ASFG=Double.parseDouble(df.format(rs.getDouble(12)));
-    			    p.FTGP=Double.parseDouble(df.format(rs.getDouble(13)));
+    			    p.FTGP=Double.parseDouble(df.format(rs.getDouble(13)*100));
     			    p.AFTGZ=Double.parseDouble(df.format(rs.getDouble(14)));
     			    p.AFTG=Double.parseDouble(df.format(rs.getDouble(15)));
     			    p.ARebounds=Double.parseDouble(df.format(rs.getDouble(16)));
@@ -668,32 +679,32 @@ public class PlayerControllerThird {
     			    p.TTPO=Double.parseDouble(df.format(rs.getDouble(58)));//2/3+1(并不知道是什么)
     			    p.Blocked=Double.parseDouble(df.format(rs.getDouble(59)));//被冒个数
     			    p.ShootDistance=Double.parseDouble(df.format(rs.getDouble(60)));//投篮距离	    
-    			    p.LXFGP=Double.parseDouble(df.format(rs.getDouble(61)));//LX表示篮下
+    			    p.LXFGP=Double.parseDouble(df.format(rs.getDouble(61)*100));//LX表示篮下
     			    p.LXFGZ=Double.parseDouble(df.format(rs.getDouble(62)));
     			    p.LXFG=Double.parseDouble(df.format(rs.getDouble(63)));
     			    p.LXFGRate=Double.parseDouble(df.format(rs.getDouble(64)));//表示篮下投篮在所有投篮中比例，以下类推 
-    			    p.JJLFGP=Double.parseDouble(df.format(rs.getDouble(65)));//JJ表示近距离
+    			    p.JJLFGP=Double.parseDouble(df.format(rs.getDouble(65)*100));//JJ表示近距离
     			    p.JJLFGZ=Double.parseDouble(df.format(rs.getDouble(66)));
     			    p.JJLFG=Double.parseDouble(df.format(rs.getDouble(67)));
     			    p.JJLFGRate=Double.parseDouble(df.format(rs.getDouble(68)));
-    			    p.ZJLFGP=Double.parseDouble(df.format(rs.getDouble(69)));//ZJL表示中距离
+    			    p.ZJLFGP=Double.parseDouble(df.format(rs.getDouble(69)*100));//ZJL表示中距离
     			    p.ZJLFGZ=Double.parseDouble(df.format(rs.getDouble(70)));
     			    p.ZJLFG=Double.parseDouble(df.format(rs.getDouble(71)));
     			    p.ZJLFGRate=Double.parseDouble(df.format(rs.getDouble(72)));
-    			    p.YJLFGP=Double.parseDouble(df.format(rs.getDouble(73)));//YJL表示远距离
+    			    p.YJLFGP=Double.parseDouble(df.format(rs.getDouble(73)*100));//YJL表示远距离
     			    p.YJLFGZ=Double.parseDouble(df.format(rs.getDouble(74)));
     			    p.YJLFG=Double.parseDouble(df.format(rs.getDouble(75)));
     			    p.YJLFGRate=Double.parseDouble(df.format(rs.getDouble(76)));
     			    p.RealShootRate=Double.parseDouble(df.format(rs.getDouble(77)));//真实命中率
     			    p.S_RR=Double.parseDouble(df.format(rs.getDouble(78)));//投篮效率
     			    p.Htime=Double.parseDouble(df.format(rs.getDouble(79)));
-    			    p.HFGP=Double.parseDouble(df.format(rs.getDouble(80)));
+    			    p.HFGP=Double.parseDouble(df.format(rs.getDouble(80)*100));
     			    p.HFGZ=Double.parseDouble(df.format(rs.getDouble(81)));//Z代表命中
     			    p.HFG=Double.parseDouble(df.format(rs.getDouble(82)));
-    			    p.HSFGP=Double.parseDouble(df.format(rs.getDouble(83)));
+    			    p.HSFGP=Double.parseDouble(df.format(rs.getDouble(83)*100));
     			    p.HSFGZ=Double.parseDouble(df.format(rs.getDouble(84)));
     			    p.HSFG=Double.parseDouble(df.format(rs.getDouble(85)));
-    			    p.HFTGP=Double.parseDouble(df.format(rs.getDouble(86)));
+    			    p.HFTGP=Double.parseDouble(df.format(rs.getDouble(86)*100));
     			    p.HFTGZ=Double.parseDouble(df.format(rs.getDouble(87)));
     			    p.HFTG=Double.parseDouble(df.format(rs.getDouble(88)));
     			    p.HRebounds=Double.parseDouble(df.format(rs.getDouble(89)));
@@ -709,12 +720,16 @@ public class PlayerControllerThird {
     			    p.isplayoff=rs.getBoolean(99);//是否是季候赛，是季后赛表示为1，不是为0 
     			    p.name=rs.getString(100);
     			    result.add(p);
+    		
         		}
     	}catch(Exception e){
     		e.printStackTrace();
     	}
     	return result;
     }
+    /*
+     * 测试用的main方法
+     */
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();   
 //    	   ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");

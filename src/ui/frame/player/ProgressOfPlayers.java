@@ -273,7 +273,7 @@ public class ProgressOfPlayers extends JPanel {
 		Object[][] data = new Object[size][21];
 		for(int i = 0 ; i < size; i++){
 			data[i][0] = playerlist.get(i).getPlayerID();
-			data[i][1] = playerlist.get(i).getPlayerName();
+			data[i][1] = playerlist.get(i).getChinesename();
 			data[i][2] = playerlist.get(i).getAtime();
 			data[i][3] = playerlist.get(i).getFGP();
 			data[i][4] = playerlist.get(i).getAFGZ();
@@ -331,7 +331,7 @@ public class ProgressOfPlayers extends JPanel {
 			Object[][] data = new Object[size][21];
 			for(int i = 0 ; i < size; i++){
 				data[i][0] = playerlist.get(i).getPlayerID();
-				data[i][1] = playerlist.get(i).getPlayerName();
+				data[i][1] = playerlist.get(i).getEnglishName();
 				data[i][2] = playerlist.get(i).getAtime();
 				data[i][3] = playerlist.get(i).getFGP();
 				data[i][4] = playerlist.get(i).getAFGZ();

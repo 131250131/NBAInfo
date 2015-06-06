@@ -8,7 +8,7 @@ public class PlayerBasicInfoVO {
 	//球员编号
 	String playerID;
 	//球员姓名
-	String playerName;
+	String EnglishName;
 	//球员位置
 	String playerPosition;
 	//球员身高
@@ -25,7 +25,8 @@ public class PlayerBasicInfoVO {
 	String playerUniversity;
 	//相似球员编号
 	String similarPlayerID;
-	
+	//球员中文名(没有则任然用英文名)
+	String Chinesename;
 	double Atime=0;
     double FGP=0;
     double AFGZ=0;//Z代表命中
@@ -54,12 +55,12 @@ public class PlayerBasicInfoVO {
 		this.playerID = playerID;
 	}
 
-	public String getPlayerName() {
-		return playerName;
+	public String getEnglishName() {
+		return EnglishName;
 	}
 
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
+	public void setEnglishName(String playerName) {
+		this. EnglishName = playerName;
 	}
 
 	public String getPlayerPosition() {
@@ -281,6 +282,14 @@ public class PlayerBasicInfoVO {
 
 	public void setAScores(double aScores) {
 		AScores = aScores;
+	}
+
+	public String getChinesename() {
+		return Chinesename;
+	}
+
+	public void setChinesename(String chinesename) {
+		Chinesename = chinesename;
 	}
 
 }

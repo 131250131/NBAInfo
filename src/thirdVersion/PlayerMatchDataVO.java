@@ -4,26 +4,26 @@ public class PlayerMatchDataVO {
 	String matchID;
 	String playerID;
 	String playerName;
-	String time;
+	double time;
 	double FGP;
-	int FGZ;
-	int FG;
-	double ThreeFGP;
-	int ThreeFGZ;
-	int ThreeFG;
+	double FGZ;
+	double FG;
+	double SFGP;
+	double SFGZ;
+	double SFG;
 	double FTGP;
-	int FTGZ;
-	int FTG;
+	double FTGZ;
+	double FTG;
 	double realShootRate;
-	int Rebounds;
-	int ORebounds;
-	int DRebounds;
-	int assists;
-	int steals;
-	int blocks;
-	int turnovers;
-	int fouls;
-	int Scores;
+	double Rebounds;
+	double ORebounds;
+	double DRebounds;
+	double assists;
+	double steals;
+	double blocks;
+	double turnovers;
+	double fouls;
+	double Scores;
 	boolean isFirst;//是否首发
 	
 	public String getMatchID() {
@@ -44,10 +44,10 @@ public class PlayerMatchDataVO {
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
 	}
-	public String getTime() {
+	public double getTime() {
 		return time;
 	}
-	public void setTime(String time) {
+	public void setTime(double time) {
 		this.time = time;
 	}
 	public double getFGP() {
@@ -56,35 +56,35 @@ public class PlayerMatchDataVO {
 	public void setFGP(double fGP) {
 		FGP = fGP;
 	}
-	public int getFGZ() {
+	public double getFGZ() {
 		return FGZ;
 	}
-	public void setFGZ(int fGZ) {
+	public void setFGZ(double fGZ) {
 		FGZ = fGZ;
 	}
-	public int getFG() {
+	public double getFG() {
 		return FG;
 	}
-	public void setFG(int fG) {
+	public void setFG(double fG) {
 		FG = fG;
 	}
-	public double getThreeFGP() {
-		return ThreeFGP;
+	public double getSFGP() {
+		return SFGP;
 	}
-	public void setThreeFGP(double threeFGP) {
-		ThreeFGP = threeFGP;
+	public void setSFGP(double threeFGP) {
+		SFGP = threeFGP;
 	}
-	public int getThreeFGZ() {
-		return ThreeFGZ;
+	public double getSFGZ() {
+		return SFGZ;
 	}
-	public void setThreeFGZ(int threeFGZ) {
-		ThreeFGZ = threeFGZ;
+	public void setSFGZ(double threeFGZ) {
+		SFGZ = threeFGZ;
 	}
-	public int getThreeFG() {
-		return ThreeFG;
+	public double getSFG() {
+		return SFG;
 	}
-	public void setThreeFG(int threeFG) {
-		ThreeFG = threeFG;
+	public void setSFG(double threeFG) {
+		SFG = threeFG;
 	}
 	public double getFTGP() {
 		return FTGP;
@@ -92,16 +92,16 @@ public class PlayerMatchDataVO {
 	public void setFTGP(double fTGP) {
 		FTGP = fTGP;
 	}
-	public int getFTGZ() {
+	public double getFTGZ() {
 		return FTGZ;
 	}
-	public void setFTGZ(int fTGZ) {
+	public void setFTGZ(double fTGZ) {
 		FTGZ = fTGZ;
 	}
-	public int getFTG() {
+	public double getFTG() {
 		return FTG;
 	}
-	public void setFTG(int fTG) {
+	public void setFTG(double fTG) {
 		FTG = fTG;
 	}
 	public double getRealShootRate() {
@@ -110,58 +110,58 @@ public class PlayerMatchDataVO {
 	public void setRealShootRate(double realShootRate) {
 		this.realShootRate = realShootRate;
 	}
-	public int getRebounds() {
+	public double getRebounds() {
 		return Rebounds;
 	}
-	public void setRebounds(int rebounds) {
+	public void setRebounds(double rebounds) {
 		Rebounds = rebounds;
 	}
-	public int getORebounds() {
+	public double getORebounds() {
 		return ORebounds;
 	}
-	public void setORebounds(int oRebounds) {
+	public void setORebounds(double oRebounds) {
 		ORebounds = oRebounds;
 	}
-	public int getDRebounds() {
+	public double getDRebounds() {
 		return DRebounds;
 	}
-	public void setDRebounds(int dRebounds) {
+	public void setDRebounds(double dRebounds) {
 		DRebounds = dRebounds;
 	}
-	public int getAssists() {
+	public double getAssists() {
 		return assists;
 	}
-	public void setAssists(int assists) {
+	public void setAssists(double assists) {
 		this.assists = assists;
 	}
-	public int getSteals() {
+	public double getSteals() {
 		return steals;
 	}
-	public void setSteals(int steals) {
+	public void setSteals(double steals) {
 		this.steals = steals;
 	}
-	public int getBlocks() {
+	public double getBlocks() {
 		return blocks;
 	}
-	public void setBlocks(int blocks) {
+	public void setBlocks(double blocks) {
 		this.blocks = blocks;
 	}
-	public int getTurnovers() {
+	public double getTurnovers() {
 		return turnovers;
 	}
-	public void setTurnovers(int turnovers) {
+	public void setTurnovers(double turnovers) {
 		this.turnovers = turnovers;
 	}
-	public int getFouls() {
+	public double getFouls() {
 		return fouls;
 	}
-	public void setFouls(int fouls) {
+	public void setFouls(double fouls) {
 		this.fouls = fouls;
 	}
-	public int getScores() {
+	public double getScores() {
 		return Scores;
 	}
-	public void setScores(int scores) {
+	public void setScores(double scores) {
 		Scores = scores;
 	}
 	public boolean isFirst() {

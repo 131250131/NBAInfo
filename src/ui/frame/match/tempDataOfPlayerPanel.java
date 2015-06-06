@@ -221,7 +221,7 @@ public class tempDataOfPlayerPanel extends JPanel {
 		}
 		else{
 			//头像
-			portrait = new ImageLabel(ImageSaver.getPlayerIcon(temp.getPlayerName()), 
+			portrait = new ImageLabel(ImageSaver.getPlayerIcon(temp.getEnglishName()), 
 					35 , 15 , 230 , 185 );
 			portrait.addMouseListener(new MouseAdapter(){
 				public void mouseClicked(MouseEvent arg0) {	
@@ -229,10 +229,10 @@ public class tempDataOfPlayerPanel extends JPanel {
 				}
 			});
 			this.add(portrait);
-			_playerName = temp.getPlayerName();
+			_playerName = temp.getEnglishName();
 			this.repaint();
 			//信息
-			playerName.setText("球员：" + temp.getPlayerName());
+			playerName.setText("球员：" + temp.getChinesename());
 			playerHighSchool.setText("高中：" + temp.getPlayerHighSchool());
 			position.setText("位置：" + temp.getPlayerPosition());
 			height.setText("身高：" + temp.getPlayerHeight());

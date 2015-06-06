@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class MatchControllerThird {
@@ -11,12 +12,12 @@ public class MatchControllerThird {
 	String user="root";
 	String password="";
 	String sql="";
+	DecimalFormat    df   = new DecimalFormat("######0.00"); 
 	/*
 	 * 根据日期的到比赛
 	 */
 	public ArrayList<MatchVO> getmatchbydate(String date){
 		ArrayList<MatchVO> result =new ArrayList<MatchVO>();
-		System.out.println(date);
 		sql="SELECT * FROM matches WHERE time="+"'"+date+"'";
 		try{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -43,12 +44,66 @@ public class MatchControllerThird {
 		
 		return result;
 	}
-//	public static void main(String args[]){
-//		MatchControllerThird m=new MatchControllerThird();
-//		ArrayList<MatchVO> r=m.getmatchbydate("1985-10-25");
-//		System.out.println(r.size());
-//		for(MatchVO mv:r){
-//			System.out.println(mv.getDate());
-//		}
-//	}
+	/*
+	 * 根绝比赛ID得到该场比赛球员数据
+	 */
+	public void setmatchplayer(MatchVO m){
+		sql="SELECT * FROM playermatchdata WHERE matchid="+"'"+m.getMatchID()+"'";
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn =DriverManager.getConnection(url, user, password);
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				PlayerMatchDataVO pl=new PlayerMatchDataVO();
+				pl.setMatchID(rs.getString(1));
+				pl.setPlayerID(rs.getString(2));
+				pl.setPlayerName(rs.getString(3));
+				pl.setTime(Double.parseDouble(df.format(rs.getDouble(4))));
+				pl.setFGP(Double.parseDouble(df.format(rs.getDouble(5)*100)));
+				pl.setFGZ(Double.parseDouble(df.format(rs.getDouble(6))));
+				pl.setFG(Double.parseDouble(df.format(rs.getDouble(7))));
+				pl.setSFGP(Double.parseDouble(df.format(rs.getDouble(8)*100)));
+				pl.setSFGZ(Double.parseDouble(df.format(rs.getDouble(9))));
+				pl.setSFG(Double.parseDouble(df.format(rs.getDouble(10))));
+				pl.setFTGP(Double.parseDouble(df.format(rs.getDouble(11)*100)));
+				pl.setFTGZ(Double.parseDouble(df.format(rs.getDouble(12))));
+				pl.setFTG(Double.parseDouble(df.format(rs.getDouble(13))));
+				pl.setRealShootRate(Double.parseDouble(df.format(rs.getDouble(14))));
+				pl.setRebounds(Double.parseDouble(df.format(rs.getDouble(15))));
+				pl.setORebounds(Double.parseDouble(df.format(rs.getDouble(16))));
+				pl.setDRebounds(Double.parseDouble(df.format(rs.getDouble(17))));
+				pl.setAssists(Double.parseDouble(df.format(rs.getDouble(18))));
+				pl.setSteals(Double.parseDouble(df.format(rs.getDouble(19))));
+				pl.setBlocks(Double.parseDouble(df.format(rs.getDouble(20))));
+				pl.setTurnovers(Double.parseDouble(df.format(rs.getDouble(21))));
+				pl.setFouls(Double.parseDouble(df.format(rs.getDouble(22))));
+				pl.setScores(Double.parseDouble(df.format(rs.getDouble(23))));
+				pl.setFirst(rs.getBoolean(24));
+				m.addPdate(pl);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * 根据比赛id得到球队信息
+	 */
+	public void setmatchteam(MatchVO m){
+		
+	}
+	/*
+     * 测试用的main方法
+     */
+	public static void main(String args[]){
+		MatchControllerThird m=new MatchControllerThird();
+		MatchVO mm=new MatchVO();
+		mm.setMatchID("1");
+		m.setmatchplayer(mm);
+		System.out.println(mm.getPdate().size());
+		for(PlayerMatchDataVO mv:mm.getPdate()){
+			System.out.println(mv.getPlayerName());
+		}
+	}
 }
