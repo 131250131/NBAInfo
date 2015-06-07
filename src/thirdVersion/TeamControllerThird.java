@@ -21,7 +21,10 @@ public class TeamControllerThird {
 	public static void main(String args[]){
 		TeamControllerThird teamController = new TeamControllerThird();
 		ArrayList<TeamMatchDataVO> list = new ArrayList<TeamMatchDataVO>();
-		
+		ArrayList<TeamAverData> list2 = new ArrayList<TeamAverData>();
+
+//		list2 = teamController.getSeasonHotTeam_Rebound("2014-2015", false);
+//		list2 = teamController.getTeamHistorySeason("金州勇士队", 0);
 //		teamController.createSeasonDate(0);
 //		teamController.createSeasonDate(1);
 //		teamController.createSeasonDate(1);		
@@ -36,6 +39,7 @@ public class TeamControllerThird {
 //		}
 	}
 
+	
 	//我现在有的数据是：
 	//所有的比赛数据
 	//历年的球队基本数据
@@ -104,7 +108,7 @@ public class TeamControllerThird {
 		}		
 	}
 	
-//这个方法用来给比赛添加一个所属赛季在数据库里搞一点大动作  
+	//这个方法用来给比赛添加一个所属赛季在数据库里搞一点大动作  
 	public void processAlltheSeasons_Match(){
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -224,6 +228,7 @@ public class TeamControllerThird {
 		}
 	}
 
+	//获得某一赛季，某一球队，常规赛or季后赛的所有比赛
 	public ArrayList<TeamMatchDataVO> getMatches(String teamName,String season,int isPlayOffs){
 		ArrayList<TeamMatchDataVO> oneSeasonMatches = new ArrayList<TeamMatchDataVO>();
 		try{
@@ -276,69 +281,604 @@ public class TeamControllerThird {
 	}
 	
 	//获得该球队历史上所有赛季的单赛季平均数据
-	public ArrayList<TeamAverData> getTeamHistorySeason(String teanName , int isPlayOff){
+	public ArrayList<TeamAverData> getTeamHistorySeason(String teamName , int isPlayOff){
 		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
-		
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql = "SELECT * FROM teamseasondata t WHERE teamChinesename ="+"'"+teamName+"' and isplayoff="+isPlayOff+";";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAll_assists());
+			}
+			conn.close();
+			System.out.println("获得了"+teamName+"历史数据");
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
 		
 		return result;
 	}
 	
-	
-//
-	public void getSeasonHotTeam(String seson , boolean isPlayOffs){
-		
+	public ArrayList<TeamAverData> getSeasonHotTeam_Rebound(String season, boolean isPlayOffs){
+		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT * FROM teamseasondata t WHERE season="+"'"+season+"' and isplayoff="+isPlayOffs+" ORDER BY aver_rebounds DESC;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAver_Rebounds());
+			}
+			System.out.println();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	public void getSeasonHotTeam_Rebound(String seson, boolean isPlayOffs){
-		
+	public ArrayList<TeamAverData> getSeasonHotTeam_ORebound(String season, boolean isPlayOffs){
+		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT * FROM teamseasondata t WHERE season="+"'"+season+"' and isplayoff="+isPlayOffs+" ORDER BY aver_orebounds DESC;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAver_Rebounds());
+			}
+			System.out.println();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	public void getSeasonHotTeam_ORebound(String seson, boolean isPlayOffs){
-		
+	public ArrayList<TeamAverData> getSeasonHotTeam_Assit(String season, boolean isPlayOffs){
+		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT * FROM teamseasondata t WHERE season="+"'"+season+"' and isplayoff="+isPlayOffs+" ORDER BY aver_assists DESC;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAver_Rebounds());
+			}
+			System.out.println();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	public void getSeasonHotTeam_DRebound(String seson, boolean isPlayOffs){
-		
+	public ArrayList<TeamAverData> getSeasonHotTeam_Foul(String season, boolean isPlayOffs){
+		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT * FROM teamseasondata t WHERE season="+"'"+season+"' and isplayoff="+isPlayOffs+" ORDER BY aver_fouls DESC;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAver_Rebounds());
+			}
+			System.out.println();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	public void getSeasonHotTeam_Assit(String seson, boolean isPlayOffs){
-		
+	public ArrayList<TeamAverData> getSeasonHotTeam_Turnover(String season, boolean isPlayOffs){
+		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT * FROM teamseasondata t WHERE season="+"'"+season+"' and isplayoff="+isPlayOffs+" ORDER BY aver_turnovers DESC;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAver_Rebounds());
+			}
+			System.out.println();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	public void getSeasonHotTeam_Block(String seson, boolean isPlayOffs){
-		
+	public ArrayList<TeamAverData> getSeasonHotTeam_Score(String season, boolean isPlayOffs){
+		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT * FROM teamseasondata t WHERE season="+"'"+season+"' and isplayoff="+isPlayOffs+" ORDER BY aver_scores DESC;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAver_Rebounds());
+			}
+			System.out.println();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	public void getSeasonHotTeam_Foul(String seson, boolean isPlayOffs){
-		
+	public ArrayList<TeamAverData> getSeasonHotTeam_3FGP(String season, boolean isPlayOffs){
+		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT * FROM teamseasondata t WHERE season="+"'"+season+"' and isplayoff="+isPlayOffs+" ORDER BY aver_3FGP DESC;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAver_Rebounds());
+			}
+			System.out.println();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	public void getSeasonHotTeam_Turnover(String seson, boolean isPlayOffs){
-		
+	public ArrayList<TeamAverData> getSeasonHotTeam_FGP(String season, boolean isPlayOffs){
+		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT * FROM teamseasondata t WHERE season="+"'"+season+"' and isplayoff="+isPlayOffs+" ORDER BY aver_FGP DESC;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAver_Rebounds());
+			}
+			System.out.println();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	public void getSeasonHotTeam_Score(String seson, boolean isPlayOffs){
-		
+	public ArrayList<TeamAverData> getSeasonHotTeam_FTGP(String season, boolean isPlayOffs){
+		ArrayList<TeamAverData> result = new ArrayList<TeamAverData>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT * FROM teamseasondata t WHERE season="+"'"+season+"' and isplayoff="+isPlayOffs+" ORDER BY aver_FTGP DESC;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				TeamAverData temp = new TeamAverData();
+				temp.setTeamChinsesName(rs.getString(1));
+				temp.setSeason(rs.getString(2));
+				temp.setAver_scores(rs.getDouble(3));
+				temp.setAver_Rebounds(rs.getDouble(4));
+				temp.setAver_ORebounds(rs.getDouble(5));
+				temp.setAver_DRebounds(rs.getDouble(6));
+				temp.setAver_steals(rs.getDouble(7));
+				temp.setAver_fouls(rs.getDouble(8));
+				temp.setAver_blocks(rs.getDouble(9));
+				temp.setAver_turnovers(rs.getDouble(10));	
+				temp.setAll_ThreeFGP(rs.getDouble(11));
+				temp.setAll_FGP(rs.getDouble(12));
+				temp.setAll_FTGP(rs.getDouble(13));
+				temp.setAll_scores(rs.getInt(14));
+				temp.setAll_Rebounds(rs.getInt(15));
+				temp.setAll_ORebounds(rs.getInt(16));
+				temp.setAll_DRebounds(rs.getInt(17));
+				temp.setAll_steals(rs.getInt(18));
+				temp.setAll_fouls(rs.getInt(19));
+				temp.setAll_blocks(rs.getInt(20));
+				temp.setAll_turnovers(rs.getInt(21));
+				temp.setAll_ThreeFG(rs.getInt(22));
+				temp.setAll_ThreeFGZ(rs.getInt(23));
+				temp.setAll_FTG(rs.getInt(24));
+				temp.setAll_FTGZ(rs.getInt(25));
+				temp.setAll_FG(rs.getInt(26));
+				temp.setAll_FGZ(rs.getInt(27));
+				temp.setAver_ThreeFG(rs.getDouble(28));
+				temp.setAver_ThreeFGZ(rs.getDouble(29));				
+				temp.setAver_FTG(rs.getDouble(30));
+				temp.setAver_FTGZ(rs.getDouble(31));
+				temp.setAver_FG(rs.getInt(32));
+				temp.setAver_FGZ(rs.getDouble(33));
+				temp.setIsPlayOff(rs.getInt(34));
+				temp.setAttends(rs.getInt(35));
+				temp.setAll_assists(rs.getInt(36));
+				temp.setAver_assists(rs.getDouble(37));
+				result.add(temp);
+				System.out.println(temp.getTeamChinsesName()+" "+temp.getSeason()+" "+temp.getAver_Rebounds());
+			}
+			System.out.println();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
-	public void getSeasonHotTeam_3FGP(String seson, boolean isPlayOffs){
-		
-	}
-	
-	public void getSeasonHotTeam_FGP(String seson, boolean isPlayOffs){
-		
-	}
-	
-	public void getSeasonHotTeam_FTGP(String seson, boolean isPlayOffs){
-		
-	}
-	
-	public ArrayList<TeamMatchDataVO> getTeamMatchDataOfSeanson(String seanon,String shortName){
-		ArrayList<TeamMatchDataVO> matchList = new ArrayList<TeamMatchDataVO>();
+	//completed;
+	public ArrayList<MatchVO> getTeamMatchDataOfSeanson(String season,String teamName){
+		ArrayList<MatchVO> matchList = new ArrayList<MatchVO>();
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn =DriverManager.getConnection(url, user, password);
+			sql = "SELECT * FROM matches WHERE (leftteam="+"'"+teamName+"' OR rightteam="+"'"+teamName+"' )and season="+"'"+season+"'"+";";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			while(rs.next()){
+				MatchVO temp = new MatchVO();
+				temp.setMatchID(rs.getString(1));
+				temp.setDate(rs.getString(2));
+				temp.setLeftTeamName(rs.getString(3));
+				temp.setRightTeamName(rs.getString(4));
+				temp.setFirstScore(rs.getString(5));
+				temp.setSecondScore(rs.getString(6));
+				temp.setThirdScore(rs.getString(7));
+				temp.setForthScore(rs.getString(8));
+				temp.setExttaScore(rs.getString(9));
+				temp.setTotalScore(rs.getString(10));
+				temp.setIsplayoff(rs.getInt(11));
+				temp.setSeason(rs.getString(12));
+				matchList.add(temp);
+			}
 			System.out.println("根据赛季和球队名称获取该球队所有比赛数据");
 			conn.close();
 		}catch(Exception e){

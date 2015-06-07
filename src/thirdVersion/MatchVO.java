@@ -13,6 +13,8 @@ public class MatchVO {
 	String forthScore;
 	String exttaScore;
 	String totalScore;
+	int isplayoff;
+	String season;
 	ArrayList<PlayerMatchDataVO> pdate=new ArrayList<PlayerMatchDataVO>();
 	ArrayList<TeamMatchDataVO> tdate=new ArrayList<TeamMatchDataVO>();
 	public String getMatchID() {
@@ -108,6 +110,30 @@ public class MatchVO {
 
 	public void addTdate(TeamMatchDataVO tdate) {
 		this.tdate.add(tdate);
+	}
+
+	public int getIsplayoff() {
+		return isplayoff;
+	}
+
+	public void setIsplayoff(int isplayoff) {
+		this.isplayoff = isplayoff;
+	}
+
+	public String getSeason() {
+		return season;
+	}
+
+	public void setSeason(String season) {
+		this.season = season;
+	}
+
+	public void setPdate(ArrayList<PlayerMatchDataVO> pdate) {
+		this.pdate = pdate;
+	}
+
+	public void setTdate(ArrayList<TeamMatchDataVO> tdate) {
+		this.tdate = tdate;
 	}
 	
 	
