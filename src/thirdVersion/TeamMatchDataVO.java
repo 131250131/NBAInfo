@@ -6,26 +6,26 @@ public class TeamMatchDataVO {
 	//球队中文名
 	String teamChinsesName;
 	//各项单场数据
-	int isplayoff;
-	double FGP;
-	int FGZ;
-	int FG;
-	double ThreeFGP;
-	int ThreeFGZ;
-	int ThreeFG;
-	double FTGP;
-	int FTGZ;
-	int FTG;
-	double realShootRate;
-	int Rebounds;
-	int ORebounds;
-	int DRebounds;
-	int assists;
-	int steals;
-	int blocks;
-	int turnovers;
-	int fouls;
-	int Scores;
+	int isplayoff = -1;
+	double FGP=0.0;
+	int FGZ=0;
+	int FG=0;
+	double ThreeFGP=0.0;
+	int ThreeFGZ=0;
+	int ThreeFG=0;
+	double FTGP=0.0;
+	int FTGZ=0;
+	int FTG=0;
+	double realShootRate=0.0;
+	int Rebounds=0;
+	int ORebounds=0;
+	int DRebounds=0;
+	int assists=0;
+	int steals=0;
+	int blocks=0;
+	int turnovers=0;
+	int fouls=0;
+	int Scores=0;
 	public String getMatchID() {
 		return matchID;
 	}
