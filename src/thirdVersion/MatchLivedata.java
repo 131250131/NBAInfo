@@ -8,6 +8,7 @@ public class MatchLivedata {
       private String Tscores="";//总比分
       private String statusDesc="";//暂时不确定是啥
       private ArrayList<String> yuju=new ArrayList<String>();//直播语句
+      private ArrayList<String> teams=new ArrayList<String>();
 	public String getLocation() {
 		return location;
 	}
@@ -48,6 +49,14 @@ public class MatchLivedata {
 
 	public void setYuju(ArrayList<String> yuju) {
 		this.yuju = yuju;
+	}
+
+	public ArrayList<String> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(ArrayList<String> teams) {
+		this.teams = teams;
 	}
 
 	
