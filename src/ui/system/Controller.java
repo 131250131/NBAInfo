@@ -126,4 +126,9 @@ public class Controller {
 		LargerScrollPane.turnto.doClick();		
 	}
 	
+	public static void addLivePanel(){
+		LargerPanel.addLivePanel.doClick();
+		LargerScrollPane.turnto.doClick();	
+	}
+	
 }
