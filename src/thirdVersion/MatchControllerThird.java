@@ -91,6 +91,42 @@ public class MatchControllerThird {
 	 * 根据比赛id得到球队信息
 	 */
 	public void setmatchteam(MatchVO m){
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn =DriverManager.getConnection(url, user, password);
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			sql = "SELECT * FROM teammatchdata WHERE matchid="+"'"+m.getMatchID()+"'"+";";
+			ResultSet rs2=pstmt.executeQuery();
+			while(rs2.next()){
+				TeamMatchDataVO temp = new TeamMatchDataVO();
+				temp.setMatchID(rs2.getString(1));
+				temp.setTeamChinsesName(rs2.getString(2));
+				temp.setFGP(rs2.getDouble(3));
+				temp.setFGZ(rs2.getInt(4));
+				temp.setFG(rs2.getInt(5));
+				temp.setThreeFGP(rs2.getDouble(6));
+				temp.setThreeFGZ(rs2.getInt(7));
+				temp.setThreeFG(rs2.getInt(8));
+				temp.setFTGP(rs2.getDouble(9));
+				temp.setFTGZ(rs2.getInt(10));
+				temp.setFTG(rs2.getInt(11));
+				temp.setRealShootRate(rs2.getDouble(12));
+				temp.setRebounds(rs2.getInt(13));
+				temp.setORebounds(rs2.getInt(14));
+				temp.setDRebounds(rs2.getInt(15));
+				temp.setAssists(rs2.getInt(16));
+				temp.setSteals(rs2.getInt(17));
+				temp.setBlocks(rs2.getInt(18));
+				temp.setTurnovers(rs2.getInt(19));
+				temp.setFouls(rs2.getInt(20));
+				temp.setScores(rs2.getInt(21));
+				temp.setIsplayoff(rs2.getInt(22));
+				m.tdate.add(temp);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+
 		
 	}
 	/*
