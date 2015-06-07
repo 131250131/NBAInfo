@@ -3,17 +3,11 @@ package thirdVersion;
 import java.util.ArrayList;
 
 public class MatchLivedata {
-      private String location="";
+      private String location="";//球馆
       private String attendence="";//观众
-      private String TawayScore="";//全场客队分
-      private String ThomeScore="";//全场主队分
+      private String Tscores="";//总比分
       private String statusDesc="";//暂时不确定是啥
-      /*
-       * 一下都是一一对应的
-       */
-      private ArrayList<String> gameclocks=new ArrayList<String>();
-      private ArrayList<String> descriptions=new ArrayList<String>();
-      
+      private ArrayList<String> yuju=new ArrayList<String>();//直播语句
 	public String getLocation() {
 		return location;
 	}
@@ -29,36 +23,32 @@ public class MatchLivedata {
 	public void setAttendence(String attendence) {
 		this.attendence = attendence;
 	}
+	
 
-	public String getTAwayScore() {
-		return TawayScore;
+	
+
+	
+
+	
+
+	public String getTscores() {
+		return Tscores;
 	}
 
-	public void setTAwayScore(String awayScore) {
-		this.TawayScore = awayScore;
+	public void setTscores(String tscores) {
+		Tscores = tscores;
 	}
 
-	public String getTHomeScore() {
-		return ThomeScore;
+	
+
+	
+	public ArrayList<String> getYuju() {
+		return yuju;
 	}
 
-	public void setTHomeScore(String homeScore) {
-		this.ThomeScore = homeScore;
+	public void setYuju(ArrayList<String> yuju) {
+		this.yuju = yuju;
 	}
 
-	public ArrayList<String> getDescriptions() {
-		return descriptions;
-	}
-
-	public void setDescriptions(ArrayList<String> descriptions) {
-		this.descriptions = descriptions;
-	}
-
-	public ArrayList<String> getGameclocks() {
-		return gameclocks;
-	}
-
-	public void setGameclocks(ArrayList<String> gameclocks) {
-		this.gameclocks = gameclocks;
-	}
+	
 }
