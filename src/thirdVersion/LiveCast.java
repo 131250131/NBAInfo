@@ -8,10 +8,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
+import logic.MatchController;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-public class LiveCast implements Runnable {
+public class LiveCast  {
 	MatchLivedata firstmatchinfo=new MatchLivedata();//第一节的直播信息
 	MatchLivedata secondmatchinfo=new MatchLivedata();//第二节的直播信息
 	MatchLivedata thirdmatchinfo=new MatchLivedata();//第三节的直播信息
@@ -21,6 +22,16 @@ public class LiveCast implements Runnable {
 	MatchLivedata extra3matchinfo=new MatchLivedata();//加时三的直播信息
 	Teamlivedata homeTeam =new Teamlivedata();//主队信息
 	Teamlivedata awayTeam =new Teamlivedata();//客队信息
+	private static LiveCast instance =null;
+	private LiveCast(){
+		
+	}
+	public static LiveCast getInstance(){
+		if(instance == null){
+			instance = new LiveCast();
+		}
+		return instance;
+	}
 	//感觉一般不会超过三个加时吧
 	ArrayList<String> yuju=new ArrayList<String>();
 	ArrayList<Playerlivedata> players=new ArrayList<Playerlivedata>();
@@ -52,14 +63,11 @@ public class LiveCast implements Runnable {
 		}
 		return json;
 	}
-	public void run() {
+	public boolean setlivedata (String n) {
 		/*
 		 *得到网页json内容 
 		 */
-		
-		while(clicked){
 		    try{
-		    String n=String.valueOf(setnumber);
 		    String ptjson=getjson("http://china.nba.com/wap/static/data/game/snapshot_0041400401.json");
 			String json=getjson("http://china.nba.com/wap/static/data/game/playbyplay_0041400401_"+n+".json");	
 			
@@ -84,7 +92,7 @@ public class LiveCast implements Runnable {
 		         if(obj1.getString("description").equals("本节比赛结束")){
 		        	 clicked=false;
 		         }
-		         //System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+		         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 		        }
 //			     System.out.println(jary1.size());
 			     firstmatchinfo.setYuju(yuju);
@@ -247,7 +255,7 @@ public class LiveCast implements Runnable {
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
 			         }
-			         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         //System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
 //				System.out.println(jary1.size());
 				    extra2matchinfo.setYuju(yuju);
@@ -340,6 +348,7 @@ public class LiveCast implements Runnable {
 				JSONObject  pjsonObj3  = JSONObject.fromObject(obj1.get("statTotal"));
 				Playerlivedata p=new Playerlivedata();
 				p.setName(pjsonObj1.getString("displayName"));
+				p.setEnglishname(pjsonObj1.getString("displayNameEn"));
 				p.setPosition(pjsonObj1.getString("position"));
 				p.setDnpReason(pjsonObj2.getString("dnpReason"));
 				p.setStarter(pjsonObj2.getString("isStarter"));
@@ -367,7 +376,7 @@ public class LiveCast implements Runnable {
 			
 //				System.out.println(p.getAssists()+" "+p.getBlocks()+" "+p.getDefRebs()+" "+p.getName()
 //						+" "+p.getPoints()+" "+p.getPlusminus()+" "+p.getPosition()+" "+p.getFgp()+" "
-//						+p.getDnpReason());
+//						+p.getDnpReason()+p.getEnglishname());
 			}
 //			System.out.println(players.size());
 			homeTeam.setPlayers(players);
@@ -420,6 +429,7 @@ public class LiveCast implements Runnable {
 				JSONObject  pjsonObj3  = JSONObject.fromObject(obj1.get("statTotal"));
 				Playerlivedata p=new Playerlivedata();
 				p.setName(pjsonObj1.getString("displayName"));
+				p.setEnglishname(pjsonObj1.getString("displayNameEn"));
 				p.setPosition(pjsonObj1.getString("position"));
 				p.setDnpReason(pjsonObj2.getString("dnpReason"));
 				p.setStarter(pjsonObj2.getString("isStarter"));
@@ -447,7 +457,7 @@ public class LiveCast implements Runnable {
 			
 //				System.out.println(p.getAssists()+" "+p.getBlocks()+" "+p.getDefRebs()+" "+p.getName()
 //						+" "+p.getPoints()+" "+p.getPlusminus()+" "+p.getPosition()+" "+p.getFgp()+" "
-//						+p.getDnpReason());
+//						+p.getEnglishname());
 			}			
 //			System.out.println(players.size());
 			awayTeam.setPlayers(players);
@@ -461,13 +471,14 @@ public class LiveCast implements Runnable {
 			
 			
 			
-			 //Thread.sleep(5000);
+			 
 		    }catch(Exception e){
 		    	e.printStackTrace();
 		    }
+		    return clicked;
 		}
 		
-	}
+	
 	
 	public MatchLivedata getFirstmatchinfo() {
 		return firstmatchinfo;
@@ -514,22 +525,36 @@ public class LiveCast implements Runnable {
 		this.setnumber = setnumber;
 	}
 	public static void main(String[] args){
-		/*
-		 * 要等到前面的节结束再去点下面的节,不然后面的json还没生成，会报错,回点前面的节是支持的,每次要新开线程
-		 * 现在线程的处理上还有待改进
-		 */
-		LiveCast l=new LiveCast();
-		try{
-			l.setClicked(true);
-			
-			Thread t=new Thread(l);
-			t.start();
-			
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		//Thread t=new Thread(new LiveCast());
-		///t.start();
+//		/*
+//		 * 要等到前面的节结束再去点下面的节,不然后面的json还没生成，会报错,回点前面的节是支持的,每次要新开线程
+//		 * 现在线程的处理上还有待改进
+//		 */
+//		LiveCast l=new LiveCast();
+//		try{
+//			l.setClicked(true);
+//			Thread t=new Thread(l);
+//			t.start();
+//			System.out.println("gg");
+//			//l.setSetnumber(2);
+//			//t.start();
+//			//System.out.println(l.getSecondmatchinfo().getYuju());
+//		}catch(Exception e){
+//			e.printStackTrace();
+//		}
+//		//Thread t=new Thread(new LiveCast());
+//		///t.start();
+		liveThread p1=new liveThread("1");
+		liveThread p2=new liveThread("2");
+		liveThread p3=new liveThread("3");
+		liveThread p4=new liveThread("4");
+		Thread t1=new Thread(p1);
+		Thread t2=new Thread(p2);
+		Thread t3=new Thread(p3);
+		Thread t4=new Thread(p4);
+		t1.start();
+		t2.start();
+		t3.start();
+		t4.start();
 	}
 
 	

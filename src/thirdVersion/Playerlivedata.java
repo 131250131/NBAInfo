@@ -4,6 +4,7 @@ public class Playerlivedata {
 	 String name="";
 	 String position="";
 	 String dnpReason="";//如果这个不为空，就直接打出这个 数据不用看了 参照网站上的教练决定没有出场那个，该项周一测试时候才确定
+	 String Englishname="";//用于根据球员名字得到球员信息的方法
 	 boolean isStarter=false;
 	 boolean onCourt=false;
 	 int plusminus=0;
@@ -183,5 +184,11 @@ public class Playerlivedata {
 	}
 	public void setTime(double time) {
 		this.time = time;
+	}
+	public String getEnglishname() {
+		return Englishname;
+	}
+	public void setEnglishname(String englishname) {
+		Englishname = englishname;
 	}
 }
