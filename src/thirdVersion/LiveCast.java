@@ -22,7 +22,6 @@ public class LiveCast implements Runnable {
 	Teamlivedata homeTeam =new Teamlivedata();//主队信息
 	Teamlivedata awayTeam =new Teamlivedata();//客队信息
 	//感觉一般不会超过三个加时吧
-	int dnumber=0;
 	ArrayList<String> yuju=new ArrayList<String>();
 	ArrayList<Playerlivedata> players=new ArrayList<Playerlivedata>();
 	int setnumber=1;
@@ -78,7 +77,7 @@ public class LiveCast implements Runnable {
 			JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 			JSONObject obj = jary.getJSONObject(0);
 			JSONArray jary1=obj.getJSONArray("events");
-			if(dnumber<jary1.size()){
+			yuju=new ArrayList<String>();
 			for (int i=0;i<jary1.size();i++) {
 		         JSONObject obj1 = jary1.getJSONObject(i);
 		         yuju.add("第一节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
@@ -90,8 +89,8 @@ public class LiveCast implements Runnable {
 //			     System.out.println(jary1.size());
 			     firstmatchinfo.setYuju(yuju);
 			    //System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
-			     dnumber=jary1.size();
-			}
+			     
+			
 			}
 			if(n.equals("2")){
 				JSONObject  jsonObj  = JSONObject.fromObject(json);
@@ -107,7 +106,7 @@ public class LiveCast implements Runnable {
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
-				if(dnumber<jary1.size()){
+				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         yuju.add("第二节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
@@ -119,8 +118,8 @@ public class LiveCast implements Runnable {
 //				System.out.println(jary1.size());
 				    secondmatchinfo.setYuju(yuju);
 //				    System.out.println(secondmatchinfo.getDescriptions().size()+" "+secondmatchinfo.getGameclocks().size()+" "+secondmatchinfo.getScores().size());
-				    dnumber=jary1.size();
-				}
+				  
+				
 				//array = object.getJSONArray("");
 //				for (Object obj : array) {
 //					JSONObject o = JSONObject.fromObject(obj);
@@ -141,7 +140,7 @@ public class LiveCast implements Runnable {
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
-				if(dnumber<jary1.size()){
+				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         yuju.add("第三节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
@@ -153,9 +152,9 @@ public class LiveCast implements Runnable {
 //				System.out.println(jary1.size());
 				    thirdmatchinfo.setYuju(yuju);
 //				    System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
-				    dnumber=jary1.size();
 				    
-				}
+				    
+				
 				//array = object.getJSONArray("");
 //				for (Object obj : array) {
 //					JSONObject o = JSONObject.fromObject(obj);
@@ -176,7 +175,7 @@ public class LiveCast implements Runnable {
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
-				if(dnumber<jary1.size()){
+				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         yuju.add("第四节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));			         
@@ -187,8 +186,7 @@ public class LiveCast implements Runnable {
 //				System.out.println(jary1.size());
 				    forthmatchinfo.setYuju(yuju);
 //				    System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
-				    dnumber=jary1.size();
-				}
+				 
 				//array = object.getJSONArray("");
 //				for (Object obj : array) {
 //					JSONObject o = JSONObject.fromObject(obj);
@@ -209,7 +207,7 @@ public class LiveCast implements Runnable {
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
-				if(dnumber<jary1.size()){
+				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         yuju.add("加时一"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
@@ -221,8 +219,7 @@ public class LiveCast implements Runnable {
 //				System.out.println(jary1.size());
 				    extra1matchinfo.setYuju(yuju);
 //				    System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
-				    dnumber=jary1.size();
-				}
+				
 				//array = object.getJSONArray("");
 //				for (Object obj : array) {
 //					JSONObject o = JSONObject.fromObject(obj);
@@ -243,7 +240,7 @@ public class LiveCast implements Runnable {
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
-				if(dnumber<jary1.size()){
+				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         yuju.add("加时二"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
@@ -255,8 +252,7 @@ public class LiveCast implements Runnable {
 //				System.out.println(jary1.size());
 				    extra2matchinfo.setYuju(yuju);
 				 //   System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
-				    dnumber=jary1.size();
-				}
+				 
 				//array = object.getJSONArray("");
 //				for (Object obj : array) {
 //					JSONObject o = JSONObject.fromObject(obj);
@@ -277,7 +273,7 @@ public class LiveCast implements Runnable {
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
-				if(dnumber<jary1.size()){
+				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         yuju.add("加时三"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
@@ -289,8 +285,7 @@ public class LiveCast implements Runnable {
 //				System.out.println(jary1.size());
 				    extra3matchinfo.setYuju(yuju);
 //				    System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
-				    dnumber=jary1.size();
-				}
+				 
 				//array = object.getJSONArray("");
 //				for (Object obj : array) {
 //					JSONObject o = JSONObject.fromObject(obj);
@@ -303,6 +298,7 @@ public class LiveCast implements Runnable {
 			/*
 			 * 处理主队球队和球员数据
 			 */
+			
 			JSONObject  ptjsonObj  = JSONObject.fromObject(ptjson);
 			JSONObject  ptjsonObj1  = JSONObject.fromObject(ptjsonObj.getString("payload"));
 			JSONObject  ptjsonObj2  = JSONObject.fromObject(ptjsonObj1.getString("homeTeam"));
@@ -382,6 +378,7 @@ public class LiveCast implements Runnable {
 			/*
 			 * 处理客队球队和球员信息
 			 */
+			
 			JSONObject  aptjsonObj  = JSONObject.fromObject(ptjson);
 			JSONObject  aptjsonObj1  = JSONObject.fromObject(aptjsonObj.getString("payload"));
 			JSONObject  aptjsonObj2  = JSONObject.fromObject(aptjsonObj1.getString("awayTeam"));
@@ -414,7 +411,7 @@ public class LiveCast implements Runnable {
 			awayTeam.setQ2Score(aptjsonObj4.getDouble("q2Score"));
 			awayTeam.setQ3Score(aptjsonObj4.getDouble("q3Score"));
 			awayTeam.setQ4Score(aptjsonObj4.getDouble("q4Score"));
-			System.out.println(awayteamjary.size());
+			//System.out.println(awayTeam.getName()+" "+awayTeam.getScore()+" "+awayTeam.getSfgp());
 			players=new ArrayList<Playerlivedata>();
 			for (int i=0;i<awayteamjary.size();i++) {
 				JSONObject obj1 = awayteamjary.getJSONObject(i);
@@ -514,7 +511,6 @@ public class LiveCast implements Runnable {
 
 	public void setSetnumber(int setnumber) {
 		yuju=new ArrayList<String>();
-		dnumber=0;
 		this.setnumber = setnumber;
 	}
 	public static void main(String[] args){
