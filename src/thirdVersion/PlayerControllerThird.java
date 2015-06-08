@@ -770,6 +770,14 @@ public class PlayerControllerThird {
     	}
         return result;
     }
+    
+    /*
+     * 
+     */
+    
+    
+    
+    
     /*
      * 测试用的main方法
      */
