@@ -28,7 +28,7 @@ import ui.system.ChineseTranslator;
 import ui.system.UIData;
 import Utibility.DataType;
 
-public class ProgressOfPlayers extends JPanel {
+public class AnalysisOfPlayers extends JPanel {
 
 	private JComboBox<String> dataComb;
 	private MyTable table;
@@ -160,7 +160,7 @@ public class ProgressOfPlayers extends JPanel {
 			"场均三分命中数","均三分出手数","罚球命中率","场均罚球命中数","场均罚球出手数","场均篮板数",
 			"场均前场篮板数","场均后场篮板数","场均助攻数","场均抢断数","场均盖帽数","场均失误数","场均犯规数","场均得分"};
 	private PlayerControllerThird p=new PlayerControllerThird();//逻辑层接口
-	public ProgressOfPlayers(){
+	public AnalysisOfPlayers(){
 		this.setSize(1280, 720);
 		this.setLayout(null);
 		this.setBackground(Color.black);
@@ -193,20 +193,21 @@ public class ProgressOfPlayers extends JPanel {
             	dataOfPlayer.update(s);
             }  
         });  
+    	//发展图面板
+	  	JPanel jpOfProgress=new JPanel();
+	  	jpOfProgress.setLayout(null);
+	  	jpOfProgress.setOpaque(false);
+	  	jpOfProgress.setBounds(320, 25, 950, 310);
+	  	this.add(jpOfProgress,28);
 		//数据类型下拉框
-		
         dataComb = new JComboBox<String>(dataName);
-		
         dataComb.addItemListener(new ItemListener(){
-
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				
 				String dataName=dataComb.getSelectedItem().toString();
 				String playerID= dataOfPlayer.getID();
 				if(!dataName.equals("选择数据类型")&&!playerID.equals("-1")){
 					DataType type = translate(dataName);
-					
 					ArrayList<PSpecificdata> normalList=p.getnormalplayerdata(playerID, type);
 					ArrayList<PSpecificdata> playoffList=p.getplayoffplayerdata(playerID, type);
 					
@@ -251,19 +252,17 @@ public class ProgressOfPlayers extends JPanel {
 				}
 				
 			}});
-		
         dataComb.setFont(new Font("宋体", Font.BOLD, 14));
-        dataComb.setBounds(320,25,200, 30);
+        dataComb.setBounds(0,0,200, 30);
         dataComb.setBackground(Color.gray);
         dataComb.setForeground(Color.white);
-		this.add(dataComb, 28);
+        jpOfProgress.add(dataComb,0);
 		//折线图
 		chartest=new TimeSeriesChart();
-	  	 ChartPanel test=chartest.getChartPanel();
-	  	 test.setBounds(320,70, 950,280);
-	  	this.add(test,29);
-	  	
-	  	System.out.println(dataName.length+"____"+dataType.length);
+  	 	ChartPanel test=chartest.getChartPanel();
+  	 	test.setBounds(0,45, 950,280);
+  	 	jpOfProgress.add(test,1);
+	  
 	}
 	void iniTable(){
 		
@@ -382,7 +381,7 @@ public class ProgressOfPlayers extends JPanel {
 		jf.setSize(1280, 720);
 		jf.setUndecorated(true);
 		jf.setLocation(20, 10);
-		ProgressOfPlayers pg=new ProgressOfPlayers();
+		AnalysisOfPlayers pg=new AnalysisOfPlayers();
 		pg.setLocation(0, 0);
 		jf.add(pg);
 		jf.setVisible(true);
