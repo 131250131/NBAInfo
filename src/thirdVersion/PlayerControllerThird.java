@@ -727,6 +727,49 @@ public class PlayerControllerThird {
     	}
     	return result;
     }
+    
+    /*
+     * 给饼图的数据的接口
+     * 饼图的话提供各项基本数据就好了,需要的远少于折线图，因为球队数据种类有限
+     */
+    public double[] getdataforpiechart(String pid,String seasons,DataType dtp){
+    	double[] result=new double[2];
+    	ArrayList<PSpecificdata> temp=new ArrayList<PSpecificdata>();
+    	ArrayList<String> teams=new ArrayList<String>();
+    	try{
+     		sql="SELECT * FROM playerdatainfo where id='"+pid+"'"+"AND season='"+seasons+"'";
+        		Class.forName("com.mysql.jdbc.Driver");
+        		Connection conn =DriverManager.getConnection(url, user, password);
+        		PreparedStatement pstmt=conn.prepareStatement(sql);
+        		ResultSet rs=pstmt.executeQuery();
+        		while(rs.next()){
+        			PSpecificdata p=new PSpecificdata();
+        			p.setTeam(rs.getString("teamname"));
+        			p.setData(rs.getDouble(dtp.toString()));
+        			if(!p.getTeam().equals("总计")){
+        				temp.add(p);
+        				teams.add(p.getTeam());
+        			}
+        		}
+        		if(temp.size()==0){
+        			result[0]=0;
+        		}
+        		if(temp.size()==1){
+        			result[0]=temp.get(0).getData();
+        		}
+        		if(temp.size()>1){
+        			double total=0;
+        			for(PSpecificdata l:temp){
+        				total=total+l.getData();
+        			}
+        			result[0]=total/(double)temp.size();
+        		}
+        		result[1]=TeamControllerThird.getdataforpiechart(teams, dtp, seasons);
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+        return result;
+    }
     /*
      * 测试用的main方法
      */

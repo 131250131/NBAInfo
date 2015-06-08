@@ -12,6 +12,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import Utibility.DataType;
+
 public class TeamControllerThird {
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
@@ -913,7 +915,12 @@ public class TeamControllerThird {
 		return teamList;
 	}
 
-	
-	
+	/*
+	 * 根据球队一个list和赛季还有datatype枚举得到列表球队该项数据的平均数的方法 阿超你来不全一下,我给你的球队名字没有队，要是这样不方便和我讲 我那里可以改 
+	 * static方便我调用 要是这些球队这个赛季没有了 你就直接给我0就好了
+	 */
+	public static double getdataforpiechart(ArrayList<String> teams,DataType dpt,String season){
+		return 0;
+	}
 	
 }
