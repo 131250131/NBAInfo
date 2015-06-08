@@ -45,16 +45,21 @@ public class MatchControllerThird {
 		return result;
 	}
 	/*
-	 * 根绝比赛ID得到该场比赛球员数据
+	 * 根据比赛id得到球队信息
 	 */
-	public ArrayList<PlayerMatchDataVO> setmatchplayer(MatchVO m){
-		ArrayList<PlayerMatchDataVO> result=new ArrayList<PlayerMatchDataVO>();
-		sql="SELECT * FROM playermatchdata WHERE matchid="+"'"+m.getMatchID()+"'";
+	public void setmatchteam(MatchVO m){
+		ArrayList<PlayerMatchDataVO> players=new ArrayList<PlayerMatchDataVO>();
+		ArrayList<PlayerMatchDataVO> leftplayers=new ArrayList<PlayerMatchDataVO>();
+		ArrayList<PlayerMatchDataVO> rightplayers=new ArrayList<PlayerMatchDataVO>();
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn =DriverManager.getConnection(url, user, password);
+			sql = "SELECT * FROM teammatchdata WHERE matchid="+"'"+m.getMatchID()+"'"+";";
+			String sql1="SELECT * FROM playermatchdata WHERE matchid="+"'"+m.getMatchID()+"'";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
+			PreparedStatement pstmt1=conn.prepareStatement(sql1);
 			ResultSet rs=pstmt.executeQuery();
+			ResultSet rs2=pstmt.executeQuery();
 			while(rs.next()){
 				PlayerMatchDataVO pl=new PlayerMatchDataVO();
 				pl.setMatchID(rs.getString(1));
@@ -81,24 +86,9 @@ public class MatchControllerThird {
 				pl.setFouls(Double.parseDouble(df.format(rs.getDouble(22))));
 				pl.setScores(Double.parseDouble(df.format(rs.getDouble(23))));
 				pl.setFirst(rs.getBoolean(24));
-				result.add(pl);
+				players.add(pl);
 			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return result;
-	}
 	
-	/*
-	 * 根据比赛id得到球队信息
-	 */
-	public void setmatchteam(MatchVO m){
-		try{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn =DriverManager.getConnection(url, user, password);
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			sql = "SELECT * FROM teammatchdata WHERE matchid="+"'"+m.getMatchID()+"'"+";";
-			ResultSet rs2=pstmt.executeQuery();
 			while(rs2.next()){
 				TeamMatchDataVO temp = new TeamMatchDataVO();
 				temp.setMatchID(rs2.getString(1));
@@ -125,6 +115,7 @@ public class MatchControllerThird {
 				temp.setIsplayoff(rs2.getInt(22));
 				m.tdate.add(temp);
 			}
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -138,7 +129,6 @@ public class MatchControllerThird {
 		MatchControllerThird m=new MatchControllerThird();
 		MatchVO mm=new MatchVO();
 		mm.setMatchID("1");
-		m.setmatchplayer(mm);
 //		System.out.println(mm.getPdate().size());
 //		for(PlayerMatchDataVO mv:mm.getPdate()){
 //			System.out.println(mv.getPlayerName());
