@@ -30,10 +30,13 @@ import Utibility.DataType;
 
 public class AnalysisOfPlayers extends JPanel {
 
-	private JComboBox<String> dataComb;
+	private JComboBox<String> dataComb1;
+	private JComboBox<String> dataComb2;
+	private JComboBox<String> seasonComb;
 	private MyTable table;
 	private tempDataOfPlayerPanel dataOfPlayer;
 	private TimeSeriesChart chartest;
+	private PieChart pie;
 	private String[] dataName={"选择数据类型","出场次数","首发场数","平均时间","命中率","平均投篮命中数",
 			"平均投篮出手数","三分命中率","平均三分命中数","平均三分出手数",
 			"平均罚球命中率","平均罚球命中数","平均罚球数","平均篮板","平均球场篮板","平均后场篮板",
@@ -200,11 +203,11 @@ public class AnalysisOfPlayers extends JPanel {
 	  	jpOfProgress.setBounds(320, 25, 950, 310);
 	  	this.add(jpOfProgress,28);
 		//数据类型下拉框
-        dataComb = new JComboBox<String>(dataName);
-        dataComb.addItemListener(new ItemListener(){
+        dataComb1 = new JComboBox<String>(dataName);
+        dataComb1.addItemListener(new ItemListener(){
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				String dataName=dataComb.getSelectedItem().toString();
+				String dataName=dataComb1.getSelectedItem().toString();
 				String playerID= dataOfPlayer.getID();
 				if(!dataName.equals("选择数据类型")&&!playerID.equals("-1")){
 					DataType type = translate(dataName);
@@ -252,17 +255,70 @@ public class AnalysisOfPlayers extends JPanel {
 				}
 				
 			}});
-        dataComb.setFont(new Font("宋体", Font.BOLD, 14));
-        dataComb.setBounds(0,0,200, 30);
-        dataComb.setBackground(Color.gray);
-        dataComb.setForeground(Color.white);
-        jpOfProgress.add(dataComb,0);
+        dataComb1.setFont(new Font("宋体", Font.BOLD, 14));
+        dataComb1.setBounds(0,0,200, 30);
+        dataComb1.setBackground(Color.gray);
+        dataComb1.setForeground(Color.white);
+        jpOfProgress.add(dataComb1,0);
 		//折线图
 		chartest=new TimeSeriesChart();
   	 	ChartPanel test=chartest.getChartPanel();
   	 	test.setBounds(0,45, 950,280);
   	 	jpOfProgress.add(test,1);
-	  
+  	 	
+  	 	//贡献率面板
+  		JPanel jpOfContribution=new JPanel();
+  		jpOfContribution.setLayout(null);
+  		jpOfContribution.setOpaque(false);
+  		jpOfContribution.setBounds(320, 25, 950, 310);
+	  	this.add(jpOfContribution,29);
+	  	//两个下拉框
+	  	//数据类型
+	  	dataComb2 = new JComboBox<String>(dataName);
+        dataComb2.setFont(new Font("宋体", Font.BOLD, 14));
+        dataComb2.setBounds(0,0,200, 30);
+        dataComb2.setBackground(Color.gray);
+        dataComb2.setForeground(Color.white);
+        dataComb2.addItemListener(new ItemListener(){
+			@Override
+			public void itemStateChanged(ItemEvent e) {
+				String dataType=dataComb2.getSelectedItem().toString();
+				String season=seasonComb.getSelectedItem().toString();
+				if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
+					//调用逻辑层更新饼图
+				}
+				
+			}
+        });
+        jpOfContribution.add(dataComb2,0);
+        //赛季
+        String[] season=new String[32];
+        for(int i=0;i<=30;i++){
+        	season[i+1]=String.valueOf(i+1985);
+        }
+        season[0]="选择赛季";
+    	seasonComb = new JComboBox<String>(season);
+    	seasonComb.setFont(new Font("宋体", Font.BOLD, 14));
+    	seasonComb.setBounds(220,0,200, 30);
+    	seasonComb.setBackground(Color.gray);
+    	seasonComb.setForeground(Color.white);
+    	seasonComb.addItemListener(new ItemListener(){
+ 			@Override
+ 			public void itemStateChanged(ItemEvent e) {
+ 				String dataType=dataComb2.getSelectedItem().toString();
+ 				String season=seasonComb.getSelectedItem().toString();
+ 				if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
+ 					//调用逻辑层更新饼图
+ 				}
+ 				
+ 			}
+         });
+        jpOfContribution.add(seasonComb,1);
+        //饼图
+        pie=new PieChart();
+  	 	ChartPanel piePanel=pie.getChartPanel();
+  	 	test.setBounds(0,45, 950,280);
+  	 	jpOfContribution.add(piePanel,2);
 	}
 	void iniTable(){
 		
@@ -272,7 +328,7 @@ public class AnalysisOfPlayers extends JPanel {
 		Object[][] data = new Object[size][21];
 		for(int i = 0 ; i < size; i++){
 			data[i][0] = playerlist.get(i).getPlayerID();
-			data[i][1] = playerlist.get(i).getEnglishName();
+			data[i][1] = playerlist.get(i).getChinesename();
 			data[i][2] = playerlist.get(i).getAtime();
 			data[i][3] = playerlist.get(i).getFGP();
 			data[i][4] = playerlist.get(i).getAFGZ();
@@ -330,7 +386,7 @@ public class AnalysisOfPlayers extends JPanel {
 			Object[][] data = new Object[size][21];
 			for(int i = 0 ; i < size; i++){
 				data[i][0] = playerlist.get(i).getPlayerID();
-				data[i][1] = playerlist.get(i).getEnglishName();
+				data[i][1] = playerlist.get(i).getChinesename();
 				data[i][2] = playerlist.get(i).getAtime();
 				data[i][3] = playerlist.get(i).getFGP();
 				data[i][4] = playerlist.get(i).getAFGZ();
