@@ -7,7 +7,7 @@ public class MathCalculator {
 	/*
 	 * 计算样本的平均数，可以作为总体期望的无偏估计
 	 */
-	public double getAverage(ArrayList<Double> tempList){
+	public static double getAverage(ArrayList<Double> tempList){
 		try{
 		   int n=tempList.size();
 		   double total=0;
@@ -23,7 +23,7 @@ public class MathCalculator {
 	/*
 	 * 计算样本的方差(由此可以得到标准差，这边除的就是n-1)
 	 */
-	public double getVariance(ArrayList<Double> tempList){
+	public static double getVariance(ArrayList<Double> tempList){
 		   try{
 		   int n=tempList.size();
 		   double average=getAverage(tempList);
