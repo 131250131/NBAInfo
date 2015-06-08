@@ -119,46 +119,14 @@ public class TimeSeriesChart {
             return frame1;  
               
         }
-      class MouseListenerOfUpdate implements MouseListener{
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			//test update
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-    	  
-      }
+ 
       public static void main(String[] args) {  
   	    JFrame frame=new JFrame("Java数据统计图");  
   	    frame.setLayout(null);  
 //  	    frame.add(new BarChart().getChartPanel());           //添加柱形图  
 //  	    frame.add(new BarChart1().getChartPanel());          //添加柱形图的另一种效果  
 //  	    frame.add(new PieChart().getChartPanel());           //添加饼状图
-  	    TimeSeriesChart chartest=new TimeSeriesChart();
+  	    PieChart chartest=new PieChart();
   	    ChartPanel test=chartest.getChartPanel();
   	  	test.setBounds(0, 100, 800, 300);
   	    frame.add(test);    //添加折线图  
