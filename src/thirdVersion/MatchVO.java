@@ -15,7 +15,6 @@ public class MatchVO {
 	String totalScore;
 	int isplayoff;
 	String season;
-	ArrayList<PlayerMatchDataVO> pdate=new ArrayList<PlayerMatchDataVO>();
 	ArrayList<TeamMatchDataVO> tdate=new ArrayList<TeamMatchDataVO>();
 	public String getMatchID() {
 		return matchID;
@@ -96,14 +95,7 @@ public class MatchVO {
 		this.totalScore = totalScore;
 	}
 
-	public ArrayList<PlayerMatchDataVO> getPdate() {
-		return pdate;
-	}
-
-	public void addPdate(PlayerMatchDataVO pdate) {
-		this.pdate.add(pdate);
-	}
-
+	
 	public ArrayList<TeamMatchDataVO> getTdate() {
 		return tdate;
 	}
@@ -128,10 +120,7 @@ public class MatchVO {
 		this.season = season;
 	}
 
-	public void setPdate(ArrayList<PlayerMatchDataVO> pdate) {
-		this.pdate = pdate;
-	}
-
+	
 	public void setTdate(ArrayList<TeamMatchDataVO> tdate) {
 		this.tdate = tdate;
 	}

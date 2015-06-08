@@ -22,7 +22,7 @@ public class LiveCast  {
 	MatchLivedata extra1matchinfo=new MatchLivedata();//加时一的直播信息
 	MatchLivedata extra2matchinfo=new MatchLivedata();//加时二的直播信息
 	MatchLivedata extra3matchinfo=new MatchLivedata();//加时三的直播信息
-	private MatchVO matchvo=new MatchVO();//matchvo的信息
+	private MatchVO matchvo=new MatchVO();//matchvo的信息,这边没有真实命中率
 	Teamlivedata homeTeam =new Teamlivedata();//主队信息
 	Teamlivedata awayTeam =new Teamlivedata();//客队信息
 	private static LiveCast instance =null;
@@ -36,8 +36,10 @@ public class LiveCast  {
 		return instance;
 	}
 	//感觉一般不会超过三个加时吧
+	ArrayList<TeamMatchDataVO> teamsvo=new ArrayList<TeamMatchDataVO>();
 	ArrayList<String> yuju=new ArrayList<String>();
 	ArrayList<Playerlivedata> players=new ArrayList<Playerlivedata>();
+	ArrayList<PlayerMatchDataVO> playersvo=new ArrayList<PlayerMatchDataVO>();
 	int setnumber=1;
 	boolean clicked=true; 
 	public 	String getjson(String u){
@@ -351,7 +353,8 @@ public class LiveCast  {
 			/*
 			 * 处理主队球队和球员数据
 			 */
-			
+			TeamMatchDataVO homeTeamvo=new TeamMatchDataVO();
+			TeamMatchDataVO awayTeamvo=new TeamMatchDataVO();
 			JSONObject  ptjsonObj  = JSONObject.fromObject(ptjson);
 			JSONObject  ptjsonObj1  = JSONObject.fromObject(ptjsonObj.getString("payload"));
 			JSONObject  ptjsonObj2  = JSONObject.fromObject(ptjsonObj1.getString("homeTeam"));
@@ -377,6 +380,7 @@ public class LiveCast  {
 			homeTeam.setTurnovers(ptjsonObj4.getDouble("turnovers"));
 			homeTeam.setSteals(ptjsonObj4.getDouble("steals"));
 			homeTeam.setScore(ptjsonObj4.getDouble("score"));
+			homeTeam.setFouls(ptjsonObj4.getDouble("fouls"));
 			homeTeam.setOt1Score(ptjsonObj4.getDouble("ot1Score"));
 			homeTeam.setOt2Score(ptjsonObj4.getDouble("ot2Score"));
 			homeTeam.setOt3Score(ptjsonObj4.getDouble("ot3Score"));
@@ -384,7 +388,37 @@ public class LiveCast  {
 			homeTeam.setQ2Score(ptjsonObj4.getDouble("q2Score"));
 			homeTeam.setQ3Score(ptjsonObj4.getDouble("q3Score"));
 			homeTeam.setQ4Score(ptjsonObj4.getDouble("q4Score"));
+			
+			homeTeamvo.setTeamChinsesName(ptjsonObj3.getString("city")+ptjsonObj3.getString("displayAbbr"));
+			homeTeamvo.setAssists((int)ptjsonObj4.getDouble("assists"));
+			homeTeamvo.setBlocks((int)ptjsonObj4.getDouble("blocks"));
+			homeTeamvo.setDRebounds((int)ptjsonObj4.getDouble("defRebs"));
+			homeTeamvo.setORebounds((int)ptjsonObj4.getDouble("offRebs"));
+			homeTeamvo.setRebounds((int)ptjsonObj4.getDouble("rebs"));
+			homeTeamvo.setFG((int)ptjsonObj4.getDouble("fga"));
+			homeTeamvo.setFGZ((int)ptjsonObj4.getDouble("fgm"));
+			homeTeamvo.setFGP(ptjsonObj4.getDouble("fgpct"));
+			homeTeamvo.setThreeFG((int)ptjsonObj4.getDouble("tpa"));
+			homeTeamvo.setThreeFGZ((int)ptjsonObj4.getDouble("tpm"));
+			homeTeamvo.setThreeFGP(ptjsonObj4.getDouble("tppct"));
+			homeTeamvo.setFTG((int)ptjsonObj4.getDouble("fta"));
+			homeTeamvo.setFGZ((int)ptjsonObj4.getDouble("ftm"));
+			homeTeamvo.setFTGP(ptjsonObj4.getDouble("ftpct"));
+			homeTeamvo.setTurnovers((int)ptjsonObj4.getDouble("turnovers"));
+			homeTeamvo.setSteals((int)ptjsonObj4.getDouble("steals"));
+			homeTeamvo.setScores((int)ptjsonObj4.getDouble("score"));
+			homeTeamvo.setFouls((int)ptjsonObj4.getDouble("fouls"));
+			homeTeamvo.setIsplayoff(1);
+			
+			
+			
+			
+			
+			
+			
 			//System.out.println(hometeamjary.size());
+			teamsvo=new ArrayList<TeamMatchDataVO>();
+			playersvo=new ArrayList<PlayerMatchDataVO>();
 			players=new ArrayList<Playerlivedata>();
 			for (int i=0;i<hometeamjary.size();i++) {
 				JSONObject obj1 = hometeamjary.getJSONObject(i);
@@ -392,6 +426,7 @@ public class LiveCast  {
 				JSONObject  pjsonObj2  = JSONObject.fromObject(obj1.get("boxscore"));
 				JSONObject  pjsonObj3  = JSONObject.fromObject(obj1.get("statTotal"));
 				Playerlivedata p=new Playerlivedata();
+				PlayerMatchDataVO pm=new PlayerMatchDataVO();
 				p.setName(pjsonObj1.getString("displayName"));
 				p.setEnglishname(pjsonObj1.getString("displayNameEn"));
 				p.setPosition(pjsonObj1.getString("position"));
@@ -417,6 +452,37 @@ public class LiveCast  {
 				p.setSteals(pjsonObj3.getDouble("steals"));
 			    p.setTime(pjsonObj3.getDouble("mins"));
 			    p.setPoints(pjsonObj3.getDouble("points"));
+			    
+			    
+			    pm.setPlayerName(pjsonObj1.getString("displayName"));
+				pm.setEnglishname(pjsonObj1.getString("displayNameEn"));
+				//pm.setPosition(pjsonObj1.getString("position"));
+				//pm.setDnpReason(pjsonObj2.getString("dnpReason"));
+				if(pjsonObj2.getString("isStarter").equals("true"))
+				    pm.setFirst(true);
+				else
+					pm.setFirst(false);
+				//pm.setOnCourt(pjsonObj2.getString("onCourt"));
+				//pm.setPlusminus(pjsonObj2.getInt("plusMinus"));
+				pm.setAssists(pjsonObj3.getDouble("assists"));
+				pm.setBlocks(pjsonObj3.getDouble("blocks"));
+				pm.setDRebounds(pjsonObj3.getDouble("defRebs"));
+				pm.setORebounds(pjsonObj3.getDouble("offRebs"));
+				pm.setRebounds(pjsonObj3.getDouble("rebs"));
+				pm.setFG(pjsonObj3.getDouble("fga"));
+				pm.setFGZ(pjsonObj3.getDouble("fgm"));
+				pm.setFGP(pjsonObj3.getDouble("fgpct"));
+				pm.setSFG(pjsonObj3.getDouble("tpa"));
+				pm.setSFGZ(pjsonObj3.getDouble("tpm"));
+				pm.setSFGP(pjsonObj3.getDouble("tppct"));
+				pm.setFTG(pjsonObj3.getDouble("fta"));
+				pm.setFTGZ(pjsonObj3.getDouble("ftm"));
+				pm.setFTGP(pjsonObj3.getDouble("ftpct"));
+				pm.setTurnovers(pjsonObj3.getDouble("turnovers"));
+				pm.setSteals(pjsonObj3.getDouble("steals"));
+			    pm.setTime(pjsonObj3.getDouble("mins"));
+			    pm.setScores(pjsonObj3.getDouble("points"));
+			    playersvo.add(pm);
 			    players.add(p);
 			
 //				System.out.println(p.getAssists()+" "+p.getBlocks()+" "+p.getDefRebs()+" "+p.getName()
@@ -424,7 +490,10 @@ public class LiveCast  {
 //						+p.getDnpReason()+p.getEnglishname());
 			}
 //			System.out.println(players.size());
+		   
 			homeTeam.setPlayers(players);
+			homeTeamvo.setPlayers(playersvo);
+			teamsvo.add(homeTeamvo);
 //			System.out.println(homeTeam.getPlayers().size());
 			
 			
@@ -465,6 +534,34 @@ public class LiveCast  {
 			awayTeam.setQ2Score(aptjsonObj4.getDouble("q2Score"));
 			awayTeam.setQ3Score(aptjsonObj4.getDouble("q3Score"));
 			awayTeam.setQ4Score(aptjsonObj4.getDouble("q4Score"));
+			awayTeam.setFouls(aptjsonObj4.getDouble("fouls"));
+			
+			awayTeamvo.setTeamChinsesName(aptjsonObj3.getString("city")+aptjsonObj3.getString("displayAbbr"));
+			awayTeamvo.setAssists((int)aptjsonObj4.getDouble("assists"));
+			awayTeamvo.setBlocks((int)aptjsonObj4.getDouble("blocks"));
+			awayTeamvo.setDRebounds((int)aptjsonObj4.getDouble("defRebs"));
+			awayTeamvo.setORebounds((int)aptjsonObj4.getDouble("offRebs"));
+			awayTeamvo.setRebounds((int)aptjsonObj4.getDouble("rebs"));
+			awayTeamvo.setFG((int)aptjsonObj4.getDouble("fga"));
+			awayTeamvo.setFGZ((int)aptjsonObj4.getDouble("fgm"));
+			awayTeamvo.setFGP(aptjsonObj4.getDouble("fgpct"));
+			awayTeamvo.setThreeFG((int)aptjsonObj4.getDouble("tpa"));
+			awayTeamvo.setThreeFGZ((int)aptjsonObj4.getDouble("tpm"));
+			awayTeamvo.setThreeFGP(aptjsonObj4.getDouble("tppct"));
+			awayTeamvo.setFTG((int)aptjsonObj4.getDouble("fta"));
+			awayTeamvo.setFGZ((int)aptjsonObj4.getDouble("ftm"));
+			awayTeamvo.setFTGP(aptjsonObj4.getDouble("ftpct"));
+			awayTeamvo.setTurnovers((int)aptjsonObj4.getDouble("turnovers"));
+			awayTeamvo.setSteals((int)aptjsonObj4.getDouble("steals"));
+			awayTeamvo.setScores((int)aptjsonObj4.getDouble("score"));
+			awayTeamvo.setFouls((int)aptjsonObj4.getDouble("fouls"));
+			awayTeamvo.setIsplayoff(1);
+			
+			
+			
+			
+			
+			
 			//System.out.println(awayTeam.getName()+" "+awayTeam.getScore()+" "+awayTeam.getSfgp());
 			players=new ArrayList<Playerlivedata>();
 			for (int i=0;i<awayteamjary.size();i++) {
@@ -473,6 +570,7 @@ public class LiveCast  {
 				JSONObject  pjsonObj2  = JSONObject.fromObject(obj1.get("boxscore"));
 				JSONObject  pjsonObj3  = JSONObject.fromObject(obj1.get("statTotal"));
 				Playerlivedata p=new Playerlivedata();
+				PlayerMatchDataVO pm=new PlayerMatchDataVO();
 				p.setName(pjsonObj1.getString("displayName"));
 				p.setEnglishname(pjsonObj1.getString("displayNameEn"));
 				p.setPosition(pjsonObj1.getString("position"));
@@ -498,6 +596,26 @@ public class LiveCast  {
 				p.setSteals(pjsonObj3.getDouble("steals"));
 			    p.setTime(pjsonObj3.getDouble("mins"));
 			    p.setPoints(pjsonObj3.getDouble("points"));
+			    
+			    pm.setAssists(pjsonObj3.getDouble("assists"));
+				pm.setBlocks(pjsonObj3.getDouble("blocks"));
+				pm.setDRebounds(pjsonObj3.getDouble("defRebs"));
+				pm.setORebounds(pjsonObj3.getDouble("offRebs"));
+				pm.setRebounds(pjsonObj3.getDouble("rebs"));
+				pm.setFG(pjsonObj3.getDouble("fga"));
+				pm.setFGZ(pjsonObj3.getDouble("fgm"));
+				pm.setFGP(pjsonObj3.getDouble("fgpct"));
+				pm.setSFG(pjsonObj3.getDouble("tpa"));
+				pm.setSFGZ(pjsonObj3.getDouble("tpm"));
+				pm.setSFGP(pjsonObj3.getDouble("tppct"));
+				pm.setFTG(pjsonObj3.getDouble("fta"));
+				pm.setFTGZ(pjsonObj3.getDouble("ftm"));
+				pm.setFTGP(pjsonObj3.getDouble("ftpct"));
+				pm.setTurnovers(pjsonObj3.getDouble("turnovers"));
+				pm.setSteals(pjsonObj3.getDouble("steals"));
+			    pm.setTime(pjsonObj3.getDouble("mins"));
+			    pm.setScores(pjsonObj3.getDouble("points"));
+			    playersvo.add(pm);
 			    players.add(p);
 			
 //				System.out.println(p.getAssists()+" "+p.getBlocks()+" "+p.getDefRebs()+" "+p.getName()
@@ -505,11 +623,13 @@ public class LiveCast  {
 //						+p.getEnglishname()+p.getDnpReason());
 			}			
 //			System.out.println(players.size());
+			awayTeamvo.setPlayers(playersvo);
 			awayTeam.setPlayers(players);
+			teamsvo.add(awayTeamvo);
 //			System.out.println(homeTeam.getPlayers().size());
 			
 			
-			
+			matchvo.setTdate(teamsvo);
 			
 			
 			

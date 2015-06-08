@@ -47,7 +47,8 @@ public class MatchControllerThird {
 	/*
 	 * 根绝比赛ID得到该场比赛球员数据
 	 */
-	public void setmatchplayer(MatchVO m){
+	public ArrayList<PlayerMatchDataVO> setmatchplayer(MatchVO m){
+		ArrayList<PlayerMatchDataVO> result=new ArrayList<PlayerMatchDataVO>();
 		sql="SELECT * FROM playermatchdata WHERE matchid="+"'"+m.getMatchID()+"'";
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -80,11 +81,12 @@ public class MatchControllerThird {
 				pl.setFouls(Double.parseDouble(df.format(rs.getDouble(22))));
 				pl.setScores(Double.parseDouble(df.format(rs.getDouble(23))));
 				pl.setFirst(rs.getBoolean(24));
-				m.addPdate(pl);
+				result.add(pl);
 			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		return result;
 	}
 	
 	/*
@@ -137,9 +139,9 @@ public class MatchControllerThird {
 		MatchVO mm=new MatchVO();
 		mm.setMatchID("1");
 		m.setmatchplayer(mm);
-		System.out.println(mm.getPdate().size());
-		for(PlayerMatchDataVO mv:mm.getPdate()){
-			System.out.println(mv.getPlayerName());
-		}
+//		System.out.println(mm.getPdate().size());
+//		for(PlayerMatchDataVO mv:mm.getPdate()){
+//			System.out.println(mv.getPlayerName());
+//		}
 	}
 }

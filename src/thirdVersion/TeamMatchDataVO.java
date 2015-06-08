@@ -1,5 +1,7 @@
 package thirdVersion;
 
+import java.util.ArrayList;
+
 public class TeamMatchDataVO {
 	//比赛ID
 	String matchID;
@@ -26,6 +28,7 @@ public class TeamMatchDataVO {
 	int turnovers=0;
 	int fouls=0;
 	int Scores=0;
+	private ArrayList<PlayerMatchDataVO> players=new ArrayList<PlayerMatchDataVO>();
 	public String getMatchID() {
 		return matchID;
 	}
@@ -157,6 +160,12 @@ public class TeamMatchDataVO {
 	}
 	public void setIsplayoff(int isplayoff) {
 		this.isplayoff = isplayoff;
+	}
+	public ArrayList<PlayerMatchDataVO> getPlayers() {
+		return players;
+	}
+	public void setPlayers(ArrayList<PlayerMatchDataVO> players) {
+		this.players = players;
 	}
 
 	

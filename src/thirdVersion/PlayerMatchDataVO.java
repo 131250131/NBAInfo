@@ -26,6 +26,10 @@ public class PlayerMatchDataVO {
 	double Scores;
 	boolean isFirst;//是否首发
 	
+	
+	
+	private String Englishname;//仅仅用于直播查找(因为没有id)
+	
 	public String getMatchID() {
 		return matchID;
 	}
@@ -169,6 +173,12 @@ public class PlayerMatchDataVO {
 	}
 	public void setFirst(boolean isFirst) {
 		this.isFirst = isFirst;
+	}
+	public String getEnglishname() {
+		return Englishname;
+	}
+	public void setEnglishname(String englishname) {
+		Englishname = englishname;
 	}
 	
 	
