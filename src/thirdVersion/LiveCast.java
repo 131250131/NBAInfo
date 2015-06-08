@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import logic.MatchController;
 import net.sf.json.JSONArray;
@@ -68,10 +70,11 @@ public class LiveCast  {
 		 *得到网页json内容 
 		 */
 		    try{
-		    String ptjson=getjson("http://china.nba.com/wap/static/data/game/snapshot_0041400401.json");
-			String json=getjson("http://china.nba.com/wap/static/data/game/playbyplay_0041400401_"+n+".json");	
+		    String ptjson=getjson("http://china.nba.com/wap/static/data/game/snapshot_0041400402.json");
+			String json=getjson("http://china.nba.com/wap/static/data/game/playbyplay_0041400402_"+n+".json");	
 			
 			if(n.equals("1")){
+			boolean check=false;
 			JSONObject  jsonObj  = JSONObject.fromObject(json);
 			//System.out.println(jsonObj.get("payload"));
 			JSONObject  jsonObj1  = JSONObject.fromObject(jsonObj.get("payload"));
@@ -91,9 +94,12 @@ public class LiveCast  {
 		         yuju.add("第一节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 		         if(obj1.getString("description").equals("本节比赛结束")){
 		        	 clicked=false;
+		        	 check=true;
 		         }
-		         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+		        System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 		        }
+			     if(!check)
+			    	 clicked=true;
 //			     System.out.println(jary1.size());
 			     firstmatchinfo.setYuju(yuju);
 			    //System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
@@ -101,6 +107,7 @@ public class LiveCast  {
 			
 			}
 			if(n.equals("2")){
+				boolean check=false;
 				JSONObject  jsonObj  = JSONObject.fromObject(json);
 				//System.out.println(jsonObj.get("payload"));
 				JSONObject  jsonObj1  = JSONObject.fromObject(jsonObj.get("payload"));
@@ -120,9 +127,12 @@ public class LiveCast  {
 			         yuju.add("第二节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
+			        	 check=true;
 			         }
 			         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
+				 if(!check)
+			    	 clicked=true;
 //				System.out.println(jary1.size());
 				    secondmatchinfo.setYuju(yuju);
 //				    System.out.println(secondmatchinfo.getDescriptions().size()+" "+secondmatchinfo.getGameclocks().size()+" "+secondmatchinfo.getScores().size());
@@ -135,6 +145,7 @@ public class LiveCast  {
 //				}
 				}
 			if(n.equals("3")){
+				boolean check=false;
 				JSONObject  jsonObj  = JSONObject.fromObject(json);
 				//System.out.println(jsonObj.get("payload"));
 				JSONObject  jsonObj1  = JSONObject.fromObject(jsonObj.get("payload"));
@@ -154,9 +165,12 @@ public class LiveCast  {
 			         yuju.add("第三节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
+			        	 check=true;
 			         }
 			         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
+				 if(!check)
+			    	 clicked=true;
 //				System.out.println(jary1.size());
 				    thirdmatchinfo.setYuju(yuju);
 //				    System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
@@ -170,6 +184,7 @@ public class LiveCast  {
 //				}
 				}
 			if(n.equals("4")){
+				boolean check=false;
 				JSONObject  jsonObj  = JSONObject.fromObject(json);
 				//System.out.println(jsonObj.get("payload"));
 				JSONObject  jsonObj1  = JSONObject.fromObject(jsonObj.get("payload"));
@@ -189,8 +204,11 @@ public class LiveCast  {
 			         yuju.add("第四节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));			         
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
+			        	 check=true;
 			         }System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
+				 if(!check)
+			    	 clicked=true;
 //				System.out.println(jary1.size());
 				    forthmatchinfo.setYuju(yuju);
 //				    System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
@@ -202,6 +220,7 @@ public class LiveCast  {
 //				}
 				}
 			if(n.equals("5")){
+				boolean check=false;
 				JSONObject  jsonObj  = JSONObject.fromObject(json);
 				//System.out.println(jsonObj.get("payload"));
 				JSONObject  jsonObj1  = JSONObject.fromObject(jsonObj.get("payload"));
@@ -221,9 +240,12 @@ public class LiveCast  {
 			         yuju.add("加时一"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
+			        	 check=true;
 			         }
 			         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
+				 if(!check)
+			    	 clicked=true;
 //				System.out.println(jary1.size());
 				    extra1matchinfo.setYuju(yuju);
 //				    System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
@@ -235,6 +257,7 @@ public class LiveCast  {
 //				}
 				}
 			if(n.equals("6")){
+				boolean check=false;
 				JSONObject  jsonObj  = JSONObject.fromObject(json);
 				//System.out.println(jsonObj.get("payload"));
 				JSONObject  jsonObj1  = JSONObject.fromObject(jsonObj.get("payload"));
@@ -254,9 +277,12 @@ public class LiveCast  {
 			         yuju.add("加时二"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
+			        	 check=true;
 			         }
 			         //System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
+				 if(!check)
+			    	 clicked=true;
 //				System.out.println(jary1.size());
 				    extra2matchinfo.setYuju(yuju);
 				 //   System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
@@ -268,6 +294,7 @@ public class LiveCast  {
 //				}
 				}
 			if(n.equals("7")){
+				boolean check=false;
 				JSONObject  jsonObj  = JSONObject.fromObject(json);
 				//System.out.println(jsonObj.get("payload"));
 				JSONObject  jsonObj1  = JSONObject.fromObject(jsonObj.get("payload"));
@@ -287,9 +314,12 @@ public class LiveCast  {
 			         yuju.add("加时三"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
+			        	 check=true;
 			         }
 			         //System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
+				 if(!check)
+			    	 clicked=true;
 //				System.out.println(jary1.size());
 				    extra3matchinfo.setYuju(yuju);
 //				    System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
@@ -457,7 +487,7 @@ public class LiveCast  {
 			
 //				System.out.println(p.getAssists()+" "+p.getBlocks()+" "+p.getDefRebs()+" "+p.getName()
 //						+" "+p.getPoints()+" "+p.getPlusminus()+" "+p.getPosition()+" "+p.getFgp()+" "
-//						+p.getEnglishname());
+//						+p.getEnglishname()+p.getDnpReason());
 			}			
 //			System.out.println(players.size());
 			awayTeam.setPlayers(players);
@@ -543,6 +573,7 @@ public class LiveCast  {
 //		}
 //		//Thread t=new Thread(new LiveCast());
 //		///t.start();
+		ExecutorService pool = Executors. newSingleThreadExecutor();
 		liveThread p1=new liveThread("1");
 		liveThread p2=new liveThread("2");
 		liveThread p3=new liveThread("3");
@@ -551,10 +582,13 @@ public class LiveCast  {
 		Thread t2=new Thread(p2);
 		Thread t3=new Thread(p3);
 		Thread t4=new Thread(p4);
-		t1.start();
-		t2.start();
-		t3.start();
-		t4.start();
+		pool.execute(t1);
+		pool.execute(t2);
+		pool.shutdown();
+		//t1.start();
+		//t2.start();
+		//t3.start();
+		//t4.start();
 	}
 
 	
