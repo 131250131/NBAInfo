@@ -44,6 +44,10 @@ public class MatchControllerThird {
 		
 		return result;
 	}
+
+	
+	
+	
 	/*
 	 * 根据比赛id得到球队信息
 	 */
@@ -56,6 +60,7 @@ public class MatchControllerThird {
 			Connection conn =DriverManager.getConnection(url, user, password);
 			sql = "SELECT * FROM teammatchdata WHERE matchid="+"'"+m.getMatchID()+"'"+";";
 			String sql1="SELECT * FROM playermatchdata WHERE matchid="+"'"+m.getMatchID()+"'";
+			String sql2="SELECT * FROM playerdatainfo WHERE matchid="+"'"+m.getMatchID()+"'";
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			PreparedStatement pstmt1=conn.prepareStatement(sql1);
 			ResultSet rs=pstmt.executeQuery();
