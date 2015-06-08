@@ -11,7 +11,7 @@ public class MatchVO {
 	String secondScore;
 	String thirdScore;
 	String forthScore;
-	String exttaScore;
+	String extraScore;
 	String totalScore;
 	int isplayoff;
 	String season;
@@ -81,11 +81,11 @@ public class MatchVO {
 		this.forthScore = forthScore;
 	}
 	
-	public String getExttaScore() {
-		return exttaScore;
+	public String getExtraScore() {
+		return extraScore;
 	}
-	public void setExttaScore(String exttaScore) {
-		this.exttaScore = exttaScore;
+	public void setExtraScore(String extraScore) {
+		this.extraScore = extraScore;
 	}
 	
 	public String getTotalScore() {
@@ -136,6 +136,15 @@ public class MatchVO {
 		this.tdate = tdate;
 	}
 	
+	public void addExtraScore(String s){
+		String[] news=s.split("-");
+		String[] olds=s.split("-");
+		double left=Double.parseDouble(news[0]);
+		double right=Double.parseDouble(news[1]);
+		double oleft=Double.parseDouble(olds[0]);
+		double oright=Double.parseDouble(olds[1]);
+		extraScore=String.valueOf(left+oleft)+"-"+String.valueOf(right+oright);
+	}
 	
 	
 }

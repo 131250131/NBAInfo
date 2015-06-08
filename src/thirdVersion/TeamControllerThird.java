@@ -875,7 +875,7 @@ public class TeamControllerThird {
 				temp.setSecondScore(rs.getString(6));
 				temp.setThirdScore(rs.getString(7));
 				temp.setForthScore(rs.getString(8));
-				temp.setExttaScore(rs.getString(9));
+				temp.setExtraScore(rs.getString(9));
 				temp.setTotalScore(rs.getString(10));
 				temp.setIsplayoff(rs.getInt(11));
 				temp.setSeason(rs.getString(12));

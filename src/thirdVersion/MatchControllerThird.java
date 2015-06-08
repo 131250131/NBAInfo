@@ -34,7 +34,7 @@ public class MatchControllerThird {
 			mvo.setSecondScore(rs.getString(6));
 			mvo.setThirdScore(rs.getString(7));
 			mvo.setForthScore(rs.getString(8));
-			mvo.setExttaScore(rs.getString(9));
+			mvo.setExtraScore(rs.getString(9));
 			mvo.setTotalScore(rs.getString(10));
 			result.add(mvo);
 		}

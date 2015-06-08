@@ -22,6 +22,7 @@ public class LiveCast  {
 	MatchLivedata extra1matchinfo=new MatchLivedata();//加时一的直播信息
 	MatchLivedata extra2matchinfo=new MatchLivedata();//加时二的直播信息
 	MatchLivedata extra3matchinfo=new MatchLivedata();//加时三的直播信息
+	private MatchVO matchvo=new MatchVO();//matchvo的信息
 	Teamlivedata homeTeam =new Teamlivedata();//主队信息
 	Teamlivedata awayTeam =new Teamlivedata();//客队信息
 	private static LiveCast instance =null;
@@ -84,13 +85,15 @@ public class LiveCast  {
 			firstmatchinfo.setLocation(jsonObj2.getString("arenaName"));//比赛地点
 			firstmatchinfo.setAttendence(jsonObj3.getString("attendance"));
 			firstmatchinfo.setTscores(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
-			System.out.println(firstmatchinfo.getTscores());
+			matchvo.setTotalScore(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
+			//System.out.println(firstmatchinfo.getTscores());
 			JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 			JSONObject obj = jary.getJSONObject(0);
 			JSONArray jary1=obj.getJSONArray("events");
 			yuju=new ArrayList<String>();
 			for (int i=0;i<jary1.size();i++) {
 		         JSONObject obj1 = jary1.getJSONObject(i);
+		         matchvo.setFirstScore(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 		         yuju.add("第一节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 		         if(obj1.getString("description").equals("本节比赛结束")){
 		        	 clicked=false;
@@ -117,13 +120,15 @@ public class LiveCast  {
 				secondmatchinfo.setLocation(jsonObj2.getString("arenaName"));//比赛地点
 				secondmatchinfo.setAttendence(jsonObj3.getString("attendance"));
 				secondmatchinfo.setTscores(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
-				System.out.println(secondmatchinfo.getTscores());
+				matchvo.setTotalScore(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
+				//System.out.println(secondmatchinfo.getTscores());
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         matchvo.setSecondScore(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         yuju.add("第二节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -155,13 +160,15 @@ public class LiveCast  {
 				firstmatchinfo.setLocation(jsonObj2.getString("arenaName"));//比赛地点
 				firstmatchinfo.setAttendence(jsonObj3.getString("attendance"));
 				firstmatchinfo.setTscores(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
-				System.out.println(firstmatchinfo.getTscores());
+				matchvo.setTotalScore(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
+				//System.out.println(firstmatchinfo.getTscores());
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         matchvo.setThirdScore(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         yuju.add("第三节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -194,13 +201,15 @@ public class LiveCast  {
 				firstmatchinfo.setLocation(jsonObj2.getString("arenaName"));//比赛地点
 				firstmatchinfo.setAttendence(jsonObj3.getString("attendance"));
 				firstmatchinfo.setTscores(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
-				System.out.println(firstmatchinfo.getTscores());
+				matchvo.setTotalScore(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
+				//System.out.println(firstmatchinfo.getTscores());
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         matchvo.setForthScore(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         yuju.add("第四节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));			         
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -230,13 +239,15 @@ public class LiveCast  {
 				firstmatchinfo.setLocation(jsonObj2.getString("arenaName"));//比赛地点
 				firstmatchinfo.setAttendence(jsonObj3.getString("attendance"));
 				firstmatchinfo.setTscores(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
-				System.out.println(firstmatchinfo.getTscores());
+				matchvo.setTotalScore(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
+				//System.out.println(firstmatchinfo.getTscores());
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         matchvo.setExtraScore(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         yuju.add("加时一"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -267,13 +278,15 @@ public class LiveCast  {
 				firstmatchinfo.setLocation(jsonObj2.getString("arenaName"));//比赛地点
 				firstmatchinfo.setAttendence(jsonObj3.getString("attendance"));
 				firstmatchinfo.setTscores(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
-				System.out.println(firstmatchinfo.getTscores());
+				matchvo.setTotalScore(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
+				//System.out.println(firstmatchinfo.getTscores());
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         matchvo.addExtraScore(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         yuju.add("加时二"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -304,13 +317,15 @@ public class LiveCast  {
 				firstmatchinfo.setLocation(jsonObj2.getString("arenaName"));//比赛地点
 				firstmatchinfo.setAttendence(jsonObj3.getString("attendance"));
 				firstmatchinfo.setTscores(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
-				System.out.println(firstmatchinfo.getTscores());
+				matchvo.setTotalScore(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
+				//System.out.println(firstmatchinfo.getTscores());
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
 				JSONArray jary1=obj.getJSONArray("events");
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         matchvo.addExtraScore(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         yuju.add("加时三"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -589,6 +604,12 @@ public class LiveCast  {
 		//t2.start();
 		//t3.start();
 		//t4.start();
+	}
+	public MatchVO getMatchvo() {
+		return matchvo;
+	}
+	public void setMatchvo(MatchVO matchvo) {
+		this.matchvo = matchvo;
 	}
 
 	
