@@ -45,6 +45,7 @@ public class ImageSaver {
 			case "滑轮背景" : return new ImageIcon(iconPath + "滑轮背景.png");
 			case "scan" : return new ImageIcon(iconPath + "littleScan.png");
 			case "live" : return new ImageIcon(iconPath + "live.png");
+			case "live2" : return new ImageIcon(iconPath + "live2.png");
 		}
 		
 		return null;

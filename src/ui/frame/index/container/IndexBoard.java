@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import ui.frame.larger.LargerPanel;
 import ui.frame.larger.LargerScrollPane;
