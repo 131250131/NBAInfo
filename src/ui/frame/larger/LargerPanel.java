@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import ui.frame.hotspot.HotSpotScrollPane;
 import ui.frame.index.container.IndexBoard;
 import ui.frame.index.container.IndexScrollPane;
+import ui.frame.live.LiveScrollPane;
 import ui.frame.match.MatchScorllPane;
 import ui.frame.player.PlayerScrollPanel;
 import ui.frame.system.SystemScrollPane;
@@ -26,7 +27,7 @@ public class LargerPanel extends JPanel implements ActionListener{
 	
 	IndexScrollPane indexScrollPane;
 	IndexBoard indexBoard;
-	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel, addMatchPanel, refresh, addHotPanel;
+	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel, addMatchPanel, refresh, addHotPanel, addLivePanel;
 	
 	public LargerPanel(){
 		this.setLayout(null);
@@ -83,6 +84,10 @@ public class LargerPanel extends JPanel implements ActionListener{
 		addHotPanel = new JButton();
 		addHotPanel.addActionListener(this);
 		this.add(addHotPanel);
+		
+		addLivePanel = new JButton();
+		addLivePanel.addActionListener(this);
+		this.add(addLivePanel);
 		}
 
 	public void actionPerformed(ActionEvent e) {
@@ -116,6 +121,11 @@ public class LargerPanel extends JPanel implements ActionListener{
 			indexScrollPane.setVisible(false);
 			indexScrollPane = new IndexScrollPane();
 			this.add(indexScrollPane, 1);
+		}
+		
+		if(e.getSource() == addLivePanel){
+			LiveScrollPane liveScrollPane = new LiveScrollPane();
+			this.add(liveScrollPane);
 		}
 	}
 

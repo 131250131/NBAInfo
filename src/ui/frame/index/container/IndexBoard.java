@@ -185,7 +185,7 @@ public class IndexBoard extends JPanel implements ActionListener{
 		case 6:
 			return "球员列表";
 		case 7:
-			return "我的球队";
+			return "比赛直播";
 		case 8:
 			return "系统";
 		}

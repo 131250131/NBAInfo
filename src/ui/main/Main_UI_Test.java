@@ -22,9 +22,9 @@ public class Main_UI_Test {
 		
 		Controller.init();
 		Controller.start();	
-		
-		JudgeUpdate judgeUpdate = new JudgeUpdate();
-		judgeUpdate.start();
+//		
+//		JudgeUpdate judgeUpdate = new JudgeUpdate();
+//		judgeUpdate.start();
 	}
 	
 	public static int getFrameSizeX(){
