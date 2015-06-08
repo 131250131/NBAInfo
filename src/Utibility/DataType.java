@@ -19,6 +19,7 @@ public enum DataType {
 	 * 上述数据前加A T H分别表示平均总和和赛季最高
 	 * win       球员上场赢的比赛数目
 	 * lose       球员上场输的比赛数目
+	 * 要进行推断统计的有27项
 	 */
         attendmatches,//出场次数
         First,//首发场数
@@ -27,24 +28,24 @@ public enum DataType {
      */
        
          Atime,//平均时间
-         FGP,//命中率
-         AFGZ ,//平均投篮命中数
-         AFG ,//平均投篮出手数
-         SFGP ,//三分命中率
-         ASFGZ ,//平均三分命中数
-         ASFG ,//平均三分出手数
-         FTGP ,//平均罚球命中率
-         AFTGZ ,//平均罚球命中数
-         AFTG ,//平均罚球数
-         ARebounds ,//平均篮板
-         AORebouns ,//平均球场篮板
-         ADRebounds ,//平均后场篮板
-         AAssists ,//平均助攻
-         ASteals ,//平均抢断
-         ABlocks ,//平均盖帽
-         ATurnovers ,//平均失误
-         AFouls ,//平均犯规
-         AScores ,//平均得分
+         FGP,//命中率，要进行推断统计
+         AFGZ ,//平均投篮命中数,要进行推断统计
+         AFG ,//平均投篮出手数,要进行推断统计
+         SFGP ,//三分命中率,要进行推断统计
+         ASFGZ ,//平均三分命中数,要进行推断统计
+         ASFG ,//平均三分出手数,要进行推断统计
+         FTGP ,//平均罚球命中率,要进行推断统计
+         AFTGZ ,//平均罚球命中数,要进行推断统计
+         AFTG ,//平均罚球数,要进行推断统计
+         ARebounds ,//平均篮板,要进行推断统计
+         AORebouns ,//平均球场篮板,要进行推断统计
+         ADRebounds ,//平均后场篮板,要进行推断统计
+         AAssists ,//平均助攻,要进行推断统计
+         ASteals ,//平均抢断,要进行推断统计
+         ABlocks ,//平均盖帽,要进行推断统计
+         ATurnovers ,//平均失误,要进行推断统计
+         AFouls ,//平均犯规,要进行推断统计
+         AScores ,//平均得分,要进行推断统计
    
          Win ,//参加比赛球队胜场
          Lose ,//参加比赛球队负场
@@ -72,20 +73,20 @@ public enum DataType {
     /*
      * Advanced data
      */
-         RR ,//篮板率
-         O_RR ,//进攻篮板率
-         D_RR ,//防守篮板率
-         AR ,//助攻率
-         SR ,//抢断率
-         BR ,//盖帽率
-         TR ,//失误率
+         RR ,//篮板率,要进行推断统计
+         O_RR ,//进攻篮板率,要进行推断统计
+         D_RR ,//防守篮板率,要进行推断统计
+         AR ,//助攻率,要进行推断统计
+         SR ,//抢断率,要进行推断统计
+         BR ,//盖帽率,要进行推断统计
+         TR ,//失误率,要进行推断统计
          UseRate ,//使用率(上场率)
-         OR ,//进攻率
-         DR ,//防守率
+         OR ,//进攻率,要进行推断统计
+         DR ,//防守率,要进行推断统计
          WS ,//WS ，不需要
          O_WS ,//进攻WS，不需要
          D_WS ,//防守WS，不需要
-         PER ,//效率
+         PER ,//效率,要进行推断统计
          Dunk ,//扣篮个数，不需要
          TTPO ,//2/3+1(并不知道是什么)，不需要
          Blocked ,//被冒个数，不需要
