@@ -948,6 +948,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 			Connection conn =DriverManager.getConnection("jdbc:mysql://localhost/nbadata?characterEncoding=utf-8", "root", "");
 			String sql =  new String();
 			for(String teamName : teams){
+				teamName = teamName+"队";
 				sql = "SELECT "+datatype+" FROM teamseasondata t WHERE season="+"'"+season+"' and teanChineseName="+"'"+teamName+"'"+";";
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				ResultSet rs=pstmt.executeQuery();
