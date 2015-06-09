@@ -18,8 +18,8 @@ public class MatchControllerThird implements matchControllerThirdService{
 	/*
 	 * 根据日期的到比赛
 	 */
-	public ArrayList<MatchVO> getmatchbydate(String date){
-		ArrayList<MatchVO> result =new ArrayList<MatchVO>();
+	public ArrayList<MatchVOThird> getmatchbydate(String date){
+		ArrayList<MatchVOThird> result =new ArrayList<MatchVOThird>();
 		sql="SELECT * FROM matches WHERE time="+"'"+date+"'";
 		try{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -27,7 +27,7 @@ public class MatchControllerThird implements matchControllerThirdService{
 		PreparedStatement pstmt=conn.prepareStatement(sql);
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()){
-			MatchVO mvo=new MatchVO();
+			MatchVOThird mvo=new MatchVOThird();
 			mvo.setMatchID(rs.getString(1));
 			mvo.setDate(rs.getString(2));
 			mvo.setLeftTeamName(rs.getString(3));
@@ -53,7 +53,7 @@ public class MatchControllerThird implements matchControllerThirdService{
 	/*
 	 * 根据比赛id得到球队信息
 	 */
-	public void setmatchteam(MatchVO m){
+	public void setmatchteam(MatchVOThird m){
 		ArrayList<PlayerMatchDataVO> players=new ArrayList<PlayerMatchDataVO>();
 		ArrayList<PlayerMatchDataVO> leftplayers=new ArrayList<PlayerMatchDataVO>();
 		ArrayList<PlayerMatchDataVO> rightplayers=new ArrayList<PlayerMatchDataVO>();
@@ -134,7 +134,7 @@ public class MatchControllerThird implements matchControllerThirdService{
      */
 	public static void main(String args[]){
 		MatchControllerThird m=new MatchControllerThird();
-		MatchVO mm=new MatchVO();
+		MatchVOThird mm=new MatchVOThird();
 		mm.setMatchID("1");
 //		System.out.println(mm.getPdate().size());
 //		for(PlayerMatchDataVO mv:mm.getPdate()){

@@ -66,8 +66,8 @@ public class TeamControllerThird implements teamControllerThirdService{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn =DriverManager.getConnection(url, user, password);
-			ArrayList<TeamVO> teamList =this.getAllTeamVO();
-			for(TeamVO vo: teamList){
+			ArrayList<TeamVOThird> teamList =this.getAllTeamVO();
+			for(TeamVOThird vo: teamList){
 				String teamName = vo.getTeamChineseName().substring(0, vo.getTeamChineseName().length()-1);
 				sql="SELECT * FROM matches WHERE leftteam="+"'"+teamName+"'";
 				PreparedStatement pstmt=conn.prepareStatement(sql);
@@ -94,7 +94,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 //								+vo.isNowTeam()+" "+vo.getStartSeason()+" "+vo.getEndSeanson());
 //			}
 			System.out.println("根据赛季和球队名称获取该球队所有比赛数据");
-			for(TeamVO vo : teamList){
+			for(TeamVOThird vo : teamList){
 				sql = "UPDATE team SET StartSeason="+"'"+vo.getStartSeason()+
 						"'"+" WHERE Chinesename="+"'"+vo.getTeamChineseName()+"'";
 				Statement stmt = conn.createStatement();
@@ -151,10 +151,10 @@ public class TeamControllerThird implements teamControllerThirdService{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url,user,password);
-			ArrayList<TeamVO> list = this.getAllTeamVO();
+			ArrayList<TeamVOThird> list = this.getAllTeamVO();
 			String season = new String();
 			ArrayList<TeamAverData> seasonDataList = new ArrayList<TeamAverData>();
-			for(TeamVO vo : list){
+			for(TeamVOThird vo : list){
 				int nowYear = Integer.parseInt(vo.getStartSeason().substring(0,4));
 				int endYear = Integer.parseInt(vo.getEndSeason().substring(0,4));
 //				String teamShortName = 
@@ -858,8 +858,8 @@ public class TeamControllerThird implements teamControllerThirdService{
 	}
 	
 	//completed;
-	public ArrayList<MatchVO> getTeamMatchDataOfSeanson(String season,String teamName){
-		ArrayList<MatchVO> matchList = new ArrayList<MatchVO>();
+	public ArrayList<MatchVOThird> getTeamMatchDataOfSeanson(String season,String teamName){
+		ArrayList<MatchVOThird> matchList = new ArrayList<MatchVOThird>();
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn =DriverManager.getConnection(url, user, password);
@@ -867,7 +867,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()){
-				MatchVO temp = new MatchVO();
+				MatchVOThird temp = new MatchVOThird();
 				temp.setMatchID(rs.getString(1));
 				temp.setDate(rs.getString(2));
 				temp.setLeftTeamName(rs.getString(3));
@@ -891,8 +891,8 @@ public class TeamControllerThird implements teamControllerThirdService{
 	}
 
 	//completed;
-	public ArrayList<TeamVO> getAllTeamVO(){
-		ArrayList<TeamVO> teamList = new ArrayList<TeamVO>();
+	public ArrayList<TeamVOThird> getAllTeamVO(){
+		ArrayList<TeamVOThird> teamList = new ArrayList<TeamVOThird>();
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn =DriverManager.getConnection(url, user, password);
@@ -900,7 +900,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()){
-				TeamVO vo = new TeamVO();
+				TeamVOThird vo = new TeamVOThird();
 				vo.setTeamChineseName(rs.getString(1));
 				vo.setTeamEnglishName(rs.getString(2));
 				vo.setNowTeam(rs.getDouble(3)==0.0?true:false);

@@ -2,10 +2,10 @@ package thirdservice;
 
 import java.util.ArrayList;
 
-import thirdVersion.MatchVO;
+import thirdVersion.MatchVOThird;
 import thirdVersion.TeamAverData;
 import thirdVersion.TeamMatchDataVO;
-import thirdVersion.TeamVO;
+import thirdVersion.TeamVOThird;
 
 public interface teamControllerThirdService {
 	public ArrayList<TeamMatchDataVO> getMatches(String teamName,String season,int isPlayOffs);
@@ -19,7 +19,7 @@ public interface teamControllerThirdService {
 	public ArrayList<TeamAverData> getSeasonHotTeam_3FGP(String season, boolean isPlayOffs);
 	public ArrayList<TeamAverData> getSeasonHotTeam_FGP(String season, boolean isPlayOffs);
 	public ArrayList<TeamAverData> getSeasonHotTeam_FTGP(String season, boolean isPlayOffs);
-	public ArrayList<MatchVO> getTeamMatchDataOfSeanson(String season,String teamName);
-	public ArrayList<TeamVO> getAllTeamVO();
+	public ArrayList<MatchVOThird> getTeamMatchDataOfSeanson(String season,String teamName);
+	public ArrayList<TeamVOThird> getAllTeamVO();
 	
 }

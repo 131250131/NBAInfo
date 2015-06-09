@@ -2,9 +2,9 @@ package thirdservice;
 
 import java.util.ArrayList;
 
-import thirdVersion.MatchVO;
+import thirdVersion.MatchVOThird;
 
 public interface matchControllerThirdService {
-	public ArrayList<MatchVO> getmatchbydate(String date);
+	public ArrayList<MatchVOThird> getmatchbydate(String date);
 	
 }

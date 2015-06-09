@@ -1,6 +1,6 @@
 package thirdVersion;
 
-public class TeamVO {
+public class TeamVOThird {
 	//球队中文名
 	String teamChineseName;
 	//球队英文名

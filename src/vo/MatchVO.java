@@ -101,6 +101,15 @@ public class MatchVO {
 	public void setScore(String score){
 		this.score=score;
 	}
+	public void addExtraScore(String s){
+		String[] news=s.split("-");
+		String[] olds=s.split("-");
+		double left=Double.parseDouble(news[0]);
+		double right=Double.parseDouble(news[1]);
+		double oleft=Double.parseDouble(olds[0]);
+		double oright=Double.parseDouble(olds[1]);
+		extrascores=String.valueOf(left+oleft)+"-"+String.valueOf(right+oright);
+	}
 	public void creatMatchvo(Match match){
 	   Num=match.getNum();
  	   season=match.getSeason();

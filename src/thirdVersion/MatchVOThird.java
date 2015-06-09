@@ -2,7 +2,7 @@ package thirdVersion;
 
 import java.util.ArrayList;
 
-public class MatchVO {
+public class MatchVOThird {
 	String matchID;
 	String date;//比赛日期.time
 	String leftTeamName;
