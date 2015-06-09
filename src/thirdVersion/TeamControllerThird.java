@@ -921,52 +921,46 @@ public class TeamControllerThird implements teamControllerThirdService{
 	 * static方便我调用 要是这些球队这个赛季没有了 你就直接给我0就好了
 	 */
 	public static double getdataforpiechart(ArrayList<String> teams,DataType dpt,String season){
-		ArrayList<Double> resultlist = new ArrayList<Double>();
+		int num =teams.size();
+		double sum=0.0;
+		double result =0.0;
 		String datatype = new String();
 		switch(dpt){
-//			case FGP : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			case AFGZ : datatype = "";break;
-//			
-//			
-//			
-//			
-//	         ,//命中率，要进行推断统计
-//	          ,//平均投篮命中数,要进行推断统计
-//	          ,//平均投篮出手数,要进行推断统计
-//	         SFGP ,//三分命中率,要进行推断统计
-//	         ASFGZ ,//平均三分命中数,要进行推断统计
-//	         ASFG ,//平均三分出手数,要进行推断统计
-//	         FTGP ,//平均罚球命中率,要进行推断统计
-//	         AFTGZ ,//平均罚球命中数,要进行推断统计
-//	         AFTG ,//平均罚球数,要进行推断统计
-//	         ARebounds ,//平均篮板,要进行推断统计
-//	         AORebouns ,//平均球场篮板,要进行推断统计
-//	         ADRebounds ,//平均后场篮板,要进行推断统计
-//	         AAssists ,//平均助攻,要进行推断统计
-//	         ASteals ,//平均抢断,要进行推断统计
-//	         ABlocks ,//平均盖帽,要进行推断统计
-//	         ATurnovers ,//平均失误,要进行推断统计
-//	         AFouls ,//平均犯规,要进行推断统计
-//	         AScores ,//平均得分,要进行推断统计
-			
+			case AFGZ : datatype = "aver_FGz";break;
+			case AFG : datatype = "aver_FG";break;			
+			case ASFGZ : datatype = "aver_3FGz";break;
+			case ASFG : datatype = "aver_3FG";break;		
+			case AFTGZ : datatype = "aver_FTGz";break;
+			case AFTG : datatype = "aver_FTG";break;	
+			case ARebounds : datatype = "aver_rebounds";break;
+			case AORebouns : datatype = "aver_orebounds";break;
+			case ADRebounds : datatype = "aver_drebounds";break;
+			case AAssists : datatype = "aver_assists";break;
+			case ASteals : datatype = "aver_steals";break;
+			case ABlocks : datatype = "aver_blocks";break;
+			case ATurnovers : datatype = "aver_turnovers";break;
+			case AFouls : datatype = "aver_fouls";break;
+			case AScores : datatype = "aver_scores";break;
 		}
 		
-		return 0;
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn =DriverManager.getConnection("jdbc:mysql://localhost/nbadata?characterEncoding=utf-8", "root", "");
+			String sql =  new String();
+			for(String teamName : teams){
+				sql = "SELECT "+datatype+" FROM teamseasondata t WHERE season="+"'"+season+"' and teanChineseName="+"'"+teamName+"'"+";";
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				ResultSet rs=pstmt.executeQuery();
+				while(rs.next()){
+					double temp = rs.getDouble(1);
+					sum += temp;
+				}
+			}
+			result = num==0?0:sum/num;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 }
