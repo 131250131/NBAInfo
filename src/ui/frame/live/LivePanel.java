@@ -18,6 +18,7 @@ import javax.swing.Timer;
 import thirdVersion.LiveCast;
 import thirdVersion.liveThread;
 import ui.myUI.ImageLabel;
+import ui.system.Controller;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 
@@ -26,6 +27,8 @@ public class LivePanel extends JPanel implements ActionListener{
 	
 	int width = (int) (1720 * UIData.changeX);
 	int height = (int) (4000 * UIData.changeY);
+	
+	static JLabel num1, num2;
 	
 	public LivePanel(){
 		this.setLayout(null);
@@ -45,7 +48,7 @@ public class LivePanel extends JPanel implements ActionListener{
 		int Lx = (int) ((1920 - Lwidth)/2 * UIData.changeX - 50);
 		int Ly = (int) ((200 - 40 + 200 + 50) * UIData.changeY);
 		
-		JLabel num1 = new JLabel("109");
+		num1 = new JLabel("0");
 		num1.setHorizontalAlignment(JLabel.CENTER);
 		num1.setFont(new Font("Arail", Font.PLAIN, 40));
 		num1.setBounds(620 - 40, 210, 70, 40);
@@ -54,7 +57,7 @@ public class LivePanel extends JPanel implements ActionListener{
 		num1.setVisible(true);
 		this.add(num1);
 		
-		JLabel num2 = new JLabel("90");
+		num2 = new JLabel("0");
 		num2.setHorizontalAlignment(JLabel.CENTER);
 		num2.setFont(new Font("Arail", Font.PLAIN, 40));
 		num2.setBounds(1225 - 40, 210, 70, 40);
@@ -145,6 +148,12 @@ public class LivePanel extends JPanel implements ActionListener{
 				t6.start();
 			}
 		});
+		
+		buttons[4].addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e){
+				//Controller.addMatchPanel(LiveCast.getInstance().getMatchvo());
+			}
+		});
 				
 		int labelX = (int) (200 * UIData.changeX);
 		int labelWidth = (int) (1410 * UIData.changeX);
@@ -179,6 +188,7 @@ public class LivePanel extends JPanel implements ActionListener{
 	
 	Timer timer = new Timer(3000, this);
 	public static int currentCount = 0;
+	
 	private void dataIn(int i){
 		currentCount = i;
 		LiveBoard.rePaint.doClick();
@@ -201,8 +211,13 @@ public class LivePanel extends JPanel implements ActionListener{
 		}
 	}
 	
-	public static void rePaint(){
+	public void rePaint(){
+		String[] str = LiveCast.getInstance().getFirstmatchinfo().getTscores().split("-");
+		num1.setText(str[0]);
+		num2.setText(str[1]);
 		LiveBoard.rePaint.doClick();
+		num1.repaint();
+		num2.repaint();
 	}
 
 	@Override

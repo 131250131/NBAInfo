@@ -183,8 +183,6 @@ public class LiveBoard extends JScrollPane implements ActionListener{
 		
 		if(e.getSource() == rePaint){
 			getMaxSize();
-			for(int i = 0; i < 5; i++)
-				System.out.println(i + "  " +wordsArray[i].size());
 			largeLiveBoard.rePaint(LivePanel.currentCount);
 			largeLiveBoard.repaint();
 			this.repaint();

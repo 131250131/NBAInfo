@@ -3,7 +3,6 @@ package ui.main;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
-import Utibility.JudgeUpdate;
 import ui.system.Controller;
 import ui.system.UIData;
 
