@@ -7,7 +7,9 @@ import java.sql.ResultSet;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class MatchControllerThird {
+import thirdservice.matchControllerThirdService;
+
+public class MatchControllerThird implements matchControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
 	String password="";

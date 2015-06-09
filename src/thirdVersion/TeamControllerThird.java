@@ -12,9 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import thirdservice.teamControllerThirdService;
 import Utibility.DataType;
 
-public class TeamControllerThird {
+public class TeamControllerThird implements teamControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
 	String password="";
@@ -920,6 +921,51 @@ public class TeamControllerThird {
 	 * static方便我调用 要是这些球队这个赛季没有了 你就直接给我0就好了
 	 */
 	public static double getdataforpiechart(ArrayList<String> teams,DataType dpt,String season){
+		ArrayList<Double> resultlist = new ArrayList<Double>();
+		String datatype = new String();
+		switch(dpt){
+//			case FGP : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			case AFGZ : datatype = "";break;
+//			
+//			
+//			
+//			
+//	         ,//命中率，要进行推断统计
+//	          ,//平均投篮命中数,要进行推断统计
+//	          ,//平均投篮出手数,要进行推断统计
+//	         SFGP ,//三分命中率,要进行推断统计
+//	         ASFGZ ,//平均三分命中数,要进行推断统计
+//	         ASFG ,//平均三分出手数,要进行推断统计
+//	         FTGP ,//平均罚球命中率,要进行推断统计
+//	         AFTGZ ,//平均罚球命中数,要进行推断统计
+//	         AFTG ,//平均罚球数,要进行推断统计
+//	         ARebounds ,//平均篮板,要进行推断统计
+//	         AORebouns ,//平均球场篮板,要进行推断统计
+//	         ADRebounds ,//平均后场篮板,要进行推断统计
+//	         AAssists ,//平均助攻,要进行推断统计
+//	         ASteals ,//平均抢断,要进行推断统计
+//	         ABlocks ,//平均盖帽,要进行推断统计
+//	         ATurnovers ,//平均失误,要进行推断统计
+//	         AFouls ,//平均犯规,要进行推断统计
+//	         AScores ,//平均得分,要进行推断统计
+			
+		}
+		
 		return 0;
 	}
 	
