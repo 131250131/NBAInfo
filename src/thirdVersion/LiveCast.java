@@ -393,6 +393,12 @@ public class LiveCast  {
 			homeTeam.setQ4Score(ptjsonObj4.getDouble("q4Score"));
 			
 			leftteam.setTeamName(ptjsonObj3.getString("city")+ptjsonObj3.getString("displayAbbr"));
+			if(leftteam.getTeamName().equals("金州勇士")){
+				leftteam.setShortName("GSW");
+			}
+			else{
+				leftteam.setShortName("CLE");
+			}
 			leftteam.setTeamAssists((int)ptjsonObj4.getDouble("assists"));
 			leftteam.setTeamBlocks((int)ptjsonObj4.getDouble("blocks"));
 			leftteam.setTeamDeffenceRebounds((int)ptjsonObj4.getDouble("defRebs"));
@@ -540,6 +546,12 @@ public class LiveCast  {
 			awayTeam.setFouls(aptjsonObj4.getDouble("fouls"));
 			
 			rightteam.setTeamName(aptjsonObj3.getString("city")+aptjsonObj3.getString("displayAbbr"));
+			if(rightteam.getTeamName().equals("金州勇士")){
+				rightteam.setShortName("GSW");
+			}
+			else{
+				rightteam.setShortName("CLE");
+			}
 			rightteam.setTeamAssists((int)aptjsonObj4.getDouble("assists"));
 			rightteam.setTeamBlocks((int)aptjsonObj4.getDouble("blocks"));
 			rightteam.setTeamDeffenceRebounds((int)aptjsonObj4.getDouble("defRebs"));
