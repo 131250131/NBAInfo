@@ -101,7 +101,7 @@ public class LiveCast  {
 		        	 clicked=false;
 		        	 check=true;
 		         }
-		        System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+		    //    System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 		        }
 			     if(!check)
 			    	 clicked=true;
@@ -136,7 +136,7 @@ public class LiveCast  {
 			        	 clicked=false;
 			        	 check=true;
 			         }
-			         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			  //       System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
 				 if(!check)
 			    	 clicked=true;
@@ -176,7 +176,7 @@ public class LiveCast  {
 			        	 clicked=false;
 			        	 check=true;
 			         }
-			         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			//         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
 				 if(!check)
 			    	 clicked=true;
@@ -216,7 +216,7 @@ public class LiveCast  {
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
 			        	 check=true;
-			         }System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         }//System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
 				 if(!check)
 			    	 clicked=true;
@@ -255,7 +255,7 @@ public class LiveCast  {
 			        	 clicked=false;
 			        	 check=true;
 			         }
-			         System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         //System.out.println("第"+n+"节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			        }
 				 if(!check)
 			    	 clicked=true;

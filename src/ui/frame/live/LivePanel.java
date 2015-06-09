@@ -3,19 +3,26 @@ package ui.frame.live;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
+import thirdVersion.LiveCast;
+import thirdVersion.liveThread;
 import ui.myUI.ImageLabel;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
-public class LivePanel extends JPanel{
+public class LivePanel extends JPanel implements ActionListener{ 
 	
 	int width = (int) (1720 * UIData.changeX);
 	int height = (int) (4000 * UIData.changeY);
@@ -83,30 +90,59 @@ public class LivePanel extends JPanel{
 		buttons[0].addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				LiveBoard.turnTo1.doClick();
+				
+				liveThread p1 = new liveThread("1");
+				Thread t1 = new Thread(p1);
+				t1.start();
+				
+				dataIn(1);
 			}
 		});
 		
 		buttons[1].addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				LiveBoard.turnTo2.doClick();
+				
+				liveThread p2 = new liveThread("2");
+				Thread t2 = new Thread(p2);
+				t2.start();
+				dataIn(2);
 			}
 		});
 		
 		buttons[2].addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				LiveBoard.turnTo3.doClick();
+				
+				liveThread p3 = new liveThread("3");
+				Thread t3 = new Thread(p3);
+				t3.start();
+				dataIn(3);
 			}
 		});
 		
 		buttons[3].addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				LiveBoard.turnTo4.doClick();
+				
+				liveThread p4 = new liveThread("4");
+				Thread t4 = new Thread(p4);
+				t4.start();
+				dataIn(4);
 			}
 		});
 		
 		buttons[4].addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				LiveBoard.turnToOT.doClick();
+				
+				liveThread p5 = new liveThread("5");
+				Thread t5 = new Thread(p5);
+				t5.start();
+				dataIn(5);
+				liveThread p6 = new liveThread("6");
+				Thread t6 = new Thread(p6);
+				t6.start();
 			}
 		});
 				
@@ -118,6 +154,34 @@ public class LivePanel extends JPanel{
 		backPanel.setBackground(new Color(0, 0, 0, 0.8f));
 		backPanel.setVisible(true);
 		this.add(backPanel);
+		
+		LiveBoard.turnTo1.doClick();		
+		liveThread p1 = new liveThread("1");
+		Thread t1 = new Thread(p1);
+		t1.start();	
+		liveThread p2 = new liveThread("2");
+		Thread t2 = new Thread(p2);
+		t2.start();
+		liveThread p3 = new liveThread("3");
+		Thread t3 = new Thread(p3);
+		t3.start();
+		liveThread p4 = new liveThread("4");
+		Thread t4 = new Thread(p4);
+		t4.start();
+		liveThread p5 = new liveThread("5");
+		Thread t5 = new Thread(p5);
+		t5.start();
+		
+		dataIn(1);
+		timer.start();
+		
+	}
+	
+	Timer timer = new Timer(3000, this);
+	public static int currentCount = 0;
+	private void dataIn(int i){
+		currentCount = i;
+		LiveBoard.rePaint.doClick();
 	}
 	
 	private String getWords(int i){
@@ -134,6 +198,18 @@ public class LivePanel extends JPanel{
 			return "加时赛";
 		default:
 			return "详细数据";
+		}
+	}
+	
+	public static void rePaint(){
+		LiveBoard.rePaint.doClick();
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource() == timer){
+			rePaint();
 		}
 	}
 

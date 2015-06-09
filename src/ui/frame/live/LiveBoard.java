@@ -2,6 +2,7 @@ package ui.frame.live;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
 
+import thirdVersion.LiveCast;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
@@ -65,13 +67,18 @@ public class LiveBoard extends JScrollPane implements ActionListener{
 		turnToOT = new JButton();
 		turnToOT.addActionListener(this);
 		this.add(turnToOT);
+		
+		rePaint = new JButton();
+		rePaint.addActionListener(this);
+		this.add(rePaint); 
 	}
 	
 	private void getMaxSize(){
 		for(int i = 0; i < 5; i++){
 			wordsArray[i] = new ArrayList<String>();
 		}
-		getWords();
+		
+		getWords(LivePanel.currentCount);
 		
 		int temp = 0;
 		
@@ -84,29 +91,45 @@ public class LiveBoard extends JScrollPane implements ActionListener{
 		}
 	}
 	
-	private void getWords(){
-		for(int i = 0 ; i < 11; i++){
-			wordsArray[0].add("1asd " + (i + 1));
+	private void getWords(int counter){
+		if(counter == 1){
+			ArrayList<String> array = LiveCast.getInstance().getFirstmatchinfo().getYuju();			
+			for(int i = 0 ; i < array.size(); i++){
+				wordsArray[counter - 1].add(array.get(i));
+			}
+			counter++;
 		}
-		
-		for(int i = 0 ; i < 3; i++){
-			wordsArray[1].add("2asd " + (i + 1));
+		if(counter == 2){
+			ArrayList<String> array = LiveCast.getInstance().getSecondmatchinfo().getYuju();
+			for(int i = 0 ; i < array.size(); i++){
+				wordsArray[counter - 1].add(array.get(i));
+			}
+			counter++;
 		}
-		
-		for(int i = 0 ; i < 20; i++){
-			wordsArray[2].add("3asd " + (i + 1));
+		if(counter == 3){
+			ArrayList<String> array = LiveCast.getInstance().getThirdmatchinfo().getYuju();
+			for(int i = 0 ; i < array.size(); i++){
+				wordsArray[counter - 1].add(array.get(i));
+			}
+			counter++;
 		}
-		
-		for(int i = 0 ; i < 13; i++){
-			wordsArray[3].add("4asd " + (i + 1));
+		if(counter == 4){
+			ArrayList<String> array = LiveCast.getInstance().getForthmatchinfo().getYuju();
+			for(int i = 0 ; i < array.size(); i++){
+				wordsArray[counter - 1].add(array.get(i));
+			}
+			counter++;
 		}
-		
-		for(int i = 0 ; i < 21; i++){
-			wordsArray[4].add("5asd " + (i + 1));
+		if(counter == 5){
+			ArrayList<String> array = LiveCast.getInstance().getExtrama1tchinfo().getYuju();
+			for(int i = 0 ; i < array.size(); i++){
+				wordsArray[counter - 1].add(array.get(i));
+			}
+			counter++;
 		}
 	}
 	
-	public static JButton turnTo1, turnTo2, turnTo3, turnTo4, turnToOT;
+	public static JButton turnTo1, turnTo2, turnTo3, turnTo4, turnToOT, rePaint;
 
 	int currentLoction;
 	int destination;
@@ -157,6 +180,15 @@ public class LiveBoard extends JScrollPane implements ActionListener{
 		if(e.getSource() == turnToOT){
 			setScrollLoction(4 * 1200);
 		}
+		
+		if(e.getSource() == rePaint){
+			getMaxSize();
+			for(int i = 0; i < 5; i++)
+				System.out.println(i + "  " +wordsArray[i].size());
+			largeLiveBoard.rePaint(LivePanel.currentCount);
+			largeLiveBoard.repaint();
+			this.repaint();
+		}
 	}
 
 }
@@ -164,7 +196,7 @@ public class LiveBoard extends JScrollPane implements ActionListener{
 @SuppressWarnings("serial")
 class LargeLiveBoard extends JPanel{
 	
-	LiveBoardPanel[] liveArray = new LiveBoardPanel[5];
+	static LiveBoardPanel[] liveArray = new LiveBoardPanel[5];
 	
 	int width = (int) (1200 * 5 * UIData.changeX);
 	int height = (int) (LiveBoard.MaxSize * UIData.changeY);
@@ -184,6 +216,16 @@ class LargeLiveBoard extends JPanel{
 			this.add(liveArray[i]);
 		}
 	}
+	
+	public void rePaint(int counter){
+		int i = counter - 1;
+		liveArray[i].setVisible(false);
+		liveArray[i] = new LiveBoardPanel(i);
+		liveArray[i].setBounds(i * 1200, 0, 1200, height);
+		liveArray[i].setVisible(true);
+		this.add(liveArray[i]);
+		liveArray[i].repaint();
+	}
 }
 
 @SuppressWarnings("serial")
@@ -191,8 +233,7 @@ class LiveBoardPanel extends JPanel{
 	
 	public LiveBoardPanel(int i){
 		this.setLayout(null);
-		this.setBackground(null);
-		
+		this.setBackground(null);	
 		initWords(LiveBoard.wordsArray[i].size(), i);
 	}
 	
@@ -209,7 +250,7 @@ class LiveBoardPanel extends JPanel{
 class WordsLabel extends JPanel{
 	
 	public WordsLabel(String str, int index){
-		int height = 30;
+		int height = 50;
 		this.setBounds(0, height * index, 1200, height);
 		this.setLayout(null);
 		if(index % 2 == 0){
@@ -221,6 +262,7 @@ class WordsLabel extends JPanel{
 		JLabel label = new JLabel(str, JLabel.CENTER);
 		label.setBounds(0, 0, 1200, height);
 		label.setVisible(true);
+		label.setFont(new Font("新細明體", Font.PLAIN, 17));
 		label.setForeground(Color.WHITE);
 		this.add(label);
 	}
