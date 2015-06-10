@@ -2,12 +2,15 @@ package ui.frame.player;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,10 +24,10 @@ import org.jfree.chart.ChartPanel;
 import thirdVersion.PSpecificdata;
 import thirdVersion.PlayerBasicInfoVO;
 import thirdVersion.PlayerControllerThird;
+import thirdservice.playerControllerThirdService;
 import ui.frame.match.tempDataOfPlayerPanel;
 import ui.myUI.JSortTable;
 import ui.myUI.MyTable;
-import ui.system.ChineseTranslator;
 import ui.system.UIData;
 import Utibility.DataType;
 
@@ -37,6 +40,8 @@ public class AnalysisOfPlayers extends JPanel {
 	private tempDataOfPlayerPanel dataOfPlayer;
 	private TimeSeriesChart chartest;
 	private PieChart pie;
+	private JPanel jpOfProgress;
+	private JPanel jpOfContribution;
 	private String[] dataName={"选择数据类型","出场次数","首发场数","平均时间","命中率","平均投篮命中数",
 			"平均投篮出手数","三分命中率","平均三分命中数","平均三分出手数",
 			"平均罚球命中率","平均罚球命中数","平均罚球数","平均篮板","平均球场篮板","平均后场篮板",
@@ -50,6 +55,11 @@ public class AnalysisOfPlayers extends JPanel {
 			,"最高出场时间","最高命中率","最高命中数","最高出手数","最高三分命中率","最高三分命中","最高三分出手","最高罚球命中率"
 			,"最高罚球命中","最高罚球数","最高篮板","最高前场板","最高后场板","最高助攻","最高抢断","最高篮板"
 			,"最高失误","最高犯规","最高得分","年薪（万元）"};
+	private String[] dataName2={"选择数据类型","平均投篮命中数",
+			"平均投篮出手数","平均三分命中数","平均三分出手数",
+		    "平均罚球命中数","平均罚球数","平均篮板","平均前场篮板","平均后场篮板",
+			"平均助攻","平均抢断","平均盖帽","平均失误","平均犯规","平均得分"};//饼图
+	
 	private DataType[] dataType={ 
 			DataType.attendmatches,//出场次数
 			DataType.First,//首发场数
@@ -162,7 +172,7 @@ public class AnalysisOfPlayers extends JPanel {
 	private String[] columname={"球员ID","球员姓名","场均出场时间","投篮命中率","场均投篮命中率","场均投篮出手数","三分命中率",
 			"场均三分命中数","均三分出手数","罚球命中率","场均罚球命中数","场均罚球出手数","场均篮板数",
 			"场均前场篮板数","场均后场篮板数","场均助攻数","场均抢断数","场均盖帽数","场均失误数","场均犯规数","场均得分"};
-	private PlayerControllerThird p=new PlayerControllerThird();//逻辑层接口
+	private playerControllerThirdService controllerForPlayer=new PlayerControllerThird();//逻辑层接口
 	public AnalysisOfPlayers(){
 		this.setSize(1280, 720);
 		this.setLayout(null);
@@ -196,8 +206,9 @@ public class AnalysisOfPlayers extends JPanel {
             	dataOfPlayer.update(s);
             }  
         });  
+       
     	//发展图面板
-	  	JPanel jpOfProgress=new JPanel();
+        jpOfProgress=new JPanel();
 	  	jpOfProgress.setLayout(null);
 	  	jpOfProgress.setOpaque(false);
 	  	jpOfProgress.setBounds(320, 25, 950, 310);
@@ -211,8 +222,8 @@ public class AnalysisOfPlayers extends JPanel {
 				String playerID= dataOfPlayer.getID();
 				if(!dataName.equals("选择数据类型")&&!playerID.equals("-1")){
 					DataType type = translate(dataName);
-					ArrayList<PSpecificdata> normalList=p.getnormalplayerdata(playerID, type);
-					ArrayList<PSpecificdata> playoffList=p.getplayoffplayerdata(playerID, type);
+					ArrayList<PSpecificdata> normalList=controllerForPlayer.getnormalplayerdata(playerID, type);
+					ArrayList<PSpecificdata> playoffList=controllerForPlayer.getplayoffplayerdata(playerID, type);
 					
 					int size1=normalList.size();
 					int size2=playoffList.size();
@@ -263,18 +274,18 @@ public class AnalysisOfPlayers extends JPanel {
 		//折线图
 		chartest=new TimeSeriesChart();
   	 	ChartPanel test=chartest.getChartPanel();
-  	 	test.setBounds(0,45, 950,280);
+  	 	test.setBounds(0,45, 950,265);
   	 	jpOfProgress.add(test,1);
   	 	
   	 	//贡献率面板
-  		JPanel jpOfContribution=new JPanel();
+  	 	jpOfContribution=new JPanel();
   		jpOfContribution.setLayout(null);
   		jpOfContribution.setOpaque(false);
   		jpOfContribution.setBounds(320, 25, 950, 310);
 	  	this.add(jpOfContribution,29);
 	  	//两个下拉框
 	  	//数据类型
-	  	dataComb2 = new JComboBox<String>(dataName);
+	  	dataComb2 = new JComboBox<String>(dataName2);
         dataComb2.setFont(new Font("宋体", Font.BOLD, 14));
         dataComb2.setBounds(0,0,200, 30);
         dataComb2.setBackground(Color.gray);
@@ -286,15 +297,21 @@ public class AnalysisOfPlayers extends JPanel {
 				String season=seasonComb.getSelectedItem().toString();
 				if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
 					//调用逻辑层更新饼图
+					String playerID= dataOfPlayer.getID();
+					DataType type = translate(dataType);
+					double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
+					pie.update(dataType, pieData[0], pieData[1]);
 				}
 				
 			}
         });
         jpOfContribution.add(dataComb2,0);
         //赛季
-        String[] season=new String[32];
-        for(int i=0;i<=30;i++){
-        	season[i+1]=String.valueOf(i+1985);
+        String[] season=new String[31];
+        for(int i=0;i<=29;i++){
+        	String s1=String.valueOf(i+1985).substring(2);
+        	String s2=String.valueOf(i+1985+1).substring(2);
+        	season[i+1]=s1+"-"+s2;
         }
         season[0]="选择赛季";
     	seasonComb = new JComboBox<String>(season);
@@ -309,6 +326,10 @@ public class AnalysisOfPlayers extends JPanel {
  				String season=seasonComb.getSelectedItem().toString();
  				if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
  					//调用逻辑层更新饼图
+ 					String playerID= dataOfPlayer.getID();
+					DataType type = translate(dataType);
+					double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
+					pie.update(dataType, pieData[0], pieData[1]);
  				}
  				
  			}
@@ -317,12 +338,35 @@ public class AnalysisOfPlayers extends JPanel {
         //饼图
         pie=new PieChart();
   	 	ChartPanel piePanel=pie.getChartPanel();
-  	 	test.setBounds(0,45, 950,280);
+  	 	piePanel.setBounds(0,45, 950,265);
   	 	jpOfContribution.add(piePanel,2);
+  	 	jpOfContribution.setVisible(false);
+  	 	//选择图表按钮
+        JButton jl1=new JButton("球员演化图");
+        JButton jl2=new JButton("球员贡献图");
+        jl1.setBounds(320, 5, 100, 20);
+        jl2.setBounds(420, 5, 100, 20);
+        jl1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	jpOfProgress.setVisible(true);
+            	jpOfContribution.setVisible(false);
+            }
+        });
+        jl2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	jpOfProgress.setVisible(false);
+            	jpOfContribution.setVisible(true);
+            }
+        });
+        this.add(jl1,30);
+        this.add(jl2,31);
+        
 	}
 	void iniTable(){
 		
- 	   	ArrayList<PlayerBasicInfoVO> playerlist=p.VOinitial();
+ 	   	ArrayList<PlayerBasicInfoVO> playerlist=controllerForPlayer.VOinitial();
 		int size = playerlist.size();
 
 		Object[][] data = new Object[size][21];
@@ -381,7 +425,7 @@ public class AnalysisOfPlayers extends JPanel {
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			//按字母索引查找球员
-			ArrayList<PlayerBasicInfoVO> playerlist = p.getPlayersbyChar(this.getText().toCharArray()[0]);
+			ArrayList<PlayerBasicInfoVO> playerlist = controllerForPlayer.getPlayersbyChar(this.getText().toCharArray()[0]);
 			int size = playerlist.size();
 			Object[][] data = new Object[size][21];
 			for(int i = 0 ; i < size; i++){
