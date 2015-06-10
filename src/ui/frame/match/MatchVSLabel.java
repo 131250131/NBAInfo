@@ -151,43 +151,47 @@ public class MatchVSLabel extends JPanel{
 	}
 	
 	private double getAverData(int leftisZero, int i){
+		Object returnVALUE = null;
+		if(leftTeam.getShortName() != null)
 		if(leftisZero == 0){
 			TeamVO team = Controller.teamController.getOneTeamInfo(leftTeam.getShortName());
 			switch(i){
-			case 0: return team.getAver_teamScores();
-			case 1: return team.getTeamFGP();
-			case 2: return team.getAver_team3FG();
-			case 3: return team.getTeam3FGP();
-			case 4: return team.getAver_teamFTG();
-			case 5: return team.getTeamFTGP();
-			case 6: return team.getAver_teamAssists();
-			case 7: return team.getAver_teamTotalRebounds();
-			case 8: return team.getAver_teamOffenceRebounds();
-			case 9: return team.getAver_teamDeffenceRebounds();
-			case 10: return team.getAver_teamSteals();
-			case 11: return team.getAver_teamBlocks();
-			case 12: return team.getAver_teamFouls();
-			case 13: return team.getAver_teamTurnovers();
+			case 0: returnVALUE = team.getAver_teamScores();
+			case 1: returnVALUE = team.getTeamFGP();
+			case 2: returnVALUE = team.getAver_team3FG();
+			case 3: returnVALUE = team.getTeam3FGP();
+			case 4: returnVALUE = team.getAver_teamFTG();
+			case 5: returnVALUE = team.getTeamFTGP();
+			case 6: returnVALUE = team.getAver_teamAssists();
+			case 7: returnVALUE = team.getAver_teamTotalRebounds();
+			case 8: returnVALUE = team.getAver_teamOffenceRebounds();
+			case 9: returnVALUE = team.getAver_teamDeffenceRebounds();
+			case 10: returnVALUE = team.getAver_teamSteals();
+			case 11: returnVALUE = team.getAver_teamBlocks();
+			case 12: returnVALUE = team.getAver_teamFouls();
+			case 13: returnVALUE = team.getAver_teamTurnovers();
 			}
 		}else{
 			TeamVO team = Controller.teamController.getOneTeamInfo(rightTeam.getShortName());
 			switch(i){
-			case 0: return team.getAver_teamScores();
-			case 1: return team.getTeamFGP();
-			case 2: return team.getAver_team3FG();
-			case 3: return team.getTeam3FGP();
-			case 4: return team.getAver_teamFTG();
-			case 5: return team.getTeamFTGP();
-			case 6: return team.getAver_teamAssists();
-			case 7: return team.getAver_teamTotalRebounds();
-			case 8: return team.getAver_teamOffenceRebounds();
-			case 9: return team.getAver_teamDeffenceRebounds();
-			case 10: return team.getAver_teamSteals();
-			case 11: return team.getAver_teamBlocks();
-			case 12: return team.getAver_teamFouls();
-			case 13: return team.getAver_teamTurnovers();
+			case 0: returnVALUE = team.getAver_teamScores();
+			case 1: returnVALUE = team.getTeamFGP();
+			case 2: returnVALUE = team.getAver_team3FG();
+			case 3: returnVALUE = team.getTeam3FGP();
+			case 4: returnVALUE = team.getAver_teamFTG();
+			case 5: returnVALUE = team.getTeamFTGP();
+			case 6: returnVALUE = team.getAver_teamAssists();
+			case 7: returnVALUE = team.getAver_teamTotalRebounds();
+			case 8: returnVALUE = team.getAver_teamOffenceRebounds();
+			case 9: returnVALUE = team.getAver_teamDeffenceRebounds();
+			case 10: returnVALUE = team.getAver_teamSteals();
+			case 11: returnVALUE = team.getAver_teamBlocks();
+			case 12: returnVALUE = team.getAver_teamFouls();
+			case 13: returnVALUE = team.getAver_teamTurnovers();
 			}
 		}
+		if(returnVALUE != null)
+			return (double)returnVALUE;
 		return 0;
 	}
 	

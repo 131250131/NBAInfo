@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import thirdVersion.LiveCast;
 import ui.myUI.ImageLabel;
 import ui.system.ChineseTranslator;
 import ui.system.ImageSaver;
@@ -14,7 +15,16 @@ import vo.MatchVO;
 
 @SuppressWarnings("serial")
 public class DataOfMatchPanel extends JPanel {
-
+	public static String leftscore1="0";
+	public static String leftscore2="0";
+	public static String leftscore3="0";
+	public static String leftScore4="0";
+	public static String leftExtraScore="0";
+	public static String rightscore1="0";
+	public static String rightscore2="0";
+	public static String rightscore3="0";
+	public static String rightleftScore4="0";
+	public static String rightExtraScore="0";
 	//标签
 	//每节比分
 	private JLabel first;
@@ -236,10 +246,28 @@ public class DataOfMatchPanel extends JPanel {
 
 	public void update(MatchVO match){
 		
-		String[] score1 = match.getScores1().split("-");
-		String[] score2 = match.getScores2().split("-");
-		String[] score3 = match.getScores3().split("-");
-		String[] score4 = match.getScores4().split("-");
+		String[] score1 = {"0", "0"};
+		String[] score2 = {"0", "0"};
+		String[] score3 = {"0", "0"};
+		String[] score4 = {"0", "0"};
+		
+		
+		if(match.getScores1() != null){
+			score1 = match.getScores1().split("-");
+		}
+		
+		if(match.getScores2() != null){
+			score2 = match.getScores2().split("-");
+		}
+		
+		if(match.getScores3() != null){
+			score3 = match.getScores3().split("-");
+		}
+		
+		if(match.getScores4() != null){
+			score4 = match.getScores4().split("-");
+		}
+		
 		String[] total = match.getScore().split("-");
 		if(match.getExtrascores() != null){
 			String[] extra=match.getExtrascores().split("-");
@@ -247,6 +275,7 @@ public class DataOfMatchPanel extends JPanel {
 			extra2.setText(extra[1]);//未完
 		}
 		//信息
+		System.out.println();
 		first1.setText(score1[0]);
 		first2.setText(score1[1]);
 		second1.setText(score2[0]);

@@ -481,8 +481,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			}
 
 			public double getPlayerPER() {
-				return (playerAttends==0)?0:((playerScores + playerTotalRebounds + playerAssists + playerSteals + playerBlocks) 
-						- (playerFGTry - playerFG) - (playerFTGTry - playerFTG) - playerTurnovers) / playerAttends;
+			       return playerPER;
 			}
 
 			public double getPlayerGmScER() {

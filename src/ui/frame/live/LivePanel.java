@@ -149,9 +149,9 @@ public class LivePanel extends JPanel implements ActionListener{
 			}
 		});
 		
-		buttons[4].addMouseListener(new MouseAdapter(){
+		buttons[5].addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
-				//Controller.addMatchPanel(LiveCast.getInstance().getMatchvo());
+				Controller.addMatchPanel(LiveCast.getInstance().getMatchvo());
 			}
 		});
 				
@@ -164,23 +164,24 @@ public class LivePanel extends JPanel implements ActionListener{
 		backPanel.setVisible(true);
 		this.add(backPanel);
 		
-		LiveBoard.turnTo1.doClick();		
+				
 		liveThread p1 = new liveThread("1");
 		Thread t1 = new Thread(p1);
 		t1.start();	
-		liveThread p2 = new liveThread("2");
-		Thread t2 = new Thread(p2);
-		t2.start();
-		liveThread p3 = new liveThread("3");
-		Thread t3 = new Thread(p3);
-		t3.start();
-		liveThread p4 = new liveThread("4");
-		Thread t4 = new Thread(p4);
-		t4.start();
-		liveThread p5 = new liveThread("5");
-		Thread t5 = new Thread(p5);
-		t5.start();
+//		liveThread p2 = new liveThread("2");
+//		Thread t2 = new Thread(p2);
+//		t2.start();
+//		liveThread p3 = new liveThread("3");
+//		Thread t3 = new Thread(p3);
+//		t3.start();
+//		liveThread p4 = new liveThread("4");
+//		Thread t4 = new Thread(p4);
+//		t4.start();
+//		liveThread p5 = new liveThread("5");
+//		Thread t5 = new Thread(p5);
+//		t5.start();
 		
+		LiveBoard.turnTo1.doClick();
 		dataIn(1);
 		timer.start();
 		
@@ -213,8 +214,8 @@ public class LivePanel extends JPanel implements ActionListener{
 	
 	public void rePaint(){
 		String[] str = LiveCast.getInstance().getFirstmatchinfo().getTscores().split("-");
-		num1.setText(str[0]);
-		num2.setText(str[1]);
+		num1.setText(str[1]);
+		num2.setText(str[0]);
 		LiveBoard.rePaint.doClick();
 		num1.repaint();
 		num2.repaint();

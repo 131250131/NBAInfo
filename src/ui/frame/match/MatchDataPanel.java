@@ -63,6 +63,7 @@ public class MatchDataPanel extends JPanel{
 	/*更新比赛信息*/
 	public void update(MatchVO matchData){
 		this.matchData = matchData;
+		
 		thismatch.update(matchData);
 	}
 	
@@ -71,6 +72,7 @@ public class MatchDataPanel extends JPanel{
 		String[] columname = {"姓名", "分钟", "%", "命中", "出手", "三分%"
 				, "三分命中", "三分出手", "罚球%", "罚球命中", "罚球出手", "+/-", "进攻"
 				, "防守", "篮板", "助攻", "犯规", "抢断", "失误", "盖帽", "得分"};
+		System.out.println(matchData.getLeftplayerlist().size());
 		//根据左右标志获取左右球队球员信息
 		if(team.equals("left")){
 			playerlist = matchData.getLeftplayerlist();

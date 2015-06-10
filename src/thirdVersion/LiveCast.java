@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import ui.frame.match.DataOfMatchPanel;
 import vo.MatchVO;
 import vo.PlayerVO;
 import vo.TeamVO;
@@ -78,8 +79,8 @@ public class LiveCast  {
 		 *得到网页json内容 
 		 */
 		    try{
-		    String ptjson=getjson("http://china.nba.com/wap/static/data/game/snapshot_0041400402.json");
-			String json=getjson("http://china.nba.com/wap/static/data/game/playbyplay_0041400402_"+n+".json");	
+		    String ptjson=getjson("http://china.nba.com/wap/static/data/game/snapshot_0041400403.json");
+			String json=getjson("http://china.nba.com/wap/static/data/game/playbyplay_0041400403_"+n+".json");	
 			
 			if(n.equals("1")){
 			boolean check=false;
@@ -100,7 +101,9 @@ public class LiveCast  {
 			yuju=new ArrayList<String>();
 			for (int i=0;i<jary1.size();i++) {
 		         JSONObject obj1 = jary1.getJSONObject(i);
+		         if(i==0){
 		         matchvo.setScores1(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+		         }
 		         yuju.add("第一节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 		         if(obj1.getString("description").equals("本节比赛结束")){
 		        	 clicked=false;
@@ -128,6 +131,7 @@ public class LiveCast  {
 				secondmatchinfo.setAttendence(jsonObj3.getString("attendance"));
 				secondmatchinfo.setTscores(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
 				matchvo.setScore(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
+				
 				//System.out.println(secondmatchinfo.getTscores());
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
@@ -135,7 +139,10 @@ public class LiveCast  {
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         if(i==0){
 			         matchvo.setScores2(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         }
+			         System.out.println(matchvo.getScores1());
 			         yuju.add("第二节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -175,7 +182,9 @@ public class LiveCast  {
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         if(i==0){
 			         matchvo.setScores3(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         }
 			         yuju.add("第三节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -216,7 +225,9 @@ public class LiveCast  {
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         if(i==0){
 			         matchvo.setScores4(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         }
 			         yuju.add("第四节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));			         
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -254,7 +265,9 @@ public class LiveCast  {
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         if(i==0){
 			         matchvo.setExtrascores(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         }
 			         yuju.add("加时一"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -293,7 +306,9 @@ public class LiveCast  {
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         if(i==0){
 			         matchvo.addExtraScore(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         }
 			         yuju.add("加时二"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -332,7 +347,9 @@ public class LiveCast  {
 				yuju=new ArrayList<String>();
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
+			         if(i==0){
 			         matchvo.addExtraScore(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         }
 			         yuju.add("加时三"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -392,33 +409,34 @@ public class LiveCast  {
 			homeTeam.setQ3Score(ptjsonObj4.getDouble("q3Score"));
 			homeTeam.setQ4Score(ptjsonObj4.getDouble("q4Score"));
 			
-			leftteam.setTeamName(ptjsonObj3.getString("city")+ptjsonObj3.getString("displayAbbr"));
-			if(leftteam.getTeamName().equals("金州勇士")){
-				leftteam.setShortName("GSW");
+			rightteam.setTeamName(ptjsonObj3.getString("city")+ptjsonObj3.getString("displayAbbr"));
+			if(rightteam.getTeamName().equals("金州勇士")){
+				rightteam.setShortName("GSW");
 			}
 			else{
-				leftteam.setShortName("CLE");
+				rightteam.setShortName("CLE");
 			}
-			leftteam.setTeamAssists((int)ptjsonObj4.getDouble("assists"));
-			leftteam.setTeamBlocks((int)ptjsonObj4.getDouble("blocks"));
-			leftteam.setTeamDeffenceRebounds((int)ptjsonObj4.getDouble("defRebs"));
-			leftteam.setTeamOffenceRebounds((int)ptjsonObj4.getDouble("offRebs"));
-			leftteam.setTeamTotalRebounds((int)ptjsonObj4.getDouble("rebs"));
-			leftteam.setTeamFGTry((int)ptjsonObj4.getDouble("fga"));
-			leftteam.setTeamFG((int)ptjsonObj4.getDouble("fgm"));
-			leftteam.setTeamFGP(ptjsonObj4.getDouble("fgpct"));
-			leftteam.setTeam3FGTry((int)ptjsonObj4.getDouble("tpa"));
-			leftteam.setTeam3FG((int)ptjsonObj4.getDouble("tpm"));
-			leftteam.setTeam3FGP(ptjsonObj4.getDouble("tppct"));
-			leftteam.setTeamFTGTry((int)ptjsonObj4.getDouble("fta"));
-			leftteam.setTeamFTG((int)ptjsonObj4.getDouble("ftm"));
-			leftteam.setTeamFTGP(ptjsonObj4.getDouble("ftpct"));
-			leftteam.setTeamTurnovers((int)ptjsonObj4.getDouble("turnovers"));
-			leftteam.setTeamSteals((int)ptjsonObj4.getDouble("steals"));
-			leftteam.setTeamScores((int)ptjsonObj4.getDouble("score"));
-			leftteam.setTeamFouls((int)ptjsonObj4.getDouble("fouls"));
-			//leftteam.setIsplayoff(1);
-			matchvo.setLeftTeam(leftteam);
+			rightteam.setTeamAssists((int)ptjsonObj4.getDouble("assists"));
+			rightteam.setTeamBlocks((int)ptjsonObj4.getDouble("blocks"));
+			rightteam.setTeamDeffenceRebounds((int)ptjsonObj4.getDouble("defRebs"));
+			rightteam.setTeamOffenceRebounds((int)ptjsonObj4.getDouble("offRebs"));
+			rightteam.setTeamTotalRebounds((int)ptjsonObj4.getDouble("rebs"));
+			rightteam.setTeamFGTry((int)ptjsonObj4.getDouble("fga"));
+			rightteam.setTeamFG((int)ptjsonObj4.getDouble("fgm"));
+			rightteam.setTeamFGP(ptjsonObj4.getDouble("fgpct"));
+			rightteam.setTeam3FGTry((int)ptjsonObj4.getDouble("tpa"));
+			rightteam.setTeam3FG((int)ptjsonObj4.getDouble("tpm"));
+			rightteam.setTeam3FGP(ptjsonObj4.getDouble("tppct"));
+			rightteam.setTeamFTGTry((int)ptjsonObj4.getDouble("fta"));
+			rightteam.setTeamFTG((int)ptjsonObj4.getDouble("ftm"));
+			rightteam.setTeamFTGP(ptjsonObj4.getDouble("ftpct"));
+			rightteam.setTeamTurnovers((int)ptjsonObj4.getDouble("turnovers"));
+			rightteam.setTeamSteals((int)ptjsonObj4.getDouble("steals"));
+			rightteam.setTeamScores((int)ptjsonObj4.getDouble("score"));
+			rightteam.setTeamFouls((int)ptjsonObj4.getDouble("fouls"));
+			
+			//rightteam.setIsplayoff(1);
+			matchvo.setRightTeam(rightteam);
 			
 			
 			
@@ -443,6 +461,7 @@ public class LiveCast  {
 				p.setStarter(pjsonObj2.getString("isStarter"));
 				p.setOnCourt(pjsonObj2.getString("onCourt"));
 				p.setPlusminus(pjsonObj2.getInt("plusMinus"));
+				
 				p.setAssists(pjsonObj3.getDouble("assists"));
 				p.setBlocks(pjsonObj3.getDouble("blocks"));
 				p.setDefRebs(pjsonObj3.getDouble("defRebs"));
@@ -489,8 +508,11 @@ public class LiveCast  {
 				pm.setPlayerFTGP(pjsonObj3.getDouble("ftpct"));
 				pm.setPlayerTurnovers((int)pjsonObj3.getDouble("turnovers"));
 				pm.setPlayerSteals((int)pjsonObj3.getDouble("steals"));
-			    pm.setPlayerPlayTime((int)pjsonObj3.getDouble("mins"));
+			    pm.setPlayerPlayTime((int)pjsonObj3.getDouble("mins")*60);
 			    pm.setPlayerScores((int)pjsonObj3.getDouble("points"));
+			    pm.setPlayerFouls((int)pjsonObj3.getDouble("fouls"));
+			    pm.setPlayerPER(p.getPlusminus());
+			   // System.out.println(pm.getPlayerPER());
 			    rightplayersvo.add(pm);
 			    players.add(p);
 			
@@ -545,40 +567,41 @@ public class LiveCast  {
 			awayTeam.setQ4Score(aptjsonObj4.getDouble("q4Score"));
 			awayTeam.setFouls(aptjsonObj4.getDouble("fouls"));
 			
-			rightteam.setTeamName(aptjsonObj3.getString("city")+aptjsonObj3.getString("displayAbbr"));
-			if(rightteam.getTeamName().equals("金州勇士")){
-				rightteam.setShortName("GSW");
+			
+			leftteam.setTeamName(aptjsonObj3.getString("city")+aptjsonObj3.getString("displayAbbr"));
+			if(leftteam.getTeamName().equals("金州勇士")){
+				leftteam.setShortName("GSW");
 			}
 			else{
-				rightteam.setShortName("CLE");
+				leftteam.setShortName("CLE");
 			}
-			rightteam.setTeamAssists((int)aptjsonObj4.getDouble("assists"));
-			rightteam.setTeamBlocks((int)aptjsonObj4.getDouble("blocks"));
-			rightteam.setTeamDeffenceRebounds((int)aptjsonObj4.getDouble("defRebs"));
-			rightteam.setTeamOffenceRebounds((int)aptjsonObj4.getDouble("offRebs"));
-			rightteam.setTeamTotalRebounds((int)aptjsonObj4.getDouble("rebs"));
-			rightteam.setTeamFGTry((int)aptjsonObj4.getDouble("fga"));
-			rightteam.setTeamFG((int)aptjsonObj4.getDouble("fgm"));
-			rightteam.setTeamFGP(aptjsonObj4.getDouble("fgpct"));
-			rightteam.setTeam3FGTry((int)aptjsonObj4.getDouble("tpa"));
-			rightteam.setTeam3FG((int)aptjsonObj4.getDouble("tpm"));
-			rightteam.setTeam3FGP(aptjsonObj4.getDouble("tppct"));
-			rightteam.setTeamFTGTry((int)aptjsonObj4.getDouble("fta"));
-			rightteam.setTeamFTG((int)aptjsonObj4.getDouble("ftm"));
-			rightteam.setTeamFTGP(aptjsonObj4.getDouble("ftpct"));
-			rightteam.setTeamTurnovers((int)aptjsonObj4.getDouble("turnovers"));
-			rightteam.setTeamSteals((int)aptjsonObj4.getDouble("steals"));
-			rightteam.setTeamScores((int)aptjsonObj4.getDouble("score"));
-			rightteam.setTeamFouls((int)aptjsonObj4.getDouble("fouls"));
-			//rightteam.setIsplayoff(1);
-			matchvo.setRightTeam(rightteam);
+			leftteam.setTeamAssists((int)aptjsonObj4.getDouble("assists"));
+			leftteam.setTeamBlocks((int)aptjsonObj4.getDouble("blocks"));
+			leftteam.setTeamDeffenceRebounds((int)aptjsonObj4.getDouble("defRebs"));
+			leftteam.setTeamOffenceRebounds((int)aptjsonObj4.getDouble("offRebs"));
+			leftteam.setTeamTotalRebounds((int)aptjsonObj4.getDouble("rebs"));
+			leftteam.setTeamFGTry((int)aptjsonObj4.getDouble("fga"));
+			leftteam.setTeamFG((int)aptjsonObj4.getDouble("fgm"));
+			leftteam.setTeamFGP(aptjsonObj4.getDouble("fgpct"));
+			leftteam.setTeam3FGTry((int)aptjsonObj4.getDouble("tpa"));
+			leftteam.setTeam3FG((int)aptjsonObj4.getDouble("tpm"));
+			leftteam.setTeam3FGP(aptjsonObj4.getDouble("tppct"));
+			leftteam.setTeamFTGTry((int)aptjsonObj4.getDouble("fta"));
+			leftteam.setTeamFTG((int)aptjsonObj4.getDouble("ftm"));
+			leftteam.setTeamFTGP(aptjsonObj4.getDouble("ftpct"));
+			leftteam.setTeamTurnovers((int)aptjsonObj4.getDouble("turnovers"));
+			leftteam.setTeamSteals((int)aptjsonObj4.getDouble("steals"));
+			leftteam.setTeamScores((int)aptjsonObj4.getDouble("score"));
+			leftteam.setTeamFouls((int)aptjsonObj4.getDouble("fouls"));
+			//leftteam.setIsplayoff(1);
+			matchvo.setLeftTeam(leftteam);
 			
 			
 			
 			
 			
 			//System.out.println(awayTeam.getName()+" "+awayTeam.getScore()+" "+awayTeam.getSfgp());
-			rightplayersvo =new ArrayList<PlayerVO>();
+			leftplayersvo =new ArrayList<PlayerVO>();
 			players=new ArrayList<Playerlivedata>();
 			for (int i=0;i<awayteamjary.size();i++) {
 				JSONObject obj1 = awayteamjary.getJSONObject(i);
@@ -613,6 +636,7 @@ public class LiveCast  {
 			    p.setTime(pjsonObj3.getDouble("mins"));
 			    p.setPoints(pjsonObj3.getDouble("points"));
 			    
+			    pm.setPlayerName(pjsonObj1.getString("displayNameEn"));
 			    pm.setPlayerAssists((int)pjsonObj3.getDouble("assists"));
 				pm.setPlayerBlocks((int)pjsonObj3.getDouble("blocks"));
 				pm.setPlayerDeffenceRebounds((int)pjsonObj3.getDouble("defRebs"));
@@ -629,8 +653,11 @@ public class LiveCast  {
 				pm.setPlayerFTGP(pjsonObj3.getDouble("ftpct"));
 				pm.setPlayerTurnovers((int)pjsonObj3.getDouble("turnovers"));
 				pm.setPlayerSteals((int)pjsonObj3.getDouble("steals"));
-			    pm.setPlayerPlayTime((int)pjsonObj3.getDouble("mins"));
+			    pm.setPlayerPlayTime((int)pjsonObj3.getDouble("mins")*60);
+			    //System.out.println(pm.getPlayerPlayTime());
 			    pm.setPlayerScores((int)pjsonObj3.getDouble("points"));
+			    pm.setPlayerPER(pjsonObj2.getInt("plusMinus"));
+			    pm.setPlayerFouls((int)pjsonObj3.getDouble("fouls"));
 			    leftplayersvo.add(pm);
 			    players.add(p);
 			
