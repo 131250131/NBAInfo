@@ -117,7 +117,7 @@ public class LiveCast  {
 			     firstmatchinfo.setYuju(yuju);
 			    //System.out.println(firstmatchinfo.getDescriptions().size()+" "+firstmatchinfo.getGameclocks().size()+" "+firstmatchinfo.getScores().size());
 			     
-			
+			     System.out.println(matchvo.getScores1());
 			}
 			if(n.equals("2")){
 				boolean check=false;
@@ -131,7 +131,6 @@ public class LiveCast  {
 				secondmatchinfo.setAttendence(jsonObj3.getString("attendance"));
 				secondmatchinfo.setTscores(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
 				matchvo.setScore(jsonObj3.getString("awayScore")+"-"+jsonObj3.getString("homeScore"));
-				
 				//System.out.println(secondmatchinfo.getTscores());
 				JSONArray jary=jsonObj1.getJSONArray("playByPlays");
 				JSONObject obj = jary.getJSONObject(0);
@@ -140,9 +139,16 @@ public class LiveCast  {
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         if(i==0){
-			         matchvo.setScores2(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			         String[] bifen=matchvo.getScores1().split("-");
+			         int s1l=Integer.parseInt(bifen[0]);
+			         int s1r=Integer.parseInt(bifen[1]);
+			         int lt=Integer.parseInt(obj1.getString("awayScore"));
+			         int rt=Integer.parseInt(obj1.getString("homeScore"));
+			         int s2l=lt-s1l;
+			         int s2r=rt-s1r;
+			         matchvo.setScores2(String.valueOf(s2l)+"-"+String.valueOf(s2r));
 			         }
-			         System.out.println(matchvo.getScores1());
+			         //System.out.println(matchvo.getScores1());
 			         yuju.add("第二节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
 			        	 clicked=false;
@@ -162,6 +168,7 @@ public class LiveCast  {
 //					JSONObject o = JSONObject.fromObject(obj);
 //					System.out.println(o.get("context"));
 //				}
+				    System.out.println(matchvo.getScores2());
 				}
 			if(n.equals("3")){
 				boolean check=false;
@@ -183,7 +190,17 @@ public class LiveCast  {
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         if(i==0){
-			         matchvo.setScores3(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			             String[] bifen=matchvo.getScores1().split("-");
+			             String[] bifen2=matchvo.getScores2().split("-");
+				         int lt=Integer.parseInt(obj1.getString("awayScore"));
+				         int rt=Integer.parseInt(obj1.getString("homeScore"));
+				         int s1l=Integer.parseInt(bifen[0]);
+				         int s1r=Integer.parseInt(bifen[1]);
+				         int s2l=Integer.parseInt(bifen2[0]);
+				         int s2r=Integer.parseInt(bifen2[1]);
+				         int s3l=lt-s1l-s2l;
+				         int s3r=rt-s1r-s2r;
+				         matchvo.setScores3(String.valueOf(s3l)+"-"+String.valueOf(s3r));
 			         }
 			         yuju.add("第三节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
@@ -205,6 +222,7 @@ public class LiveCast  {
 //					JSONObject o = JSONObject.fromObject(obj);
 //					System.out.println(o.get("context"));
 //				}
+				    System.out.println(matchvo.getScores3());
 				}
 			if(n.equals("4")){
 				boolean check=false;
@@ -226,7 +244,20 @@ public class LiveCast  {
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         if(i==0){
-			         matchvo.setScores4(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			        	 String[] bifen=matchvo.getScores1().split("-");
+			             String[] bifen2=matchvo.getScores2().split("-");
+			             String[] bifen3=matchvo.getScores3().split("-");
+				         int lt=Integer.parseInt(obj1.getString("awayScore"));
+				         int rt=Integer.parseInt(obj1.getString("homeScore"));
+				         int s1l=Integer.parseInt(bifen[0]);
+				         int s1r=Integer.parseInt(bifen[1]);
+				         int s2l=Integer.parseInt(bifen2[0]);
+				         int s2r=Integer.parseInt(bifen2[1]);
+				         int s3l=Integer.parseInt(bifen3[0]);
+				         int s3r=Integer.parseInt(bifen3[1]);
+				         int s4l=lt-s1l-s2l-s3l;
+				         int s4r=rt-s1r-s2r-s3r;
+				         matchvo.setScores4(String.valueOf(s4l)+"-"+String.valueOf(s4r));
 			         }
 			         yuju.add("第四节"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));			         
 			         if(obj1.getString("description").equals("本节比赛结束")){
@@ -245,6 +276,7 @@ public class LiveCast  {
 //					JSONObject o = JSONObject.fromObject(obj);
 //					System.out.println(o.get("context"));
 //				}
+				    System.out.println(matchvo.getScores4());
 				}
 			if(n.equals("5")){
 				boolean check=false;
@@ -266,7 +298,23 @@ public class LiveCast  {
 				for (int i=0;i<jary1.size();i++) {
 			         JSONObject obj1 = jary1.getJSONObject(i);
 			         if(i==0){
-			         matchvo.setExtrascores(obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
+			        	 String[] bifen=matchvo.getScores1().split("-");
+			             String[] bifen2=matchvo.getScores2().split("-");
+			             String[] bifen3=matchvo.getScores3().split("-");
+			             String[] bifen4=matchvo.getScores4().split("-");
+				         int lt=Integer.parseInt(obj1.getString("awayScore"));
+				         int rt=Integer.parseInt(obj1.getString("homeScore"));
+				         int s1l=Integer.parseInt(bifen[0]);
+				         int s1r=Integer.parseInt(bifen[1]);
+				         int s2l=Integer.parseInt(bifen2[0]);
+				         int s2r=Integer.parseInt(bifen2[1]);
+				         int s3l=Integer.parseInt(bifen3[0]);
+				         int s3r=Integer.parseInt(bifen3[1]);
+				         int s4l=Integer.parseInt(bifen4[0]);
+				         int s4r=Integer.parseInt(bifen4[1]);
+				         int exl=lt-s1l-s2l-s3l-s4l;
+				         int exr=rt-s1r-s2r-s3r-s4r;
+				         matchvo.setScores4(String.valueOf(exl)+"-"+String.valueOf(exr));
 			         }
 			         yuju.add("加时一"+"  "+obj1.getString("gameClock")+" "+obj1.getString("description")+" "+obj1.getString("awayScore")+"-"+obj1.getString("homeScore"));
 			         if(obj1.getString("description").equals("本节比赛结束")){
@@ -286,6 +334,7 @@ public class LiveCast  {
 //					JSONObject o = JSONObject.fromObject(obj);
 //					System.out.println(o.get("context"));
 //				}
+				    System.out.println(matchvo.getExtrascores());
 				}
 			if(n.equals("6")){
 				boolean check=false;
@@ -757,12 +806,17 @@ public class LiveCast  {
 		liveThread p2=new liveThread("2");
 		liveThread p3=new liveThread("3");
 		liveThread p4=new liveThread("4");
+		//liveThread p5=new liveThread("5");
 		Thread t1=new Thread(p1);
 		Thread t2=new Thread(p2);
 		Thread t3=new Thread(p3);
 		Thread t4=new Thread(p4);
+		//Thread t5=new Thread(p5);
 		pool.execute(t1);
 		pool.execute(t2);
+		pool.execute(t3);
+		pool.execute(t4);
+		pool.execute(t5);
 		pool.shutdown();
 		//t1.start();
 		//t2.start();
