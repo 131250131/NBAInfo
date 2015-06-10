@@ -949,7 +949,9 @@ public class TeamControllerThird implements teamControllerThirdService{
 			String sql =  new String();
 			for(String teamName : teams){
 				teamName = teamName+"队";
-				sql = "SELECT "+datatype+" FROM teamseasondata t WHERE season="+"'"+season+"' and teanChineseName="+"'"+teamName+"'"+";";
+				System.out.println(teamName + " " + season );
+				
+				sql = "SELECT "+datatype+" FROM teamseasondata t WHERE season="+"'"+season+"' and teamChineseName="+"'"+teamName+"'"+";";
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				ResultSet rs=pstmt.executeQuery();
 				while(rs.next()){

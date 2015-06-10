@@ -202,7 +202,7 @@ public class AnalysisOfPlayers extends JPanel {
         ListSelectionModel cellSelectionModel = table.getJTable().getSelectionModel();  
         cellSelectionModel.addListSelectionListener(new ListSelectionListener(){  
             public void valueChanged(ListSelectionEvent e) {//单元格值变动事件  
-            	String s = table.getSign(2);
+            	String s = controllerForPlayer.getEnglishName(table.getSign(1));
             	dataOfPlayer.update(s);
             }  
         });  
@@ -299,7 +299,9 @@ public class AnalysisOfPlayers extends JPanel {
 					//调用逻辑层更新饼图
 					String playerID= dataOfPlayer.getID();
 					DataType type = translate(dataType);
+					System.out.println(playerID+"-"+season+"-"+type);
 					double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
+					System.out.println(pieData[0]+"-"+pieData[1]);
 					pie.update(dataType, pieData[0], pieData[1]);
 				}
 				
@@ -328,7 +330,9 @@ public class AnalysisOfPlayers extends JPanel {
  					//调用逻辑层更新饼图
  					String playerID= dataOfPlayer.getID();
 					DataType type = translate(dataType);
+					System.out.println(playerID+"-"+season+"-"+type);
 					double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
+					System.out.println(pieData[0]+"-"+pieData[1]);
 					pie.update(dataType, pieData[0], pieData[1]);
  				}
  				

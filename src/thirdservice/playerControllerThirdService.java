@@ -18,6 +18,7 @@ public interface playerControllerThirdService {
     public ArrayList<PlayerdatainfoVO> getSeasonKingPlayers(String Season,DataType type,boolean ipl);
     public ArrayList<PlayerdatainfoVO> getplayerbyteam(String tname,String Season);
     public double[] getdataforpiechart(String pid,String seasons,DataType dtp);
+    public String getEnglishName(String id);
     
     
 }
