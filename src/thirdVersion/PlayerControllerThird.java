@@ -352,6 +352,17 @@ public class PlayerControllerThird implements playerControllerThirdService{
 		return p;
 		
 	}
+    
+    public String getEnglishName(String id){
+    	String name = new String();
+		for(PlayerBasicInfoVO vo : inidata){
+			   if(vo.getPlayerID().equals(id)){
+				   name  = vo.getEnglishName();
+			   }
+		}
+    	return name;
+    }
+    
     /*
      * 根据DataType和赛季得到热点球员,ipl代表是不是季后赛
      */

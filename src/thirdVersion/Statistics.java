@@ -46,7 +46,7 @@ public class Statistics {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn =DriverManager.getConnection("jdbc:mysql://localhost/nbadata?characterEncoding=utf-8", "root", "");
 			String sql =  new String();
-				sql = "";
+				sql = "SELECT "+"'"+datatype+"' FROM seasondatateam WHERE ";
 				PreparedStatement pstmt=conn.prepareStatement(sql);
 				ResultSet rs=pstmt.executeQuery();
 				while(rs.next()){
