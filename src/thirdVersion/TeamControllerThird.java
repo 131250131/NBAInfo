@@ -947,6 +947,13 @@ public class TeamControllerThird implements teamControllerThirdService{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn =DriverManager.getConnection("jdbc:mysql://localhost/nbadata?characterEncoding=utf-8", "root", "");
 			String sql =  new String();
+			char start = season.charAt(0);
+			if(start=='8'||start=='9'){
+				season = "19"+season.substring(0,3)+"19"+season.substring(3);
+			}else{
+				season = "20"+season.substring(0,3)+"20"+season.substring(3);
+			}
+			System.out.println("经过修改的season为:"+season);
 			for(String teamName : teams){
 				teamName = teamName+"队";
 				System.out.println(teamName + " " + season );
