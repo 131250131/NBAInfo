@@ -78,6 +78,20 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	
 	}
 	/*
+	 * 根据球员id得到球员基本信息
+	 */
+	public PlayerBasicInfoVO getbasicinfo(String pid){
+		   PlayerBasicInfoVO result=new PlayerBasicInfoVO();
+		   for(PlayerBasicInfoVO p:inidata){
+			   if(p.getPlayerID().equals(pid)){
+				   return p;
+			   }
+		   }
+		   return result;
+	}
+	
+	
+	/*
 	 * 常规赛特定数据
 	 */
     public ArrayList<PSpecificdata>  getnormalplayerdata(String pid,DataType t){
