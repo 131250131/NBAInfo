@@ -784,9 +784,146 @@ public class PlayerControllerThird implements playerControllerThirdService{
     }
     
     /*
-     * 
+     *  柱状图要调用的方法,一共八项数据，按顺序来    投篮命中率，三分命中率，罚球命中率，场均篮板，场均助攻，场均抢断，场均盖帽，场均得分
+     *  前八个为第一个赛季，后八个为最后一个赛季
+     *  如果只有一个赛季，则只返回一个8的arraylist 你可以只展示那八个 或者跳个对话框显示该球员只打了一个赛季，数据不足 无法展示
+     *  这样还可以显示我们对脏数据进行了处理
+     *  学长，注意-1和-100的处理
      */
-    
+    public ArrayList<Double> getdatabybarchart(String pid){
+    	ArrayList<Double> result=new ArrayList<Double>();
+    	ArrayList<PlayerdatainfoVO> presult=new ArrayList<PlayerdatainfoVO>();
+    	ArrayList<PlayerdatainfoVO> pfirst=new ArrayList<PlayerdatainfoVO>();
+    	ArrayList<PlayerdatainfoVO> plast=new ArrayList<PlayerdatainfoVO>();
+    	sql="SELECT * FROM playerdatainfo where id='"+pid+"'";
+    	try{
+    	Class.forName("com.mysql.jdbc.Driver");
+		Connection conn =DriverManager.getConnection(url, user, password);
+		PreparedStatement pstmt=conn.prepareStatement(sql);
+		ResultSet rs=pstmt.executeQuery();
+		while(rs.next()){
+			PlayerdatainfoVO p=new PlayerdatainfoVO();
+			p.setSeason(rs.getString("season"));
+			p.setTeamname(rs.getString("teamname"));
+			p.setFGP(rs.getDouble("FGP"));
+			p.setSFGP(rs.getDouble("SFGP"));
+			p.setFTGP(rs.getDouble("FTGP"));
+			p.setARebounds(rs.getDouble("ARebounds"));
+			p.setAAssists(rs.getDouble("AAssists"));
+			p.setASteals(rs.getDouble("ASteals"));
+			p.setABlocks(rs.getDouble("ABlocks"));
+			p.setAScores(rs.getDouble("AScores"));
+			presult.add(p);
+		}
+		String firstseason=presult.get(0).getSeason();
+		String lastseason=presult.get(presult.size()-1).getSeason();
+		for(PlayerdatainfoVO p:presult){
+			if(p.getSeason().equals(firstseason)){
+				pfirst.add(p);
+			}
+			if(p.getSeason().equals(lastseason)){
+				plast.add(p);
+			}
+		}
+		
+		/*
+		 * 只打过一个赛季
+		 */
+//		System.out.println(firstseason);
+//		System.out.println(lastseason);
+		if(firstseason.equals(lastseason)){
+			
+		   if(pfirst.size()==1){
+			   PlayerdatainfoVO p=pfirst.get(0);
+			   result.add(p.getFGP());
+			   result.add(p.getSFGP());
+			   result.add(p.getFTGP());
+			   result.add(p.getARebounds());
+			   result.add(p.getAAssists());
+			   result.add(p.getASteals());
+			   result.add(p.getABlocks());
+			   result.add(p.getAScores());
+		   }
+		   else{
+			   for(PlayerdatainfoVO p:pfirst){
+				   if(p.getTeamname().equals("总计")){
+					   result.add(p.getFGP());
+					   result.add(p.getSFGP());
+					   result.add(p.getFTGP());
+					   result.add(p.getARebounds());
+					   result.add(p.getAAssists());
+					   result.add(p.getASteals());
+					   result.add(p.getABlocks());
+					   result.add(p.getAScores());
+					   break;
+				   }
+			   }
+		   }
+		}
+		else{
+			if(pfirst.size()==1){
+				
+				   PlayerdatainfoVO p=pfirst.get(0);
+				   result.add(p.getFGP());
+				   result.add(p.getSFGP());
+				   result.add(p.getFTGP());
+				   result.add(p.getARebounds());
+				   result.add(p.getAAssists());
+				   result.add(p.getASteals());
+				   result.add(p.getABlocks());
+				   result.add(p.getAScores());
+			   }
+			else{
+				for(PlayerdatainfoVO p:pfirst){
+					
+					   if(p.getTeamname().equals("总计")){
+						  
+						   result.add(p.getFGP());
+						   result.add(p.getSFGP());
+						   result.add(p.getFTGP());
+						   result.add(p.getARebounds());
+						   result.add(p.getAAssists());
+						   result.add(p.getASteals());
+						   result.add(p.getABlocks());
+						   result.add(p.getAScores());
+						   break;
+					   }
+				   }
+			}
+			if(plast.size()==1){
+				   PlayerdatainfoVO p=pfirst.get(0);
+				   
+				   result.add(p.getFGP());
+				   result.add(p.getSFGP());
+				   result.add(p.getFTGP());
+				   result.add(p.getARebounds());
+				   result.add(p.getAAssists());
+				   result.add(p.getASteals());
+				   result.add(p.getABlocks());
+				   result.add(p.getAScores());
+			   }
+			else{
+				for(PlayerdatainfoVO p:plast){
+					   if(p.getTeamname().equals("总计")){
+						   result.add(p.getFGP());
+						   result.add(p.getSFGP());
+						   result.add(p.getFTGP());
+						   result.add(p.getARebounds());
+						   result.add(p.getAAssists());
+						   result.add(p.getASteals());
+						   result.add(p.getABlocks());
+						   result.add(p.getAScores());
+						   break;
+					   }
+				   }
+			}
+			
+		}
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	return result;
+    }
     
     
     
@@ -795,17 +932,19 @@ public class PlayerControllerThird implements playerControllerThirdService{
      */
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();   
+    	   ArrayList<Double> result=p.getdatabybarchart("1001");
+    	   System.out.println(result.size());
 //    	   ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
 //    	   for(PlayerdatainfoVO l:pr){
 //    		   System.out.println(l.getName());
 //    	   }
-    	   ArrayList<PlayerdatainfoVO> pr=new ArrayList<PlayerdatainfoVO>();
-    	   pr=p.getSeasonHotPlayers("06-07", DataType.HRebounds,false);
-    	   int i=0;
-    	   for(PlayerdatainfoVO l:pr){
-    		   i++;
-   		   System.out.println(i+" "+l.getName()+" "+l.getHRebounds());
-    	   }
+//    	   ArrayList<PlayerdatainfoVO> pr=new ArrayList<PlayerdatainfoVO>();
+//    	   pr=p.getSeasonHotPlayers("06-07", DataType.HRebounds,false);
+//    	   int i=0;
+//    	   for(PlayerdatainfoVO l:pr){
+//    		   i++;
+//   		   System.out.println(i+" "+l.getName()+" "+l.getHRebounds());
+//    	   }
     	  // System.out.println(p.VOinitial().size());
 //    	   for(PlayerBasicInfoVO pb:p.VOinitial()){
 //    		   System.out.println(pb.getFGP());
