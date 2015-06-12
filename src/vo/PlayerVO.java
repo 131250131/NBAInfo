@@ -11,7 +11,7 @@ import logic.PlayerController;
 import logic.TeamController;
 
 public class PlayerVO implements Comparable<PlayerVO>{
-		
+		private boolean isfirst=false;
 		private double advancedP=0;
 		public String comparetype="";
 		private int double_double=0;
@@ -1570,6 +1570,12 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		}
 		public void setMatchnumbers(int matchnumbers) {
 			this.matchnumbers = matchnumbers;
+		}
+		public boolean isIsfirst() {
+			return isfirst;
+		}
+		public void setIsfirst(boolean isfirst) {
+			this.isfirst = isfirst;
 		}
 }
 

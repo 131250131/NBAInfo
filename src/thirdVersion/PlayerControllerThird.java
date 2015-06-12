@@ -358,6 +358,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
  */
     public PlayerBasicInfoVO getPlayerbyname(String name){
     	PlayerBasicInfoVO p=new PlayerBasicInfoVO();
+    
 		for(PlayerBasicInfoVO vo : inidata){
 		   if(vo.getEnglishName().equals(name)){
 			   return vo;
@@ -957,11 +958,12 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	PlayerVO result=new PlayerVO();
     	PlayerBasicInfoVO pbv=new PlayerBasicInfoVO();
     	for(PlayerBasicInfoVO pb:inidata){
-    		if(pbv.getPlayerID().equals(p.getId())){
+    		if(pb.getPlayerID().equals(p.getId())){
     			pbv=pb;
     			break;
     		}
     	}
+    	if(pbv!=null){
     	result.setPlayerName(pbv.getEnglishName());
     	result.setPosition(pbv.getPlayerPosition());
     	result.setHeight(pbv.getPlayerHeight());
@@ -1022,10 +1024,53 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	result.setPlayerSER(p.getS_RR());
     	result.setMatchnumbers((int)p.getAttendmatches());
     	result.setSalary(p.getSalary());
+    	}
     	//gmsc效率没有
     	return result;
     }
-    
+    public PlayerVO matchdatatovo(PlayerMatchDataVO p){
+    	PlayerVO result=new PlayerVO();
+    	PlayerBasicInfoVO pbv=new PlayerBasicInfoVO();
+    	for(PlayerBasicInfoVO pb:inidata){
+    		if(pb.getPlayerID().equals(p.getPlayerID())){
+    			pbv=pb;
+    			break;
+    		}
+    	}
+    	if(pbv!=null){
+    	result.setPlayerName(pbv.getEnglishName());
+    	result.setPosition(pbv.getPlayerPosition());
+    	result.setHeight(pbv.getPlayerHeight());
+    	result.setWeight(pbv.getPlayerWeight());
+    	result.setPlayerBirth(pbv.getPlayerBirthDay());
+    	result.setPlayerAge(0);//年龄没有,进入联盟时间也没有
+    	result.setPlayerID(pbv.getPlayerID());
+    	result.setSchool(pbv.getPlayerUniversity());
+    	result.setHighSchool(pbv.getPlayerHighSchool());//多出来的
+    	result.setPlayerAssists((int)p.getAssists());
+		result.setPlayerBlocks((int)p.getBlocks());
+		result.setPlayerDeffenceRebounds((int)p.getDRebounds());
+		result.setPlayerOffenceRebounds((int)p.getORebounds());
+		result.setPlayerTotalRebounds((int)p.getRebounds());
+		result.setPlayerFGTry((int)p.getFG());
+		result.setPlayerFG((int)p.getFGZ());
+		result.setPlayerFGP(p.getFGP());
+		result.setPlayer3FGTry((int)p.getSFG());
+		result.setPlayer3FG((int)p.getSFGZ());
+		result.setPlayer3FGP(p.getSFGP());
+		result.setPlayerFTGTry((int)p.getFTG());
+		result.setPlayerFTG((int)p.getFTGZ());
+		result.setPlayerFTGP(p.getFTGP());
+		result.setPlayerTurnovers((int)p.getTurnovers());
+		result.setPlayerSteals((int)p.getSteals());
+	    result.setPlayerPlayTime((int)p.getTime()*60);
+	    result.setPlayerScores((int)p.getScores());
+	    result.setPlayerFouls((int)p.getFouls());
+	    result.setPlayerTSP(p.getRealShootRate());
+	    result.setIsfirst(p.isFirst);
+    	}
+	    return result;
+    }
     /*
      * 测试用的main方法
      */

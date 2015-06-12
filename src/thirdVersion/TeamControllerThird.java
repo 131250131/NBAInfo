@@ -1060,7 +1060,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 	
 	public TeamVO thirdVOTosecondVO_3(TeamMatchDataVO temp){
 		TeamVO result = new TeamVO();
-	
+	    result.setTeamName(temp.getTeamChinsesName());
 		result.setIspalyoff(temp.getIsplayoff());
 		result.setRealShootRate(temp.getRealShootRate());
 		result.setTeam3FG(temp.getThreeFGZ());
