@@ -380,8 +380,9 @@ public class PlayerControllerThird implements playerControllerThirdService{
     /*
      * 根据DataType和赛季得到热点球员,ipl代表是不是季后赛
      */
-    public ArrayList<PlayerdatainfoVO> getSeasonHotPlayers(String Season,DataType type,boolean ipl){
-    	ArrayList<PlayerdatainfoVO> result=new ArrayList<PlayerdatainfoVO>();
+    public ArrayList<PlayerVO> getSeasonHotPlayers(String Season,DataType type,boolean ipl){
+    	ArrayList<PlayerVO> result=new ArrayList<PlayerVO>();
+    	ArrayList<PlayerdatainfoVO> presult=new ArrayList<PlayerdatainfoVO>();
     	try{
      		sql="SELECT * FROM playerdatainfo WHERE season='"+Season+"'"+"AND isplayoff="+ipl+" ORDER BY "+type+" DESC" ;
         		Class.forName("com.mysql.jdbc.Driver");
@@ -392,7 +393,6 @@ public class PlayerControllerThird implements playerControllerThirdService{
         		while(rs.next()){
         			PlayerdatainfoVO p=new PlayerdatainfoVO();
         			if(count<=50){
-        			
         				p.id=rs.getString(1);//球员编号 
         			    p.season=rs.getString(2);//赛季
         			    p.teamname=rs.getString(3);//teamname为总计时，表示该球员一个赛季在两个球队打过
@@ -493,7 +493,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
         			    p.salary=rs.getString(98);//薪水，带单位，所以用String
         			    p.isplayoff=rs.getBoolean(99);//是否是季候赛，是季后赛表示为1，不是为0 
         			    p.name=rs.getString(100);
-        			    result.add(p);
+        			    presult.add(p);
         				count++;
         			}
         			else
@@ -502,13 +502,17 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	}catch(Exception e){
     		e.printStackTrace();
     	}
+    	for(PlayerdatainfoVO p:presult){
+    		result.add(datainfotovo(p));
+    	}
     	return result;
     }
     /*
      * 根据DataType和赛季得到热点球员,ipl代表是不是季后赛
      */
-    public ArrayList<PlayerdatainfoVO> getSeasonKingPlayers(String Season,DataType type,boolean ipl){
-    	ArrayList<PlayerdatainfoVO> result=new ArrayList<PlayerdatainfoVO>();
+    public ArrayList<PlayerVO> getSeasonKingPlayers(String Season,DataType type,boolean ipl){
+    	ArrayList<PlayerdatainfoVO> presult=new ArrayList<PlayerdatainfoVO>();
+    	ArrayList<PlayerVO> result=new ArrayList<PlayerVO>();
     	try{
      		sql="SELECT * FROM playerdatainfo WHERE season='"+Season+"'"+"AND isplayoff="+ipl+" ORDER BY "+type+" DESC" ;
         		Class.forName("com.mysql.jdbc.Driver");
@@ -620,7 +624,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
         			    p.salary=rs.getString(98);//薪水，带单位，所以用String
         			    p.isplayoff=rs.getBoolean(99);//是否是季候赛，是季后赛表示为1，不是为0 
         			    p.name=rs.getString(100);
-        			    result.add(p);
+        			    presult.add(p);
         				count++;
         			}
         			else
@@ -629,13 +633,17 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	}catch(Exception e){
     		e.printStackTrace();
     	}
+    	for(PlayerdatainfoVO p:presult){
+    		result.add(datainfotovo(p));
+    	}
     	return result;
     }
     /*
      * 根据球队和赛季得到球员
      */
-    public ArrayList<PlayerdatainfoVO> getplayerbyteam(String tname,String Season){
-    	ArrayList<PlayerdatainfoVO> result=new ArrayList<PlayerdatainfoVO>();
+    public ArrayList<PlayerVO> getplayerbyteam(String tname,String Season){
+    	ArrayList<PlayerdatainfoVO> presult=new ArrayList<PlayerdatainfoVO>();
+    	ArrayList<PlayerVO> result=new ArrayList<PlayerVO>();
     	ArrayList<String> pnames=new ArrayList<String>();
     	try{
      		sql="SELECT * FROM playerdatainfo WHERE season='"+Season+"'"+"AND teamname="+"'"+tname+"'" ;
@@ -745,11 +753,14 @@ public class PlayerControllerThird implements playerControllerThirdService{
     			    p.salary=rs.getString(98);//薪水，带单位，所以用String
     			    p.isplayoff=rs.getBoolean(99);//是否是季候赛，是季后赛表示为1，不是为0 
     			    p.name=rs.getString(100);
-    			    result.add(p);
+    			    presult.add(p);
     		
         		}
     	}catch(Exception e){
     		e.printStackTrace();
+    	}
+    	for(PlayerdatainfoVO p:presult){
+    		result.add(datainfotovo(p));
     	}
     	return result;
     }
@@ -939,7 +950,81 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	return result;
     }
     
-    
+    /*
+     * playerdatainfo 转成迭代二的playervo
+     */
+    public PlayerVO datainfotovo(PlayerdatainfoVO p){
+    	PlayerVO result=new PlayerVO();
+    	PlayerBasicInfoVO pbv=new PlayerBasicInfoVO();
+    	for(PlayerBasicInfoVO pb:inidata){
+    		if(pbv.getPlayerID().equals(p.getId())){
+    			pbv=pb;
+    			break;
+    		}
+    	}
+    	result.setPlayerName(pbv.getEnglishName());
+    	result.setPosition(pbv.getPlayerPosition());
+    	result.setHeight(pbv.getPlayerHeight());
+    	result.setWeight(pbv.getPlayerWeight());
+    	result.setPlayerBirth(pbv.getPlayerBirthDay());
+    	result.setPlayerAge(0);//年龄没有,进入联盟时间也没有
+    	result.setPlayerID(pbv.getPlayerID());
+    	result.setSchool(pbv.getPlayerUniversity());
+    	result.setHighSchool(pbv.getPlayerHighSchool());//多出来的
+    	result.setSeason(p.getSeason());//多出来的
+    	result.setAver_playerPlayTime(p.getAtime());
+    	result.setPlayerFGP(p.getFGP());
+    	result.setAver_playerFG(p.getAFGZ());
+    	result.setAver_playerFGTry(p.getAFG());
+    	result.setPlayer3FGP(p.getSFGP());
+    	result.setAver_player3FG(p.getASFGZ());
+    	result.setAver_player3FGTry(p.getASFG());
+    	result.setPlayerFTGP(p.getFTGP());
+    	result.setAver_playerFTG(p.getAFTGZ());
+    	result.setAver_playerFTGTry(p.getAFTGZ());
+    	result.setAver_playerTotalRebounds(p.getARebounds());
+    	result.setAver_playerOffenceRebounds(p.getAORebouns());
+    	result.setAver_playerDeffenceRebounds(p.getADRebounds());
+    	result.setAver_playerAssists(p.getAAssists());
+    	result.setAver_playerSteals(p.getASteals());
+    	result.setAver_playerBlocks(p.getABlocks());
+    	result.setAver_playerTurnovers(p.getATurnovers());
+    	result.setAver_playerFouls(p.getAFeals());
+    	result.setAver_playerScores(p.getAScores());
+    	result.setWingames(p.getWin());
+    	result.setLosegames(p.getLose());
+    	result.setPlayerPlayTime((int)p.getTtime());
+    	result.setPlayerFG((int)p.getTFGZ());
+    	result.setPlayerFGTry((int)p.getTFG());
+    	result.setPlayer3FG((int)p.getTSFGZ());
+    	result.setPlayer3FGTry((int)p.getTSFG());
+    	result.setPlayerFTG((int)p.getTFTGZ());
+    	result.setPlayer3FGTry((int)p.getTFTG());
+    	result.setPlayerTotalRebounds((int)p.getTRebounds());
+    	result.setPlayerOffenceRebounds((int)p.getTORebouns());
+    	result.setPlayerDeffenceRebounds((int)p.getTDRebounds());
+    	result.setPlayerAssists((int)p.getTAssists());
+    	result.setPlayerSteals((int)p.getTSteals());
+    	result.setPlayerBlocks((int)p.getTBlocks());
+    	result.setPlayerTurnovers((int)p.getTTurnovers());
+    	result.setPlayerFouls((int)p.getTFeals());
+    	result.setPlayerScores((int)p.getTScores());
+    	result.setRR(p.getRR());
+    	result.setO_RR(p.getO_RR());
+    	result.setD_RR(p.getD_RR());
+    	result.setAR(p.getAR());
+    	result.setSR(p.getSR());
+    	result.setBR(p.getBR());
+    	result.setTR(p.getTR());
+    	result.setUR(p.getUseRate());
+    	result.setPlayerPER(p.getPER());
+    	result.setPlayerTSP(p.getRealShootRate());
+    	result.setPlayerSER(p.getS_RR());
+    	result.setMatchnumbers((int)p.getAttendmatches());
+    	result.setSalary(p.getSalary());
+    	//gmsc效率没有
+    	return result;
+    }
     
     /*
      * 测试用的main方法

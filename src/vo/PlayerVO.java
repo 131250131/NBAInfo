@@ -16,6 +16,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		public String comparetype="";
 		private int double_double=0;
 		private double aveg_double=0;
+		private int matchnumbers=0;
 		public PlayerVO(){
 		
 		}
@@ -60,24 +61,26 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			
 		//5.球员体重
 			//格式类似：161
-			private double weight;
+			private String weight;
 		
 		//6.球员生日
 			//格式类似： JAN 14， 1985
 			private String playerBirth;
 		
 		//7.球员年龄
-			private int playerAge;
+			private int playerAge;//没有
 		
 		//8.球员进入联盟时间
-			private int exp;
+			private int exp;//没有
 			
 		//9.球员学校或国家
 			private String school;
 		
-//		//10.球员ID (*****要传*****) //没用的
-//			int playerID;
+        //10.球员ID (*****要传*****) //没用的
+			String playerID;
 			
+		    String HighSchool;
+		    
 		//11.球员参赛场数 
 			private int playerAttends;
 			
@@ -131,7 +134,6 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			
 		//28.队员总得分数 (*****要传*****)
 			private int playerScores; 
-			
 			
 		//29.队员平均助攻数
 			private double aver_playerAssists ;
@@ -266,9 +268,12 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		//72.球队对手进攻次数 (*****要传*****)
 			private double allEnemyOffenceTimes;
 			
+			private String season;
 			
+			private String salary;
 		
-
+            private double wingames=0;
+            private double losegames=0;
 			public void setAttendedMatches(ArrayList<Integer> attendedMatches) {
 				this.attendedMatches = attendedMatches;
 			}
@@ -398,86 +403,79 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			}
 
 			public double getAver_playerAssists() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerAssists / (playerAttends+0.0))));
+				return aver_playerAssists;
 			}
 
 			public double getAver_playerPlayTime() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerPlayTime / (playerAttends+0.0))/60.0));
+				return aver_playerPlayTime;
 			}
 
 			public double getAver_playerFG() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFG / (playerAttends+0.0))));
+				return aver_playerFG;
 			}
 
 			public double getAver_playerFGTry() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFGTry / (playerAttends+0.0))));
+				return aver_playerFGTry;
 			}
 
 			public double getAver_player3FG() {
-				return   Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:player3FG / (playerAttends+0.0))));
+				return aver_player3FG;
 			}
 
 			public double getAver_player3FGTry() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:player3FGTry / (playerAttends+0.0))));
+				return aver_player3FGTry;
 			}
 
 			public double getAver_playerFTG() {
-				return   Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFTG / (playerAttends+0.0))));
+				return aver_playerFTG;
 			}
 
 			public double getAver_playerFTGTry() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFTGTry / (playerAttends+0.0))));
+				return aver_playerFTGTry;
 			}
 
 			public double getAver_playerOffenceRebounds() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerOffenceRebounds / (playerAttends+0.0))));
+				return aver_playerOffenceRebounds;
 			}
 
 			public double getAver_playerDeffenceRebounds() {
-				return   Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerDeffenceRebounds / (playerAttends+0.0))));
+				return aver_playerDeffenceRebounds;
 			}
 
 			public double getAver_playerTotalRebounds() {
-				return   Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerTotalRebounds / (playerAttends+0.0))));
+				return aver_playerTotalRebounds;
 			}
 
 			public double getAver_playerSteals() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerSteals / (playerAttends+0.0))));
+				return aver_playerSteals;
 			}
 
 			public double getAver_playerBlocks() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerBlocks / (playerAttends+0.0))));
+				return aver_playerBlocks;
 			}
 
 			public double getAver_playerTurnovers() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerTurnovers / (playerAttends+0.0))));
+				return aver_playerTurnovers;
 			}
 
 			public double getAver_playerFouls() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerFouls / (playerAttends+0.0))));
+				return aver_playerFouls;
 			}
 
 			public double getAver_playerScores() {
-				return  Double.parseDouble(String.format("%.8f",((playerAttends==0)?0:playerScores / (playerAttends+0.0))));
+				return aver_playerScores;
 			}
 
 			public double getPlayerFGP() {
-				if(playerFGTry == 0){
-					return 0;
-				}else{
-					return Double.parseDouble(String.format("%.8f",(playerFG+0.0)/(playerFGTry+0.0)));
-				}
+				return playerFGP;
 			}
 
 			public double getPlayer3FGP() {
-				if (player3FGTry!= 0)
-					return Double.parseDouble(String.format("%.8f",(player3FG+0.0)/(player3FGTry+0.0)));
-				else
-					return 0;
+				return player3FGP;
 			}
 
 			public double getPlayerFTGP() {
-				return (playerFTGTry==0)?0:Double.parseDouble(String.format("%.8f",(playerFTG+0.0)/(playerFTGTry+0.0)));
+				return playerFTGP;
 			}
 
 			public double getPlayerPER() {
@@ -492,67 +490,43 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			}
 
 			public double getPlayerTSP() {
-				return (playerFGTry==0)?0:Double.parseDouble(String.format("%.8f", (playerScores + 0.0)/ (2 * ((playerFGTry+0.0) + 0.44 * (playerFTGTry+0.0)))));
+				return playerTSP;
 			}
 
 			public double getPlayerSER() {
-				return (playerFGTry==0)?0: Double.parseDouble(String.format("%.8f",(((playerFG + 0.0) + 0.5 * (player3FG + 0.0)) / (playerFGTry + 0.0))));
+				return playerSER;
 			}
 
 			public double getRR() {
-				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.8f",(playerTotalRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
-					/(playerPlayTime + 0.0)/((allTeamRebounds + 0.0)+(allEnemyRebounds + 0.0))));
+				return RR;
 			}
 
 			public double getO_RR() {
-				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.8f",(playerOffenceRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
-					/(playerPlayTime + 0.0)/((o_allTeamRebounds + 0.0)+(o_allEnemyRebounds + 0.0))));
+				return o_RR;
 			}
 
 			public double getD_RR() {
-				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.8f",(playerDeffenceRebounds + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))/5)
-					/(playerPlayTime + 0.0)/((d_allTeamRebounds + 0.0)+(d_allEnemyRebounds + 0.0))));
+				return d_RR;
 			}
 
 			public double getAR() {
-				if((teammatePlayTime+playerPlayTime)/5 == 0  || playerPlayTime == 0){
-					return 0;
-				}else{
-					double a = playerAssists;
-					double b = (teammatePlayTime + playerPlayTime);
-					double c = playerPlayTime;
-					
-					return Double.parseDouble(String.format("%.8f",
-							playerAssists / (c / (b / 5) * allTeamFT - playerFG)                ));
-					//return playerAssists / (playerPlayTime / (teammatePlayTime + playerPlayTime) / 5) * ( allTeamFT - playerFG );
-				}
-					
+				return AR;		
 			}
 
 			public double getSR() {
-				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.8f",playerSteals*((teammatePlayTime+playerPlayTime)/5)/playerPlayTime/allEnemyOffenceTimes));
+				return SR;
 			}
 
 			public double getBR() {
-				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.8f",(playerBlocks + 0.0)*(((teammatePlayTime + 0.0)+(playerPlayTime + 0.0))
-							/5)/(playerPlayTime + 0.0)/(allEnemy2Shoots + 0.0)));
+				return BR;
 			}
 
 			public double getTR() {
-				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.8f",playerTurnovers/(playerFGTry - player3FGTry + 0.44 * playerFTGTry+playerTurnovers)));
+				return TR;
 			}
 
 			public double getUR() {
-				return (playerPlayTime==0)?0:
-					Double.parseDouble(String.format("%.8f",(playerFGTry+0.44*playerFTGTry+playerTurnovers)*
-						(teammatePlayTime+playerPlayTime)/5/playerPlayTime/
-						(allTeamShoots+0.44*allTeamFTShoots+allTeamTurnover)));
+				return UR;
 			}
 //			
 //	       
@@ -597,11 +571,11 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				this.height = height;
 			}
 
-			public double getWeight() {
+			public String getWeight() {
 				return weight;
 			}
 
-			public void setWeight(double weight) {
+			public void setWeight(String weight) {
 				this.weight = weight;
 			}
 
@@ -893,7 +867,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 				this.playerNumber=player.getPlayerNumber();
 				this.position=player.getPosition();
 				this.height=player.getHeight();
-				this.weight=player.getWeight();
+				//this.weight=player.getWeight();
 				this.playerBirth=player.getPlayerBirth();
 				this.playerAge=player.getPlayerAge();
 				this.exp=player.getExp();
@@ -1555,5 +1529,47 @@ public class PlayerVO implements Comparable<PlayerVO>{
           
           return 0.0;
 	}
+		public String getPlayerID() {
+			return playerID;
+		}
+		public void setPlayerID(String playerID) {
+			this.playerID = playerID;
+		}
+		public String getHighSchool() {
+			return HighSchool;
+		}
+		public void setHighSchool(String highSchool) {
+			HighSchool = highSchool;
+		}
+		public String getSeason() {
+			return season;
+		}
+		public void setSeason(String season) {
+			this.season = season;
+		}
+		public String getSalary() {
+			return salary;
+		}
+		public void setSalary(String salary) {
+			this.salary = salary;
+		}
+		public double getWingames() {
+			return wingames;
+		}
+		public void setWingames(double wingames) {
+			this.wingames = wingames;
+		}
+		public double getLosegames() {
+			return losegames;
+		}
+		public void setLosegames(double losegames) {
+			this.losegames = losegames;
+		}
+		public int getMatchnumbers() {
+			return matchnumbers;
+		}
+		public void setMatchnumbers(int matchnumbers) {
+			this.matchnumbers = matchnumbers;
+		}
 }
 
