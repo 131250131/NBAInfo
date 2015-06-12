@@ -34,16 +34,16 @@ public class IndexPanel extends JPanel{
 		this.add(homepagePanel);
 		hotspotPanel = new HotspotPanel();
 		this.add(hotspotPanel);
-		matchPanel = new MatchPanel();
-		this.add(matchPanel);
-		rankPanel = new RankPanel();
-		this.add(rankPanel);
-		teamPanel = new TeamPanel();
-		this.add(teamPanel);
-		playerPanel = new PlayerPanel();
-		this.add(playerPanel);
-		myTeamPanel = new MyTeamPanel();
-		this.add(myTeamPanel);
+//		matchPanel = new MatchPanel();
+//		this.add(matchPanel);
+//		rankPanel = new RankPanel();
+//		this.add(rankPanel);
+//		teamPanel = new TeamPanel();
+//		this.add(teamPanel);
+//		playerPanel = new PlayerPanel();
+//		this.add(playerPanel);
+//		myTeamPanel = new MyTeamPanel();
+//		this.add(myTeamPanel);
 		}
 
 }

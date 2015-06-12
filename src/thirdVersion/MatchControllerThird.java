@@ -8,18 +8,21 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import thirdservice.matchControllerThirdService;
+import vo.MatchVO;
+import vo.PlayerVO;
+import vo.TeamVO;
 
 public class MatchControllerThird implements matchControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="";
+	String password="941211";
 	String sql="";
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
 	/*
 	 * 根据日期的到比赛
 	 */
-	public ArrayList<MatchVOThird> getmatchbydate(String date){
-		ArrayList<MatchVOThird> result =new ArrayList<MatchVOThird>();
+	public ArrayList<MatchVO> getmatchbydate(String date){
+		ArrayList<MatchVO> result =new ArrayList<MatchVO>();
 		sql="SELECT * FROM matches WHERE time="+"'"+date+"'";
 		try{
 		Class.forName("com.mysql.jdbc.Driver");
@@ -27,17 +30,21 @@ public class MatchControllerThird implements matchControllerThirdService{
 		PreparedStatement pstmt=conn.prepareStatement(sql);
 		ResultSet rs=pstmt.executeQuery();
 		while(rs.next()){
-			MatchVOThird mvo=new MatchVOThird();
-			mvo.setMatchID(rs.getString(1));
+			MatchVO mvo=new MatchVO();
+			mvo.setNum(rs.getString(1));
 			mvo.setDate(rs.getString(2));
-			mvo.setLeftTeamName(rs.getString(3));
-			mvo.setRightTeamName(rs.getString(4));
-			mvo.setFirstScore(rs.getString(5));
-			mvo.setSecondScore(rs.getString(6));
-			mvo.setThirdScore(rs.getString(7));
-			mvo.setForthScore(rs.getString(8));
-			mvo.setExtraScore(rs.getString(9));
-			mvo.setTotalScore(rs.getString(10));
+			mvo.setLeftTeam(getmatchteam(mvo.getNum(),rs.getString(3)));
+			mvo.setRightTeam(getmatchteam(mvo.getNum(),rs.getString(4)));
+			mvo.setLeftplayerlist(getmatchplayers(mvo.getNum(),"left"));;
+			mvo.setRightplayerlist(getmatchplayers(mvo.getNum(),"right"));
+			mvo.setScores1(rs.getString(5));
+			mvo.setScores2(rs.getString(6));
+			mvo.setScores3(rs.getString(7));
+			mvo.setScores4(rs.getString(8));
+			mvo.setExtrascores(rs.getString(9));
+			mvo.setScore(rs.getString(10));
+			mvo.setIsplayoff(rs.getBoolean(11));
+			mvo.setSeason(rs.getString(12));
 			result.add(mvo);
 		}
 		}catch(Exception e){
@@ -46,29 +53,21 @@ public class MatchControllerThird implements matchControllerThirdService{
 		
 		return result;
 	}
-
-	
-	
-	
-	/*
-	 * 根据比赛id得到球队信息
-	 */
-	public void setmatchteam(MatchVOThird m){
-		ArrayList<PlayerMatchDataVO> players=new ArrayList<PlayerMatchDataVO>();
-		ArrayList<PlayerMatchDataVO> leftplayers=new ArrayList<PlayerMatchDataVO>();
-		ArrayList<PlayerMatchDataVO> rightplayers=new ArrayList<PlayerMatchDataVO>();
+    /*
+     * 根据比赛id得到球员信息,这个接口暂时供你界面接口测试 ，先发不是默认前五个 ，(如果需要)有个参数判断
+     */
+	public ArrayList<PlayerVO> getmatchplayers(String id,String lr){
+		ArrayList<PlayerVO> result=new ArrayList<PlayerVO>();
+		PlayerControllerThird pc=new PlayerControllerThird();
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn =DriverManager.getConnection(url, user, password);
-			sql = "SELECT * FROM teammatchdata WHERE matchid="+"'"+m.getMatchID()+"'"+";";
-			String sql1="SELECT * FROM playermatchdata WHERE matchid="+"'"+m.getMatchID()+"'";
-			String sql2="SELECT * FROM playerdatainfo WHERE matchid="+"'"+m.getMatchID()+"'";
-			PreparedStatement pstmt=conn.prepareStatement(sql);
-			PreparedStatement pstmt1=conn.prepareStatement(sql1);
+			String sql1="SELECT * FROM playermatchdata WHERE matchid="+"'"+id+"'";//等数据好了这句话会改 球员会变正确
+			PreparedStatement pstmt=conn.prepareStatement(sql1);
 			ResultSet rs=pstmt.executeQuery();
-			ResultSet rs2=pstmt.executeQuery();
 			while(rs.next()){
 				PlayerMatchDataVO pl=new PlayerMatchDataVO();
+				PlayerVO p=new PlayerVO();
 				pl.setMatchID(rs.getString(1));
 				pl.setPlayerID(rs.getString(2));
 				pl.setPlayerName(rs.getString(3));
@@ -93,40 +92,58 @@ public class MatchControllerThird implements matchControllerThirdService{
 				pl.setFouls(Double.parseDouble(df.format(rs.getDouble(22))));
 				pl.setScores(Double.parseDouble(df.format(rs.getDouble(23))));
 				pl.setFirst(rs.getBoolean(24));
-				players.add(pl);
+				p=pc.matchdatatovo(pl);
+				result.add(p);
 			}
-	
-			while(rs2.next()){
-				TeamMatchDataVO temp = new TeamMatchDataVO();
-				temp.setMatchID(rs2.getString(1));
-				temp.setTeamChinsesName(rs2.getString(2));
-				temp.setFGP(rs2.getDouble(3));
-				temp.setFGZ(rs2.getInt(4));
-				temp.setFG(rs2.getInt(5));
-				temp.setThreeFGP(rs2.getDouble(6));
-				temp.setThreeFGZ(rs2.getInt(7));
-				temp.setThreeFG(rs2.getInt(8));
-				temp.setFTGP(rs2.getDouble(9));
-				temp.setFTGZ(rs2.getInt(10));
-				temp.setFTG(rs2.getInt(11));
-				temp.setRealShootRate(rs2.getDouble(12));
-				temp.setRebounds(rs2.getInt(13));
-				temp.setORebounds(rs2.getInt(14));
-				temp.setDRebounds(rs2.getInt(15));
-				temp.setAssists(rs2.getInt(16));
-				temp.setSteals(rs2.getInt(17));
-				temp.setBlocks(rs2.getInt(18));
-				temp.setTurnovers(rs2.getInt(19));
-				temp.setFouls(rs2.getInt(20));
-				temp.setScores(rs2.getInt(21));
-				temp.setIsplayoff(rs2.getInt(22));
-				m.tdate.add(temp);
-			}
-			
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-
+		return result;
+	}
+	
+	
+	/*
+	 * 根据比赛id得到球队信息
+	 */
+	public TeamVO getmatchteam(String id,String teamname){
+		TeamVO result=new TeamVO();
+		TeamControllerThird t=new TeamControllerThird();
+		TeamMatchDataVO temp = new TeamMatchDataVO();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn =DriverManager.getConnection(url, user, password);
+			sql = "SELECT * FROM teammatchdata WHERE matchid="+"'"+id+"'"+"AND teamname='"+teamname+"'";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			ResultSet rs2=pstmt.executeQuery();
+			while(rs2.next()){
+			temp.setMatchID(rs2.getString(1));
+			temp.setTeamChinsesName(rs2.getString(2));
+			temp.setFGP(rs2.getDouble(3));
+			temp.setFGZ(rs2.getInt(4));
+			temp.setFG(rs2.getInt(5));
+			temp.setThreeFGP(rs2.getDouble(6));
+			temp.setThreeFGZ(rs2.getInt(7));
+			temp.setThreeFG(rs2.getInt(8));
+			temp.setFTGP(rs2.getDouble(9));
+			temp.setFTGZ(rs2.getInt(10));
+			temp.setFTG(rs2.getInt(11));
+			temp.setRealShootRate(rs2.getDouble(12));
+			temp.setRebounds(rs2.getInt(13));
+			temp.setORebounds(rs2.getInt(14));
+			temp.setDRebounds(rs2.getInt(15));
+			temp.setAssists(rs2.getInt(16));
+			temp.setSteals(rs2.getInt(17));
+			temp.setBlocks(rs2.getInt(18));
+			temp.setTurnovers(rs2.getInt(19));
+			temp.setFouls(rs2.getInt(20));
+			temp.setScores(rs2.getInt(21));
+			temp.setIsplayoff(rs2.getInt(22));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		result=t.thirdVOTosecondVO_3(temp);
+        return result;
 		
 	}
 	/*
@@ -134,16 +151,22 @@ public class MatchControllerThird implements matchControllerThirdService{
      */
 	public static void main(String args[]){
 		MatchControllerThird m=new MatchControllerThird();
-		ArrayList<String> result = m.getMatchdatesbySeaon("2014-2015");
-		for(String temp : result){
-			System.out.println(temp);
-		}
+//		ArrayList<String> result = m.getMatchdatesbySeaon("2014-2015");
+//		for(String temp : result){
+//			System.out.println(temp);
+//		}
+//		
 //		MatchVOThird mm=new MatchVOThird();
 //		mm.setMatchID("1");
 //		System.out.println(mm.getPdate().size());
 //		for(PlayerMatchDataVO mv:mm.getPdate()){
 //			System.out.println(mv.getPlayerName());
 //		}
+		ArrayList<MatchVO> mm=m.getmatchbydate("2015-03-09");
+//		System.out.println(mm.size());
+		for(MatchVO k:mm){
+			System.out.println(k.getLeftplayerlist().size()+"  "+k.getNum());
+		}
 	}
 
 	public ArrayList<String> getMatchdatesbySeaon(String season) {

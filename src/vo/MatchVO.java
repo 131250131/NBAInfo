@@ -9,7 +9,7 @@ import logic.Team;
 
 
 public class MatchVO {
-	int Num;//比赛场次的编号，从零开始，
+	String Num;//比赛场次的编号，从零开始，
 	String season;
 	String date;
 	TeamVO leftTeam;
@@ -19,6 +19,7 @@ public class MatchVO {
 	ArrayList<PlayerVO> leftplayerlist=new ArrayList<PlayerVO>();
 	ArrayList<PlayerVO> rightplayerlist=new ArrayList<PlayerVO>();
 	String detaildate="";
+	boolean isplayoff=false;
 //每一节的具体得分；
 	String scores1;
 	String scores2;
@@ -44,10 +45,10 @@ public class MatchVO {
 	public void setExtrascores(String extrascores) {
 		this.extrascores = extrascores;
 	}
-	public int getNum() {
+	public String getNum() {
 		return Num;
 	}
-	public void setNum(int num) {
+	public void setNum(String num) {
 		Num = num;
 	}
 	public String getSeason() {
@@ -111,7 +112,7 @@ public class MatchVO {
 		extrascores=String.valueOf(left+oleft)+"-"+String.valueOf(right+oright);
 	}
 	public void creatMatchvo(Match match){
-	   Num=match.getNum();
+	   //Num=match.getNum();
  	   season=match.getSeason();
  	   date=match.getDate();
  	   TeamVO rteam=new TeamVO();
@@ -157,5 +158,11 @@ public class MatchVO {
 	}
 	public void setDetaildate(String detaildate) {
 		this.detaildate = detaildate;
+	}
+	public boolean isIsplayoff() {
+		return isplayoff;
+	}
+	public void setIsplayoff(boolean isplayoff) {
+		this.isplayoff = isplayoff;
 	}
 }

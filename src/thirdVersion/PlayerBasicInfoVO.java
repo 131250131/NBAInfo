@@ -25,6 +25,7 @@ public class PlayerBasicInfoVO {
 	String playerUniversity;
 	//相似球员编号
 	String similarPlayerID;
+	String teamname;
 	//球员中文名(没有则任然用英文名)
 	String Chinesename;
 	double Atime=0;
@@ -290,6 +291,14 @@ public class PlayerBasicInfoVO {
 
 	public void setChinesename(String chinesename) {
 		Chinesename = chinesename;
+	}
+
+	public String getTeamname() {
+		return teamname;
+	}
+
+	public void setTeamname(String teamname) {
+		this.teamname = teamname;
 	}
 
 }

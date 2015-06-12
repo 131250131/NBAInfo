@@ -19,7 +19,7 @@ import Utibility.DataType;
 public class TeamControllerThird implements teamControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="";
+	String password="941211";
 	String sql="";
 	
 	public static void main(String args[]){
@@ -1061,7 +1061,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 	
 	public TeamVO thirdVOTosecondVO_3(TeamMatchDataVO temp){
 		TeamVO result = new TeamVO();
-	
+	    result.setTeamName(temp.getTeamChinsesName());
 		result.setIspalyoff(temp.getIsplayoff());
 		result.setRealShootRate(temp.getRealShootRate());
 		result.setTeam3FG(temp.getThreeFGZ());

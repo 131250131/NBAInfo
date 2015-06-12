@@ -2,6 +2,7 @@ package ui.frame.player;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -63,7 +64,9 @@ public class PlayerScrollPanel extends JScrollPane  implements ActionListener{
 	}
 	
 	private PlayerVO getPlayer(){		
-		return Controller.playerController.findPlayerVO(playerName);
+		ArrayList<String> array = Controller.playerController.getseasonbyname(playerName);
+		PlayerVO player = Controller.playerController.getPlayervobyname(playerName, array.get(array.size() - 1));
+		return player;
 	}
 	
 	private void init(String _playerName){
