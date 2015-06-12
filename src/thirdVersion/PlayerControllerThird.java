@@ -640,6 +640,27 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	return result;
     }
     /*
+     * 根据球员id得到打过的赛季
+     */
+    public ArrayList<String> getseasonbyid(String pid){
+    	ArrayList<String> result=new ArrayList<String>();
+    	try{
+     		sql="SELECT season FROM playerdatainfo WHERE id='"+pid+"'" ;
+     		Class.forName("com.mysql.jdbc.Driver");
+    		Connection conn =DriverManager.getConnection(url, user, password);
+    		PreparedStatement pstmt=conn.prepareStatement(sql);
+    		ResultSet rs=pstmt.executeQuery();
+    		while(rs.next()){
+    			if(!result.contains(rs.getString("season")))
+    			      result.add(rs.getString("season"));
+    		}
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
+    	System.out.println(result);
+    	return result;
+    }
+    /*
      * 根据球队和赛季得到球员
      */
     public ArrayList<PlayerVO> getplayerbyteam(String tname,String Season){
@@ -1076,17 +1097,18 @@ public class PlayerControllerThird implements playerControllerThirdService{
      */
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();   
+    	   p.getseasonbyid("1001");
 //    	   ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
 //    	   for(PlayerdatainfoVO l:pr){
 //    		   System.out.println(l.getName());
 //    	   }
-    	   ArrayList<PlayerVO> pr=new ArrayList<PlayerVO>();
-    	   pr=p.getSeasonHotPlayers("07-08", DataType.ARebounds,true);
-    	   int i=0;
-    	   for(PlayerVO l:pr){
-    		   i++;
-   		   System.out.println(i+" "+l.getPlayerName()+" "+l.getAver_playerTotalRebounds());
-    	   }
+//    	   ArrayList<PlayerVO> pr=new ArrayList<PlayerVO>();
+//    	   pr=p.getSeasonHotPlayers("07-08", DataType.ARebounds,true);
+//    	   int i=0;
+//    	   for(PlayerVO l:pr){
+//    		   i++;
+//   		   System.out.println(i+" "+l.getPlayerName()+" "+l.getAver_playerTotalRebounds());
+//    	   }
     	  // System.out.println(p.VOinitial().size());
 //    	   for(PlayerBasicInfoVO pb:p.VOinitial()){
 //    		   System.out.println(pb.getFGP());
