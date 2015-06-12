@@ -39,6 +39,8 @@ public class TeamVO implements Comparable<TeamVO> {
 		private boolean isNowTeam;
 		
 		private String season;
+		private int ispalyoff;
+		private double realShootRate;
 		
 		//球队的编号；
 		private int teamID;
@@ -803,6 +805,20 @@ public class TeamVO implements Comparable<TeamVO> {
 		}
 		public void setSeason(String season) {
 			this.season = season;
+		}
+
+		public int getIspalyoff() {
+			return ispalyoff;
+		}
+		public void setIspalyoff(int ispalyoff) {
+			this.ispalyoff = ispalyoff;
+		}
+
+		public double getRealShootRate() {
+			return realShootRate;
+		}
+		public void setRealShootRate(double realShootRate) {
+			this.realShootRate = realShootRate;
 		}
 		//创建teamVO需要对平均值进行处理..
 		public void creatteamvo(Team team){

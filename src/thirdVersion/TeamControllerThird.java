@@ -989,7 +989,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 	
 	//这两个方法是用来将迭代三的几个vo统一转换成迭代二的那个vo，没有的信息就设为空， 保证原来的每个属性都有对应的值;
 	
-	private ArrayList<TeamVO> thirdVOTosecondVO_1(ArrayList<TeamVOThird> list){
+	public ArrayList<TeamVO> thirdVOTosecondVO_1(ArrayList<TeamVOThird> list){
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		for(TeamVOThird teamthird : list){
 			TeamVO temp = new TeamVO();
@@ -1005,7 +1005,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 		return result;
 	}
 	
-	private ArrayList<TeamVO> thirdVOTosecondVO_2(ArrayList<TeamAverDataVO> list){
+	public ArrayList<TeamVO> thirdVOTosecondVO_2(ArrayList<TeamAverDataVO> list){
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		for(TeamAverDataVO teamthird : list){
 			TeamVO temp = new TeamVO();
@@ -1055,6 +1055,34 @@ public class TeamControllerThird implements teamControllerThirdService{
 			
 			result.add(temp);
 		}
+		return result;
+	}
+	
+	public TeamVO thirdVOTosecondVO_3(TeamMatchDataVO temp){
+		TeamVO result = new TeamVO();
+	
+		result.setIspalyoff(temp.getIsplayoff());
+		result.setRealShootRate(temp.getRealShootRate());
+		result.setTeam3FG(temp.getThreeFGZ());
+		result.setTeam3FGTry(temp.getThreeFG());
+		result.setTeamAssists(temp.getAssists());
+		result.setTeamBlocks(temp.getBlocks());
+		result.setTeamDeffenceRebounds(temp.getDRebounds());
+		result.setTeamFG(temp.getFGZ());
+		result.setTeamFGTry(temp.getFG());
+		result.setTeamFouls(temp.getFouls());
+		result.setTeamFTG(temp.getFTGZ());
+		result.setTeamFTGTry(temp.getFTG());
+		result.setTeamOffenceRebounds(temp.getORebounds());
+		result.setTeamScores(temp.getScores());
+		result.setTeamSteals(temp.getSteals());
+		result.setTeamTotalRebounds(temp.getRebounds());
+		result.setTeamTurnovers(temp.getTurnovers());
+		
+		result.setTeam3FGP(temp.getThreeFGP());
+		result.setTeamFGP(temp.getFGP());
+		result.setTeamFTGP(temp.getFTGP());
+		
 		return result;
 	}
 	
