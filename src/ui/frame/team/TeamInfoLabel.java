@@ -23,7 +23,7 @@ public class TeamInfoLabel extends JPanel{
 		//this.setOpaque(false);
 		this.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
 		
-		JLabel nameLabel = new JLabel(ChineseTranslator.TeamNameTrans(team.getShortName()), JLabel.CENTER);
+		JLabel nameLabel = new JLabel(team.getTeamName(), JLabel.CENTER);
 		nameLabel.setBounds((int) (30 * UIData.changeX), (int) (245 * UIData.changeY)
 				, (int) (244 * UIData.changeX), (int) (30 * UIData.changeY));
 		nameLabel.setForeground(Color.WHITE);
@@ -40,9 +40,9 @@ public class TeamInfoLabel extends JPanel{
 		text2.setLocation((int) (400 * UIData.changeX), (int) (60 * UIData.changeY));
 		this.add(text2);
 		
-		TextLabel text3 = new TextLabel("所属分区: " + ChineseTranslator.teamDivisionTrans(team.getDivision()));
-		text3.setLocation((int) (400 * UIData.changeX), (int) (90 * UIData.changeY));
-		this.add(text3);
+//		TextLabel text3 = new TextLabel("所属分区: " + ChineseTranslator.teamDivisionTrans(team.getDivision()));
+//		text3.setLocation((int) (400 * UIData.changeX), (int) (90 * UIData.changeY));
+//		this.add(text3);
 		
 		TextLabel text4 = new TextLabel("创始日期: " + team.getBirthYear());
 		text4.setLocation((int) (400 * UIData.changeX), (int) (120 * UIData.changeY));

@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import ui.system.ChineseTranslator;
 import ui.system.ImageSaver;
 import ui.system.UIData;
 import vo.TeamVO;
@@ -23,7 +24,7 @@ public class TeamPanel extends JPanel{
 		this.setOpaque(false);
 		this.setVisible(true);
 		
-		JLabel title = new JLabel("球员信息");
+		JLabel title = new JLabel("球队信息");
 		title.setBounds((int) (285 * UIData.changeX), (int) (30 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
 		title.setForeground(Color.LIGHT_GRAY);
 		title.setFont(new Font("新細明體", Font.BOLD, (int)(30 * UIData.changeY)));
@@ -46,7 +47,7 @@ public class TeamPanel extends JPanel{
 		
 		JPanel backPanel = new JPanel();
 		backPanel.setBounds(labelX, 0, labelWidth, height);
-		backPanel.setBackground(ImageSaver.getTeamBackColor(team.getShortName()));
+		backPanel.setBackground(ImageSaver.getTeamBackColor(ChineseTranslator.TeamNameTrans(team.getTeamName())));
 		backPanel.setVisible(true);
 		this.add(backPanel);
 	}
