@@ -25,17 +25,17 @@ public class TeamControllerThird implements teamControllerThirdService{
 	public static void main(String args[]){
 		TeamControllerThird teamController = new TeamControllerThird();
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
-//		result = teamController.getAllTeamVO();
-//		for(TeamVO vo: result){
-//		System.out.println(vo.getTeamName()+" "+vo.getShortName()+" "
-//						+vo.isNowTeam()+" "+vo.getStartseason()+" "+vo.getEndseason());
-//		}
-		
-		result= teamController.getSeasonHotTeam_Rebound("2014-2015", false);
+		result = teamController.getAllTeamVO();
 		for(TeamVO vo: result){
 		System.out.println(vo.getTeamName()+" "+vo.getShortName()+" "
-						+vo.isNowTeam()+" "+vo.getStartseason()+" "+vo.getEndseason()+" "+vo.getTeamAssists());
+					);
 		}
+		
+//		result= teamController.getSeasonHotTeam_Rebound("2014-2015", false);
+//		for(TeamVO vo: result){
+//		System.out.println(vo.getTeamName()+" "+vo.getShortName()+" "
+//						+vo.isNowTeam()+" "+vo.getStartseason()+" "+vo.getEndseason()+" "+vo.getTeamAssists());
+//		}
 
 //		list2 = teamController.getSeasonHotTeam_Rebound("2014-2015", false);
 //		list2 = teamController.getTeamHistorySeason("金州勇士队", 0);
@@ -1011,6 +1011,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 			TeamVO temp = new TeamVO();
 			
 			temp.setTeamName(teamthird.getTeamChinsesName());
+//			temp.setShortName(shortName);
 			temp.setSeason(teamthird.getSeason());
 			temp.setAver_team3FG(teamthird.getAver_ThreeFGZ());
 			temp.setAver_team3FGTry(teamthird.getAver_ThreeFG());
