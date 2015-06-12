@@ -29,40 +29,40 @@ public class InfoPanel_All extends JPanel{
 	
 	public InfoPanel_All(PlayerVO player){	
 		
-		_player = player;
-		ArrayList<MatchVO> array = Controller.matchController.getSomeMacthVO(Controller.today);
-		
-		for(int i = 0; i < array.size(); i++){
-			boolean flag = true;
-			if(array.get(i).getLeftTeam().getShortName().equals(player.getTeamShortName())){
-				ArrayList<PlayerVO> list = array.get(i).getLeftplayerlist();
-				for(int j = 0; j < list.size(); j++){
-					if(list.get(j).getPlayerName().equals(player.getPlayerName())){
-						todayPlayer = list.get(j);
-					}
-				}
-			}
-			
-			if(array.get(i).getRightTeam().getShortName().equals(player.getTeamShortName())){
-				ArrayList<PlayerVO> list = array.get(i).getRightplayerlist();
-				for(int j = 0; j < list.size(); j++){
-					if(list.get(j).getPlayerName().equals(player.getPlayerName())){
-						todayPlayer = list.get(j);
-					}
-				}
-			}
-			
-			if(flag == false){
-				i += 100;
-			}
-		}
-		
-		this.setBounds(x, y, width, height);
-		this.setLayout(null);
-		this.setVisible(true);
-		this.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.7f));
-		
-		initText();
+//		_player = player;
+//		ArrayList<MatchVO> array = Controller.matchController.getSomeMacthVO(Controller.today);
+//		
+//		for(int i = 0; i < array.size(); i++){
+//			boolean flag = true;
+//			if(array.get(i).getLeftTeam().getShortName().equals(player.getTeamShortName())){
+//				ArrayList<PlayerVO> list = array.get(i).getLeftplayerlist();
+//				for(int j = 0; j < list.size(); j++){
+//					if(list.get(j).getPlayerName().equals(player.getPlayerName())){
+//						todayPlayer = list.get(j);
+//					}
+//				}
+//			}
+//			
+//			if(array.get(i).getRightTeam().getShortName().equals(player.getTeamShortName())){
+//				ArrayList<PlayerVO> list = array.get(i).getRightplayerlist();
+//				for(int j = 0; j < list.size(); j++){
+//					if(list.get(j).getPlayerName().equals(player.getPlayerName())){
+//						todayPlayer = list.get(j);
+//					}
+//				}
+//			}
+//			
+//			if(flag == false){
+//				i += 100;
+//			}
+//		}
+//		
+//		this.setBounds(x, y, width, height);
+//		this.setLayout(null);
+//		this.setVisible(true);
+//		this.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.7f));
+//		
+//		initText();
 	}
 	
 	private void initText(){

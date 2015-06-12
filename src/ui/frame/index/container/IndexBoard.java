@@ -180,7 +180,7 @@ public class IndexBoard extends JPanel implements ActionListener{
 		case 3:
 			return "比赛信息";
 		case 4:
-			return "战绩排名";
+			return "数据统计";
 		case 5:
 			return "球队列表";
 		case 6:

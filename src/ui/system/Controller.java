@@ -2,6 +2,12 @@ package ui.system;
 
 import java.util.ArrayList;
 
+import thirdVersion.MatchControllerThird;
+import thirdVersion.PlayerControllerThird;
+import thirdVersion.TeamControllerThird;
+import thirdservice.matchControllerThirdService;
+import thirdservice.playerControllerThirdService;
+import thirdservice.teamControllerThirdService;
 import ui.frame.larger.LargerPanel;
 import ui.frame.larger.LargerScrollPane;
 import ui.frame.mainframe.MainFrame;
@@ -19,11 +25,9 @@ import logicservice.teamControllerService;
 
 public class Controller {
 	
-	public static playerControllerService playerController;
-	public static teamControllerService teamController;
-	public static matchControllerService matchController;
-	public static associationDataService associationController;
-	public static DataCollectorService dataCollectorService;
+	public static playerControllerThirdService playerController;
+	public static teamControllerThirdService teamController;
+	public static matchControllerThirdService matchController;
 	public static String currentPlayerName, currentTeamName;
 	public static MatchVO currentMatch;
 	public static String today;
@@ -36,27 +40,25 @@ public class Controller {
 	public static void init(){
 		mainControllerService mainController = new MainController();
 		mainController.init();
-		playerController = mainController.getPlayerController();
-		teamController = mainController.getTeamController();
-		matchController = mainController.getMatchController();
-		dataCollectorService = new DataCollector();
-		associationController = new AssociationData();
+		playerController = new PlayerControllerThird();
+		teamController = new TeamControllerThird();
+		matchController = new MatchControllerThird();
 		readAllMatch();
 		setUpRank();
 	}
 	
-	public static void reInit(){
-		mainControllerService mainController = new MainController();
-		mainController.init();
-		playerController = mainController.getPlayerController();
-		teamController = mainController.getTeamController();
-		matchController = mainController.getMatchController();
-		dataCollectorService = new DataCollector();
-		associationController = new AssociationData();
-		clear();
-		readAllMatch();
-		setUpRank();
-	}
+//	public static void reInit(){
+//		mainControllerService mainController = new MainController();
+//		mainController.init();
+//		playerController = mainController.getPlayerController();
+//		teamController = mainController.getTeamController();
+//		matchController = mainController.getMatchController();
+//		dataCollectorService = new DataCollector();
+//		associationController = new AssociationData();
+//		clear();
+//		readAllMatch();
+//		setUpRank();
+//	}
 	
 	public static ArrayList<String> dateList;
 	
@@ -64,22 +66,22 @@ public class Controller {
 	public static ArrayList<PlayerVO> all_Scores, all_Assists, all_rebounds, all_blocks, all_steals, all_FTP, all_3FTP, all_FP;
 	
 	public static void setUpRank(){	
-		today_Scores = Controller.dataCollectorService.getSomeDayPlayers_Score(today);
-		today_Assists = Controller.dataCollectorService.getSomeDayPlayers_Assist(today);
-		today_rebounds = Controller.dataCollectorService.getSomeDayPlayers_Rebound(today);
-		today_blocks = Controller.dataCollectorService.getSomeDayPlayers_Block(today);	
-		today_steals = Controller.dataCollectorService.getSomeDayPlayers_Steal(today);	
-		today_FP = Controller.dataCollectorService.getSomeDayPlayers_FGP(today);
-		today_3FTP = Controller.dataCollectorService.getSomeDayPlayers_3FGP(today);
-		today_FTP = Controller.dataCollectorService.getSomeDayPlayers_FTGP(today);
-		all_Scores = Controller.dataCollectorService.getSeasonHotPlayers_AverScore();
-		all_Assists = Controller.dataCollectorService.getSeasonHotPlayers_AverAssist();
-		all_rebounds = Controller.dataCollectorService.getSeasonHotPlayers_AverRebound();
-		all_blocks = Controller.dataCollectorService.getSeasonHotPlayers_AverBlock();
-		all_steals = Controller.dataCollectorService.getSeasonHotPlayers_AverSteal();
-		all_FP = Controller.dataCollectorService.getSeasonHotPlayers_FGP();
-		all_3FTP = Controller.dataCollectorService.getSeasonHotPlayers_3FGP();
-		all_FTP = Controller.dataCollectorService.getSeasonHotPlayers_FTGP();
+//		today_Scores = Controller.playerController..getSomeDayPlayers_Score(today);
+//		today_Assists = Controller.dataCollectorService.getSomeDayPlayers_Assist(today);
+//		today_rebounds = Controller.dataCollectorService.getSomeDayPlayers_Rebound(today);
+//		today_blocks = Controller.dataCollectorService.getSomeDayPlayers_Block(today);	
+//		today_steals = Controller.dataCollectorService.getSomeDayPlayers_Steal(today);	
+//		today_FP = Controller.dataCollectorService.getSomeDayPlayers_FGP(today);
+//		today_3FTP = Controller.dataCollectorService.getSomeDayPlayers_3FGP(today);
+//		today_FTP = Controller.dataCollectorService.getSomeDayPlayers_FTGP(today);
+//		all_Scores = Controller.dataCollectorService.getSeasonHotPlayers_AverScore();
+//		all_Assists = Controller.dataCollectorService.getSeasonHotPlayers_AverAssist();
+//		all_rebounds = Controller.dataCollectorService.getSeasonHotPlayers_AverRebound();
+//		all_blocks = Controller.dataCollectorService.getSeasonHotPlayers_AverBlock();
+//		all_steals = Controller.dataCollectorService.getSeasonHotPlayers_AverSteal();
+//		all_FP = Controller.dataCollectorService.getSeasonHotPlayers_FGP();
+//		all_3FTP = Controller.dataCollectorService.getSeasonHotPlayers_3FGP();
+//		all_FTP = Controller.dataCollectorService.getSeasonHotPlayers_FTGP();
 	}
 	
 	public static void clear(){
@@ -103,8 +105,8 @@ public class Controller {
 	}
 	
 	public static void readAllMatch(){
-		dateList = Controller.matchController.getDatehavematches();
-		today = Controller.dateList.get(dateList.size() - 1);
+		//dateList = Controller.matchController.getDatehavematches();
+		//today = Controller.dateList.get(dateList.size() - 1);
 	}
 	
 	public static void addMatchPanel(MatchVO match){

@@ -6,6 +6,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Utibility.DataType;
 import ui.myUI.BackColorPanel;
 import ui.myUI.ImageLabel;
 import ui.system.Controller;
@@ -34,8 +35,8 @@ public class HotspotPanel extends JPanel{
 		title.setVisible(true);
 		this.add(title);
 		
-		HotspotRankPanel hotspotRankPanel = new HotspotRankPanel();
-		this.add(hotspotRankPanel);
+//		HotspotRankPanel hotspotRankPanel = new HotspotRankPanel();
+//		this.add(hotspotRankPanel);
 	
 		PlayerVO todayPlayer = getTodayPlayer();
 		PlayerVO allPlayer = getAllPlayer();			
@@ -80,11 +81,11 @@ public class HotspotPanel extends JPanel{
 	}
 	
 	private PlayerVO getTodayPlayer(){
-		return Controller.dataCollectorService.getSomeDayPlayers_GmScER(Controller.dateList.get(Controller.dateList.size() - 1)).get(0);
+		return Controller.playerController.getPlayervobyname("史蒂芬-库里", "14-15");
 	}
 	
 	private PlayerVO getAllPlayer(){
-		return Controller.dataCollectorService.getSeasonHotPlayers_GmScER().get(0);
+		return Controller.playerController.getSeasonKingPlayers("14-15", DataType.PER, false).get(0);
 	}
 
 }

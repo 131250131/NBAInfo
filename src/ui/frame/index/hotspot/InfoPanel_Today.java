@@ -28,7 +28,7 @@ public class InfoPanel_Today extends JPanel{
 	public InfoPanel_Today(PlayerVO player){
 		
 		_player = player;
-		allPlayer = Controller.playerController.findPlayerVO(player.getPlayerName());
+		allPlayer = player;
 		
 		this.setBounds(x, y, width, height);
 		this.setLayout(null);
