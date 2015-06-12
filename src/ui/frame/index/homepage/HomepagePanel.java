@@ -2,7 +2,6 @@ package ui.frame.index.homepage;
 
 import javax.swing.JPanel;
 
-import ui.frame.index.hotspot.HotspotBounds;
 import ui.myUI.BackColorPanel;
 import ui.myUI.ImageLabel;
 import ui.system.ImageSaver;

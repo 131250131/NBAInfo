@@ -56,7 +56,8 @@ public class TeamList extends JPanel{
 				, "场均三分命中", "场均三分出手", "罚球%", "场均罚球命中", "场均罚球出手", "+/-", "场均进攻篮板"
 				, "场均防守篮板", "场均篮板", "场均助攻", "场均犯规", "场均抢断", "场均失误", "场均盖帽", "场均得分"};
 	
-		playerlist = Controller.playerController.getplayerbyteam(team.getShortName());
+		playerlist = Controller.playerController.getplayerbyteam(team.getTeamName(), "14-15");
+		System.out.println(playerlist.size());
 	
 		Object[][] data = new Object[playerlist.size()][21];
 		for(int i = 0; i < playerlist.size(); i++){

@@ -6,7 +6,6 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Utibility.DataType;
 import ui.myUI.BackColorPanel;
 import ui.myUI.ImageLabel;
 import ui.system.Controller;

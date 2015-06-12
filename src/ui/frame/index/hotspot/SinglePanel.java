@@ -149,7 +149,7 @@ public class SinglePanel extends JPanel implements ActionListener{
 		picLabel.setSize((int) (110 * UIData.changeX), (int) (110 * UIData.changeY));
 		picLabel.setLocation((int) (colorLabel.getLocation().x + 42 * UIData.changeX)
 				, (int) (colorLabel.getLocation().y - 8 * UIData.changeY));
-		ImageIcon image = ImageSaver.getTeamIcon(playerName);
+		ImageIcon image = ImageSaver.getTeamIcon(ChineseTranslator.TeamNameTrans(playerName));
 		image.setImage(image.getImage().getScaledInstance(picLabel.getSize().width, picLabel.getSize().height,Image.SCALE_DEFAULT));
 		picLabel.setIcon(image);
 	}
