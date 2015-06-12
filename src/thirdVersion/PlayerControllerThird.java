@@ -1076,19 +1076,17 @@ public class PlayerControllerThird implements playerControllerThirdService{
      */
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();   
-    	   ArrayList<Double> result=p.getdatabybarchart("1001");
-    	   System.out.println(result.size());
 //    	   ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
 //    	   for(PlayerdatainfoVO l:pr){
 //    		   System.out.println(l.getName());
 //    	   }
-//    	   ArrayList<PlayerdatainfoVO> pr=new ArrayList<PlayerdatainfoVO>();
-//    	   pr=p.getSeasonHotPlayers("06-07", DataType.HRebounds,false);
-//    	   int i=0;
-//    	   for(PlayerdatainfoVO l:pr){
-//    		   i++;
-//   		   System.out.println(i+" "+l.getName()+" "+l.getHRebounds());
-//    	   }
+    	   ArrayList<PlayerVO> pr=new ArrayList<PlayerVO>();
+    	   pr=p.getSeasonHotPlayers("07-08", DataType.ARebounds,true);
+    	   int i=0;
+    	   for(PlayerVO l:pr){
+    		   i++;
+   		   System.out.println(i+" "+l.getPlayerName()+" "+l.getAver_playerTotalRebounds());
+    	   }
     	  // System.out.println(p.VOinitial().size());
 //    	   for(PlayerBasicInfoVO pb:p.VOinitial()){
 //    		   System.out.println(pb.getFGP());
