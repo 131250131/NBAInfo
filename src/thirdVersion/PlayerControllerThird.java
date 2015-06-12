@@ -18,7 +18,7 @@ import Utibility.DataType;
 public class PlayerControllerThird implements playerControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="941211";
+	String password="";
 	String sql="";
 	ArrayList<PlayerBasicInfoVO> inidata=new ArrayList<PlayerBasicInfoVO>();
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
@@ -1002,7 +1002,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	if(pbv!=null){
     	result.setPlayerName(pbv.getEnglishName());  	
     	result.setPosition(pbv.getPlayerPosition());
-    	result.setTeamname(pbv.getTeamname());
+    	result.setTeamname(p.getTeamname());
     	result.setHeight(pbv.getPlayerHeight());
     	result.setWeight(pbv.getPlayerWeight());
     	result.setPlayerBirth(pbv.getPlayerBirthDay());
@@ -1117,7 +1117,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	  // ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
     	   PlayerVO result=new PlayerVO();
     	   result=p.getPlayervobyname("Larry Bird", "91-92");
-    	   System.out.println(result.getPlayerName());
+    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getPlayer3FGP());
    	   
 //    	   for(PlayerdatainfoVO l:pr){
 //    		   System.out.println(l.getName());
@@ -1264,7 +1264,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
     			    p.salary=rs.getString(98);//薪水，带单位，所以用String
     			    p.isplayoff=rs.getBoolean(99);//是否是季候赛，是季后赛表示为1，不是为0 
     			    p.name=rs.getString(100);
-    			    System.out.println(p.name);
+    			   // System.out.println(p.teamname);
     			    ps.add(p);
         		}
                     if(ps.size()>1){
