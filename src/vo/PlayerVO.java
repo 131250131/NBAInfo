@@ -17,6 +17,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		private int double_double=0;
 		private double aveg_double=0;
 		private int matchnumbers=0;
+		private String teamname=" ";
 		public PlayerVO(){
 		
 		}
@@ -1576,6 +1577,12 @@ public class PlayerVO implements Comparable<PlayerVO>{
 		}
 		public void setIsfirst(boolean isfirst) {
 			this.isfirst = isfirst;
+		}
+		public String getTeamname() {
+			return teamname;
+		}
+		public void setTeamname(String teamname) {
+			this.teamname = teamname;
 		}
 }
 

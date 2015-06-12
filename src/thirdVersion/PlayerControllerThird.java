@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import com.sun.org.apache.bcel.internal.generic.IFLE;
+
 import logic.PlayerController;
 import thirdservice.playerControllerThirdService;
 import vo.PlayerVO;
@@ -648,12 +650,12 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	return result;
     }
     /*
-     * 根据球员id得到打过的赛季
+     * 根据球员name得到打过的赛季
      */
-    public ArrayList<String> getseasonbyid(String pid){
+    public ArrayList<String> getseasonbyname(String name){
     	ArrayList<String> result=new ArrayList<String>();
     	try{
-     		sql="SELECT season FROM playerdatainfo WHERE id='"+pid+"'" ;
+     		sql="SELECT season FROM playerdatainfo WHERE Name='"+name+"'" ;
      		Class.forName("com.mysql.jdbc.Driver");
     		Connection conn =DriverManager.getConnection(url, user, password);
     		PreparedStatement pstmt=conn.prepareStatement(sql);
@@ -1000,6 +1002,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	if(pbv!=null){
     	result.setPlayerName(pbv.getEnglishName());  	
     	result.setPosition(pbv.getPlayerPosition());
+    	result.setTeamname(pbv.getTeamname());
     	result.setHeight(pbv.getPlayerHeight());
     	result.setWeight(pbv.getPlayerWeight());
     	result.setPlayerBirth(pbv.getPlayerBirthDay());
@@ -1150,6 +1153,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
 	public PlayerVO getPlayervobyname(String name,String season) {
 		// TODO Auto-generated method stub
 		ArrayList<PlayerdatainfoVO> ps=new ArrayList<PlayerdatainfoVO>();
+		ArrayList<String> teamname=new ArrayList<String>();
 		PlayerVO result=new PlayerVO();
 		PlayerBasicInfoVO pbv=new PlayerBasicInfoVO();
 		try{
@@ -1266,12 +1270,14 @@ public class PlayerControllerThird implements playerControllerThirdService{
                     if(ps.size()>1){
                         boolean count=true;
                     	for(PlayerdatainfoVO l:ps){
+                    		if(!teamname.contains(l.getTeamname())&&!l.getTeamname().equals("总计")){
+                    			teamname.add(l.getTeamname());
+                    		}
                     		if(l.getTeamname().equals("总计")){
                     			result=datainfotovo(l);
                     			count=false;
-                                break;
+                              
                     		}
-                    		
                     	}
                     	if(count){
                     		for(PlayerdatainfoVO l:ps){
@@ -1281,6 +1287,13 @@ public class PlayerControllerThird implements playerControllerThirdService{
                         		}
                         		
                         	}
+                    	}
+                    	else{
+                    		String n="";
+                    		for(String s:teamname){
+                    			n+=s+" ";
+                    		}
+                    		result.setTeamname(n);
                     	}
                     }
 	                if(ps.size()==1){

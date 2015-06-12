@@ -21,6 +21,6 @@ public interface playerControllerThirdService {
     public ArrayList<PlayerVO> getplayerbyteam(String tname,String Season);
     public double[] getdataforpiechart(String pid,String seasons,DataType dtp);
     public String getEnglishName(String id);
-    public ArrayList<String> getseasonbyid(String pid);
+    public ArrayList<String> getseasonbyname(String pid);
     
 }
