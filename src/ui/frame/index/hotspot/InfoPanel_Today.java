@@ -6,7 +6,6 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import ui.system.Controller;
 import ui.system.DataTransform;
 import ui.system.UIData;
 import vo.PlayerVO;
@@ -112,19 +111,19 @@ public class InfoPanel_Today extends JPanel{
 	private String getInfoText1(int i){
 		
 		switch(i){
-		case 0:return "今日得分数:    " ;
-		case 1:return "今日助攻数:    " ;
-		case 2:return "今日篮板数:    " ;
-		case 3:return "今日抢断数:    " ;
-		case 4:return "今日盖帽数:    " ;
+		case 0:return "最近得分数:    " ;
+		case 1:return "最近助攻数:    " ;
+		case 2:return "最近篮板数:    " ;
+		case 3:return "最近抢断数:    " ;
+		case 4:return "最近盖帽数:    " ;
 		
-		case 5:return "今日失误数:    " ;
-		case 6:return "今日命中率:";
-		case 7:return "今日罚球命中率:";
-		case 8:return "今日三分命中率:" ;
-		case 9:return "今日上场时间数:";
+		case 5:return "最近失误数:    " ;
+		case 6:return "最近命中率:";
+		case 7:return "最近罚球命中率:";
+		case 8:return "最近三分命中率:" ;
+		case 9:return "最近上场时间数:";
 		
-		case 10:return "今日效率:  ";
+		case 10:return "最近效率:  ";
 		}
 		
 		return null;
@@ -133,38 +132,38 @@ public class InfoPanel_Today extends JPanel{
 	private String getInfoNum1(int i){
 		switch(i){
 		case 0:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerScores());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerScores()) + "";
+			numArray[0][i] = DataTransform.transDoubleTopointXX(22);
+			return  DataTransform.transDoubleTopointXXString(22) + "";
 		case 1:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerAssists());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerAssists()) + "";
+			numArray[0][i] = DataTransform.transDoubleTopointXX(6);
+			return  DataTransform.transDoubleTopointXXString(6) + "";
 		case 2:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerTotalRebounds());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerTotalRebounds()) + "";
+			numArray[0][i] = DataTransform.transDoubleTopointXX(2);
+			return  DataTransform.transDoubleTopointXXString(2) + "";
 		case 3:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerSteals());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerSteals()) + "";
+			numArray[0][i] = DataTransform.transDoubleTopointXX(1);
+			return  DataTransform.transDoubleTopointXXString(1) + "";
 		case 4:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerBlocks());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerBlocks()) + "";	
+			numArray[0][i] = DataTransform.transDoubleTopointXX(0);
+			return  DataTransform.transDoubleTopointXXString(0) + "";	
 		case 5:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerTurnovers());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerTurnovers()) + "";	
+			numArray[0][i] = DataTransform.transDoubleTopointXX(4);
+			return  DataTransform.transDoubleTopointXXString(4) + "";	
 		case 6:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerFGP());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerFGP()) + "";	
+			numArray[0][i] = DataTransform.transDoubleTopointXX(47.1);
+			return  DataTransform.transDoubleTopointXXString(47.1) + "";	
 		case 7:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerFTGP());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerFTGP()) + "";
+			numArray[0][i] = DataTransform.transDoubleTopointXX(100);
+			return  DataTransform.transDoubleTopointXXString(100) + "";
 		case 8:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayer3FGP());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayer3FGP()) + "";
+			numArray[0][i] = DataTransform.transDoubleTopointXX(57.1);
+			return  DataTransform.transDoubleTopointXXString(57.1) + "";
 		case 9:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerPlayTime() / 60);
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerPlayTime() / 60) + "";
+			numArray[0][i] = DataTransform.transDoubleTopointXX(41.03);
+			return  DataTransform.transDoubleTopointXXString(41.03) + "";
 		case 10:
-			numArray[0][i] = DataTransform.transDoubleTopointXX(_player.getPlayerGmScER());
-			return  DataTransform.transDoubleTopointXXString(_player.getPlayerGmScER()) + "";
+			numArray[0][i] = DataTransform.transDoubleTopointXX(23);
+			return  DataTransform.transDoubleTopointXXString(23) + "";
 		}
 		
 		return null;
@@ -222,11 +221,11 @@ public class InfoPanel_Today extends JPanel{
 			numArray[1][i] = DataTransform.transDoubleTopointXX(allPlayer.getPlayer3FGP());
 			return  DataTransform.transDoubleTopointXXString(allPlayer.getPlayer3FGP()) + "";
 		case 9:
-			numArray[1][i] = DataTransform.transDoubleTopointXX(allPlayer.getAver_playerPlayTime() / 60);
-			return  DataTransform.transDoubleTopointXXString(allPlayer.getAver_playerPlayTime() / 60) + "";
+			numArray[1][i] = DataTransform.transDoubleTopointXX(allPlayer.getAver_playerPlayTime());
+			return  DataTransform.transDoubleTopointXXString(allPlayer.getAver_playerPlayTime()) + "";
 		case 10:
-			numArray[1][i] = DataTransform.transDoubleTopointXX(allPlayer.getPlayerGmScER());
-			return  DataTransform.transDoubleTopointXXString(allPlayer.getPlayerGmScER()) + "";
+			numArray[1][i] = DataTransform.transDoubleTopointXX(allPlayer.getPlayerPER());
+			return  DataTransform.transDoubleTopointXXString(allPlayer.getPlayerPER()) + "";
 		}
 		
 		return null;

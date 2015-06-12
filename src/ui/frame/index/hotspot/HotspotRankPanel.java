@@ -91,10 +91,10 @@ public class HotspotRankPanel extends JPanel implements ActionListener{
 		}
 		
 		private void addItem(){	
-			this.addItem("今日球员数据王");
-			this.addItem("球员数据王");
-			this.addItem("球队数据王");
-			this.addItem("最佳提升球员");
+			this.addItem("常规赛球员数据王");
+			this.addItem("季后赛球员赛季王");
+			this.addItem("常规赛队伍数据王");
+			this.addItem("季后赛队伍数据王");
 		}
 	}
 

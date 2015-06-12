@@ -12,9 +12,8 @@ public class BackColorPanel extends JPanel{
 
 		Color color1 = null, color2 = null, color3 = null;
 		
-
-		color1 = getBackColor(30, 28, 72, 0.3f);
-		color2 = getBackColor(11, 10, 28, 0.4f);
+		color1 = getBackColor(10, 10, 10, 0.7f);
+		color2 = getBackColor(10, 10, 10, 0.7f);
 		color3 = getBackColor(10, 10, 10, 0.8f);
 	
 		if(style == 0){

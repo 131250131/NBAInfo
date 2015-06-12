@@ -26,7 +26,7 @@ public class TodayPlayerPanel extends JPanel implements ActionListener{
 	int width = HotspotBounds.TodayPlayerPanelWidth;
 	int height = HotspotBounds.TodayPlayerPanelHeight;
 	
-	String title = "今日最佳球员";
+	String title = "2015赛季-最有价值球员";
 	JButton button;
 	JLabel nameLabel;
 	ImageLabel back, back3;

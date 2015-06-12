@@ -35,8 +35,8 @@ public class HotspotPanel extends JPanel{
 		title.setVisible(true);
 		this.add(title);
 		
-//		HotspotRankPanel hotspotRankPanel = new HotspotRankPanel();
-//		this.add(hotspotRankPanel);
+		HotspotRankPanel hotspotRankPanel = new HotspotRankPanel();
+		this.add(hotspotRankPanel);
 	
 		PlayerVO todayPlayer = getTodayPlayer();
 		PlayerVO allPlayer = getAllPlayer();			
@@ -65,7 +65,7 @@ public class HotspotPanel extends JPanel{
 				HotspotBounds.BackPanel2Y, HotspotBounds.BackPanel2Width, HotspotBounds.BackPanel2Height, 0);
 		this.add(backPanel2);
 		
-		JLabel text = new JLabel("TOP 5 - 数据王");
+		JLabel text = new JLabel("TOP 5 ：14-15赛季数据王");
 		text.setVisible(true);
 		text.setBounds((int)(85 * UIData.changeX), HotspotBounds.BackPanel3Y + (int)(2 * UIData.changeY), (int)(300 * UIData.changeX), (int)(40 * UIData.changeY));
 		text.setFont(new Font("新細明體", Font.BOLD, (int)(30 * UIData.changeY)));
@@ -81,11 +81,11 @@ public class HotspotPanel extends JPanel{
 	}
 	
 	private PlayerVO getTodayPlayer(){
-		return Controller.playerController.getPlayervobyname("史蒂芬-库里", "14-15");
+		return Controller.playerController.getPlayervobyname("Stephen Curry", "14-15");
 	}
 	
 	private PlayerVO getAllPlayer(){
-		return Controller.playerController.getSeasonKingPlayers("14-15", DataType.PER, false).get(0);
+		return Controller.playerController.getPlayervobyname("Anthony Davis", "14-15");
 	}
 
 }
