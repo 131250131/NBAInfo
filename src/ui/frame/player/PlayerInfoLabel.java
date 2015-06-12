@@ -47,7 +47,7 @@ public class PlayerInfoLabel extends JPanel implements ActionListener{
 		teamBt2.addActionListener(this);
 		this.add(teamBt2);
 		
-		TextLabel text1 = new TextLabel("所属球队: " + ChineseTranslator.TeamNameTrans(player.getTeamShortName()));
+		TextLabel text1 = new TextLabel("所属球队: " + player.getTeamname());
 		text1.setLocation((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
 		text1.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent arg0) {

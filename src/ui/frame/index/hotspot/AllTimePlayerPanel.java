@@ -26,7 +26,7 @@ public class AllTimePlayerPanel extends JPanel implements ActionListener{
 	int width = HotspotBounds.AllTimePlayerPanelWidth;
 	int height = HotspotBounds.AllTimePlayerPanelHeight;
 	
-	String title = ": 赛季数据效率王";
+	String title = ": 2015赛季数据效率王";
 	
 	PlayerVO player;
 	

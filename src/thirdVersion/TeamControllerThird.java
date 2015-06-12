@@ -19,7 +19,7 @@ import Utibility.DataType;
 public class TeamControllerThird implements teamControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="";
+	String password="941211";
 	String sql="";
 	
 	public static void main(String args[]){

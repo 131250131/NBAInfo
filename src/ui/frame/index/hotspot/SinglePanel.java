@@ -142,7 +142,7 @@ public class SinglePanel extends JPanel implements ActionListener{
 	
 	private void setTeamName(String playerName){
 		picLabel.setSize((int) (180 * UIData.changeX), (int) (140 * UIData.changeY));
-		nameLabel.setText("  - "+ ChineseTranslator.TeamNameTrans(playerName));
+		nameLabel.setText(playerName);
 	}
 	
 	private void setTeamIcon(String playerName){
