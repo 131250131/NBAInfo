@@ -15,6 +15,7 @@ public interface playerControllerThirdService {
 	public ArrayList<PlayerBasicInfoVO> VOinitial();
     public ArrayList<PlayerBasicInfoVO> getPlayersbyChar(char temp);
     public PlayerBasicInfoVO getPlayerbyname(String name);
+    public PlayerVO getPlayervobyname(String name);
     public ArrayList<PlayerVO> getSeasonHotPlayers(String Season,DataType type,boolean ipl);
     public ArrayList<PlayerVO> getSeasonKingPlayers(String Season,DataType type,boolean ipl);
     public ArrayList<PlayerVO> getplayerbyteam(String tname,String Season);

@@ -1129,5 +1129,27 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	  
     	   
        }
+	@Override
+	public PlayerVO getPlayervobyname(String name) {
+		// TODO Auto-generated method stub
+		PlayerVO result=new PlayerVO();
+		PlayerBasicInfoVO pbv=new PlayerBasicInfoVO();
+		for(PlayerBasicInfoVO p:inidata){
+			if(pbv.getEnglishName().equals(name)){
+				pbv=p;
+				break;
+			}
+		}
+		result.setPlayerName(pbv.getEnglishName());
+    	result.setPosition(pbv.getPlayerPosition());
+    	result.setHeight(pbv.getPlayerHeight());
+    	result.setWeight(pbv.getPlayerWeight());
+    	result.setPlayerBirth(pbv.getPlayerBirthDay());
+    	result.setPlayerAge(0);//年龄没有,进入联盟时间也没有
+    	result.setPlayerID(pbv.getPlayerID());
+    	result.setSchool(pbv.getPlayerUniversity());
+    	result.setHighSchool(pbv.getPlayerHighSchool());//多出来的
+		return result;
+	}
       
 }
