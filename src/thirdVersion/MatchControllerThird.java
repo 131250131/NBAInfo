@@ -134,11 +134,35 @@ public class MatchControllerThird implements matchControllerThirdService{
      */
 	public static void main(String args[]){
 		MatchControllerThird m=new MatchControllerThird();
-		MatchVOThird mm=new MatchVOThird();
-		mm.setMatchID("1");
+		ArrayList<String> result = m.getMatchdatesbySeaon("2014-2015");
+		for(String temp : result){
+			System.out.println(temp);
+		}
+//		MatchVOThird mm=new MatchVOThird();
+//		mm.setMatchID("1");
 //		System.out.println(mm.getPdate().size());
 //		for(PlayerMatchDataVO mv:mm.getPdate()){
 //			System.out.println(mv.getPlayerName());
 //		}
+	}
+
+	public ArrayList<String> getMatchdatesbySeaon(String season) {
+		ArrayList<String> result = new ArrayList<String>();
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection(url,user,password);
+			sql="SELECT time FROM matches m WHERE season="+"'"+season+"' ORDER BY time;";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs=pstmt.executeQuery();
+			while(rs.next()){
+				String temp = rs.getString(1);
+				if(result.size()==0||(!result.get(result.size()-1).equals(temp))){
+					result.add(temp);
+				}
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
 	}
 }
