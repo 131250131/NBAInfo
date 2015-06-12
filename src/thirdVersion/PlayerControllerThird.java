@@ -68,7 +68,15 @@ public class PlayerControllerThird implements playerControllerThirdService{
         			p.setAFeals(Double.parseDouble(df.format(rs.getDouble(28))));//球员场均犯规数
         			p.setAScores(Double.parseDouble(df.format(rs.getDouble(29))));//球员场均得分
         			p.setChinesename(rs.getString(30));
-        			if(p.getFGP()<=100&&p.getSFGP()<100&&p.getFTGP()<100)
+        			if(p.getFGP()>=100){
+        				p.setFGP(p.getFGP()/100);
+        			}
+        			if(p.getSFGP()>=100){
+        				p.setFGP(p.getSFGP()/100);
+        			}
+        			if(p.getFTGP()>=100){
+        				p.setFGP(p.getFTGP()/100);
+        			}
         			     inidata.add(p);
         		}
         		
@@ -976,16 +984,21 @@ public class PlayerControllerThird implements playerControllerThirdService{
      * playerdatainfo 转成迭代二的playervo
      */
     public PlayerVO datainfotovo(PlayerdatainfoVO p){
+    	
     	PlayerVO result=new PlayerVO();
     	PlayerBasicInfoVO pbv=new PlayerBasicInfoVO();
+    	System.out.println(inidata.size());
     	for(PlayerBasicInfoVO pb:inidata){
+    		
     		if(pb.getPlayerID().equals(p.getId())){
+    			
     			pbv=pb;
     			break;
     		}
     	}
+    	
     	if(pbv!=null){
-    	result.setPlayerName(pbv.getEnglishName());
+    	result.setPlayerName(pbv.getEnglishName());  	
     	result.setPosition(pbv.getPlayerPosition());
     	result.setHeight(pbv.getPlayerHeight());
     	result.setWeight(pbv.getPlayerWeight());
@@ -1055,6 +1068,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	for(PlayerBasicInfoVO pb:inidata){
     		if(pb.getPlayerID().equals(p.getPlayerID())){
     			pbv=pb;
+    			
     			break;
     		}
     	}
@@ -1096,9 +1110,12 @@ public class PlayerControllerThird implements playerControllerThirdService{
      * 测试用的main方法
      */
        public static void main(String args[]){
-    	   PlayerControllerThird p=new PlayerControllerThird();   
-    	   p.getseasonbyid("1001");
-//    	   ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
+    	   PlayerControllerThird p=new PlayerControllerThird();
+    	  // ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
+    	   PlayerVO result=new PlayerVO();
+    	   result=p.getPlayervobyname("Larry Bird", "91-92");
+    	   System.out.println(result.getPlayerName());
+   	   
 //    	   for(PlayerdatainfoVO l:pr){
 //    		   System.out.println(l.getName());
 //    	   }
@@ -1243,14 +1260,27 @@ public class PlayerControllerThird implements playerControllerThirdService{
     			    p.salary=rs.getString(98);//薪水，带单位，所以用String
     			    p.isplayoff=rs.getBoolean(99);//是否是季候赛，是季后赛表示为1，不是为0 
     			    p.name=rs.getString(100);
+    			    System.out.println(p.name);
     			    ps.add(p);
         		}
                     if(ps.size()>1){
+                        boolean count=true;
                     	for(PlayerdatainfoVO l:ps){
                     		if(l.getTeamname().equals("总计")){
                     			result=datainfotovo(l);
+                    			count=false;
                                 break;
                     		}
+                    		
+                    	}
+                    	if(count){
+                    		for(PlayerdatainfoVO l:ps){
+                        		if(!l.isIsplayoff()){
+                        			result=datainfotovo(l);
+                                    break;
+                        		}
+                        		
+                        	}
                     	}
                     }
 	                if(ps.size()==1){
