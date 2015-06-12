@@ -1,6 +1,6 @@
 package thirdVersion;
 
-public class TeamAverData {
+public class TeamAverDataVO {
 	//球队中文名,key
 	String teamChinsesName;
 	String season;

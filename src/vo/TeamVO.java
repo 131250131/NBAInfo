@@ -8,6 +8,10 @@ import test.data.TeamHighInfo;
 import test.data.TeamHotInfo;
 import test.data.TeamNormalInfo;
 
+/**
+ * @author user
+ *
+ */
 public class TeamVO implements Comparable<TeamVO> {
 	//TeamVO用于bl层和ui层的交互，
 		
@@ -29,6 +33,12 @@ public class TeamVO implements Comparable<TeamVO> {
 		private String gymName;
 		//建立时间
 		private int birthYear;
+		
+		private String startseason;
+		private String endseason;
+		private boolean isNowTeam;
+		
+		private String season;
 		
 		//球队的编号；
 		private int teamID;
@@ -766,6 +776,34 @@ public class TeamVO implements Comparable<TeamVO> {
 			this.birthYear = birthYear;
 		}
 		
+		
+		
+		
+		public String getStartseason() {
+			return startseason;
+		}
+		public void setStartseason(String startseason) {
+			this.startseason = startseason;
+		}
+		public String getEndseason() {
+			return endseason;
+		}
+		public void setEndseason(String endseason) {
+			this.endseason = endseason;
+		}
+		public boolean isNowTeam() {
+			return isNowTeam;
+		}
+		public void setNowTeam(boolean isNowTeam) {
+			this.isNowTeam = isNowTeam;
+		}
+		
+		public String getSeason() {
+			return season;
+		}
+		public void setSeason(String season) {
+			this.season = season;
+		}
 		//创建teamVO需要对平均值进行处理..
 		public void creatteamvo(Team team){
 			/*
