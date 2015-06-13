@@ -24,4 +24,5 @@ public interface playerControllerThirdService {
     public String getEnglishName(String id);
     public ArrayList<String> getseasonbyname(String name);
     public ArrayList<String> getthesameeason(String id1,String id2);
+    public ArrayList<PlayerVO> getSelectedPlayers(String position,String season,String infoType);
 }
