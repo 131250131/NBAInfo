@@ -98,8 +98,13 @@ public class AnalysisOfPlayers extends JPanel {
             	dataOfPlayer.update(s);
             	
             	//更新饼图的赛季数据
-            	seasonComb.removeAll();
-            	
+            	seasonComb.removeAllItems();
+            	seasonComb.addItem("选择赛季");
+            	ArrayList<String> list=controllerForPlayer.getseasonbyname(s);
+            	System.out.println("打过"+list.size());
+            	for(int i=0;i<list.size();i++){
+            		seasonComb.addItem(list.get(i));
+            	}
             }  
         });  
        
@@ -189,19 +194,23 @@ public class AnalysisOfPlayers extends JPanel {
         dataComb2.addItemListener(new ItemListener(){
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				String dataType=dataComb2.getSelectedItem().toString();
-				String season=seasonComb.getSelectedItem().toString();
-				if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
-					//调用逻辑层更新饼图
-					String playerID= dataOfPlayer.getID();
-					DataType type = translate.translate(dataType);
-					System.out.println(playerID+"-"+season+"-"+type);
-					double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
-					System.out.println(pieData[0]+"-"+pieData[1]);
-					pie.update(dataType, pieData[0], pieData[1]);
+				if(seasonComb.getSelectedItem()!=null&&dataComb2.getSelectedItem()!=null){
+					String dataType=dataComb2.getSelectedItem().toString();
+					String season=seasonComb.getSelectedItem().toString();
+					if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
+						//调用逻辑层更新饼图
+						String playerID= dataOfPlayer.getID();
+						DataType type = translate.translate(dataType);
+						System.out.println(playerID+"-"+season+"-"+type);
+						double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
+						System.out.println(pieData[0]+"-"+pieData[1]);
+						pie.update(dataType, pieData[0], pieData[1]);
+					}
+					
 				}
 				
 			}
+				
         });
         jpOfContribution.add(dataComb2,0);
         //赛季
@@ -220,18 +229,19 @@ public class AnalysisOfPlayers extends JPanel {
     	seasonComb.addItemListener(new ItemListener(){
  			@Override
  			public void itemStateChanged(ItemEvent e) {
- 				String dataType=dataComb2.getSelectedItem().toString();
- 				String season=seasonComb.getSelectedItem().toString();
- 				if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
- 					//调用逻辑层更新饼图
- 					String playerID= dataOfPlayer.getID();
-					DataType type = translate.translate(dataType);
-					System.out.println(playerID+"-"+season+"-"+type);
-					double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
-					System.out.println(pieData[0]+"-"+pieData[1]);
-					pie.update(dataType, pieData[0], pieData[1]);
+ 				if(seasonComb.getSelectedItem()!=null&&dataComb2.getSelectedItem()!=null){
+ 					String dataType=dataComb2.getSelectedItem().toString();
+ 	 				String season=seasonComb.getSelectedItem().toString();
+ 	 				if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
+ 	 					//调用逻辑层更新饼图
+ 	 					String playerID= dataOfPlayer.getID();
+ 						DataType type = translate.translate(dataType);
+ 						System.out.println(playerID+"-"+season+"-"+type);
+ 						double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
+ 						System.out.println(pieData[0]+"-"+pieData[1]);
+ 						pie.update(dataType, pieData[0], pieData[1]);
+ 	 				}
  				}
- 				
  			}
          });
         jpOfContribution.add(seasonComb,1);
