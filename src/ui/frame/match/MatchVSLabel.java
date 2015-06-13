@@ -154,7 +154,8 @@ public class MatchVSLabel extends JPanel{
 		Object returnVALUE = null;
 		if(leftTeam.getShortName() != null)
 		if(leftisZero == 0){
-			TeamVO team = Controller.teamController.getOneTeamInfo(leftTeam.getShortName());
+			TeamVO team = new TeamVO();
+//					Controller.teamController.getOneTeamInfo(leftTeam.getShortName());
 			switch(i){
 			case 0: returnVALUE = team.getAver_teamScores();
 			case 1: returnVALUE = team.getTeamFGP();
@@ -172,7 +173,8 @@ public class MatchVSLabel extends JPanel{
 			case 13: returnVALUE = team.getAver_teamTurnovers();
 			}
 		}else{
-			TeamVO team = Controller.teamController.getOneTeamInfo(rightTeam.getShortName());
+			TeamVO team = new TeamVO();
+//			= Controller.teamController.getOneTeamInfo(rightTeam.getShortName());
 			switch(i){
 			case 0: returnVALUE = team.getAver_teamScores();
 			case 1: returnVALUE = team.getTeamFGP();

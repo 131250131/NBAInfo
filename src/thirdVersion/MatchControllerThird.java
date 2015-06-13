@@ -15,8 +15,8 @@ import vo.TeamVO;
 public class MatchControllerThird implements matchControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="941211";
-	String sql="";
+	String password="";
+	String sql="941211";
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
 	/*
 	 * 根据日期的到比赛
@@ -162,11 +162,12 @@ public class MatchControllerThird implements matchControllerThirdService{
 //		for(PlayerMatchDataVO mv:mm.getPdate()){
 //			System.out.println(mv.getPlayerName());
 //		}
-		ArrayList<MatchVO> mm=m.getmatchbydate("2015-03-09");
-//		System.out.println(mm.size());
-		for(MatchVO k:mm){
-			System.out.println(k.getLeftplayerlist().size()+"  "+k.getNum());
-		}
+//		ArrayList<MatchVO> mm=m.getmatchbydate("2015-03-09");
+////		System.out.println(mm.size());
+//		for(MatchVO k:mm){
+//			System.out.println(k.getLeftplayerlist().size()+"  "+k.getNum());
+		
+		System.out.println(m.getMatchdatesbySeaon("2014-2015").size());
 	}
 
 	public ArrayList<String> getMatchdatesbySeaon(String season) {

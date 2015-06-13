@@ -101,7 +101,7 @@ public class PlayerTablePanel extends MyPanel{
 		private JTextField value1=new JTextField(5);
 		private JTextField value2=new JTextField(5);
 		private JLabel position=new JLabel("位置");
-		private JLabel distribution=new JLabel("分区");
+		private JLabel season=new JLabel("赛季");
 		private JLabel infoType=new JLabel("数据");
 //		private JLabel to=new JLabel("—",JLabel.CENTER);
 		private JLabel scan=new JLabel(ImageSaver.getIcon("scan"));
@@ -119,17 +119,17 @@ public class PlayerTablePanel extends MyPanel{
 			this.setOpaque(false);
 			//设置标签字体
 			position.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
-			distribution.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
+			season.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
 			infoType.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
 //			to.setFont(new Font("宋体",Font.BOLD,14));
 			//设置字体颜色
 			position.setForeground(Color.white);
-			distribution.setForeground(Color.white);
+			season.setForeground(Color.white);
 			infoType.setForeground(Color.white);
 //			to.setForeground(Color.white);
 			//设置标签大小位置
 			position.setBounds((int) (0 * UIData.changeX), (int) (30 * UIData.changeY), (int) (40 * UIData.changeX), (int) (20 * UIData.changeY));
-			distribution.setBounds((int) (240 * UIData.changeX), (int) (30 * UIData.changeY), (int) (40 * UIData.changeX), (int) (20 * UIData.changeY));
+			season.setBounds((int) (240 * UIData.changeX), (int) (30 * UIData.changeY), (int) (40 * UIData.changeX), (int) (20 * UIData.changeY));
 			infoType.setBounds((int) (480 * UIData.changeX), (int) (30 * UIData.changeY), (int) (40 * UIData.changeX), (int) (20 * UIData.changeY));
 //			to.setBounds(730, 30, 20, 20);
 			
@@ -144,7 +144,8 @@ public class PlayerTablePanel extends MyPanel{
 			positionCb.setBackground(Color.gray);
 			positionCb.setForeground(Color.white);
 			
-			String[] distributions={"","东部","西部","太平洋区","西南区","东南区","大西洋区","中央区","西北区"};
+			String[] distributions={"","90-91","91-92","92-93","93-94","94-95","95-96","96-97","97-98","98-99","00-01","01-02","02-03","03-04","04-05",
+					"05-06","06-07","07-08","08-09","10-11","11-12","12-13","13-14","14-15"};
 			distributionCb = new JComboBox(distributions);
 			distributionCb.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
 			distributionCb.setBounds((int) (280 * UIData.changeX),(int) (30 * UIData.changeY), (int) (150 * UIData.changeX), (int) (20 * UIData.changeY));
@@ -170,7 +171,7 @@ public class PlayerTablePanel extends MyPanel{
 //			value2.setCaretColor(Color.white);
 			
 			this.add(position,0);
-			this.add(distribution,1);
+			this.add(season,1);
 			this.add(infoType,2);
 			this.add(positionCb,3);
 			this.add(distributionCb,4);
