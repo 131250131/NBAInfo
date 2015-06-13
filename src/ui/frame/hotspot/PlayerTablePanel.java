@@ -152,7 +152,7 @@ public class PlayerTablePanel extends MyPanel{
 			distributionCb.setBackground(Color.gray);
 			distributionCb.setForeground(Color.white);
 			
-			String[] infoTypes={"","得分","篮板","助攻","得分/篮板/助攻","盖帽","抢断","犯规","失误","分钟","效率","投篮","三分","罚球","两双"};
+			String[] infoTypes={"","得分","篮板","助攻","盖帽","抢断","犯规","失误","分钟","效率","投篮","三分","罚球"};
 			infoTypeCb = new JComboBox(infoTypes);
 			infoTypeCb.setFont(new Font("宋体",Font.BOLD,(int) (14 * UIData.changeY)));
 			infoTypeCb.setBounds((int) (520 * UIData.changeX),(int) (30 * UIData.changeY), (int) (150 * UIData.changeX), (int) (20 * UIData.changeY));
