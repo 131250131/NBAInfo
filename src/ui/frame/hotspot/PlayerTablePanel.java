@@ -322,7 +322,7 @@ public class PlayerTablePanel extends MyPanel{
 				data[index][29] = tempPlayer.getdouble_double();
 				index++;
 			}
-		table.update(temp2, data);
+		table.update(temp2, data);//这个地方可以参照学长的AnalysisOfPlayers里面的iniTable方法来改一下 
 	}
 	public static void main(String[] args){
 		UIData ui = new UIData(1280, 720);

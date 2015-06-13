@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.Timer;
-
-import Utibility.JudgeUpdate;
 import ui.system.Controller;
 import ui.system.UIData;
 
