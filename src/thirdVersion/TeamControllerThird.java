@@ -27,14 +27,14 @@ public class TeamControllerThird implements teamControllerThirdService{
 		TeamControllerThird teamController = new TeamControllerThird();
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		result = teamController.getAllTeamVO();
-		for(TeamVO vo: result){
-		System.out.println("case "+"\""+vo.getTeamName()+"\" :");
-		System.out.println("  name = "+"\""+vo.getShortName()+"\";");
-		System.out.println("  break; ");
-		System.out.println("case "+"\""+vo.getShortName()+"\" :");
-		System.out.println("  name = "+"\""+vo.getTeamName()+"\";");
-		System.out.println("  break; ");
-		}
+//		for(TeamVO vo: result){
+//		System.out.println("case "+"\""+vo.getTeamName()+"\" :");
+//		System.out.println("  name = "+"\""+vo.getShortName()+"\";");
+//		System.out.println("  break; ");
+//		System.out.println("case "+"\""+vo.getShortName()+"\" :");
+//		System.out.println("  name = "+"\""+vo.getTeamName()+"\";");
+//		System.out.println("  break; ");
+//		}
 		
 //		result= teamController.getSeasonHotTeam_Rebound("2014-2015", false);
 //		for(TeamVO vo: result){

@@ -18,6 +18,9 @@ public class Statistics {
 		double aver = calculator.getAverage(playerData);
 		double var = calculator.getVariance(playerData);
 		//这边调用方法获得我的预测信息
+		//这个预测有多准？
+		//这个公式该怎么写
+		//妈蛋我还真是不知道
 		
 		return result;
 	}
@@ -25,6 +28,7 @@ public class Statistics {
 	public double getForcastPercent(double forcast , DataType dtp){
 		double result =0;
 		//这边调用一个函数来获得可信度
+		
 		
 		return result;
 	}
