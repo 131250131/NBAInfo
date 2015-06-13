@@ -18,7 +18,7 @@ import ui.system.ImageSaver;
 @SuppressWarnings("serial")
 public class tempDataOfPlayerPanel extends JPanel {
 
-	private static ImageLabel portrait;
+	private ImageLabel portrait;
 	
 //1.球员名称 （球员名称作为查找唯一标识）
 	private JLabel playerName;
@@ -195,6 +195,7 @@ public class tempDataOfPlayerPanel extends JPanel {
 		//头像
 		portrait = new ImageLabel(ImageSaver.getPlayerIcon("null2"), 
 				35 , 15 , 230 , 185 );
+		portrait.setForeground(Color.gray);
 		this.add(portrait);
 		_playerName = "null";
 		this.repaint();
@@ -223,6 +224,7 @@ public class tempDataOfPlayerPanel extends JPanel {
 			//头像
 			portrait = new ImageLabel(ImageSaver.getPlayerIcon(temp.getEnglishName()), 
 					35 , 15 , 230 , 185 );
+			portrait.setForeground(Color.gray);
 			portrait.addMouseListener(new MouseAdapter(){
 				public void mouseClicked(MouseEvent arg0) {	
 					Controller.addPlayerPanel(_playerName);
