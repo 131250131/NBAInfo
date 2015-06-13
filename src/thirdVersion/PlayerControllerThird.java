@@ -1315,7 +1315,13 @@ public class PlayerControllerThird implements playerControllerThirdService{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
     		Connection conn =DriverManager.getConnection(url, user, password);
-    		String dataType = "";
+    		String dataType = "助攻";
+    		if(season.equals("")){
+    			season = "2014-2015";
+    		}
+    		if(position.equals("")){
+    			position = "中锋";
+    		}
     		switch(infoType){
     			case "助攻": dataType = "TAssists";break;
     			case "分钟": dataType = "TTime";break;
@@ -1344,7 +1350,6 @@ public class PlayerControllerThird implements playerControllerThirdService{
     		PreparedStatement pstmt=conn.prepareStatement(sql);
     		ResultSet rs=pstmt.executeQuery();
     		int i=0;
-    		System.out.println("dd");
     		while(rs.next()&&i<=50){
     			i++;
     			PlayerdatainfoVO p=new PlayerdatainfoVO();
