@@ -1,6 +1,7 @@
 package ui.frame.team;
 
 import java.awt.Color;
+import java.util.ArrayList;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -227,7 +228,8 @@ public class TeamDataLabel extends JPanel{
 		return null;
 	}
 	
-	TeamVO team2 = Controller.teamController.getOneTeamInfo("BOS");
+	ArrayList<TeamVO> team2a = Controller.teamController.getTeamHistorySeason("波士顿凯尔特人队", 0);
+	TeamVO team2 = team2a.get(team2a.size() - 1);
 	
 	private double getAverData(int type, int i){
 		if(type == 0){

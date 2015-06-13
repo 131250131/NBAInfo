@@ -88,9 +88,11 @@ public class MatchPanel extends JPanel implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent events) {
 		
+		ArrayList<String> dateList = Controller.matchController.getMatchdatesbySeaon("2014-2015");
+		
 		if(events.getSource() == searchButton){
-			int maxNum = Controller.dateList.size();
-			ArrayList<MatchVO> matchArray = Controller.matchController.getSomeMacthVO(Controller.dateList.get(maxNum - matchComboBox.getSelectedIndex() - 1));
+			int maxNum = dateList.size();
+			ArrayList<MatchVO> matchArray = Controller.matchController.getmatchbydate(dateList.get(maxNum - matchComboBox.getSelectedIndex() - 1));
 			matchesListPanel = new MatchListPanel(matchArray);
 			matchScrollPane.setViewportView(matchesListPanel);
 		}

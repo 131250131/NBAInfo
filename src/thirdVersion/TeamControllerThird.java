@@ -20,6 +20,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
 	String password="941211";
+	//如果遇到数据库密码的问题，可能是 "",也有可能是 "941211" 试一下就好
 	String sql="";
 	
 	public static void main(String args[]){
@@ -27,8 +28,12 @@ public class TeamControllerThird implements teamControllerThirdService{
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		result = teamController.getAllTeamVO();
 		for(TeamVO vo: result){
-		System.out.println(vo.getTeamName()+" "+vo.getShortName()+" "
-					);
+		System.out.println("case "+"\""+vo.getTeamName()+"\" :");
+		System.out.println("  name = "+"\""+vo.getShortName()+"\";");
+		System.out.println("  break; ");
+		System.out.println("case "+"\""+vo.getShortName()+"\" :");
+		System.out.println("  name = "+"\""+vo.getTeamName()+"\";");
+		System.out.println("  break; ");
 		}
 		
 //		result= teamController.getSeasonHotTeam_Rebound("2014-2015", false);

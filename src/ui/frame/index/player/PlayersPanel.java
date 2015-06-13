@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import thirdVersion.PlayerBasicInfoVO;
 import ui.myUI.JSortTable;
 import ui.myUI.MyTable;
 import ui.system.ChineseTranslator;
@@ -67,16 +68,18 @@ public class PlayersPanel extends JPanel {
 			this.add(temp, i);
 		}
 		//所属球队下拉框
-		String[] teamNames={"选择球队","小牛","掘金","勇士","火箭","快船","湖人","灰熊","灰狼","鹈鹕","拓荒者","雷霆","太阳","国王","马刺","爵士",
-				"老鹰","篮网","凯尔特人","黄蜂","公牛","骑士","活塞","步行者","热火","雄鹿","尼克斯","魔术","76人","猛龙","奇才"};
+		String[] teamNames={"选择球队","达拉斯小牛队","丹佛掘金队","金州勇士队","休斯顿火箭队","洛杉矶快船队","洛杉矶湖人队","孟菲斯灰熊队","明尼苏达森林狼队",
+				"新奥尔良鹈鹕队","波特兰开拓者队","俄克拉荷马雷霆队","菲尼克斯太阳队","萨克拉门托国王队","圣安东尼奥马刺队","犹他爵士队",
+				"亚特兰大老鹰队","纽约篮网队","波士顿凯尔特人队","夏洛特黄蜂队","芝加哥公牛队","克里夫兰骑士队","底特律活塞队",
+				"印第安纳步行者队","迈阿密热火队","密尔沃基雄鹿队","纽约尼克斯队","奥兰多魔术队","费城76人队","多伦多猛龙队","华盛顿奇才队"};
 		teamName = new JComboBox<String>(teamNames);
 		
 		teamName.addItemListener(new ItemListener(){
 
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				String shortName = ChineseTranslator.TeamNameTrans(teamName.getSelectedItem().toString());
-				ArrayList<PlayerVO> playerlist = Controller.playerController.getplayerbyteam(shortName);
+				String shortName = teamName.getSelectedItem().toString();
+				ArrayList<PlayerVO> playerlist = Controller.playerController.getplayerbyteam(shortName, "14-15");
 				
 				int size = playerlist.size();
 		
@@ -118,23 +121,23 @@ public class PlayersPanel extends JPanel {
 		colorPanel.setVisible(true);
 		this.add(colorPanel);
 		
-		ArrayList<PlayerVO> playerlist = Controller.playerController.getAllPlayerVO();
+		ArrayList<PlayerBasicInfoVO> playerlist = Controller.playerController.getPlayersbyChar('A');
 		int size = playerlist.size();
 		
 		Object[][] data = new Object[size][7];
-		for(int i = 0 ; i < size; i++){
-			data[i][0] = playerlist.get(i).getPlayerName();
-			data[i][1] = playerlist.get(i).getTeamShortName();
-			if(data[i][1].equals("") || data[i][1].equals(null) || data[i][1] == null){
+		for(int i = 0; i < size; i++){
+			data[i][0] = Controller.playerController.getEnglishName(playerlist.get(i).getPlayerID());
+			data[i][1] = ChineseTranslator.TeamNameTrans(teamName.getSelectedItem().toString());
+			if(data[i][1] == null){
 				data[i][1] = "自由球员";
 			}else{
-				data[i][1] = ChineseTranslator.TeamNameTrans(playerlist.get(i).getTeamShortName());
+				data[i][1] = playerlist.get(i).getTeamname();
 			}
-			data[i][2] = playerlist.get(i).getPosition();
-			data[i][3] = playerlist.get(i).getHeight();
-			data[i][4] = playerlist.get(i).getWeight();
-			data[i][5] = playerlist.get(i).getPlayerAge();
-			data[i][6] = playerlist.get(i).getSchool();
+			data[i][2] = playerlist.get(i).getPlayerPosition();
+			data[i][3] = playerlist.get(i).getPlayerHeight();
+			data[i][4] = playerlist.get(i).getPlayerWeight();
+			data[i][5] = playerlist.get(i).getPlayerBirthDay();
+			data[i][6] = playerlist.get(i).getPlayerHighSchool();
 		}
 		table.update(columname, data);
 	}
@@ -167,22 +170,22 @@ public class PlayersPanel extends JPanel {
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			//按字母索引查找球员
-			ArrayList<PlayerVO> playerlist = Controller.playerController.getPlayerbyChar(this.getText().toCharArray()[0]);
+			ArrayList<PlayerBasicInfoVO> playerlist = Controller.playerController.getPlayersbyChar(this.getText().toCharArray()[0]);
 			int size = playerlist.size();
 			Object[][] data = new Object[size][7];
 			for(int i = 0; i < size; i++){
-				data[i][0] = playerlist.get(i).getPlayerName();
-				data[i][1] = playerlist.get(i).getTeamShortName();
-				if(data[i][1].equals("") || data[i][1].equals(null) || data[i][1] == null){
+				data[i][0] = Controller.playerController.getEnglishName(playerlist.get(i).getPlayerID());
+				data[i][1] = ChineseTranslator.TeamNameTrans(teamName.getSelectedItem().toString());
+				if(data[i][1] == null){
 					data[i][1] = "自由球员";
 				}else{
-					data[i][1] = ChineseTranslator.TeamNameTrans(playerlist.get(i).getTeamShortName());
+					data[i][1] = playerlist.get(i).getTeamname();
 				}
-				data[i][2] = playerlist.get(i).getPosition();
-				data[i][3] = playerlist.get(i).getHeight();
-				data[i][4] = playerlist.get(i).getWeight();
-				data[i][5] = playerlist.get(i).getPlayerAge();
-				data[i][6] = playerlist.get(i).getSchool();
+				data[i][2] = playerlist.get(i).getPlayerPosition();
+				data[i][3] = playerlist.get(i).getPlayerHeight();
+				data[i][4] = playerlist.get(i).getPlayerWeight();
+				data[i][5] = playerlist.get(i).getPlayerBirthDay();
+				data[i][6] = playerlist.get(i).getPlayerHighSchool();
 			}
 			if(size != 0)
 				table.update(columname, data);

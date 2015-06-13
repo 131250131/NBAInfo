@@ -2,6 +2,7 @@ package ui.frame.team;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -63,7 +64,9 @@ public class TeamScrollPane extends JScrollPane  implements ActionListener{
 	}
 	
 	private TeamVO getTeam(){
-		return Controller.teamController.getOneTeamInfo(teamName);
+		ArrayList<TeamVO> array = Controller.teamController.getTeamHistorySeason(teamName, 0);
+		TeamVO team = array.get(array.size() - 1);
+		return team;
 	}
 	
 	private void init(String _teamName){

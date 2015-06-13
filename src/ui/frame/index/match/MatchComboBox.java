@@ -21,10 +21,10 @@ public class MatchComboBox extends JComboBox<String>{
 	}
 	
 	private void addItem(){
-		ArrayList<String> dateList = Controller.dateList;
+		ArrayList<String> dateList = Controller.matchController.getMatchdatesbySeaon("2014-2015");
 		for(int i = dateList.size() - 1; i >= 0 ; i--){
 			String date = dateList.get(i);	
-			this.addItem(date + " (" + Controller.matchController.getSomeMacthVO(dateList.get(i)).size() +")");
+			this.addItem(date + " (" + Controller.matchController.getmatchbydate(dateList.get(i)).size() +")");
 		}
 	}
 }
