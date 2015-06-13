@@ -85,7 +85,10 @@ public class PlayerDataLabel extends JPanel{
 		if(type == 0){
 			switch(i){
 			case 0:
+			{
+				System.out.println("pp" +player.getPlayerScores());
 				return player.getPlayerScores();
+			}
 			case 1:
 				return player.getPlayerFG();
 			case 2:
