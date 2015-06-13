@@ -677,6 +677,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	ArrayList<PlayerdatainfoVO> presult=new ArrayList<PlayerdatainfoVO>();
     	ArrayList<PlayerVO> result=new ArrayList<PlayerVO>();
     	ArrayList<String> pnames=new ArrayList<String>();
+    	tname=tname.substring(0, tname.length()-1);
     	try{
      		sql="SELECT * FROM playerdatainfo WHERE season='"+Season+"'"+"AND teamname="+"'"+tname+"'" ;
         		Class.forName("com.mysql.jdbc.Driver");
@@ -991,9 +992,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	PlayerBasicInfoVO pbv=new PlayerBasicInfoVO();
     	System.out.println(inidata.size());
     	for(PlayerBasicInfoVO pb:inidata){
-    		
     		if(pb.getPlayerID().equals(p.getId())){
-    			
     			pbv=pb;
     			break;
     		}
@@ -1001,6 +1000,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	
     	if(pbv!=null){
     	result.setPlayerName(pbv.getEnglishName());  	
+    	result.setPlayerAttends((int)p.getAttendmatches());
     	result.setPosition(pbv.getPlayerPosition());
     	result.setTeamname(p.getTeamname());
     	result.setHeight(pbv.getPlayerHeight());

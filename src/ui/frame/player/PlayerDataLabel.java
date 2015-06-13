@@ -435,7 +435,6 @@ public class PlayerDataLabel extends JPanel{
 						selfLength, (int) (20 * UIData.changeY));
 				this.add(imageSelf);
 			}
-			
 			JLabel selfLabel = new JLabel(DataTransform.transDoubleTopointXXString(self));
 			selfLabel.setBounds((int) (175 * UIData.changeX + selfLength), (int) (10 * UIData.changeY),
 					(int) (100 * UIData.changeX), (int) (20 * UIData.changeY));
@@ -453,7 +452,6 @@ public class PlayerDataLabel extends JPanel{
 			avgLabel.setVisible(true);
 			avgLabel.setForeground(Color.WHITE);
 			this.add(avgLabel);
-			
 			int titleHeight = (int) (20 * UIData.changeY);
  			int titleY = (int) (25 * UIData.changeY);
 			JLabel titleLabel = new JLabel(title, JLabel.RIGHT);

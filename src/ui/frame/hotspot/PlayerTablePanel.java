@@ -281,49 +281,49 @@ public class PlayerTablePanel extends MyPanel{
 	@SuppressWarnings("unchecked")
 	public void getData(){
 		
-		Object[][] data = new Object[Controller.playerController.getAllPlayerVO().size()][30];
-		
-		//System.out.println(RegisterList.getPlayerNumber());
-		
-		int index = 0;
-		
-			ArrayList<PlayerVO> playerList = Controller.playerController.getAllPlayerVO();
-			int size = playerList.size();	
-			for(int j = 0; j < size; j++){
-				PlayerVO tempPlayer = playerList.get(j);
-				data[index][0] = tempPlayer.getPlayerName();
-				data[index][1] = tempPlayer.getTeamShortName();//所属球队
-				data[index][2] = tempPlayer.getPlayerAttends();
-				data[index][3] = tempPlayer.getStartTimes();
-				data[index][4] = tempPlayer.getPlayerTotalRebounds();
-				data[index][5] = tempPlayer.getPlayerOffenceRebounds();
-				data[index][6] = tempPlayer.getPlayerDeffenceRebounds();
-				data[index][7] = tempPlayer.getPlayerAssists();
-				data[index][8] = tempPlayer.getPlayerPlayTime();
-				data[index][9] = tempPlayer.getPlayerFGP();
-				data[index][10] = tempPlayer.getPlayer3FGP();
-				data[index][11] = tempPlayer.getPlayerFTGP();
-				data[index][12] = tempPlayer.getPlayerSteals();
-				data[index][13] = tempPlayer.getPlayerBlocks();
-				data[index][14] = tempPlayer.getPlayerTurnovers();
-				data[index][15] = tempPlayer.getPlayerFouls();
-				data[index][16] = tempPlayer.getPlayerScores();
-				data[index][17] = tempPlayer.getPlayerPER();
-				data[index][18] = tempPlayer.getPlayerGmScER();
-				data[index][19] = tempPlayer.getPlayerTSP();
-				data[index][20] = tempPlayer.getPlayerSER();
-				data[index][21] = tempPlayer.getRR();
-				data[index][22] = tempPlayer.getO_RR();
-				data[index][23] = tempPlayer.getD_RR();
-				data[index][24] = tempPlayer.getAR();
-				data[index][25] = tempPlayer.getSR();
-				data[index][26] = tempPlayer.getBR();
-				data[index][27] = tempPlayer.getTR();
-				data[index][28] = tempPlayer.getUR();
-				data[index][29] = tempPlayer.getdouble_double();
-				index++;
-			}
-		table.update(temp2, data);//这个地方可以参照学长的AnalysisOfPlayers里面的iniTable方法来改一下 
+//		Object[][] data = new Object[Controller.playerController.getAllPlayerVO().size()][30];
+//		
+//		//System.out.println(RegisterList.getPlayerNumber());
+//		
+//		int index = 0;
+//		
+//			ArrayList<PlayerVO> playerList = Controller.playerController.getAllPlayerVO();
+//			int size = playerList.size();	
+//			for(int j = 0; j < size; j++){
+//				PlayerVO tempPlayer = playerList.get(j);
+//				data[index][0] = tempPlayer.getPlayerName();
+//				data[index][1] = tempPlayer.getTeamShortName();//所属球队
+//				data[index][2] = tempPlayer.getPlayerAttends();
+//				data[index][3] = tempPlayer.getStartTimes();
+//				data[index][4] = tempPlayer.getPlayerTotalRebounds();
+//				data[index][5] = tempPlayer.getPlayerOffenceRebounds();
+//				data[index][6] = tempPlayer.getPlayerDeffenceRebounds();
+//				data[index][7] = tempPlayer.getPlayerAssists();
+//				data[index][8] = tempPlayer.getPlayerPlayTime();
+//				data[index][9] = tempPlayer.getPlayerFGP();
+//				data[index][10] = tempPlayer.getPlayer3FGP();
+//				data[index][11] = tempPlayer.getPlayerFTGP();
+//				data[index][12] = tempPlayer.getPlayerSteals();
+//				data[index][13] = tempPlayer.getPlayerBlocks();
+//				data[index][14] = tempPlayer.getPlayerTurnovers();
+//				data[index][15] = tempPlayer.getPlayerFouls();
+//				data[index][16] = tempPlayer.getPlayerScores();
+//				data[index][17] = tempPlayer.getPlayerPER();
+//				data[index][18] = tempPlayer.getPlayerGmScER();
+//				data[index][19] = tempPlayer.getPlayerTSP();
+//				data[index][20] = tempPlayer.getPlayerSER();
+//				data[index][21] = tempPlayer.getRR();
+//				data[index][22] = tempPlayer.getO_RR();
+//				data[index][23] = tempPlayer.getD_RR();
+//				data[index][24] = tempPlayer.getAR();
+//				data[index][25] = tempPlayer.getSR();
+//				data[index][26] = tempPlayer.getBR();
+//				data[index][27] = tempPlayer.getTR();
+//				data[index][28] = tempPlayer.getUR();
+//				data[index][29] = tempPlayer.getdouble_double();
+//				index++;
+//			}
+//		table.update(temp2, data);//这个地方可以参照学长的AnalysisOfPlayers里面的iniTable方法来改一下 
 	}
 	public static void main(String[] args){
 		UIData ui = new UIData(1280, 720);
