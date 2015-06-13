@@ -1117,7 +1117,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
     	  // ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
     	   PlayerVO result=new PlayerVO();
     	   result=p.getPlayervobyname("Larry Bird", "91-92");
-    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getPlayer3FGP());
+    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getAver_playerScores());
    	   
 //    	   for(PlayerdatainfoVO l:pr){
 //    		   System.out.println(l.getName());
