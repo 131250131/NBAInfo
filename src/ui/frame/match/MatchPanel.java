@@ -135,11 +135,11 @@ public class MatchPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent events) {
 	
 		if(events.getSource() == checkLeft){
-			Controller.addTeamPanel(_match.getLeftTeam().getShortName());
+			Controller.addTeamPanel(_match.getLeftTeam().getTeamName()+"队");
 		}
 		
 		if(events.getSource() == checkRight){
-			Controller.addTeamPanel(_match.getRightTeam().getShortName());
+			Controller.addTeamPanel(_match.getRightTeam().getTeamName()+"队");
 		}
 		
 	}

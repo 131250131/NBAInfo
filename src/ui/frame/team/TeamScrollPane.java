@@ -64,6 +64,7 @@ public class TeamScrollPane extends JScrollPane  implements ActionListener{
 	}
 	
 	private TeamVO getTeam(){
+		
 		ArrayList<TeamVO> array = Controller.teamController.getTeamHistorySeason(teamName, 0);
 		TeamVO team = array.get(array.size() - 1);
 		return team;
