@@ -22,9 +22,12 @@ public class MatchComboBox extends JComboBox<String>{
 	
 	private void addItem(){
 		ArrayList<String> dateList = Controller.matchController.getMatchdatesbySeaon("2014-2015");
-		for(int i = dateList.size() - 1; i >= 0 ; i--){
+		System.out.println(dateList.size());
+		for(int i = dateList.size() - 1; i >= dateList.size() - 2 ; i--){
+			System.out.println("sssss");
 			String date = dateList.get(i);	
 			this.addItem(date + " (" + Controller.matchController.getmatchbydate(dateList.get(i)).size() +")");
 		}
+		System.out.println("ok");
 	}
 }

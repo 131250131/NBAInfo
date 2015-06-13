@@ -16,7 +16,7 @@ public class MatchControllerThird implements matchControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
 	String password="";
-	String sql="941211";
+	String sql="";
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
 	/*
 	 * 根据日期的到比赛

@@ -53,7 +53,7 @@ public class SingleMatchPanel extends JPanel implements ActionListener{
 	}
 	
 	private String spliterL(String string){
-		String[] str = string.split("-");
+		String[] str = string.split(":");
 		int i = Integer.parseInt(str[0]);
 		if(i < 10){
 			return "0" + i;
@@ -62,7 +62,7 @@ public class SingleMatchPanel extends JPanel implements ActionListener{
 	}
 	
 	private String spliterR(String string){
-		String[] str = string.split("-");
+		String[] str = string.split(":");
 		int i = Integer.parseInt(str[1]);
 		if(i < 10){
 			return "0" + i;
@@ -73,8 +73,8 @@ public class SingleMatchPanel extends JPanel implements ActionListener{
 	public void initSingleMatchPanelWithMatch(){
 		TeamVO leftTeam = match.getLeftTeam();
 		TeamVO rightTeam = match.getRightTeam();
-		String leftTeamName = leftTeam.getShortName();
-		String rightTeamName= rightTeam.getShortName();
+		String leftTeamName = leftTeam.getTeamName();
+		String rightTeamName= rightTeam.getTeamName();
 		
 		String leftTeamScore_total = spliterL(match.getScore());
 		String rightTeamScore_total = spliterR(match.getScore());
