@@ -1662,7 +1662,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
 		return result;
 	}
 	/*
-     *预测的数据有（按在list中顺序）下赛季球员 场均得分，助攻，篮板，进攻篮板，防守篮板，投篮命中率，罚球命中率，三分命中率，抢断，盖帽，犯规，失误，真是命中率
+     *预测的数据有（按在list中顺序）下赛季球员 场均得分，助攻，篮板，进攻篮板，防守篮板，投篮命中率，罚球命中率，三分命中率，抢断，盖帽，犯规，失误，真实命中率
      *因为是个区间 所以我们采用一个这样的String   比如       [1,2]表示一个区间
 	 */
 	@Override
