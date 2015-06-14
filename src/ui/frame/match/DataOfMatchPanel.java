@@ -253,24 +253,24 @@ public class DataOfMatchPanel extends JPanel {
 		
 		
 		if(match.getScores1() != null){
-			score1 = match.getScores1().split(":");
+			score1 = match.getScores1().split("-");
 		}
 		
 		if(match.getScores2() != null){
-			score2 = match.getScores2().split(":");
+			score2 = match.getScores2().split("-");
 		}
 		
 		if(match.getScores3() != null){
-			score3 = match.getScores3().split(":");
+			score3 = match.getScores3().split("-");
 		}
 		
 		if(match.getScores4() != null){
-			score4 = match.getScores4().split(":");
+			score4 = match.getScores4().split("-");
 		}
 		
-		String[] total = match.getScore().split(":");
+		String[] total = match.getScore().split("-");
 		if(match.getExtrascores() != null){
-			String[] extra=match.getExtrascores().split(":");
+			String[] extra=match.getExtrascores().split("-");
 			extra1.setText(extra[0]);//未完
 			extra2.setText(extra[1]);//未完
 		}

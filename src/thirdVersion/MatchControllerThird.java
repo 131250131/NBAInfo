@@ -15,7 +15,7 @@ import vo.TeamVO;
 public class MatchControllerThird implements matchControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="941211";
+	String password="";
 	String sql="";
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
 	/*
