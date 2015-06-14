@@ -369,9 +369,9 @@ public class ChineseTranslator {
 			  name = "新奥尔良爵士队";
 			  break; 
 			case "新奥尔良鹈鹕队" :
-			  name = "NOH";
+			  name = "NOP";
 			  break; 
-			case "NOH" :
+			case "NOP" :
 			  name = "新奥尔良鹈鹕队";
 			  break; 
 			case "新泽西篮网队" :
@@ -543,9 +543,9 @@ public class ChineseTranslator {
 			  name = "芝加哥雄鹿队";
 			  break; 
 			case "菲尼克斯太阳队" :
-			  name = "PHO";
+			  name = "PHX";
 			  break; 
-			case "PHO" :
+			case "PHX" :
 			  name = "菲尼克斯太阳队";
 			  break; 
 			case "萨克拉门托国王队" :

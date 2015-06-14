@@ -138,21 +138,21 @@ public class RankingPanel extends JPanel implements ActionListener{
 			case 5:
 				playerList = Controller.playerController.getSeasonKingPlayers(season, DataType.FGP, false);
 				for(int i = 0; i < 5; i++){
-					showInfo[i] = playerList.get(i).getPlayerFGP() * 100;
+					showInfo[i] = playerList.get(i).getPlayerFGP();
 					playerNames[i] = playerList.get(i).getPlayerName();
 				}
 				break;
 			case 6:
 				playerList = Controller.playerController.getSeasonKingPlayers(season, DataType.SFGP, false);
 				for(int i = 0; i < 5; i++){
-					showInfo[i] = playerList.get(i).getPlayer3FGP() * 100;
+					showInfo[i] = playerList.get(i).getPlayer3FGP();
 					playerNames[i] = playerList.get(i).getPlayerName();
 				}
 				break;
 			case 7:
 				playerList = Controller.playerController.getSeasonKingPlayers(season, DataType.FTGP, false);
 				for(int i = 0; i < 5; i++){
-					showInfo[i] = playerList.get(i).getPlayerFTGP() * 100;
+					showInfo[i] = playerList.get(i).getPlayerFTGP();
 					playerNames[i] = playerList.get(i).getPlayerName();
 				}
 				break;

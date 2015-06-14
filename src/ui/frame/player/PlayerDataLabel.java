@@ -85,10 +85,7 @@ public class PlayerDataLabel extends JPanel{
 		if(type == 0){
 			switch(i){
 			case 0:
-			{
-				System.out.println("pp" +player.getPlayerScores());
 				return player.getPlayerScores();
-			}
 			case 1:
 				return player.getPlayerFG();
 			case 2:
@@ -250,19 +247,19 @@ public class PlayerDataLabel extends JPanel{
 			case 2:
 				return player.getAver_playerFGTry();
 			case 3:
-				return player.getPlayerFGP();
+				return player.getPlayerFGP() / 100;
 			case 4:
 				return player.getAver_player3FG();
 			case 5:
 				return player.getAver_player3FGTry();
 			case 6:
-				return player.getPlayer3FGP();
+				return player.getPlayer3FGP() / 100;
 			case 7:
 				return player.getAver_playerFTG();
 			case 8:
 				return player.getAver_playerFTGTry();
 			case 9:
-				return player.getPlayerFTGP();
+				return player.getPlayerFTGP() / 100;
 			case 10:
 				return player.getAver_playerTotalRebounds();
 			case 11:

@@ -12,14 +12,14 @@ public class DataTransform {
 	
 	public static String getNBAEYEScore(double num){
 		double returnValue = 60;
-		returnValue = returnValue + num / 2 * 3;
+		returnValue = returnValue + num * 1.2;
 		
 		if(returnValue > 80){
-			returnValue = 80 + (returnValue - 80) * 0.8;
+			returnValue = 80 + (returnValue - 80) * 0.7;
 		}
 		
 		if(returnValue > 90){
-			returnValue = 90 + (returnValue - 90) * 0.8;
+			returnValue = 90 + (returnValue - 90) * 0.6;
 		}
 		
 		if(returnValue >= 100){

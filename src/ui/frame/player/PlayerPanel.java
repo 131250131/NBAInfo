@@ -37,7 +37,12 @@ public class PlayerPanel extends JPanel{
 		
 		PlayerInfoLabel playerInfoLabel = new PlayerInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, player);
 		this.add(playerInfoLabel);
-		PlayerDataLabel playerDataLabel = new PlayerDataLabel(labelX, playerLabelY + playerLabelHeight, labelWidth, dataLabelHeight, player);
+		
+		int tableHeight = (int) (650 * UIData.changeY);
+		
+		PlayerDataTable playerDataTabel = new PlayerDataTable(labelX, playerLabelY + playerLabelHeight, labelWidth, tableHeight, player);
+		this.add(playerDataTabel);
+		PlayerDataLabel playerDataLabel = new PlayerDataLabel(labelX, playerLabelY + playerLabelHeight + tableHeight, labelWidth, dataLabelHeight, player);
 		this.add(playerDataLabel);
 		
 		JPanel backPanel = new JPanel();

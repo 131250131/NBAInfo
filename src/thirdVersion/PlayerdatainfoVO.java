@@ -132,6 +132,7 @@ public class PlayerdatainfoVO {
     String salary="";//薪水，带单位，所以用String
     boolean isplayoff=false;//是否是季候赛，是季后赛表示为1，不是为0 
     String name="";//球员名字
+    String Chinesenname="";
     public ArrayList<PlayerdatainfoVO> getvo(ResultSet s){
     	ArrayList<PlayerdatainfoVO> result=new ArrayList<PlayerdatainfoVO>();
     	return result;
@@ -735,5 +736,11 @@ public class PlayerdatainfoVO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public String getChinesenname() {
+		return Chinesenname;
+	}
+	public void setChinesenname(String chinesenname) {
+		Chinesenname = chinesenname;
 	}
 }

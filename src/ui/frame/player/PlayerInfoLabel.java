@@ -47,7 +47,7 @@ public class PlayerInfoLabel extends JPanel implements ActionListener{
 		teamBt2.addActionListener(this);
 		this.add(teamBt2);
 		
-		TextLabel text1 = new TextLabel("所属球队: " + player.getTeamname());
+		TextLabel text1 = new TextLabel("所属球队: " + player.getTeamname() + "队");
 		text1.setLocation((int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
 		text1.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent arg0) {
@@ -68,7 +68,7 @@ public class PlayerInfoLabel extends JPanel implements ActionListener{
 		text4.setLocation((int) (400 * UIData.changeX), (int) (120 * UIData.changeY));
 		this.add(text4);
 		
-		TextLabel text5 = new TextLabel("资历年数: " + player.getExp());
+		TextLabel text5 = new TextLabel("薪       资: " + player.getSalary());
 		text5.setLocation((int) (400 * UIData.changeX), (int) (150 * UIData.changeY));
 		this.add(text5);
 		
@@ -88,15 +88,15 @@ public class PlayerInfoLabel extends JPanel implements ActionListener{
 		text9.setLocation((int) (900 * UIData.changeX), (int) (90 * UIData.changeY));
 		this.add(text9);
 		
-		TextLabel2 text10 = new TextLabel2("赛季效率: " + DataTransform.transDoubleTopointXXString(player.getPlayerGmScER()));
+		TextLabel2 text10 = new TextLabel2("赛季效率: " + DataTransform.transDoubleTopointXXString(player.getPlayerPER()));
 		text10.setLocation((int) (900 * UIData.changeX), (int) (150 * UIData.changeY));
 		this.add(text10);
 		
-		TextLabel2 text11 = new TextLabel2("EYE-NBA 智能评分: " + DataTransform.getNBAEYEScore(player.getPlayerGmScER()));
+		TextLabel2 text11 = new TextLabel2("EYE-NBA 智能评分: " + DataTransform.getNBAEYEScore(player.getPlayerPER()));
 		text11.setLocation((int) (900 * UIData.changeX), (int) (180 * UIData.changeY));
 		this.add(text11);
 		
-		TextLabel2 text12 = new TextLabel2("平均上场: " + DataTransform.transDoubleTopointXXString(player.getAver_playerPlayTime() / 60) + "分");
+		TextLabel2 text12 = new TextLabel2("平均上场: " + DataTransform.transDoubleTopointXXString(player.getAver_playerPlayTime()) + "分钟");
 		text12.setLocation((int) (900 * UIData.changeX), (int) (120 * UIData.changeY));
 		this.add(text12);
 
@@ -107,8 +107,10 @@ public class PlayerInfoLabel extends JPanel implements ActionListener{
 		teamBt1 = new JButton();
 		teamBt1.addActionListener(this);
 		this.add(teamBt1);
+	
+		System.out.println(player.getTeamname() + "队");
 		
-		ImageLabel teamImage = new ImageLabel(ImageSaver.getTeamIcon(player.getTeamShortName())
+		ImageLabel teamImage = new ImageLabel(ImageSaver.getTeamIcon(ChineseTranslator.TeamNameTrans(player.getTeamname() + "队"))
 				, (int) (155 * UIData.changeX), (int) (20 * UIData.changeY), (int) (220 * UIData.changeX), (int) (220 * UIData.changeY));
 		teamImage.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent arg0) {
@@ -157,11 +159,11 @@ public class PlayerInfoLabel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == teamBt1){
-			Controller.addTeamPanel(_player.getTeamShortName());
+			Controller.addTeamPanel(_player.getTeamname() + "队");
 		}
 		
 		if(events.getSource() == teamBt2){
-			Controller.addTeamPanel(_player.getTeamShortName());
+			Controller.addTeamPanel(_player.getTeamname() + "队");
 		}
 		
 	}
