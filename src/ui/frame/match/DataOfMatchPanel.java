@@ -275,7 +275,6 @@ public class DataOfMatchPanel extends JPanel {
 			extra2.setText(extra[1]);//未完
 		}
 		//信息
-		System.out.println();
 		first1.setText(score1[0]);
 		first2.setText(score1[1]);
 		second1.setText(score2[0]);

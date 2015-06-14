@@ -79,8 +79,8 @@ public class LiveCast  {
 		 *得到网页json内容 
 		 */
 		    try{
-		    String ptjson=getjson("http://china.nba.com/wap/static/data/game/snapshot_0041400403.json");
-			String json=getjson("http://china.nba.com/wap/static/data/game/playbyplay_0041400403_"+n+".json");	
+		    String ptjson=getjson("http://china.nba.com/wap/static/data/game/snapshot_0041400405.json");
+			String json=getjson("http://china.nba.com/wap/static/data/game/playbyplay_0041400405_"+n+".json");	
 			
 			if(n.equals("1")){
 			boolean check=false;
