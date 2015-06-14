@@ -62,8 +62,8 @@ public class ComparePlayer extends JPanel {
 		if(!ID1.equals("-1")&&!ID2.equals("-1")
 				&&!season.equals("选择赛季")&&!category.equals("选择数据种类")){
 			if(category.equals("进攻数据")){
-				PlayerVO player1=controllerForPlayer.getPlayervobyid(ID1, season);
-				PlayerVO player2=controllerForPlayer.getPlayervobyid(ID2, season);
+				PlayerVO player1=controllerForPlayer.getPlayervobyidvo(ID1, season);
+				PlayerVO player2=controllerForPlayer.getPlayervobyidvo(ID2, season);
 				double[] data1=new double[Odata.length];
 				double[] data2=new double[Odata.length];
 				
