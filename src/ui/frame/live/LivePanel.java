@@ -214,8 +214,8 @@ public class LivePanel extends JPanel implements ActionListener{
 	
 	public void rePaint(){
 		String[] str = LiveCast.getInstance().getFirstmatchinfo().getTscores().split("-");
-		num1.setText(str[1]);
-		num2.setText(str[0]);
+		num1.setText(str[0]);
+		num2.setText(str[1]);
 		LiveBoard.rePaint.doClick();
 		num1.repaint();
 		num2.repaint();

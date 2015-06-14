@@ -79,8 +79,8 @@ public class LiveCast  {
 		 *得到网页json内容 
 		 */
 		    try{
-		    String ptjson=getjson("http://china.nba.com/wap/static/data/game/snapshot_0041400403.json");
-			String json=getjson("http://china.nba.com/wap/static/data/game/playbyplay_0041400403_"+n+".json");	
+		    String ptjson=getjson("http://china.nba.com/wap/static/data/game/snapshot_0041400405.json");
+			String json=getjson("http://china.nba.com/wap/static/data/game/playbyplay_0041400405_"+n+".json");	
 			
 			if(n.equals("1")){
 			boolean check=false;
@@ -548,13 +548,13 @@ public class LiveCast  {
 				pm.setPlayerTotalRebounds((int)pjsonObj3.getDouble("rebs"));
 				pm.setPlayerFGTry((int)pjsonObj3.getDouble("fga"));
 				pm.setPlayerFG((int)pjsonObj3.getDouble("fgm"));
-				pm.setPlayerFGP(pjsonObj3.getDouble("fgpct"));
+				pm.setPlayerFGP(pjsonObj3.getDouble("fgpct")/100);
 				pm.setPlayer3FGTry((int)pjsonObj3.getDouble("tpa"));
 				pm.setPlayer3FG((int)pjsonObj3.getDouble("tpm"));
-				pm.setPlayer3FGP(pjsonObj3.getDouble("tppct"));
+				pm.setPlayer3FGP(pjsonObj3.getDouble("tppct")/100);
 				pm.setPlayerFTGTry((int)pjsonObj3.getDouble("fta"));
 				pm.setPlayerFTG((int)pjsonObj3.getDouble("ftm"));
-				pm.setPlayerFTGP(pjsonObj3.getDouble("ftpct"));
+				pm.setPlayerFTGP(pjsonObj3.getDouble("ftpct")/100);
 				pm.setPlayerTurnovers((int)pjsonObj3.getDouble("turnovers"));
 				pm.setPlayerSteals((int)pjsonObj3.getDouble("steals"));
 			    pm.setPlayerPlayTime((int)pjsonObj3.getDouble("mins")*60);
@@ -693,13 +693,13 @@ public class LiveCast  {
 				pm.setPlayerTotalRebounds((int)pjsonObj3.getDouble("rebs"));
 				pm.setPlayerFGTry((int)pjsonObj3.getDouble("fga"));
 				pm.setPlayerFG((int)pjsonObj3.getDouble("fgm"));
-				pm.setPlayerFGP(pjsonObj3.getDouble("fgpct"));
+				pm.setPlayerFGP(pjsonObj3.getDouble("fgpct")/100);
 				pm.setPlayer3FGTry((int)pjsonObj3.getDouble("tpa"));
 				pm.setPlayer3FG((int)pjsonObj3.getDouble("tpm"));
-				pm.setPlayer3FGP(pjsonObj3.getDouble("tppct"));
+				pm.setPlayer3FGP(pjsonObj3.getDouble("tppct")/100);
 				pm.setPlayerFTGTry((int)pjsonObj3.getDouble("fta"));
 				pm.setPlayerFTG((int)pjsonObj3.getDouble("ftm"));
-				pm.setPlayerFTGP(pjsonObj3.getDouble("ftpct"));
+				pm.setPlayerFTGP(pjsonObj3.getDouble("ftpct")/100);
 				pm.setPlayerTurnovers((int)pjsonObj3.getDouble("turnovers"));
 				pm.setPlayerSteals((int)pjsonObj3.getDouble("steals"));
 			    pm.setPlayerPlayTime((int)pjsonObj3.getDouble("mins")*60);

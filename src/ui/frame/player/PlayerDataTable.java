@@ -29,10 +29,12 @@ public class PlayerDataTable extends JPanel{
 		initGames();
 		table = new MyTable();
 		table.setBounds((int) (200 * UIData.changeX), (int) (270 * UIData.changeY), (int) (1050 * UIData.changeX), (int) (400 * UIData.changeY));
+		this.add(table);
+		table.setVisible(true);
 		initData();
 	}
 	
-	ArrayList<PlayerVO> dataArray;
+	ArrayList<PlayerVO> dataArray = new ArrayList<PlayerVO>();
 	ArrayList<String> seasonArray;
 	
 	private void initData(){
@@ -76,11 +78,9 @@ public class PlayerDataTable extends JPanel{
 	
 	private void initGames(){
 		String name = player.getPlayerName();
-		String id = player.getPlayerID();
 		seasonArray = Controller.playerController.getseasonbyname(name);
-		
 		for(int i = 0; i < seasonArray.size(); i++){
-			dataArray.add(Controller.playerController.getPlayervobyid(name, seasonArray.get(i)));
+			dataArray.add(Controller.playerController.getPlayervobyname(name, seasonArray.get(i)));
 		}
 	}
 	

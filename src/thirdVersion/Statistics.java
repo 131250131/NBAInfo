@@ -61,7 +61,7 @@ public class Statistics {
 			case AFTGZ:datatype = "AFTGZ" ;break;
 			case AFTG: datatype = "AFTG" ;break;
 			case ARebounds:datatype = "ARebounds" ;break;
-			case AORebouns: datatype = "AORebouns" ;break;
+			case AORebounds: datatype = "AORebouns" ;break;
 			case ADRebounds:datatype = "ADRebounds" ;break;
 			case AAssists: datatype = "AAssists" ;break;
 			case ASteals:datatype = "ASteals" ;break;

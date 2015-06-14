@@ -85,13 +85,13 @@ public class MatchDataPanel extends JPanel{
 		for(int i = 0; i < playerlist.size(); i++){
 			data[i][0] = playerlist.get(i).getPlayerName();
 			data[i][1] = playerlist.get(i).getPlayerPlayTime() / 60;
-			data[i][2] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayerFGP() * 100);
+			data[i][2] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayerFGP());
 			data[i][3] = playerlist.get(i).getPlayerFG();
 			data[i][4] = playerlist.get(i).getPlayerFGTry();
-			data[i][5] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayer3FGP() * 100);
+			data[i][5] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayer3FGP());
 			data[i][6] = playerlist.get(i).getPlayer3FG();
 			data[i][7] = playerlist.get(i).getPlayer3FGTry();
-			data[i][8] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayerFTGP() * 100);
+			data[i][8] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayerFTGP());
 			data[i][9] = playerlist.get(i).getPlayerFTG();
 			data[i][10] = playerlist.get(i).getPlayerFTGTry();
 			data[i][11] = playerlist.get(i).getPlayerPER();
