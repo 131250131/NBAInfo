@@ -68,7 +68,7 @@ public class TeamPicPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == button){
-			Controller.addTeamPanel(_teamName);
+			Controller.addTeamPanel(ChineseTranslator.TeamNameTrans(_teamName));
 		}
 	}
 
