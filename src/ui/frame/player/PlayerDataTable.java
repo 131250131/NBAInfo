@@ -78,9 +78,8 @@ public class PlayerDataTable extends JPanel{
 		String name = player.getPlayerName();
 		String id = player.getPlayerID();
 		seasonArray = Controller.playerController.getseasonbyname(name);
-		
 		for(int i = 0; i < seasonArray.size(); i++){
-			dataArray.add(Controller.playerController.getPlayervobyid(name, seasonArray.get(i)));
+			dataArray.add(Controller.playerController.getPlayervobyname(name, seasonArray.get(i)));
 		}
 	}
 	

@@ -18,8 +18,8 @@ import Utibility.DataType;
 public class PlayerControllerThird implements playerControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="941211";
-	String sql="";
+	String password="";
+	String sql="941211";
 	ArrayList<PlayerBasicInfoVO> inidata=new ArrayList<PlayerBasicInfoVO>();
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
 	/*
@@ -1114,11 +1114,11 @@ public class PlayerControllerThird implements playerControllerThirdService{
      */
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();
-    	   System.out.println(p.dataforecast("1355", 0.95));
+//    	   System.out.println(p.dataforecast("1355", 0.95));
     	  // ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
-//    	   PlayerVO result=new PlayerVO();
-//    	   result=p.getPlayervobyname("Larry Bird", "91-92");
-//    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getPlayerScores());
+    	   PlayerVO result=new PlayerVO();
+    	   result=p.getPlayervobyname("Stephen Curry", "09-10");
+    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getPlayerScores());
    // 	   ArrayList<String> s=p.getthesameeason("1", "10");
  //   	   System.out.println(s);
 //    	   for(PlayerdatainfoVO l:pr){
@@ -1465,13 +1465,12 @@ public class PlayerControllerThird implements playerControllerThirdService{
 		return result;
 	}
 	@Override
-	public PlayerVO getPlayervobyid(String pid, String season) {
+	public PlayerdatainfoVO getPlayervobyid(String pid, String season) {
 
 		// TODO Auto-generated method stub
 		ArrayList<PlayerdatainfoVO> ps=new ArrayList<PlayerdatainfoVO>();
 		ArrayList<String> teamname=new ArrayList<String>();
-		PlayerVO result=new PlayerVO();
-		PlayerBasicInfoVO pbv=new PlayerBasicInfoVO();
+		PlayerdatainfoVO result=new PlayerdatainfoVO();
 		try{
      		sql="SELECT * FROM playerdatainfo where id='"+pid+"'"+"AND season='"+season+"'";
         		Class.forName("com.mysql.jdbc.Driver");
@@ -1590,7 +1589,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
                     			teamname.add(l.getTeamname());
                     		}
                     		if(l.getTeamname().equals("总计")){
-                    			result=datainfotovo(l);
+                    			result=l;
                     			count=false;
                               
                     		}
@@ -1598,7 +1597,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
                     	if(count){
                     		for(PlayerdatainfoVO l:ps){
                         		if(!l.isIsplayoff()){
-                        			result=datainfotovo(l);
+                        			result=l;
                                     break;
                         		}
                         		
@@ -1613,8 +1612,11 @@ public class PlayerControllerThird implements playerControllerThirdService{
                     	}
                     }
 	                if(ps.size()==1){
-	                	result=datainfotovo(ps.get(0));
+	                	result=ps.get(0);
 	                }
+	                for(PlayerBasicInfoVO p:inidata){
+	        			result.setChinesenname(p.getChinesename());
+	        		}
 	}catch(Exception e){
 		e.printStackTrace();
 	}
