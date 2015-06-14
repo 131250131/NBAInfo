@@ -949,7 +949,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 			case AFTGZ : datatype = "aver_FTGz";break;
 			case AFTG : datatype = "aver_FTG";break;	
 			case ARebounds : datatype = "aver_rebounds";break;
-			case AORebouns : datatype = "aver_orebounds";break;
+			case AORebounds : datatype = "aver_orebounds";break;
 			case ADRebounds : datatype = "aver_drebounds";break;
 			case AAssists : datatype = "aver_assists";break;
 			case ASteals : datatype = "aver_steals";break;

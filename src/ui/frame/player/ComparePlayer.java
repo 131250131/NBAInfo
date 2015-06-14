@@ -29,6 +29,7 @@ import ui.frame.player.AnalysisOfPlayers.JLabelOfAlphabet;
 import ui.myUI.JSortTable;
 import ui.myUI.MyTable;
 import ui.system.UIData;
+import vo.PlayerVO;
 
 public class ComparePlayer extends JPanel {
 
@@ -42,11 +43,46 @@ public class ComparePlayer extends JPanel {
 	private String[] dataCategoryNames={"选择数据种类","进攻数据","防守数据","效率数据"};
 	private String[] seasons={"选择赛季"};
 	private boolean isLeft=true;
-	int count=0;
+	private int count=0;
+	private String[] Odata={"投篮命中率","三分命中率","平均罚球命中率","平均前场篮板","平均助攻","平均得分"};
+	private String[] Ddata={"平均后场篮板","平均抢断","平均盖帽","平均犯规"};
+	private String[] Edata={"篮板率","进攻篮板率","防守篮板率","助攻率","抢断率","盖帽率","失误率","真实命中率"};
+	
 	private String[] columname={"球员ID","球员姓名","场均出场时间","投篮命中率","场均投篮命中率","场均投篮出手数","三分命中率",
 			"场均三分命中数","均三分出手数","罚球命中率","场均罚球命中数","场均罚球出手数","场均篮板数",
 			"场均前场篮板数","场均后场篮板数","场均助攻数","场均抢断数","场均盖帽数","场均失误数","场均犯规数","场均得分"};
 	private playerControllerThirdService controllerForPlayer=new PlayerControllerThird();//逻辑层接口
+	
+	void doCompare(){
+		String season=seasonComb.getSelectedItem().toString();
+		String category=dataCategory.getSelectedItem().toString();
+		String ID1=Player1.getID();
+		String ID2=Player2.getID();
+		
+		if(!ID1.equals("-1")&&!ID2.equals("-1")
+				&&!season.equals("选择赛季")&&!category.equals("选择数据种类")){
+			if(category.equals("进攻数据")){
+				PlayerVO player1=controllerForPlayer.getPlayervobyid(ID1, season);
+				PlayerVO player2=controllerForPlayer.getPlayervobyid(ID2, season);
+				double[] data1=new double[Odata.length];
+				double[] data2=new double[Odata.length];
+				
+				data1[0]=player1.getPlayerFGP();
+				data1[1]=player1.getPlayer3FGP();
+				data1[2]=player1.getPlayerFTGP();
+				data1[3]=player1.getAver_playerOffenceRebounds();//平均进攻篮板
+				data1[4]=0;//平均助攻
+				data1[5]=0;//平均得分
+				
+			}
+			else if(category.equals("防守数据")){
+				
+			}
+			else if(category.equals("效率数据")){
+				
+			}
+		}
+	}
 	public ComparePlayer(){
 		this.setSize(1280, 720);
 		this.setLayout(null);
@@ -86,7 +122,7 @@ public class ComparePlayer extends JPanel {
         ListSelectionModel cellSelectionModel = table.getJTable().getSelectionModel();  
         cellSelectionModel.addListSelectionListener(new ListSelectionListener(){  
             public void valueChanged(ListSelectionEvent e) {//单元格值变动事件  
-            	
+            	//交替在左右显示选中的球员
             	count++;
             	System.out.println(count);
             	if(isLeft){
@@ -101,6 +137,19 @@ public class ComparePlayer extends JPanel {
             		isLeft=!isLeft;
             		count=0;
             	}
+            	String id1=Player1.getID();
+            	String id2=Player2.getID();
+            	if(!id1.equals("-1")&&!id2.equals("-1")){
+            		//更新赛季
+                	seasonComb.removeAllItems();
+                	seasonComb.addItem("选择赛季");
+                	ArrayList<String> list=controllerForPlayer.getthesameeason(id1, id2);
+                	System.out.println("打过"+list.size());
+                	for(int i=0;i<list.size();i++){
+                		seasonComb.addItem(list.get(i));
+                	}
+            	}
+            	
             }  
         });  
         

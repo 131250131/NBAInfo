@@ -38,7 +38,7 @@ public enum DataType {
          AFTGZ ,//平均罚球命中数,要进行推断统计
          AFTG ,//平均罚球数,要进行推断统计
          ARebounds ,//平均篮板,要进行推断统计
-         AORebouns ,//平均球场篮板,要进行推断统计
+         AORebounds ,//平均球场篮板,要进行推断统计
          ADRebounds ,//平均后场篮板,要进行推断统计
          AAssists ,//平均助攻,要进行推断统计
          ASteals ,//平均抢断,要进行推断统计

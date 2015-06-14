@@ -31,7 +31,7 @@ public class Translater {
 			DataType.AFTGZ ,//平均罚球命中数
 			DataType.AFTG ,//平均罚球数
 			DataType.ARebounds ,//平均篮板
-			DataType.AORebouns ,//平均球场篮板
+			DataType.AORebounds ,//平均前场篮板
 			DataType.ADRebounds ,//平均后场篮板
 			DataType.AAssists ,//平均助攻
 			DataType.ASteals ,//平均抢断
