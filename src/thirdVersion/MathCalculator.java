@@ -32,7 +32,7 @@ public class MathCalculator {
 		   for(Double d:tempList){
 			   chahe+=Math.pow(d-average, 2);
 		   }
-		   return chahe/(double)n;
+		   return chahe/(double)(n-1);
 		   }catch(Exception e){
 			   return 0.0;
 		   }
@@ -108,8 +108,8 @@ public class MathCalculator {
 		double aveg=getAverage(data);
 		double var=getVariance(data);
 		DecimalFormat    df   = new DecimalFormat("######0.0000"); 
-		String left=df.format(aveg-NormDistributionQuantile((1-afa)/2)*(var/(Math.pow(data.size(), 0.5))));
-		String right=df.format(aveg+NormDistributionQuantile((1-afa)/2)*(var/(Math.pow(data.size(), 0.5))));
+		String left=df.format(aveg-NormDistributionQuantile((1-afa)/2)*(Math.pow(var,0.5)/(Math.pow(data.size(), 0.5))));
+		String right=df.format(aveg+NormDistributionQuantile((1-afa)/2)*(Math.pow(var,0.5)/(Math.pow(data.size(), 0.5))));
 		return "["+left+","+right+"]";
 	}
 	/*
@@ -128,7 +128,7 @@ public class MathCalculator {
 	 * 用来测试的main方法
 	 */
 	public static void main(String[] args){
-		System.out.println(NormDistributionQuantile(0.025));
+	
 	}
 	
 	
