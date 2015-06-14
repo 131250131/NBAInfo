@@ -1114,12 +1114,13 @@ public class PlayerControllerThird implements playerControllerThirdService{
      */
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();
+    	   System.out.println(p.dataforecast("1355", 0.95));
     	  // ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
 //    	   PlayerVO result=new PlayerVO();
 //    	   result=p.getPlayervobyname("Larry Bird", "91-92");
-//    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getAver_playerScores());
-    	   ArrayList<String> s=p.getthesameeason("1", "10");
-    	   System.out.println(s);
+//    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getPlayerScores());
+   // 	   ArrayList<String> s=p.getthesameeason("1", "10");
+ //   	   System.out.println(s);
 //    	   for(PlayerdatainfoVO l:pr){
 //    		   System.out.println(l.getName());
 //    	   }
@@ -1660,5 +1661,89 @@ public class PlayerControllerThird implements playerControllerThirdService{
 		}
 		return result;
 	}
-      
+	/*
+     *预测的数据有（按在list中顺序）下赛季球员 场均得分，助攻，篮板，进攻篮板，防守篮板，投篮命中率，罚球命中率，三分命中率，抢断，盖帽，犯规，失误，真是命中率
+     *因为是个区间 所以我们采用一个这样的String   比如       [1,2]表示一个区间
+	 */
+	@Override
+	public ArrayList<String> dataforecast(String pid,double afa) {
+		// TODO Auto-generated method stub
+		ArrayList<String> result=new ArrayList<String>();
+		ArrayList<Double> sc=new ArrayList<Double>();
+		ArrayList<Double> a=new ArrayList<Double>();
+		ArrayList<Double> r=new ArrayList<Double>();
+		ArrayList<Double> or=new ArrayList<Double>();
+		ArrayList<Double> dr=new ArrayList<Double>();
+		ArrayList<Double> fgp=new ArrayList<Double>();
+		ArrayList<Double> ftgp=new ArrayList<Double>();
+		ArrayList<Double> sfgp=new ArrayList<Double>();
+		ArrayList<Double> st=new ArrayList<Double>();
+		ArrayList<Double> b=new ArrayList<Double>();
+		ArrayList<Double> f=new ArrayList<Double>();
+		ArrayList<Double> t=new ArrayList<Double>();
+		ArrayList<Double> rsr=new ArrayList<Double>();
+		try{
+		sql="SELECT * FROM playermatchdata where playerid='"+pid+"'"+"AND season='2014-2015'";
+    		Class.forName("com.mysql.jdbc.Driver");
+    		Connection conn =DriverManager.getConnection(url, user, password);
+    		PreparedStatement pstmt=conn.prepareStatement(sql);
+    		ResultSet rs=pstmt.executeQuery();
+    		while(rs.next()){
+    			  sc.add(MathCalculator.change(rs.getDouble("Scores")));
+    			  a.add(MathCalculator.change(rs.getDouble("Assists")));
+    			  r.add(MathCalculator.change(rs.getDouble("Rebounds")));
+    			  or.add(MathCalculator.change(rs.getDouble("ORebounds")));
+    			  dr.add(MathCalculator.change(rs.getDouble("DRebounds")));
+    			  fgp.add(MathCalculator.change(rs.getDouble("FGP")));
+    			  ftgp.add(MathCalculator.change(rs.getDouble("FTGP")));
+    			  sfgp.add(MathCalculator.change(rs.getDouble("3FGP")));
+    			  st.add(MathCalculator.change(rs.getDouble("Steals")));
+    			  b.add(MathCalculator.change(rs.getDouble("Blocks")));
+    			  f.add(MathCalculator.change(rs.getDouble("Fouls")));
+    			  t.add(MathCalculator.change(rs.getDouble("Turnovers")));
+    			  rsr.add(MathCalculator.change(rs.getDouble("Realshootrate")));
+    		}
+    		result.add(MathCalculator.forecast(sc,afa));
+    		result.add(MathCalculator.forecast(a,afa));
+    		result.add(MathCalculator.forecast(r,afa));
+    		result.add(MathCalculator.forecast(or,afa));
+    		result.add(MathCalculator.forecast(dr,afa));
+    		result.add(MathCalculator.forecast(fgp,afa));
+    		result.add(MathCalculator.forecast(ftgp,afa));
+    		result.add(MathCalculator.forecast(sfgp,afa));
+    		result.add(MathCalculator.forecast(st,afa));
+    		result.add(MathCalculator.forecast(b,afa));
+    		result.add(MathCalculator.forecast(f,afa));
+    		result.add(MathCalculator.forecast(t,afa));
+    		result.add(MathCalculator.forecast(rsr,afa));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+	@Override
+	public ArrayList<PlayerBasicInfoVO> getthisseasonplayer() {
+		// TODO Auto-generated method stub
+		ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
+		ArrayList<String> s=new ArrayList<String>();
+		try{
+			sql="SELECT playerid FROM playermatchdata where season='2014-2015'";
+			Class.forName("com.mysql.jdbc.Driver");
+    		Connection conn =DriverManager.getConnection(url, user, password);
+    		PreparedStatement pstmt=conn.prepareStatement(sql);
+    		ResultSet rs=pstmt.executeQuery();
+    		while(rs.next()){
+    			 s.add(rs.getString("playerid"));
+    		}
+    		for(PlayerBasicInfoVO p:inidata){
+    			if(s.contains(p.getPlayerID())){
+    				result.add(p);
+    			}
+    		}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return result;
+	}
+    
 }

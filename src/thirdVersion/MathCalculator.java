@@ -1,5 +1,6 @@
 package thirdVersion;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 //这个类用来计算各种数据;
@@ -100,13 +101,34 @@ public class MathCalculator {
 	    	     
 	       }
 	}
+	/*
+	 * 区间估计 默认置信水平为0.95
+	 */
+	public static String forecast(ArrayList<Double> data,double afa){
+		double aveg=getAverage(data);
+		double var=getVariance(data);
+		DecimalFormat    df   = new DecimalFormat("######0.0000"); 
+		String left=df.format(aveg-NormDistributionQuantile((1-afa)/2)*(var/(Math.pow(data.size(), 0.5))));
+		String right=df.format(aveg+NormDistributionQuantile((1-afa)/2)*(var/(Math.pow(data.size(), 0.5))));
+		return "["+left+","+right+"]";
+	}
+	/*
+	 * 
+	 */
 	
 	
+	public static double change(double i){
+		if(i==-1||i==-100){
+			return 0;
+		}
+		else
+			return i;
+	}
 	/*
 	 * 用来测试的main方法
 	 */
 	public static void main(String[] args){
-		System.out.println(NormDistributionQuantile(0.1814));
+		System.out.println(NormDistributionQuantile(0.025));
 	}
 	
 	
