@@ -1114,11 +1114,12 @@ public class PlayerControllerThird implements playerControllerThirdService{
      */
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();
+    	   System.out.println(p.getPlayervobyid("526", "14-15").getChinesenname());
 //    	   System.out.println(p.dataforecast("1355", 0.95));
     	  // ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
-    	   PlayerVO result=new PlayerVO();
-    	   result=p.getPlayervobyname("Stephen Curry", "09-10");
-    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getPlayerScores());
+//    	   PlayerVO result=new PlayerVO();
+//    	   result=p.getPlayervobyname("Stephen Curry", "09-10");
+//    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getPlayerScores());
    // 	   ArrayList<String> s=p.getthesameeason("1", "10");
  //   	   System.out.println(s);
 //    	   for(PlayerdatainfoVO l:pr){
@@ -1615,7 +1616,8 @@ public class PlayerControllerThird implements playerControllerThirdService{
 	                	result=ps.get(0);
 	                }
 	                for(PlayerBasicInfoVO p:inidata){
-	        			result.setChinesenname(p.getChinesename());
+	                	if(p.getPlayerID().equals(pid))
+	        			         result.setChinesenname(p.getChinesename());
 	        		}
 	}catch(Exception e){
 		e.printStackTrace();
