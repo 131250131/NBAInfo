@@ -30,4 +30,6 @@ public interface playerControllerThirdService {
     public ArrayList<String>  dataforecast(String pid,double afa);
     public ArrayList<PlayerBasicInfoVO> getthisseasonplayer();
     public ArrayList<SalaryVO> getSalaryBySeason(String season);
+    public ArrayList<PlayerBasicInfoVO> getPlayersbyCharSeason(char temp,String season);
+
 }

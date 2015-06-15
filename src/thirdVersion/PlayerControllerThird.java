@@ -1114,11 +1114,12 @@ public class PlayerControllerThird implements playerControllerThirdService{
      */
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();
+    	   System.out.println(p.getPlayersbyCharSeason('B', "14-15").size());
 //    	   System.out.println(p.dataforecast("1355", 0.95));
     	  // ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
-    	   PlayerVO result=new PlayerVO();
-    	   result=p.getPlayervobyname("Stephen Curry", "09-10");
-    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getPlayerScores());
+//    	   PlayerVO result=new PlayerVO();
+//    	   result=p.getPlayervobyname("Stephen Curry", "09-10");
+//    	   System.out.println(result.getPlayerName()+result.getTeamname()+result.getPlayerScores());
    // 	   ArrayList<String> s=p.getthesameeason("1", "10");
  //   	   System.out.println(s);
 //    	   for(PlayerdatainfoVO l:pr){
@@ -1615,7 +1616,8 @@ public class PlayerControllerThird implements playerControllerThirdService{
 	                	result=ps.get(0);
 	                }
 	                for(PlayerBasicInfoVO p:inidata){
-	        			result.setChinesenname(p.getChinesename());
+	                	if(p.getPlayerID().equals(pid))
+	        			         result.setChinesenname(p.getChinesename());
 	        		}
 	}catch(Exception e){
 		e.printStackTrace();
@@ -1901,10 +1903,48 @@ public class PlayerControllerThird implements playerControllerThirdService{
 	}
 		return result;
 	}
+
 	
 	public ArrayList<SalaryVO> getSalaryBySeason(String season) {
 		Statistics s = new Statistics();
 		return s.getAllSalaryInfoBySeason(season);
 	}
     
+
+	@Override
+	public ArrayList<PlayerBasicInfoVO> getPlayersbyCharSeason(char temp,
+			String season) {
+		ArrayList<PlayerBasicInfoVO> tempp=new ArrayList<PlayerBasicInfoVO>();
+		ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
+		ArrayList<String> ids=new ArrayList<String>();
+		try{
+     		sql="SELECT id FROM playerdatainfo WHERE season='"+season+"'" ;
+        		Class.forName("com.mysql.jdbc.Driver");
+        		Connection conn =DriverManager.getConnection(url, user, password);
+        		PreparedStatement pstmt=conn.prepareStatement(sql);
+        		ResultSet rs=pstmt.executeQuery();
+        		int count=1;
+        		while(rs.next()){
+        			  if(!ids.contains(rs.getString("id")));
+        			        ids.add(rs.getString("id"));
+        		}
+        		for(String i:ids){
+        			for(PlayerBasicInfoVO p:inidata){
+        				if(p.getPlayerID().equals(i)){
+        					tempp.add(p);
+        					break;
+        				}
+        			}
+        		}
+        		for(PlayerBasicInfoVO vo : tempp){
+        			char[] str = vo.getEnglishName().toCharArray();
+        			if(str[0]==temp){
+        				result.add(vo);
+        			}
+        		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+    return result;
+}
 }

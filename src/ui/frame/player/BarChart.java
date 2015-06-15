@@ -83,12 +83,14 @@ public class BarChart {
     private static CategoryDataset getDataSet(String[] players,String[] dataNames,double[] data1,double[] data2) {  
        DefaultCategoryDataset dataset = new DefaultCategoryDataset(); 
        int size=dataNames.length;
+       System.out.println(players[0]+"-"+players[1]);
        for(int i=0;i<size;i++){
     	   dataset.addValue(data1[i],players[0],dataNames[i]); 
        }
        for(int i=0;i<size;i++){
     	   dataset.addValue(data2[i],players[1],dataNames[i]); 
        }
+       
        return dataset;  
    	}  
 	public ChartPanel getChartPanel(){  
