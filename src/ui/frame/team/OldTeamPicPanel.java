@@ -1,4 +1,4 @@
-package ui.frame.index.team;
+package ui.frame.team;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -17,12 +17,12 @@ import ui.system.ImageSaver;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
-public class TeamPicPanel extends JPanel implements ActionListener{
+public class OldTeamPicPanel extends JPanel implements ActionListener{
 
 	JButton button;
 	String _teamName;
 	
-	public TeamPicPanel(int x, int y , int width, int height, String teamName){
+	public OldTeamPicPanel(int x, int y , int width, int height, String teamName){
 		
 		_teamName = teamName;
 		
@@ -33,10 +33,10 @@ public class TeamPicPanel extends JPanel implements ActionListener{
 		this.setLayout(null);
 		this.setBackground(new Color(0.7f, 0.7f, 0.7f, 0.1f));
 		
-		int picX = (int) (-40 * UIData.changeX);
-		int picY = (int) (15 * UIData.changeY);
-		int picWidth = (int) (200 * UIData.changeX);
-		int picHeight = (int) (200 * UIData.changeY);
+		int picX = (int) (-20 * UIData.changeX);
+		int picY = (int) (-5 * UIData.changeY);
+		int picWidth = (int) (150 * UIData.changeX);
+		int picHeight = (int) (150 * UIData.changeY);
 		
 		int textHeight = (int) (30 * UIData.changeY);
 		int blank = (int) (0 * UIData.changeY);
@@ -75,3 +75,4 @@ public class TeamPicPanel extends JPanel implements ActionListener{
 	}
 
 }
+

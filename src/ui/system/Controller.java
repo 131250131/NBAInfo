@@ -55,4 +55,23 @@ public class Controller {
 		LargerScrollPane.turnto.doClick();	
 	}
 	
+	public static void addOldTeam(){
+		LargerPanel.addOldTeam.doClick();
+		LargerScrollPane.turnto.doClick();	
+	}
+	
+	public static void addTJ1(){
+		LargerPanel.addTJ1.doClick();
+		LargerScrollPane.turnto.doClick();	
+	}
+	
+	public static void addTJ2(){
+		LargerPanel.addTJ2.doClick();
+		LargerScrollPane.turnto.doClick();	
+	}
+	
+	public static void addTJ3(){
+		LargerPanel.addTJ3.doClick();
+		LargerScrollPane.turnto.doClick();	
+	}
 }

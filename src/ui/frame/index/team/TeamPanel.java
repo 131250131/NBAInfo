@@ -2,12 +2,16 @@ package ui.frame.index.team;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.frame.index.hotspot.HotspotBounds;
 import ui.myUI.BackColorPanel;
+import ui.system.Controller;
 import ui.system.UIData;
 
 @SuppressWarnings("serial")
@@ -19,6 +23,7 @@ public class TeamPanel extends JPanel{
 	int height = UIData.teamBoundsHeight;
 	
 	SingleTeamPanel[] singleTeamPanel = new SingleTeamPanel[6];
+	JButton button;
 	
 	public TeamPanel(){
 		this.setLayout(null);
@@ -34,6 +39,18 @@ public class TeamPanel extends JPanel{
 		this.add(title);
 		
 		initTeamPanel();
+		
+		button = new JButton("查看过往球队");
+		button.setBounds((int) ((810 - 469) * UIData.changeX), (int) ((623 - 492 - 12) * UIData.changeY), (int) (200 * UIData.changeX), (int) (25 * UIData.changeY));
+		button.setVisible(true);
+		button.setForeground(Color.WHITE);
+		button.setBackground(Color.BLACK);
+		button.addMouseListener(new MouseAdapter(){			
+			public void mouseClicked(MouseEvent e){
+				Controller.addOldTeam();	
+			}			
+		});
+		this.add(button);
 		
 		BackColorPanel backPanel1 = new BackColorPanel(0,
 				(int) (((1280 - 900) / 2 - 20) * UIData.changeY), HotspotBounds.BackPanel1Width, (int) (940 * UIData.changeY), 0);

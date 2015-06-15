@@ -16,7 +16,11 @@ import ui.frame.live.LiveScrollPane;
 import ui.frame.match.MatchScorllPane;
 import ui.frame.player.PlayerScrollPanel;
 import ui.frame.system.SystemScrollPane;
+import ui.frame.team.OldTeam;
 import ui.frame.team.TeamScrollPane;
+import ui.frame.tj.TJPanel1;
+import ui.frame.tj.TJPanel2;
+import ui.frame.tj.TJPanel3;
 import ui.myUI.ImageLabel;
 import ui.system.Controller;
 import ui.system.ImageSaver;
@@ -27,7 +31,8 @@ public class LargerPanel extends JPanel implements ActionListener{
 	
 	IndexScrollPane indexScrollPane;
 	IndexBoard indexBoard;
-	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel, addMatchPanel, refresh, addHotPanel, addLivePanel;
+	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel,
+		addMatchPanel, refresh, addHotPanel, addLivePanel, addOldTeam, addTJ1, addTJ2, addTJ3;
 	
 	public LargerPanel(){
 		this.setLayout(null);
@@ -67,6 +72,10 @@ public class LargerPanel extends JPanel implements ActionListener{
 		ImageLabel lb_Background = new ImageLabel(ImageSaver.getIcon("最底层背景图"), UIData.indexScrollPaneX, 0, UIData.frameWidth, UIData.frameHeight);
 		this.add(lb_Background, 106);
 		
+		addOldTeam = new JButton();
+		addOldTeam.addActionListener(this);
+		this.add(addOldTeam);
+		
 		addPlayerPanel = new JButton();
 		addPlayerPanel.addActionListener(this);
 		this.add(addPlayerPanel);
@@ -94,6 +103,18 @@ public class LargerPanel extends JPanel implements ActionListener{
 		addLivePanel = new JButton();
 		addLivePanel.addActionListener(this);
 		this.add(addLivePanel);
+		
+		addTJ1 = new JButton();
+		addTJ1.addActionListener(this);
+		this.add(addTJ1);
+		
+		addTJ2 = new JButton();
+		addTJ2.addActionListener(this);
+		this.add(addTJ2);
+		
+		addTJ3 = new JButton();
+		addTJ3.addActionListener(this);
+		this.add(addTJ3);
 		}
 
 	public void actionPerformed(ActionEvent e) {
@@ -132,6 +153,26 @@ public class LargerPanel extends JPanel implements ActionListener{
 		if(e.getSource() == addLivePanel){
 			LiveScrollPane liveScrollPane = new LiveScrollPane();
 			this.add(liveScrollPane);
+		}
+		
+		if(e.getSource() == addOldTeam){
+			OldTeam oldTeam = new OldTeam();
+			this.add(oldTeam);
+		}
+		
+		if(e.getSource() == addTJ1){
+			TJPanel1 TJ1 = new TJPanel1();
+			this.add(TJ1);
+		}
+		
+		if(e.getSource() == addTJ2){
+			TJPanel2 TJ2 = new TJPanel2();
+			this.add(TJ2);
+		}
+		
+		if(e.getSource() == addTJ3){
+			TJPanel3 TJ3 = new TJPanel3();
+			this.add(TJ3);
 		}
 	}
 
