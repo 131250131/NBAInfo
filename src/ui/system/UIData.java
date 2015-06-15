@@ -96,7 +96,7 @@ public class UIData {
 	
 	private void setIndexPanelBounds(){
 		indexPanelWidth = indexScrollPaneWidth - 20;
-		indexPanelHeight = frameHeight * 10;
+		indexPanelHeight = (int) (frameHeight * 10 - 491 * UIData.changeY);
 	}
 	
 	private void setHomepagePanelBounds(){

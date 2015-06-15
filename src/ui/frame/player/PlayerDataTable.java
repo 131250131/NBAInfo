@@ -2,7 +2,6 @@ package ui.frame.player;
 
 import java.util.ArrayList;
 
-import javax.swing.JComboBox;
 import javax.swing.JPanel;
 
 import ui.myUI.JSortTable;
@@ -16,7 +15,6 @@ import vo.PlayerVO;
 public class PlayerDataTable extends JPanel{
 	
 	PlayerVO player;
-	JComboBox<String> comboBox;
 	MyTable table, table2;
 	
 	public PlayerDataTable(int x, int y, int width, int height, PlayerVO player){

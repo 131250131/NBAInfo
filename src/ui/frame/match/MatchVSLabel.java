@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.myUI.ImageLabel;
-import ui.system.Controller;
 import ui.system.DataTransform;
 import ui.system.ImageSaver;
 import ui.system.UIData;

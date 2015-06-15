@@ -6,7 +6,6 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import thirdVersion.LiveCast;
 import ui.myUI.ImageLabel;
 import ui.system.ChineseTranslator;
 import ui.system.ImageSaver;
@@ -288,13 +287,14 @@ public class DataOfMatchPanel extends JPanel {
 		date1.setText(match.getDate());
 		date2.setText(match.getDate());
 		
-		name1.setText(match.getLeftTeam().getShortName());
-		name2.setText(match.getRightTeam().getShortName());
+		name1.setText(match.getLeftTeam().getTeamName());
+		name2.setText(match.getRightTeam().getTeamName());
 		
 		//队伍图片
-		team1 = new ImageLabel(ImageSaver.getTeamIcon(match.getLeftTeam().getShortName()), (int) (75 * UIData.changeX)
+		
+		team1 = new ImageLabel(ImageSaver.getTeamIcon(ChineseTranslator.TeamNameTrans(match.getLeftTeam().getTeamName()+"队")), (int) (75 * UIData.changeX)
 				, (int) (50 * UIData.changeY), (int) (200 * UIData.changeX), (int) (200 * UIData.changeY));
-		team2 = new ImageLabel(ImageSaver.getTeamIcon(match.getRightTeam().getShortName()), (int) (75 * UIData.changeX),
+		team2 = new ImageLabel(ImageSaver.getTeamIcon(ChineseTranslator.TeamNameTrans(match.getRightTeam().getTeamName()+"队")), (int) (75 * UIData.changeX),
 				(int) (370 * UIData.changeY), (int) (200 * UIData.changeX), (int) (200 * UIData.changeY));
 		this.add(team1);
 		this.add(team2);

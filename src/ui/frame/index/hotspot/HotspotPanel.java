@@ -66,7 +66,7 @@ public class HotspotPanel extends JPanel{
 		
 		JLabel text = new JLabel("TOP 5 ：14-15赛季数据王");
 		text.setVisible(true);
-		text.setBounds((int)(85 * UIData.changeX), HotspotBounds.BackPanel3Y + (int)(2 * UIData.changeY), (int)(300 * UIData.changeX), (int)(40 * UIData.changeY));
+		text.setBounds((int)(85 * UIData.changeX), HotspotBounds.BackPanel3Y + (int)(2 * UIData.changeY), (int)(500 * UIData.changeX), (int)(40 * UIData.changeY));
 		text.setFont(new Font("新細明體", Font.BOLD, (int)(30 * UIData.changeY)));
 		text.setForeground(Color.ORANGE);
 		this.add(text);

@@ -38,12 +38,21 @@ public class TeamPanel extends JPanel{
 		TeamInfoLabel teamInfoLabel = new TeamInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, team);
 		this.add(teamInfoLabel);
 		
-		TeamDataLabel dataLabel = new TeamDataLabel(labelX, playerLabelY + playerLabelHeight * 4, labelWidth, playerLabelHeight * 10, team);
+		TeamDataTable teamDataTabel = new TeamDataTable(labelX, playerLabelY + playerLabelHeight * 4 - (int) (180 * UIData.changeY), labelWidth, playerLabelHeight * 10 + (int) (480 * UIData.changeY), team);
+		this.add(teamDataTabel);
+		
+		TeamDataLabel dataLabel = new TeamDataLabel(labelX, playerLabelY + playerLabelHeight * 4 + (int) (300 * UIData.changeY), labelWidth, playerLabelHeight * 10, team);
 		this.add(dataLabel);
 		
 		TeamList teamList = new TeamList(team);
 		teamList.setBounds(labelX, playerLabelY + playerLabelHeight, labelWidth, playerLabelHeight * 3);
 		this.add(teamList);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(labelX, teamDataTabel.getY(), labelWidth, teamDataTabel.getY() + teamDataTabel.getHeight() - (playerLabelY + playerLabelHeight));
+		panel.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
+		panel.setVisible(true);
+		this.add(panel);
 		
 		JPanel backPanel = new JPanel();
 		backPanel.setBounds(labelX, 0, labelWidth, height);
