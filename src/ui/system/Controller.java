@@ -74,4 +74,9 @@ public class Controller {
 		LargerPanel.addTJ3.doClick();
 		LargerScrollPane.turnto.doClick();	
 	}
+	
+	public static void addTJ4(){
+		LargerPanel.addTJ4.doClick();
+		LargerScrollPane.turnto.doClick();	
+	}
 }

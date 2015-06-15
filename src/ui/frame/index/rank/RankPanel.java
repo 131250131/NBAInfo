@@ -65,6 +65,16 @@ public class RankPanel extends JPanel{
 		});
 		this.add(label3);
 		
+		JLabel label4 = new JLabel("统计4");
+		label4.setBounds(400, 520, 100, 30);
+		label4.setVisible(true);
+		label4.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e){
+				Controller.addTJ4();
+			}
+		});
+		this.add(label4);
+		
 		BackColorPanel backPanel1 = new BackColorPanel(0,
 				(int) (((1280 - 900) / 2 - 20) * UIData.changeY), HotspotBounds.BackPanel1Width, (int) (940 * UIData.changeY), 0);
 		this.add(backPanel1);
