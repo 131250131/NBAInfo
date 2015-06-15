@@ -86,7 +86,7 @@ public class PlayersPanel extends JPanel {
 				Object[][] data = new Object[size][7];
 				for(int i = 0 ; i < size; i++){
 					data[i][0] = playerlist.get(i).getPlayerName();
-					data[i][1] = playerlist.get(i).getTeamShortName();
+					data[i][1] = playerlist.get(i).getTeamname();
 					if(data[i][1].equals("") || data[i][1].equals(null) || data[i][1] == null){
 						data[i][1] = "自由球员";
 					}else{
@@ -127,12 +127,12 @@ public class PlayersPanel extends JPanel {
 		Object[][] data = new Object[size][7];
 		for(int i = 0; i < size; i++){
 			data[i][0] = Controller.playerController.getEnglishName(playerlist.get(i).getPlayerID());
-			data[i][1] = ChineseTranslator.TeamNameTrans(teamName.getSelectedItem().toString());
-			if(data[i][1] == null){
-				data[i][1] = "自由球员";
-			}else{
+//			data[i][1] = ChineseTranslator.TeamNameTrans(teamName.getSelectedItem().toString());
+//			if(data[i][1] == null){
+//				data[i][1] = "自由球员";
+//			}else{
 				data[i][1] = playerlist.get(i).getTeamname();
-			}
+//			}
 			data[i][2] = playerlist.get(i).getPlayerPosition();
 			data[i][3] = playerlist.get(i).getPlayerHeight();
 			data[i][4] = playerlist.get(i).getPlayerWeight();
@@ -176,11 +176,12 @@ public class PlayersPanel extends JPanel {
 			for(int i = 0; i < size; i++){
 				data[i][0] = Controller.playerController.getEnglishName(playerlist.get(i).getPlayerID());
 				data[i][1] = ChineseTranslator.TeamNameTrans(teamName.getSelectedItem().toString());
-				if(data[i][1] == null){
-					data[i][1] = "自由球员";
-				}else{
+				System.out.println(teamName.getSelectedItem().toString());
+//				if(data[i][1] == null){
+//					data[i][1] = "自由球员";
+//				}else{
 					data[i][1] = playerlist.get(i).getTeamname();
-				}
+//				}
 				data[i][2] = playerlist.get(i).getPlayerPosition();
 				data[i][3] = playerlist.get(i).getPlayerHeight();
 				data[i][4] = playerlist.get(i).getPlayerWeight();

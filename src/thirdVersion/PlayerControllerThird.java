@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import com.sun.org.apache.bcel.internal.generic.IFLE;
 
 import logic.PlayerController;
+import test.data.TeamNormalInfo;
 import thirdservice.playerControllerThirdService;
 import vo.PlayerVO;
 import Utibility.DataType;
@@ -18,7 +19,7 @@ import Utibility.DataType;
 public class PlayerControllerThird implements playerControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="941211";
+	String password="";
 	String sql="";
 	ArrayList<PlayerBasicInfoVO> inidata=new ArrayList<PlayerBasicInfoVO>();
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
@@ -354,15 +355,44 @@ public class PlayerControllerThird implements playerControllerThirdService{
      * 根据首字母筛选
      */
     public ArrayList<PlayerBasicInfoVO> getPlayersbyChar(char temp){
-    	ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
+    	ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>(); 
+    	ArrayList<String> tn=new ArrayList<String>();
+    	try{
+    	Class.forName("com.mysql.jdbc.Driver");
+		Connection conn =DriverManager.getConnection(url, user, password);
+    	
 		for(PlayerBasicInfoVO vo : inidata){
 			char[] str = vo.getEnglishName().toCharArray();
 			if(str[0]==temp){
 				result.add(vo);
 			}
 		}
-		return result;
-	}
+		for(PlayerBasicInfoVO vo:result){
+			String s=vo.getPlayerID();
+			tn=new ArrayList<String>();
+			 
+			 		sql="SELECT teamname FROM playerdatainfo WHERE id="+s+" AND isplayoff=0 ORDER BY SEASON DESC";
+			    		PreparedStatement pstmt=conn.prepareStatement(sql);
+			    		ResultSet rs=pstmt.executeQuery();
+			    		while(rs.next()){
+			    			tn.add(rs.getString("teamname"));
+			    		}
+			    		String tnm=tn.get(0);
+			    		if(!tnm.equals("总计")){
+			    		vo.setTeamname(tnm+"队");
+			    		}
+			    		else{
+			    			vo.setTeamname("多只球队");
+			    		}
+		}
+    	}
+			 catch(Exception e){
+				 e.printStackTrace();
+			 }
+    	return result;
+    	}
+		
+	
 /*
  * 姓名得到基本信息
  */
