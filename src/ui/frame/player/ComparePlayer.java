@@ -18,6 +18,7 @@ import javax.swing.event.ListSelectionListener;
 
 import org.jfree.chart.ChartPanel;
 
+import thirdVersion.MathCalculator;
 import thirdVersion.PlayerBasicInfoVO;
 import thirdVersion.PlayerControllerThird;
 import thirdVersion.PlayerdatainfoVO;
@@ -40,9 +41,9 @@ public class ComparePlayer extends JPanel {
 	private String[] seasons={"选择赛季"};
 	private boolean isLeft=true;
 	private int count=0;
-	private String[] Odata={"投篮命中率","三分命中率","平均罚球命中率","平均前场篮板","平均助攻","平均得分"};
-	private String[] Ddata={"平均后场篮板","平均抢断","平均盖帽","平均犯规"};
-	private String[] Edata={"篮板率","进攻篮板率","防守篮板率","助攻率","抢断率","盖帽率","失误率","真实命中率"};
+	private String[] Odata={"投篮命中率","三分命中率","罚球命中率","前场篮板","助攻","得分"};
+	private String[] Ddata={"后场篮板","抢断","盖帽","犯规"};
+	private String[] Edata={"篮板率","助攻率","抢断率","盖帽率","失误率","命中率"};
 	
 	private String[] columname={"球员ID","球员姓名","场均出场时间","投篮命中率","场均投篮命中率","场均投篮出手数","三分命中率",
 			"场均三分命中数","均三分出手数","罚球命中率","场均罚球命中数","场均罚球出手数","场均篮板数",
@@ -213,19 +214,19 @@ public class ComparePlayer extends JPanel {
 					double[] data2=new double[Odata.length];
 				
 					
-					data1[0]=player1.getFGP();
-					data1[1]=player1.getSFGP();
-					data1[2]=player1.getFTGP();
-					data1[3]=player1.getAORebouns();//平均进攻篮板
-					data1[4]=player1.getAAssists();//平均助攻
-					data1[5]=player1.getAScores();//平均得分
+					data1[0]=MathCalculator.change(player1.getFGP());
+					data1[1]=MathCalculator.change(player1.getSFGP());
+					data1[2]=MathCalculator.change(player1.getFTGP());
+					data1[3]=MathCalculator.change(player1.getAORebouns());//平均进攻篮板
+					data1[4]=MathCalculator.change(player1.getAAssists());//平均助攻
+					data1[5]=MathCalculator.change(player1.getAScores());//平均得分
 					
-					data2[0]=player2.getFGP();
-					data2[1]=player2.getSFGP();
-					data2[2]=player2.getFTGP();
-					data2[3]=player2.getAORebouns();//平均进攻篮板
-					data2[4]=player2.getAAssists();//平均助攻
-					data2[5]=player2.getAScores();//平均得分
+					data2[0]=MathCalculator.change(player2.getFGP());
+					data2[1]=MathCalculator.change(player2.getSFGP());
+					data2[2]=MathCalculator.change(player2.getFTGP());
+					data2[3]=MathCalculator.change(player2.getAORebouns());//平均进攻篮板
+					data2[4]=MathCalculator.change(player2.getAAssists());//平均助攻
+					data2[5]=MathCalculator.change(player2.getAScores());//平均得分
 					
 					barChart.update(players, Odata, data1, data2);
 				}
@@ -234,15 +235,15 @@ public class ComparePlayer extends JPanel {
 					double[] data2=new double[Ddata.length];
 				
 					
-					data1[0]=player1.getADRebounds();
-					data1[1]=player1.getASteals();
-					data1[2]=player1.getABlocks();
-					data1[3]=player1.getAFeals();
+					data1[0]=MathCalculator.change(player1.getADRebounds());
+					data1[1]=MathCalculator.change(player1.getASteals());
+					data1[2]=MathCalculator.change(player1.getABlocks());
+					data1[3]=MathCalculator.change(player1.getAFeals());
 					
-					data2[0]=player2.getADRebounds();
-					data2[1]=player2.getASteals();
-					data2[2]=player2.getABlocks();
-					data2[3]=player2.getAFeals();
+					data2[0]=MathCalculator.change(player2.getADRebounds());
+					data2[1]=MathCalculator.change(player2.getASteals());
+					data2[2]=MathCalculator.change(player2.getABlocks());
+					data2[3]=MathCalculator.change(player2.getAFeals());
 					
 					barChart.update(players, Ddata, data1, data2);
 				}
@@ -251,23 +252,19 @@ public class ComparePlayer extends JPanel {
 					double[] data2=new double[Edata.length];
 				
 					
-					data1[0]=player1.getRR();
-					data1[1]=player1.getO_RR();
-					data1[2]=player1.getD_RR();
-					data1[3]=player1.getAR();
-					data1[4]=player1.getSR();
-					data1[5]=player1.getBR();
-					data1[6]=player1.getTR();
-					data1[7]=player1.getRealShootRate();
+					data1[0]=MathCalculator.change(player1.getRR());
+					data1[1]=MathCalculator.change(player1.getAR());
+					data1[2]=MathCalculator.change(player1.getSR());
+					data1[3]=MathCalculator.change(player1.getBR());
+					data1[4]=MathCalculator.change(player1.getTR());
+					data1[5]=MathCalculator.change(player1.getRealShootRate());
 
-					data2[0]=player2.getRR();
-					data2[1]=player2.getO_RR();
-					data2[2]=player2.getD_RR();
-					data2[3]=player2.getAR();
-					data2[4]=player2.getSR();
-					data2[5]=player2.getBR();
-					data2[6]=player2.getTR();
-					data2[7]=player2.getRealShootRate();
+					data2[0]=MathCalculator.change(player2.getRR());
+					data2[1]=MathCalculator.change(player2.getAR());
+					data2[2]=MathCalculator.change(player2.getSR());
+					data2[3]=MathCalculator.change(player2.getBR());
+					data2[4]=MathCalculator.change(player2.getTR());
+					data2[5]=MathCalculator.change(player2.getRealShootRate());
 					
 					barChart.update(players, Edata, data1, data2);
 				}
