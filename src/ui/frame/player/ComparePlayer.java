@@ -2,7 +2,6 @@ package ui.frame.player;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
@@ -19,17 +18,14 @@ import javax.swing.event.ListSelectionListener;
 
 import org.jfree.chart.ChartPanel;
 
-import Utibility.DataType;
-import thirdVersion.PSpecificdata;
 import thirdVersion.PlayerBasicInfoVO;
 import thirdVersion.PlayerControllerThird;
+import thirdVersion.PlayerdatainfoVO;
 import thirdservice.playerControllerThirdService;
 import ui.frame.match.tempDataOfPlayerPanel;
-import ui.frame.player.AnalysisOfPlayers.JLabelOfAlphabet;
 import ui.myUI.JSortTable;
 import ui.myUI.MyTable;
 import ui.system.UIData;
-import vo.PlayerVO;
 
 public class ComparePlayer extends JPanel {
 
@@ -53,56 +49,27 @@ public class ComparePlayer extends JPanel {
 			"场均前场篮板数","场均后场篮板数","场均助攻数","场均抢断数","场均盖帽数","场均失误数","场均犯规数","场均得分"};
 	private playerControllerThirdService controllerForPlayer=new PlayerControllerThird();//逻辑层接口
 	
-	void doCompare(){
-		String season=seasonComb.getSelectedItem().toString();
-		String category=dataCategory.getSelectedItem().toString();
-		String ID1=Player1.getID();
-		String ID2=Player2.getID();
-		
-		if(!ID1.equals("-1")&&!ID2.equals("-1")
-				&&!season.equals("选择赛季")&&!category.equals("选择数据种类")){
-			if(category.equals("进攻数据")){
-				PlayerVO player1=controllerForPlayer.getPlayervobyidvo(ID1, season);
-				PlayerVO player2=controllerForPlayer.getPlayervobyidvo(ID2, season);
-				double[] data1=new double[Odata.length];
-				double[] data2=new double[Odata.length];
-				
-				data1[0]=player1.getPlayerFGP();
-				data1[1]=player1.getPlayer3FGP();
-				data1[2]=player1.getPlayerFTGP();
-				data1[3]=player1.getAver_playerOffenceRebounds();//平均进攻篮板
-				data1[4]=0;//平均助攻
-				data1[5]=0;//平均得分
-				
-			}
-			else if(category.equals("防守数据")){
-				
-			}
-			else if(category.equals("效率数据")){
-				
-			}
-		}
-	}
+	
 	public ComparePlayer(){
 		this.setSize(1280, 720);
 		this.setLayout(null);
 		this.setBackground(Color.black);
 		//加字母标签
-				char firstC = 'A';
-				int firstAS = (int)firstC - 1;
-				int x = 320 ;
-				int y = 340 ;
-				for(int i = 0; i < 26; i++){
-					if(i==13){
-						x=320;
-						y=370;
-					}
-					firstAS+=1;
-					JLabelOfAlphabet temp = new JLabelOfAlphabet(String.valueOf((char)firstAS));
-					x+=40;
-					temp.setLocation(x, y);
-					this.add(temp, i);
-				}
+		char firstC = 'A';
+		int firstAS = (int)firstC - 1;
+		int x = 320 ;
+		int y = 340 ;
+		for(int i = 0; i < 26; i++){
+			if(i==13){
+				x=320;
+				y=370;
+			}
+			firstAS+=1;
+			JLabelOfAlphabet temp = new JLabelOfAlphabet(String.valueOf((char)firstAS));
+			x+=40;
+			temp.setLocation(x, y);
+			this.add(temp, i);
+		}
 		//球员1基本信息
 		Player1=new tempDataOfPlayerPanel(2);
 		Player1.setLocation(10, 25);
@@ -150,6 +117,7 @@ public class ComparePlayer extends JPanel {
                 	}
             	}
             	
+            	doCompare();
             }  
         });  
         
@@ -164,6 +132,7 @@ public class ComparePlayer extends JPanel {
         dataCategory.addItemListener(new ItemListener(){
 			@Override
 			public void itemStateChanged(ItemEvent e) {
+				doCompare();
 			}
 			
         });
@@ -177,6 +146,7 @@ public class ComparePlayer extends JPanel {
         seasonComb.addItemListener(new ItemListener(){
 			@Override
 			public void itemStateChanged(ItemEvent e) {
+				doCompare();
 			}
 			
         });
@@ -222,7 +192,88 @@ public class ComparePlayer extends JPanel {
 		}
 		table.update(columname, data);
 	}
+	
+	void doCompare(){
+		if(seasonComb.getSelectedItem()!=null&&dataCategory.getSelectedItem()!=null){
+			String season=seasonComb.getSelectedItem().toString();
+			String category=dataCategory.getSelectedItem().toString();
+			String ID1=Player1.getID();
+			String ID2=Player2.getID();
+			
+			if(!ID1.equals("-1")&&!ID2.equals("-1")
+					&&!season.equals("选择赛季")&&!category.equals("选择数据种类")){
+				
+				PlayerdatainfoVO player1=controllerForPlayer.getPlayervobyid(ID1, season);
+				PlayerdatainfoVO player2=controllerForPlayer.getPlayervobyid(ID2, season);
+				String[] players={player1.getChinesenname(),player2.getChinesenname()};
+				
+				if(category.equals("进攻数据")){
+					
+					double[] data1=new double[Odata.length];
+					double[] data2=new double[Odata.length];
+				
+					
+					data1[0]=player1.getFGP();
+					data1[1]=player1.getSFGP();
+					data1[2]=player1.getFTGP();
+					data1[3]=player1.getAORebouns();//平均进攻篮板
+					data1[4]=player1.getAAssists();//平均助攻
+					data1[5]=player1.getAScores();//平均得分
+					
+					data2[0]=player2.getFGP();
+					data2[1]=player2.getSFGP();
+					data2[2]=player2.getFTGP();
+					data2[3]=player2.getAORebouns();//平均进攻篮板
+					data2[4]=player2.getAAssists();//平均助攻
+					data2[5]=player2.getAScores();//平均得分
+					
+					barChart.update(players, Odata, data1, data2);
+				}
+				else if(category.equals("防守数据")){
+					double[] data1=new double[Ddata.length];
+					double[] data2=new double[Ddata.length];
+				
+					
+					data1[0]=player1.getADRebounds();
+					data1[1]=player1.getASteals();
+					data1[2]=player1.getABlocks();
+					data1[3]=player1.getAFeals();
+					
+					data2[0]=player2.getADRebounds();
+					data2[1]=player2.getASteals();
+					data2[2]=player2.getABlocks();
+					data2[3]=player2.getAFeals();
+					
+					barChart.update(players, Ddata, data1, data2);
+				}
+				else if(category.equals("效率数据")){
+					double[] data1=new double[Edata.length];
+					double[] data2=new double[Edata.length];
+				
+					
+					data1[0]=player1.getRR();
+					data1[1]=player1.getO_RR();
+					data1[2]=player1.getD_RR();
+					data1[3]=player1.getAR();
+					data1[4]=player1.getSR();
+					data1[5]=player1.getBR();
+					data1[6]=player1.getTR();
+					data1[7]=player1.getRealShootRate();
 
+					data2[0]=player2.getRR();
+					data2[1]=player2.getO_RR();
+					data2[2]=player2.getD_RR();
+					data2[3]=player2.getAR();
+					data2[4]=player2.getSR();
+					data2[5]=player2.getBR();
+					data2[6]=player2.getTR();
+					data2[7]=player2.getRealShootRate();
+					
+					barChart.update(players, Edata, data1, data2);
+				}
+			}
+		}
+	}
 	/*字母按钮*/
 	class JLabelOfAlphabet extends JLabel implements MouseListener{
 
