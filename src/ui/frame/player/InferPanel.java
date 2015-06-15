@@ -51,12 +51,17 @@ public class InferPanel extends JPanel {
 			temp.setLocation(x + i * 40 , y);
 			this.add(temp, i);
 		}
-				
+		//球员表格		
 		table =new MyTable();
 		JSortTable.makeFace(table.getTable());
 		table.setBounds(20,200 ,1240,490);
 		iniTable();
 		this.add(table,26);
+		//统计推断数据表格
+		inferDatasTable =new MyTable(columnameOfinferDatas, new Object[1][13]);
+		JSortTable.makeFace(inferDatasTable.getTable());
+		inferDatasTable.setBounds(20,50,1240,50);
+		this.add(inferDatasTable,27);
 		
 		ListSelectionModel cellSelectionModel = table.getJTable().getSelectionModel();  
         cellSelectionModel.addListSelectionListener(new ListSelectionListener(){  

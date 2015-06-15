@@ -100,8 +100,11 @@ public class AnalysisOfPlayers extends JPanel {
             	//更新饼图的赛季数据
             	seasonComb.removeAllItems();
             	seasonComb.addItem("选择赛季");
+            	seasonComb.setForeground(Color.red);
             	ArrayList<String> list=controllerForPlayer.getseasonbyname(s);
-            	System.out.println("打过"+list.size());
+            	if(list.size()!=0){
+            		seasonComb.setForeground(Color.white);
+            	}
             	for(int i=0;i<list.size();i++){
             		seasonComb.addItem(list.get(i));
             	}
