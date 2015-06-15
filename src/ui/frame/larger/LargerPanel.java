@@ -161,18 +161,18 @@ public class LargerPanel extends JPanel implements ActionListener{
 		}
 		
 		if(e.getSource() == addTJ1){
-			TJPanel1 TJ = new TJPanel1();
-			this.add(TJ);
+			TJPanel1 TJ1 = new TJPanel1();
+			this.add(TJ1);
 		}
 		
 		if(e.getSource() == addTJ2){
-			TJPanel2 TJ = new TJPanel2();
-			this.add(TJ);
+			TJPanel2 TJ2 = new TJPanel2();
+			this.add(TJ2);
 		}
 		
 		if(e.getSource() == addTJ3){
-			TJPanel3 TJ = new TJPanel3();
-			this.add(TJ);
+			TJPanel3 TJ3 = new TJPanel3();
+			this.add(TJ3);
 		}
 	}
 
