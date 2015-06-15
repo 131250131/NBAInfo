@@ -58,7 +58,7 @@ public class RankPanel extends JPanel{
 		JLabel label3 = new JLabel("统计3");
 		label3.setBounds(400, 480, 100, 30);
 		label3.setVisible(true);
-		label1.addMouseListener(new MouseAdapter(){
+		label3.addMouseListener(new MouseAdapter(){
 			public void mouseClicked(MouseEvent e){
 				Controller.addTJ3();
 			}
