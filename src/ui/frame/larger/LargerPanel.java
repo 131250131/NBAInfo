@@ -21,6 +21,7 @@ import ui.frame.team.TeamScrollPane;
 import ui.frame.tj.TJPanel1;
 import ui.frame.tj.TJPanel2;
 import ui.frame.tj.TJPanel3;
+import ui.frame.tj.TJPanel4;
 import ui.myUI.ImageLabel;
 import ui.system.Controller;
 import ui.system.ImageSaver;
@@ -32,7 +33,7 @@ public class LargerPanel extends JPanel implements ActionListener{
 	IndexScrollPane indexScrollPane;
 	IndexBoard indexBoard;
 	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel,
-		addMatchPanel, refresh, addHotPanel, addLivePanel, addOldTeam, addTJ1, addTJ2, addTJ3;
+		addMatchPanel, refresh, addHotPanel, addLivePanel, addOldTeam, addTJ1, addTJ2, addTJ3, addTJ4;
 	
 	public LargerPanel(){
 		this.setLayout(null);
@@ -115,6 +116,10 @@ public class LargerPanel extends JPanel implements ActionListener{
 		addTJ3 = new JButton();
 		addTJ3.addActionListener(this);
 		this.add(addTJ3);
+		
+		addTJ4 = new JButton();
+		addTJ4.addActionListener(this);
+		this.add(addTJ4);
 		}
 
 	public void actionPerformed(ActionEvent e) {
@@ -173,6 +178,11 @@ public class LargerPanel extends JPanel implements ActionListener{
 		if(e.getSource() == addTJ3){
 			TJPanel3 TJ3 = new TJPanel3();
 			this.add(TJ3);
+		}
+
+		if(e.getSource() == addTJ4){
+			TJPanel4 TJ4 = new TJPanel4();
+			this.add(TJ4);
 		}
 	}
 
