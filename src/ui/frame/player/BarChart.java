@@ -30,7 +30,7 @@ public class BarChart {
     	double[]  data2={40,50,30,50,10};
         CategoryDataset dataset = getDataSet(players,dataNames,data1,data2);  
         JFreeChart chart = ChartFactory.createBarChart3D(  
-                             "球员能力对比", // 图表标题  
+                             "球员能力对比(示例)", // 图表标题  
                             "数据", // 目录轴的显示标签  
                             "数据数值", // 数值轴的显示标签  
                             dataset, // 数据集  

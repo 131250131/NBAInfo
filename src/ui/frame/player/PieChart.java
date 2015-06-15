@@ -20,7 +20,7 @@ public class PieChart {
     }  
     void initialize(){
     	 DefaultPieDataset data = getDataSet("篮板数",20,50);  
-         JFreeChart chart = ChartFactory.createPieChart3D("球员贡献率",data,true,false,false);  
+         JFreeChart chart = ChartFactory.createPieChart3D("球员贡献率(示例)",data,true,false,false);  
          //设置百分比  
          PiePlot pieplot = (PiePlot) chart.getPlot();  
          DecimalFormat df = new DecimalFormat("0.00%");//获得一个DecimalFormat对象，主要是设置小数问题  

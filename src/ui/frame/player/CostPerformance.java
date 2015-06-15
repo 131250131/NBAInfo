@@ -7,6 +7,7 @@ import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import thirdVersion.PlayerBasicInfoVO;
@@ -15,13 +16,14 @@ import thirdVersion.SalaryVO;
 import thirdservice.playerControllerThirdService;
 import ui.myUI.JSortTable;
 import ui.myUI.MyTable;
+import ui.system.UIData;
 
 public class CostPerformance extends JPanel {
 
 	private JComboBox<String> seasonComb;
 	private MyTable table;
-	private String[] columname={"球员ID","球员姓名","球队","位置","进攻能力","防守能力","分析价值","实际薪水",
-			"价值波动","性价比"};
+	private String[] columname={"球员ID","球员姓名","球队","位置","进攻能力","防守能力","分析价值(万元)","实际薪水(万元)",
+			"价值波动(万元)","性价比"};
 	private playerControllerThirdService controllerForPlayer=new PlayerControllerThird();//逻辑层接口
 	
 	public CostPerformance(){
@@ -30,13 +32,12 @@ public class CostPerformance extends JPanel {
 		this.setBackground(Color.black);
 		
 		  //赛季
-        String[] season=new String[31];
-        for(int i=0;i<=29;i++){
+        String[] season=new String[30];
+        for(int i=29;i>=0;i--){
         	String s1=String.valueOf(i+1985).substring(2);
         	String s2=String.valueOf(i+1985+1).substring(2);
-        	season[i+1]=s1+"-"+s2;
+        	season[29-i]=s1+"-"+s2;
         }
-        season[0]="选择赛季";
     	seasonComb = new JComboBox<String>(season);
     	seasonComb.setFont(new Font("宋体", Font.BOLD, 14));
     	seasonComb.setBounds(20,20,200, 30);
@@ -97,7 +98,15 @@ void iniTable(){
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
+		UIData ui = new UIData(1280, 720);
+		JFrame jf=new  JFrame();
+		jf.setSize(1280, 720);
+		jf.setUndecorated(true);
+		jf.setLocation(20, 10);
+		CostPerformance pg=new CostPerformance();
+		pg.setLocation(0, 0);
+		jf.add(pg);
+		jf.setVisible(true);
 	}
 
 }

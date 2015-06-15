@@ -25,7 +25,7 @@ public class TimeSeriesChart {
     }   
     public void innitial(){
     	 XYDataset xydataset = createDataset();  
-         JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("球员个人能力演变折线图", "赛季", "数据值",xydataset, true, true, true);  
+         JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("球员个人能力演变折线图(示例)", "赛季", "数据值",xydataset, true, true, true);  
          XYPlot xyplot = (XYPlot) jfreechart.getPlot();  
          DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();  
          dateaxis.setDateFormatOverride(new SimpleDateFormat("yyyy")); 

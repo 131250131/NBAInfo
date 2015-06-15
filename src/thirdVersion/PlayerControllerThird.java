@@ -18,7 +18,7 @@ import Utibility.DataType;
 public class PlayerControllerThird implements playerControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="941211";
+	String password="";
 	String sql="";
 	ArrayList<PlayerBasicInfoVO> inidata=new ArrayList<PlayerBasicInfoVO>();
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
