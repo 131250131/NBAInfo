@@ -502,7 +502,7 @@ public class Statistics {
     				temp.setQ2(Double.parseDouble(df.format(q2)));
     				temp.setTestSalaty(Double.parseDouble(df.format(test)));
     				temp.setPosition(position);
-    				temp.setDif(temp.getRealSalary()-temp.getTestSalaty());
+    				temp.setDif(Double.parseDouble(df.format(temp.getRealSalary()-temp.getTestSalaty())));
     				double per = (real==0)?0:(test/real);
     				temp.setPer(Double.parseDouble(df.format(per)));
     			    result.add(temp);
