@@ -9,7 +9,7 @@ import javax.swing.JLabel;
 public class ImageLabel extends JLabel{
 	
 	public ImageLabel(ImageIcon image, int x, int y, int width, int height){				
-		image.setImage(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));		
+		//image.setImage(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));		
 		this.setBounds(x, y, width, height);
 		this.setIcon(image);
 		this.setVisible(true);
