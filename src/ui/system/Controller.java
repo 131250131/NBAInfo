@@ -55,4 +55,9 @@ public class Controller {
 		LargerScrollPane.turnto.doClick();	
 	}
 	
+	public static void addOldTeam(){
+		LargerPanel.addOldTeam.doClick();
+		LargerScrollPane.turnto.doClick();	
+	}
+	
 }

@@ -16,6 +16,7 @@ import ui.frame.live.LiveScrollPane;
 import ui.frame.match.MatchScorllPane;
 import ui.frame.player.PlayerScrollPanel;
 import ui.frame.system.SystemScrollPane;
+import ui.frame.team.OldTeam;
 import ui.frame.team.TeamScrollPane;
 import ui.myUI.ImageLabel;
 import ui.system.Controller;
@@ -27,7 +28,8 @@ public class LargerPanel extends JPanel implements ActionListener{
 	
 	IndexScrollPane indexScrollPane;
 	IndexBoard indexBoard;
-	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel, addMatchPanel, refresh, addHotPanel, addLivePanel;
+	public static JButton addPlayerPanel, addReturnPanel, addTeamPanel, addSystemPanel,
+		addMatchPanel, refresh, addHotPanel, addLivePanel, addOldTeam;
 	
 	public LargerPanel(){
 		this.setLayout(null);
@@ -66,6 +68,10 @@ public class LargerPanel extends JPanel implements ActionListener{
 		
 		ImageLabel lb_Background = new ImageLabel(ImageSaver.getIcon("最底层背景图"), UIData.indexScrollPaneX, 0, UIData.frameWidth, UIData.frameHeight);
 		this.add(lb_Background, 106);
+		
+		addOldTeam = new JButton();
+		addOldTeam.addActionListener(this);
+		this.add(addOldTeam);
 		
 		addPlayerPanel = new JButton();
 		addPlayerPanel.addActionListener(this);
@@ -132,6 +138,11 @@ public class LargerPanel extends JPanel implements ActionListener{
 		if(e.getSource() == addLivePanel){
 			LiveScrollPane liveScrollPane = new LiveScrollPane();
 			this.add(liveScrollPane);
+		}
+		
+		if(e.getSource() == addOldTeam){
+			OldTeam oldTeam = new OldTeam();
+			this.add(oldTeam);
 		}
 	}
 
