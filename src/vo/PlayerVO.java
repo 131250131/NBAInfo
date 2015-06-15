@@ -197,6 +197,7 @@ public class PlayerVO implements Comparable<PlayerVO>{
 			private double playerPER ;
 			
 		//49.队员GmSc效率值
+			@SuppressWarnings("unused")
 			private double playerGmScER ;
 			
 		//50.队员真实命中率
