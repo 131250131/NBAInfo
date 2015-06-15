@@ -35,6 +35,18 @@ public class PlayerPanel extends JPanel{
 		int playerLabelHeight = (int) (300 * UIData.changeY);
 		int dataLabelHeight = (int) (3000 * UIData.changeY);
 		
+		JPanel black = new JPanel();
+		black.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
+		black.setBounds((int) (201 * UIData.changeX), (int) (674 * UIData.changeY), (int) (1411 * UIData.changeX), (int) (20 * UIData.changeY));
+		black.setVisible(true);
+		this.add(black);
+		
+		JPanel black2 = new JPanel();
+		black2.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
+		black2.setBounds((int) (201 * UIData.changeX), (int) ((674 + 270) * UIData.changeY), (int) (1411 * UIData.changeX), (int) (20 * UIData.changeY));
+		black2.setVisible(true);
+		this.add(black2);
+		
 		PlayerInfoLabel playerInfoLabel = new PlayerInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, player);
 		this.add(playerInfoLabel);
 		
@@ -42,6 +54,13 @@ public class PlayerPanel extends JPanel{
 		
 		PlayerDataTable playerDataTabel = new PlayerDataTable(labelX, playerLabelY + playerLabelHeight, labelWidth, tableHeight, player);
 		this.add(playerDataTabel);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(labelX, playerLabelY + playerLabelHeight, labelWidth, tableHeight);
+		panel.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
+		panel.setVisible(true);
+		this.add(panel);
+		
 		PlayerDataLabel playerDataLabel = new PlayerDataLabel(labelX, playerLabelY + playerLabelHeight + tableHeight, labelWidth, dataLabelHeight, player);
 		this.add(playerDataLabel);
 		

@@ -133,16 +133,16 @@ public class SingleMatchPanel extends JPanel implements ActionListener{
 //		scoreTitle.setFont(new Font("新細明體", Font.BOLD, (int) (14 * 1.5 * UIData.changeY)));
 //		this.add(scoreTitle);
 		
-		leftScoreLabel = new JLabel(" " + leftTeamName + "      " + leftTeamScore_1Q + "       " + leftTeamScore_2Q
-				+ "       " + leftTeamScore_3Q + "       " + leftTeamScore_4Q + "       " + leftTeamScore_OT + "         " + leftTeamScore_total);
+		leftScoreLabel = new JLabel(" " + ChineseTranslator.TeamNameTrans(leftTeamName + "队") + "      " + leftTeamScore_1Q + "       " + leftTeamScore_2Q
+				+ "       " + leftTeamScore_3Q + "       " + leftTeamScore_4Q + "       " + leftTeamScore_OT + "        " + leftTeamScore_total);
 		leftScoreLabel.setBounds((int) (500 * 1.5 * UIData.changeX), (int) (50 * 1.5 * UIData.changeY)
 				, (int) (500 * 1.5 * UIData.changeX), (int) (30 * 1.5 * UIData.changeY));
 		leftScoreLabel.setVisible(true);		
 		leftScoreLabel.setFont(new Font("黑体", Font.BOLD, (int) (14 * 1.5 * UIData.changeY)));
 		this.add(leftScoreLabel);
 		
-		rightScoreLabel = new JLabel(" " + rightTeamName + "      " + rightTeamScore_1Q + "       " + rightTeamScore_2Q
-				+ "       " + rightTeamScore_3Q + "       " + rightTeamScore_4Q + "       " + rightTeamScore_OT + "         " + rightTeamScore_total);
+		rightScoreLabel = new JLabel(" " + ChineseTranslator.TeamNameTrans(rightTeamName + "队") + "      " + rightTeamScore_1Q + "       " + rightTeamScore_2Q
+				+ "       " + rightTeamScore_3Q + "       " + rightTeamScore_4Q + "       " + rightTeamScore_OT + "        " + rightTeamScore_total);
 		rightScoreLabel.setBounds((int) (500 * 1.5 * UIData.changeX), (int) (90 * 1.5 * UIData.changeY),
 				(int) (500 * 1.5 * UIData.changeX), (int) (30 * 1.5 * UIData.changeY));
 		rightScoreLabel.setVisible(true);		

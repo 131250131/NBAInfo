@@ -55,21 +55,18 @@ public class TeamList extends JPanel{
 		String[] columname = {"姓名", "场均上场时间(分钟)", "%", "场均命中", "场均出手", "三分%"
 				, "场均三分命中", "场均三分出手", "罚球%", "场均罚球命中", "场均罚球出手", "+/-", "场均进攻篮板"
 				, "场均防守篮板", "场均篮板", "场均助攻", "场均犯规", "场均抢断", "场均失误", "场均盖帽", "场均得分"};
-	    System.out.println(team.getTeamName());
-		playerlist = Controller.playerController.getplayerbyteam(team.getTeamName(), "14-15");
-		System.out.println(playerlist.size());
-	
+		playerlist = Controller.playerController.getplayerbyteam(team.getTeamName(), "14-15");	
 		Object[][] data = new Object[playerlist.size()][21];
 		for(int i = 0; i < playerlist.size(); i++){
 			data[i][0] = playerlist.get(i).getPlayerName();
-			data[i][1] = playerlist.get(i).getAver_playerPlayTime() / 60;
-			data[i][2] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayerFGP() * 100);
+			data[i][1] = playerlist.get(i).getAver_playerPlayTime();
+			data[i][2] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayerFGP());
 			data[i][3] = playerlist.get(i).getAver_playerFG();
 			data[i][4] = playerlist.get(i).getAver_playerFGTry();
-			data[i][5] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayer3FGP() * 100);
+			data[i][5] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayer3FGP());
 			data[i][6] = playerlist.get(i).getAver_player3FG();
 			data[i][7] = playerlist.get(i).getAver_player3FGTry();
-			data[i][8] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayerFTGP() * 100);
+			data[i][8] = DataTransform.transDoubleTopointXX(playerlist.get(i).getPlayerFTGP());
 			data[i][9] = playerlist.get(i).getAver_playerFTG();
 			data[i][10] = playerlist.get(i).getAver_playerFTGTry();
 			data[i][11] = playerlist.get(i).getPlayerPER();
