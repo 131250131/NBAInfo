@@ -1903,5 +1903,33 @@ public class PlayerControllerThird implements playerControllerThirdService{
 	}
 		return result;
 	}
-    
+	@Override
+	public ArrayList<PlayerBasicInfoVO> getPlayersbyCharSeason(char temp,
+			String season) {
+		ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
+		ArrayList<String> ids=new ArrayList<String>();
+		try{
+     		sql="SELECT id FROM playerdatainfo WHERE season='"+season+"'" ;
+        		Class.forName("com.mysql.jdbc.Driver");
+        		Connection conn =DriverManager.getConnection(url, user, password);
+        		PreparedStatement pstmt=conn.prepareStatement(sql);
+        		ResultSet rs=pstmt.executeQuery();
+        		int count=1;
+        		while(rs.next()){
+        			  if(!ids.contains(rs.getString("id")));
+        			        ids.add(rs.getString("id"));
+        		}
+        		for(String i:ids){
+        			for(PlayerBasicInfoVO p:inidata){
+        				if(p.getPlayerID().equals(i)){
+        					result.add(p);
+        					break;
+        				}
+        			}
+        		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}
+    return result;
+}
 }

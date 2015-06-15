@@ -28,4 +28,5 @@ public interface playerControllerThirdService {
     public ArrayList<PlayerVO> getSelectedPlayers(String position,String season,String infoType);
     public ArrayList<String>  dataforecast(String pid,double afa);
     public ArrayList<PlayerBasicInfoVO> getthisseasonplayer();
+    public ArrayList<PlayerBasicInfoVO> getPlayersbyCharSeason(char temp,String season);
 }
