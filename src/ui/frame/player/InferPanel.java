@@ -131,7 +131,7 @@ public class InferPanel extends JPanel {
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			//按字母索引查找球员
-			ArrayList<PlayerBasicInfoVO> playerlist = controllerForPlayer.getPlayersbyChar(this.getText().toCharArray()[0]);
+			ArrayList<PlayerBasicInfoVO> playerlist = controllerForPlayer.getPlayersbyCharSeason(this.getText().toCharArray()[0],"14-15");
 			int size = playerlist.size();
 			Object[][] data = new Object[size][21];
 			for(int i = 0 ; i < size; i++){
