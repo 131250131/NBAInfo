@@ -1114,7 +1114,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
      */
        public static void main(String args[]){
     	   PlayerControllerThird p=new PlayerControllerThird();
-    	   System.out.println(p.getPlayervobyid("526", "14-15").getChinesenname());
+    	   System.out.println(p.getPlayersbyCharSeason('B', "14-15").size());
 //    	   System.out.println(p.dataforecast("1355", 0.95));
     	  // ArrayList<PlayerdatainfoVO> pr=p.getplayerbyteam("金州勇士", "13-14");
 //    	   PlayerVO result=new PlayerVO();
@@ -1906,6 +1906,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
 	@Override
 	public ArrayList<PlayerBasicInfoVO> getPlayersbyCharSeason(char temp,
 			String season) {
+		ArrayList<PlayerBasicInfoVO> tempp=new ArrayList<PlayerBasicInfoVO>();
 		ArrayList<PlayerBasicInfoVO> result=new ArrayList<PlayerBasicInfoVO>();
 		ArrayList<String> ids=new ArrayList<String>();
 		try{
@@ -1922,9 +1923,15 @@ public class PlayerControllerThird implements playerControllerThirdService{
         		for(String i:ids){
         			for(PlayerBasicInfoVO p:inidata){
         				if(p.getPlayerID().equals(i)){
-        					result.add(p);
+        					tempp.add(p);
         					break;
         				}
+        			}
+        		}
+        		for(PlayerBasicInfoVO vo : tempp){
+        			char[] str = vo.getEnglishName().toCharArray();
+        			if(str[0]==temp){
+        				result.add(vo);
         			}
         		}
 	}catch(Exception e){
