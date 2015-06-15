@@ -27,6 +27,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 		TeamControllerThird teamController = new TeamControllerThird();
 		ArrayList<TeamVO> result = new ArrayList<TeamVO>();
 		result = teamController.getAllTeamVO();
+		teamController.getTeamHistorySeason("华盛顿子弹队", 0);
 //		for(TeamVO vo: result){
 //		System.out.println("case "+"\""+vo.getTeamName()+"\" :");
 //		System.out.println("  name = "+"\""+vo.getShortName()+"\";");
