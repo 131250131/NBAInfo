@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import thirdVersion.PSpecificdata;
 import thirdVersion.PlayerBasicInfoVO;
 import thirdVersion.PlayerdatainfoVO;
+import thirdVersion.SalaryVO;
 import vo.PlayerVO;
 import Utibility.DataType;
 
@@ -28,4 +29,5 @@ public interface playerControllerThirdService {
     public ArrayList<PlayerVO> getSelectedPlayers(String position,String season,String infoType);
     public ArrayList<String>  dataforecast(String pid,double afa);
     public ArrayList<PlayerBasicInfoVO> getthisseasonplayer();
+    public ArrayList<SalaryVO> getSalaryBySeason(String season);
 }

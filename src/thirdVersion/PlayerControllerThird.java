@@ -1901,5 +1901,10 @@ public class PlayerControllerThird implements playerControllerThirdService{
 	}
 		return result;
 	}
+	
+	public ArrayList<SalaryVO> getSalaryBySeason(String season) {
+		Statistics s = new Statistics();
+		return s.getAllSalaryInfoBySeason(season);
+	}
     
 }
