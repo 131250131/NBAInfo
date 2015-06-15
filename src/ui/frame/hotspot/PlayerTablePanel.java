@@ -53,10 +53,10 @@ public class PlayerTablePanel extends MyPanel{
 		 * 
 		 * 
 		 * */
-		String[] temp = {"球员姓名","所属球队","参赛场数","先发场数","篮板数","进攻篮板","防守篮板","助攻数","场均出场时间"
+		String[] temp = {"球员姓名","所属球队","参赛场数","命中率","篮板数","进攻篮板","防守篮板","助攻数","场均出场时间"
 						,"投篮命中率","三分命中率","罚球命中率","抢断数","盖帽数",
 						"失误数","犯规数","球员得分","效率","GmSc效率值","真实命中率","投篮效率","篮板率","进攻篮板率",
-						"防守篮板率","助攻率","抢断绿","盖帽率","失误率","使用率","两双次数"};
+						"防守篮板率","助攻率","抢断绿","盖帽率","失误率","使用率"};
 		temp2 = temp;
 		data2 = new String[30][];
 		table = new MyTable();
@@ -205,9 +205,9 @@ public class PlayerTablePanel extends MyPanel{
 					for(int index=0;index<tempPlayers.size();index++){
 						PlayerVO tempPlayer = tempPlayers.get(index);
 						data[index][0] = tempPlayer.getPlayerName();
-						data[index][1] = tempPlayer.getTeamShortName();//所属球队
+						data[index][1] = tempPlayer.getTeamname();//所属球队
 						data[index][2] = tempPlayer.getPlayerAttends();
-						data[index][3] = tempPlayer.getStartTimes();
+						data[index][3] = tempPlayer.getAver_playerFG();
 						data[index][4] = tempPlayer.getPlayerTotalRebounds();
 						data[index][5] = tempPlayer.getPlayerOffenceRebounds();
 						data[index][6] = tempPlayer.getPlayerDeffenceRebounds();
@@ -233,7 +233,6 @@ public class PlayerTablePanel extends MyPanel{
 						data[index][26] = tempPlayer.getBR();
 						data[index][27] = tempPlayer.getTR();
 						data[index][28] = tempPlayer.getUR();
-						data[index][29] = tempPlayer.getdouble_double();
 					}	
 					
 					Object[][] data2=new Object[50][];
