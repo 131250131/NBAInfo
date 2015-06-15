@@ -1,5 +1,6 @@
 package ui.frame.player;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -10,8 +11,10 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
   
@@ -47,8 +50,33 @@ public class BarChart {
         chart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));  
         chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体  
             
-          //到这里结束，虽然代码有点多，但只为一个目的，解决汉字乱码问题  
-            
+        //到这里结束，虽然代码有点多，但只为一个目的，解决汉字乱码问题  
+        
+//        // 柱图的呈现器   
+//		BarRenderer renderer = new BarRenderer();
+//		// 设置柱子宽度   
+//		// renderer.setMaximumBarWidth(0.05);   
+//		// 设置柱子高度   
+//		// renderer.setMinimumBarLength(0.2);   
+//		// 设置柱子边框颜色   
+//		renderer.setBaseOutlinePaint(Color.BLACK);
+//		// 设置柱子边框可见   
+//		renderer.setDrawBarOutline(true);
+//		// 设置每个柱的颜色   
+//		renderer.setSeriesPaint(0, Color.BLUE);
+//		renderer.setSeriesPaint(1, Color.RED);
+//		renderer.setSeriesPaint(2, Color.GREEN);
+//		// 设置每个地区所包含的平行柱的之间距离   
+//		renderer.setItemMargin(0.05);
+//		// 显示每个柱的数值，并修改该数值的字体属性   
+//		renderer.setIncludeBaseInRange(true);
+//		renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+//		renderer.setBaseItemLabelsVisible(true);
+//		// 设置柱的透明度   
+//		plot.setForegroundAlpha(1.0f);
+//		// 给柱图添加呈现器   
+//		plot.setRenderer(renderer);
+   
         frame1=new ChartPanel(chart,true);        //这里也可以用chartFrame,可以直接生成一个独立的Frame  
            
     }
@@ -71,12 +99,35 @@ public class BarChart {
         domainAxis.setLabelFont(new Font("黑体",Font.BOLD,14));         //水平底部标题  
         domainAxis.setTickLabelFont(new Font("宋体",Font.BOLD,12));  //垂直标题  
         ValueAxis rangeAxis=plot.getRangeAxis();//获取柱状  
-        rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15));  
+        rangeAxis.setLabelFont(new Font("黑体",Font.BOLD,15)); 
         chart.getLegend().setItemFont(new Font("黑体", Font.BOLD, 15));  
         chart.getTitle().setFont(new Font("宋体",Font.BOLD,20));//设置标题字体  
             
           //到这里结束，虽然代码有点多，但只为一个目的，解决汉字乱码问题  
-            
+//        // 柱图的呈现器   
+//		BarRenderer renderer = new BarRenderer();
+//		// 设置柱子宽度   
+//		// renderer.setMaximumBarWidth(0.05);   
+//		// 设置柱子高度   
+//		// renderer.setMinimumBarLength(0.2);   
+//		// 设置柱子边框颜色   
+//		renderer.setBaseOutlinePaint(Color.BLACK);
+//		// 设置柱子边框可见   
+//		renderer.setDrawBarOutline(true);
+//		// 设置每个柱的颜色   
+//		renderer.setSeriesPaint(0, Color.BLUE);
+//		renderer.setSeriesPaint(1, Color.RED);
+//		renderer.setSeriesPaint(2, Color.GREEN);
+//		// 设置每个地区所包含的平行柱的之间距离   
+//		renderer.setItemMargin(0.05);
+//		// 显示每个柱的数值，并修改该数值的字体属性   
+//		renderer.setIncludeBaseInRange(true);
+//		renderer.setBaseItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+//		renderer.setBaseItemLabelsVisible(true);
+//		// 设置柱的透明度   
+//		plot.setForegroundAlpha(1.0f);
+//		// 给柱图添加呈现器   
+//		plot.setRenderer(renderer);    
         frame1.setChart(chart);      
            
     }
