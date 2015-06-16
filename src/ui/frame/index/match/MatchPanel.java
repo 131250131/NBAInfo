@@ -61,7 +61,7 @@ public class MatchPanel extends JPanel implements ActionListener{
 		tf.setVisible(true);
 		this.add(tf);
 		
-		searchButton2 = new JButton("详细搜索");
+		searchButton2 = new JButton("日期搜索");
 		searchButton2.setBounds((int) (900 * UIData.changeX), (int) (190 * UIData.changeY),
 				(int) (200 * UIData.changeX), (int) (35 * UIData.changeY));
 		searchButton2.setBackground(Color.DARK_GRAY);
