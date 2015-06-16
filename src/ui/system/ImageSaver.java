@@ -46,6 +46,7 @@ public class ImageSaver {
 			case "scan" : return new ImageIcon(iconPath + "littleScan.png");
 			case "live" : return new ImageIcon(iconPath + "live.png");
 			case "live2" : return new ImageIcon(iconPath + "live2.png");
+			case "tj" : return new ImageIcon(iconPath + "tj.png");
 		}
 		
 		return null;
