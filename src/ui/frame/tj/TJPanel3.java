@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.frame.index.hotspot.HotspotBounds;
+import ui.frame.player.InferPanel;
 import ui.myUI.BackColorPanel;
 import ui.system.UIData;
 
@@ -40,7 +41,9 @@ public class TJPanel3 extends JPanel implements ActionListener{
 		
 		
 		
-		
+		InferPanel pg=new InferPanel();
+		pg.setLocation(0, 0);
+		this.add(pg);
 		
 		
 		
