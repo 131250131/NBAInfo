@@ -24,8 +24,8 @@ public class Statistics {
 //		s.getTestSalary("785", "13-14");
 //		s.getTestSalary("1564", "11-12");
 //		s.getTestSalary("695", "11-12");
-		double num[][] = new double[3][];
-		ArrayList<SalaryVO> result = s.getAllSalaryInfoBySeason("12-13",num);
+		double num[][] = new double[3][10];
+		ArrayList<SalaryVO> result = s.getAllSalaryInfoBySeason("08-09",num);
 	}
 	
 	public double forcastData(String pID, DataType dtp){
@@ -576,15 +576,15 @@ public class Statistics {
 				this.sqt2(xy1, z1, 2, size1, a1, r1, v1);
 				this.sqt2(xy2, z2, 2, size2, a2, r2, v2);
 				this.sqt2(xy3, z3, 2, size3, a3, r3, v3);
-				num[0][1] = a1[0];num[0][1] = a1[1];num[0][2] = a1[2];
-				num[0][3] = r1[0];num[0][4] = r1[1];num[0][5] = r1[2]; num[0][6] = r1[3];num[0][7] = r1[4];
-				num[0][8] = v1[0];num[0][9] = v1[1];
-				num[1][1] = a2[0];num[1][1] = a2[1];num[1][2] = a2[2];
-				num[1][3] = r2[0];num[1][4] = r2[1];num[1][5] = r2[2]; num[1][6] = r2[3];num[1][7] = r2[4];
-				num[1][8] = v2[0];num[1][9] = v2[1];
-				num[2][1] = a3[0];num[2][1] = a3[1];num[2][2] = a3[2];
-				num[2][3] = r3[0];num[2][4] = r3[1];num[2][5] = r3[2]; num[2][6] = r3[3];num[2][7] = r3[4];
-				num[2][8] = v3[0];num[2][9] = v3[1];
+				num[0][0] = Double.parseDouble(df.format(a1[0]));num[0][1] = Double.parseDouble(df.format(a1[1]));num[0][2] = Double.parseDouble(df.format(a1[2]));
+				num[0][3] = Double.parseDouble(df.format(r1[0]));num[0][4] = Double.parseDouble(df.format(r1[1]));num[0][5] = Double.parseDouble(df.format(r1[2])); num[0][6] = Double.parseDouble(df.format(r1[3]));num[0][7] = Double.parseDouble(df.format(r1[4]));
+				num[0][7] = Double.parseDouble(df.format(v1[0]));num[0][8] = Double.parseDouble(df.format(v1[1]));
+				num[1][0] = Double.parseDouble(df.format(a2[0]));num[1][1] = Double.parseDouble(df.format(a2[1]));num[1][2] = Double.parseDouble(df.format(a2[2]));
+				num[1][3] = Double.parseDouble(df.format(r2[0]));num[1][4] = Double.parseDouble(df.format(r2[1]));num[1][5] = Double.parseDouble(df.format(r2[2])); num[1][6] = Double.parseDouble(df.format(r2[3]));num[1][7] = Double.parseDouble(df.format(r2[4]));
+				num[1][7] = Double.parseDouble(df.format(v2[0]));num[1][8] = Double.parseDouble(df.format(v2[1]));
+				num[2][0] = Double.parseDouble(df.format(a3[0]));num[2][1] = Double.parseDouble(df.format(a3[1]));num[2][2] = Double.parseDouble(df.format(a3[2]));
+				num[2][3] = Double.parseDouble(df.format(r3[0]));num[2][4] = Double.parseDouble(df.format(r3[1]));num[2][5] = Double.parseDouble(df.format(r3[2])); num[2][6] = Double.parseDouble(df.format(r3[3]));num[2][7] = Double.parseDouble(df.format(r3[4]));
+				num[2][7] = Double.parseDouble(df.format(v3[0]));num[2][8] = Double.parseDouble(df.format(v3[1]));
 				System.out.println("相关系数  "+v1[0]+" "+v1[1]+" 偏差平方和"+r1[0]+" 平均标准差"+r1[1]+" 复相关系数"+r1[2]+" 回归平方和"+r1[3] +" 回归系数"+ a1[0]+" "+a1[1]+" "+a1[2]);
 				System.out.println("相关系数  "+v2[0]+" "+v2[1]+" 偏差平方和"+r2[0]+" 平均标准差"+r2[1]+" 复相关系数"+r2[2]+" 回归平方和"+r2[3] +" 回归系数"+ a2[0]+" "+a2[1]+" "+a2[2]);
 				System.out.println("相关系数  "+v3[0]+" "+v3[1]+" 偏差平方和"+r3[0]+" 平均标准差"+r3[1]+" 复相关系数"+r3[2]+" 回归平方和"+r3[3] +" 回归系数"+ a3[0]+" "+a3[1]+" "+a3[2]);
