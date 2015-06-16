@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import ui.frame.index.hotspot.HotspotBounds;
 import ui.myUI.BackColorPanel;
@@ -31,6 +32,7 @@ public class MatchPanel extends JPanel implements ActionListener{
 	MatchComboBox matchComboBox;
 	MatchScrollPane matchScrollPane;
 	MatchListPanel matchesListPanel;
+	JTextField tf;
 	
 	public MatchPanel(){
 		this.setLayout(null);
@@ -50,8 +52,17 @@ public class MatchPanel extends JPanel implements ActionListener{
 		searchButton.setVisible(true);
 		this.add(searchButton);
 		
+		tf = new JTextField("格式 ： YYYY-MM-DD");
+		tf.setBounds((int) (680 * UIData.changeX), (int) (190 * UIData.changeY),
+				(int) (200 * UIData.changeX), (int) (35 * UIData.changeY));
+		tf.setBackground(Color.DARK_GRAY);
+		tf.setForeground(Color.WHITE);
+		tf.setHorizontalAlignment(JLabel.CENTER);
+		tf.setVisible(true);
+		this.add(tf);
+		
 		searchButton2 = new JButton("详细搜索");
-		searchButton2.setBounds((int) (660 * UIData.changeX), (int) (190 * UIData.changeY),
+		searchButton2.setBounds((int) (900 * UIData.changeX), (int) (190 * UIData.changeY),
 				(int) (200 * UIData.changeX), (int) (35 * UIData.changeY));
 		searchButton2.setBackground(Color.DARK_GRAY);
 		searchButton2.setForeground(Color.WHITE);
@@ -95,6 +106,14 @@ public class MatchPanel extends JPanel implements ActionListener{
 			ArrayList<MatchVO> matchArray = Controller.matchController.getmatchbydate(dateList.get(maxNum - matchComboBox.getSelectedIndex() - 1));
 			matchesListPanel = new MatchListPanel(matchArray);
 			matchScrollPane.setViewportView(matchesListPanel);
+		}
+		
+		if(events.getSource() == searchButton2){
+			ArrayList<MatchVO> matchArray = Controller.matchController.getmatchbydate(tf.getText());
+			if(matchArray.size() > 0){
+				matchesListPanel = new MatchListPanel(matchArray);
+				matchScrollPane.setViewportView(matchesListPanel);
+			}
 		}
 	}
 
