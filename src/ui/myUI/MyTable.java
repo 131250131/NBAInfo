@@ -123,7 +123,7 @@ public class MyTable extends JScrollPane implements MouseListener{
        // this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         
 		//用参数初始化model
-        if(!columnNames[0].equals("序号")&&!columnNames[0].equals("场均得分")){//如果没有序号列，自动添加序号列
+        if(!columnNames[0].equals("序号")&&!columnNames[0].equals("场均得分")&&!columnNames[0].equals("位置")){//如果没有序号列，自动添加序号列
         	content=addSerialNum(content);
         	columnNames=addSerialNum(columnNames);
         }
@@ -164,7 +164,7 @@ public class MyTable extends JScrollPane implements MouseListener{
 		//列宽
 		setWidth();
 		
-		if(!columnNames[0].equals("场均得分")){
+		if(!columnNames[0].equals("场均得分")&&!columnNames[0].equals("位置")){
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//固定大小
 		}
 		
@@ -183,11 +183,10 @@ public class MyTable extends JScrollPane implements MouseListener{
 	}
 	/*更新表格数据*/
 	public void update(String[] columnNames,Object[][] content){
-	   if(!columnNames[0].equals("序号")&&!columnNames[0].equals("场均得分")){//如果没有序号列，自动添加序号列
+	   if(!columnNames[0].equals("序号")&&!columnNames[0].equals("场均得分")&&!columnNames[0].equals("位置")){//如果没有序号列，自动添加序号列
         	content=addSerialNum(content);
         	columnNames=addSerialNum(columnNames);
         }
-	   System.out.println(",,,,,,"+content[0][0]);
 		model.setDataVector(content, columnNames);
 		setWidth();
 		this.columnNames=columnNames;
