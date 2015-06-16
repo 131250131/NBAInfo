@@ -162,7 +162,9 @@ public class MyTable extends JScrollPane implements MouseListener{
 		head.setResizingAllowed(false);
 //		head.addMouseListener (new MouseListenerOfHeader());
 		//列宽
-		setWidth();
+		if(!columnNames[0].equals("位置")){
+			setWidth();
+		}
 		
 		if(!columnNames[0].equals("场均得分")&&!columnNames[0].equals("位置")){
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);//固定大小

@@ -60,7 +60,7 @@ public class InferPanel extends JPanel {
 		//统计推断数据表格
 		inferDatasTable =new MyTable(columnameOfinferDatas, new Object[1][13]);
 		JSortTable.makeFace(inferDatasTable.getTable());
-		inferDatasTable.setBounds(20,50,1240,50);
+		inferDatasTable.setBounds(20,50,1240,55);
 		this.add(inferDatasTable,27);
 		
 		ListSelectionModel cellSelectionModel = table.getJTable().getSelectionModel();  
