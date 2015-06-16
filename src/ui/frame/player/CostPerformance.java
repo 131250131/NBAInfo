@@ -21,8 +21,11 @@ import ui.system.UIData;
 public class CostPerformance extends JPanel {
 
 	private JComboBox<String> seasonComb;
-	private MyTable table;
-	private String[] columname={"球员ID","球员姓名","球队","位置","进攻能力","防守能力","分析价值(万元)","实际薪水(万元)",
+	private MyTable tableForCoefficient;
+	private MyTable tableForPlayers;
+	private String[] columname2={"球员ID","球员姓名","球队","位置","进攻能力","防守能力","分析价值(万元)","实际薪水(万元)",
+			"价值波动(万元)","性价比"};
+	private String[] columname1={"球员ID","球员姓名","球队","位置","进攻能力","防守能力","分析价值(万元)","实际薪水(万元)",
 			"价值波动(万元)","性价比"};
 	private playerControllerThirdService controllerForPlayer=new PlayerControllerThird();//逻辑层接口
 	
@@ -63,17 +66,24 @@ public class CostPerformance extends JPanel {
  					data[i][8] = playerlist.get(i).getDif();
  					data[i][9] = playerlist.get(i).getPer();
  				}
- 				table.update(columname, data);
+ 				tableForPlayers.update(columname2, data);
  			}
     	});
     	
     	this.add(seasonComb,0);
 		//球员表格		
-		table =new MyTable();
-		JSortTable.makeFace(table.getTable());
-		table.setBounds(20,100 ,1240,590);
+		tableForPlayers =new MyTable();
+		JSortTable.makeFace(tableForPlayers.getTable());
+		tableForPlayers.setBounds(20,210,1240,500);
+		this.add(tableForPlayers,1);
+		
+		//系数表格		
+		tableForCoefficient =new MyTable();
+		JSortTable.makeFace(tableForCoefficient.getTable());
+		tableForCoefficient.setBounds(20,70,1240,120);
+		this.add(tableForCoefficient,2);
+		
 		iniTable();
-		this.add(table,1);
 	}
 	
 void iniTable(){
@@ -94,7 +104,7 @@ void iniTable(){
 			data[i][8] = playerlist.get(i).getDif();
 			data[i][9] = playerlist.get(i).getPer();
 		}
-		table.update(columname, data);
+		tableForPlayers.update(columname2, data);
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
