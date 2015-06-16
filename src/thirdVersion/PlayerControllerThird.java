@@ -1983,7 +1983,7 @@ public class PlayerControllerThird implements playerControllerThirdService{
 		ArrayList<PlayerBasicInfoVO> tempp=new ArrayList<PlayerBasicInfoVO>();
 		ArrayList<String> ids=new ArrayList<String>();
 		try{
-     		sql="SELECT id FROM playerdatainfo WHERE season='"+season+"'" ;
+     		sql="SELECT id FROM playerdatainfo WHERE season='"+season+"'"+"AND isplayoff = 0";
         		Class.forName("com.mysql.jdbc.Driver");
         		Connection conn =DriverManager.getConnection(url, user, password);
         		PreparedStatement pstmt=conn.prepareStatement(sql);
