@@ -29,7 +29,7 @@ public interface playerControllerThirdService {
     public ArrayList<PlayerVO> getSelectedPlayers(String position,String season,String infoType);
     public ArrayList<String>  dataforecast(String pid,double afa);
     public ArrayList<PlayerBasicInfoVO> getthisseasonplayer();
-    public ArrayList<SalaryVO> getSalaryBySeason(String season);
+    public ArrayList<SalaryVO> getSalaryBySeason(String season, double num[][]);
     public ArrayList<PlayerBasicInfoVO> getPlayersbyCharSeason(char temp,String season);
 
 }

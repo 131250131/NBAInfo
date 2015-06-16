@@ -13,7 +13,7 @@ import Utibility.DataType;
 public class Statistics {
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="941211";	
+	String password="";	
 	//如果遇到数据库密码的问题，可能是 "",也有可能是 "941211" 试一下就好
 	String sql="";
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
@@ -24,7 +24,8 @@ public class Statistics {
 //		s.getTestSalary("785", "13-14");
 //		s.getTestSalary("1564", "11-12");
 //		s.getTestSalary("695", "11-12");
-		ArrayList<SalaryVO> result = s.getAllSalaryInfoBySeason("11-12");
+		double num[][] = new double[3][];
+		ArrayList<SalaryVO> result = s.getAllSalaryInfoBySeason("12-13",num);
 	}
 	
 	public double forcastData(String pID, DataType dtp){
@@ -85,6 +86,7 @@ public class Statistics {
 					temp=rs.getDouble(1);
 					result.add(temp);
 				}
+				conn.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -205,6 +207,7 @@ public class Statistics {
     			    p.name=rs.getString(100);
     			    position = rs.getString(101);
 				}
+				conn.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -347,18 +350,40 @@ public class Statistics {
 	    			    p.isplayoff=rs.getBoolean(99);//是否是季候赛，是季后赛表示为1，不是为0 
 	    			    p.name=rs.getString(100);
 					}
+					conn.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		 return result;
 	}
 	
-	public ArrayList<SalaryVO> getAllSalaryInfoBySeason(String season){
+	public ArrayList<SalaryVO> getAllSalaryInfoBySeason(String season , double num[][]){
 		ArrayList<SalaryVO> result = new ArrayList<SalaryVO>();
+		double xy1[][] = new double[2][1000];
+		double z1[] =  new double[1000];
+		int size1 = 0;
+		double a1[] = new double[1000];//回归系数
+		double r1[] =  new double[10];//一些数据
+		double v1[] = new double[10];//相关系数
+		
+		double xy2[][] = new double[2][1000];
+		double z2[] =  new double[1000];
+		int size2 = 0;
+		double a2[] = new double[1000];//回归系数
+		double r2[] =  new double[10];//一些数据
+		double v2[] = new double[10];//相关系数
+		
+		double xy3[][] = new double[2][1000];
+		double z3[] =  new double[1000];
+		int size3 = 0;
+		double a3[] = new double[1000];//回归系数
+		double r3[] =  new double[10];//一些数据
+		double v3[] = new double[10];//相关系数
+		
 		try{
 			String position = new String();
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn =DriverManager.getConnection("jdbc:mysql://localhost/nbadata?characterEncoding=utf-8", "root", "");
+			Connection conn =DriverManager.getConnection(url,user,password);
 			String sql =  new String();
 				sql = "SELECT * FROM playerdatainfo WHERE season="+"'"+season+"'and isplayoff="+"0"+" ;";
 				PreparedStatement pstmt=conn.prepareStatement(sql);
@@ -478,21 +503,24 @@ public class Statistics {
     				}
 
     				switch(position){
-    					case "后卫": 
-    						q1 = p.getAScores() + 0.1*p.getFGP() + 2*p.getAAssists() - 0.5*p.getAFeals() - 0.5*p.getATurnovers() + 1.5*p.getAORebouns();
-    						q2 = 0 -0.5*p.getAFeals() - 0.5*p.getATurnovers() + p.getADRebounds() + 2*p.getASteals() + 2*p.getABlocks();
-    						test = 29.1*q1 + 36.883*q2 -162.157;		
-    						break;
+    				case "前锋": 
+						q1 =  1*p.getAScores() + 0.1*p.getFGP() + 2*p.getAAssists()  + 1.5*p.getAORebouns()- 0.5*p.getAFeals() - 0.5*p.getATurnovers();
+						q2 = 0 -0.5*p.getAFeals() - 0.5*p.getATurnovers() + 1*p.getADRebounds() + 2*p.getASteals() + 2*p.getABlocks();
+//						test = 17.322*q1 + 10.317*q2 +72.324;
+		   				
+						break;
     					case "中锋": 
-    						q1 =  2*p.getAScores() + 3*p.getAAssists() - 0.5*p.getAFeals() - 0.5*p.getATurnovers() + 4*p.getAORebouns();;
+    						q1 =  2*p.getAScores() + 3*p.getAAssists()  + 4*p.getAORebouns()- 0.5*p.getAFeals() - 0.5*p.getATurnovers();;
     						q2 = 0 -0.5*p.getAFeals() - 0.5*p.getATurnovers() + 3*p.getADRebounds() + p.getASteals() + 2*p.getABlocks();
-    						test = 48.001*q2 - 47.520;
-    						break;
-    					case "前锋": 
-    						q1 =  1.5*p.getAScores() + 0*p.getFGP() + 2*p.getAAssists() - 0.5*p.getAFeals() - 0.5*p.getATurnovers() + 0*p.getAORebouns();;
-    						q2 = 0 -1*p.getAFeals() - 1*p.getATurnovers() + 4*p.getADRebounds() + 2*p.getASteals() + 0;
-    						test = 17.322*q1 + 10.317*q2 +72.324;
-    						break;
+//    						test = 48.001*q2 - 47.520;
+    		   				
+    					break;
+    					case "后卫": 
+    						q1 = 1.5*p.getAScores() + 0*p.getFGP() + 2*p.getAAssists() - 0.5*p.getAFeals() - 0.5*p.getATurnovers();
+    						q2 = 0 -1*p.getAFeals() - 1*p.getATurnovers() + 4*p.getADRebounds() + 2*p.getASteals() ;
+//    						test = 29.1*q1 + 36.883*q2 -162.157;
+    	    				
+    					break;
     				}
     				temp.setPlayerEnglishName(p.getName());
     				temp.setPlayerID(p.getId());
@@ -500,19 +528,220 @@ public class Statistics {
     				temp.setRealSalary(Double.parseDouble(df.format(real)));
     				temp.setQ1(Double.parseDouble(df.format(q1)));
     				temp.setQ2(Double.parseDouble(df.format(q2)));
-    				temp.setTestSalaty(Double.parseDouble(df.format(test)));
+    				
+    				switch(position){
+    				case "前锋":
+    					if(temp.getRealSalary()<=1500){
+	    					xy1[0][size1] = temp.getQ1();
+	    					xy1[1][size1] = temp.getQ2();
+	    					z1[size1] = temp.getRealSalary();
+	    					size1++;
+	    				}break;
+    				case "中锋":
+    					if(temp.getRealSalary()<=1500){
+        					xy2[0][size2] = temp.getQ1();
+        					xy2[1][size2] = temp.getQ2();
+        					z2[size2] = temp.getRealSalary();
+        					size2++;
+        				}break;
+    				case "后卫":
+    					if(temp.getRealSalary()<=1500){
+	    					xy3[0][size3] = temp.getQ1();
+	    					xy3[1][size3] = temp.getQ2();
+	    					z3[size3] = temp.getRealSalary();
+	    					size3++;
+	    				}break;
+    				}
+    				
+    				
+//    				if(temp.getRealSalary()<=1300&&temp.getRealSalary()>=50){
+//    					xy1[0][size1] = temp.getQ1();
+//    					xy1[1][size1] = temp.getQ2();
+//    					z1[size1] = temp.getRealSalary();
+//    					size1++;
+//    				}
+//    				temp.setTestSalaty(Double.parseDouble(df.format(test)));
     				temp.setPosition(position);
-    				temp.setDif(Double.parseDouble(df.format(temp.getRealSalary()-temp.getTestSalaty())));
-    				double per = (real==0)?0:(test/real);
-    				temp.setPer(Double.parseDouble(df.format(per)));
+//    				temp.setDif(Double.parseDouble(df.format(temp.getRealSalary()-temp.getTestSalaty())));
+//    				double per = (real==0)?0:(test/real);
+//    				temp.setPer(Double.parseDouble(df.format(per)));
     			    result.add(temp);
-    			    System.out.println(temp.getPlayerEnglishName()+" "+temp.getPlayerID()+" q1:"+temp.getQ1()+
-    			    		" q2"+temp.getQ2()+" real"+temp.getRealSalary()+" test"+temp.getTestSalaty()+" per"+ temp.getPer());
+//    			    System.out.println(temp.getPlayerEnglishName()+" "+temp.getPlayerID()+" q1:"+temp.getQ1()+
+//    			    		" q2"+temp.getQ2()+" real"+temp.getRealSalary()+" test"+temp.getTestSalaty()+" per"+ temp.getPer());
 				}
+				System.out.println("size1 "+size1);
+				System.out.println("size2 "+size2);
+				System.out.println("size3 "+size3);
+
+				this.sqt2(xy1, z1, 2, size1, a1, r1, v1);
+				this.sqt2(xy2, z2, 2, size2, a2, r2, v2);
+				this.sqt2(xy3, z3, 2, size3, a3, r3, v3);
+				System.out.println("相关系数  "+v1[0]+" "+v1[1]+" 偏差平方和"+r1[0]+" 平均标准差"+r1[1]+" 复相关系数"+r1[2]+" 回归平方和"+r1[3] +" 回归系数"+ a1[0]+" "+a1[1]+" "+a1[2]);
+				System.out.println("相关系数  "+v2[0]+" "+v2[1]+" 偏差平方和"+r2[0]+" 平均标准差"+r2[1]+" 复相关系数"+r2[2]+" 回归平方和"+r2[3] +" 回归系数"+ a2[0]+" "+a2[1]+" "+a2[2]);
+				System.out.println("相关系数  "+v3[0]+" "+v3[1]+" 偏差平方和"+r3[0]+" 平均标准差"+r3[1]+" 复相关系数"+r3[2]+" 回归平方和"+r3[3] +" 回归系数"+ a3[0]+" "+a3[1]+" "+a3[2]);
+				System.out.println("运过");
+				double test =0;
+				for(SalaryVO temp :result){
+	   				switch(temp.getPosition()){
+    				case "前锋":
+    					test = a1[0]*temp.getQ1() + a1[1]*temp.getQ2() + a1[2];
+    					break;
+    				case "中锋":
+    					test = a2[0]*temp.getQ1() + a2[1]*temp.getQ2() + a2[2];
+    					break;
+    				case "后卫":
+    					test = a3[0]*temp.getQ1() + a3[1]*temp.getQ2() + a3[2];
+    					break;
+    				}
+	   				temp.setTestSalaty(Double.parseDouble(df.format(test)));
+	   				temp.setDif(Double.parseDouble(df.format(temp.getRealSalary()-temp.getTestSalaty())));
+	   				double per = (temp.getRealSalary()==0)?0:(test/temp.getRealSalary());
+	   				temp.setPer(Double.parseDouble(df.format(per)));
+	   			 System.out.println(temp.getPlayerEnglishName()+" "+temp.getPlayerID()+" q1:"+temp.getQ1()+
+ 			    		" q2:"+temp.getQ2()+" real:"+temp.getRealSalary()+" test:"+temp.getTestSalaty()+" per"+ temp.getPer());
+				}
+				conn.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 		return result;
+	}
+	
+	/** 
+	  * 多元线性回归分析   *  
+	  * @param x[m][n] 
+	  *            每一列存放m个自变量的观察值  
+	 * @param y[n] 
+	  *            存放随即变量y的n个观察值   
+	* @param m 
+	  *            自变量的个数   
+	* @param n 
+	  *            观察数据的组数   
+	* @param a 
+	  *            返回回归系数a0,...,am   * 
+	@param dt[4] 
+	 
+	  *            dt[0]偏差平方和q,dt[1] 平均标准偏差s dt[2]返回复相关系数r 
+	  *dt[3]返回回归平方和u  
+	  * * @param v[m]   *            返回m个自变量的偏相关系数   */
+	
+	public  void sqt2(double[][] x, double[] y, int m, int n, double[] a,
+			double[] dt, double[] v) {
+		int i, j, k, mm;
+		double q, e, u, p, yy, s, r, pp;
+		double[] b = new double[(m + 1) * (m + 1)];
+		mm = m + 1;
+		b[mm * mm - 1] = n;
+		for (j = 0; j <= m - 1; j++) {
+			p = 0.0;
+			for (i = 0; i <= n - 1; i++)
+				p = p + x[j][i];
+			b[m * mm + j] = p;
+			b[j * mm + m] = p;
+		}
+		for (i = 0; i <= m - 1; i++)
+			for (j = i; j <= m - 1; j++) {
+				p = 0.0;
+				for (k = 0; k <= n - 1; k++)
+					p = p + x[i][k] * x[j][k];
+				b[j * mm + i] = p;
+				b[i * mm + j] = p;
+			}
+		a[m] = 0.0;
+		for (i = 0; i <= n - 1; i++)
+			a[m] = a[m] + y[i];
+		for (i = 0; i <= m - 1; i++) {
+			a[i] = 0.0;
+			for (j = 0; j <= n - 1; j++)
+				a[i] = a[i] + x[i][j] * y[j];
+		}
+		chlk(b, mm, 1, a);
+		yy = 0.0;
+		for (i = 0; i <= n - 1; i++)
+			yy = yy + y[i] / n;
+		q = 0.0;
+		e = 0.0;
+		u = 0.0;
+		for (i = 0; i <= n - 1; i++) {
+			p = a[m];
+			for (j = 0; j <= m - 1; j++)
+				p = p + a[j] * x[j][i];
+			q = q + (y[i] - p) * (y[i] - p);
+			e = e + (y[i] - yy) * (y[i] - yy);
+			u = u + (yy - p) * (yy - p);
+		}
+		s = Math.sqrt(q / n);
+		r = Math.sqrt(1.0 - q / e);
+		for (j = 0; j <= m - 1; j++) {
+			p = 0.0;
+			for (i = 0; i <= n - 1; i++) {
+				pp = a[m];
+				for (k = 0; k <= m - 1; k++)
+					if (k != j)
+						pp = pp + a[k] * x[k][i];
+				p = p + (y[i] - pp) * (y[i] - pp);
+			}
+			v[j] = Math.sqrt(1.0 - q / p);
+		}
+		dt[0] = q;
+		dt[1] = s;
+		dt[2] = r;
+		dt[3] = u;
+	}
+	
+	private int chlk(double[] a, int n, int m, double[] d) {
+		int i, j, k, u, v;
+		if ((a[0] + 1.0 == 1.0) || (a[0] < 0.0)) {
+			System.out.println("fail\n");
+			return (-2);
+		}
+		a[0] = Math.sqrt(a[0]);
+		for (j = 1; j <= n - 1; j++)
+			a[j] = a[j] / a[0];
+		for (i = 1; i <= n - 1; i++) {
+			u = i * n + i;
+			for (j = 1; j <= i; j++) {
+				v = (j - 1) * n + i;
+				a[u] = a[u] - a[v] * a[v];
+			}
+			if ((a[u] + 1.0 == 1.0) || (a[u] < 0.0)) {
+				System.out.println("fail\n");
+				return (-2);
+			}
+			a[u] = Math.sqrt(a[u]);
+			if (i != (n - 1)) {
+				for (j = i + 1; j <= n - 1; j++) {
+					v = i * n + j;
+					for (k = 1; k <= i; k++)
+						a[v] = a[v] - a[(k - 1) * n + i] * a[(k - 1) * n + j];
+					a[v] = a[v] / a[u];
+				}
+			}
+		}
+		for (j = 0; j <= m - 1; j++) {
+			d[j] = d[j] / a[0];
+			for (i = 1; i <= n - 1; i++) {
+				u = i * n + i;
+				v = i * m + j;
+				for (k = 1; k <= i; k++)
+					d[v] = d[v] - a[(k - 1) * n + i] * d[(k - 1) * m + j];
+				d[v] = d[v] / a[u];
+			}
+		}
+		for (j = 0; j <= m - 1; j++) {
+			u = (n - 1) * m + j;
+			d[u] = d[u] / a[n * n - 1];
+			for (k = n - 1; k >= 1; k--) {
+				u = (k - 1) * m + j;
+				for (i = k; i <= n - 1; i++) {
+					v = (k - 1) * n + i;
+					d[u] = d[u] - a[v] * d[i * m + j];
+				}
+				v = (k - 1) * n + k - 1;
+				d[u] = d[u] / a[v];
+			}
+		}
+		return (2);
 	}
 	
 }
