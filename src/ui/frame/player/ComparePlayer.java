@@ -58,16 +58,12 @@ public class ComparePlayer extends JPanel {
 		//加字母标签
 		char firstC = 'A';
 		int firstAS = (int)firstC - 1;
-		int x = 320 ;
-		int y = 340 ;
+		int x = 290 ;
+		int y = 370 ;
 		for(int i = 0; i < 26; i++){
-			if(i==13){
-				x=320;
-				y=370;
-			}
 			firstAS+=1;
 			JLabelOfAlphabet temp = new JLabelOfAlphabet(String.valueOf((char)firstAS));
-			x+=40;
+			x+=25;
 			temp.setLocation(x, y);
 			this.add(temp, i);
 		}
@@ -107,19 +103,19 @@ public class ComparePlayer extends JPanel {
             	}
             	String id1=Player1.getID();
             	String id2=Player2.getID();
-            	if(!id1.equals("-1")&&!id2.equals("-1")){
-            		//更新赛季
-                	seasonComb.removeAllItems();
-                	seasonComb.addItem("选择赛季");
-                	seasonComb.setForeground(Color.red);
-                	ArrayList<String> list=controllerForPlayer.getthesameeason(id1, id2);
-                	if(list.size()!=0){
-                		seasonComb.setForeground(Color.white);
-                	}
-                	for(int i=0;i<list.size();i++){
-                		seasonComb.addItem(list.get(i));
-                	}
-            	}
+//            	if(!id1.equals("-1")&&!id2.equals("-1")){
+//            		//更新赛季
+//                	seasonComb.removeAllItems();
+//                	seasonComb.addItem("选择赛季");
+//                	seasonComb.setForeground(Color.red);
+//                	ArrayList<String> list=controllerForPlayer.getthesameeason(id1, id2);
+//                	if(list.size()!=0){
+//                		seasonComb.setForeground(Color.white);
+//                	}
+//                	for(int i=0;i<list.size();i++){
+//                		seasonComb.addItem(list.get(i));
+//                	}
+//            	}
             	
             	doCompare();
             }  
@@ -149,21 +145,21 @@ public class ComparePlayer extends JPanel {
         seasonComb = new JComboBox<String>(seasons);
         seasonComb.addItemListener(new ItemListener(){
 			@Override
-			public void itemStateChanged(ItemEvent e) {
+			public void itemStateChanged(ItemEvent e){
 				doCompare();
 			}
 			
         });
         seasonComb.setFont(new Font("宋体", Font.BOLD, 14));
-        seasonComb.setBounds(220,0,200, 30);
+        seasonComb.setBounds(320,335,200, 30);
         seasonComb.setBackground(Color.gray);
         seasonComb.setForeground(Color.white);
-        barPanel.add(seasonComb,1);
+        this.add(seasonComb,4);
         //柱状图
         barChart=new BarChart();
 	 	ChartPanel chart=barChart.getChartPanel();
-	 	chart.setBounds(0,45, 640,265);
-	 	barPanel.add(chart,2);
+	 	chart.setBounds(0,35, 640,265);
+	 	barPanel.add(chart,1);
 	}
 	void iniTable(){
 		
