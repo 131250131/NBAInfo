@@ -21,12 +21,11 @@ public class OldTeamPicPanel extends JPanel implements ActionListener{
 
 	JButton button;
 	String _teamName;
+	static boolean isOld = true;
 	
 	public OldTeamPicPanel(int x, int y , int width, int height, String teamName){
 		
 		_teamName = teamName;
-		
-		System.out.println(teamName);
 		
 		this.setVisible(true);
 		this.setBounds(x, y, width, height);
@@ -70,6 +69,7 @@ public class OldTeamPicPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent events) {
 		
 		if(events.getSource() == button){
+			isOld = true;
 			Controller.addTeamPanel(ChineseTranslator.TeamNameTrans(_teamName));
 		}
 	}
