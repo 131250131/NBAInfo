@@ -13,7 +13,7 @@ import Utibility.DataType;
 public class Statistics {
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="";	
+	String password="941211";	
 	//如果遇到数据库密码的问题，可能是 "",也有可能是 "941211" 试一下就好
 	String sql="";
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 

@@ -107,7 +107,7 @@ public class MathCalculator {
 	public static String forecast(ArrayList<Double> data,double afa){
 		double aveg=getAverage(data);
 		double var=getVariance(data);
-		DecimalFormat    df   = new DecimalFormat("######0.0000"); 
+		DecimalFormat    df   = new DecimalFormat("######0.00"); 
 		String left=df.format(aveg-NormDistributionQuantile((1-afa)/2)*(Math.pow(var,0.5)/(Math.pow(data.size(), 0.5))));
 		String right=df.format(aveg+NormDistributionQuantile((1-afa)/2)*(Math.pow(var,0.5)/(Math.pow(data.size(), 0.5))));
 		return "["+left+","+right+"]";

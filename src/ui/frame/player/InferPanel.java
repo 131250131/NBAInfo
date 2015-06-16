@@ -61,6 +61,7 @@ public class InferPanel extends JPanel {
 		inferDatasTable =new MyTable(columnameOfinferDatas, new Object[1][13]);
 		JSortTable.makeFace(inferDatasTable.getTable());
 		inferDatasTable.setBounds(20,50,1240,55);
+		inferDatasTable.getTable().getTableHeader().setBackground(Color.BLACK);
 		this.add(inferDatasTable,27);
 		
 		ListSelectionModel cellSelectionModel = table.getJTable().getSelectionModel();  
