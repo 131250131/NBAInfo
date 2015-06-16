@@ -57,13 +57,25 @@ public class TimeSeriesChart {
     	TimeSeries timeseries = new TimeSeries("常规赛", org.jfree.data.time.Year.class); 
     	TimeSeries timeseries2 = new TimeSeries("季后赛", org.jfree.data.time.Year.class);
     	TimeSeriesCollection timeseriescollection = new TimeSeriesCollection(); 
-    	for(int i=0;i<years1.length;i++){
-    		timeseries.addOrUpdate(new Year(years1[i]),data1[i]);
+    	if(years1.length==1){
+    		timeseries.addOrUpdate(new Year(years1[0]),data1[0]);
+    		timeseries.addOrUpdate(new Year(years1[0]+1),data1[0]);
+    	}
+    	else{
+    		for(int i=0;i<years1.length;i++){
+        		timeseries.addOrUpdate(new Year(years1[i]),data1[i]);
+        	}
+    	}
+    	if(year2.length==1){
+    		timeseries2.addOrUpdate(new Year(year2[0]),data2[0]);
+    		timeseries2.addOrUpdate(new Year(year2[0]+1),data2[0]);
+    	}
+    	else{
+    		for(int i=0;i<year2.length;i++){
+        		timeseries2.addOrUpdate(new Year(year2[i]),data2[i]);
+        	}
     	}
     	
-    	for(int i=0;i<year2.length;i++){
-    		timeseries2.addOrUpdate(new Year(year2[i]),data2[i]);
-    	}
     	timeseriescollection.addSeries(timeseries); 
         timeseriescollection.addSeries(timeseries2);  
     	return timeseriescollection;

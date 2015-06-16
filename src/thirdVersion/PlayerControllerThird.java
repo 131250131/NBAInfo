@@ -19,7 +19,7 @@ import Utibility.DataType;
 public class PlayerControllerThird implements playerControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="";
+	String password="941211";
 	String sql="";
 	ArrayList<PlayerBasicInfoVO> inidata=new ArrayList<PlayerBasicInfoVO>();
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
@@ -1977,4 +1977,33 @@ public class PlayerControllerThird implements playerControllerThirdService{
 	}
     return result;
 }
+	@Override
+	public ArrayList<PlayerBasicInfoVO> getPlayersbySeason(String season) {
+		// TODO Auto-generated method stub
+		ArrayList<PlayerBasicInfoVO> tempp=new ArrayList<PlayerBasicInfoVO>();
+		ArrayList<String> ids=new ArrayList<String>();
+		try{
+     		sql="SELECT id FROM playerdatainfo WHERE season='"+season+"'" ;
+        		Class.forName("com.mysql.jdbc.Driver");
+        		Connection conn =DriverManager.getConnection(url, user, password);
+        		PreparedStatement pstmt=conn.prepareStatement(sql);
+        		ResultSet rs=pstmt.executeQuery();
+        		int count=1;
+        		while(rs.next()){
+        			  if(!ids.contains(rs.getString("id")));
+        			        ids.add(rs.getString("id"));
+        		}
+        		for(String i:ids){
+        			for(PlayerBasicInfoVO p:inidata){
+        				if(p.getPlayerID().equals(i)){
+        					tempp.add(p);
+        					break;
+        				}
+        			}
+        		}
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return tempp;
+	}
 }

@@ -94,6 +94,7 @@ public class AnalysisOfPlayers extends JPanel {
         ListSelectionModel cellSelectionModel = table.getJTable().getSelectionModel();  
         cellSelectionModel.addListSelectionListener(new ListSelectionListener(){  
             public void valueChanged(ListSelectionEvent e) {//单元格值变动事件  
+            	//更新球员基本数据
             	String s = controllerForPlayer.getEnglishName(table.getSign(1));
             	dataOfPlayer.update(s);
             	
@@ -108,6 +109,9 @@ public class AnalysisOfPlayers extends JPanel {
             	for(int i=0;i<list.size();i++){
             		seasonComb.addItem(list.get(i));
             	}
+            	//更新两个图表
+            	showTimeSeries();
+            	showPie();
             }  
         });  
        
@@ -122,53 +126,7 @@ public class AnalysisOfPlayers extends JPanel {
         dataComb1.addItemListener(new ItemListener(){
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				String dataName=dataComb1.getSelectedItem().toString();
-				String playerID= dataOfPlayer.getID();
-				if(!dataName.equals("选择数据类型")&&!playerID.equals("-1")){
-					DataType type = translate.translate(dataName);
-					ArrayList<PSpecificdata> normalList=controllerForPlayer.getnormalplayerdata(playerID, type);
-					ArrayList<PSpecificdata> playoffList=controllerForPlayer.getplayoffplayerdata(playerID, type);
-					
-					int size1=normalList.size();
-					int size2=playoffList.size();
-					System.out.println("常规赛"+size1+"_"+"季后赛"+size2);
-					int[] year1=new int[size1];
-					double[] data1 = new double[size1];
-					int[] year2=new int[size2];
-					double[] data2=new double[size2];
-					for(int i=0;i<normalList.size();i++){
-						//数据
-						data1[i]=normalList.get(i).getData();
-						//赛季换算
-						int temp=Integer.parseInt(normalList.get(i).getSeason().split("-")[0]);
-						if(temp>=15){
-							temp+=1900;
-						}
-						else{
-							temp+=2000;
-						}
-						//赛季
-						year1[i]=temp;
-						System.out.print(year1[i]+"-"+data1[i]+";");
-					}
-					for(int i=0;i<playoffList.size();i++){
-						//数据
-						data2[i]=playoffList.get(i).getData();
-						//赛季换算
-						int temp=Integer.parseInt(playoffList.get(i).getSeason().split("-")[0]);
-						if(temp>=15){
-							temp+=1900;
-						}
-						else{
-							temp+=2000;
-						}
-						//赛季
-						year2[i]=temp;
-					}
-					
-					chartest.update(dataName, year1, data1, year2, data2);
-				}
-				
+				showTimeSeries();
 			}});
         dataComb1.setFont(new Font("宋体", Font.BOLD, 14));
         dataComb1.setBounds(0,0,200, 30);
@@ -197,21 +155,7 @@ public class AnalysisOfPlayers extends JPanel {
         dataComb2.addItemListener(new ItemListener(){
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				if(seasonComb.getSelectedItem()!=null&&dataComb2.getSelectedItem()!=null){
-					String dataType=dataComb2.getSelectedItem().toString();
-					String season=seasonComb.getSelectedItem().toString();
-					if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
-						//调用逻辑层更新饼图
-						String playerID= dataOfPlayer.getID();
-						DataType type = translate.translate(dataType);
-						System.out.println(playerID+"-"+season+"-"+type);
-						double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
-						System.out.println(pieData[0]+"-"+pieData[1]);
-						pie.update(dataType, pieData[0], pieData[1]);
-					}
-					
-				}
-				
+				showPie();
 			}
 				
         });
@@ -232,19 +176,7 @@ public class AnalysisOfPlayers extends JPanel {
     	seasonComb.addItemListener(new ItemListener(){
  			@Override
  			public void itemStateChanged(ItemEvent e) {
- 				if(seasonComb.getSelectedItem()!=null&&dataComb2.getSelectedItem()!=null){
- 					String dataType=dataComb2.getSelectedItem().toString();
- 	 				String season=seasonComb.getSelectedItem().toString();
- 	 				if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
- 	 					//调用逻辑层更新饼图
- 	 					String playerID= dataOfPlayer.getID();
- 						DataType type = translate.translate(dataType);
- 						System.out.println(playerID+"-"+season+"-"+type);
- 						double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
- 						System.out.println(pieData[0]+"-"+pieData[1]);
- 						pie.update(dataType, pieData[0], pieData[1]);
- 	 				}
- 				}
+ 				showPie();
  			}
          });
         jpOfContribution.add(seasonComb,1);
@@ -276,6 +208,71 @@ public class AnalysisOfPlayers extends JPanel {
         this.add(jl1,30);
         this.add(jl2,31);
         
+	}
+	void showTimeSeries(){
+		String dataName=dataComb1.getSelectedItem().toString();
+		String playerID= dataOfPlayer.getID();
+		if(!dataName.equals("选择数据类型")&&!playerID.equals("-1")){
+			DataType type = translate.translate(dataName);
+			ArrayList<PSpecificdata> normalList=controllerForPlayer.getnormalplayerdata(playerID, type);
+			ArrayList<PSpecificdata> playoffList=controllerForPlayer.getplayoffplayerdata(playerID, type);
+			
+			int size1=normalList.size();
+			int size2=playoffList.size();
+			System.out.println("常规赛"+size1+"_"+"季后赛"+size2);
+			int[] year1=new int[size1];
+			double[] data1 = new double[size1];
+			int[] year2=new int[size2];
+			double[] data2=new double[size2];
+			for(int i=0;i<normalList.size();i++){
+				//数据
+				data1[i]=normalList.get(i).getData();
+				//赛季换算
+				int temp=Integer.parseInt(normalList.get(i).getSeason().split("-")[0]);
+				if(temp>=15){
+					temp+=1900;
+				}
+				else{
+					temp+=2000;
+				}
+				//赛季
+				year1[i]=temp;
+				System.out.print(year1[i]+"-"+data1[i]+";");
+			}
+			for(int i=0;i<playoffList.size();i++){
+				//数据
+				data2[i]=playoffList.get(i).getData();
+				//赛季换算
+				int temp=Integer.parseInt(playoffList.get(i).getSeason().split("-")[0]);
+				if(temp>=15){
+					temp+=1900;
+				}
+				else{
+					temp+=2000;
+				}
+				//赛季
+				year2[i]=temp;
+				System.out.print(year2[i]+"-"+data2[i]+";");
+			}
+			
+			chartest.update(dataName, year1, data1, year2, data2);
+		}
+		
+	}
+	void showPie(){
+		if(seasonComb.getSelectedItem()!=null&&dataComb2.getSelectedItem()!=null){
+				String dataType=dataComb2.getSelectedItem().toString();
+				String season=seasonComb.getSelectedItem().toString();
+				if(!dataType.equals("选择数据类型")&&!season.equals("选择赛季")){
+					//调用逻辑层更新饼图
+					String playerID= dataOfPlayer.getID();
+					DataType type = translate.translate(dataType);
+					System.out.println(playerID+"-"+season+"-"+type);
+					double[] pieData=controllerForPlayer.getdataforpiechart(playerID, season, type);
+					System.out.println(pieData[0]+"-"+pieData[1]);
+					pie.update(dataType, pieData[0], pieData[1]);
+				}
+		}
 	}
 	void iniTable(){
 		

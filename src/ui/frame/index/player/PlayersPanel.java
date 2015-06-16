@@ -10,10 +10,13 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import thirdVersion.PlayerBasicInfoVO;
+import thirdVersion.PlayerControllerThird;
+import thirdservice.playerControllerThirdService;
 import ui.myUI.JSortTable;
 import ui.myUI.MyTable;
 import ui.system.ChineseTranslator;
@@ -28,7 +31,7 @@ public class PlayersPanel extends JPanel {
 	private MyTable table;
 	String[] columname={"球员","球队","位置","身高","体重","经验","来自"};
 	JLabel check;
-	//调用逻辑层接口
+	private playerControllerThirdService controllerForPlayer=new PlayerControllerThird();//逻辑层接口
 	
 	public PlayersPanel(){
 		this.setBounds((int) (390 * UIData.changeX), (int) (220 * UIData.changeY), (int) (1480 * UIData.changeX), (int) (1000 * UIData.changeY));
@@ -78,27 +81,30 @@ public class PlayersPanel extends JPanel {
 
 			@Override
 			public void itemStateChanged(ItemEvent e) {
-				String shortName = teamName.getSelectedItem().toString();
-				ArrayList<PlayerVO> playerlist = Controller.playerController.getplayerbyteam(shortName, "14-15");
-				
-				int size = playerlist.size();
-		
-				Object[][] data = new Object[size][7];
-				for(int i = 0 ; i < size; i++){
-					data[i][0] = playerlist.get(i).getPlayerName();
-					data[i][1] = playerlist.get(i).getTeamname();
-					if(data[i][1].equals("") || data[i][1].equals(null) || data[i][1] == null){
-						data[i][1] = "自由球员";
-					}else{
-						data[i][1] = ChineseTranslator.TeamNameTrans(playerlist.get(i).getTeamShortName());
+				if(!teamName.getSelectedItem().equals("选择球队")){
+					String shortName = teamName.getSelectedItem().toString();
+					ArrayList<PlayerVO> playerlist = Controller.playerController.getplayerbyteam(shortName, "14-15");
+					
+					int size = playerlist.size();
+			
+					Object[][] data = new Object[size][7];
+					for(int i = 0 ; i < size; i++){
+						data[i][0] = playerlist.get(i).getPlayerName();
+						data[i][1] = playerlist.get(i).getTeamname();
+						if(data[i][1].equals("") || data[i][1].equals(null) || data[i][1] == null){
+							data[i][1] = "自由球员";
+						}else{
+							data[i][1] = playerlist.get(i).getTeamname();
+						}
+						data[i][2] = playerlist.get(i).getPosition();
+						data[i][3] = playerlist.get(i).getHeight();
+						data[i][4] = playerlist.get(i).getWeight();
+						data[i][5] = playerlist.get(i).getPlayerAge();
+						data[i][6] = playerlist.get(i).getSchool();
 					}
-					data[i][2] = playerlist.get(i).getPosition();
-					data[i][3] = playerlist.get(i).getHeight();
-					data[i][4] = playerlist.get(i).getWeight();
-					data[i][5] = playerlist.get(i).getPlayerAge();
-					data[i][6] = playerlist.get(i).getSchool();
+					table.update(columname, data);
 				}
-				table.update(columname, data);
+				
 			}});
 		
 		teamName.setFont(new Font("宋体", Font.BOLD, (int) (14 * UIData.changeY)));
@@ -121,12 +127,12 @@ public class PlayersPanel extends JPanel {
 		colorPanel.setVisible(true);
 		this.add(colorPanel);
 		
-		ArrayList<PlayerBasicInfoVO> playerlist = Controller.playerController.getPlayersbyChar('A');
+		ArrayList<PlayerBasicInfoVO> playerlist = controllerForPlayer.getPlayersbyChar('A');
 		int size = playerlist.size();
 		
 		Object[][] data = new Object[size][7];
 		for(int i = 0; i < size; i++){
-			data[i][0] = Controller.playerController.getEnglishName(playerlist.get(i).getPlayerID());
+			data[i][0] = controllerForPlayer.getEnglishName(playerlist.get(i).getPlayerID());
 //			data[i][1] = ChineseTranslator.TeamNameTrans(teamName.getSelectedItem().toString());
 //			if(data[i][1] == null){
 //				data[i][1] = "自由球员";
@@ -170,11 +176,11 @@ public class PlayersPanel extends JPanel {
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			//按字母索引查找球员
-			ArrayList<PlayerBasicInfoVO> playerlist = Controller.playerController.getPlayersbyChar(this.getText().toCharArray()[0]);
+			ArrayList<PlayerBasicInfoVO> playerlist = controllerForPlayer.getPlayersbyChar(this.getText().toCharArray()[0]);
 			int size = playerlist.size();
 			Object[][] data = new Object[size][7];
 			for(int i = 0; i < size; i++){
-				data[i][0] = Controller.playerController.getEnglishName(playerlist.get(i).getPlayerID());
+				data[i][0] = controllerForPlayer.getEnglishName(playerlist.get(i).getPlayerID());
 				data[i][1] = ChineseTranslator.TeamNameTrans(teamName.getSelectedItem().toString());
 				System.out.println(teamName.getSelectedItem().toString());
 //				if(data[i][1] == null){
@@ -210,5 +216,17 @@ public class PlayersPanel extends JPanel {
 			this.setForeground(Color.GRAY);
 		}
 		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		UIData ui = new UIData(1280, 720);
+		JFrame jf=new  JFrame();
+		jf.setSize(1280, 720);
+		jf.setUndecorated(true);
+		jf.setLocation(20, 10);
+		PlayersPanel pg=new PlayersPanel();
+		pg.setLocation(0, 0);
+		jf.add(pg);
+		jf.setVisible(true);
 	}
 }

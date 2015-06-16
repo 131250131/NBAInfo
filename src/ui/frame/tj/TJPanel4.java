@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ui.frame.index.hotspot.HotspotBounds;
+import ui.frame.player.CostPerformance;
 import ui.myUI.BackColorPanel;
 import ui.system.UIData;
 
@@ -38,7 +39,9 @@ public class TJPanel4 extends JPanel implements ActionListener{
 		///////////////////////////代码添加区域///////////////////////////
 		
 		
-		
+		CostPerformance pg=new CostPerformance();
+		pg.setLocation(0, 0);
+		this.add(pg);
 		
 		
 		

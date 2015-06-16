@@ -19,6 +19,15 @@ public class TeamPanel extends JPanel{
 	int height = (int) (5000 * UIData.changeY);
 	
 	public TeamPanel(TeamVO team){
+		
+		if(team == null){
+			height = (int) (1080 * UIData.changeY);
+		}else{
+			if(OldTeamPicPanel.isOld == true){
+				height = (int) (1080 * UIData.changeY);	
+			}
+		}
+			
 		this.setLayout(null);
 		this.setPreferredSize(new Dimension(width, height));
 		this.setOpaque(false);
@@ -35,30 +44,71 @@ public class TeamPanel extends JPanel{
 		int labelWidth = (int) (1410 * UIData.changeX);
 		int playerLabelY = (int) (100 * UIData.changeY);
 		int playerLabelHeight = (int) (300 * UIData.changeY);
-		TeamInfoLabel teamInfoLabel = new TeamInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, team);
-		this.add(teamInfoLabel);
 		
-		TeamDataTable teamDataTabel = new TeamDataTable(labelX, playerLabelY + playerLabelHeight * 4 - (int) (180 * UIData.changeY), labelWidth, playerLabelHeight * 10 + (int) (480 * UIData.changeY), team);
-		this.add(teamDataTabel);
+		if(team != null){
 		
-		TeamDataLabel dataLabel = new TeamDataLabel(labelX, playerLabelY + playerLabelHeight * 4 + (int) (300 * UIData.changeY), labelWidth, playerLabelHeight * 10, team);
-		this.add(dataLabel);
+			if(OldTeamPicPanel.isOld == false){
+				
+				TeamInfoLabel teamInfoLabel = new TeamInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, team);
+				this.add(teamInfoLabel);
+				
+				TeamDataTable teamDataTabel = new TeamDataTable(labelX, playerLabelY + playerLabelHeight * 4 - (int) (180 * UIData.changeY), labelWidth, playerLabelHeight * 10 + (int) (480 * UIData.changeY), team);
+				this.add(teamDataTabel);
+				
+				TeamDataLabel dataLabel = new TeamDataLabel(labelX, playerLabelY + playerLabelHeight * 4 + (int) (300 * UIData.changeY), labelWidth, playerLabelHeight * 10, team);
+				this.add(dataLabel);
+				
+				TeamList teamList = new TeamList(team);
+				teamList.setBounds(labelX, playerLabelY + playerLabelHeight, labelWidth, playerLabelHeight * 3);
+				this.add(teamList);
+				
+				JPanel panel = new JPanel();
+				panel.setBounds(labelX, teamDataTabel.getY(), labelWidth, teamDataTabel.getY() + teamDataTabel.getHeight() - (playerLabelY + playerLabelHeight));
+				panel.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
+				panel.setVisible(true);
+				this.add(panel);
+				
+				JPanel backPanel = new JPanel();
+				backPanel.setBounds(labelX, 0, labelWidth, height);
+				backPanel.setBackground(ImageSaver.getTeamBackColor(ChineseTranslator.TeamNameTrans(team.getTeamName())));
+				backPanel.setVisible(true);
+				this.add(backPanel);
+			
+			}else{
+				
+				TeamInfoLabel teamInfoLabel = new TeamInfoLabel(labelX, playerLabelY, labelWidth, playerLabelHeight, team);
+				this.add(teamInfoLabel);
+				
+				TeamDataTable teamDataTabel = new TeamDataTable(labelX, playerLabelY + playerLabelHeight * 4 - (int) (900 * UIData.changeY), labelWidth, playerLabelHeight * 10 + (int) (480 * UIData.changeY), team);
+				this.add(teamDataTabel);
+							
+				JPanel panel = new JPanel();
+				panel.setBounds(labelX, teamDataTabel.getY(), labelWidth, teamDataTabel.getY() + teamDataTabel.getHeight() - (playerLabelY + playerLabelHeight));
+				panel.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
+				panel.setVisible(true);
+				this.add(panel);
+				
+				JPanel backPanel = new JPanel();
+				backPanel.setBounds(labelX, 0, labelWidth, height);
+				backPanel.setBackground(ImageSaver.getTeamBackColor(null));
+				backPanel.setVisible(true);
+				this.add(backPanel);
+				
+				OldTeamPicPanel.isOld = false;
+			}
+		}else{
+			TeamInfoLabel2 teamInfoLabel = new TeamInfoLabel2(labelX, playerLabelY, labelWidth, playerLabelHeight, TeamScrollPane.teamName);
+			this.add(teamInfoLabel);
+			
+			JPanel backPanel = new JPanel();
+			backPanel.setBounds(labelX, 0, labelWidth, height);
+			backPanel.setBackground(ImageSaver.getTeamBackColor(null));
+			backPanel.setVisible(true);
+			this.add(backPanel);
+			
+			OldTeamPicPanel.isOld = false;
+		}
 		
-		TeamList teamList = new TeamList(team);
-		teamList.setBounds(labelX, playerLabelY + playerLabelHeight, labelWidth, playerLabelHeight * 3);
-		this.add(teamList);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(labelX, teamDataTabel.getY(), labelWidth, teamDataTabel.getY() + teamDataTabel.getHeight() - (playerLabelY + playerLabelHeight));
-		panel.setBackground(new Color(0.1f, 0.1f, 0.1f, 0.6f));
-		panel.setVisible(true);
-		this.add(panel);
-		
-		JPanel backPanel = new JPanel();
-		backPanel.setBounds(labelX, 0, labelWidth, height);
-		backPanel.setBackground(ImageSaver.getTeamBackColor(ChineseTranslator.TeamNameTrans(team.getTeamName())));
-		backPanel.setVisible(true);
-		this.add(backPanel);
 	}
 
 }
