@@ -17,7 +17,7 @@ import vo.TeamVO;
 @SuppressWarnings("serial")
 public class TeamScrollPane extends JScrollPane  implements ActionListener{
 	
-	String teamName;
+	static String teamName;
 	TeamVO team;
 	
 	int x = UIData.getNextX();
@@ -66,7 +66,9 @@ public class TeamScrollPane extends JScrollPane  implements ActionListener{
 	private TeamVO getTeam(){
 		
 		ArrayList<TeamVO> array = Controller.teamController.getTeamHistorySeason(teamName, 0);
-		TeamVO team = array.get(array.size() - 1);
+		TeamVO team = null;
+		if(array.size() != 0)
+			team = array.get(array.size() - 1);
 		return team;
 	}
 	

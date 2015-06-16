@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 import thirdVersion.PlayerBasicInfoVO;
 import thirdVersion.PlayerControllerThird;
 import thirdservice.playerControllerThirdService;
-import ui.frame.player.ComparePlayer;
 import ui.myUI.JSortTable;
 import ui.myUI.MyTable;
 import ui.system.ChineseTranslator;

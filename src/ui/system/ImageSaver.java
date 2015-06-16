@@ -65,6 +65,11 @@ public class ImageSaver {
 
 	public static Color getTeamBackColor(String teamName){
 		Color name = null;
+		
+		if(teamName == null){
+			name = new Color(0f / 255, 0f / 255, 0f / 255, 0.4f);
+		}
+		if(teamName != null)
 		switch(teamName){
 		case "DAL":	
 			name = new Color(0f / 255, 105f / 255, 180f / 255, 0.4f);

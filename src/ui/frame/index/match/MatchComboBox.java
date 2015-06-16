@@ -25,8 +25,7 @@ public class MatchComboBox extends JComboBox<String>{
 		System.out.println(dateList.size());
 		for(int i = dateList.size() - 1; i >= 0; i--){
 			String date = dateList.get(i);	
-			this.addItem(date + " (" + ")");
+			this.addItem(date);
 		}
-		System.out.println("ok");
 	}
 }
