@@ -38,7 +38,6 @@ public class ComparePlayer extends JPanel {
 	private JComboBox<String> seasonComb;
 	private JComboBox<String> dataCategory;
 	private String[] dataCategoryNames={"选择数据种类","进攻数据","防守数据","效率数据"};
-	private String[] seasons={"选择赛季"};
 	private boolean isLeft=true;
 	private int count=0;
 	private String[] Odata={"投篮命中率","三分命中率","罚球命中率","前场篮板","助攻","得分"};
@@ -142,11 +141,49 @@ public class ComparePlayer extends JPanel {
         dataCategory.setForeground(Color.white);
         barPanel.add(dataCategory,0);
         
-        seasonComb = new JComboBox<String>(seasons);
+        String[] season=new String[30];
+        for(int i=0;i<=29;i++){
+        	String s1=String.valueOf(i+1985).substring(2);
+        	String s2=String.valueOf(i+1985+1).substring(2);
+        	season[29-i]=s1+"-"+s2;
+        }
+        
+        seasonComb = new JComboBox<String>(season);
         seasonComb.addItemListener(new ItemListener(){
 			@Override
 			public void itemStateChanged(ItemEvent e){
-				doCompare();
+				seasonComb.setForeground(Color.WHITE);
+				String season=seasonComb.getSelectedItem().toString();
+				if(!season.equals("选择赛季")){
+					ArrayList<PlayerBasicInfoVO> playerlist = controllerForPlayer.getPlayersbySeason(season);
+					int size = playerlist.size();
+					Object[][] data = new Object[size][21];
+					for(int i = 0 ; i < size; i++){
+						data[i][0] = playerlist.get(i).getPlayerID();
+						data[i][1] = playerlist.get(i).getChinesename();
+						data[i][2] = playerlist.get(i).getAtime();
+						data[i][3] = playerlist.get(i).getFGP();
+						data[i][4] = playerlist.get(i).getAFGZ();
+						data[i][5] = playerlist.get(i).getAFG();
+						data[i][6] = playerlist.get(i).getSFGP();
+						data[i][7] = playerlist.get(i).getASFGZ();
+						data[i][8] = playerlist.get(i).getASFG();
+						data[i][9] = playerlist.get(i).getFTGP();
+						data[i][10] = playerlist.get(i).getAFTGZ();
+						data[i][11] = playerlist.get(i).getAFTG();
+						data[i][12] = playerlist.get(i).getARebounds();
+						data[i][13] = playerlist.get(i).getAORebouns();
+						data[i][14] = playerlist.get(i).getADRebounds();
+						data[i][15] = playerlist.get(i).getAAssists();
+						data[i][16] = playerlist.get(i).getASteals();
+						data[i][17] = playerlist.get(i).getABlocks();
+						data[i][18] = playerlist.get(i).getATurnovers();
+						data[i][19] = playerlist.get(i).getAFeals();
+						data[i][20] = playerlist.get(i).getAScores();
+					}
+					if(size != 0)
+					table.update(columname, data);
+				}
 			}
 			
         });
@@ -163,7 +200,7 @@ public class ComparePlayer extends JPanel {
 	}
 	void iniTable(){
 		
- 	   	ArrayList<PlayerBasicInfoVO> playerlist=controllerForPlayer.VOinitial();
+ 	   	ArrayList<PlayerBasicInfoVO> playerlist=controllerForPlayer.getPlayersbySeason("14-15");
 		int size = playerlist.size();
 
 		Object[][] data = new Object[size][21];
@@ -291,34 +328,41 @@ public class ComparePlayer extends JPanel {
 		public void mousePressed(MouseEvent e) {
 			// TODO Auto-generated method stub
 			//按字母索引查找球员
-			ArrayList<PlayerBasicInfoVO> playerlist = controllerForPlayer.getPlayersbyChar(this.getText().toCharArray()[0]);
-			int size = playerlist.size();
-			Object[][] data = new Object[size][21];
-			for(int i = 0 ; i < size; i++){
-				data[i][0] = playerlist.get(i).getPlayerID();
-				data[i][1] = playerlist.get(i).getChinesename();
-				data[i][2] = playerlist.get(i).getAtime();
-				data[i][3] = playerlist.get(i).getFGP();
-				data[i][4] = playerlist.get(i).getAFGZ();
-				data[i][5] = playerlist.get(i).getAFG();
-				data[i][6] = playerlist.get(i).getSFGP();
-				data[i][7] = playerlist.get(i).getASFGZ();
-				data[i][8] = playerlist.get(i).getASFG();
-				data[i][9] = playerlist.get(i).getFTGP();
-				data[i][10] = playerlist.get(i).getAFTGZ();
-				data[i][11] = playerlist.get(i).getAFTG();
-				data[i][12] = playerlist.get(i).getARebounds();
-				data[i][13] = playerlist.get(i).getAORebouns();
-				data[i][14] = playerlist.get(i).getADRebounds();
-				data[i][15] = playerlist.get(i).getAAssists();
-				data[i][16] = playerlist.get(i).getASteals();
-				data[i][17] = playerlist.get(i).getABlocks();
-				data[i][18] = playerlist.get(i).getATurnovers();
-				data[i][19] = playerlist.get(i).getAFeals();
-				data[i][20] = playerlist.get(i).getAScores();
+			String season=seasonComb.getSelectedItem().toString();
+			if(!season.equals("选择赛季")){
+				ArrayList<PlayerBasicInfoVO> playerlist = controllerForPlayer.getPlayersbyCharSeason(this.getText().toCharArray()[0],season);
+				int size = playerlist.size();
+				Object[][] data = new Object[size][21];
+				for(int i = 0 ; i < size; i++){
+					data[i][0] = playerlist.get(i).getPlayerID();
+					data[i][1] = playerlist.get(i).getChinesename();
+					data[i][2] = playerlist.get(i).getAtime();
+					data[i][3] = playerlist.get(i).getFGP();
+					data[i][4] = playerlist.get(i).getAFGZ();
+					data[i][5] = playerlist.get(i).getAFG();
+					data[i][6] = playerlist.get(i).getSFGP();
+					data[i][7] = playerlist.get(i).getASFGZ();
+					data[i][8] = playerlist.get(i).getASFG();
+					data[i][9] = playerlist.get(i).getFTGP();
+					data[i][10] = playerlist.get(i).getAFTGZ();
+					data[i][11] = playerlist.get(i).getAFTG();
+					data[i][12] = playerlist.get(i).getARebounds();
+					data[i][13] = playerlist.get(i).getAORebouns();
+					data[i][14] = playerlist.get(i).getADRebounds();
+					data[i][15] = playerlist.get(i).getAAssists();
+					data[i][16] = playerlist.get(i).getASteals();
+					data[i][17] = playerlist.get(i).getABlocks();
+					data[i][18] = playerlist.get(i).getATurnovers();
+					data[i][19] = playerlist.get(i).getAFeals();
+					data[i][20] = playerlist.get(i).getAScores();
+				}
+				if(size != 0)
+				table.update(columname, data);
 			}
-			if(size != 0)
-			table.update(columname, data);
+			else{
+				seasonComb.setForeground(Color.RED);
+			}
+			
 		}
 
 		@Override
