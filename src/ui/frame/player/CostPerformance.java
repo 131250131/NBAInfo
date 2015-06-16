@@ -56,10 +56,13 @@ public class CostPerformance extends JPanel {
  				//系数表格更新
  				Object[][] coe = new Object[3][10];
  				for(int i=0;i<3;i++){
- 					for(int j=0;j<10;i++){
+ 					for(int j=0;j<10;j++){
  						coe[i][j]=Coefficient[i][j];
  					}
  				}
+ 				coe[0][0]="前锋";
+ 				coe[1][0]="中锋";
+ 				coe[2][0]="后卫";
  				tableForCoefficient.update(columname1, coe);
  				
  				int size = playerlist.size();
@@ -90,7 +93,7 @@ public class CostPerformance extends JPanel {
 		//系数表格		
 		tableForCoefficient =new MyTable();
 		JSortTable.makeFace(tableForCoefficient.getTable());
-		tableForCoefficient.setBounds(20,70,1240,120);
+		tableForCoefficient.setBounds(20,70,1240,125);
 		this.add(tableForCoefficient,2);
 		
 		iniTable();
@@ -101,11 +104,16 @@ void iniTable(){
  	   	ArrayList<SalaryVO> playerlist=controllerForPlayer.getSalaryBySeason("14-15",Coefficient);
  	   	//系数表格更新
 		Object[][] coe = new Object[3][10];
+		
+		
 		for(int i=0;i<3;i++){
-			for(int j=0;j<10;i++){
+			for(int j=0;j<10;j++){
 				coe[i][j]=Coefficient[i][j];
 			}
 		}
+		coe[0][0]="前锋";
+		coe[1][0]="中锋";
+		coe[2][0]="后卫";
 		tableForCoefficient.update(columname1, coe);
  	   	int size = playerlist.size();
 
