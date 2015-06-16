@@ -25,8 +25,8 @@ public class CostPerformance extends JPanel {
 	private MyTable tableForPlayers;
 	private String[] columname2={"球员ID","球员姓名","球队","位置","进攻能力","防守能力","分析价值(万元)","实际薪水(万元)",
 			"价值波动(万元)","性价比"};
-	private String[] columname1={"球员ID","球员姓名","球队","位置","进攻能力","防守能力","分析价值(万元)","实际薪水(万元)",
-			"价值波动(万元)","性价比"};
+	private String[] columname1={"位置","进攻回归系数","防守回归系数","常数回归系数","偏差平方和","平方标准差","复相关系数","平方和",
+			"进攻偏相关系数","防守偏相关系数"};
 	private playerControllerThirdService controllerForPlayer=new PlayerControllerThird();//逻辑层接口
 	
 	public CostPerformance(){
@@ -49,10 +49,20 @@ public class CostPerformance extends JPanel {
     	seasonComb.addItemListener(new ItemListener(){
  			@Override
  			public void itemStateChanged(ItemEvent e) {
+ 				double[][] Coefficient=new double[3][10];
  				String season=seasonComb.getSelectedItem().toString();
- 				ArrayList<SalaryVO> playerlist=controllerForPlayer.getSalaryBySeason(season);
+ 				ArrayList<SalaryVO> playerlist=controllerForPlayer.getSalaryBySeason(season,Coefficient);
+ 				
+ 				//系数表格更新
+ 				Object[][] coe = new Object[3][10];
+ 				for(int i=0;i<3;i++){
+ 					for(int j=0;j<10;i++){
+ 						coe[i][j]=Coefficient[i][j];
+ 					}
+ 				}
+ 				tableForCoefficient.update(columname1, coe);
+ 				
  				int size = playerlist.size();
-
  				Object[][] data = new Object[size][21];
  				for(int i = 0 ; i < size; i++){
  					data[i][0] = playerlist.get(i).getPlayerID();
@@ -87,9 +97,17 @@ public class CostPerformance extends JPanel {
 	}
 	
 void iniTable(){
-		
- 	   	ArrayList<SalaryVO> playerlist=controllerForPlayer.getSalaryBySeason("14-15");
-		int size = playerlist.size();
+		double[][] Coefficient=new double[3][10];
+ 	   	ArrayList<SalaryVO> playerlist=controllerForPlayer.getSalaryBySeason("14-15",Coefficient);
+ 	   	//系数表格更新
+		Object[][] coe = new Object[3][10];
+		for(int i=0;i<3;i++){
+			for(int j=0;j<10;i++){
+				coe[i][j]=Coefficient[i][j];
+			}
+		}
+		tableForCoefficient.update(columname1, coe);
+ 	   	int size = playerlist.size();
 
 		Object[][] data = new Object[size][21];
 		for(int i = 0 ; i < size; i++){
