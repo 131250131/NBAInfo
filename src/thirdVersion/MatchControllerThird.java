@@ -78,7 +78,7 @@ public class MatchControllerThird implements matchControllerThirdService{
 				pl.setSFGP(MathCalculator.change(Double.parseDouble(df.format(rs.getDouble(8)*100))));
 				pl.setSFGZ(MathCalculator.change(Double.parseDouble(df.format(rs.getDouble(9)))));
 				pl.setSFG(MathCalculator.change(Double.parseDouble(df.format(rs.getDouble(10)))));
-				pl.setFTGP(MathCalculator.change(Double.parseDouble(df.format(rs.getDouble(11)*1000))));
+				pl.setFTGP(MathCalculator.change(Double.parseDouble(df.format(rs.getDouble(11)*100))));
 				pl.setFTGZ(MathCalculator.change(Double.parseDouble(df.format(rs.getDouble(12)))));
 				pl.setFTG(MathCalculator.change(Double.parseDouble(df.format(rs.getDouble(13)))));
 				pl.setRealShootRate(MathCalculator.change(Double.parseDouble(df.format(rs.getDouble(14)))));
