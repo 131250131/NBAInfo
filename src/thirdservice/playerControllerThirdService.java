@@ -31,5 +31,6 @@ public interface playerControllerThirdService {
     public ArrayList<PlayerBasicInfoVO> getthisseasonplayer();
     public ArrayList<SalaryVO> getSalaryBySeason(String season);
     public ArrayList<PlayerBasicInfoVO> getPlayersbyCharSeason(char temp,String season);
+    public ArrayList<PlayerBasicInfoVO> getPlayersbySeason(String season);
 
 }
