@@ -4,6 +4,7 @@ public class PlayerMatchDataVO {
 	String matchID;
 	String playerID;
 	String playerName;
+	String teamname; 
 	double time;
 	double FGP;
 	double FGZ;
@@ -179,6 +180,12 @@ public class PlayerMatchDataVO {
 	}
 	public void setEnglishname(String englishname) {
 		Englishname = englishname;
+	}
+	public String getTeamname() {
+		return teamname;
+	}
+	public void setTeamname(String teamname) {
+		this.teamname = teamname;
 	}
 	
 	

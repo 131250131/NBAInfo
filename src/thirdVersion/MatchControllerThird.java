@@ -15,7 +15,7 @@ import vo.TeamVO;
 public class MatchControllerThird implements matchControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="941211";
+	String password="";
 	String sql="";
 	DecimalFormat    df   = new DecimalFormat("######0.00"); 
 	/*
@@ -35,8 +35,8 @@ public class MatchControllerThird implements matchControllerThirdService{
 			mvo.setDate(rs.getString(2));
 			mvo.setLeftTeam(getmatchteam(mvo.getNum(),rs.getString(3)));
 			mvo.setRightTeam(getmatchteam(mvo.getNum(),rs.getString(4)));
-			mvo.setLeftplayerlist(getmatchplayers(mvo.getNum(),"left"));;
-			mvo.setRightplayerlist(getmatchplayers(mvo.getNum(),"right"));
+			mvo.setLeftplayerlist(getmatchplayers(mvo.getNum(),"leftteam"));;
+			mvo.setRightplayerlist(getmatchplayers(mvo.getNum(),"rightteam"));
 			mvo.setScores1(rs.getString(5));
 			mvo.setScores2(rs.getString(6));
 			mvo.setScores3(rs.getString(7));
@@ -62,7 +62,7 @@ public class MatchControllerThird implements matchControllerThirdService{
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn =DriverManager.getConnection(url, user, password);
-			String sql1="SELECT * FROM playermatchdata WHERE matchid="+"'"+id+"'";//等数据好了这句话会改 球员会变正确
+			String sql1="SELECT * FROM playermatchdata WHERE matchid="+"'"+id+"'"+"AND Teamname ='"+lr+"'";
 			PreparedStatement pstmt=conn.prepareStatement(sql1);
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()){

@@ -12,7 +12,7 @@ public class ImageLabel extends JLabel{
 
 //		image.setImage(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));		
 
-		image.setImage(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));		
+//		image.setImage(image.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));		
 
 		this.setBounds(x, y, width, height);
 		this.setIcon(image);
