@@ -41,8 +41,8 @@ public class RankPanel extends JPanel{
 				, (int) (1052 * UIData.changeX), (int) (584 * UIData.changeY));
 		this.add(image);
 		
-		JLabel label1 = new JLabel("球员成长与贡献");
-		label1.setBounds((int) (200 * UIData.changeX), (int) (400 * UIData.changeY), (int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
+		JLabel label1 = new JLabel("统计1");
+		label1.setBounds((int) (250 * UIData.changeX), (int) (400 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
 		label1.setFont(new Font("Arail", Font.PLAIN, (int) (30 * UIData.changeY)));
 		label1.setVisible(true);
 		label1.setForeground(Color.LIGHT_GRAY);
@@ -53,8 +53,8 @@ public class RankPanel extends JPanel{
 		});
 		this.add(label1);
 		
-		JLabel label2 = new JLabel("球员对比");
-		label2.setBounds((int) (200 * UIData.changeX), (int) (470 * UIData.changeY), (int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
+		JLabel label2 = new JLabel("统计2");
+		label2.setBounds((int) (250 * UIData.changeX), (int) (470 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
 		label2.setFont(new Font("Arail", Font.PLAIN, (int) (30 * UIData.changeY)));
 		label2.setVisible(true);
 		label2.setForeground(Color.LIGHT_GRAY);
@@ -65,8 +65,8 @@ public class RankPanel extends JPanel{
 		});
 		this.add(label2);
 		
-		JLabel label3 = new JLabel("球员数据预测");
-		label3.setBounds((int) (200 * UIData.changeX), (int) (540 * UIData.changeY), (int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
+		JLabel label3 = new JLabel("统计3");
+		label3.setBounds((int) (250 * UIData.changeX), (int) (540 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
 		label3.setFont(new Font("Arail", Font.PLAIN, (int) (30 * UIData.changeY)));
 		label3.setForeground(Color.LIGHT_GRAY);
 		label3.addMouseListener(new MouseAdapter(){
@@ -76,8 +76,8 @@ public class RankPanel extends JPanel{
 		});
 		this.add(label3);
 		
-		JLabel label4 = new JLabel("球员性价比评估");
-		label4.setBounds((int) (200 * UIData.changeX), (int) (610 * UIData.changeY), (int) (400 * UIData.changeX), (int) (30 * UIData.changeY));
+		JLabel label4 = new JLabel("统计4");
+		label4.setBounds((int) (250 * UIData.changeX), (int) (610 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
 		label4.setFont(new Font("Arail", Font.PLAIN, (int) (30 * UIData.changeY)));
 		label4.setForeground(Color.LIGHT_GRAY);
 		label4.addMouseListener(new MouseAdapter(){

@@ -29,8 +29,8 @@ public class TJPanel4 extends JPanel implements ActionListener{
 		this.setOpaque(false);
 		this.setVisible(true);
 		
-		JLabel title = new JLabel("球员性价比评估");
-		title.setBounds((int) (35 * UIData.changeX), (int) (45 * UIData.changeY), (int) (300 * UIData.changeX), (int) (30 * UIData.changeY));
+		JLabel title = new JLabel("统计4");
+		title.setBounds((int) (35 * UIData.changeX), (int) (115 * UIData.changeY), (int) (200 * UIData.changeX), (int) (30 * UIData.changeY));
 		title.setForeground(Color.ORANGE);
 		title.setFont(new Font("新細明體", Font.BOLD, (int)(30 * UIData.changeY)));
 		title.setVisible(true);
@@ -40,8 +40,15 @@ public class TJPanel4 extends JPanel implements ActionListener{
 		
 		
 		CostPerformance pg=new CostPerformance();
-		pg.setLocation((int)(250 * UIData.changeX),(int) (180 * UIData.changeY));
+		pg.setLocation(0, 0);
 		this.add(pg);
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		/////////////////////////////////////////////////////////////////

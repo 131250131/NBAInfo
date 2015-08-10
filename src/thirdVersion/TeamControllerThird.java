@@ -19,7 +19,7 @@ import Utibility.DataType;
 public class TeamControllerThird implements teamControllerThirdService{
 	String url="jdbc:mysql://localhost/nbadata?characterEncoding=utf-8";
 	String user="root";
-	String password="941211";	
+	String password="";	
 	//如果遇到数据库密码的问题，可能是 "",也有可能是 "941211" 试一下就好
 	String sql="";
 	
@@ -962,7 +962,7 @@ public class TeamControllerThird implements teamControllerThirdService{
 		
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn =DriverManager.getConnection("jdbc:mysql://localhost/nbadata?characterEncoding=utf-8", "root", "941211");
+			Connection conn =DriverManager.getConnection("jdbc:mysql://localhost/nbadata?characterEncoding=utf-8", "root", "");
 			String sql =  new String();
 			char start = season.charAt(0);
 			if(start=='8'||start=='9'){
