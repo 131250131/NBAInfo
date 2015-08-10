@@ -93,7 +93,7 @@ public class CostPerformance extends JPanel {
 		//系数表格		
 		tableForCoefficient =new MyTable();
 		JSortTable.makeFace(tableForCoefficient.getTable());
-		tableForCoefficient.setBounds(20,70,1240,125);
+		tableForCoefficient.setBounds(20,70,1104,110);
 		this.add(tableForCoefficient,2);
 		
 		iniTable();
